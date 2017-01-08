@@ -348,10 +348,25 @@ class DummyWarningListener(GccOptionsListener.GccOptionsListener):
             self.is_dummy = True
 
 
+def print_child_option(option_name, level):
+    print("# " + "  " * level, "-" + option_name)
+
+
+def print_default_options(defaults, references):
+    if len(defaults) == 0:
+        return
+
+    print("# enabled by default:")
+
+    for option_name in sorted(defaults):
+        print_child_option(option_name, 1)
+        print_enabled_options(references, option_name, 2)
+
+
 def print_enabled_options(references, option_name, level=1):
     for reference in sorted(
             references.get(option_name, []), key=lambda x: x.lower()):
-        print("# " + "  " * level, "-" + reference)
+        print_child_option(reference, level)
         if reference in references:
             print_enabled_options(references, reference, level + 1)
 
@@ -432,6 +447,10 @@ def create_defaults_text(defaults, switch_name):
 
 
 def print_warning_flags(args, references, parents, aliases, warnings, dummies, defaults):
+    if args.top_level:
+        # Print a group that has all enabled-by-default warnings together
+        print_default_options(warnings.intersection(defaults), references)
+
     for option_name in sorted(references.keys(), key=lambda x: x.lower()):
         option_aliases = aliases.get(option_name, [])
         if option_name not in warnings:
@@ -451,6 +470,8 @@ def print_warning_flags(args, references, parents, aliases, warnings, dummies, d
 
         if args.top_level:
             if option_name in aliases:
+                continue
+            if option_name in defaults:
                 continue
             if len(parents.get(option_name, set())) > 0:
                 continue
