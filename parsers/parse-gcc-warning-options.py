@@ -220,6 +220,79 @@ class EnabledByListener(GccOptionsListener.GccOptionsListener):
         self._last_name = None
 
 
+class DefaultsListener(GccOptionsListener.GccOptionsListener):
+    """
+    Listens to attributes to infer 'enabled by default' status
+
+    This attempts to infer whether an option is enabled by default by use of
+    idioms. The implementation favors type II errors (missing an enabled-by-
+    default case) over type I errors (marking a flag as enabled-by-default
+    when it is not).
+
+    - Presence of Enum, UInteger, or Joined indicates this is not an on-off
+      switch
+    - A value of '1' or '-1' typically means on by default
+    - A value of '0' typically means off by default
+    - Another numeric value typically signifies more complex logic is used,
+      such as for trigraphs.
+    - A non-numeric value is a configure symbol, so this script cannot be sure.
+
+    >>> listener = DefaultsListener()
+    >>> apply_listener("Init(1)", listener)
+    >>> listener.isEnabledByDefault()
+    True
+    >>> listener = DefaultsListener()
+    >>> apply_listener("Init(-1)", listener)
+    >>> listener.isEnabledByDefault()
+    True
+    >>> listener = DefaultsListener()
+    >>> apply_listener("Init(0)", listener)
+    >>> listener.isEnabledByDefault()
+    False
+    >>> listener = DefaultsListener()
+    >>> apply_listener("Init(2)", listener)
+    >>> listener.isEnabledByDefault()
+    False
+    >>> listener = DefaultsListener()
+    >>> apply_listener("Init(COND)", listener)
+    >>> listener.isEnabledByDefault()
+    False
+    >>> listener = DefaultsListener()
+    >>> apply_listener("UInteger Init(1)", listener)
+    >>> listener.isEnabledByDefault()
+    False
+    >>> listener = DefaultsListener()
+    >>> apply_listener("Init(1) Enum", listener)
+    >>> listener.isEnabledByDefault()
+    False
+    >>> listener = DefaultsListener()
+    >>> apply_listener("Init(-1) Joined", listener)
+    >>> listener.isEnabledByDefault()
+    False
+    """
+
+    def __init__(self):
+        self._last_name = None
+        self._init_value = None
+        self._is_boolean = True
+
+    def enterVariableName(self, ctx):
+        if ctx.getText() == "Init":
+            self._last_name = "Init"
+        elif ctx.getText() in ("Enum", "Joined", "UInteger"):
+            self._is_boolean = False
+
+    def enterAtom(self, ctx):
+        if self._last_name == "Init":
+            self._init_value = ctx.getText()
+
+    def exitTrailer(self, ctx):
+        self._last_name = None
+
+    def isEnabledByDefault(self):
+       return self._is_boolean and self._init_value in ("1", "-1")
+
+
 class WarningOptionListener(GccOptionsListener.GccOptionsListener):
     """
     Searches for Warning attributes.
@@ -299,6 +372,7 @@ def parse_options_file(filename):
     aliases = {}
     warnings = set()
     dummies = set()
+    defaults = set()
 
     for option_name, option_arguments in blocks:
         warning_option = WarningOptionListener()
@@ -332,12 +406,17 @@ def parse_options_file(filename):
                 references[flag] = []
             references[flag].append(option_name)
 
+        bydefault_option = DefaultsListener()
+        apply_listener(option_arguments, bydefault_option)
+        if bydefault_option.isEnabledByDefault():
+            defaults.add(option_name)
+
         alias_enablers = AliasAssignmentListener()
         apply_listener(option_arguments, alias_enablers)
         if alias_enablers.alias_name is not None:
             aliases[option_name] = alias_enablers.alias_name
 
-    return references, aliases, warnings, dummies
+    return references, aliases, warnings, dummies, defaults
 
 
 def create_dummy_text(dummies, switch_name):
@@ -346,7 +425,13 @@ def create_dummy_text(dummies, switch_name):
     return ""
 
 
-def print_warning_flags(args, references, parents, aliases, warnings, dummies):
+def create_defaults_text(defaults, switch_name):
+    if switch_name in defaults:
+        return " # (enabled by default)"
+    return ""
+
+
+def print_warning_flags(args, references, parents, aliases, warnings, dummies, defaults):
     for option_name in sorted(references.keys(), key=lambda x: x.lower()):
         option_aliases = aliases.get(option_name, [])
         if option_name not in warnings:
@@ -359,8 +444,9 @@ def print_warning_flags(args, references, parents, aliases, warnings, dummies):
                 continue
 
         dummy_text = create_dummy_text(dummies, option_name)
+        defaults_text = create_defaults_text(defaults, option_name)
         if args.unique:
-            print("-%s%s" % (option_name, dummy_text))
+            print("-%s%s%s" % (option_name, defaults_text, dummy_text))
             continue
 
         if args.top_level:
@@ -390,6 +476,7 @@ Parses GCC option files for warning options.""")
     all_aliases = {}
     all_warnings = set()
     all_dummies = set()
+    all_defaults = set()
 
     for switch, aliases in HIDDEN_WARNINGS:
         all_references[switch] = set()
@@ -401,7 +488,8 @@ Parses GCC option files for warning options.""")
         (file_references,
          file_aliases,
          file_warnings,
-         file_dummies) = parse_options_file(filename)
+         file_dummies,
+         file_defaults) = parse_options_file(filename)
         for flag, reference in file_references.items():
             references = all_references.get(flag, set())
             all_references[flag] = references.union(reference)
@@ -411,6 +499,7 @@ Parses GCC option files for warning options.""")
             all_aliases[flag] = aliases
         all_warnings = all_warnings.union(file_warnings)
         all_dummies = all_dummies.union(file_dummies)
+        all_defaults = all_defaults.union(file_defaults)
 
     all_parents = {}
     for flag, references in all_references.items():
@@ -425,7 +514,9 @@ Parses GCC option files for warning options.""")
         all_parents,
         all_aliases,
         all_warnings,
-        all_dummies)
+        all_dummies,
+        all_defaults
+        )
 
 if __name__ == "__main__":
     main(sys.argv)
