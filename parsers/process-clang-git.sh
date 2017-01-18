@@ -22,6 +22,8 @@ GIT_DIR=$1
 
 target_dir=$DIR/../clang
 
+git -C "$GIT_DIR" remote update origin
+
 git -C "$GIT_DIR" checkout origin/release_32
 parse_clang_info 3.2 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
 
@@ -46,7 +48,9 @@ parse_clang_info 3.8 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGrou
 git -C "$GIT_DIR" checkout origin/release_39
 parse_clang_info 3.9 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
 
-git -C "$GIT_DIR" fetch origin master
+git -C "$GIT_DIR" checkout origin/release_40
+parse_clang_info 4 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
+
 git -C "$GIT_DIR" checkout origin/master
 parse_clang_info NEXT "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
 
@@ -59,6 +63,7 @@ versions=(
     3.7
     3.8
     3.9
+    4
     NEXT
 )
 
