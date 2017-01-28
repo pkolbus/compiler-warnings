@@ -13,7 +13,7 @@
 -Wall
 #    -Waddress
 #    -Warray-bounds
-#    -Warray-bounds=
+#    -Warray-bounds=1
 #    -Wbool-compare
 #    -Wc++0x-compat
 #      -Wnarrowing
@@ -23,12 +23,9 @@
 #    -Wcomment
 #    -Wdelete-non-virtual-dtor
 #    -Wenum-compare
-#    -Wformat=
+#    -Wformat=1
 #      -Wformat-contains-nul
 #      -Wformat-extra-args
-#      -Wformat-nonliteral
-#      -Wformat-security
-#      -Wformat-y2k
 #      -Wformat-zero-length
 #      -Wnonnull
 #    -Wimplicit
@@ -50,8 +47,8 @@
 #    -Wsequence-point
 #    -Wsign-compare
 #    -Wsizeof-pointer-memaccess
-#    -Wstrict-aliasing=
-#    -Wstrict-overflow=
+#    -Wstrict-aliasing=3
+#    -Wstrict-overflow=1
 #    -Wswitch
 #    -Wtrigraphs
 #    -Wuninitialized
@@ -141,13 +138,15 @@
 -Wformat-y2k
 -Wformat-zero-length
 -Wformat=
+-Wformat=1
 #    -Wformat-contains-nul
 #    -Wformat-extra-args
+#    -Wformat-zero-length
+#    -Wnonnull
+-Wformat=2
 #    -Wformat-nonliteral
 #    -Wformat-security
 #    -Wformat-y2k
-#    -Wformat-zero-length
-#    -Wnonnull
 -Wframe-larger-than=
 -Wfree-nonheap-object
 -Wignored-qualifiers

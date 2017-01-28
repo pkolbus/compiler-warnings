@@ -45,12 +45,9 @@
 #    -Wchar-subscripts
 #    -Wdelete-non-virtual-dtor
 #    -Wenum-compare
-#    -Wformat=
+#    -Wformat=1
 #      -Wformat-contains-nul
 #      -Wformat-extra-args
-#      -Wformat-nonliteral
-#      -Wformat-security
-#      -Wformat-y2k
 #      -Wformat-zero-length
 #      -Wnonnull
 #    -Wimplicit
@@ -69,8 +66,8 @@
 #    -Wsequence-point
 #    -Wsign-compare
 #    -Wsizeof-pointer-memaccess
-#    -Wstrict-aliasing=
-#    -Wstrict-overflow=
+#    -Wstrict-aliasing=3
+#    -Wstrict-overflow=1
 #    -Wswitch
 #    -Wuninitialized
 #      -Wmaybe-uninitialized
@@ -115,6 +112,11 @@
 #    -Wunused-but-set-parameter
 #    -Wunused-parameter
 -Wfloat-equal
+-Wformat=
+-Wformat=2
+#    -Wformat-nonliteral
+#    -Wformat-security
+#    -Wformat-y2k
 -Wframe-larger-than=
 -Wimport # DUMMY switch
 -Winline
@@ -148,8 +150,10 @@
 -Wstack-protector
 -Wstack-usage=
 -Wstrict-aliasing
+-Wstrict-aliasing=
 -Wstrict-null-sentinel
 -Wstrict-overflow
+-Wstrict-overflow=
 -Wstrict-prototypes
 -Wstrict-selector-match
 -Wsuggest-attribute=const

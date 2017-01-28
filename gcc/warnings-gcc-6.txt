@@ -13,7 +13,7 @@
 -Wall
 #    -Waddress
 #    -Warray-bounds
-#    -Warray-bounds=
+#    -Warray-bounds=1
 #    -Wbool-compare
 #    -Wc++11-compat
 #      -Wnarrowing
@@ -23,12 +23,9 @@
 #    -Wcomment
 #    -Wdelete-non-virtual-dtor
 #    -Wenum-compare
-#    -Wformat=
+#    -Wformat=1
 #      -Wformat-contains-nul
 #      -Wformat-extra-args
-#      -Wformat-nonliteral
-#      -Wformat-security
-#      -Wformat-y2k
 #      -Wformat-zero-length
 #      -Wnonnull
 #    -Wframe-address
@@ -53,8 +50,8 @@
 #    -Wsequence-point
 #    -Wsign-compare
 #    -Wsizeof-pointer-memaccess
-#    -Wstrict-aliasing=
-#    -Wstrict-overflow=
+#    -Wstrict-aliasing=3
+#    -Wstrict-overflow=1
 #    -Wswitch
 #    -Wtautological-compare
 #    -Wtrigraphs
@@ -68,7 +65,7 @@
 #      -Wunused-local-typedefs
 #      -Wunused-value
 #      -Wunused-variable
-#        -Wunused-const-variable=
+#        -Wunused-const-variable=1
 #    -Wvolatile-register-var
 -Warray-bounds
 -Warray-bounds=
@@ -147,13 +144,15 @@
 -Wformat-y2k
 -Wformat-zero-length
 -Wformat=
+-Wformat=1
 #    -Wformat-contains-nul
 #    -Wformat-extra-args
+#    -Wformat-zero-length
+#    -Wnonnull
+-Wformat=2
 #    -Wformat-nonliteral
 #    -Wformat-security
 #    -Wformat-y2k
-#    -Wformat-zero-length
-#    -Wnonnull
 -Wframe-address
 -Wframe-larger-than=
 -Wfree-nonheap-object
@@ -309,7 +308,7 @@
 #    -Wunused-local-typedefs
 #    -Wunused-value
 #    -Wunused-variable
-#      -Wunused-const-variable=
+#      -Wunused-const-variable=1
 -Wunused-but-set-parameter
 -Wunused-but-set-variable
 -Wunused-const-variable = -Wunused-const-variable=2
@@ -322,7 +321,7 @@
 -Wunused-result
 -Wunused-value
 -Wunused-variable
-#    -Wunused-const-variable=
+#    -Wunused-const-variable=1
 -Wuseless-cast
 -Wvarargs
 -Wvariadic-macros

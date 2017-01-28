@@ -153,6 +153,10 @@ class LanguagesEnabledListener(GccOptionsListener.GccOptionsListener):
     """
     Listens to LangEnabledBy(languagelist,warningflags) function calls
 
+    There are two forms:
+        - LangEnabledBy(languagelist,warningflags)
+        - LangEnabledBy(languagelist,warningflags,posarg,negarg)
+
     "warningflags" are the most interesting ones, as it means that this warning
     is enabled by another flag.
 
@@ -170,12 +174,36 @@ class LanguagesEnabledListener(GccOptionsListener.GccOptionsListener):
     >>> apply_listener("LangEnabledBy(C C++,Wall || Wc++-compat)", listener)
     >>> listener.flags
     [u'Wall', u'Wc++-compat']
+
+    >>> listener = LanguagesEnabledListener()
+    >>> apply_listener("LangEnabledBy(C C++,Wformat=,v >= 2,0)", listener)
+    >>> listener.flags
+    [u'Wformat=2']
+    >>> listener.arg
+    u'1'
+
+    >>> listener = LanguagesEnabledListener()
+    >>> apply_listener("LangEnabledBy(C C++,Wall,1,0)", listener)
+    >>> listener.flags
+    [u'Wall']
+    >>> listener.arg
+    u'1'
+
+    >>> listener = LanguagesEnabledListener()
+    >>> apply_listener("LangEnabledBy(C C++,Wall,2,0)", listener)
+    >>> listener.flags
+    [u'Wall']
+    >>> listener.arg
+    u'2'
     """
 
     def __init__(self):
         self._last_name = None
         self._argument_id = 0
+        self._flag_name = None
+        self._enabled_by_comparison = False
         self.flags = []
+        self.arg = None
 
     def enterVariableName(self, ctx):
         if ctx.getText() == "LangEnabledBy":
@@ -185,10 +213,25 @@ class LanguagesEnabledListener(GccOptionsListener.GccOptionsListener):
     def enterArgument(self, ctx):
         self._argument_id += 1
 
+    def enterCompOp(self, ctx):
+        if self._last_name == "LangEnabledBy" and self._argument_id == 3:
+            self._enabled_by_comparison = True
+
     def enterAtom(self, ctx):
-        if self._last_name == "LangEnabledBy" and self._argument_id == 2:
-            flag_name = ctx.getText()
-            self.flags.append(flag_name)
+        if self._last_name == "LangEnabledBy":
+            if self._argument_id == 2:
+                self._flag_name = ctx.getText()
+                self.flags.append(self._flag_name)
+            elif self._argument_id == 3 and ctx.getText().isdigit():
+                if self._enabled_by_comparison:
+                    # Argument form is var >= N, so is enabled by-Wflag=N
+                    self.flags.remove(self._flag_name)
+                    self.flags.append(self._flag_name + ctx.getText())
+                    # When -Wflag=N, var >= N evaluates to 1
+                    self.arg = u'1'
+                else:
+                    # Argument form is N, so flags enables -Wthis=N
+                    self.arg = ctx.getText()
 
     def exitTrailer(self, ctx):
         self._last_name = None
@@ -408,10 +451,15 @@ def parse_options_file(filename):
 
         language_enablers = LanguagesEnabledListener()
         apply_listener(option_arguments, language_enablers)
+        qualified_option = option_name
+        if qualified_option[-1:] == '=' and language_enablers.arg is not None:
+            qualified_option += language_enablers.arg
+            warnings.add(qualified_option)
         for flag in language_enablers.flags:
             if flag not in references:
                 references[flag] = []
-            references[flag].append(option_name)
+            references[flag].append(qualified_option)
+            warnings.add(flag)
 
         flag_enablers = EnabledByListener()
         apply_listener(option_arguments, flag_enablers)

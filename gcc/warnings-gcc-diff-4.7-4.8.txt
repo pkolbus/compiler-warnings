@@ -4,6 +4,8 @@
 +-Wclobbered
 --Wempty-body # (enabled by default)
 +-Wempty-body
++-Wformat=1
++-Wformat=2
 --Wignored-qualifiers # (enabled by default)
 --Wimplicit # (enabled by default)
 +-Wignored-qualifiers

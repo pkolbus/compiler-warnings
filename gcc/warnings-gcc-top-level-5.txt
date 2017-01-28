@@ -60,7 +60,7 @@
 -Wall
 #    -Waddress
 #    -Warray-bounds
-#    -Warray-bounds=
+#    -Warray-bounds=1
 #    -Wbool-compare
 #    -Wc++0x-compat
 #      -Wnarrowing
@@ -70,12 +70,9 @@
 #    -Wcomment
 #    -Wdelete-non-virtual-dtor
 #    -Wenum-compare
-#    -Wformat=
+#    -Wformat=1
 #      -Wformat-contains-nul
 #      -Wformat-extra-args
-#      -Wformat-nonliteral
-#      -Wformat-security
-#      -Wformat-y2k
 #      -Wformat-zero-length
 #      -Wnonnull
 #    -Wimplicit
@@ -97,8 +94,8 @@
 #    -Wsequence-point
 #    -Wsign-compare
 #    -Wsizeof-pointer-memaccess
-#    -Wstrict-aliasing=
-#    -Wstrict-overflow=
+#    -Wstrict-aliasing=3
+#    -Wstrict-overflow=1
 #    -Wswitch
 #    -Wtrigraphs
 #    -Wuninitialized
@@ -112,6 +109,7 @@
 #      -Wunused-value
 #      -Wunused-variable
 #    -Wvolatile-register-var
+-Warray-bounds=
 -Wassign-intercept
 -Wbad-function-cast
 -Wc++-compat
@@ -146,6 +144,11 @@
 #    -Wunused-parameter
 -Wfloat-equal
 -Wformat-signedness
+-Wformat=
+-Wformat=2
+#    -Wformat-nonliteral
+#    -Wformat-security
+#    -Wformat-y2k
 -Wframe-larger-than=
 -Wimport # DUMMY switch
 -Winline
@@ -181,8 +184,10 @@
 -Wstack-protector
 -Wstack-usage=
 -Wstrict-aliasing
+-Wstrict-aliasing=
 -Wstrict-null-sentinel
 -Wstrict-overflow
+-Wstrict-overflow=
 -Wstrict-prototypes
 -Wstrict-selector-match
 -Wsuggest-attribute=const

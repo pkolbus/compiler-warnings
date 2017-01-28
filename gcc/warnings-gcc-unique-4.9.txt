@@ -54,6 +54,8 @@
 -Wformat-y2k
 -Wformat-zero-length
 -Wformat=
+-Wformat=1
+-Wformat=2
 -Wframe-larger-than=
 -Wfree-nonheap-object # (enabled by default)
 -Wignored-qualifiers
