@@ -22,6 +22,8 @@ GIT_DIR=$1
 
 target_dir=$DIR/../gcc
 
+git -C "$GIT_DIR" fetch origin master
+
 git -C "$GIT_DIR" checkout gcc-3_4_6-release
 parse_gcc_info 3.4 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c.opt}
 
@@ -61,7 +63,10 @@ parse_gcc_info 5 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 git -C "$GIT_DIR" checkout gcc-6_3_0-release
 parse_gcc_info 6 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 
-git -C "$GIT_DIR" fetch origin master
+# Not a released tag, commit is on master as stage4.
+git -C "$GIT_DIR" checkout 35a6cf0d046dc904d550e7496fe12aaa2722f687
+parse_gcc_info 7 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
+
 git -C "$GIT_DIR" checkout origin/master
 parse_gcc_info NEXT "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 
@@ -79,6 +84,7 @@ versions=(
     4.9
     5
     6
+    7
     NEXT
 )
 
