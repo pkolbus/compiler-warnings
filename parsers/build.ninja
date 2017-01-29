@@ -1,12 +1,17 @@
 rule antlr
-     command = antlr4 $in
+     command = java -jar antlr.jar $in
 
 rule doctest
      command = python -mdoctest $in
 
-build GccOptionsLexer.py GccOptionsLexer.tokens GccOptionsListener.py GccOptionsParser.py GccOptions.tokens: antlr GccOptions.g4
+rule get-antlr
+     command = wget -O antlr.jar http://www.antlr.org/download/antlr-4.5.3-complete.jar
 
-build TableGenLexer.py TableGenLexer.tokens TableGenListener.py TableGenParser.py TableGen.tokens: antlr TableGen.g4
+build antlr.jar: get-antlr
+
+build GccOptionsLexer.py GccOptionsLexer.tokens GccOptionsListener.py GccOptionsParser.py GccOptions.tokens: antlr GccOptions.g4 | antlr.jar
+
+build TableGenLexer.py TableGenLexer.tokens TableGenListener.py TableGenParser.py TableGen.tokens: antlr TableGen.g4 | antlr.jar
 
 build all: phony GccOptionsLexer.py GccOptionsLexer.tokens GccOptionsListener.py GccOptionsParser.py GccOptions.tokens TableGenLexer.py TableGenLexer.tokens TableGenListener.py TableGenParser.py TableGen.tokens
 
