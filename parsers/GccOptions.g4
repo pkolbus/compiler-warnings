@@ -11,7 +11,7 @@ optionAttribute : variableName trailer? ;
 
 variableName : NAME_LITERAL ;
 
-trailer : OPEN_PAREN argumentList? CLOSE_PAREN ;
+trailer : (SPACE)* OPEN_PAREN argumentList? CLOSE_PAREN ;
 
 argumentList : argument (COMMA SPACE* argument)* ;
 

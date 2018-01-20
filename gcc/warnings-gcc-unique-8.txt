@@ -1,0 +1,279 @@
+--all-warnings
+--extra-warnings
+--pedantic
+-pedantic
+-W
+-Wabi
+-Wabi-tag
+-Wabi=
+-Waddress
+-Waggregate-return
+-Waggressive-loop-optimizations # (enabled by default)
+-Waligned-new
+-Waligned-new=
+-Wall
+-Walloc-size-larger-than=
+-Walloc-zero
+-Walloca
+-Walloca-larger-than=
+-Warray-bounds
+-Warray-bounds=
+-Wassign-intercept
+-Wattribute-alias # (enabled by default)
+-Wattributes # (enabled by default)
+-Wbad-function-cast
+-Wbool-compare
+-Wbool-operation
+-Wbuiltin-declaration-mismatch # (enabled by default)
+-Wbuiltin-macro-redefined # (enabled by default)
+-Wc++-compat
+-Wc++0x-compat
+-Wc++11-compat
+-Wc++14-compat
+-Wc++17-compat
+-Wc++1z-compat
+-Wc90-c99-compat # (enabled by default)
+-Wc99-c11-compat # (enabled by default)
+-Wcast-align
+-Wcast-align=strict
+-Wcast-function-type
+-Wcast-qual
+-Wcatch-value
+-Wcatch-value=
+-Wchar-subscripts
+-Wchkp
+-Wclass-memaccess
+-Wclobbered
+-Wcomment
+-Wcomments
+-Wconditionally-supported
+-Wconversion
+-Wconversion-null # (enabled by default)
+-Wcoverage-mismatch # (enabled by default)
+-Wcpp # (enabled by default)
+-Wctor-dtor-privacy
+-Wdangling-else
+-Wdate-time
+-Wdeclaration-after-statement # (enabled by default)
+-Wdelete-incomplete # (enabled by default)
+-Wdelete-non-virtual-dtor
+-Wdeprecated # (enabled by default)
+-Wdeprecated-declarations # (enabled by default)
+-Wdesignated-init # (enabled by default)
+-Wdisabled-optimization
+-Wdiscarded-array-qualifiers # (enabled by default)
+-Wdiscarded-qualifiers # (enabled by default)
+-Wdiv-by-zero # (enabled by default)
+-Wdouble-promotion
+-Wduplicate-decl-specifier
+-Wduplicated-branches
+-Wduplicated-cond
+-Weffc++
+-Wempty-body
+-Wendif-labels # (enabled by default)
+-Wenum-compare # (enabled by default)
+-Werror-implicit-function-declaration
+-Wexpansion-to-defined
+-Wextra
+-Wextra-semi
+-Wfloat-conversion
+-Wfloat-equal
+-Wformat
+-Wformat-contains-nul
+-Wformat-extra-args
+-Wformat-nonliteral
+-Wformat-overflow
+-Wformat-overflow=
+-Wformat-security
+-Wformat-signedness
+-Wformat-truncation
+-Wformat-truncation=
+-Wformat-y2k
+-Wformat-zero-length
+-Wformat=
+-Wformat=1
+-Wformat=2
+-Wframe-address
+-Wframe-larger-than=
+-Wfree-nonheap-object # (enabled by default)
+-Whsa # (enabled by default)
+-Wif-not-aligned # (enabled by default)
+-Wignored-attributes # (enabled by default)
+-Wignored-qualifiers
+-Wimplicit
+-Wimplicit-fallthrough
+-Wimplicit-fallthrough=
+-Wimplicit-function-declaration # (enabled by default)
+-Wimplicit-int # (enabled by default)
+-Wimport # DUMMY switch
+-Wincompatible-pointer-types # (enabled by default)
+-Winherited-variadic-ctor # (enabled by default)
+-Winit-self
+-Winline
+-Wint-conversion # (enabled by default)
+-Wint-in-bool-context
+-Wint-to-pointer-cast # (enabled by default)
+-Winvalid-memory-model # (enabled by default)
+-Winvalid-offsetof # (enabled by default)
+-Winvalid-pch
+-Wjump-misses-init
+-Wlarger-than-
+-Wlarger-than=
+-Wliteral-suffix # (enabled by default)
+-Wlogical-not-parentheses
+-Wlogical-op
+-Wlong-long # (enabled by default)
+-Wlto-type-mismatch # (enabled by default)
+-Wmain # (enabled by default)
+-Wmaybe-uninitialized
+-Wmemset-elt-size
+-Wmemset-transposed-args
+-Wmisleading-indentation
+-Wmissing-braces
+-Wmissing-declarations
+-Wmissing-field-initializers
+-Wmissing-format-attribute
+-Wmissing-include-dirs
+-Wmissing-noreturn
+-Wmissing-parameter-type
+-Wmissing-prototypes
+-Wmudflap # DUMMY switch
+-Wmultichar
+-Wmultiple-inheritance
+-Wmultistatement-macros
+-Wnamespaces
+-Wnarrowing # (enabled by default)
+-Wnested-externs
+-Wnoexcept
+-Wnoexcept-type
+-Wnon-template-friend # (enabled by default)
+-Wnon-virtual-dtor
+-Wnonnull
+-Wnonnull-compare
+-Wnormalized
+-Wnormalized=
+-Wnull-dereference
+-Wodr # (enabled by default)
+-Wold-style-cast
+-Wold-style-declaration
+-Wold-style-definition
+-Wopenmp-simd
+-Woverflow # (enabled by default)
+-Woverlength-strings
+-Woverloaded-virtual
+-Woverride-init
+-Woverride-init-side-effects # (enabled by default)
+-Wpacked
+-Wpacked-bitfield-compat # (enabled by default)
+-Wpacked-not-aligned
+-Wpadded
+-Wparentheses
+-Wpedantic
+-Wplacement-new
+-Wplacement-new=
+-Wpmf-conversions # (enabled by default)
+-Wpointer-arith
+-Wpointer-compare # (enabled by default)
+-Wpointer-sign
+-Wpointer-to-int-cast # (enabled by default)
+-Wpragmas # (enabled by default)
+-Wproperty-assign-default # (enabled by default)
+-Wprotocol # (enabled by default)
+-Wpsabi # (enabled by default)
+-Wredundant-decls
+-Wregister
+-Wreorder
+-Wrestrict
+-Wreturn-local-addr # (enabled by default)
+-Wreturn-type # (enabled by default)
+-Wscalar-storage-order # (enabled by default)
+-Wselector
+-Wsequence-point
+-Wshadow
+-Wshadow-compatible-local
+-Wshadow-ivar # (enabled by default)
+-Wshadow-local
+-Wshadow=compatible-local
+-Wshadow=global
+-Wshadow=local
+-Wshift-count-negative # (enabled by default)
+-Wshift-count-overflow # (enabled by default)
+-Wshift-negative-value # (enabled by default)
+-Wshift-overflow
+-Wshift-overflow=
+-Wsign-compare
+-Wsign-conversion
+-Wsign-promo
+-Wsized-deallocation
+-Wsizeof-array-argument # (enabled by default)
+-Wsizeof-pointer-div
+-Wsizeof-pointer-memaccess
+-Wstack-protector
+-Wstack-usage=
+-Wstrict-aliasing
+-Wstrict-aliasing=
+-Wstrict-null-sentinel
+-Wstrict-overflow
+-Wstrict-overflow=
+-Wstrict-prototypes
+-Wstrict-selector-match
+-Wstringop-overflow
+-Wstringop-overflow=
+-Wstringop-truncation # (enabled by default)
+-Wsubobject-linkage # (enabled by default)
+-Wsuggest-attribute=cold
+-Wsuggest-attribute=const
+-Wsuggest-attribute=format
+-Wsuggest-attribute=malloc
+-Wsuggest-attribute=noreturn
+-Wsuggest-attribute=pure
+-Wsuggest-final-methods
+-Wsuggest-final-types
+-Wsuggest-override
+-Wswitch
+-Wswitch-bool # (enabled by default)
+-Wswitch-default
+-Wswitch-enum
+-Wswitch-unreachable # (enabled by default)
+-Wsync-nand # (enabled by default)
+-Wsynth
+-Wsystem-headers
+-Wtautological-compare
+-Wtemplates
+-Wterminate # (enabled by default)
+-Wtraditional
+-Wtraditional-conversion
+-Wtrampolines
+-Wtrigraphs
+-Wtype-limits
+-Wundeclared-selector
+-Wundef
+-Wuninitialized
+-Wunknown-pragmas
+-Wunreachable-code # DUMMY switch
+-Wunsafe-loop-optimizations
+-Wunsuffixed-float-constants
+-Wunused
+-Wunused-but-set-parameter
+-Wunused-but-set-variable
+-Wunused-const-variable
+-Wunused-const-variable=
+-Wunused-function
+-Wunused-label
+-Wunused-local-typedefs
+-Wunused-macros
+-Wunused-parameter
+-Wunused-result # (enabled by default)
+-Wunused-value
+-Wunused-variable
+-Wuseless-cast
+-Wvarargs # (enabled by default)
+-Wvariadic-macros
+-Wvector-operation-performance
+-Wvirtual-inheritance
+-Wvirtual-move-assign # (enabled by default)
+-Wvla # (enabled by default)
+-Wvla-larger-than=
+-Wvolatile-register-var
+-Wwrite-strings
+-Wzero-as-null-pointer-constant
