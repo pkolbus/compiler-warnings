@@ -57,14 +57,13 @@ parse_gcc_info 4.8 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 git -C "$GIT_DIR" checkout gcc-4_9_4-release
 parse_gcc_info 4.9 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 
-git -C "$GIT_DIR" checkout gcc-5_4_0-release
+git -C "$GIT_DIR" checkout gcc-5_5_0-release
 parse_gcc_info 5 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 
-git -C "$GIT_DIR" checkout gcc-6_3_0-release
+git -C "$GIT_DIR" checkout gcc-6_4_0-release
 parse_gcc_info 6 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 
-# Not a released tag, commit is on master as stage4.
-git -C "$GIT_DIR" checkout 35a6cf0d046dc904d550e7496fe12aaa2722f687
+git -C "$GIT_DIR" checkout gcc-7_2_0-release
 parse_gcc_info 7 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 
 git -C "$GIT_DIR" checkout origin/master

@@ -64,6 +64,7 @@
 #    -Wvirtual-move-assign
 #    -Wvla
 -Wabi
+#    -Wnoexcept-type
 #    -Wpsabi
 -Wabi-tag
 -Wabi=
@@ -80,6 +81,7 @@
 #      -Wnarrowing
 #    -Wc++14-compat
 #    -Wc++1z-compat
+#      -Wnoexcept-type
 #    -Wchar-subscripts
 #    -Wchkp
 #    -Wcomment

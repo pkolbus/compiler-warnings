@@ -136,6 +136,7 @@
 -Wnarrowing # (enabled by default)
 -Wnested-externs
 -Wnoexcept
+-Wnoexcept-type
 -Wnon-template-friend # (enabled by default)
 -Wnon-virtual-dtor
 -Wnonnull
