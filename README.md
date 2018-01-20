@@ -17,6 +17,10 @@ static code analysis tools that compilers provide.
 Clang includes `-Weverything` flag, that is not shown in these lists,
 that enables all warnings.
 
+* clang 4 [all](clang/warnings-clang-4.txt)
+  • [top level](clang/warnings-clang-top-level-4.txt)
+  • [unique](clang/warnings-clang-unique-4.txt)
+  • [diff](clang/warnings-clang-diff-3.9-4.txt)
 * clang 3.9 [all](clang/warnings-clang-3.9.txt)
   • [top level](clang/warnings-clang-top-level-3.9.txt)
   • [unique](clang/warnings-clang-unique-3.9.txt)
@@ -120,7 +124,7 @@ need to use some (visual) diff program, as shown below:
 
 ![Some GCC 5 and 6 -Wall differences shown with meld](gcc/meld-gcc-5-6-wall.png)
 
-# Development [![Build Status](https://travis-ci.org/Barro/compiler-warnings.svg?branch=master)](https://travis-ci.org/Barro/compiler-warnings)
+# Development
 
 This uses [ANTLR](http://www.antlr.org/) as a parser generator with
 some supporting Python code to parse warning flags from actual
