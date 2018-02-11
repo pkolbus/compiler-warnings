@@ -1,24 +1,24 @@
 +-Wduplicated-cond
 +-Wframe-address
-+-Whsa # (enabled by default)
-+-Wignored-attributes # (enabled by default)
-+-Wlto-type-mismatch # (enabled by default)
-+-Wmisleading-indentation
-+-Wmultiple-inheritance
-+-Wnamespaces
++-Whsa # Enabled by default.
++-Wignored-attributes # Enabled by default. Applies to C,C++
++-Wlto-type-mismatch # Enabled by default.
++-Wmisleading-indentation # Applies to C,C++
++-Wmultiple-inheritance # Applies to C++,ObjC++
++-Wnamespaces # Applies to C++,ObjC++
 +-Wnonnull-compare
 +-Wnull-dereference
-+-Woverride-init-side-effects # (enabled by default)
-+-Wplacement-new
-+-Wplacement-new=
-+-Wscalar-storage-order # (enabled by default)
-+-Wshift-negative-value # (enabled by default)
++-Woverride-init-side-effects # Enabled by default. Applies to C,ObjC
++-Wplacement-new # Applies to C++
++-Wplacement-new= # Applies to C++
++-Wscalar-storage-order # Enabled by default.
++-Wshift-negative-value # Enabled by default.
 +-Wshift-overflow
 +-Wshift-overflow=
-+-Wsubobject-linkage # (enabled by default)
++-Wsubobject-linkage # Enabled by default. Applies to C++,ObjC++
 +-Wtautological-compare
-+-Wtemplates
-+-Wterminate # (enabled by default)
++-Wtemplates # Applies to C++,ObjC++
++-Wterminate # Enabled by default. Applies to C++,ObjC++
 +-Wunused-const-variable
 +-Wunused-const-variable=
-+-Wvirtual-inheritance
++-Wvirtual-inheritance # Applies to C++,ObjC++

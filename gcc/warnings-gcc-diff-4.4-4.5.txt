@@ -1,6 +1,8 @@
-+-Wconversion-null # (enabled by default)
-+-Wjump-misses-init # (enabled by default)
++-Wconversion-null # Enabled by default. Applies to C++,ObjC++
+--Wenum-compare # Enabled by default. Applies to C++,ObjC++
++-Wenum-compare # Enabled by default.
++-Wjump-misses-init # Enabled by default. Applies to C,ObjC
 --Wuninitialized
-+-Wuninitialized # (enabled by default)
-+-Wunsuffixed-float-constants
-+-Wunused-result # (enabled by default)
++-Wuninitialized # Enabled by default.
++-Wunsuffixed-float-constants # Applies to C,ObjC
++-Wunused-result # Enabled by default.

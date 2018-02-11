@@ -1,16 +1,16 @@
-+-Wattribute-alias # (enabled by default)
++-Wattribute-alias # Enabled by default.
 +-Wcast-align=strict
 +-Wcast-function-type
-+-Wcatch-value
-+-Wcatch-value=
-+-Wclass-memaccess
-+-Wextra-semi
-+-Wif-not-aligned # (enabled by default)
++-Wcatch-value # Applies to C++,ObjC++
++-Wcatch-value= # Applies to C++,ObjC++
++-Wclass-memaccess # Applies to C++,ObjC++
++-Wextra-semi # Applies to C++,ObjC++
++-Wif-not-aligned # Enabled by default.
 +-Wmultistatement-macros
 +-Wpacked-not-aligned
 --Wreturn-type
-+-Wreturn-type # (enabled by default)
++-Wreturn-type # Enabled by default.
 +-Wsizeof-pointer-div
-+-Wstringop-truncation # (enabled by default)
++-Wstringop-truncation # Enabled by default.
 +-Wsuggest-attribute=cold
 +-Wsuggest-attribute=malloc

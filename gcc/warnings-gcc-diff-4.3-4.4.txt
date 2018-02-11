@@ -1,20 +1,24 @@
+--Wabi # Applies to C++,ObjC++
++-Wabi
 +-Wbuiltin-macro-redefined
-+-Wenum-compare # (enabled by default)
+--Wdeprecated # Enabled by default. Applies to C++,ObjC++
++-Wdeprecated # Enabled by default.
++-Wenum-compare # Enabled by default. Applies to C++,ObjC++
 +-Wframe-larger-than=
 +-Wlarger-than=
 --Wmain
-+-Wmain # (enabled by default)
-+-Wmudflap # (enabled by default)
-+-Wpacked-bitfield-compat # (enabled by default)
-+-Wpsabi # (enabled by default)
-+-Wsync-nand # (enabled by default)
++-Wmain # Enabled by default.
++-Wmudflap # Enabled by default.
++-Wpacked-bitfield-compat # Enabled by default.
++-Wpsabi # Enabled by default.
++-Wsync-nand # Enabled by default. Applies to C,C++
 --Wunused-function
 --Wunused-label
-+-Wunused-function # (enabled by default)
-+-Wunused-label # (enabled by default)
++-Wunused-function # Enabled by default.
++-Wunused-label # Enabled by default.
 --Wunused-parameter
 --Wunused-value
 --Wunused-variable
-+-Wunused-parameter # (enabled by default)
-+-Wunused-value # (enabled by default)
-+-Wunused-variable # (enabled by default)
++-Wunused-parameter # Enabled by default.
++-Wunused-value # Enabled by default.
++-Wunused-variable # Enabled by default.

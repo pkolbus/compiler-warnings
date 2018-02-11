@@ -1,26 +1,28 @@
---Wdeprecated
+--Wdeprecated # Applies to C++,ObjC++
 --Wdeprecated-declarations
-+-Wdeprecated # (enabled by default)
-+-Wdeprecated-declarations # (enabled by default)
---Wdiv-by-zero
-+-Wdiv-by-zero # (enabled by default)
---Wimplicit-function-declaration
-+-Wimplicit-function-declaration # (enabled by default)
---Winvalid-offsetof
-+-Winvalid-offsetof # (enabled by default)
++-Wdeprecated # Enabled by default. Applies to C++,ObjC++
++-Wdeprecated-declarations # Enabled by default.
+--Wdiv-by-zero # Applies to C,ObjC
++-Wdiv-by-zero # Enabled by default. Applies to C,ObjC
+--Wimplicit-function-declaration # Applies to C,ObjC
++-Wimplicit-function-declaration # Enabled by default. Applies to C,ObjC
+--Winvalid-offsetof # Applies to C++,ObjC++
++-Winvalid-offsetof # Enabled by default. Applies to C++,ObjC++
 --Wlong-long
-+-Wlong-long # (enabled by default)
-+-Wmissing-field-initializers # (enabled by default)
++-Wlong-long # Enabled by default.
++-Wmissing-field-initializers # Enabled by default.
 +-Wmissing-include-dirs
---Wnon-template-friend
-+-Wnon-template-friend # (enabled by default)
---Wpmf-conversions
-+-Wpmf-conversions # (enabled by default)
---Wprotocol
-+-Wpointer-sign # (enabled by default)
-+-Wprotocol # (enabled by default)
+--Wnon-template-friend # Applies to C++,ObjC++
++-Wnon-template-friend # Enabled by default. Applies to C++,ObjC++
+--Wpmf-conversions # Applies to C++,ObjC++
++-Wpmf-conversions # Enabled by default. Applies to C++,ObjC++
+--Wprotocol # Applies to ObjC,ObjC++
++-Wpointer-sign # Enabled by default. Applies to C,ObjC
++-Wprotocol # Enabled by default. Applies to ObjC,ObjC++
+--Wsequence-point # Applies to C,ObjC
++-Wsequence-point
 --Wsign-compare
-+-Wsign-compare # (enabled by default)
++-Wsign-compare # Enabled by default.
 +-Wstrict-aliasing=
-+-Wstrict-null-sentinel
++-Wstrict-null-sentinel # Applies to C++,ObjC++
 +-Wvariadic-macros

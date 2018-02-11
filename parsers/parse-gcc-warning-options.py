@@ -40,6 +40,8 @@ HIDDEN_WARNINGS = [
     ("W", ["Wextra"]),
 ]
 
+# Languages of interest
+INTERESTING_LANGUAGES = ["C", "C++", "ObjC", "ObjC++"]
 
 def parse_warning_blocks(fp):
     blocks = []
@@ -237,6 +239,33 @@ class LanguagesEnabledListener(GccOptionsListener.GccOptionsListener):
         self._last_name = None
 
 
+class LanguagesListener(GccOptionsListener.GccOptionsListener):
+    """
+    Listens for applicable languages (C C++ ObjC)
+
+    >>> listener = LanguagesListener()
+    >>> apply_listener("C C++ Enum", listener)
+    >>> listener.languages
+    [u'C', u'C++']
+    >>> listener = LanguagesListener()
+    >>> apply_listener("C++", listener)
+    >>> listener.languages
+    [u'C++']
+    >>> listener = LanguagesListener()
+    >>> apply_listener("LTO C ObjC C++ Enum", listener)
+    >>> listener.languages
+    [u'C', u'C++', u'ObjC']
+    """
+
+    def __init__(self):
+        self.languages = []
+
+    def enterVariableName(self, ctx):
+        if ctx.getText() in INTERESTING_LANGUAGES:
+            self.languages.append(ctx.getText())
+            self.languages.sort()
+
+
 class EnabledByListener(GccOptionsListener.GccOptionsListener):
     """
     Listens to EnabledBy(warningflag) function calls
@@ -428,6 +457,7 @@ def parse_options_file(filename):
 
     references = {}
     aliases = {}
+    languages = {}
     warnings = set()
     dummies = set()
     defaults = set()
@@ -479,7 +509,32 @@ def parse_options_file(filename):
         if alias_enablers.alias_name is not None:
             aliases[option_name] = alias_enablers.alias_name
 
-    return references, aliases, warnings, dummies, defaults
+        languages_listener = LanguagesListener()
+        apply_listener(option_arguments, languages_listener)
+        languages[option_name] = languages_listener.languages
+
+    return references, aliases, languages, warnings, dummies, defaults
+
+
+def create_comment_text(defaults, languages, switch_name):
+    has_comment = False
+    comment = " #"
+
+    if switch_name in defaults:
+        comment += " Enabled by default."
+        has_comment = True
+
+    if switch_name in languages and \
+       len(languages[switch_name]) != 0 and \
+       len(languages[switch_name]) != len(INTERESTING_LANGUAGES):
+        comment += " Applies to " + ",".join(sorted(languages[switch_name]))
+        has_comment = True
+
+
+    if has_comment:
+        return comment
+    else:
+        return ""
 
 
 def create_dummy_text(dummies, switch_name):
@@ -488,13 +543,7 @@ def create_dummy_text(dummies, switch_name):
     return ""
 
 
-def create_defaults_text(defaults, switch_name):
-    if switch_name in defaults:
-        return " # (enabled by default)"
-    return ""
-
-
-def print_warning_flags(args, references, parents, aliases, warnings, dummies, defaults):
+def print_warning_flags(args, references, parents, aliases, languages, warnings, dummies, defaults):
     if args.top_level:
         # Print a group that has all enabled-by-default warnings together
         print_default_options(warnings.intersection(defaults), references)
@@ -511,9 +560,9 @@ def print_warning_flags(args, references, parents, aliases, warnings, dummies, d
                 continue
 
         dummy_text = create_dummy_text(dummies, option_name)
-        defaults_text = create_defaults_text(defaults, option_name)
         if args.unique:
-            print("-%s%s%s" % (option_name, defaults_text, dummy_text))
+            comment_text = create_comment_text(defaults, languages, option_name)
+            print("-%s%s%s" % (option_name, dummy_text, comment_text))
             continue
 
         if args.top_level:
@@ -543,6 +592,7 @@ Parses GCC option files for warning options.""")
 
     all_references = {}
     all_aliases = {}
+    all_languages = {}
     all_warnings = set()
     all_dummies = set()
     all_defaults = set()
@@ -556,6 +606,7 @@ Parses GCC option files for warning options.""")
     for filename in args.option_file:
         (file_references,
          file_aliases,
+         file_languages,
          file_warnings,
          file_dummies,
          file_defaults) = parse_options_file(filename)
@@ -566,6 +617,9 @@ Parses GCC option files for warning options.""")
             aliases = all_aliases.get(flag, set())
             aliases.add(alias)
             all_aliases[flag] = aliases
+        for flag, language in file_languages.items():
+            languages = all_languages.get(flag, set())
+            all_languages[flag] = languages.union(language)
         all_warnings = all_warnings.union(file_warnings)
         all_dummies = all_dummies.union(file_dummies)
         all_defaults = all_defaults.union(file_defaults)
@@ -582,6 +636,7 @@ Parses GCC option files for warning options.""")
         all_references,
         all_parents,
         all_aliases,
+        all_languages,
         all_warnings,
         all_dummies,
         all_defaults

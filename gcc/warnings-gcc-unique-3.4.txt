@@ -3,25 +3,25 @@
 --pedantic
 -pedantic
 -W
--Wabi
+-Wabi # Applies to C++,ObjC++
 -Waggregate-return
 -Wall
--Wbad-function-cast
+-Wbad-function-cast # Applies to C,ObjC
 -Wcast-align
 -Wcast-qual
 -Wchar-subscripts
 -Wcomment
 -Wcomments
 -Wconversion
--Wctor-dtor-privacy
--Wdeclaration-after-statement
--Wdeprecated
+-Wctor-dtor-privacy # Applies to C++,ObjC++
+-Wdeclaration-after-statement # Applies to C,ObjC
+-Wdeprecated # Applies to C++,ObjC++
 -Wdeprecated-declarations
 -Wdisabled-optimization
--Wdiv-by-zero
--Weffc++
+-Wdiv-by-zero # Applies to C,ObjC
+-Weffc++ # Applies to C++,ObjC++
 -Wendif-labels
--Werror-implicit-function-declaration
+-Werror-implicit-function-declaration # Applies to C,ObjC
 -Wextra
 -Wfloat-equal
 -Wformat
@@ -29,56 +29,56 @@
 -Wformat-nonliteral
 -Wformat-security
 -Wformat-y2k
--Wformat-zero-length
+-Wformat-zero-length # Applies to C,ObjC
 -Wformat=
 -Wimplicit
--Wimplicit-function-declaration
--Wimplicit-int
+-Wimplicit-function-declaration # Applies to C,ObjC
+-Wimplicit-int # Applies to C,ObjC
 -Wimport
 -Winit-self
 -Winline
--Winvalid-offsetof
+-Winvalid-offsetof # Applies to C++,ObjC++
 -Winvalid-pch
 -Wlarger-than-
 -Wlong-long
--Wmain
+-Wmain # Applies to C,ObjC
 -Wmissing-braces
--Wmissing-declarations
+-Wmissing-declarations # Applies to C,ObjC
 -Wmissing-format-attribute
 -Wmissing-noreturn
--Wmissing-prototypes
+-Wmissing-prototypes # Applies to C,ObjC
 -Wmultichar
--Wnested-externs
--Wnon-template-friend
--Wnon-virtual-dtor
--Wnonnull
--Wold-style-cast
--Wold-style-definition
--Woverloaded-virtual
+-Wnested-externs # Applies to C,ObjC
+-Wnon-template-friend # Applies to C++,ObjC++
+-Wnon-virtual-dtor # Applies to C++,ObjC++
+-Wnonnull # Applies to C,ObjC
+-Wold-style-cast # Applies to C++,ObjC++
+-Wold-style-definition # Applies to C,ObjC
+-Woverloaded-virtual # Applies to C++,ObjC++
 -Wpacked
 -Wpadded
 -Wparentheses
--Wpmf-conversions
+-Wpmf-conversions # Applies to C++,ObjC++
 -Wpointer-arith
--Wprotocol
+-Wprotocol # Applies to ObjC,ObjC++
 -Wredundant-decls
--Wreorder
+-Wreorder # Applies to C++,ObjC++
 -Wreturn-type
--Wselector
--Wsequence-point
+-Wselector # Applies to ObjC,ObjC++
+-Wsequence-point # Applies to C,ObjC
 -Wshadow
 -Wsign-compare
--Wsign-promo
+-Wsign-promo # Applies to C++,ObjC++
 -Wstrict-aliasing
--Wstrict-prototypes
+-Wstrict-prototypes # Applies to C,ObjC
 -Wswitch
 -Wswitch-default
 -Wswitch-enum
--Wsynth
+-Wsynth # Applies to C++,ObjC++
 -Wsystem-headers
--Wtraditional
+-Wtraditional # Applies to C,ObjC
 -Wtrigraphs
--Wundeclared-selector
+-Wundeclared-selector # Applies to ObjC,ObjC++
 -Wundef
 -Wuninitialized
 -Wunknown-pragmas

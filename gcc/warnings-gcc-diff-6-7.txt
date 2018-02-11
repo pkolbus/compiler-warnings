@@ -1,15 +1,15 @@
-+-Waligned-new
-+-Waligned-new=
++-Waligned-new # Applies to C++,ObjC++
++-Waligned-new= # Applies to C++,ObjC++
 +-Walloc-size-larger-than=
 +-Walloc-zero
 +-Walloca
 +-Walloca-larger-than=
 +-Wbool-operation
-+-Wbuiltin-declaration-mismatch # (enabled by default)
-+-Wc++17-compat
-+-Wc++1z-compat
++-Wbuiltin-declaration-mismatch # Enabled by default.
++-Wc++17-compat # Applies to C++,ObjC++
++-Wc++1z-compat # Applies to C++,ObjC++
 +-Wdangling-else
-+-Wduplicate-decl-specifier
++-Wduplicate-decl-specifier # Applies to C,ObjC
 +-Wduplicated-branches
 +-Wexpansion-to-defined
 +-Wformat-overflow
@@ -20,9 +20,9 @@
 +-Wimplicit-fallthrough=
 +-Wint-in-bool-context
 +-Wmemset-elt-size
-+-Wnoexcept-type
-+-Wpointer-compare # (enabled by default)
-+-Wregister
++-Wnoexcept-type # Applies to C++,ObjC++
++-Wpointer-compare # Enabled by default.
++-Wregister # Applies to C++,ObjC++
 +-Wrestrict
 +-Wshadow-compatible-local
 +-Wshadow-local
@@ -31,5 +31,5 @@
 +-Wshadow=local
 +-Wstringop-overflow
 +-Wstringop-overflow=
-+-Wswitch-unreachable # (enabled by default)
++-Wswitch-unreachable # Enabled by default.
 +-Wvla-larger-than=

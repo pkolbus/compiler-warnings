@@ -1,11 +1,11 @@
-+-Wassign-intercept
-+-Wattributes # (enabled by default)
-+-Wc++-compat
-+-Wint-to-pointer-cast # (enabled by default)
++-Wassign-intercept # Applies to ObjC,ObjC++
++-Wattributes # Enabled by default.
++-Wc++-compat # Applies to C
++-Wint-to-pointer-cast # Enabled by default. Applies to C,ObjC
 +-Wnormalized=
-+-Wpointer-to-int-cast # (enabled by default)
-+-Wpragmas # (enabled by default)
++-Wpointer-to-int-cast # Enabled by default. Applies to C,ObjC
++-Wpragmas # Enabled by default.
 +-Wstack-protector
-+-Wstrict-selector-match
++-Wstrict-selector-match # Applies to ObjC,ObjC++
 +-Wunsafe-loop-optimizations
 +-Wvolatile-register-var

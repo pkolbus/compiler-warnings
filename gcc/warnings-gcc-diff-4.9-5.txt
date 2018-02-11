@@ -2,37 +2,39 @@
 +-Warray-bounds=
 --Wbuiltin-macro-redefined
 +-Wbool-compare
-+-Wbuiltin-macro-redefined # (enabled by default)
-+-Wc++14-compat
-+-Wc90-c99-compat # (enabled by default)
-+-Wc99-c11-compat # (enabled by default)
++-Wbuiltin-macro-redefined # Enabled by default.
++-Wc++14-compat # Applies to C++,ObjC++
++-Wc90-c99-compat # Enabled by default. Applies to C,ObjC
++-Wc99-c11-compat # Enabled by default. Applies to C,ObjC
 +-Wchkp
---Wdeclaration-after-statement
-+-Wdeclaration-after-statement # (enabled by default)
-+-Wdesignated-init # (enabled by default)
-+-Wdiscarded-array-qualifiers # (enabled by default)
-+-Wdiscarded-qualifiers # (enabled by default)
+--Wdeclaration-after-statement # Applies to C,ObjC
++-Wdeclaration-after-statement # Enabled by default. Applies to C,ObjC
+--Wdelete-non-virtual-dtor
++-Wdelete-non-virtual-dtor # Applies to C++,ObjC++
++-Wdesignated-init # Enabled by default. Applies to C,ObjC
++-Wdiscarded-array-qualifiers # Enabled by default. Applies to C,ObjC
++-Wdiscarded-qualifiers # Enabled by default. Applies to C,ObjC
 --Wendif-labels
-+-Wendif-labels # (enabled by default)
++-Wendif-labels # Enabled by default.
 +-Wformat-signedness
---Wimplicit-int
-+-Wimplicit-int # (enabled by default)
-+-Wincompatible-pointer-types # (enabled by default)
-+-Wint-conversion # (enabled by default)
---Wliteral-suffix
-+-Wliteral-suffix # (enabled by default)
+--Wimplicit-int # Applies to C,ObjC
++-Wimplicit-int # Enabled by default. Applies to C,ObjC
++-Wincompatible-pointer-types # Enabled by default. Applies to C,ObjC
++-Wint-conversion # Enabled by default. Applies to C,ObjC
+--Wliteral-suffix # Applies to C++,ObjC++
++-Wliteral-suffix # Enabled by default. Applies to C++,ObjC++
 +-Wlogical-not-parentheses
 +-Wmemset-transposed-args
 +-Wnormalized
-+-Wodr # (enabled by default)
-+-Wshadow-ivar # (enabled by default)
-+-Wshift-count-negative # (enabled by default)
-+-Wshift-count-overflow # (enabled by default)
-+-Wsized-deallocation
-+-Wsizeof-array-argument # (enabled by default)
++-Wodr # Enabled by default.
++-Wshadow-ivar # Enabled by default. Applies to ObjC,ObjC++
++-Wshift-count-negative # Enabled by default.
++-Wshift-count-overflow # Enabled by default.
++-Wsized-deallocation # Applies to C++,ObjC++
++-Wsizeof-array-argument # Enabled by default.
 +-Wsuggest-final-methods
 +-Wsuggest-final-types
-+-Wsuggest-override
-+-Wswitch-bool # (enabled by default)
---Wvariadic-macros # (enabled by default)
++-Wsuggest-override # Applies to C++,ObjC++
++-Wswitch-bool # Enabled by default.
+--Wvariadic-macros # Enabled by default.
 +-Wvariadic-macros

@@ -1,61 +1,63 @@
-+-Wabi-tag
-+-Waggressive-loop-optimizations # (enabled by default)
---Wclobbered # (enabled by default)
++-Wabi-tag # Applies to C++,ObjC++
++-Waggressive-loop-optimizations # Enabled by default.
+--Wclobbered # Enabled by default.
 +-Wclobbered
---Wempty-body # (enabled by default)
+--Wdelete-non-virtual-dtor # Applies to C++,ObjC++
++-Wdelete-non-virtual-dtor
+--Wempty-body # Enabled by default.
 +-Wempty-body
 +-Wformat=1
 +-Wformat=2
---Wignored-qualifiers # (enabled by default)
---Wimplicit # (enabled by default)
-+-Wignored-qualifiers
-+-Wimplicit
---Wimplicit-int # (enabled by default)
-+-Wimplicit-int
-+-Winherited-variadic-ctor # (enabled by default)
---Wjump-misses-init # (enabled by default)
-+-Wjump-misses-init
-+-Wliteral-suffix
---Wmissing-field-initializers # (enabled by default)
+--Wignored-qualifiers # Enabled by default. Applies to C,C++
+--Wimplicit # Enabled by default. Applies to C,ObjC
++-Wignored-qualifiers # Applies to C,C++
++-Wimplicit # Applies to C,ObjC
+--Wimplicit-int # Enabled by default. Applies to C,ObjC
++-Wimplicit-int # Applies to C,ObjC
++-Winherited-variadic-ctor # Enabled by default. Applies to C++,ObjC++
+--Wjump-misses-init # Enabled by default. Applies to C,ObjC
++-Wjump-misses-init # Applies to C,ObjC
++-Wliteral-suffix # Applies to C++,ObjC++
+--Wmissing-field-initializers # Enabled by default.
 +-Wmissing-field-initializers
---Wmissing-parameter-type # (enabled by default)
-+-Wmissing-parameter-type
---Wold-style-declaration # (enabled by default)
-+-Wold-style-declaration
---Woverlength-strings # (enabled by default)
+--Wmissing-parameter-type # Enabled by default. Applies to C,ObjC
++-Wmissing-parameter-type # Applies to C,ObjC
+--Wold-style-declaration # Enabled by default. Applies to C,ObjC
++-Wold-style-declaration # Applies to C,ObjC
+--Woverlength-strings # Enabled by default.
 +-Woverlength-strings
---Woverride-init # (enabled by default)
-+-Woverride-init
+--Woverride-init # Enabled by default. Applies to C,ObjC
++-Woverride-init # Applies to C,ObjC
 +-Wpedantic
---Wpointer-sign # (enabled by default)
-+-Wpointer-sign
-+-Wreturn-local-addr # (enabled by default)
---Wsign-compare # (enabled by default)
---Wsign-conversion # (enabled by default)
+--Wpointer-sign # Enabled by default. Applies to C,ObjC
++-Wpointer-sign # Applies to C,ObjC
++-Wreturn-local-addr # Enabled by default.
+--Wsign-compare # Enabled by default.
+--Wsign-conversion # Enabled by default.
 +-Wsign-compare
 +-Wsign-conversion
 +-Wsizeof-pointer-memaccess
 +-Wsuggest-attribute=format
---Wtype-limits # (enabled by default)
+--Wtype-limits # Enabled by default.
 +-Wtype-limits
---Wuninitialized # (enabled by default)
+--Wuninitialized # Enabled by default.
 +-Wuninitialized
---Wunused-but-set-parameter # (enabled by default)
---Wunused-but-set-variable # (enabled by default)
---Wunused-function # (enabled by default)
---Wunused-label # (enabled by default)
+--Wunused-but-set-parameter # Enabled by default.
+--Wunused-but-set-variable # Enabled by default.
+--Wunused-function # Enabled by default.
+--Wunused-label # Enabled by default.
 +-Wunused-but-set-parameter
 +-Wunused-but-set-variable
 +-Wunused-function
 +-Wunused-label
---Wunused-parameter # (enabled by default)
+--Wunused-parameter # Enabled by default.
 +-Wunused-parameter
---Wunused-value # (enabled by default)
---Wunused-variable # (enabled by default)
+--Wunused-value # Enabled by default.
+--Wunused-variable # Enabled by default.
 --Wvariadic-macros
 +-Wunused-value
 +-Wunused-variable
-+-Wuseless-cast
-+-Wvarargs # (enabled by default)
-+-Wvariadic-macros # (enabled by default)
-+-Wvirtual-move-assign # (enabled by default)
++-Wuseless-cast # Applies to C++,ObjC++
++-Wvarargs # Enabled by default.
++-Wvariadic-macros # Enabled by default.
++-Wvirtual-move-assign # Enabled by default. Applies to C++,ObjC++

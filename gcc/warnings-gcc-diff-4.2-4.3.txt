@@ -1,14 +1,18 @@
 +-Warray-bounds
-+-Wc++0x-compat
-+-Wclobbered # (enabled by default)
++-Wc++0x-compat # Applies to C++,ObjC++
++-Wclobbered # Enabled by default.
 +-Wcoverage-mismatch
-+-Wempty-body # (enabled by default)
++-Wempty-body # Enabled by default.
 +-Wformat-contains-nul
-+-Wignored-qualifiers # (enabled by default)
++-Wignored-qualifiers # Enabled by default. Applies to C,C++
 +-Wlogical-op
-+-Wmissing-parameter-type # (enabled by default)
-+-Wold-style-declaration # (enabled by default)
-+-Wsign-conversion # (enabled by default)
-+-Wtraditional-conversion
-+-Wtype-limits # (enabled by default)
-+-Wvla # (enabled by default)
+--Wmain # Applies to C,ObjC
++-Wmain
+--Wmissing-declarations # Applies to C,ObjC
++-Wmissing-declarations
++-Wmissing-parameter-type # Enabled by default. Applies to C,ObjC
++-Wold-style-declaration # Enabled by default. Applies to C,ObjC
++-Wsign-conversion # Enabled by default.
++-Wtraditional-conversion # Applies to C,ObjC
++-Wtype-limits # Enabled by default.
++-Wvla # Enabled by default.

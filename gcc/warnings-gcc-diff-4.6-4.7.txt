@@ -1,10 +1,14 @@
-+-Wc++11-compat
-+-Wdelete-non-virtual-dtor
-+-Wfree-nonheap-object # (enabled by default)
-+-Winvalid-memory-model # (enabled by default)
++-Wc++11-compat # Applies to C++,ObjC++
++-Wdelete-non-virtual-dtor # Applies to C++,ObjC++
+--Wformat-zero-length # Applies to C,ObjC
++-Wformat-zero-length
++-Wfree-nonheap-object # Enabled by default.
++-Winvalid-memory-model # Enabled by default.
 +-Wmaybe-uninitialized
-+-Wnarrowing # (enabled by default)
++-Wnarrowing # Enabled by default.
+--Wnonnull # Applies to C,ObjC
++-Wnonnull
 +-Wstack-usage=
 +-Wunused-local-typedefs
 +-Wvector-operation-performance
-+-Wzero-as-null-pointer-constant
++-Wzero-as-null-pointer-constant # Applies to C++,ObjC++

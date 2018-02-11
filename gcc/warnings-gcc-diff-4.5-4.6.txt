@@ -1,20 +1,22 @@
 --Wcoverage-mismatch
-+-Wcoverage-mismatch # (enabled by default)
-+-Wcpp # (enabled by default)
++-Wcoverage-mismatch # Enabled by default.
++-Wcpp # Enabled by default.
 +-Wdouble-promotion
 --Wimplicit
-+-Wimplicit # (enabled by default)
---Wimplicit-int
++-Wimplicit # Enabled by default. Applies to C,ObjC
+--Wimplicit-int # Applies to C,ObjC
 --Wimport
-+-Wimplicit-int # (enabled by default)
++-Wimplicit-int # Enabled by default. Applies to C,ObjC
 +-Wimport # DUMMY switch
-+-Wnoexcept
-+-Wproperty-assign-default # (enabled by default)
+--Wint-to-pointer-cast # Enabled by default. Applies to C,ObjC
++-Wint-to-pointer-cast # Enabled by default.
++-Wnoexcept # Applies to C++,ObjC++
++-Wproperty-assign-default # Enabled by default. Applies to ObjC,ObjC++
 +-Wsuggest-attribute=const
 +-Wsuggest-attribute=noreturn
 +-Wsuggest-attribute=pure
 +-Wtrampolines
 --Wunreachable-code
 +-Wunreachable-code # DUMMY switch
-+-Wunused-but-set-parameter # (enabled by default)
-+-Wunused-but-set-variable # (enabled by default)
++-Wunused-but-set-parameter # Enabled by default.
++-Wunused-but-set-variable # Enabled by default.

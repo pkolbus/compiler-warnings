@@ -1,7 +1,7 @@
-+-Wconditionally-supported
++-Wconditionally-supported # Applies to C++,ObjC++
 +-Wdate-time
-+-Wdelete-incomplete # (enabled by default)
++-Wdelete-incomplete # Enabled by default. Applies to C++,ObjC++
 +-Wfloat-conversion
---Wmudflap # (enabled by default)
+--Wmudflap # Enabled by default.
 +-Wmudflap # DUMMY switch
-+-Wopenmp-simd
++-Wopenmp-simd # Applies to C,C++

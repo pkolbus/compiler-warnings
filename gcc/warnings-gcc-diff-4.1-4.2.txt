@@ -1,6 +1,10 @@
 +-Waddress
-+-Woverflow # (enabled by default)
-+-Woverlength-strings # (enabled by default)
-+-Woverride-init # (enabled by default)
+--Wc++-compat # Applies to C
++-Wc++-compat # Applies to C,ObjC
+--Wdiv-by-zero # Enabled by default. Applies to C,ObjC
++-Wdiv-by-zero # Enabled by default.
++-Woverflow # Enabled by default.
++-Woverlength-strings # Enabled by default.
++-Woverride-init # Enabled by default. Applies to C,ObjC
 +-Wstrict-overflow
 +-Wstrict-overflow=
