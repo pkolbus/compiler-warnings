@@ -9,6 +9,7 @@
 +-Wc++98-c++11-compat-binary-literal
 +-Wenum-compare
 +-Wenum-compare-switch
++-Wexperimental-isel
 +-Wmicrosoft-inaccessible-base
 +-Wmissing-noescape
 +-Wnsconsumed-mismatch

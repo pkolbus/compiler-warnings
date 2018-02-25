@@ -288,6 +288,7 @@
 -Wexceptions
 -Wexit-time-destructors
 -Wexpansion-to-defined
+-Wexperimental-isel
 -Wexplicit-initialize-call
 -Wextra-semi
 #   -Wc++11-extra-semi
