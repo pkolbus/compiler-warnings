@@ -6,6 +6,7 @@
 +-Wclass-memaccess # Applies to C++,ObjC++
 +-Wextra-semi # Applies to C++,ObjC++
 +-Wif-not-aligned # Enabled by default.
++-Wmissing-attributes
 +-Wmultistatement-macros
 +-Wpacked-not-aligned
 --Wreturn-type

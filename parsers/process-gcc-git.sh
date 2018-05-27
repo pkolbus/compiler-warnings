@@ -66,8 +66,7 @@ parse_gcc_info 6 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 git -C "$GIT_DIR" checkout gcc-7_2_0-release
 parse_gcc_info 7 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 
-# stage4 as of 2018-01-20
-git -C "$GIT_DIR" checkout 2c76ed0d0fea
+git -C "$GIT_DIR" checkout gcc-8_1_0-release
 parse_gcc_info 8 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 
 git -C "$GIT_DIR" checkout origin/master

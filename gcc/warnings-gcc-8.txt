@@ -53,6 +53,7 @@
 #    -Wmemset-elt-size
 #    -Wmemset-transposed-args
 #    -Wmisleading-indentation
+#    -Wmissing-attributes
 #    -Wmissing-braces
 #    -Wmultistatement-macros
 #    -Wnarrowing
@@ -241,6 +242,7 @@
 -Wmemset-elt-size
 -Wmemset-transposed-args
 -Wmisleading-indentation
+-Wmissing-attributes
 -Wmissing-braces
 -Wmissing-declarations
 -Wmissing-field-initializers

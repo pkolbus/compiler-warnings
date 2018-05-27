@@ -129,6 +129,7 @@
 -Wmemset-elt-size
 -Wmemset-transposed-args
 -Wmisleading-indentation # Applies to C,C++
+-Wmissing-attributes
 -Wmissing-braces
 -Wmissing-declarations
 -Wmissing-field-initializers
