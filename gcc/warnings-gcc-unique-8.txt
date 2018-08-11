@@ -252,7 +252,7 @@
 -Wuninitialized
 -Wunknown-pragmas
 -Wunreachable-code # DUMMY switch
--Wunsafe-loop-optimizations
+-Wunsafe-loop-optimizations # DUMMY switch
 -Wunsuffixed-float-constants # Applies to C,ObjC
 -Wunused
 -Wunused-but-set-parameter

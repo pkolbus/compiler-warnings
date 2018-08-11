@@ -15,3 +15,5 @@
 +-Wstringop-truncation # Enabled by default.
 +-Wsuggest-attribute=cold
 +-Wsuggest-attribute=malloc
+--Wunsafe-loop-optimizations
++-Wunsafe-loop-optimizations # DUMMY switch
