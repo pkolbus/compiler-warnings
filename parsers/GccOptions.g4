@@ -47,7 +47,9 @@ atom
 
 WARNING_TEXT_LITERAL : '{' ('a'..'z' | 'A'..'Z' | '-' | '(' | ')' | '%' | ' ')+ '}' ;
 
-INTEGER_LITERAL : '-'? INTEGERCHAR+ ;
+INTEGER_LITERAL : '-'? INTEGERCHAR+ INTEGER_SUFFIX?;
+
+INTEGER_SUFFIX : 'kB' | ( 'K' | 'M' | 'G' | 'T' | 'P' | 'E' ) 'i'? 'B' ;
 
 NAME_LITERAL : ('a'..'z' | 'A'..'Z' | '-') ( 'a'..'z' | 'A'..'Z' | '0'..'9' | '=' | '-' | '+' | '_' | '.')* ;
 
