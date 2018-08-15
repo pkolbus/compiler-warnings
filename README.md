@@ -146,6 +146,8 @@ need to use some (visual) diff program, as shown below:
 
 # Development
 
+## Overview
+
 This uses [ANTLR](http://www.antlr.org/) as a parser generator with
 some supporting Python code to parse warning flags from actual
 compiler option data files. Other requirements are following (plus
@@ -156,7 +158,16 @@ their dependencies):
 * [Python 2.7](https://www.python.org/)
 * [antlr4-python2-runtime](https://pypi.python.org/pypi/antlr4-python2-runtime/)
 
-## Building
+## Building (the easy way)
+
+A top-level script, `make.sh`, is provided. The `make.sh` script takes
+care of setting up a Docker image with all of the above dependencies,
+creates/updates local clones of the gcc and clang source repositories,
+builds the parsers, and generates the lists.
+
+The only prerequisite for `make.sh` is a recent version of [Docker](https://www.docker.com).
+
+## Building (by hand)
 
 After you have installed all the requirements and are able to run
 ANTLR with `antlr4` command, just use following commands in `parsers/`

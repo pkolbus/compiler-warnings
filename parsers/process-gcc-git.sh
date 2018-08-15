@@ -22,8 +22,6 @@ GIT_DIR=$1
 
 target_dir=$DIR/../gcc
 
-git -C "$GIT_DIR" remote update
-
 git -C "$GIT_DIR" checkout gcc-3_4_6-release
 parse_gcc_info 3.4 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c.opt}
 

@@ -22,8 +22,6 @@ GIT_DIR=$1
 
 target_dir=$DIR/../clang
 
-git -C "$GIT_DIR" remote update origin
-
 git -C "$GIT_DIR" checkout origin/release_32
 parse_clang_info 3.2 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
 
