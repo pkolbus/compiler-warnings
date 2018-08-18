@@ -12,6 +12,7 @@
 -Wabi # DUMMY switch
 -Wabstract-final-class
 -Waddress # DUMMY switch
+-Waddress-of-array-temporary
 -Waddress-of-temporary
 -Waggregate-return # DUMMY switch
 -Wall
@@ -24,7 +25,7 @@
 #       -Wformat-extra-args
 #       -Wformat-invalid-specifier
 #       -Wformat-security
-#       -Wformat-y2k
+#       -Wformat-y2k # DUMMY switch
 #       -Wformat-zero-length
 #       -Wnonnull
 #     -Wimplicit
@@ -49,7 +50,7 @@
 #       -Wsometimes-uninitialized
 #     -Wunknown-pragmas
 #     -Wunused
-#       -Wunused-argument
+#       -Wunused-argument # DUMMY switch
 #       -Wunused-function
 #         -Wunneeded-internal-declaration
 #       -Wunused-label
@@ -58,7 +59,7 @@
 #         -Wunused-comparison
 #         -Wunused-result
 #       -Wunused-variable
-#     -Wvolatile-register-var
+#     -Wvolatile-register-var # DUMMY switch
 #   -Wparentheses
 #     -Wbitwise-op-parentheses
 #     -Wdangling-else
@@ -68,26 +69,37 @@
 #   -Wswitch
 -Wambiguous-macro
 -Wambiguous-member-template
+-Wanalyzer-incompatible-plugin
 -Warc
 #   -Warc-non-pod-memaccess
 #   -Warc-retain-cycles
 #   -Warc-unsafe-retained-assign
 -Warc-abi # DUMMY switch
+-Warc-bridge-casts-disallowed-in-nonarc
 -Warc-maybe-repeated-use-of-weak
 -Warc-non-pod-memaccess
+-Warc-performSelector-leaks
 -Warc-repeated-use-of-weak
 #   -Warc-maybe-repeated-use-of-weak
 -Warc-retain-cycles
 -Warc-unsafe-retained-assign
+-Warray-bounds
+-Warray-bounds-pointer-arithmetic
 -Wasm
 #   -Wasm-operand-widths
 -Wasm-operand-widths
+-Wassign-enum
 -Watomic-properties
 #   -Wcustom-atomic-properties
 #   -Wimplicit-atomic-properties
+-Watomic-property-with-user-defined-accessor
 -Wattributes
 -Wauto-import
+-Wauto-storage-class
+-Wauto-var-id
 -Wavailability
+-Wbackslash-newline-escape
+-Wbad-array-new-length
 -Wbad-function-cast
 -Wbind-to-temporary-copy
 #   -Wc++98-compat-bind-to-temporary-copy
@@ -95,6 +107,7 @@
 -Wbool-conversion
 -Wbool-conversions
 #   -Wbool-conversion
+-Wbuiltin-macro-redefined
 -Wbuiltin-requires-header
 -Wc++-compat
 -Wc++0x-compat
@@ -134,14 +147,18 @@
 -Wcast-align
 -Wcast-of-sel-type
 -Wcast-qual # DUMMY switch
+-WCFString-literal
 -Wchar-align # DUMMY switch
 -Wchar-subscripts
 -Wcomment
 -Wcomments
 #   -Wcomment
 -Wcompare-distinct-pointer-types
+-Wcomplex-component-init
+-Wconditional-type-mismatch
 -Wconditional-uninitialized
 -Wconstant-conversion
+-Wconstant-logical-operand
 -Wconversion
 #   -Wbool-conversion
 #   -Wconstant-conversion
@@ -159,16 +176,24 @@
 -Wctor-dtor-privacy # DUMMY switch
 -Wcustom-atomic-properties
 -Wdangling-else
+-Wdangling-field
+-Wdangling-initializer-list
+-Wdeclaration-after-statement
 -Wdefault-arg-special-member
 -Wdelegating-ctor-cycles
+-Wdelete-incomplete
 -Wdelete-non-virtual-dtor
 -Wdeprecated
 #   -Wdeprecated-declarations
 -Wdeprecated-declarations
 -Wdeprecated-implementations
+-Wdeprecated-objc-isa-usage
 -Wdeprecated-writable-strings
+-Wdirect-ivar-access
+-Wdisabled-macro-expansion
 -Wdisabled-optimization # DUMMY switch
 -Wdiscard-qual # DUMMY switch
+-Wdistributed-object-modifiers
 -Wdiv-by-zero # DUMMY switch
 -Wdivision-by-zero
 -Wdocumentation
@@ -177,15 +202,23 @@
 -Wdocumentation-deprecated-sync
 -Wdocumentation-html
 -Wdocumentation-pedantic
+-Wdollar-in-identifier-extension
 -Wduplicate-decl-specifier
 -Wduplicate-method-arg
 -Wduplicate-method-match
+-Wdynamic-class-memaccess
 -Weffc++ # DUMMY switch
+-Wembedded-directive
 -Wempty-body
+-Wempty-translation-unit
 -Wendif-labels
 #   -Wextra-tokens
+-Wenum-compare
 -Wenum-conversion
 -Wexit-time-destructors
+-Wexplicit-ownership-type
+-Wextended-offsetof
+-Wextern-initializer
 -Wextra
 #   -Wignored-qualifiers
 #   -Winitializer-overrides
@@ -198,11 +231,12 @@
 #   -Wc++11-extra-semi
 -Wextra-tokens
 -Wflexible-array-extensions
+-Wfloat-equal
 -Wformat
 #   -Wformat-extra-args
 #   -Wformat-invalid-specifier
 #   -Wformat-security
-#   -Wformat-y2k
+#   -Wformat-y2k # DUMMY switch
 #   -Wformat-zero-length
 #   -Wnonnull
 -Wformat-extra-args
@@ -211,13 +245,13 @@
 -Wformat-nonliteral
 #   -Wformat-security
 -Wformat-security
--Wformat-y2k
+-Wformat-y2k # DUMMY switch
 -Wformat-zero-length
 -Wformat=2
 #   -Wformat-nonliteral
 #     -Wformat-security
 #   -Wformat-security
-#   -Wformat-y2k
+#   -Wformat-y2k # DUMMY switch
 -Wfour-char-constants
 -Wgcc-compat
 -Wglobal-constructors
@@ -225,8 +259,10 @@
 #   -Wgnu-designator
 #   -Wvla
 #   -Wzero-length-array
+-Wgnu-array-member-paren-init
 -Wgnu-designator
 -Wheader-hygiene
+-Widiomatic-parentheses
 -Wignored-attributes
 -Wignored-qualifiers
 -Wimplicit
@@ -234,13 +270,17 @@
 #   -Wimplicit-int
 -Wimplicit-atomic-properties
 -Wimplicit-conversion-floating-point-to-bool
+-Wimplicit-exception-spec-mismatch
 -Wimplicit-fallthrough
 #   -Wimplicit-fallthrough-per-function
 -Wimplicit-fallthrough-per-function
 -Wimplicit-function-declaration
 -Wimplicit-int
+-Wimplicit-retain-self
 -Wimport # DUMMY switch
+-Wimport-preprocessor-directive-pedantic
 -Wincompatible-pointer-types
+-Wincomplete-implementation
 -Wincomplete-umbrella
 -Winit-self # DUMMY switch
 -Winitializer-overrides
@@ -249,11 +289,17 @@
 -Wint-conversions
 #   -Wint-conversion
 -Wint-to-pointer-cast
+-Winvalid-constexpr
+-Winvalid-iboutlet
+-Winvalid-noreturn
 -Winvalid-offsetof
 -Winvalid-pch # DUMMY switch
 -Winvalid-pp-token
+-Winvalid-source-encoding
+-Winvalid-token-paste
 -Wknr-promoted-parameter
 -Wlambda-extensions
+-Wlanguage-extension-token
 -Wlarge-by-value-copy
 -Wliteral-conversion
 -Wliteral-range
@@ -262,10 +308,14 @@
 -Wlogical-op-parentheses
 -Wlong-long
 #   -Wc++11-long-long
+-Wloop-analysis
 -Wmain
 -Wmain-return-type
 -Wmalformed-warning-check
+-Wmethod-signatures
 -Wmicrosoft
+-Wmicrosoft-exists
+-Wmismatched-method-attributes
 -Wmismatched-parameter-types
 -Wmismatched-return-types
 -Wmismatched-tags
@@ -275,6 +325,10 @@
 -Wmissing-format-attribute # DUMMY switch
 -Wmissing-include-dirs # DUMMY switch
 -Wmissing-method-return-type
+-Wmissing-noreturn
+-Wmissing-prototypes
+-Wmissing-selector-name
+-Wmissing-variable-declarations
 -Wmodule-build
 -Wmost
 #   -Wcast-of-sel-type
@@ -285,7 +339,7 @@
 #     -Wformat-extra-args
 #     -Wformat-invalid-specifier
 #     -Wformat-security
-#     -Wformat-y2k
+#     -Wformat-y2k # DUMMY switch
 #     -Wformat-zero-length
 #     -Wnonnull
 #   -Wimplicit
@@ -310,7 +364,7 @@
 #     -Wsometimes-uninitialized
 #   -Wunknown-pragmas
 #   -Wunused
-#     -Wunused-argument
+#     -Wunused-argument # DUMMY switch
 #     -Wunused-function
 #       -Wunneeded-internal-declaration
 #     -Wunused-label
@@ -319,11 +373,12 @@
 #       -Wunused-comparison
 #       -Wunused-result
 #     -Wunused-variable
-#   -Wvolatile-register-var
+#   -Wvolatile-register-var # DUMMY switch
 -Wmultichar
 -Wnarrowing
 #   -Wc++11-narrowing
 -Wnested-externs # DUMMY switch
+-Wnewline-eof
 -Wnon-gcc
 #   -Wconversion
 #     -Wbool-conversion
@@ -339,25 +394,33 @@
 #   -Wliteral-range
 #   -Wsign-compare
 -Wnon-literal-null-conversion
+-Wnon-pod-varargs
 -Wnon-virtual-dtor
 -Wnonnull
 -Wnonportable-cfstrings # DUMMY switch
 -WNSObject-attribute
+-Wnull-arithmetic
 -Wnull-character
 -Wnull-conversion
 -Wnull-dereference
+-Wobjc-autosynthesis-property-ivar-name-match
 -Wobjc-cocoa-api
 #   -Wobjc-redundant-api-use
 #     -Wobjc-redundant-literal-use
+-Wobjc-forward-class-redefinition
+-Wobjc-interface-ivars
 -Wobjc-literal-compare
 #   -Wobjc-string-compare
 -Wobjc-method-access
+-Wobjc-missing-property-synthesis
 -Wobjc-missing-super-calls
 -Wobjc-noncopy-retain-block-property
 -Wobjc-nonunified-exceptions
 -Wobjc-property-implementation
+-Wobjc-property-matches-cocoa-ownership-rule
 -Wobjc-property-no-attribute
 -Wobjc-protocol-method-implementation
+-Wobjc-protocol-property-synthesis
 -Wobjc-readonly-with-setter-property
 -Wobjc-redundant-api-use
 #   -Wobjc-redundant-literal-use
@@ -381,18 +444,25 @@
 #   -Wparentheses-equality
 #   -Wshift-op-parentheses
 -Wparentheses-equality
--Wpedantic
+-Wpedantic # DUMMY switch
 -Wpointer-arith
+-Wpointer-sign
 -Wpointer-to-int-cast # DUMMY switch
+-Wpointer-type-mismatch
+-Wpredefined-identifier-outside-function
 -Wprivate-extern
 -Wprotocol
+-Wreadonly-iboutlet-property
 -Wreadonly-setter-attrs
 -Wreceiver-expr
 -Wreceiver-forward-class
+-Wreceiver-is-weak
 -Wredundant-decls # DUMMY switch
 -Wreorder
+-Wrequires-super-attribute
 -Wreserved-user-defined-literal
 #   -Wc++11-compat-reserved-user-defined-literal
+-Wreturn-stack-address
 -Wreturn-type
 #   -Wreturn-type-c-linkage
 -Wreturn-type-c-linkage
@@ -404,15 +474,23 @@
 -Wsemicolon-before-method-body
 -Wsentinel
 -Wsequence-point # DUMMY switch
+-Wserialized-diagnostics
 -Wshadow
+-Wshadow-ivar
+-Wshift-count-negative
+-Wshift-count-overflow
 -Wshift-op-parentheses
+-Wshift-overflow
+-Wshift-sign-overflow
 -Wshorten-64-to-32
 -Wsign-compare
 -Wsign-conversion
 -Wsign-promo # DUMMY switch
 -Wsizeof-array-argument
+-Wsizeof-pointer-memaccess
 -Wsometimes-uninitialized
 -Wstack-protector # DUMMY switch
+-Wstatic-in-inline
 -Wstrict-aliasing # DUMMY switch
 -Wstrict-aliasing=0 # DUMMY switch
 -Wstrict-aliasing=1 # DUMMY switch
@@ -426,8 +504,10 @@
 -Wstrict-overflow=5 # DUMMY switch
 -Wstrict-prototypes # DUMMY switch
 -Wstrict-selector-match
+-Wstring-compare
 -Wstring-conversion
 -Wstring-plus-int
+-Wstrlcpy-strlcat-size
 -Wstrncat-size
 -Wsuper-class-method-mismatch
 -Wswitch
@@ -437,6 +517,7 @@
 -Wtautological-compare
 #   -Wtautological-constant-out-of-range-compare
 -Wtautological-constant-out-of-range-compare
+-Wtentative-definition-incomplete-type
 -Wthread-safety
 #   -Wthread-safety-analysis
 #   -Wthread-safety-attributes
@@ -447,17 +528,25 @@
 -Wtrigraphs
 -Wtype-limits # DUMMY switch
 -Wtype-safety
+-Wtypedef-redefinition
+-Wtypename-missing
 -Wundeclared-selector
+-Wundef
+-Wundefined-internal # DUMMY switch
+-Wundefined-reinterpret-cast
 -Wunicode
 -Wuninitialized
 #   -Wsometimes-uninitialized
 -Wunknown-pragmas
+-Wunknown-warning-option
 -Wunnamed-type-template-args
 #   -Wc++98-compat-unnamed-type-template-args
 -Wunneeded-internal-declaration
 -Wunneeded-member-function
+-Wunreachable-code
+-Wunsupported-visibility
 -Wunused
-#   -Wunused-argument
+#   -Wunused-argument # DUMMY switch
 #   -Wunused-function
 #     -Wunneeded-internal-declaration
 #   -Wunused-label
@@ -466,12 +555,14 @@
 #     -Wunused-comparison
 #     -Wunused-result
 #   -Wunused-variable
--Wunused-argument
+-Wunused-argument # DUMMY switch
+-Wunused-command-line-argument
 -Wunused-comparison
 -Wunused-exception-parameter
 -Wunused-function
 #   -Wunneeded-internal-declaration
 -Wunused-label
+-Wunused-macros
 -Wunused-member-function
 #   -Wunneeded-member-function
 -Wunused-parameter
@@ -481,6 +572,7 @@
 #   -Wunused-comparison
 #   -Wunused-result
 -Wunused-variable
+-Wunused-volatile-lvalue
 -Wused-but-marked-unused
 -Wuser-defined-literals
 -Wvariadic-macros
@@ -490,7 +582,9 @@
 -Wvexing-parse
 -Wvisibility
 -Wvla
--Wvolatile-register-var
+-Wvolatile-register-var # DUMMY switch
+-Wweak-template-vtables
+-Wweak-vtables
 -Wwrite-strings
 #   -Wdeprecated-writable-strings
 -Wzero-length-array

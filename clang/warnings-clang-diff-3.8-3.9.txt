@@ -1,9 +1,17 @@
++-Wcast-calling-convention
 +-Wclang-cl-pch
++-Wcomma
 +-Wexpansion-to-defined
 +-Wfloat-overflow-conversion
 +-Wfloat-zero-conversion
-+-Winconsistent-dllimport
++-Wincompatible-sysroot
+--Winherited-variadic-ctor
+--Wliblto
++-Wliblto # DUMMY switch
++-Wnonportable-include-path
++-Wnonportable-system-include-path
 +-Wopenmp-target
++-Wpedantic-core-features
 --Wreceiver-is-weak # DUMMY switch
 +-Wshadow-all
 +-Wshadow-field-in-constructor

@@ -4,15 +4,20 @@
 -Wabi # DUMMY switch
 -Wabstract-final-class
 -Waddress # DUMMY switch
+-Waddress-of-array-temporary
 -Waddress-of-temporary
 -Waggregate-return # DUMMY switch
 -Wall
 -Wambiguous-macro
 -Wambiguous-member-template
+-Wanalyzer-incompatible-plugin
+-Wanonymous-pack-parens
 -Warc
 -Warc-abi # DUMMY switch
+-Warc-bridge-casts-disallowed-in-nonarc
 -Warc-maybe-repeated-use-of-weak
 -Warc-non-pod-memaccess
+-Warc-performSelector-leaks
 -Warc-repeated-use-of-weak
 -Warc-retain-cycles
 -Warc-unsafe-retained-assign
@@ -20,10 +25,15 @@
 -Warray-bounds-pointer-arithmetic
 -Wasm
 -Wasm-operand-widths
+-Wassign-enum
 -Watomic-properties
+-Watomic-property-with-user-defined-accessor
 -Wattributes
 -Wauto-import
+-Wauto-storage-class
+-Wauto-var-id
 -Wavailability
+-Wbackslash-newline-escape
 -Wbad-array-new-length
 -Wbad-function-cast
 -Wbind-to-temporary-copy
@@ -56,14 +66,19 @@
 -Wcast-align
 -Wcast-of-sel-type
 -Wcast-qual # DUMMY switch
+-WCFString-literal
 -Wchar-align # DUMMY switch
 -Wchar-subscripts
 -Wcomment
 -Wcomments
 -Wcompare-distinct-pointer-types
+-Wcomplex-component-init
+-Wconditional-type-mismatch
 -Wconditional-uninitialized
 -Wconfig-macros
 -Wconstant-conversion
+-Wconstant-logical-operand
+-Wconstexpr-not-const
 -Wconversion
 -Wconversion-null
 -Wcovered-switch-default
@@ -73,13 +88,19 @@
 -Wcxx98-cxx11-compat-pedantic
 -Wdangling-else
 -Wdangling-field
+-Wdangling-initializer-list
+-Wdeclaration-after-statement
 -Wdelegating-ctor-cycles
+-Wdelete-incomplete
 -Wdelete-non-virtual-dtor
 -Wdeprecated
 -Wdeprecated-declarations
 -Wdeprecated-implementations
 -Wdeprecated-objc-isa-usage
+-Wdeprecated-objc-pointer-introspection
 -Wdeprecated-writable-strings
+-Wdirect-ivar-access
+-Wdisabled-macro-expansion
 -Wdisabled-optimization # DUMMY switch
 -Wdiscard-qual # DUMMY switch
 -Wdistributed-object-modifiers
@@ -90,70 +111,96 @@
 -Wdocumentation-html
 -Wdocumentation-pedantic
 -Wdocumentation-unknown-command
+-Wdollar-in-identifier-extension
 -Wduplicate-decl-specifier
+-Wduplicate-enum
 -Wduplicate-method-arg
 -Wduplicate-method-match
+-Wdynamic-class-memaccess
 -Weffc++ # DUMMY switch
+-Wembedded-directive
 -Wempty-body
+-Wempty-translation-unit
 -Wendif-labels
+-Wenum-compare
 -Wenum-conversion
 -Wexit-time-destructors
+-Wexplicit-ownership-type
+-Wextended-offsetof
+-Wextern-initializer
 -Wextra
 -Wextra-semi
 -Wextra-tokens
 -Wflexible-array-extensions
+-Wfloat-equal
 -Wformat
 -Wformat-extra-args
 -Wformat-invalid-specifier
 -Wformat-non-iso
 -Wformat-nonliteral
 -Wformat-security
--Wformat-y2k
+-Wformat-y2k # DUMMY switch
 -Wformat-zero-length
 -Wformat=2
 -Wfour-char-constants
 -Wgcc-compat
 -Wglobal-constructors
 -Wgnu
+-Wgnu-array-member-paren-init
 -Wgnu-designator
 -Wgnu-static-float-init
 -Wheader-hygiene
+-Widiomatic-parentheses
 -Wignored-attributes
 -Wignored-qualifiers
 -Wimplicit
 -Wimplicit-atomic-properties
 -Wimplicit-conversion-floating-point-to-bool
+-Wimplicit-exception-spec-mismatch
 -Wimplicit-fallthrough
 -Wimplicit-fallthrough-per-function
 -Wimplicit-function-declaration
 -Wimplicit-int
+-Wimplicit-retain-self
 -Wimport # DUMMY switch
+-Wimport-preprocessor-directive-pedantic
+-Wincompatible-library-redeclaration
 -Wincompatible-pointer-types
 -Wincompatible-pointer-types-discards-qualifiers
+-Wincomplete-implementation
 -Wincomplete-umbrella
+-Winherited-variadic-ctor
 -Winit-self # DUMMY switch
 -Winitializer-overrides
 -Winline # DUMMY switch
 -Wint-conversion
 -Wint-conversions
 -Wint-to-pointer-cast
+-Winteger-overflow
+-Winvalid-constexpr
+-Winvalid-iboutlet
 -Winvalid-noreturn
 -Winvalid-offsetof
 -Winvalid-pch # DUMMY switch
 -Winvalid-pp-token
 -Winvalid-source-encoding
+-Winvalid-token-paste
 -Wknr-promoted-parameter
+-Wlanguage-extension-token
 -Wlarge-by-value-copy
 -Wliteral-conversion
 -Wliteral-range
 -Wlocal-type-template-args
 -Wlogical-op-parentheses
 -Wlong-long
+-Wloop-analysis
 -Wmain
 -Wmain-return-type
 -Wmalformed-warning-check
 -Wmethod-signatures
 -Wmicrosoft
+-Wmicrosoft-exists
+-Wmismatched-method-attributes
 -Wmismatched-parameter-types
 -Wmismatched-return-types
 -Wmismatched-tags
@@ -164,11 +211,17 @@
 -Wmissing-include-dirs # DUMMY switch
 -Wmissing-method-return-type
 -Wmissing-noreturn
+-Wmissing-prototypes
+-Wmissing-selector-name
+-Wmissing-sysroot
+-Wmissing-variable-declarations
 -Wmodule-conflict
 -Wmost
 -Wmultichar
 -Wnarrowing
+-Wnested-anon-types
 -Wnested-externs # DUMMY switch
+-Wnewline-eof
 -Wnon-gcc
 -Wnon-literal-null-conversion
 -Wnon-pod-varargs
@@ -180,21 +233,28 @@
 -Wnull-character
 -Wnull-conversion
 -Wnull-dereference
+-Wobjc-autosynthesis-property-ivar-name-match
 -Wobjc-cocoa-api
+-Wobjc-forward-class-redefinition
+-Wobjc-interface-ivars
 -Wobjc-literal-compare
 -Wobjc-method-access
+-Wobjc-missing-property-synthesis
 -Wobjc-missing-super-calls
 -Wobjc-noncopy-retain-block-property
 -Wobjc-nonunified-exceptions
 -Wobjc-property-implementation
+-Wobjc-property-matches-cocoa-ownership-rule
 -Wobjc-property-no-attribute
 -Wobjc-property-synthesis
 -Wobjc-protocol-method-implementation
+-Wobjc-protocol-property-synthesis
 -Wobjc-readonly-with-setter-property
 -Wobjc-redundant-api-use
 -Wobjc-redundant-literal-use
 -Wobjc-root-class
 -Wobjc-string-compare
+-Wodr
 -Wold-style-cast # DUMMY switch
 -Wold-style-definition # DUMMY switch
 -Wout-of-line-declaration
@@ -208,17 +268,23 @@
 -Wpadded
 -Wparentheses
 -Wparentheses-equality
--Wpedantic
+-Wpedantic # DUMMY switch
 -Wpointer-arith
+-Wpointer-sign
 -Wpointer-to-int-cast # DUMMY switch
+-Wpointer-type-mismatch
+-Wpredefined-identifier-outside-function
 -Wprivate-extern
 -Wprotocol
+-Wreadonly-iboutlet-property
 -Wreadonly-setter-attrs
 -Wreceiver-expr
 -Wreceiver-forward-class
+-Wreceiver-is-weak
 -Wredundant-decls # DUMMY switch
 -Wreinterpret-base-class
 -Wreorder
+-Wrequires-super-attribute
 -Wreserved-user-defined-literal
 -Wreturn-stack-address
 -Wreturn-type
@@ -230,8 +296,14 @@
 -Wsemicolon-before-method-body
 -Wsentinel
 -Wsequence-point
+-Wserialized-diagnostics
 -Wshadow
+-Wshadow-ivar
+-Wshift-count-negative
+-Wshift-count-overflow
 -Wshift-op-parentheses
+-Wshift-overflow
+-Wshift-sign-overflow
 -Wshorten-64-to-32
 -Wsign-compare
 -Wsign-conversion
@@ -259,8 +331,10 @@
 -Wstrict-overflow=5 # DUMMY switch
 -Wstrict-prototypes # DUMMY switch
 -Wstrict-selector-match
+-Wstring-compare
 -Wstring-conversion
 -Wstring-plus-int
+-Wstrlcpy-strlcat-size
 -Wstrncat-size
 -Wsuper-class-method-mismatch
 -Wswitch
@@ -269,6 +343,7 @@
 -Wsynth # DUMMY switch
 -Wtautological-compare
 -Wtautological-constant-out-of-range-compare
+-Wtentative-definition-incomplete-type
 -Wthread-safety
 -Wthread-safety-analysis
 -Wthread-safety-attributes
@@ -277,23 +352,32 @@
 -Wtrigraphs
 -Wtype-limits # DUMMY switch
 -Wtype-safety
+-Wtypedef-redefinition
+-Wtypename-missing
 -Wundeclared-selector
+-Wundef
+-Wundefined-inline
+-Wundefined-internal
 -Wundefined-reinterpret-cast
 -Wunicode
+-Wunicode-whitespace
 -Wuninitialized
 -Wunknown-pragmas
 -Wunknown-warning-option
 -Wunnamed-type-template-args
 -Wunneeded-internal-declaration
 -Wunneeded-member-function
+-Wunreachable-code
 -Wunsequenced
+-Wunsupported-visibility
 -Wunused
--Wunused-argument
+-Wunused-argument # DUMMY switch
 -Wunused-command-line-argument
 -Wunused-comparison
 -Wunused-exception-parameter
 -Wunused-function
 -Wunused-label
+-Wunused-macros
 -Wunused-member-function
 -Wunused-parameter
 -Wunused-private-field
@@ -301,6 +385,7 @@
 -Wunused-sanitize-argument
 -Wunused-value
 -Wunused-variable
+-Wunused-volatile-lvalue
 -Wused-but-marked-unused
 -Wuser-defined-literals
 -Wvariadic-macros
@@ -310,6 +395,8 @@
 -Wvisibility
 -Wvla
 -Wvla-extension
--Wvolatile-register-var
+-Wvolatile-register-var # DUMMY switch
+-Wweak-template-vtables
+-Wweak-vtables
 -Wwrite-strings
 -Wzero-length-array

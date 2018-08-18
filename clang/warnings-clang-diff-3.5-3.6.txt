@@ -1,16 +1,20 @@
++-Wambiguous-ellipsis
 --Warc-abi # DUMMY switch
 +-Wat-protocol
++-Wbuiltin-memcpy-chk-size
 +-Wc++14-extensions
 --Wcast-qual # DUMMY switch
 +-Wcast-qual
 +-Wcstring-format-directive
-+-Wdelete-incomplete
++-Wencode-type
 +-Wexplicit-initialize-call
 +-Wfuture-compat
 +-Wignored-optimization-argument
++-Wincompatible-property-type
++-Winconsistent-dllimport
 +-Winconsistent-missing-override
 +-Wkeyword-macro
-+-Wmodule-build
++-Wmissing-prototype-for-cc
 +-Wobjc-multiple-method-names
 +-Wpotentially-evaluated-expression
 +-Wproperty-access-dot-syntax
@@ -18,7 +22,7 @@
 +-Wreserved-id-macro
 +-Wsanitize-address
 +-Wself-move
-+-Wserialized-diagnostics
++-Wsync-fetch-and-nand-semantics-changed
 +-Wthread-safety-negative
 +-Wthread-safety-reference
 +-Wthread-safety-verbose

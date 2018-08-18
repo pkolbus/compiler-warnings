@@ -11,9 +11,7 @@ build antlr.jar: get-antlr
 
 build GccOptionsLexer.py GccOptionsLexer.tokens GccOptionsListener.py GccOptionsParser.py GccOptions.tokens: antlr GccOptions.g4 | antlr.jar
 
-build TableGenLexer.py TableGenLexer.tokens TableGenListener.py TableGenParser.py TableGen.tokens: antlr TableGen.g4 | antlr.jar
-
-build all: phony GccOptionsLexer.py GccOptionsLexer.tokens GccOptionsListener.py GccOptionsParser.py GccOptions.tokens TableGenLexer.py TableGenLexer.tokens TableGenListener.py TableGenParser.py TableGen.tokens
+build all: phony GccOptionsLexer.py GccOptionsLexer.tokens GccOptionsListener.py GccOptionsParser.py GccOptions.tokens
 
 build test-gcc: doctest parse-gcc-warning-options.py | all
 

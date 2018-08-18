@@ -1,12 +1,18 @@
++-Wattribute-packed-for-bitfield
 +-Wbitfield-width
 +-Wc++11-inline-namespace
 +-Wc++14-binary-literal
 +-Wc++1z-compat
 +-WCL4
++-Wcoreturn-without-coawait
 +-Wdeprecated-attributes
 +-Wdouble-promotion
+--Wfuture-compat
++-Wfuture-compat # DUMMY switch
 +-Wgnu-auto-type
 +-Wgnu-include-next
++-Winclude-next-absolute-path
++-Winclude-next-outside-header
 +-Wincrement-bool
 +-Winvalid-or-nonexistent-directory
 +-Wliblto
@@ -36,7 +42,15 @@
 +-Wmicrosoft-unqualified-friend
 +-Wmicrosoft-using-decl
 +-Wmicrosoft-void-pseudo-dtor
++-Wmissing-exception-spec
++-Wmodule-file-config-mismatch
 +-Wmodule-file-extension
-+-Wmsvc-include
++-Wmodule-import-in-extern-c
++-Wmodules-ambiguous-internal-linkage
++-Wmodules-import-nested-redundant
++-Wobjc-macro-redefinition
 +-Woption-ignored
++-Wpch-date-time
++-Wpragma-once-outside-header
++-Wpragma-system-header-outside-header
 +-Wregister

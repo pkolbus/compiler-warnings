@@ -12,15 +12,17 @@ function parse_clang_info()
 
     local input_files="${input_dir}/DiagnosticGroups.td"
 
+    local json_file="$target_dir"/warnings-clang-"$version".json
+
     llvm-tblgen -dump-json -I "${input_dir}" \
           "${input_dir}/Diagnostic.td" \
           | python3 -mjson.tool \
-          > "$target_dir"/warnings-clang-"$version".json
-    "$DIR"/parse-clang-diagnostic-groups.py "${input_files}" \
+          > "${json_file}"
+    "$DIR"/parse-clang-diagnostic-groups.py "${json_file}" \
           > "$target_dir"/warnings-clang-"$version".txt
-    "$DIR"/parse-clang-diagnostic-groups.py --unique "${input_files}" \
+    "$DIR"/parse-clang-diagnostic-groups.py --unique "${json_file}" \
           > "$target_dir"/warnings-clang-unique-"$version".txt
-    "$DIR"/parse-clang-diagnostic-groups.py --top-level "${input_files}" \
+    "$DIR"/parse-clang-diagnostic-groups.py --top-level "${json_file}" \
           > "$target_dir"/warnings-clang-top-level-"$version".txt
 }
 

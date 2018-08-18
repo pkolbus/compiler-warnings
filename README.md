@@ -168,15 +168,24 @@ builds the parsers, and generates the lists.
 
 The only prerequisite for `make.sh` is a recent version of [Docker](https://www.docker.com).
 
-## Building (by hand)
+## Building gcc warning lists (by hand)
 
 After you have installed all the requirements and are able to run
 ANTLR with `antlr4` command, just use following commands in `parsers/`
-directory to generate these lists yourself:
+directory to generate the gcc lists yourself:
 
     ninja
-    ./parse-clang-diagnostic-groups.py <path-to-clang-source>/include/clang/Basic/DiagnosticGroups.td
     ./parse-gcc-warning-options.py <path-to-gcc-source>/gcc/{common.opt,c-family/c.opt}
+
+## Building clang warning lists (by hand)
+
+After you have installed all the requirements and are able to run
+`llvm-tblgen`, just use following commands in `parsers/` directory to
+generate the clang lists yourself:
+
+    llvm-tblgen -dump-json -I<path-to-clang-source>/include/clang/Basic \
+      include/clang/Basic/Diagnostic.td > ../clang/warnings-clang-$VERSION.json
+    ./parse-clang-diagnostic-groups.py ../clang/warnings-clang-$VERSION.json
 
 And you'll get the list of all individual warning flags and their
 dependencies that are in the requested compiler version.

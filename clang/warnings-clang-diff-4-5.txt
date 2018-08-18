@@ -8,11 +8,17 @@
 +-Wcoroutine-missing-unhandled-exception
 +-Wcpp
 +-Winconsistent-missing-destructor-override
++-Winjected-class-name
 +-Winvalid-ios-deployment-target
++-Wmsvc-not-found
 +-Wnoexcept-type
++-Wobjc-unsafe-perform-selector
 +-Wpragma-clang-attribute
 +-Wprofile-instr-missing
 +-Wshadow-field
++-Wslash-u-filename
 +-Wunguarded-availability-new
++-Wunsupported-availability-guard
 +-Wunused-lambda-capture
 +-Wunused-template
++-Wzero-as-null-pointer-constant

@@ -1,22 +1,34 @@
++-Waddress-of-packed-member
++-Walloca-with-align-alignof
++-Wambiguous-delete
 +-Wasm-ignored-qualifier
 --Wbad-array-new-length
 +-Wblock-capture-autoreleasing
+--Wcoreturn-without-coawait
 +-Wdeprecated-dynamic-exception-spec
 --Wdiv-by-zero # DUMMY switch
 +-Wdiv-by-zero
++-Wduplicate-protocol
 --Weffc++ # DUMMY switch
 +-Wdynamic-exception-spec
 +-Weffc++
++-Wempty-decomposition
 +-Wignored-pragma-intrinsic
 +-Wincompatible-exception-spec
 +-Wincompatible-function-pointer-types
++-Winstantiation-after-specialization
++-Winvalid-partial-specialization
 +-Wmax-unsigned-zero
 +-Wnullability-completeness-on-arrays
 +-Wnullability-inferred-on-nested-type
 +-Wopencl-unsupported-rgba
 +-Wprivate-module
-+-Wshadow-ivar
 +-Wshadow-uncaptured-local
 +-Wsigned-enum-bitfield
 +-Wspir-compat
+--Wstrict-prototypes # DUMMY switch
++-Wstrict-prototypes
++-Wunable-to-open-stats-file
++-Wunusable-partial-specialization
 +-Wuser-defined-warnings
++-Wvec-elem-size
