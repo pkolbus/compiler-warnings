@@ -1,3 +1,4 @@
+--Waligned-allocation-unavailable
 +-Watimport-in-framework-header
 +-Wc++98-compat-extra-semi
 +-Wdangling

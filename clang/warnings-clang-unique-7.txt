@@ -7,7 +7,6 @@
 -Waddress
 -Waddress-of-temporary
 -Waggregate-return # DUMMY switch
--Waligned-allocation-unavailable
 -Wall
 -Wambiguous-macro
 -Wambiguous-member-template

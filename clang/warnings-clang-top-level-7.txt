@@ -18,7 +18,6 @@
 #   -Wtautological-pointer-compare
 -Waddress-of-temporary
 -Waggregate-return # DUMMY switch
--Waligned-allocation-unavailable
 -Wambiguous-macro
 -Wambiguous-member-template
 -Warc
