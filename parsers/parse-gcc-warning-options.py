@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 from __future__ import print_function
 
@@ -99,7 +99,7 @@ class VariableAssignmentListener(GccOptionsListener.GccOptionsListener):
     >>> listener = VariableAssignmentListener()
     >>> apply_listener("Var(varname)", listener)
     >>> listener.variable_name
-    u'varname'
+    'varname'
     """
 
     def __init__(self):
@@ -122,11 +122,11 @@ class AliasAssignmentListener(GccOptionsListener.GccOptionsListener):
     >>> listener = AliasAssignmentListener()
     >>> apply_listener("Alias(Wall)", listener)
     >>> listener.alias_name
-    u'Wall'
+    'Wall'
     >>> listener = AliasAssignmentListener()
     >>> apply_listener("Alias(Wformat=,1,0)", listener)
     >>> listener.alias_name
-    u'Wformat=1'
+    'Wformat=1'
     """
 
     def __init__(self):
@@ -165,38 +165,38 @@ class LanguagesEnabledListener(GccOptionsListener.GccOptionsListener):
     >>> listener = LanguagesEnabledListener()
     >>> apply_listener("LangEnabledBy(C C++,Wall,0,1)", listener)
     >>> listener.flags
-    [u'Wall']
+    ['Wall']
 
     >>> listener = LanguagesEnabledListener()
     >>> apply_listener("LangEnabledBy(C C++,Wall99,0,1)", listener)
     >>> listener.flags
-    [u'Wall99']
+    ['Wall99']
 
     >>> listener = LanguagesEnabledListener()
     >>> apply_listener("LangEnabledBy(C C++,Wall || Wc++-compat)", listener)
     >>> listener.flags
-    [u'Wall', u'Wc++-compat']
+    ['Wall', 'Wc++-compat']
 
     >>> listener = LanguagesEnabledListener()
     >>> apply_listener("LangEnabledBy(C C++,Wformat=,v >= 2,0)", listener)
     >>> listener.flags
-    [u'Wformat=2']
+    ['Wformat=2']
     >>> listener.arg
-    u'1'
+    '1'
 
     >>> listener = LanguagesEnabledListener()
     >>> apply_listener("LangEnabledBy(C C++,Wall,1,0)", listener)
     >>> listener.flags
-    [u'Wall']
+    ['Wall']
     >>> listener.arg
-    u'1'
+    '1'
 
     >>> listener = LanguagesEnabledListener()
     >>> apply_listener("LangEnabledBy(C C++,Wall,2,0)", listener)
     >>> listener.flags
-    [u'Wall']
+    ['Wall']
     >>> listener.arg
-    u'2'
+    '2'
     """
 
     def __init__(self):
@@ -230,7 +230,7 @@ class LanguagesEnabledListener(GccOptionsListener.GccOptionsListener):
                     self.flags.remove(self._flag_name)
                     self.flags.append(self._flag_name + ctx.getText())
                     # When -Wflag=N, var >= N evaluates to 1
-                    self.arg = u'1'
+                    self.arg = '1'
                 else:
                     # Argument form is N, so flags enables -Wthis=N
                     self.arg = ctx.getText()
@@ -246,15 +246,15 @@ class LanguagesListener(GccOptionsListener.GccOptionsListener):
     >>> listener = LanguagesListener()
     >>> apply_listener("C C++ Enum", listener)
     >>> listener.languages
-    [u'C', u'C++']
+    ['C', 'C++']
     >>> listener = LanguagesListener()
     >>> apply_listener("C++", listener)
     >>> listener.languages
-    [u'C++']
+    ['C++']
     >>> listener = LanguagesListener()
     >>> apply_listener("LTO C ObjC C++ Enum", listener)
     >>> listener.languages
-    [u'C', u'C++', u'ObjC']
+    ['C', 'C++', 'ObjC']
     """
 
     def __init__(self):
@@ -273,7 +273,7 @@ class EnabledByListener(GccOptionsListener.GccOptionsListener):
     >>> listener = EnabledByListener()
     >>> apply_listener("EnabledBy(Wextra)", listener)
     >>> listener.enabled_by
-    u'Wextra'
+    'Wextra'
     """
 
     def __init__(self):

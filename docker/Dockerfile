@@ -6,12 +6,12 @@ RUN apt-get update \
     default-jre-headless \
     git \
     ninja-build \
-    python \
-    python-pip \
+    python3-minimal \
+    python3-pip \
     wget \
     && apt-get clean
 
 COPY requirements.txt /tmp/requirements.txt
-RUN pip install -r /tmp/requirements.txt
+RUN python3 -m pip install -r /tmp/requirements.txt
 
 CMD ["/bin/bash"]

@@ -155,8 +155,8 @@ their dependencies):
 
 * [Ninja](https://ninja-build.org/)
 * [ANTLR4](http://www.antlr.org/)
-* [Python 2.7](https://www.python.org/)
-* [antlr4-python2-runtime](https://pypi.python.org/pypi/antlr4-python2-runtime/)
+* [Python 3](https://www.python.org/)
+* [antlr4-python3-runtime](https://pypi.python.org/pypi/antlr4-python3-runtime/)
 
 ## Building (the easy way)
 

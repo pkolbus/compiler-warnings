@@ -2,7 +2,7 @@ rule antlr
      command = java -jar antlr.jar $in
 
 rule doctest
-     command = python -mdoctest $in
+     command = python3 -mdoctest $in
 
 rule get-antlr
      command = wget -O antlr.jar https://www.antlr.org/download/antlr-4.7.1-complete.jar
