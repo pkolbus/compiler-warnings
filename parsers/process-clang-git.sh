@@ -8,13 +8,19 @@ function parse_clang_info()
 {
     local version=$1
     local target_dir=$2
-    shift 2
-    local input_files=("$@")
-    "$DIR"/parse-clang-diagnostic-groups.py "${input_files[@]}" \
+    local input_dir=$3
+
+    local input_files="${input_dir}/DiagnosticGroups.td"
+
+    llvm-tblgen -dump-json -I "${input_dir}" \
+          "${input_dir}/Diagnostic.td" \
+          | python3 -mjson.tool \
+          > "$target_dir"/warnings-clang-"$version".json
+    "$DIR"/parse-clang-diagnostic-groups.py "${input_files}" \
           > "$target_dir"/warnings-clang-"$version".txt
-    "$DIR"/parse-clang-diagnostic-groups.py --unique "${input_files[@]}" \
+    "$DIR"/parse-clang-diagnostic-groups.py --unique "${input_files}" \
           > "$target_dir"/warnings-clang-unique-"$version".txt
-    "$DIR"/parse-clang-diagnostic-groups.py --top-level "${input_files[@]}" \
+    "$DIR"/parse-clang-diagnostic-groups.py --top-level "${input_files}" \
           > "$target_dir"/warnings-clang-top-level-"$version".txt
 }
 
@@ -23,43 +29,43 @@ GIT_DIR=$1
 target_dir=$DIR/../clang
 
 git -C "$GIT_DIR" checkout origin/release_32
-parse_clang_info 3.2 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
+parse_clang_info 3.2 "$target_dir" "$GIT_DIR"/include/clang/Basic
 
 git -C "$GIT_DIR" checkout origin/release_33
-parse_clang_info 3.3 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
+parse_clang_info 3.3 "$target_dir" "$GIT_DIR"/include/clang/Basic
 
 git -C "$GIT_DIR" checkout origin/release_34
-parse_clang_info 3.4 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
+parse_clang_info 3.4 "$target_dir" "$GIT_DIR"/include/clang/Basic
 
 git -C "$GIT_DIR" checkout origin/release_35
-parse_clang_info 3.5 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
+parse_clang_info 3.5 "$target_dir" "$GIT_DIR"/include/clang/Basic
 
 git -C "$GIT_DIR" checkout origin/release_36
-parse_clang_info 3.6 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
+parse_clang_info 3.6 "$target_dir" "$GIT_DIR"/include/clang/Basic
 
 git -C "$GIT_DIR" checkout origin/release_37
-parse_clang_info 3.7 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
+parse_clang_info 3.7 "$target_dir" "$GIT_DIR"/include/clang/Basic
 
 git -C "$GIT_DIR" checkout origin/release_38
-parse_clang_info 3.8 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
+parse_clang_info 3.8 "$target_dir" "$GIT_DIR"/include/clang/Basic
 
 git -C "$GIT_DIR" checkout origin/release_39
-parse_clang_info 3.9 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
+parse_clang_info 3.9 "$target_dir" "$GIT_DIR"/include/clang/Basic
 
 git -C "$GIT_DIR" checkout origin/release_40
-parse_clang_info 4 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
+parse_clang_info 4 "$target_dir" "$GIT_DIR"/include/clang/Basic
 
 git -C "$GIT_DIR" checkout origin/release_50
-parse_clang_info 5 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
+parse_clang_info 5 "$target_dir" "$GIT_DIR"/include/clang/Basic
 
 git -C "$GIT_DIR" checkout origin/release_60
-parse_clang_info 6 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
+parse_clang_info 6 "$target_dir" "$GIT_DIR"/include/clang/Basic
 
 git -C "$GIT_DIR" checkout origin/release_70
-parse_clang_info 7 "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
+parse_clang_info 7 "$target_dir" "$GIT_DIR"/include/clang/Basic
 
 git -C "$GIT_DIR" checkout origin/master
-parse_clang_info NEXT "$target_dir" "$GIT_DIR"/include/clang/Basic/DiagnosticGroups.td
+parse_clang_info NEXT "$target_dir" "$GIT_DIR"/include/clang/Basic
 
 versions=(
     3.2

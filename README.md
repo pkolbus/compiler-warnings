@@ -157,6 +157,7 @@ their dependencies):
 * [ANTLR4](http://www.antlr.org/)
 * [Python 3](https://www.python.org/)
 * [antlr4-python3-runtime](https://pypi.python.org/pypi/antlr4-python3-runtime/)
+* llvm-tblgen from [LLVM 7 or newer](https://llvm.org/)
 
 ## Building (the easy way)
 
