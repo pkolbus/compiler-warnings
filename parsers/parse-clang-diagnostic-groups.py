@@ -12,6 +12,7 @@ import argparse
 import json
 import sys
 from functools import total_ordering
+from itertools import chain
 import common
 
 class ClangDiagnostic:
@@ -102,6 +103,10 @@ class ClangWarningSwitch:
     def __lt__(self, other):
         '''Returns True if self should be before other in a sorted list'''
         return self.name.lower() < other.name.lower()
+
+    def __hash__(self):
+        '''Returns a hash of the switch name'''
+        return hash(self.name.lower())
 
     def get_child_switches(self) -> list:
         '''Returns a list of child ClangWarningSwitch for the switch'''
@@ -213,10 +218,21 @@ def print_references(
     Print all children of switch, indented
     '''
     for child_switch in sorted(switch.get_child_switches()):
-        comment_string = create_comment_text(child_switch, args)
-        print("# %s-W%s%s" % (
-            "  " * level, child_switch.name, comment_string))
-        print_references(child_switch, level + 1, args)
+        print_switch(child_switch, level, args)
+
+
+def print_switch(
+    switch: ClangWarningSwitch,
+    level: int,
+    args: argparse.Namespace
+    ):
+    '''
+    Print switch, indented
+    '''
+    comment_string = create_comment_text(switch, args)
+    print("# %s-W%s%s" % (
+        "  " * level, switch.name, comment_string))
+    print_references(switch, level + 1, args)
 
 
 def main(argv):
@@ -231,8 +247,24 @@ The path to the JSON output from llvm-tblgen.
 
     diagnostics = ClangDiagnostics(args.json_path)
 
+    # Print enabled-by-default switches in top-level output
+    if args.top_level:
+        # Find all switches that are enabled by default and are not children
+        # of another switch that is enabled by default.
+        all_defaults = set(
+            s for s in diagnostics.switches.values() if s.is_enabled_by_default()
+            )
+        children = set(
+            chain.from_iterable([s.get_child_switches() for s in all_defaults])
+            )
+        toplevel_defaults = all_defaults - children
+
+        print("# enabled by default:")
+        for switch in sorted(toplevel_defaults):
+            print_switch(switch, 1, args)
+
     for switch in sorted(diagnostics.switches.values()):
-        if args.top_level and not switch.is_top_level():
+        if args.top_level and (not switch.is_top_level() or switch.is_enabled_by_default()):
             continue
         comment_string = create_comment_text(switch, args)
         print("-W%s%s" % (switch.name, comment_string))
