@@ -94,13 +94,6 @@ ${DOCKER} image build \
     ./docker/
 
 #
-# Build the parsers
-#
-echo "Building the parsers..."
-run_in_docker ninja -C parsers
-run_in_docker ninja -C parsers test
-
-#
 # Prepare to build the warning options
 #
 mkdir -p build
@@ -118,6 +111,11 @@ if [ "${BUILD_CLANG}" == "true" ]; then
 fi
 
 if [ "${BUILD_GCC}" == "true" ]; then
+    echo "Building the gcc parser..."
+
+    run_in_docker ninja -C parsers
+    run_in_docker ninja -C parsers test
+
     echo "Running the gcc parser..."
 
     if [ -e build/gcc/.git ]; then
