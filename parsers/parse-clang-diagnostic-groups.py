@@ -155,7 +155,7 @@ class ClangDiagnostics:
             diag = ClangDiagnostic(json_data[diag_name])
 
             if diag.group_name is not None and diag.group_name in self.groups:
-                self.groups[diag.group_name].diagnostics.append(diag_name)
+                self.groups[diag.group_name].diagnostics.append(diag)
 
 
 def create_dummy_text(switch: ClangWarningSwitch) -> str:
