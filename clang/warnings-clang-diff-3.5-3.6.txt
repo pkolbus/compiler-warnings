@@ -1,32 +1,34 @@
-+-Wambiguous-ellipsis
++-Wambiguous-ellipsis # Enabled by default.
 --Warc-abi # DUMMY switch
-+-Wat-protocol
-+-Wbuiltin-memcpy-chk-size
++-Wat-protocol # Enabled by default.
++-Wbuiltin-memcpy-chk-size # Enabled by default.
 +-Wc++14-extensions
 --Wcast-qual # DUMMY switch
 +-Wcast-qual
 +-Wcstring-format-directive
-+-Wencode-type
-+-Wexplicit-initialize-call
-+-Wfuture-compat
-+-Wignored-optimization-argument
-+-Wincompatible-property-type
-+-Winconsistent-dllimport
-+-Winconsistent-missing-override
++-Wencode-type # Enabled by default.
++-Wexplicit-initialize-call # Enabled by default.
++-Wfuture-compat # Enabled by default.
++-Wignored-optimization-argument # Enabled by default.
++-Wincompatible-property-type # Enabled by default.
++-Winconsistent-dllimport # Enabled by default.
++-Winconsistent-missing-override # Enabled by default.
 +-Wkeyword-macro
-+-Wmissing-prototype-for-cc
-+-Wobjc-multiple-method-names
-+-Wpotentially-evaluated-expression
-+-Wproperty-access-dot-syntax
-+-Wproperty-attribute-mismatch
++-Wmissing-prototype-for-cc # Enabled by default.
++-Wobjc-multiple-method-names # Enabled by default.
++-Wpotentially-evaluated-expression # Enabled by default.
++-Wproperty-access-dot-syntax # Enabled by default.
++-Wproperty-attribute-mismatch # Enabled by default.
 +-Wreserved-id-macro
 +-Wsanitize-address
 +-Wself-move
-+-Wsync-fetch-and-nand-semantics-changed
++-Wsync-fetch-and-nand-semantics-changed # Enabled by default.
 +-Wthread-safety-negative
 +-Wthread-safety-reference
 +-Wthread-safety-verbose
-+-Wunevaluated-expression
-+-Wunused-getter-return-value
++-Wunevaluated-expression # Enabled by default.
+--Wunsupported-dll-base-class-template # Enabled by default.
++-Wunsupported-dll-base-class-template
++-Wunused-getter-return-value # Enabled by default.
 +-Wunused-local-typedef
 +-Wunused-local-typedefs

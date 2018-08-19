@@ -1,48 +1,48 @@
 -W
--W#pragma-messages
--W#warnings
+-W#pragma-messages # Enabled by default.
+-W#warnings # Enabled by default.
 -Wabi # DUMMY switch
--Wabstract-final-class
+-Wabstract-final-class # Enabled by default.
 -Waddress # DUMMY switch
--Waddress-of-array-temporary
--Waddress-of-temporary
+-Waddress-of-array-temporary # Enabled by default.
+-Waddress-of-temporary # Enabled by default.
 -Waggregate-return # DUMMY switch
 -Wall
--Wambiguous-macro
--Wambiguous-member-template
--Wanalyzer-incompatible-plugin
--Wanonymous-pack-parens
--Warc
+-Wambiguous-macro # Enabled by default.
+-Wambiguous-member-template # Enabled by default.
+-Wanalyzer-incompatible-plugin # Enabled by default.
+-Wanonymous-pack-parens # Enabled by default.
+-Warc # Enabled by default.
 -Warc-abi # DUMMY switch
--Warc-bridge-casts-disallowed-in-nonarc
+-Warc-bridge-casts-disallowed-in-nonarc # Enabled by default.
 -Warc-maybe-repeated-use-of-weak
--Warc-non-pod-memaccess
--Warc-performSelector-leaks
+-Warc-non-pod-memaccess # Enabled by default.
+-Warc-performSelector-leaks # Enabled by default.
 -Warc-repeated-use-of-weak
--Warc-retain-cycles
--Warc-unsafe-retained-assign
--Warray-bounds
+-Warc-retain-cycles # Enabled by default.
+-Warc-unsafe-retained-assign # Enabled by default.
+-Warray-bounds # Enabled by default.
 -Warray-bounds-pointer-arithmetic
--Wasm
--Wasm-operand-widths
+-Wasm # Enabled by default.
+-Wasm-operand-widths # Enabled by default.
 -Wassign-enum
 -Watomic-properties
--Watomic-property-with-user-defined-accessor
--Wattributes
+-Watomic-property-with-user-defined-accessor # Enabled by default.
+-Wattributes # Enabled by default.
 -Wauto-import
--Wauto-storage-class
--Wauto-var-id
--Wavailability
--Wbackslash-newline-escape
--Wbad-array-new-length
+-Wauto-storage-class # Enabled by default.
+-Wauto-var-id # Enabled by default.
+-Wavailability # Enabled by default.
+-Wbackslash-newline-escape # Enabled by default.
+-Wbad-array-new-length # Enabled by default.
 -Wbad-function-cast
 -Wbind-to-temporary-copy
--Wbitfield-constant-conversion
--Wbitwise-op-parentheses
--Wbool-conversion
--Wbool-conversions
--Wbuiltin-macro-redefined
--Wbuiltin-requires-header
+-Wbitfield-constant-conversion # Enabled by default.
+-Wbitwise-op-parentheses # Enabled by default.
+-Wbool-conversion # Enabled by default.
+-Wbool-conversions # Enabled by default.
+-Wbuiltin-macro-redefined # Enabled by default.
+-Wbuiltin-requires-header # Enabled by default.
 -Wc++-compat
 -Wc++0x-compat
 -Wc++0x-extensions
@@ -64,260 +64,260 @@
 -Wc99-compat
 -Wc99-extensions
 -Wcast-align
--Wcast-of-sel-type
+-Wcast-of-sel-type # Enabled by default.
 -Wcast-qual # DUMMY switch
--WCFString-literal
+-WCFString-literal # Enabled by default.
 -Wchar-align # DUMMY switch
 -Wchar-subscripts
 -Wcomment
 -Wcomments
--Wcompare-distinct-pointer-types
+-Wcompare-distinct-pointer-types # Enabled by default.
 -Wcomplex-component-init
--Wconditional-type-mismatch
+-Wconditional-type-mismatch # Enabled by default.
 -Wconditional-uninitialized
--Wconfig-macros
--Wconstant-conversion
--Wconstant-logical-operand
--Wconstexpr-not-const
+-Wconfig-macros # Enabled by default.
+-Wconstant-conversion # Enabled by default.
+-Wconstant-logical-operand # Enabled by default.
+-Wconstexpr-not-const # Enabled by default.
 -Wconversion
--Wconversion-null
+-Wconversion-null # Enabled by default.
 -Wcovered-switch-default
 -Wctor-dtor-privacy # DUMMY switch
 -Wcustom-atomic-properties
 -Wcxx98-cxx11-compat
 -Wcxx98-cxx11-compat-pedantic
--Wdangling-else
--Wdangling-field
--Wdangling-initializer-list
+-Wdangling-else # Enabled by default.
+-Wdangling-field # Enabled by default.
+-Wdangling-initializer-list # Enabled by default.
 -Wdeclaration-after-statement
--Wdelegating-ctor-cycles
--Wdelete-incomplete
+-Wdelegating-ctor-cycles # Enabled by default.
+-Wdelete-incomplete # Enabled by default.
 -Wdelete-non-virtual-dtor
--Wdeprecated
--Wdeprecated-declarations
+-Wdeprecated # Enabled by default.
+-Wdeprecated-declarations # Enabled by default.
 -Wdeprecated-implementations
--Wdeprecated-objc-isa-usage
--Wdeprecated-objc-pointer-introspection
--Wdeprecated-writable-strings
+-Wdeprecated-objc-isa-usage # Enabled by default.
+-Wdeprecated-objc-pointer-introspection # Enabled by default.
+-Wdeprecated-writable-strings # Enabled by default.
 -Wdirect-ivar-access
 -Wdisabled-macro-expansion
 -Wdisabled-optimization # DUMMY switch
 -Wdiscard-qual # DUMMY switch
--Wdistributed-object-modifiers
+-Wdistributed-object-modifiers # Enabled by default.
 -Wdiv-by-zero # DUMMY switch
--Wdivision-by-zero
+-Wdivision-by-zero # Enabled by default.
 -Wdocumentation
 -Wdocumentation-deprecated-sync
 -Wdocumentation-html
 -Wdocumentation-pedantic
 -Wdocumentation-unknown-command
 -Wdollar-in-identifier-extension
--Wduplicate-decl-specifier
+-Wduplicate-decl-specifier # Enabled by default.
 -Wduplicate-enum
 -Wduplicate-method-arg
 -Wduplicate-method-match
--Wdynamic-class-memaccess
+-Wdynamic-class-memaccess # Enabled by default.
 -Weffc++ # DUMMY switch
 -Wembedded-directive
--Wempty-body
+-Wempty-body # Enabled by default.
 -Wempty-translation-unit
--Wendif-labels
--Wenum-compare
--Wenum-conversion
+-Wendif-labels # Enabled by default.
+-Wenum-compare # Enabled by default.
+-Wenum-conversion # Enabled by default.
 -Wexit-time-destructors
 -Wexplicit-ownership-type
 -Wextended-offsetof
--Wextern-initializer
+-Wextern-initializer # Enabled by default.
 -Wextra
 -Wextra-semi
--Wextra-tokens
+-Wextra-tokens # Enabled by default.
 -Wflexible-array-extensions
 -Wfloat-equal
--Wformat
--Wformat-extra-args
--Wformat-invalid-specifier
+-Wformat # Enabled by default.
+-Wformat-extra-args # Enabled by default.
+-Wformat-invalid-specifier # Enabled by default.
 -Wformat-non-iso
 -Wformat-nonliteral
--Wformat-security
+-Wformat-security # Enabled by default.
 -Wformat-y2k # DUMMY switch
--Wformat-zero-length
+-Wformat-zero-length # Enabled by default.
 -Wformat=2
 -Wfour-char-constants
--Wgcc-compat
+-Wgcc-compat # Enabled by default.
 -Wglobal-constructors
 -Wgnu
--Wgnu-array-member-paren-init
+-Wgnu-array-member-paren-init # Enabled by default.
 -Wgnu-designator
--Wgnu-static-float-init
+-Wgnu-static-float-init # Enabled by default.
 -Wheader-hygiene
 -Widiomatic-parentheses
--Wignored-attributes
+-Wignored-attributes # Enabled by default.
 -Wignored-qualifiers
 -Wimplicit
 -Wimplicit-atomic-properties
--Wimplicit-conversion-floating-point-to-bool
--Wimplicit-exception-spec-mismatch
+-Wimplicit-conversion-floating-point-to-bool # Enabled by default.
+-Wimplicit-exception-spec-mismatch # Enabled by default.
 -Wimplicit-fallthrough
 -Wimplicit-fallthrough-per-function
 -Wimplicit-function-declaration
--Wimplicit-int
+-Wimplicit-int # Enabled by default.
 -Wimplicit-retain-self
 -Wimport # DUMMY switch
 -Wimport-preprocessor-directive-pedantic
--Wincompatible-library-redeclaration
--Wincompatible-pointer-types
--Wincompatible-pointer-types-discards-qualifiers
--Wincomplete-implementation
--Wincomplete-umbrella
--Winherited-variadic-ctor
+-Wincompatible-library-redeclaration # Enabled by default.
+-Wincompatible-pointer-types # Enabled by default.
+-Wincompatible-pointer-types-discards-qualifiers # Enabled by default.
+-Wincomplete-implementation # Enabled by default.
+-Wincomplete-umbrella # Enabled by default.
+-Winherited-variadic-ctor # Enabled by default.
 -Winit-self # DUMMY switch
--Winitializer-overrides
+-Winitializer-overrides # Enabled by default.
 -Winline # DUMMY switch
--Wint-conversion
--Wint-conversions
--Wint-to-pointer-cast
--Winteger-overflow
--Winvalid-constexpr
--Winvalid-iboutlet
--Winvalid-noreturn
--Winvalid-offsetof
+-Wint-conversion # Enabled by default.
+-Wint-conversions # Enabled by default.
+-Wint-to-pointer-cast # Enabled by default.
+-Winteger-overflow # Enabled by default.
+-Winvalid-constexpr # Enabled by default.
+-Winvalid-iboutlet # Enabled by default.
+-Winvalid-noreturn # Enabled by default.
+-Winvalid-offsetof # Enabled by default.
 -Winvalid-pch # DUMMY switch
--Winvalid-pp-token
--Winvalid-source-encoding
--Winvalid-token-paste
--Wknr-promoted-parameter
+-Winvalid-pp-token # Enabled by default.
+-Winvalid-source-encoding # Enabled by default.
+-Winvalid-token-paste # Enabled by default.
+-Wknr-promoted-parameter # Enabled by default.
 -Wlanguage-extension-token
--Wlarge-by-value-copy
--Wliteral-conversion
--Wliteral-range
+-Wlarge-by-value-copy # Enabled by default.
+-Wliteral-conversion # Enabled by default.
+-Wliteral-range # Enabled by default.
 -Wlocal-type-template-args
--Wlogical-op-parentheses
+-Wlogical-op-parentheses # Enabled by default.
 -Wlong-long
 -Wloop-analysis
--Wmain
--Wmain-return-type
--Wmalformed-warning-check
+-Wmain # Enabled by default.
+-Wmain-return-type # Enabled by default.
+-Wmalformed-warning-check # Enabled by default.
 -Wmethod-signatures
 -Wmicrosoft
--Wmicrosoft-exists
--Wmismatched-method-attributes
--Wmismatched-parameter-types
--Wmismatched-return-types
+-Wmicrosoft-exists # Enabled by default.
+-Wmismatched-method-attributes # Enabled by default.
+-Wmismatched-parameter-types # Enabled by default.
+-Wmismatched-return-types # Enabled by default.
 -Wmismatched-tags
 -Wmissing-braces
--Wmissing-declarations
+-Wmissing-declarations # Enabled by default.
 -Wmissing-field-initializers
 -Wmissing-format-attribute # DUMMY switch
 -Wmissing-include-dirs # DUMMY switch
 -Wmissing-method-return-type
 -Wmissing-noreturn
 -Wmissing-prototypes
--Wmissing-selector-name
--Wmissing-sysroot
+-Wmissing-selector-name # Enabled by default.
+-Wmissing-sysroot # Enabled by default.
 -Wmissing-variable-declarations
--Wmodule-conflict
+-Wmodule-conflict # Enabled by default.
 -Wmost
--Wmultichar
+-Wmultichar # Enabled by default.
 -Wnarrowing
 -Wnested-anon-types
 -Wnested-externs # DUMMY switch
 -Wnewline-eof
 -Wnon-gcc
--Wnon-literal-null-conversion
--Wnon-pod-varargs
+-Wnon-literal-null-conversion # Enabled by default.
+-Wnon-pod-varargs # Enabled by default.
 -Wnon-virtual-dtor
--Wnonnull
+-Wnonnull # Enabled by default.
 -Wnonportable-cfstrings # DUMMY switch
--WNSObject-attribute
--Wnull-arithmetic
--Wnull-character
--Wnull-conversion
--Wnull-dereference
--Wobjc-autosynthesis-property-ivar-name-match
--Wobjc-cocoa-api
--Wobjc-forward-class-redefinition
+-WNSObject-attribute # Enabled by default.
+-Wnull-arithmetic # Enabled by default.
+-Wnull-character # Enabled by default.
+-Wnull-conversion # Enabled by default.
+-Wnull-dereference # Enabled by default.
+-Wobjc-autosynthesis-property-ivar-name-match # Enabled by default.
+-Wobjc-cocoa-api # Enabled by default.
+-Wobjc-forward-class-redefinition # Enabled by default.
 -Wobjc-interface-ivars
--Wobjc-literal-compare
--Wobjc-method-access
+-Wobjc-literal-compare # Enabled by default.
+-Wobjc-method-access # Enabled by default.
 -Wobjc-missing-property-synthesis
--Wobjc-missing-super-calls
--Wobjc-noncopy-retain-block-property
--Wobjc-nonunified-exceptions
--Wobjc-property-implementation
--Wobjc-property-matches-cocoa-ownership-rule
--Wobjc-property-no-attribute
--Wobjc-property-synthesis
--Wobjc-protocol-method-implementation
--Wobjc-protocol-property-synthesis
--Wobjc-readonly-with-setter-property
--Wobjc-redundant-api-use
--Wobjc-redundant-literal-use
--Wobjc-root-class
--Wobjc-string-compare
--Wodr
+-Wobjc-missing-super-calls # Enabled by default.
+-Wobjc-noncopy-retain-block-property # Enabled by default.
+-Wobjc-nonunified-exceptions # Enabled by default.
+-Wobjc-property-implementation # Enabled by default.
+-Wobjc-property-matches-cocoa-ownership-rule # Enabled by default.
+-Wobjc-property-no-attribute # Enabled by default.
+-Wobjc-property-synthesis # Enabled by default.
+-Wobjc-protocol-method-implementation # Enabled by default.
+-Wobjc-protocol-property-synthesis # Enabled by default.
+-Wobjc-readonly-with-setter-property # Enabled by default.
+-Wobjc-redundant-api-use # Enabled by default.
+-Wobjc-redundant-literal-use # Enabled by default.
+-Wobjc-root-class # Enabled by default.
+-Wobjc-string-compare # Enabled by default.
+-Wodr # Enabled by default.
 -Wold-style-cast # DUMMY switch
 -Wold-style-definition # DUMMY switch
--Wout-of-line-declaration
+-Wout-of-line-declaration # Enabled by default.
 -Wover-aligned
 -Woverflow # DUMMY switch
 -Woverlength-strings
--Woverloaded-shift-op-parentheses
+-Woverloaded-shift-op-parentheses # Enabled by default.
 -Woverloaded-virtual
 -Woverriding-method-mismatch
 -Wpacked
 -Wpadded
--Wparentheses
--Wparentheses-equality
+-Wparentheses # Enabled by default.
+-Wparentheses-equality # Enabled by default.
 -Wpedantic # DUMMY switch
 -Wpointer-arith
--Wpointer-sign
+-Wpointer-sign # Enabled by default.
 -Wpointer-to-int-cast # DUMMY switch
--Wpointer-type-mismatch
--Wpredefined-identifier-outside-function
--Wprivate-extern
--Wprotocol
--Wreadonly-iboutlet-property
+-Wpointer-type-mismatch # Enabled by default.
+-Wpredefined-identifier-outside-function # Enabled by default.
+-Wprivate-extern # Enabled by default.
+-Wprotocol # Enabled by default.
+-Wreadonly-iboutlet-property # Enabled by default.
 -Wreadonly-setter-attrs
--Wreceiver-expr
+-Wreceiver-expr # Enabled by default.
 -Wreceiver-forward-class
 -Wreceiver-is-weak
 -Wredundant-decls # DUMMY switch
--Wreinterpret-base-class
+-Wreinterpret-base-class # Enabled by default.
 -Wreorder
--Wrequires-super-attribute
+-Wrequires-super-attribute # Enabled by default.
 -Wreserved-user-defined-literal
--Wreturn-stack-address
--Wreturn-type
--Wreturn-type-c-linkage
--Wsection
+-Wreturn-stack-address # Enabled by default.
+-Wreturn-type # Enabled by default.
+-Wreturn-type-c-linkage # Enabled by default.
+-Wsection # Enabled by default.
 -Wselector
 -Wself-assign
--Wself-assign-field
+-Wself-assign-field # Enabled by default.
 -Wsemicolon-before-method-body
--Wsentinel
--Wsequence-point
--Wserialized-diagnostics
+-Wsentinel # Enabled by default.
+-Wsequence-point # Enabled by default.
+-Wserialized-diagnostics # Enabled by default.
 -Wshadow
--Wshadow-ivar
--Wshift-count-negative
--Wshift-count-overflow
--Wshift-op-parentheses
--Wshift-overflow
+-Wshadow-ivar # Enabled by default.
+-Wshift-count-negative # Enabled by default.
+-Wshift-count-overflow # Enabled by default.
+-Wshift-op-parentheses # Enabled by default.
+-Wshift-overflow # Enabled by default.
 -Wshift-sign-overflow
 -Wshorten-64-to-32
 -Wsign-compare
 -Wsign-conversion
 -Wsign-promo # DUMMY switch
--Wsizeof-array-argument
--Wsizeof-array-decay
--Wsizeof-pointer-memaccess
+-Wsizeof-array-argument # Enabled by default.
+-Wsizeof-array-decay # Enabled by default.
+-Wsizeof-pointer-memaccess # Enabled by default.
 -Wsometimes-uninitialized
 -Wsource-uses-openmp
 -Wstack-protector # DUMMY switch
--Wstatic-float-init
+-Wstatic-float-init # Enabled by default.
 -Wstatic-in-inline
--Wstatic-local-in-inline
--Wstatic-self-init
+-Wstatic-local-in-inline # Enabled by default.
+-Wstatic-self-init # Enabled by default.
 -Wstrict-aliasing # DUMMY switch
 -Wstrict-aliasing=0 # DUMMY switch
 -Wstrict-aliasing=1 # DUMMY switch
@@ -331,49 +331,49 @@
 -Wstrict-overflow=5 # DUMMY switch
 -Wstrict-prototypes # DUMMY switch
 -Wstrict-selector-match
--Wstring-compare
+-Wstring-compare # Enabled by default.
 -Wstring-conversion
--Wstring-plus-int
--Wstrlcpy-strlcat-size
--Wstrncat-size
+-Wstring-plus-int # Enabled by default.
+-Wstrlcpy-strlcat-size # Enabled by default.
+-Wstrncat-size # Enabled by default.
 -Wsuper-class-method-mismatch
--Wswitch
+-Wswitch # Enabled by default.
 -Wswitch-default # DUMMY switch
 -Wswitch-enum
 -Wsynth # DUMMY switch
--Wtautological-compare
--Wtautological-constant-out-of-range-compare
--Wtentative-definition-incomplete-type
+-Wtautological-compare # Enabled by default.
+-Wtautological-constant-out-of-range-compare # Enabled by default.
+-Wtentative-definition-incomplete-type # Enabled by default.
 -Wthread-safety
 -Wthread-safety-analysis
 -Wthread-safety-attributes
 -Wthread-safety-beta
 -Wthread-safety-precise
--Wtrigraphs
+-Wtrigraphs # Enabled by default.
 -Wtype-limits # DUMMY switch
--Wtype-safety
--Wtypedef-redefinition
--Wtypename-missing
+-Wtype-safety # Enabled by default.
+-Wtypedef-redefinition # Enabled by default.
+-Wtypename-missing # Enabled by default.
 -Wundeclared-selector
 -Wundef
--Wundefined-inline
--Wundefined-internal
+-Wundefined-inline # Enabled by default.
+-Wundefined-internal # Enabled by default.
 -Wundefined-reinterpret-cast
--Wunicode
--Wunicode-whitespace
+-Wunicode # Enabled by default.
+-Wunicode-whitespace # Enabled by default.
 -Wuninitialized
 -Wunknown-pragmas
--Wunknown-warning-option
+-Wunknown-warning-option # Enabled by default.
 -Wunnamed-type-template-args
 -Wunneeded-internal-declaration
 -Wunneeded-member-function
 -Wunreachable-code
--Wunsequenced
--Wunsupported-visibility
+-Wunsequenced # Enabled by default.
+-Wunsupported-visibility # Enabled by default.
 -Wunused
 -Wunused-argument # DUMMY switch
--Wunused-command-line-argument
--Wunused-comparison
+-Wunused-command-line-argument # Enabled by default.
+-Wunused-comparison # Enabled by default.
 -Wunused-exception-parameter
 -Wunused-function
 -Wunused-label
@@ -381,22 +381,22 @@
 -Wunused-member-function
 -Wunused-parameter
 -Wunused-private-field
--Wunused-result
--Wunused-sanitize-argument
--Wunused-value
+-Wunused-result # Enabled by default.
+-Wunused-sanitize-argument # Enabled by default.
+-Wunused-value # Enabled by default.
 -Wunused-variable
--Wunused-volatile-lvalue
+-Wunused-volatile-lvalue # Enabled by default.
 -Wused-but-marked-unused
--Wuser-defined-literals
+-Wuser-defined-literals # Enabled by default.
 -Wvariadic-macros
 -Wvector-conversion
 -Wvector-conversions
--Wvexing-parse
--Wvisibility
+-Wvexing-parse # Enabled by default.
+-Wvisibility # Enabled by default.
 -Wvla
 -Wvla-extension
 -Wvolatile-register-var # DUMMY switch
 -Wweak-template-vtables
 -Wweak-vtables
--Wwrite-strings
+-Wwrite-strings # Enabled by default.
 -Wzero-length-array

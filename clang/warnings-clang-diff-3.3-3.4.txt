@@ -1,16 +1,20 @@
 +-Wabstract-vbase-init
-+-Wbridge-cast
-+-Wc++11-compat-deprecated-writable-strings
++-Wbridge-cast # Enabled by default.
++-Wc++11-compat-deprecated-writable-strings # Enabled by default.
 +-Wc++98-c++11-compat
 +-Wc++98-c++11-compat-pedantic
 +-Wconsumed
 --Wcxx98-cxx11-compat
 --Wcxx98-cxx11-compat-pedantic
-+-Wdeprecated-increment-bool
-+-Wdeprecated-objc-pointer-introspection-performSelector
-+-Wdeprecated-register
-+-Wextern-c-compat
-+-Wgnu-alignof-expression
+--Wdeprecated # Enabled by default.
++-Wdeprecated
++-Wdeprecated-increment-bool # Enabled by default.
+--Wdeprecated-writable-strings # Enabled by default.
++-Wdeprecated-objc-pointer-introspection-performSelector # Enabled by default.
++-Wdeprecated-register # Enabled by default.
++-Wdeprecated-writable-strings
++-Wextern-c-compat # Enabled by default.
++-Wgnu-alignof-expression # Enabled by default.
 +-Wgnu-anonymous-struct
 +-Wgnu-binary-literal
 +-Wgnu-case-range
@@ -26,30 +30,34 @@
 +-Wgnu-label-as-value
 +-Wgnu-redeclared-enum
 +-Wgnu-statement-expression
-+-Wgnu-string-literal-operator-template
++-Wgnu-string-literal-operator-template # Enabled by default.
 +-Wgnu-union-cast
-+-Wgnu-variable-sized-type-not-at-end
++-Wgnu-variable-sized-type-not-at-end # Enabled by default.
 +-Wgnu-zero-line-directive
 +-Wgnu-zero-variadic-macro-arguments
-+-Wheader-guard
++-Wheader-guard # Enabled by default.
+--Wincomplete-umbrella # Enabled by default.
 +-Wincomplete-module
-+-Winline-new-delete
-+-Wint-to-void-pointer-cast
-+-Winvalid-command-line-argument
-+-Wkeyword-compat
-+-Wlogical-not-parentheses
-+-Wmultiple-move-vbase
-+-Wobjc-literal-missing-atsign
-+-Wobjc-property-implicit-mismatch
-+-Wobjc-string-concatenation
-+-Woverriding-t-option
-+-Wprotocol-property-synthesis-ambiguity
-+-Wredeclared-class-member
++-Wincomplete-umbrella
++-Winline-new-delete # Enabled by default.
++-Wint-to-void-pointer-cast # Enabled by default.
++-Winvalid-command-line-argument # Enabled by default.
++-Wkeyword-compat # Enabled by default.
++-Wlogical-not-parentheses # Enabled by default.
++-Wmultiple-move-vbase # Enabled by default.
++-Wobjc-literal-missing-atsign # Enabled by default.
++-Wobjc-property-implicit-mismatch # Enabled by default.
++-Wobjc-string-concatenation # Enabled by default.
++-Woverriding-t-option # Enabled by default.
++-Wprotocol-property-synthesis-ambiguity # Enabled by default.
++-Wredeclared-class-member # Enabled by default.
 +-Wretained-language-linkage
 +-Wselector-type-mismatch
-+-Wstatic-inline-explicit-instantiation
-+-Wstring-plus-char
-+-Wunsupported-friend
++-Wstatic-inline-explicit-instantiation # Enabled by default.
++-Wstring-plus-char # Enabled by default.
++-Wunsupported-friend # Enabled by default.
 +-Wunused-const-variable
 +-Wunused-property-ivar
-+-Wvarargs
++-Wvarargs # Enabled by default.
+--Wwrite-strings # Enabled by default.
++-Wwrite-strings

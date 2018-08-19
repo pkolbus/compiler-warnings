@@ -27,6 +27,12 @@ class ClangDiagnostic:
             self.group_name = obj['Group']['def']
         else:
             self.group_name = None
+        if 'DefaultSeverity' in obj:
+            # clang 3.5+
+            self.enabled_by_default = obj['DefaultSeverity']['def'] != 'SEV_Ignored'
+        else:
+            # clang 3.4 (and earlier)
+            self.enabled_by_default = obj['DefaultMapping']['def'] != 'MAP_IGNORE'
 
 
 class ClangDiagGroup:
@@ -61,6 +67,21 @@ class ClangDiagGroup:
                 return False
 
         return True
+
+    def has_disabled_diagnostic(self) -> bool:
+        '''
+        Determines if a group has a disabled diagnostic
+        '''
+        for diagnostic in self.diagnostics:
+            if not diagnostic.enabled_by_default:
+                return True
+
+        for child in self.children:
+            if child.has_disabled_diagnostic():
+                return True
+
+        return False
+
 
 @total_ordering
 class ClangWarningSwitch:
@@ -104,6 +125,19 @@ class ClangWarningSwitch:
 
         return True
 
+    def is_enabled_by_default(self) -> bool:
+        '''
+        Determines if a switch is enabled by default
+
+        A switch is enabled by default if no diagnostic (in any group)
+        is disabled by default and the switch is not a dummy.
+        '''
+
+        for group in self.groups:
+            if group.has_disabled_diagnostic():
+                return False
+
+        return not self.is_dummy()
 
     def is_top_level(self) -> bool:
         '''
@@ -158,22 +192,31 @@ class ClangDiagnostics:
                 self.groups[diag.group_name].diagnostics.append(diag)
 
 
-def create_dummy_text(switch: ClangWarningSwitch) -> str:
-    '''Returns a comment appropriate for the switch, if it is a dummy'''
+def create_comment_text(
+    switch: ClangWarningSwitch,
+    args: argparse.Namespace
+    ) -> str:
+    '''Returns a comment appropriate for the switch and output type'''
     if switch.is_dummy():
         return " # DUMMY switch"
+    elif args.unique and switch.is_enabled_by_default():
+        return " # Enabled by default."
     return ""
 
 
-def print_references(switch: ClangWarningSwitch, level: int):
+def print_references(
+    switch: ClangWarningSwitch,
+    level: int,
+    args: argparse.Namespace
+    ):
     '''
     Print all children of switch, indented
     '''
     for child_switch in sorted(switch.get_child_switches()):
-        dummy_string = create_dummy_text(child_switch)
+        comment_string = create_comment_text(child_switch, args)
         print("# %s-W%s%s" % (
-            "  " * level, child_switch.name, dummy_string))
-        print_references(child_switch, level + 1)
+            "  " * level, child_switch.name, comment_string))
+        print_references(child_switch, level + 1, args)
 
 
 def main(argv):
@@ -191,11 +234,11 @@ The path to the JSON output from llvm-tblgen.
     for switch in sorted(diagnostics.switches.values()):
         if args.top_level and not switch.is_top_level():
             continue
-        dummy_string = create_dummy_text(switch)
-        print("-W%s%s" % (switch.name, dummy_string))
+        comment_string = create_comment_text(switch, args)
+        print("-W%s%s" % (switch.name, comment_string))
         if args.unique:
             continue
-        print_references(switch, 1)
+        print_references(switch, 1, args)
 
 
 if __name__ == "__main__":

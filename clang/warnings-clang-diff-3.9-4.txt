@@ -1,34 +1,36 @@
-+-Waddress-of-packed-member
-+-Walloca-with-align-alignof
-+-Wambiguous-delete
-+-Wasm-ignored-qualifier
---Wbad-array-new-length
++-Waddress-of-packed-member # Enabled by default.
++-Walloca-with-align-alignof # Enabled by default.
++-Wambiguous-delete # Enabled by default.
++-Wasm-ignored-qualifier # Enabled by default.
+--Wbad-array-new-length # Enabled by default.
 +-Wblock-capture-autoreleasing
---Wcoreturn-without-coawait
+--Wcoreturn-without-coawait # Enabled by default.
 +-Wdeprecated-dynamic-exception-spec
 --Wdiv-by-zero # DUMMY switch
-+-Wdiv-by-zero
-+-Wduplicate-protocol
++-Wdiv-by-zero # Enabled by default.
++-Wduplicate-protocol # Enabled by default.
 --Weffc++ # DUMMY switch
 +-Wdynamic-exception-spec
 +-Weffc++
-+-Wempty-decomposition
-+-Wignored-pragma-intrinsic
-+-Wincompatible-exception-spec
-+-Wincompatible-function-pointer-types
-+-Winstantiation-after-specialization
-+-Winvalid-partial-specialization
-+-Wmax-unsigned-zero
-+-Wnullability-completeness-on-arrays
-+-Wnullability-inferred-on-nested-type
-+-Wopencl-unsupported-rgba
-+-Wprivate-module
++-Wempty-decomposition # Enabled by default.
++-Wignored-pragma-intrinsic # Enabled by default.
++-Wincompatible-exception-spec # Enabled by default.
++-Wincompatible-function-pointer-types # Enabled by default.
++-Winstantiation-after-specialization # Enabled by default.
++-Winvalid-partial-specialization # Enabled by default.
++-Wmax-unsigned-zero # Enabled by default.
++-Wnullability-completeness-on-arrays # Enabled by default.
++-Wnullability-inferred-on-nested-type # Enabled by default.
++-Wopencl-unsupported-rgba # Enabled by default.
++-Wprivate-module # Enabled by default.
 +-Wshadow-uncaptured-local
 +-Wsigned-enum-bitfield
 +-Wspir-compat
 --Wstrict-prototypes # DUMMY switch
 +-Wstrict-prototypes
-+-Wunable-to-open-stats-file
-+-Wunusable-partial-specialization
-+-Wuser-defined-warnings
-+-Wvec-elem-size
++-Wunable-to-open-stats-file # Enabled by default.
+--Wunguarded-availability # Enabled by default.
++-Wunguarded-availability
++-Wunusable-partial-specialization # Enabled by default.
++-Wuser-defined-warnings # Enabled by default.
++-Wvec-elem-size # Enabled by default.

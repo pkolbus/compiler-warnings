@@ -1,72 +1,82 @@
-+-Wabsolute-value
++-Wabsolute-value # Enabled by default.
 --Waddress # DUMMY switch
-+-Waddress
-+-Wassume
-+-Watomic-memory-ordering
-+-Wbackend-plugin
++-Waddress # Enabled by default.
++-Wassume # Enabled by default.
++-Watomic-memory-ordering # Enabled by default.
++-Wbackend-plugin # Enabled by default.
 +-Wc++14-compat
 +-Wc++14-compat-pedantic
-+-Wc++1z-extensions
++-Wc++1z-extensions # Enabled by default.
 +-Wc++98-c++11-c++14-compat
 +-Wc++98-c++11-c++14-compat-pedantic
 +-Wclass-varargs
-+-Wcuda-compat
++-Wcuda-compat # Enabled by default.
 +-Wdate-time
-+-Wdealloc-in-category
-+-Wdebug-compression-unavailable
-+-Wdll-attribute-on-redeclaration
-+-Wdllimport-static-field-def
-+-Wenum-too-large
-+-Wextra-qualification
-+-Wfallback
++-Wdealloc-in-category # Enabled by default.
++-Wdebug-compression-unavailable # Enabled by default.
+--Wdeprecated-writable-strings
++-Wdeprecated-writable-strings # Enabled by default.
++-Wdll-attribute-on-redeclaration # Enabled by default.
++-Wdllimport-static-field-def # Enabled by default.
++-Wenum-too-large # Enabled by default.
++-Wextra-qualification # Enabled by default.
++-Wfallback # Enabled by default.
 +-Wfloat-conversion
-+-Wframe-larger-than=
-+-Wfunction-def-in-objc-container
-+-Wignored-pragmas
-+-Wimplicitly-unsigned-literal
-+-Wincompatible-ms-struct
++-Wframe-larger-than= # Enabled by default.
++-Wfunction-def-in-objc-container # Enabled by default.
++-Wignored-pragmas # Enabled by default.
++-Wimplicitly-unsigned-literal # Enabled by default.
++-Wincompatible-ms-struct # Enabled by default.
+--Wincomplete-umbrella
++-Wincomplete-umbrella # Enabled by default.
 +-Winfinite-recursion
-+-Winline-asm
-+-Winvalid-initializer-from-system-header
-+-Wmacro-redefined
-+-Wmemsize-comparison
---Wmismatched-method-attributes
++-Winline-asm # Enabled by default.
++-Winvalid-initializer-from-system-header # Enabled by default.
+--Wmain # Enabled by default.
++-Wmacro-redefined # Enabled by default.
++-Wmain
++-Wmemsize-comparison # Enabled by default.
+--Wmismatched-method-attributes # Enabled by default.
 +-Wmodule-build
-+-Wmsvc-include
-+-Wnew-returns-null
++-Wmsvc-include # Enabled by default.
++-Wnew-returns-null # Enabled by default.
 +-Wnon-modular-include-in-framework-module
 +-Wnon-modular-include-in-module
-+-Wnonportable-vector-initialization
-+-Wobjc-designated-initializers
---Wobjc-literal-missing-atsign
-+-Wobjc-literal-conversion
++-Wnonportable-vector-initialization # Enabled by default.
++-Wobjc-designated-initializers # Enabled by default.
+--Wobjc-literal-missing-atsign # Enabled by default.
++-Wobjc-literal-conversion # Enabled by default.
 --Wold-style-cast # DUMMY switch
 +-Wold-style-cast
-+-Wopenmp-clauses
-+-Wopenmp-loop-form
++-Wopenmp-clauses # Enabled by default.
++-Wopenmp-loop-form # Enabled by default.
 +-Wpass
 +-Wpass-analysis
-+-Wpass-failed
++-Wpass-failed # Enabled by default.
 +-Wpass-missed
-+-Wpointer-bool-conversion
++-Wpointer-bool-conversion # Enabled by default.
 +-Wpragmas
-+-Wprofile-instr-out-of-date
-+-Wprofile-instr-unprofiled
++-Wprofile-instr-out-of-date # Enabled by default.
++-Wprofile-instr-unprofiled # Enabled by default.
 --Wreadonly-setter-attrs
 +-Wremark-backend-plugin
-+-Wswitch-bool
++-Wswitch-bool # Enabled by default.
+--Wtautological-compare # Enabled by default.
++-Wtautological-compare
 +-Wtautological-overlap-compare
-+-Wtautological-pointer-compare
-+-Wtautological-undefined-compare
-+-Wunavailable-declarations
-+-Wundefined-bool-conversion
-+-Wunknown-attributes
-+-Wunknown-escape-sequence
++-Wtautological-pointer-compare # Enabled by default.
++-Wtautological-undefined-compare # Enabled by default.
++-Wunavailable-declarations # Enabled by default.
++-Wundefined-bool-conversion # Enabled by default.
++-Wunknown-attributes # Enabled by default.
++-Wunknown-escape-sequence # Enabled by default.
 +-Wunreachable-code-aggressive
 +-Wunreachable-code-break
 +-Wunreachable-code-loop-increment
 +-Wunreachable-code-return
-+-Wunsupported-dll-base-class-template
---Wunused-sanitize-argument
++-Wunsupported-dll-base-class-template # Enabled by default.
+--Wunused-sanitize-argument # Enabled by default.
 +-Wvoid-ptr-dereference
-+-Wwritable-strings
+--Wwrite-strings
++-Wwritable-strings # Enabled by default.
++-Wwrite-strings # Enabled by default.

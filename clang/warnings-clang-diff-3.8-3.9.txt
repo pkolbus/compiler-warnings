@@ -1,23 +1,29 @@
-+-Wcast-calling-convention
-+-Wclang-cl-pch
+--Wc++1z-extensions # Enabled by default.
++-Wc++1z-extensions
++-Wcast-calling-convention # Enabled by default.
++-Wclang-cl-pch # Enabled by default.
 +-Wcomma
+--Wcuda-compat # Enabled by default.
++-Wcuda-compat
 +-Wexpansion-to-defined
 +-Wfloat-overflow-conversion
 +-Wfloat-zero-conversion
-+-Wincompatible-sysroot
---Winherited-variadic-ctor
---Wliblto
+--Wgcc-compat # Enabled by default.
++-Wgcc-compat
++-Wincompatible-sysroot # Enabled by default.
+--Winherited-variadic-ctor # Enabled by default.
+--Wliblto # Enabled by default.
 +-Wliblto # DUMMY switch
-+-Wnonportable-include-path
++-Wnonportable-include-path # Enabled by default.
 +-Wnonportable-system-include-path
-+-Wopenmp-target
++-Wopenmp-target # Enabled by default.
 +-Wpedantic-core-features
 --Wreceiver-is-weak # DUMMY switch
 +-Wshadow-all
 +-Wshadow-field-in-constructor
 +-Wshadow-field-in-constructor-modified
 +-Wundefined-func-template
-+-Wundefined-var-template
-+-Wunguarded-availability
-+-Wunknown-argument
-+-Wunsupported-cb
++-Wundefined-var-template # Enabled by default.
++-Wunguarded-availability # Enabled by default.
++-Wunknown-argument # Enabled by default.
++-Wunsupported-cb # Enabled by default.

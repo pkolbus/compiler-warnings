@@ -1,24 +1,30 @@
-+-Waligned-allocation-unavailable
++-Waligned-allocation-unavailable # Enabled by default.
 +-Wbitfield-enum-conversion
-+-Wc++17-compat
-+-Wc++17-compat-mangling
+--Wblock-capture-autoreleasing
++-Wblock-capture-autoreleasing # Enabled by default.
++-Wc++17-compat # Enabled by default.
++-Wc++17-compat-mangling # Enabled by default.
 +-Wc++17-extensions
-+-Wc++1z-compat-mangling
-+-Wcoroutine
-+-Wcoroutine-missing-unhandled-exception
-+-Wcpp
++-Wc++1z-compat-mangling # Enabled by default.
++-Wcoroutine # Enabled by default.
++-Wcoroutine-missing-unhandled-exception # Enabled by default.
++-Wcpp # Enabled by default.
 +-Winconsistent-missing-destructor-override
-+-Winjected-class-name
-+-Winvalid-ios-deployment-target
-+-Wmsvc-not-found
-+-Wnoexcept-type
-+-Wobjc-unsafe-perform-selector
-+-Wpragma-clang-attribute
++-Winjected-class-name # Enabled by default.
++-Winvalid-ios-deployment-target # Enabled by default.
+--Wmicrosoft-enum-forward-reference
+--Wmicrosoft-enum-value # Enabled by default.
++-Wmicrosoft-enum-forward-reference # Enabled by default.
++-Wmicrosoft-enum-value
++-Wmsvc-not-found # Enabled by default.
++-Wnoexcept-type # Enabled by default.
++-Wobjc-unsafe-perform-selector # Enabled by default.
++-Wpragma-clang-attribute # Enabled by default.
 +-Wprofile-instr-missing
 +-Wshadow-field
-+-Wslash-u-filename
-+-Wunguarded-availability-new
-+-Wunsupported-availability-guard
++-Wslash-u-filename # Enabled by default.
++-Wunguarded-availability-new # Enabled by default.
++-Wunsupported-availability-guard # Enabled by default.
 +-Wunused-lambda-capture
 +-Wunused-template
 +-Wzero-as-null-pointer-constant

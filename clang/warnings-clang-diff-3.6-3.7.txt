@@ -1,33 +1,35 @@
-+-Wauto-disable-vptr-sanitizer
-+-Wbraced-scalar-init
-+-Wdllexport-explicit-instantiation-decl
-+-Wexceptions
-+-Wflag-enum
++-Wauto-disable-vptr-sanitizer # Enabled by default.
++-Wbraced-scalar-init # Enabled by default.
++-Wdllexport-explicit-instantiation-decl # Enabled by default.
++-Wexceptions # Enabled by default.
++-Wflag-enum # Enabled by default.
 +-Wfor-loop-analysis
 +-Wformat-pedantic
-+-Winaccessible-base
-+-WIndependentClass-attribute
-+-Wjump-seh-finally
-+-Wmany-braces-around-scalar-init
-+-Wmismatched-new-delete
++-Winaccessible-base # Enabled by default.
++-WIndependentClass-attribute # Enabled by default.
++-Wjump-seh-finally # Enabled by default.
++-Wmany-braces-around-scalar-init # Enabled by default.
++-Wmismatched-new-delete # Enabled by default.
 +-Wmove
-+-Wnullability
-+-Wnullability-completeness
-+-Wnullability-declspec
++-Wnullability # Enabled by default.
++-Wnullability-completeness # Enabled by default.
++-Wnullability-declspec # Enabled by default.
 +-Wnullability-extension
 +-Wnullable-to-nonnull-conversion
-+-Wobjc-circular-container
-+-Wobjc-protocol-qualifiers
-+-Woverride-module
++-Wobjc-circular-container # Enabled by default.
++-Wobjc-protocol-qualifiers # Enabled by default.
++-Woverride-module # Enabled by default.
 +-Wpartial-availability
 +-Wpessimizing-move
-+-Wprivate-header
-+-Wqualified-void-return-type
++-Wprivate-header # Enabled by default.
++-Wqualified-void-return-type # Enabled by default.
 +-Wrange-loop-analysis
 --Wreceiver-is-weak
 +-Wreceiver-is-weak # DUMMY switch
 +-Wredundant-move
-+-Wrtti-for-exceptions
-+-Wshift-negative-value
-+-Wunknown-sanitizers
-+-Wunsupported-nan
++-Wrtti-for-exceptions # Enabled by default.
++-Wshift-negative-value # Enabled by default.
++-Wunknown-sanitizers # Enabled by default.
++-Wunsupported-nan # Enabled by default.
+--Wvoid-ptr-dereference
++-Wvoid-ptr-dereference # Enabled by default.

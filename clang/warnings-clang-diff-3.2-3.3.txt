@@ -1,42 +1,42 @@
-+-Wanonymous-pack-parens
-+-Wbitfield-constant-conversion
++-Wanonymous-pack-parens # Enabled by default.
++-Wbitfield-constant-conversion # Enabled by default.
 +-Wc++11-compat-pedantic
 +-Wc++1y-extensions
 +-Wc99-compat
-+-Wconfig-macros
-+-Wconstexpr-not-const
++-Wconfig-macros # Enabled by default.
++-Wconstexpr-not-const # Enabled by default.
 +-Wcxx98-cxx11-compat
 +-Wcxx98-cxx11-compat-pedantic
---Wdefault-arg-special-member
-+-Wdeprecated-objc-pointer-introspection
+--Wdefault-arg-special-member # Enabled by default.
++-Wdeprecated-objc-pointer-introspection # Enabled by default.
 +-Wdocumentation-unknown-command
 +-Wduplicate-enum
-+-Wgnu-static-float-init
-+-Wincompatible-library-redeclaration
-+-Wincompatible-pointer-types-discards-qualifiers
-+-Winherited-variadic-ctor
-+-Winteger-overflow
---Wlambda-extensions
-+-Wmissing-sysroot
++-Wgnu-static-float-init # Enabled by default.
++-Wincompatible-library-redeclaration # Enabled by default.
++-Wincompatible-pointer-types-discards-qualifiers # Enabled by default.
++-Winherited-variadic-ctor # Enabled by default.
++-Winteger-overflow # Enabled by default.
+--Wlambda-extensions # Enabled by default.
++-Wmissing-sysroot # Enabled by default.
 --Wmodule-build
-+-Wmodule-conflict
++-Wmodule-conflict # Enabled by default.
 +-Wnested-anon-types
-+-Wobjc-property-synthesis
-+-Wodr
-+-Woverloaded-shift-op-parentheses
-+-Wreinterpret-base-class
++-Wobjc-property-synthesis # Enabled by default.
++-Wodr # Enabled by default.
++-Woverloaded-shift-op-parentheses # Enabled by default.
++-Wreinterpret-base-class # Enabled by default.
 --Wsequence-point # DUMMY switch
-+-Wsequence-point
-+-Wsizeof-array-decay
++-Wsequence-point # Enabled by default.
++-Wsizeof-array-decay # Enabled by default.
 +-Wsource-uses-openmp
-+-Wstatic-float-init
-+-Wstatic-local-in-inline
-+-Wstatic-self-init
++-Wstatic-float-init # Enabled by default.
++-Wstatic-local-in-inline # Enabled by default.
++-Wstatic-self-init # Enabled by default.
 +-Wthread-safety-beta
 --Wundefined-internal # DUMMY switch
-+-Wundefined-inline
-+-Wundefined-internal
-+-Wunicode-whitespace
-+-Wunsequenced
-+-Wunused-sanitize-argument
++-Wundefined-inline # Enabled by default.
++-Wundefined-internal # Enabled by default.
++-Wunicode-whitespace # Enabled by default.
++-Wunsequenced # Enabled by default.
++-Wunused-sanitize-argument # Enabled by default.
 +-Wvla-extension

@@ -1,56 +1,56 @@
-+-Wattribute-packed-for-bitfield
-+-Wbitfield-width
-+-Wc++11-inline-namespace
++-Wattribute-packed-for-bitfield # Enabled by default.
++-Wbitfield-width # Enabled by default.
++-Wc++11-inline-namespace # Enabled by default.
 +-Wc++14-binary-literal
-+-Wc++1z-compat
++-Wc++1z-compat # Enabled by default.
 +-WCL4
-+-Wcoreturn-without-coawait
-+-Wdeprecated-attributes
++-Wcoreturn-without-coawait # Enabled by default.
++-Wdeprecated-attributes # Enabled by default.
 +-Wdouble-promotion
---Wfuture-compat
+--Wfuture-compat # Enabled by default.
 +-Wfuture-compat # DUMMY switch
 +-Wgnu-auto-type
 +-Wgnu-include-next
-+-Winclude-next-absolute-path
-+-Winclude-next-outside-header
-+-Wincrement-bool
++-Winclude-next-absolute-path # Enabled by default.
++-Winclude-next-outside-header # Enabled by default.
++-Wincrement-bool # Enabled by default.
 +-Winvalid-or-nonexistent-directory
-+-Wliblto
++-Wliblto # Enabled by default.
 +-Wmicrosoft-anon-tag
-+-Wmicrosoft-cast
++-Wmicrosoft-cast # Enabled by default.
 +-Wmicrosoft-charize
 +-Wmicrosoft-comment-paste
-+-Wmicrosoft-const-init
++-Wmicrosoft-const-init # Enabled by default.
 +-Wmicrosoft-cpp-macro
-+-Wmicrosoft-default-arg-redefinition
++-Wmicrosoft-default-arg-redefinition # Enabled by default.
 +-Wmicrosoft-end-of-file
 +-Wmicrosoft-enum-forward-reference
-+-Wmicrosoft-enum-value
++-Wmicrosoft-enum-value # Enabled by default.
 +-Wmicrosoft-exception-spec
-+-Wmicrosoft-explicit-constructor-call
-+-Wmicrosoft-extra-qualification
++-Wmicrosoft-explicit-constructor-call # Enabled by default.
++-Wmicrosoft-extra-qualification # Enabled by default.
 +-Wmicrosoft-fixed-enum
 +-Wmicrosoft-flexible-array
-+-Wmicrosoft-goto
-+-Wmicrosoft-include
-+-Wmicrosoft-mutable-reference
-+-Wmicrosoft-pure-definition
++-Wmicrosoft-goto # Enabled by default.
++-Wmicrosoft-include # Enabled by default.
++-Wmicrosoft-mutable-reference # Enabled by default.
++-Wmicrosoft-pure-definition # Enabled by default.
 +-Wmicrosoft-redeclare-static
-+-Wmicrosoft-sealed
-+-Wmicrosoft-template
-+-Wmicrosoft-union-member-reference
-+-Wmicrosoft-unqualified-friend
-+-Wmicrosoft-using-decl
-+-Wmicrosoft-void-pseudo-dtor
-+-Wmissing-exception-spec
-+-Wmodule-file-config-mismatch
-+-Wmodule-file-extension
-+-Wmodule-import-in-extern-c
-+-Wmodules-ambiguous-internal-linkage
-+-Wmodules-import-nested-redundant
-+-Wobjc-macro-redefinition
-+-Woption-ignored
-+-Wpch-date-time
-+-Wpragma-once-outside-header
-+-Wpragma-system-header-outside-header
-+-Wregister
++-Wmicrosoft-sealed # Enabled by default.
++-Wmicrosoft-template # Enabled by default.
++-Wmicrosoft-union-member-reference # Enabled by default.
++-Wmicrosoft-unqualified-friend # Enabled by default.
++-Wmicrosoft-using-decl # Enabled by default.
++-Wmicrosoft-void-pseudo-dtor # Enabled by default.
++-Wmissing-exception-spec # Enabled by default.
++-Wmodule-file-config-mismatch # Enabled by default.
++-Wmodule-file-extension # Enabled by default.
++-Wmodule-import-in-extern-c # Enabled by default.
++-Wmodules-ambiguous-internal-linkage # Enabled by default.
++-Wmodules-import-nested-redundant # Enabled by default.
++-Wobjc-macro-redefinition # Enabled by default.
++-Woption-ignored # Enabled by default.
++-Wpch-date-time # Enabled by default.
++-Wpragma-once-outside-header # Enabled by default.
++-Wpragma-system-header-outside-header # Enabled by default.
++-Wregister # Enabled by default.

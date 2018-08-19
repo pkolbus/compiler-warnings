@@ -1,25 +1,25 @@
---Waddress-of-array-temporary
---Waligned-allocation-unavailable
-+-Wargument-outside-range
-+-Watimport-in-framework-header
-+-Watomic-alignment
+--Waddress-of-array-temporary # Enabled by default.
+--Waligned-allocation-unavailable # Enabled by default.
++-Wargument-outside-range # Enabled by default.
++-Watimport-in-framework-header # Enabled by default.
++-Watomic-alignment # Enabled by default.
 +-Wc++98-compat-extra-semi
-+-Wcast-qual-unrelated
-+-Wdangling
++-Wcast-qual-unrelated # Enabled by default.
++-Wdangling # Enabled by default.
 +-Wdeprecated-this-capture
-+-Wframework-include-private-from-public
-+-Wfunction-multiversion
-+-Wignored-pragma-optimize
-+-Wincomplete-framework-module-declaration
-+-Wmemset-transposed-args
-+-Wnontrivial-memaccess
-+-Wordered-compare-function-pointers
++-Wframework-include-private-from-public # Enabled by default.
++-Wfunction-multiversion # Enabled by default.
++-Wignored-pragma-optimize # Enabled by default.
++-Wincomplete-framework-module-declaration # Enabled by default.
++-Wmemset-transposed-args # Enabled by default.
++-Wnontrivial-memaccess # Enabled by default.
++-Wordered-compare-function-pointers # Enabled by default.
 +-Wquoted-include-in-framework-header
 +-Wreturn-std-move
 +-Wreturn-std-move-in-c++11
---Wrtti-for-exceptions
+--Wrtti-for-exceptions # Enabled by default.
 +-Wself-assign-overloaded
-+-Wstdlibcxx-not-found
-+-Wsuspicious-bzero
-+-Wsuspicious-memaccess
-+-Wunsupported-target-opt
++-Wstdlibcxx-not-found # Enabled by default.
++-Wsuspicious-bzero # Enabled by default.
++-Wsuspicious-memaccess # Enabled by default.
++-Wunsupported-target-opt # Enabled by default.

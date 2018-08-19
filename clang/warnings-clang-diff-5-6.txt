@@ -1,32 +1,36 @@
 +-Wbinary-literal
-+-Wbinding-in-condition
++-Wbinding-in-condition # Enabled by default.
+--Wc++17-compat # Enabled by default.
++-Wc++17-compat
 +-Wc++17-compat-pedantic
+--Wc++1z-compat # Enabled by default.
++-Wc++1z-compat
 +-Wc++2a-compat
 +-Wc++2a-compat-pedantic
 +-Wc++2a-extensions
 +-Wc++98-c++11-c++14-c++17-compat
 +-Wc++98-c++11-c++14-c++17-compat-pedantic
 +-Wc++98-c++11-compat-binary-literal
-+-Wenum-compare-switch
-+-Wexperimental-isel
++-Wenum-compare-switch # Enabled by default.
++-Wexperimental-isel # Enabled by default.
 --Wextended-offsetof
-+-Wmicrosoft-inaccessible-base
-+-Wmissing-noescape
-+-Wnsconsumed-mismatch
-+-Wnsreturns-mismatch
++-Wmicrosoft-inaccessible-base # Enabled by default.
++-Wmissing-noescape # Enabled by default.
++-Wnsconsumed-mismatch # Enabled by default.
++-Wnsreturns-mismatch # Enabled by default.
 +-Wnull-pointer-arithmetic
-+-Wobjc-flexible-array
++-Wobjc-flexible-array # Enabled by default.
 +-Wobjc-messaging-id
-+-Wout-of-scope-function
++-Wout-of-scope-function # Enabled by default.
 +-Wpragma-pack
 +-Wpragma-pack-suspicious-include
 +-Wredundant-parens
-+-Wtautological-constant-compare
++-Wtautological-constant-compare # Enabled by default.
 +-Wtautological-constant-in-range-compare
 +-Wtautological-type-limit-compare
 +-Wtautological-unsigned-enum-zero-compare
 +-Wtautological-unsigned-zero-compare
 +-Wundefined-internal-type
-+-Wunicode-homoglyph
-+-Wunsupported-abs
-+-Wunsupported-gpopt
++-Wunicode-homoglyph # Enabled by default.
++-Wunsupported-abs # Enabled by default.
++-Wunsupported-gpopt # Enabled by default.
