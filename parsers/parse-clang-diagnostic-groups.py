@@ -24,6 +24,7 @@ class ClangDiagnostic:
         Construct from a Diagnostic instance (JSON object)
         '''
         self.name = obj['!name']
+        self.text = obj['Text']
         if obj['Group'] is not None:
             self.group_name = obj['Group']['def']
         else:
@@ -52,6 +53,10 @@ class ClangDiagGroup:
         self.diagnostics = []   # List of ClangDiagnostic
         self.children = []      # List of ClangDiagGroup
         self.switch = None      # ClangWarningSwitch
+
+    def get_messages(self) -> list:
+        '''Returns a list of diagnostic messages in the group'''
+        return [diag.text for diag in self.diagnostics]
 
     def is_dummy(self):
         '''
@@ -115,6 +120,14 @@ class ClangWarningSwitch:
             child_groups += group.children
 
         return [group.switch for group in child_groups]
+
+    def get_messages(self) -> list:
+        '''Returns a list of diagnostic messages controlled by the switch'''
+        messages = []
+        for group in self.groups:
+            messages += group.get_messages()
+
+        return list(set(messages))  # Remove duplicates
 
     def is_dummy(self) -> bool:
         '''
@@ -232,6 +245,10 @@ def print_switch(
     comment_string = create_comment_text(switch, args)
     print("# %s-W%s%s" % (
         "  " * level, switch.name, comment_string))
+    if args.text:
+        for item in sorted(switch.get_messages()):
+            print("#       %s%s" % ("  " * level, item))
+
     print_references(switch, level + 1, args)
 
 
@@ -240,6 +257,8 @@ def main(argv):
     parser = argparse.ArgumentParser(
         description="Clang diagnostics group parser")
     common.add_common_parser_options(parser)
+    parser.add_argument("--text", action='store_true', help="""\
+Show text of each diagnostic message.""")
     parser.add_argument("json_path", metavar="json-path", help="""\
 The path to the JSON output from llvm-tblgen.
 """)
@@ -268,6 +287,9 @@ The path to the JSON output from llvm-tblgen.
             continue
         comment_string = create_comment_text(switch, args)
         print("-W%s%s" % (switch.name, comment_string))
+        if args.text:
+            for item in sorted(switch.get_messages()):
+                print("#     %s" % (item))
         if args.unique:
             continue
         print_references(switch, 1, args)

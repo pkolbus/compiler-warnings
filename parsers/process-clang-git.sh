@@ -24,6 +24,8 @@ function parse_clang_info()
           > "$target_dir"/warnings-clang-unique-"$version".txt
     "$DIR"/parse-clang-diagnostic-groups.py --top-level "${json_file}" \
           > "$target_dir"/warnings-clang-top-level-"$version".txt
+    "$DIR"/parse-clang-diagnostic-groups.py --top-level --text "${json_file}" \
+          > "$target_dir"/warnings-clang-messages-"$version".txt
 }
 
 GIT_DIR=$1
