@@ -1,3 +1,4 @@
+dist: xenial
 sudo: required
 before_install:
   - sudo apt-get update -qq
@@ -5,7 +6,9 @@ before_install:
 
 language: python
 python:
-  - "2.7"
+  - "3.5"
+  - "3.6"
+  - "3.7"
 install:
-  - "pip install -r parsers/requirements.txt"
+  - "pip3 install -r parsers/requirements.txt"
 script: ninja -C parsers/ test

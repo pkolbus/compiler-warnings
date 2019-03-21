@@ -68,8 +68,13 @@ parse_clang_info 6 "$target_dir" "$GIT_DIR"/include/clang/Basic
 git -C "$GIT_DIR" checkout origin/release_70
 parse_clang_info 7 "$target_dir" "$GIT_DIR"/include/clang/Basic
 
+git -C "$GIT_DIR" checkout origin/release_80
+parse_clang_info 8 "$target_dir" "$GIT_DIR"/include/clang/Basic
+
 git -C "$GIT_DIR" checkout origin/master
 parse_clang_info NEXT "$target_dir" "$GIT_DIR"/include/clang/Basic
+
+
 
 versions=(
     3.2
@@ -84,6 +89,7 @@ versions=(
     5
     6
     7
+    8
     NEXT
 )
 

@@ -6,7 +6,6 @@ Parses an extract of clang's Diagnostic.td as formatted by the command
 `llvm-tblgen -dump-json`, and identifies relevant information about the
 compiler warning options.
 '''
-from __future__ import print_function
 
 import argparse
 import json

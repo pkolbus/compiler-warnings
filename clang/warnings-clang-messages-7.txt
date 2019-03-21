@@ -926,7 +926,7 @@
 #   -Wstatic-self-init
 #         static variable %0 is suspiciously used within its own initialization
 #   -Wstdlibcxx-not-found
-#         include path for stdlibc++ headers not found; pass '-std=libc++' on the command line to use the libc++ standard library instead
+#         include path for stdlibc++ headers not found; pass '-stdlib=libc++' on the command line to use the libc++ standard library instead
 #   -Wstring-plus-char
 #         adding %0 to a string pointer does not append to the string
 #   -Wstring-plus-int

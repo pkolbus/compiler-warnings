@@ -1,0 +1,22 @@
+--Wat-protocol # Enabled by default.
++-Wat-protocol # DUMMY switch
++-Watomic-implicit-seq-cst
++-Wcall-to-pure-virtual-from-ctor-dtor # Enabled by default.
++-Wctu # Enabled by default.
++-Wdarwin-sdk-settings # Enabled by default.
++-Wdefaulted-function-deleted # Enabled by default.
++-Wdelete-abstract-non-virtual-dtor # Enabled by default.
++-Wdelete-non-abstract-non-virtual-dtor
+--Wduplicate-decl-specifier # Enabled by default.
++-Wduplicate-decl-specifier
++-Wempty-init-stmt
++-Wextra-semi-stmt
++-Wfixed-enum-extension
++-Wimplicit-float-conversion
++-Wimplicit-int-conversion
++-Wnoderef # Enabled by default.
++-Wobjc-property-assign-on-object-type
++-Woverride-init # Enabled by default.
++-Wpointer-integer-compare # Enabled by default.
++-Wsizeof-pointer-div # Enabled by default.
++-Wunicode-zero-width # Enabled by default.

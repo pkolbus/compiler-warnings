@@ -9,7 +9,7 @@ rule get-antlr
 
 build antlr.jar: get-antlr
 
-build GccOptionsLexer.py GccOptionsLexer.tokens GccOptionsListener.py GccOptionsParser.py GccOptions.tokens: antlr GccOptions.g4 | antlr.jar
+build GccOptionsLexer.py GccOptionsLexer.tokens GccOptionsListener.py GccOptionsParser.py GccOptions.tokens: antlr GccOptions.g4 | antlr.jar requirements.txt
 
 build all: phony GccOptionsLexer.py GccOptionsLexer.tokens GccOptionsListener.py GccOptionsParser.py GccOptions.tokens
 
