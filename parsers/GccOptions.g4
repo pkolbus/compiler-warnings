@@ -45,7 +45,7 @@ atom
     | WARNING_TEXT_LITERAL
     ;
 
-WARNING_TEXT_LITERAL : '{' ('a'..'z' | 'A'..'Z' | '-' | '(' | ')' | '%' | ' ')+ '}' ;
+WARNING_TEXT_LITERAL : '{' ('a'..'z' | 'A'..'Z' | '-' | '(' | ')' | '%' | '<' | '>' | ' ')+ '}' ;
 
 INTEGER_LITERAL : '-'? INTEGERCHAR+ INTEGER_SUFFIX?;
 

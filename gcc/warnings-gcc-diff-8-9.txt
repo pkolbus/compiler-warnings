@@ -1,0 +1,23 @@
++-Wabsolute-value # Applies to C,ObjC
++-Waddress-of-packed-member # Enabled by default.
+--Wattribute-alias # Enabled by default.
++-Wattribute-alias
++-Wattribute-alias=
++-Wattribute-warning # Enabled by default.
++-Wc11-c2x-compat # Enabled by default. Applies to C,ObjC
++-Wcannot-profile # Enabled by default.
+--Wchkp
++-Wchkp # Deprecated.
++-Wclass-conversion # Enabled by default. Applies to C++,ObjC++
++-Wdeprecated-copy # Applies to C++,ObjC++
++-Wdeprecated-copy-dtor # Applies to C++,ObjC++
++-Winit-list-lifetime # Enabled by default. Applies to C++,ObjC++
++-Wmissing-profile # Enabled by default.
+--Wmudflap # DUMMY switch
++-Wmudflap # Deprecated.
++-Wno-alloc-size-larger-than
++-Wno-alloca-larger-than
++-Wno-vla-larger-than
++-Wpessimizing-move # Applies to C++,ObjC++
++-Wprio-ctor-dtor # Enabled by default.
++-Wredundant-move # Applies to C++,ObjC++

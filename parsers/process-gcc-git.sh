@@ -67,6 +67,9 @@ parse_gcc_info 7 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 git -C "$GIT_DIR" checkout gcc-8_3_0-release
 parse_gcc_info 8 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 
+git -C "$GIT_DIR" checkout gcc-9_1_0-release
+parse_gcc_info 9 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
+
 git -C "$GIT_DIR" checkout origin/master
 parse_gcc_info NEXT "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 
@@ -86,6 +89,7 @@ versions=(
     6
     7
     8
+    9
     NEXT
 )
 
