@@ -1,0 +1,16 @@
++-Wavr-rtlib-linking-quirks # Enabled by default.
++-Wconcepts-ts-compat # Enabled by default.
++-Wctad-maybe-unsupported
++-Wexport-unnamed # Enabled by default.
++-Wexport-using-directive # Enabled by default.
++-Wfortify-source # Enabled by default.
++-Wimplicit-fixed-point-conversion # Enabled by default.
++-Wincomplete-setjmp-declaration # Enabled by default.
++-Wmicrosoft-drectve-section # Enabled by default.
++-Wmodule-import
++-Wobjc-bool-constant-conversion # Enabled by default.
++-Wobjc-boxing # Enabled by default.
++-Wtautological-objc-bool-compare # Enabled by default.
+--Wtype-limits # DUMMY switch
++-Wtype-limits
++-Wunderaligned-exception-object # Enabled by default.

@@ -18,6 +18,11 @@ Clang includes `-Weverything` flag, that is not shown in these lists,
 that enables all warnings. Clang documentation provides
 [reference for some of the diagnostic flags in Clang](https://clang.llvm.org/docs/DiagnosticsReference.html).
 
+* clang 9 [all](clang/warnings-clang-9.txt)
+  • [top level](clang/warnings-clang-top-level-9.txt)
+  • [messages](clang/warnings-clang-messages-9.txt)
+  • [unique](clang/warnings-clang-unique-9.txt)
+  • [diff](clang/warnings-clang-diff-8-9.txt)
 * clang 8 [all](clang/warnings-clang-8.txt)
   • [top level](clang/warnings-clang-top-level-8.txt)
   • [messages](clang/warnings-clang-messages-7.txt)
