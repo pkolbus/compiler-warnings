@@ -25,7 +25,7 @@ that enables all warnings. Clang documentation provides
   • [diff](clang/warnings-clang-diff-8-9.txt)
 * clang 8 [all](clang/warnings-clang-8.txt)
   • [top level](clang/warnings-clang-top-level-8.txt)
-  • [messages](clang/warnings-clang-messages-7.txt)
+  • [messages](clang/warnings-clang-messages-8.txt)
   • [unique](clang/warnings-clang-unique-8.txt)
   • [diff](clang/warnings-clang-diff-7-8.txt)
 * clang 7 [all](clang/warnings-clang-7.txt)
