@@ -76,7 +76,7 @@ def parse_warning_blocks(fp):
                 continue
             # if not option_name.startswith("W"):
             #     continue
-            option_attributes = line
+            option_attributes = line.split(";", 1)[0]
             blocks.append((option_name, option_attributes))
             continue
     return blocks
