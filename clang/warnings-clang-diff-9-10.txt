@@ -1,0 +1,63 @@
++-Walloca
++-Wambiguous-reversed-operator # Enabled by default.
++-Wanon-enum-enum-conversion
+--Wbitwise-op-parentheses # Enabled by default.
++-Wbitwise-conditional-parentheses # Enabled by default.
++-Wbitwise-op-parentheses
++-Wbool-operation # Enabled by default.
++-Wbuiltin-assume-aligned-alignment # Enabled by default.
++-Wc++20-compat
++-Wc++20-compat-pedantic
++-Wc++20-designator
++-Wc++20-extensions
++-Wc99-designator
++-Wconstant-evaluated # Enabled by default.
++-Wdangling-gsl # Enabled by default.
++-Wdeprecated-anon-enum-enum-conversion # Enabled by default.
++-Wdeprecated-array-compare # Enabled by default.
++-Wdeprecated-comma-subscript # Enabled by default.
++-Wdeprecated-copy
++-Wdeprecated-copy-dtor
++-Wdeprecated-enum-compare # Enabled by default.
++-Wdeprecated-enum-compare-conditional # Enabled by default.
++-Wdeprecated-enum-enum-conversion # Enabled by default.
++-Wdeprecated-enum-float-conversion # Enabled by default.
++-Wdeprecated-volatile # Enabled by default.
++-Wenum-compare-conditional
+--Wenum-conversion # Enabled by default.
++-Wenum-conversion
++-Wenum-enum-conversion
++-Wenum-float-conversion
++-Wfinal-dtor-non-final-class # Enabled by default.
++-Wformat-type-confusion
++-Wgnu-inline-cpp-without-extern # Enabled by default.
++-Whip-only # Enabled by default.
++-Wimplicit-int-float-conversion
++-Wint-in-bool-context
++-Winvalid-no-builtin-names # Enabled by default.
+--Wlogical-op-parentheses # Enabled by default.
++-Wlogical-op-parentheses
++-Wmicrosoft-template-shadow # Enabled by default.
++-Wmisexpect
++-Wmisleading-indentation
++-Wmissing-constinit # Enabled by default.
++-Wobjc-signed-char-bool
++-Wobjc-signed-char-bool-implicit-float-conversion # Enabled by default.
++-Wobjc-signed-char-bool-implicit-int-conversion
++-Wopenmp
++-Wopenmp-mapping # Enabled by default.
+--Wparentheses # Enabled by default.
++-Wparentheses
++-Wpointer-compare # Enabled by default.
++-Wpoison-system-directories
++-Wrange-loop-bind-reference
++-Wrange-loop-construct
++-Wreorder-ctor
++-Wreorder-init-list # Enabled by default.
++-Wrequires-expression # Enabled by default.
++-Wsigned-unsigned-wchar # Enabled by default.
++-Wsizeof-array-div # Enabled by default.
++-Wstack-exhausted # Enabled by default.
++-Wtautological-bitwise-compare
++-Wunknown-cuda-version # Enabled by default.
++-Wxor-used-as-pow # Enabled by default.
