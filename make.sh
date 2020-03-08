@@ -101,11 +101,13 @@ mkdir -p build
 
 if [ "${BUILD_CLANG}" == "true" ]; then
     echo "Running the clang parser..."
+    CLANG_REMOTE="https://github.com/llvm/llvm-project.git"
 
     if [ -e build/clang/.git ]; then
+        run_in_docker git -C build/clang remote set-url origin ${CLANG_REMOTE}
         run_in_docker git -C build/clang remote update
     else
-        run_in_docker git clone https://github.com/llvm-mirror/clang.git build/clang
+        run_in_docker git clone ${CLANG_REMOTE} build/clang
     fi
 
     run_in_docker ./parsers/process-clang-git.sh build/clang
