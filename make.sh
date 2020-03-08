@@ -90,6 +90,7 @@ cp parsers/requirements.txt docker/requirements.txt
 ${DOCKER} image build \
     -q \
     -t ${DOCKER_IMAGE_TAG} \
+    --network host \
     --cache-from=${DOCKER_IMAGE_TAG}:latest \
     ./docker/
 
