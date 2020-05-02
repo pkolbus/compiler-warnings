@@ -9,7 +9,7 @@ RUN apt-get update \
     && apt-get -y install \
     default-jre-headless \
     git \
-    llvm-7 \
+    llvm \
     ninja-build \
     python3-minimal \
     python3-pip \
@@ -18,7 +18,5 @@ RUN apt-get update \
 
 COPY requirements.txt /tmp/requirements.txt
 RUN python3 -m pip install -r /tmp/requirements.txt
-
-RUN ln -s /usr/bin/llvm-tblgen-7 /usr/bin/llvm-tblgen
 
 CMD ["/bin/bash"]
