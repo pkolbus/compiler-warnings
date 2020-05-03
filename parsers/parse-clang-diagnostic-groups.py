@@ -201,7 +201,7 @@ class ClangDiagnostics:
             group.switch = self.switches[switch_name]
 
         # Resolve parent-child relationships in groups
-        for group_name, group in self.groups.items():
+        for group in self.groups.values():
             group.children = [self.groups[name] for name in group.child_names]
             for child_group in group.children:
                 child_group.has_parent = True

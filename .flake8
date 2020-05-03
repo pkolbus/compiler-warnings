@@ -1,0 +1,3 @@
+[flake8]
+max-line-length=88
+exclude=.git,build,parsers/.antlr,parsers/GccOptions*er.py

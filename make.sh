@@ -94,8 +94,9 @@ ${DOCKER} image build \
     --cache-from=${DOCKER_IMAGE_TAG}:latest \
     ./docker/
 
-# Run formatting on the Python code
+# Run formatting/linting on the Python code
 run_in_docker black .
+run_in_docker flake8 .
 
 #
 # Prepare to build the warning options
