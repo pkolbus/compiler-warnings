@@ -2,7 +2,7 @@
 +-Wattributes # Enabled by default.
 +-Wc++-compat # Applies to C
 +-Wint-to-pointer-cast # Enabled by default. Applies to C,ObjC
-+-Wnormalized=
++-Wnormalized=<id|nfc|nfkc>
 +-Wpointer-to-int-cast # Enabled by default. Applies to C,ObjC
 +-Wpragmas # Enabled by default.
 +-Wstack-protector

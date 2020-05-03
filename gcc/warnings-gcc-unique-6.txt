@@ -69,7 +69,7 @@
 -Wformat=1
 -Wformat=2
 -Wframe-address
--Wframe-larger-than=
+-Wframe-larger-than=<number>
 -Wfree-nonheap-object # Enabled by default.
 -Whsa # Enabled by default.
 -Wignored-attributes # Enabled by default. Applies to C,C++
@@ -89,7 +89,7 @@
 -Winvalid-pch
 -Wjump-misses-init # Applies to C,ObjC
 -Wlarger-than-
--Wlarger-than=
+-Wlarger-than=<number>
 -Wliteral-suffix # Enabled by default. Applies to C++,ObjC++
 -Wlogical-not-parentheses
 -Wlogical-op
@@ -119,7 +119,7 @@
 -Wnonnull
 -Wnonnull-compare
 -Wnormalized
--Wnormalized=
+-Wnormalized=<none|id|nfc|nfkc>
 -Wnull-dereference
 -Wodr # Enabled by default.
 -Wold-style-cast # Applies to C++,ObjC++

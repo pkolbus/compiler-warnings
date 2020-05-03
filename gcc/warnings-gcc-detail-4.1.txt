@@ -97,7 +97,7 @@
 #     Warn when an inlined function cannot be inlined
 -Winvalid-pch
 #     Warn about PCH files that are found but not used
--Wlarger-than-
+-Wlarger-than-<number>
 #     Warn if an object is larger than <number> bytes
 -Wmain
 #     Warn about suspicious declarations of \"main\"
@@ -121,7 +121,7 @@
 #     Warn about non-virtual destructors
 -Wnonnull
 #     Warn about NULL being passed to argument slots marked as requiring non-NULL
--Wnormalized=
+-Wnormalized=<id|nfc|nfkc>
 #     Warn about non-normalised Unicode strings
 -Wold-style-cast
 #     Warn if a C-style cast is used in a program

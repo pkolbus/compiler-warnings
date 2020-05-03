@@ -43,7 +43,7 @@
 -Winit-self
 -Winline
 -Winvalid-pch
--Wlarger-than-
+-Wlarger-than-<number>
 -Wmain
 -Wmissing-braces
 -Wmissing-declarations

@@ -23,7 +23,9 @@
 +-Wliteral-suffix # Enabled by default. Applies to C++,ObjC++
 +-Wlogical-not-parentheses
 +-Wmemset-transposed-args
+--Wnormalized=<id|nfc|nfkc>
 +-Wnormalized
++-Wnormalized=<none|id|nfc|nfkc>
 +-Wodr # Enabled by default.
 +-Wshadow-ivar # Enabled by default. Applies to ObjC,ObjC++
 +-Wshift-count-negative # Enabled by default.

@@ -117,12 +117,12 @@
 #    -Wformat-nonliteral
 #    -Wformat-security
 #    -Wformat-y2k
--Wframe-larger-than=
+-Wframe-larger-than=<number>
 -Wimport # DUMMY switch
 -Winline
 -Winvalid-pch
 -Wjump-misses-init
--Wlarger-than=
+-Wlarger-than=<number>
 -Wliteral-suffix
 -Wlogical-op
 -Wmissing-declarations
@@ -132,7 +132,7 @@
 -Wnested-externs
 -Wnoexcept
 -Wnon-virtual-dtor
--Wnormalized=
+-Wnormalized=<id|nfc|nfkc>
 -Wold-style-cast
 -Wold-style-definition
 -Woverloaded-virtual

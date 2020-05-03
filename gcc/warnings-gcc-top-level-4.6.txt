@@ -80,12 +80,12 @@
 -Wformat-y2k
 -Wformat-zero-length
 -Wformat=
--Wframe-larger-than=
+-Wframe-larger-than=<number>
 -Wimport # DUMMY switch
 -Winit-self
 -Winline
 -Winvalid-pch
--Wlarger-than=
+-Wlarger-than=<number>
 -Wlogical-op
 -Wmissing-braces
 -Wmissing-declarations
@@ -98,7 +98,7 @@
 -Wnoexcept
 -Wnon-virtual-dtor
 -Wnonnull
--Wnormalized=
+-Wnormalized=<id|nfc|nfkc>
 -Wold-style-cast
 -Wold-style-definition
 -Woverloaded-virtual

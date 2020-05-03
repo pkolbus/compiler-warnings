@@ -163,12 +163,12 @@
 #    -Wformat-nonliteral
 #    -Wformat-security
 #    -Wformat-y2k
--Wframe-larger-than=
+-Wframe-larger-than=<number>
 -Wimport # DUMMY switch
 -Winline
 -Winvalid-pch
 -Wjump-misses-init
--Wlarger-than=
+-Wlarger-than=<number>
 -Wlogical-op
 -Wmissing-declarations
 -Wmissing-include-dirs
@@ -179,7 +179,7 @@
 -Wnamespaces
 -Wnested-externs
 -Wnoexcept
--Wnormalized=
+-Wnormalized=<none|id|nfc|nfkc>
 -Wnull-dereference
 -Wold-style-cast
 -Wold-style-definition

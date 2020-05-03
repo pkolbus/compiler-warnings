@@ -68,7 +68,7 @@
 #     Warn about invalid uses of the \"offsetof\" macro
 -Winvalid-pch
 #     Warn about PCH files that are found but not used
--Wlarger-than-
+-Wlarger-than-<number>
 #     Warn if an object is larger than <number> bytes
 -Wlong-long
 #     Do not warn about using \"long long\" when -pedantic

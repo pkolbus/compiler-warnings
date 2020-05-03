@@ -44,7 +44,7 @@
 -Wint-to-pointer-cast # Enabled by default. Applies to C,ObjC
 -Winvalid-offsetof # Enabled by default. Applies to C++,ObjC++
 -Winvalid-pch
--Wlarger-than-
+-Wlarger-than-<number>
 -Wlong-long # Enabled by default.
 -Wmain # Applies to C,ObjC
 -Wmissing-braces
@@ -59,7 +59,7 @@
 -Wnon-template-friend # Enabled by default. Applies to C++,ObjC++
 -Wnon-virtual-dtor # Applies to C++,ObjC++
 -Wnonnull # Applies to C,ObjC
--Wnormalized=
+-Wnormalized=<id|nfc|nfkc>
 -Wold-style-cast # Applies to C++,ObjC++
 -Wold-style-definition # Applies to C,ObjC
 -Woverflow # Enabled by default.

@@ -80,7 +80,7 @@
 -Wabi-tag
 -Wabi=
 -Waggregate-return
--Waligned-new=
+-Waligned-new=[none|global|all]
 -Wall
 #    -Waddress
 #    -Waligned-new=1
@@ -159,7 +159,7 @@
 -Walloc-size-larger-than=
 -Walloc-zero
 -Walloca
--Walloca-larger-than=
+-Walloca-larger-than=<number>
 -Warray-bounds
 -Warray-bounds=
 -Wassign-intercept
@@ -216,13 +216,13 @@
 #    -Wformat-nonliteral
 #    -Wformat-security
 #    -Wformat-y2k
--Wframe-larger-than=
+-Wframe-larger-than=<byte-size>
 -Wimplicit-fallthrough=
 -Wimport # DUMMY switch
 -Winline
 -Winvalid-pch
 -Wjump-misses-init
--Wlarger-than=
+-Wlarger-than=<byte-size>
 -Wlogical-op
 -Wmissing-declarations
 -Wmissing-include-dirs
@@ -233,7 +233,7 @@
 -Wnamespaces
 -Wnested-externs
 -Wnoexcept
--Wnormalized=
+-Wnormalized=[none|id|nfc|nfkc]
 -Wnull-dereference
 -Wold-style-cast
 -Wold-style-definition
@@ -259,7 +259,7 @@
 -Wshift-overflow=
 -Wsign-promo
 -Wstack-protector
--Wstack-usage=
+-Wstack-usage=<byte-size>
 -Wstrict-aliasing
 -Wstrict-aliasing=
 -Wstrict-null-sentinel
@@ -296,6 +296,6 @@
 -Wuseless-cast
 -Wvector-operation-performance
 -Wvirtual-inheritance
--Wvla-larger-than=
+-Wvla-larger-than=<number>
 -Wwrite-strings
 -Wzero-as-null-pointer-constant

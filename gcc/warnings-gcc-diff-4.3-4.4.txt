@@ -5,7 +5,9 @@
 +-Wdeprecated # Enabled by default.
 +-Wenum-compare # Enabled by default. Applies to C++,ObjC++
 +-Wframe-larger-than=
-+-Wlarger-than=
+--Wlarger-than-<number>
++-Wlarger-than-
++-Wlarger-than=<number>
 --Wmain
 +-Wmain # Enabled by default.
 +-Wmudflap # Enabled by default.

@@ -39,7 +39,7 @@
 -Winline
 -Winvalid-offsetof # Enabled by default. Applies to C++,ObjC++
 -Winvalid-pch
--Wlarger-than-
+-Wlarger-than-<number>
 -Wlong-long # Enabled by default.
 -Wmain # Applies to C,ObjC
 -Wmissing-braces

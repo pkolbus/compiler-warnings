@@ -46,8 +46,8 @@ def parse_warning_blocks(fp: io.TextIOBase):
     """
     Parse option definition records from fp.
 
-    Parses option definition records and returns a list of 3-tuples containing
-    the option name, option_properties, and help text.
+    Parses option definition records and returns a list of 4-tuples containing
+    the option name, display name, option_properties, and help text.
 
     See https://gcc.gnu.org/onlinedocs/gccint/Option-file-format.html for the
     file format.
@@ -85,14 +85,18 @@ def parse_warning_blocks(fp: io.TextIOBase):
                 continue
             help_text = " ".join(help_lines)
             if "\t" in help_text:
-                _, help_text = help_text.split("\t", maxsplit=1)
-            blocks.append((option_name, option_attributes, help_text))
+                display_name, help_text = help_text.split("\t", maxsplit=1)
+            else:
+                display_name = None
+            blocks.append((option_name, display_name, option_attributes, help_text))
 
     if state == ParseState.OPTION_HELP and option_name not in BORING_OPTIONS:
         help_text = " ".join(help_lines)
         if "\t" in help_text:
-            _, help_text = help_text.split("\t", maxsplit=1)
-        blocks.append((option_name, option_attributes, help_text))
+            display_name, help_text = help_text.split("\t", maxsplit=1)
+        else:
+            display_name = None
+        blocks.append((option_name, display_name, option_attributes, help_text))
 
     return blocks
 
@@ -486,6 +490,7 @@ class GccOption:
         self._children: Set[str] = set()
         self._default = False
         self._deprecated = False
+        self._display_name = None
         self._dummy = False
         self._help_text = str()
         self._languages: Set[str] = set()
@@ -531,6 +536,9 @@ class GccOption:
         else:
             return ""
 
+    def get_display_name(self) -> str:
+        return self._display_name if self._display_name else "-" + self._name
+
     def get_dummy_text(self) -> str:
         return " # DUMMY switch" if self._dummy else str()
 
@@ -555,6 +563,12 @@ class GccOption:
 
     def set_deprecated(self):
         self._deprecated = True
+
+    def set_display_name(self, display_name: str):
+        if display_name.startswith("-"):
+            self._display_name = display_name
+        else:
+            self._display_name = "-" + display_name
 
     def set_dummy(self):
         self._dummy = True
@@ -586,8 +600,11 @@ class GccDiagnostics:
         """Parse filename and add options from the file."""
         blocks = parse_warning_blocks(open(filename))
 
-        for option_name, option_arguments, help_text in blocks:
+        for option_name, display_name, option_arguments, help_text in blocks:
             option = self.get(option_name)
+
+            if display_name:
+                option.set_display_name(display_name)
 
             if help_text:
                 option.set_help_text(help_text)
@@ -714,9 +731,9 @@ def print_option(
     all_options: GccDiagnostics, option: GccOption, level: int, args: argparse.Namespace
 ):
     if level:
-        print("# " + "  " * level, "-" + option.get_name())
+        print("#  " + "  " * level + option.get_display_name())
     else:
-        print("-" + option.get_name())
+        print(option.get_display_name())
     if args.text and option.get_help_text():
         print("#  " + "  " * (level + 2), option.get_help_text())
     for child in all_options.get_children(option):
@@ -752,7 +769,7 @@ def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics):
         dummy_text = option.get_dummy_text()
         if args.unique:
             comment_text = option.get_comment_text()
-            print("-%s%s%s" % (option.get_name(), dummy_text, comment_text))
+            print(option.get_display_name() + dummy_text + comment_text)
             continue
 
         if args.top_level and not all_options.is_top_level(option):
@@ -761,11 +778,11 @@ def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics):
         sorted_aliases = option.get_aliases()
         if sorted_aliases:
             print(
-                "-%s = -%s%s"
-                % (option.get_name(), ", -".join(sorted_aliases), dummy_text)
+                "%s = -%s%s"
+                % (option.get_display_name(), ", -".join(sorted_aliases), dummy_text)
             )
         else:
-            print("-%s%s" % (option.get_name(), dummy_text))
+            print(option.get_display_name() + dummy_text)
 
         if args.text and option.get_help_text():
             print("#     %s" % (option.get_help_text()))

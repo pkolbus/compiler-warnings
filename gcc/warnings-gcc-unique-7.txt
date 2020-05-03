@@ -10,12 +10,12 @@
 -Waggregate-return
 -Waggressive-loop-optimizations # Enabled by default.
 -Waligned-new # Applies to C++,ObjC++
--Waligned-new= # Applies to C++,ObjC++
+-Waligned-new=[none|global|all] # Applies to C++,ObjC++
 -Wall
 -Walloc-size-larger-than=
 -Walloc-zero
 -Walloca
--Walloca-larger-than=
+-Walloca-larger-than=<number>
 -Warray-bounds
 -Warray-bounds=
 -Wassign-intercept # Applies to ObjC,ObjC++
@@ -87,7 +87,7 @@
 -Wformat=1
 -Wformat=2
 -Wframe-address
--Wframe-larger-than=
+-Wframe-larger-than=<number>
 -Wfree-nonheap-object # Enabled by default.
 -Whsa # Enabled by default.
 -Wignored-attributes # Enabled by default. Applies to C,C++
@@ -110,7 +110,7 @@
 -Winvalid-pch
 -Wjump-misses-init # Applies to C,ObjC
 -Wlarger-than-
--Wlarger-than=
+-Wlarger-than=<number>
 -Wliteral-suffix # Enabled by default. Applies to C++,ObjC++
 -Wlogical-not-parentheses
 -Wlogical-op
@@ -142,7 +142,7 @@
 -Wnonnull
 -Wnonnull-compare
 -Wnormalized
--Wnormalized=
+-Wnormalized=[none|id|nfc|nfkc]
 -Wnull-dereference
 -Wodr # Enabled by default.
 -Wold-style-cast # Applies to C++,ObjC++
@@ -198,7 +198,7 @@
 -Wsizeof-array-argument # Enabled by default.
 -Wsizeof-pointer-memaccess
 -Wstack-protector
--Wstack-usage=
+-Wstack-usage=<number>
 -Wstrict-aliasing
 -Wstrict-aliasing=
 -Wstrict-null-sentinel # Applies to C++,ObjC++
@@ -259,7 +259,7 @@
 -Wvirtual-inheritance # Applies to C++,ObjC++
 -Wvirtual-move-assign # Enabled by default. Applies to C++,ObjC++
 -Wvla # Enabled by default.
--Wvla-larger-than=
+-Wvla-larger-than=<number>
 -Wvolatile-register-var
 -Wwrite-strings
 -Wzero-as-null-pointer-constant # Applies to C++,ObjC++

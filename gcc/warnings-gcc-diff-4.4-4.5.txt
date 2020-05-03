@@ -1,6 +1,8 @@
 +-Wconversion-null # Enabled by default. Applies to C++,ObjC++
 --Wenum-compare # Enabled by default. Applies to C++,ObjC++
 +-Wenum-compare # Enabled by default.
+--Wframe-larger-than=
++-Wframe-larger-than=<number>
 +-Wjump-misses-init # Enabled by default. Applies to C,ObjC
 --Wuninitialized
 +-Wuninitialized # Enabled by default.

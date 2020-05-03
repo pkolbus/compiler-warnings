@@ -147,7 +147,7 @@
 #    -Wformat-nonliteral
 #    -Wformat-security
 #    -Wformat-y2k
--Wframe-larger-than=
+-Wframe-larger-than=<number>
 -Wfree-nonheap-object
 -Wignored-qualifiers
 -Wimplicit
@@ -167,7 +167,7 @@
 -Winvalid-pch
 -Wjump-misses-init
 -Wlarger-than- = -Wlarger-than=
--Wlarger-than=
+-Wlarger-than=<number>
 -Wliteral-suffix
 -Wlogical-not-parentheses
 -Wlogical-op
@@ -192,7 +192,7 @@
 -Wnon-virtual-dtor
 -Wnonnull
 -Wnormalized = -Wnormalized=nfc
--Wnormalized=
+-Wnormalized=<none|id|nfc|nfkc>
 -Wodr
 -Wold-style-cast
 -Wold-style-declaration

@@ -67,7 +67,7 @@
 -Wformat=
 -Wformat=1
 -Wformat=2
--Wframe-larger-than=
+-Wframe-larger-than=<number>
 -Wfree-nonheap-object # Enabled by default.
 -Wignored-qualifiers # Applies to C,C++
 -Wimplicit # Applies to C,ObjC
@@ -85,7 +85,7 @@
 -Winvalid-pch
 -Wjump-misses-init # Applies to C,ObjC
 -Wlarger-than-
--Wlarger-than=
+-Wlarger-than=<number>
 -Wliteral-suffix # Enabled by default. Applies to C++,ObjC++
 -Wlogical-not-parentheses
 -Wlogical-op
@@ -110,7 +110,7 @@
 -Wnon-virtual-dtor # Applies to C++,ObjC++
 -Wnonnull
 -Wnormalized
--Wnormalized=
+-Wnormalized=<none|id|nfc|nfkc>
 -Wodr # Enabled by default.
 -Wold-style-cast # Applies to C++,ObjC++
 -Wold-style-declaration # Applies to C,ObjC

@@ -159,7 +159,7 @@
 #     Warn about things that change between the current -fabi-version and the specified version.
 -Waggregate-return
 #     Warn about returning structures, unions or arrays.
--Waligned-new=
+-Waligned-new=[none|global|all]
 #     Warn even if 'new' uses a class member allocation function.
 -Wall
 #     Enable most warning messages.
@@ -317,7 +317,7 @@
 #     -Walloc-zero Warn for calls to allocation functions that specify zero bytes.
 -Walloca
 #     Warn on any use of alloca.
--Walloca-larger-than=
+-Walloca-larger-than=<number>
 #     Warn on unbounded uses of alloca, and on bounded uses of alloca whose bound can be larger than <number> bytes.
 -Warray-bounds
 #     Warn if an array is accessed out of bounds.
@@ -430,7 +430,7 @@
 #         Warn about possible security problems with format functions.
 #    -Wformat-y2k
 #         Warn about strftime formats yielding 2-digit years.
--Wframe-larger-than=
+-Wframe-larger-than=<byte-size>
 #     Warn if a function's stack frame requires in excess of <byte-size>.
 -Wimplicit-fallthrough=
 #     Warn when a switch case falls through.
@@ -441,7 +441,7 @@
 #     Warn about PCH files that are found but not used.
 -Wjump-misses-init
 #     Warn when a jump misses a variable initialization.
--Wlarger-than=
+-Wlarger-than=<byte-size>
 #     Warn if an object's size exceeds <byte-size>.
 -Wlogical-op
 #     Warn when a logical operator is suspiciously always evaluating to true or false.
@@ -463,7 +463,7 @@
 #     Warn about \"extern\" declarations not at file scope.
 -Wnoexcept
 #     Warn when a noexcept expression evaluates to false even though the expression can't actually throw.
--Wnormalized=
+-Wnormalized=[none|id|nfc|nfkc]
 #     Warn about non-normalized Unicode strings.
 -Wnull-dereference
 #     Warn if dereferencing a NULL pointer may lead to erroneous or undefined behavior.
@@ -515,7 +515,7 @@
 #     Warn when overload promotes from unsigned to signed.
 -Wstack-protector
 #     Warn when not issuing stack smashing protection for some reason.
--Wstack-usage=
+-Wstack-usage=<byte-size>
 #     Warn if stack usage might exceed <byte-size>.
 -Wstrict-aliasing
 #     Warn about code which might break strict aliasing rules.
@@ -589,7 +589,7 @@
 #     Warn when a vector operation is compiled outside the SIMD.
 -Wvirtual-inheritance
 #     Warn on direct virtual inheritance.
--Wvla-larger-than=
+-Wvla-larger-than=<number>
 #     Warn on unbounded uses of variable-length arrays, and on bounded uses of variable-length arrays whose bound can be larger than <number> bytes. <number> bytes.
 -Wwrite-strings
 #     In C++, nonzero means warn about deprecated conversion from string literals to 'char *'.  In C, similar warning, except that the conversion is of course not deprecated by the ISO C standard.

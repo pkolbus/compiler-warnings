@@ -39,7 +39,7 @@
 -Winline
 -Winvalid-offsetof
 -Winvalid-pch
--Wlarger-than-
+-Wlarger-than-<number>
 -Wlong-long
 -Wmain
 -Wmissing-braces

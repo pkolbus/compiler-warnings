@@ -154,7 +154,7 @@
 #    -Wformat-security
 #    -Wformat-y2k
 -Wframe-address
--Wframe-larger-than=
+-Wframe-larger-than=<number>
 -Wfree-nonheap-object
 -Whsa
 -Wignored-attributes
@@ -176,7 +176,7 @@
 -Winvalid-pch
 -Wjump-misses-init
 -Wlarger-than- = -Wlarger-than=
--Wlarger-than=
+-Wlarger-than=<number>
 -Wliteral-suffix
 -Wlogical-not-parentheses
 -Wlogical-op
@@ -206,7 +206,7 @@
 -Wnonnull
 -Wnonnull-compare
 -Wnormalized = -Wnormalized=nfc
--Wnormalized=
+-Wnormalized=<none|id|nfc|nfkc>
 -Wnull-dereference
 -Wodr
 -Wold-style-cast

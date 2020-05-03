@@ -1,9 +1,9 @@
 +-Waligned-new # Applies to C++,ObjC++
-+-Waligned-new= # Applies to C++,ObjC++
++-Waligned-new=[none|global|all] # Applies to C++,ObjC++
 +-Walloc-size-larger-than=
 +-Walloc-zero
 +-Walloca
-+-Walloca-larger-than=
++-Walloca-larger-than=<number>
 +-Wbool-operation
 +-Wbuiltin-declaration-mismatch # Enabled by default.
 +-Wc++17-compat # Applies to C++,ObjC++
@@ -21,6 +21,8 @@
 +-Wint-in-bool-context
 +-Wmemset-elt-size
 +-Wnoexcept-type # Applies to C++,ObjC++
+--Wnormalized=<none|id|nfc|nfkc>
++-Wnormalized=[none|id|nfc|nfkc]
 +-Wpointer-compare # Enabled by default.
 +-Wregister # Applies to C++,ObjC++
 +-Wrestrict
@@ -29,7 +31,9 @@
 +-Wshadow=compatible-local
 +-Wshadow=global
 +-Wshadow=local
+--Wstack-usage=
++-Wstack-usage=<number>
 +-Wstringop-overflow
 +-Wstringop-overflow=
 +-Wswitch-unreachable # Enabled by default.
-+-Wvla-larger-than=
++-Wvla-larger-than=<number>

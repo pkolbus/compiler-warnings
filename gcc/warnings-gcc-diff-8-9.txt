@@ -11,7 +11,11 @@
 +-Wclass-conversion # Enabled by default. Applies to C++,ObjC++
 +-Wdeprecated-copy # Applies to C++,ObjC++
 +-Wdeprecated-copy-dtor # Applies to C++,ObjC++
+--Wframe-larger-than=<number>
++-Wframe-larger-than=<byte-size>
 +-Winit-list-lifetime # Enabled by default. Applies to C++,ObjC++
+--Wlarger-than=<number>
++-Wlarger-than=<byte-size>
 +-Wmissing-profile # Enabled by default.
 --Wmudflap # DUMMY switch
 +-Wmudflap # Deprecated.
@@ -21,3 +25,5 @@
 +-Wpessimizing-move # Applies to C++,ObjC++
 +-Wprio-ctor-dtor # Enabled by default.
 +-Wredundant-move # Applies to C++,ObjC++
+--Wstack-usage=<number>
++-Wstack-usage=<byte-size>

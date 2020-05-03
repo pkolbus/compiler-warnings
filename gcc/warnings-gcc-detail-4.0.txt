@@ -85,7 +85,7 @@
 #     Warn when an inlined function cannot be inlined
 -Winvalid-pch
 #     Warn about PCH files that are found but not used
--Wlarger-than-
+-Wlarger-than-<number>
 #     Warn if an object is larger than <number> bytes
 -Wmain
 #     Warn about suspicious declarations of \"main\"

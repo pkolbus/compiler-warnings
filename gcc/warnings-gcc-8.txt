@@ -12,7 +12,7 @@
 -Waggregate-return
 -Waggressive-loop-optimizations
 -Waligned-new = -Waligned-new=global
--Waligned-new=
+-Waligned-new=[none|global|all]
 -Wall
 #    -Waddress
 #    -Waligned-new=1
@@ -93,7 +93,7 @@
 -Walloc-size-larger-than=
 -Walloc-zero
 -Walloca
--Walloca-larger-than=
+-Walloca-larger-than=<number>
 -Warray-bounds
 -Warray-bounds=
 -Wassign-intercept
@@ -205,7 +205,7 @@
 #    -Wformat-security
 #    -Wformat-y2k
 -Wframe-address
--Wframe-larger-than=
+-Wframe-larger-than=<number>
 -Wfree-nonheap-object
 -Whsa
 -Wif-not-aligned
@@ -231,7 +231,7 @@
 -Winvalid-pch
 -Wjump-misses-init
 -Wlarger-than- = -Wlarger-than=
--Wlarger-than=
+-Wlarger-than=<number>
 -Wliteral-suffix
 -Wlogical-not-parentheses
 -Wlogical-op
@@ -265,7 +265,7 @@
 -Wnonnull
 -Wnonnull-compare
 -Wnormalized = -Wnormalized=nfc
--Wnormalized=
+-Wnormalized=[none|id|nfc|nfkc]
 -Wnull-dereference
 -Wodr
 -Wold-style-cast
@@ -335,7 +335,7 @@
 -Wsizeof-pointer-div
 -Wsizeof-pointer-memaccess
 -Wstack-protector
--Wstack-usage=
+-Wstack-usage=<number>
 -Wstrict-aliasing
 -Wstrict-aliasing=
 -Wstrict-null-sentinel
@@ -409,7 +409,7 @@
 -Wvirtual-inheritance
 -Wvirtual-move-assign
 -Wvla
--Wvla-larger-than=
+-Wvla-larger-than=<number>
 -Wvolatile-register-var
 -Wwrite-strings
 -Wzero-as-null-pointer-constant
