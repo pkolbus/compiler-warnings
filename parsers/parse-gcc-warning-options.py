@@ -4,6 +4,7 @@ import argparse
 import antlr4
 import common
 import sys
+from typing import Iterable, List, Set
 
 import GccOptionsLexer
 import GccOptionsListener
@@ -25,11 +26,11 @@ WARNINGS_NON_W = {"pedantic"}
 HIDDEN_WARNINGS = [
     # Pedantic is always in but in the options file it is only in 4.8 and later
     # GCC versions.
-    ("pedantic", []),
-    ("-all-warnings", ["Wall"]),
-    ("-extra-warnings", ["Wextra"]),
-    ("-pedantic", ["pedantic"]),
-    ("W", ["Wextra"]),
+    ("pedantic", set()),
+    ("-all-warnings", {"Wall"}),
+    ("-extra-warnings", {"Wextra"}),
+    ("-pedantic", {"pedantic"}),
+    ("W", {"Wextra"}),
 ]
 
 # Languages of interest
@@ -238,25 +239,24 @@ class LanguagesListener(GccOptionsListener.GccOptionsListener):
 
     >>> listener = LanguagesListener()
     >>> apply_listener("C C++ Enum", listener)
-    >>> listener.languages
+    >>> sorted(listener.languages)
     ['C', 'C++']
     >>> listener = LanguagesListener()
     >>> apply_listener("C++", listener)
-    >>> listener.languages
+    >>> sorted(listener.languages)
     ['C++']
     >>> listener = LanguagesListener()
     >>> apply_listener("LTO C ObjC C++ Enum", listener)
-    >>> listener.languages
+    >>> sorted(listener.languages)
     ['C', 'C++', 'ObjC']
     """
 
     def __init__(self):
-        self.languages = []
+        self.languages = set()
 
     def enterVariableName(self, ctx):
         if ctx.getText() in INTERESTING_LANGUAGES:
-            self.languages.append(ctx.getText())
-            self.languages.sort()
+            self.languages.add(ctx.getText())
 
 
 class EnabledByListener(GccOptionsListener.GccOptionsListener):
@@ -450,29 +450,240 @@ class DummyWarningListener(GccOptionsListener.GccOptionsListener):
             self.is_dummy = True
 
 
-def print_child_option(option_name, level):
-    print("# " + "  " * level, "-" + option_name)
+class GccOption:
+    """Represents one option parsed from the input file(s)."""
+
+    def __init__(self, name: str, aliases: Set[str] = None, warning=False):
+        self._aliases = aliases if aliases else set()
+        self._children: Set[str] = set()
+        self._default = False
+        self._deprecated = False
+        self._dummy = False
+        self._languages: Set[str] = set()
+        self._name = name
+        self._warning = warning
+
+    def __eq__(self, other):
+        return self._name == other._name
+
+    def __lt__(self, other):
+        return self._name.lower() < other._name.lower()
+
+    def add_alias(self, name: str):
+        self._aliases.add(name)
+
+    def add_child(self, name: str):
+        self._children.add(name)
+
+    def get_aliases(self) -> List[str]:
+        return sorted(self._aliases, key=lambda x: x.lower())
+
+    def get_children(self) -> Set[str]:
+        return self._children
+
+    def get_comment_text(self) -> str:
+        has_comment = False
+        comment = " #"
+
+        if self._deprecated:
+            comment += " Deprecated."
+            has_comment = True
+
+        if self._default:
+            comment += " Enabled by default."
+            has_comment = True
+
+        if self._languages and len(self._languages) != len(INTERESTING_LANGUAGES):
+            comment += " Applies to " + ",".join(sorted(self._languages))
+            has_comment = True
+
+        if has_comment:
+            return comment
+        else:
+            return ""
+
+    def get_dummy_text(self) -> str:
+        return " # DUMMY switch" if self._dummy else str()
+
+    def get_name(self) -> str:
+        return self._name
+
+    def is_default(self) -> bool:
+        return self._default
+
+    def is_warning(self) -> bool:
+        return self._warning
+
+    def set_default(self):
+        self._default = True
+
+    def set_deprecated(self):
+        self._deprecated = True
+
+    def set_dummy(self):
+        self._dummy = True
+
+    def set_warning(self):
+        self._warning = True
+
+    def update_languages(self, languages: Iterable[str]):
+        self._languages.update(languages)
 
 
-def print_default_options(defaults, references):
-    if len(defaults) == 0:
+class GccDiagnostics:
+    """A collection of GccOption."""
+
+    def __init__(self):
+        self._options = dict()  # Map from option name to GccOption
+
+    def get(self, option_name: str) -> GccOption:
+        try:
+            return self._options[option_name]
+        except KeyError:
+            self._options[option_name] = GccOption(option_name)
+            return self._options[option_name]
+
+    def parse_options_file(self, filename: str):
+        """Parse filename and add options from the file."""
+        blocks = parse_warning_blocks(open(filename))
+
+        for option_name, option_arguments in blocks:
+            option = self.get(option_name)
+            warning_option = WarningOptionListener()
+            apply_listener(option_arguments, warning_option)
+
+            if warning_option.is_warning or could_be_warning(option_name):
+                option.set_warning()
+
+            dummy_option = DummyWarningListener()
+            apply_listener(option_arguments, dummy_option)
+            if dummy_option.is_dummy:
+                option.set_dummy()
+
+            language_enablers = LanguagesEnabledListener()
+            apply_listener(option_arguments, language_enablers)
+            qualified_option = option_name
+            if qualified_option[-1:] == "=" and language_enablers.arg is not None:
+                qualified_option += language_enablers.arg
+            for flag in language_enablers.flags:
+                other_option = self.get(flag)
+                other_option.add_child(qualified_option)
+                other_option.set_warning()
+
+            flag_enablers = EnabledByListener()
+            apply_listener(option_arguments, flag_enablers)
+            if flag_enablers.enabled_by:
+                flag = flag_enablers.enabled_by
+                self.get(flag).add_child(option_name)
+
+            bydefault_option = DefaultsListener()
+            apply_listener(option_arguments, bydefault_option)
+            if bydefault_option.isEnabledByDefault():
+                option.set_default()
+
+            deprecation_option = DeprecationsListener()
+            apply_listener(option_arguments, deprecation_option)
+            if deprecation_option.isDeprecated():
+                option.set_deprecated()
+
+            alias_enablers = AliasAssignmentListener()
+            apply_listener(option_arguments, alias_enablers)
+            if alias_enablers.alias_name is not None:
+                option.add_alias(alias_enablers.alias_name)
+
+            languages_listener = LanguagesListener()
+            apply_listener(option_arguments, languages_listener)
+            option.update_languages(languages_listener.languages)
+
+    def _has_parent(self, option: GccOption) -> bool:
+        for parent in self._options.values():
+            if option.get_name() in parent.get_children():
+                return True
+
+        return False
+
+    def is_top_level(self, option: GccOption) -> bool:
+        """
+        Returns True if option_name is top-level, False otherwise.
+
+        An option is top-level if it is not an alias, is not enabled by default,
+        and is not the child of any other option.
+        """
+        return (
+            not option.get_aliases()
+            and not option.is_default()
+            and not self._has_parent(option)
+        )
+
+    @classmethod
+    def hidden_options(cls):
+        options = GccDiagnostics()
+        for switch, aliases in HIDDEN_WARNINGS:
+            options._options[switch] = GccOption(switch, aliases=aliases, warning=True)
+        return options
+
+    def get_children(self, option: GccOption) -> List[GccOption]:
+        return sorted(
+            [self.get(option_name) for option_name in option.get_children()],
+            key=lambda x: x.get_name().lower(),
+        )
+
+    def get_all_warnings(self) -> List[GccOption]:
+        """Returns a list of GccOption, sorted by name."""
+        return sorted(
+            [switch for switch in self._options.values() if switch.is_warning()]
+        )
+
+    def get_default_warnings(self) -> List[GccOption]:
+        """Returns a list of GccOption, sorted by name."""
+        return sorted(
+            [
+                option
+                for option in self._options.values()
+                if option.is_warning() and option.is_default()
+            ]
+        )
+
+    def _is_warning(self, option: GccOption) -> bool:
+        """
+        Returns True if option is a warning, False otherwise.
+
+        option is a warning if it is set as a warning, or if any of its
+        aliases are warnings.
+        """
+        if option.is_warning():
+            return True
+
+        for alias in option.get_aliases():
+            if self.get(alias).is_warning():
+                return True
+
+        return False
+
+
+def print_child_option(option: GccOption, level: int):
+    print("# " + "  " * level, "-" + option.get_name())
+
+
+def print_default_options(all_options: GccDiagnostics):
+    defaults = all_options.get_default_warnings()
+    if not defaults:
         return
 
     print("# enabled by default:")
 
-    for option_name in sorted(defaults):
-        print_child_option(option_name, 1)
-        print_enabled_options(references, option_name, 2)
+    for option in defaults:
+        print_child_option(option, 1)
+        print_enabled_options(all_options, option, 2)
 
 
-def print_enabled_options(references, option_name, level=1):
-    for reference in sorted(references.get(option_name, []), key=lambda x: x.lower()):
-        print_child_option(reference, level)
-        if reference in references:
-            print_enabled_options(references, reference, level + 1)
+def print_enabled_options(all_options: GccDiagnostics, option: GccOption, level=1):
+    for option in all_options.get_children(option):
+        print_child_option(option, level)
+        print_enabled_options(all_options, option, level + 1)
 
 
-def could_be_warning(option_name, option_arguments):
+def could_be_warning(option_name):
     if "," in option_name:
         return False
     if option_name in NON_WARNING_WS:
@@ -481,156 +692,31 @@ def could_be_warning(option_name, option_arguments):
     return option_name.startswith("W")
 
 
-def parse_options_file(filename):
-    blocks = parse_warning_blocks(open(filename))
-
-    references = {}
-    aliases = {}
-    languages = {}
-    warnings = set()
-    dummies = set()
-    defaults = set()
-    deprecations = set()
-
-    for option_name, option_arguments in blocks:
-        warning_option = WarningOptionListener()
-        apply_listener(option_arguments, warning_option)
-
-        if warning_option.is_warning:
-            warnings.add(option_name)
-        elif could_be_warning(option_name, option_arguments):
-            warnings.add(option_name)
-
-        if option_name not in references:
-            references[option_name] = []
-
-        dummy_option = DummyWarningListener()
-        apply_listener(option_arguments, dummy_option)
-        if dummy_option.is_dummy:
-            dummies.add(option_name)
-
-        language_enablers = LanguagesEnabledListener()
-        apply_listener(option_arguments, language_enablers)
-        qualified_option = option_name
-        if qualified_option[-1:] == "=" and language_enablers.arg is not None:
-            qualified_option += language_enablers.arg
-            warnings.add(qualified_option)
-        for flag in language_enablers.flags:
-            if flag not in references:
-                references[flag] = []
-            references[flag].append(qualified_option)
-            warnings.add(flag)
-
-        flag_enablers = EnabledByListener()
-        apply_listener(option_arguments, flag_enablers)
-        if flag_enablers.enabled_by:
-            flag = flag_enablers.enabled_by
-            if flag not in references:
-                references[flag] = []
-            references[flag].append(option_name)
-
-        bydefault_option = DefaultsListener()
-        apply_listener(option_arguments, bydefault_option)
-        if bydefault_option.isEnabledByDefault():
-            defaults.add(option_name)
-
-        deprecation_option = DeprecationsListener()
-        apply_listener(option_arguments, deprecation_option)
-        if deprecation_option.isDeprecated():
-            deprecations.add(option_name)
-
-        alias_enablers = AliasAssignmentListener()
-        apply_listener(option_arguments, alias_enablers)
-        if alias_enablers.alias_name is not None:
-            aliases[option_name] = alias_enablers.alias_name
-
-        languages_listener = LanguagesListener()
-        apply_listener(option_arguments, languages_listener)
-        languages[option_name] = languages_listener.languages
-
-    return references, aliases, languages, warnings, dummies, defaults, deprecations
-
-
-def create_comment_text(deprecations, defaults, languages, switch_name):
-    has_comment = False
-    comment = " #"
-
-    if switch_name in deprecations:
-        comment += " Deprecated."
-        has_comment = True
-
-    if switch_name in defaults:
-        comment += " Enabled by default."
-        has_comment = True
-
-    if (
-        switch_name in languages
-        and len(languages[switch_name]) != 0
-        and len(languages[switch_name]) != len(INTERESTING_LANGUAGES)
-    ):
-        comment += " Applies to " + ",".join(sorted(languages[switch_name]))
-        has_comment = True
-
-    if has_comment:
-        return comment
-    else:
-        return ""
-
-
-def create_dummy_text(dummies, switch_name):
-    if switch_name in dummies:
-        return " # DUMMY switch"
-    return ""
-
-
-def print_warning_flags(
-    args,
-    references,
-    parents,
-    aliases,
-    languages,
-    warnings,
-    dummies,
-    defaults,
-    deprecations,
-):
+def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics):
     if args.top_level:
         # Print a group that has all enabled-by-default warnings together
-        print_default_options(warnings.intersection(defaults), references)
+        print_default_options(all_options)
 
-    for option_name in sorted(references.keys(), key=lambda x: x.lower()):
-        option_aliases = aliases.get(option_name, [])
-        if option_name not in warnings:
-            is_warning = False
-            for alias in option_aliases:
-                if alias in warnings:
-                    is_warning = True
-                    break
-            if not is_warning:
-                continue
+    for option in all_options.get_all_warnings():
 
-        dummy_text = create_dummy_text(dummies, option_name)
+        dummy_text = option.get_dummy_text()
         if args.unique:
-            comment_text = create_comment_text(
-                deprecations, defaults, languages, option_name
-            )
-            print("-%s%s%s" % (option_name, dummy_text, comment_text))
+            comment_text = option.get_comment_text()
+            print("-%s%s%s" % (option.get_name(), dummy_text, comment_text))
             continue
 
-        if args.top_level:
-            if option_name in aliases:
-                continue
-            if option_name in defaults:
-                continue
-            if len(parents.get(option_name, set())) > 0:
-                continue
+        if args.top_level and not all_options.is_top_level(option):
+            continue
 
-        if option_name in aliases:
-            sorted_aliases = sorted(aliases[option_name], key=lambda x: x.lower())
-            print("-%s = -%s%s" % (option_name, ", -".join(sorted_aliases), dummy_text))
+        sorted_aliases = option.get_aliases()
+        if sorted_aliases:
+            print(
+                "-%s = -%s%s"
+                % (option.get_name(), ", -".join(sorted_aliases), dummy_text)
+            )
         else:
-            print("-%s%s" % (option_name, dummy_text))
-        print_enabled_options(references, option_name)
+            print("-%s%s" % (option.get_name(), dummy_text))
+        print_enabled_options(all_options, option)
 
 
 def main(argv):
@@ -641,63 +727,12 @@ def main(argv):
     parser.add_argument("option_file", metavar="option-file", nargs="+")
     args = parser.parse_args(argv[1:])
 
-    all_references = {}
-    all_aliases = {}
-    all_languages = {}
-    all_warnings = set()
-    all_dummies = set()
-    all_defaults = set()
-    all_deprecations = set()
-
-    for switch, aliases in HIDDEN_WARNINGS:
-        all_references[switch] = set()
-        all_warnings.add(switch)
-        if len(aliases):
-            all_aliases[switch] = set(aliases)
+    all_options = GccDiagnostics.hidden_options()
 
     for filename in args.option_file:
-        (
-            file_references,
-            file_aliases,
-            file_languages,
-            file_warnings,
-            file_dummies,
-            file_defaults,
-            file_deprecations,
-        ) = parse_options_file(filename)
-        for flag, reference in file_references.items():
-            references = all_references.get(flag, set())
-            all_references[flag] = references.union(reference)
-        for flag, alias in file_aliases.items():
-            aliases = all_aliases.get(flag, set())
-            aliases.add(alias)
-            all_aliases[flag] = aliases
-        for flag, language in file_languages.items():
-            languages = all_languages.get(flag, set())
-            all_languages[flag] = languages.union(language)
-        all_warnings = all_warnings.union(file_warnings)
-        all_dummies = all_dummies.union(file_dummies)
-        all_defaults = all_defaults.union(file_defaults)
-        all_deprecations = all_deprecations.union(file_deprecations)
+        all_options.parse_options_file(filename)
 
-    all_parents = {}
-    for flag, references in all_references.items():
-        for reference in references:
-            parents = all_parents.get(reference, set())
-            parents.add(flag)
-            all_parents[reference] = parents
-
-    print_warning_flags(
-        args,
-        all_references,
-        all_parents,
-        all_aliases,
-        all_languages,
-        all_warnings,
-        all_dummies,
-        all_defaults,
-        all_deprecations,
-    )
+    print_warning_flags(args, all_options)
 
 
 if __name__ == "__main__":

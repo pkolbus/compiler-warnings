@@ -9,8 +9,6 @@
 +-Wchkp
 --Wdeclaration-after-statement # Applies to C,ObjC
 +-Wdeclaration-after-statement # Enabled by default. Applies to C,ObjC
---Wdelete-non-virtual-dtor
-+-Wdelete-non-virtual-dtor # Applies to C++,ObjC++
 +-Wdesignated-init # Enabled by default. Applies to C,ObjC
 +-Wdiscarded-array-qualifiers # Enabled by default. Applies to C,ObjC
 +-Wdiscarded-qualifiers # Enabled by default. Applies to C,ObjC
