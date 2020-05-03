@@ -15,17 +15,11 @@ STATE_OPTION_ATTRIBUTES = 3
 STATE_OPTION_DESCRIPTION = 4
 STATE_NEWLINE = 5
 
-BORING_OPTIONS = set(["Variable", "Enum", "EnumValue"])
+BORING_OPTIONS = {"Variable", "Enum", "EnumValue"}
 
-NON_WARNING_WS = set([
-    "Werror",
-    "Werror=",
-    "Wfatal-errors",
-])
+NON_WARNING_WS = {"Werror", "Werror=", "Wfatal-errors"}
 
-WARNINGS_NON_W = set([
-    "pedantic",
-])
+WARNINGS_NON_W = {"pedantic"}
 
 # Many of these go into common.opt in GCC 4.6 but before that they are aliases:
 HIDDEN_WARNINGS = [
@@ -40,6 +34,7 @@ HIDDEN_WARNINGS = [
 
 # Languages of interest
 INTERESTING_LANGUAGES = ["C", "C++", "ObjC", "ObjC++"]
+
 
 def parse_warning_blocks(fp):
     blocks = []
@@ -228,7 +223,7 @@ class LanguagesEnabledListener(GccOptionsListener.GccOptionsListener):
                     self.flags.remove(self._flag_name)
                     self.flags.append(self._flag_name + ctx.getText())
                     # When -Wflag=N, var >= N evaluates to 1
-                    self.arg = '1'
+                    self.arg = "1"
                 else:
                     # Argument form is N, so flags enables -Wthis=N
                     self.arg = ctx.getText()
@@ -360,7 +355,7 @@ class DefaultsListener(GccOptionsListener.GccOptionsListener):
         self._last_name = None
 
     def isEnabledByDefault(self):
-       return self._is_boolean and self._init_value in ("1", "-1")
+        return self._is_boolean and self._init_value in ("1", "-1")
 
 
 class DeprecationsListener(GccOptionsListener.GccOptionsListener):
@@ -389,7 +384,7 @@ class DeprecationsListener(GccOptionsListener.GccOptionsListener):
             self._deprecated = True
 
     def isDeprecated(self):
-       return self._deprecated
+        return self._deprecated
 
 
 class WarningOptionListener(GccOptionsListener.GccOptionsListener):
@@ -463,8 +458,7 @@ def print_default_options(defaults, references):
 
 
 def print_enabled_options(references, option_name, level=1):
-    for reference in sorted(
-            references.get(option_name, []), key=lambda x: x.lower()):
+    for reference in sorted(references.get(option_name, []), key=lambda x: x.lower()):
         print_child_option(reference, level)
         if reference in references:
             print_enabled_options(references, reference, level + 1)
@@ -510,7 +504,7 @@ def parse_options_file(filename):
         language_enablers = LanguagesEnabledListener()
         apply_listener(option_arguments, language_enablers)
         qualified_option = option_name
-        if qualified_option[-1:] == '=' and language_enablers.arg is not None:
+        if qualified_option[-1:] == "=" and language_enablers.arg is not None:
             qualified_option += language_enablers.arg
             warnings.add(qualified_option)
         for flag in language_enablers.flags:
@@ -561,12 +555,13 @@ def create_comment_text(deprecations, defaults, languages, switch_name):
         comment += " Enabled by default."
         has_comment = True
 
-    if switch_name in languages and \
-       len(languages[switch_name]) != 0 and \
-       len(languages[switch_name]) != len(INTERESTING_LANGUAGES):
+    if (
+        switch_name in languages
+        and len(languages[switch_name]) != 0
+        and len(languages[switch_name]) != len(INTERESTING_LANGUAGES)
+    ):
         comment += " Applies to " + ",".join(sorted(languages[switch_name]))
         has_comment = True
-
 
     if has_comment:
         return comment
@@ -580,7 +575,17 @@ def create_dummy_text(dummies, switch_name):
     return ""
 
 
-def print_warning_flags(args, references, parents, aliases, languages, warnings, dummies, defaults, deprecations):
+def print_warning_flags(
+    args,
+    references,
+    parents,
+    aliases,
+    languages,
+    warnings,
+    dummies,
+    defaults,
+    deprecations,
+):
     if args.top_level:
         # Print a group that has all enabled-by-default warnings together
         print_default_options(warnings.intersection(defaults), references)
@@ -598,7 +603,9 @@ def print_warning_flags(args, references, parents, aliases, languages, warnings,
 
         dummy_text = create_dummy_text(dummies, option_name)
         if args.unique:
-            comment_text = create_comment_text(deprecations, defaults, languages, option_name)
+            comment_text = create_comment_text(
+                deprecations, defaults, languages, option_name
+            )
             print("-%s%s%s" % (option_name, dummy_text, comment_text))
             continue
 
@@ -611,18 +618,17 @@ def print_warning_flags(args, references, parents, aliases, languages, warnings,
                 continue
 
         if option_name in aliases:
-            sorted_aliases = sorted(
-                aliases[option_name], key=lambda x: x.lower())
-            print("-%s = -%s%s" % (
-                option_name, ", -".join(sorted_aliases), dummy_text))
+            sorted_aliases = sorted(aliases[option_name], key=lambda x: x.lower())
+            print("-%s = -%s%s" % (option_name, ", -".join(sorted_aliases), dummy_text))
         else:
             print("-%s%s" % (option_name, dummy_text))
         print_enabled_options(references, option_name)
 
 
 def main(argv):
-    parser = argparse.ArgumentParser(description="""\
-Parses GCC option files for warning options.""")
+    parser = argparse.ArgumentParser(
+        description="Parses GCC option files for warning options."
+    )
     common.add_common_parser_options(parser)
     parser.add_argument("option_file", metavar="option-file", nargs="+")
     args = parser.parse_args(argv[1:])
@@ -642,13 +648,15 @@ Parses GCC option files for warning options.""")
             all_aliases[switch] = set(aliases)
 
     for filename in args.option_file:
-        (file_references,
-         file_aliases,
-         file_languages,
-         file_warnings,
-         file_dummies,
-         file_defaults,
-         file_deprecations) = parse_options_file(filename)
+        (
+            file_references,
+            file_aliases,
+            file_languages,
+            file_warnings,
+            file_dummies,
+            file_defaults,
+            file_deprecations,
+        ) = parse_options_file(filename)
         for flag, reference in file_references.items():
             references = all_references.get(flag, set())
             all_references[flag] = references.union(reference)
@@ -680,8 +688,9 @@ Parses GCC option files for warning options.""")
         all_warnings,
         all_dummies,
         all_defaults,
-        all_deprecations
-        )
+        all_deprecations,
+    )
+
 
 if __name__ == "__main__":
     main(sys.argv)
