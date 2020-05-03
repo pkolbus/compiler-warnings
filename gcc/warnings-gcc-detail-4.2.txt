@@ -1,0 +1,223 @@
+# enabled by default:
+#    -Wattributes
+#         Warn about inappropriate attribute usage
+#    -Wdeprecated
+#         Warn about deprecated compiler features
+#    -Wdeprecated-declarations
+#         Warn about uses of __attribute__((deprecated)) declarations
+#    -Wdiv-by-zero
+#         Warn about compile-time integer division by zero
+#    -Wimplicit-function-declaration
+#         Warn about implicit function declarations
+#    -Wint-to-pointer-cast
+#         Warn when there is a cast to a pointer from an integer of a different size
+#    -Winvalid-offsetof
+#         Warn about invalid uses of the \"offsetof\" macro
+#    -Wlong-long
+#         Do not warn about using \"long long\" when -pedantic
+#    -Wmissing-field-initializers
+#         Warn about missing fields in struct initializers
+#    -Wnon-template-friend
+#         Warn when non-templatized friend functions are declared within a template
+#    -Woverflow
+#         Warn about overflow in arithmetic expressions
+#    -Woverlength-strings
+#         Warn if a string is longer than the maximum portable length specified by the standard
+#    -Woverride-init
+#         Warn about overriding initializers without side effects
+#    -Wpmf-conversions
+#         Warn when converting the type of pointers to member functions
+#    -Wpointer-sign
+#         Warn when a pointer differs in signedness in an assignment
+#    -Wpointer-to-int-cast
+#         Warn when a pointer is cast to an integer of a different size
+#    -Wpragmas
+#         Warn about misuses of pragmas
+#    -Wprotocol
+#         Warn if inherited methods are unimplemented
+#    -Wsign-compare
+#         Warn about signed-unsigned comparisons
+-pedantic
+#     Issue warnings needed for strict compliance to the standard
+-Wabi
+#     Warn about things that will change when compiling with an ABI-compliant compiler
+-Waddress
+#     Warn about suspicious uses of memory addresses
+-Waggregate-return
+#     Warn about returning structures, unions or arrays
+-Wall
+#     Enable most warning messages
+-Wassign-intercept
+#     Warn whenever an Objective-C assignment is being intercepted by the garbage collector
+-Wbad-function-cast
+#     Warn about casting functions to incompatible types
+-Wc++-compat
+#     Warn about C constructs that are not in the common subset of C and C++
+-Wcast-align
+#     Warn about pointer casts which increase alignment
+-Wcast-qual
+#     Warn about casts which discard qualifiers
+-Wchar-subscripts
+#     Warn about subscripts whose type is \"char\"
+-Wcomment
+#     Warn about possibly nested block comments, and C++ comments spanning more than one physical line
+-Wcomments
+#     Synonym for -Wcomment
+-Wconversion
+#     Warn about possibly confusing type conversions
+-Wctor-dtor-privacy
+#     Warn when all constructors and destructors are private
+-Wdeclaration-after-statement
+#     Warn when a declaration is found after a statement
+-Wdisabled-optimization
+#     Warn when an optimization pass is disabled
+-Weffc++
+#     Warn about violations of Effective C++ style rules
+-Wendif-labels
+#     Warn about stray tokens after #elif and #endif
+-Werror-implicit-function-declaration
+#     Make implicit function declarations an error
+-Wextra
+#     Print extra (possibly unwanted) warnings
+-Wfloat-equal
+#     Warn if testing floating point numbers for equality
+-Wformat
+#     Warn about printf/scanf/strftime/strfmon format string anomalies
+-Wformat-extra-args
+#     Warn if passing too many arguments to a function for its format string
+-Wformat-nonliteral
+#     Warn about format strings that are not literals
+-Wformat-security
+#     Warn about possible security problems with format functions
+-Wformat-y2k
+#     Warn about strftime formats yielding 2-digit years
+-Wformat-zero-length
+#     Warn about zero-length formats
+-Wformat=
+-Wimplicit
+-Wimplicit-int
+#     Warn when a declaration does not specify a type
+-Wimport
+#     Deprecated.  This switch has no effect
+-Winit-self
+#     Warn about variables which are initialized to themselves
+-Winline
+#     Warn when an inlined function cannot be inlined
+-Winvalid-pch
+#     Warn about PCH files that are found but not used
+-Wlarger-than-
+#     Warn if an object is larger than <number> bytes
+-Wmain
+#     Warn about suspicious declarations of \"main\"
+-Wmissing-braces
+#     Warn about possibly missing braces around initializers
+-Wmissing-declarations
+#     Warn about global functions without previous declarations
+-Wmissing-format-attribute
+#     Warn about functions which might be candidates for format attributes
+-Wmissing-include-dirs
+#     Warn about user-specified include directories that do not exist
+-Wmissing-noreturn
+#     Warn about functions which might be candidates for __attribute__((noreturn))
+-Wmissing-prototypes
+#     Warn about global functions without prototypes
+-Wmultichar
+#     Warn about use of multi-character character constants
+-Wnested-externs
+#     Warn about \"extern\" declarations not at file scope
+-Wnon-virtual-dtor
+#     Warn about non-virtual destructors
+-Wnonnull
+#     Warn about NULL being passed to argument slots marked as requiring non-NULL
+-Wnormalized=
+#     Warn about non-normalised Unicode strings
+-Wold-style-cast
+#     Warn if a C-style cast is used in a program
+-Wold-style-definition
+#     Warn if an old-style parameter definition is used
+-Woverloaded-virtual
+#     Warn about overloaded virtual function names
+-Wpacked
+#     Warn when the packed attribute has no effect on struct layout
+-Wpadded
+#     Warn when padding is required to align structure members
+-Wparentheses
+#     Warn about possibly missing parentheses
+-Wpointer-arith
+#     Warn about function pointer arithmetic
+-Wredundant-decls
+#     Warn about multiple declarations of the same object
+-Wreorder
+#     Warn when the compiler reorders code
+-Wreturn-type
+#     Warn whenever a function's return type defaults to \"int\" (C), or about inconsistent return types (C++)
+-Wselector
+#     Warn if a selector has multiple methods
+-Wsequence-point
+#     Warn about possible violations of sequence point rules
+-Wshadow
+#     Warn when one local variable shadows another
+-Wsign-promo
+#     Warn when overload promotes from unsigned to signed
+-Wstack-protector
+#     Warn when not issuing stack smashing protection for some reason
+-Wstrict-aliasing
+#     Warn about code which might break strict aliasing rules
+-Wstrict-aliasing=
+#     Warn about code which might break strict aliasing rules
+-Wstrict-null-sentinel
+#     Warn about uncasted NULL used as sentinel
+-Wstrict-overflow
+#     Warn about optimizations that assume that signed overflow is undefined
+-Wstrict-overflow=
+#     Warn about optimizations that assume that signed overflow is undefined
+-Wstrict-prototypes
+#     Warn about unprototyped function declarations
+-Wstrict-selector-match
+#     Warn if type signatures of candidate methods do not match exactly
+-Wswitch
+#     Warn about enumerated switches, with no default, missing a case
+-Wswitch-default
+#     Warn about enumerated switches missing a \"default:\" statement
+-Wswitch-enum
+#     Warn about all enumerated switches missing a specific case
+-Wsynth
+#     Warn when synthesis behavior differs from Cfront
+-Wsystem-headers
+#     Do not suppress warnings from system headers
+-Wtraditional
+#     Warn about features not present in traditional C
+-Wtrigraphs
+#     Warn if trigraphs are encountered that might affect the meaning of the program
+-Wundeclared-selector
+#     Warn about @selector()s without previously declared methods
+-Wundef
+#     Warn if an undefined macro is used in an #if directive
+-Wuninitialized
+#     Warn about uninitialized automatic variables
+-Wunknown-pragmas
+#     Warn about unrecognized pragmas
+-Wunreachable-code
+#     Warn about code that will never be executed
+-Wunsafe-loop-optimizations
+#     Warn if the loop cannot be optimized due to nontrivial assumptions.
+-Wunused
+#     Enable all -Wunused- warnings
+-Wunused-function
+#     Warn when a function is unused
+-Wunused-label
+#     Warn when a label is unused
+-Wunused-macros
+#     Warn about macros defined in the main file that are not used
+-Wunused-parameter
+#     Warn when a function parameter is unused
+-Wunused-value
+#     Warn when an expression value is unused
+-Wunused-variable
+#     Warn when a variable is unused
+-Wvariadic-macros
+#     Do not warn about using variadic macros when -pedantic
+-Wvolatile-register-var
+#     Warn when a register variable is declared volatile
+-Wwrite-strings
+#     In C++, nonzero means warn about deprecated conversion from string literals to `char *'.  In C, similar warning, except that the conversion is of course not deprecated by the ISO C standard.

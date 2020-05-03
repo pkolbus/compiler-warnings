@@ -16,6 +16,8 @@ function parse_gcc_info()
           > "$target_dir"/warnings-gcc-unique-"$version".txt
     "$DIR"/parse-gcc-warning-options.py --top-level "${input_files[@]}" \
           > "$target_dir"/warnings-gcc-top-level-"$version".txt
+    "$DIR"/parse-gcc-warning-options.py --top-level --text "${input_files[@]}" \
+          > "$target_dir"/warnings-gcc-detail-"$version".txt
 }
 
 GIT_DIR=$1

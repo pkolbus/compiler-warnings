@@ -3,6 +3,8 @@
 import argparse
 import antlr4
 import common
+import enum
+import io
 import sys
 from typing import Iterable, List, Set
 
@@ -10,11 +12,14 @@ import GccOptionsLexer
 import GccOptionsListener
 import GccOptionsParser
 
-STATE_COMMENT = 1
-STATE_OPTION_NAME = 2
-STATE_OPTION_ATTRIBUTES = 3
-STATE_OPTION_DESCRIPTION = 4
-STATE_NEWLINE = 5
+
+class ParseState(enum.Enum):
+    NEWLINE = enum.auto()
+    OPTION_NAME = enum.auto()
+    OPTION_ATTRIBUTES = enum.auto()
+    OPTION_HELP = enum.auto()
+    FINALIZE = enum.auto()
+
 
 BORING_OPTIONS = {"Variable", "Enum", "EnumValue"}
 
@@ -37,44 +42,58 @@ HIDDEN_WARNINGS = [
 INTERESTING_LANGUAGES = ["C", "C++", "ObjC", "ObjC++"]
 
 
-def parse_warning_blocks(fp):
+def parse_warning_blocks(fp: io.TextIOBase):
+    """
+    Parse option definition records from fp.
+
+    Parses option definition records and returns a list of 3-tuples containing
+    the option name, option_properties, and help text.
+
+    See https://gcc.gnu.org/onlinedocs/gccint/Option-file-format.html for the
+    file format.
+    """
     blocks = []
-    state = STATE_COMMENT
-    for line in fp:
-        line = line.rstrip("\n")
-        if state == STATE_OPTION_DESCRIPTION and line != "":
-            continue
+    state = ParseState.OPTION_NAME  # Expected content of line
+    help_lines = []
+    option_name = None
+    for line in fp.readlines():
+        line = line.rstrip("\n")  # Remove newline
+        line = line.split(";", 1)[0]  # Remove trailing comment
+        line = line.strip()  # Remove whitespace
 
-        if state == STATE_OPTION_DESCRIPTION and line == "":
-            state = STATE_NEWLINE
-            continue
+        if state == ParseState.OPTION_NAME:
+            if line:
+                option_name = line
+                state = ParseState.OPTION_ATTRIBUTES
+        elif state == ParseState.OPTION_ATTRIBUTES:
+            if line:
+                option_attributes = line
+                help_lines = []
+                if "Undocumented" in option_attributes:
+                    state = ParseState.FINALIZE
+                else:
+                    state = ParseState.OPTION_HELP
+        elif state == ParseState.OPTION_HELP:
+            if line:
+                help_lines.append(line)
+            else:
+                state = ParseState.FINALIZE
 
-        if state == STATE_NEWLINE:
-            if line.startswith(";"):
-                state == STATE_COMMENT
-                continue
-            if line == "":
-                continue
-            option_name = line
-            state = STATE_OPTION_NAME
-            continue
-
-        if state == STATE_COMMENT:
-            if line.startswith(";"):
-                continue
-            if line == "":
-                state = STATE_NEWLINE
-                continue
-
-        if state == STATE_OPTION_NAME:
-            state = STATE_OPTION_DESCRIPTION
+        if state == ParseState.FINALIZE:
+            state = ParseState.OPTION_NAME
             if option_name in BORING_OPTIONS:
                 continue
-            # if not option_name.startswith("W"):
-            #     continue
-            option_attributes = line.split(";", 1)[0]
-            blocks.append((option_name, option_attributes))
-            continue
+            help_text = " ".join(help_lines)
+            if "\t" in help_text:
+                _, help_text = help_text.split("\t", maxsplit=1)
+            blocks.append((option_name, option_attributes, help_text))
+
+    if state == ParseState.OPTION_HELP and option_name not in BORING_OPTIONS:
+        help_text = " ".join(help_lines)
+        if "\t" in help_text:
+            _, help_text = help_text.split("\t", maxsplit=1)
+        blocks.append((option_name, option_attributes, help_text))
+
     return blocks
 
 
@@ -460,12 +479,15 @@ class DummyWarningListener(GccOptionsListener.GccOptionsListener):
 class GccOption:
     """Represents one option parsed from the input file(s)."""
 
+    _WARN_REMOVED_HELP = "This option is deprecated and has no effect."
+
     def __init__(self, name: str, aliases: Set[str] = None, warning=False):
         self._aliases = aliases if aliases else set()
         self._children: Set[str] = set()
         self._default = False
         self._deprecated = False
         self._dummy = False
+        self._help_text = str()
         self._languages: Set[str] = set()
         self._name = name
         self._warning = warning
@@ -512,6 +534,13 @@ class GccOption:
     def get_dummy_text(self) -> str:
         return " # DUMMY switch" if self._dummy else str()
 
+    def get_help_text(self) -> str:
+        if self._help_text:
+            return self._help_text
+        if self._deprecated:
+            return GccOption._WARN_REMOVED_HELP
+        return self._help_text
+
     def get_name(self) -> str:
         return self._name
 
@@ -529,6 +558,9 @@ class GccOption:
 
     def set_dummy(self):
         self._dummy = True
+
+    def set_help_text(self, help_text: str):
+        self._help_text = help_text
 
     def set_warning(self):
         self._warning = True
@@ -554,8 +586,14 @@ class GccDiagnostics:
         """Parse filename and add options from the file."""
         blocks = parse_warning_blocks(open(filename))
 
-        for option_name, option_arguments in blocks:
+        for option_name, option_arguments, help_text in blocks:
             option = self.get(option_name)
+
+            if help_text:
+                option.set_help_text(help_text)
+            else:
+                # Attempt to retrieve from previous instance
+                help_text = option.get_help_text()
 
             parse_tree = get_parse_tree(option_arguments)
             warning_option = WarningOptionListener()
@@ -574,6 +612,8 @@ class GccDiagnostics:
             qualified_option = option_name
             if qualified_option[-1:] == "=" and language_enablers.arg is not None:
                 qualified_option += language_enablers.arg
+                if help_text:
+                    self.get(qualified_option).set_help_text(help_text)
             for flag in language_enablers.flags:
                 other_option = self.get(flag)
                 other_option.add_child(qualified_option)
@@ -670,26 +710,27 @@ class GccDiagnostics:
         return False
 
 
-def print_child_option(option: GccOption, level: int):
-    print("# " + "  " * level, "-" + option.get_name())
+def print_option(
+    all_options: GccDiagnostics, option: GccOption, level: int, args: argparse.Namespace
+):
+    if level:
+        print("# " + "  " * level, "-" + option.get_name())
+    else:
+        print("-" + option.get_name())
+    if args.text and option.get_help_text():
+        print("#  " + "  " * (level + 2), option.get_help_text())
+    for child in all_options.get_children(option):
+        print_option(all_options, child, level + 1, args)
 
 
-def print_default_options(all_options: GccDiagnostics):
+def print_default_options(all_options: GccDiagnostics, args: argparse.Namespace):
     defaults = all_options.get_default_warnings()
     if not defaults:
         return
 
     print("# enabled by default:")
-
     for option in defaults:
-        print_child_option(option, 1)
-        print_enabled_options(all_options, option, 2)
-
-
-def print_enabled_options(all_options: GccDiagnostics, option: GccOption, level=1):
-    for option in all_options.get_children(option):
-        print_child_option(option, level)
-        print_enabled_options(all_options, option, level + 1)
+        print_option(all_options, option, 1, args)
 
 
 def could_be_warning(option_name):
@@ -704,7 +745,7 @@ def could_be_warning(option_name):
 def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics):
     if args.top_level:
         # Print a group that has all enabled-by-default warnings together
-        print_default_options(all_options)
+        print_default_options(all_options, args)
 
     for option in all_options.get_all_warnings():
 
@@ -725,7 +766,12 @@ def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics):
             )
         else:
             print("-%s%s" % (option.get_name(), dummy_text))
-        print_enabled_options(all_options, option)
+
+        if args.text and option.get_help_text():
+            print("#     %s" % (option.get_help_text()))
+
+        for child in all_options.get_children(option):
+            print_option(all_options, child, 1, args)
 
 
 def main(argv):
@@ -733,6 +779,9 @@ def main(argv):
         description="Parses GCC option files for warning options."
     )
     common.add_common_parser_options(parser)
+    parser.add_argument(
+        "--text", action="store_true", help="Show help text of each diagnostic.",
+    )
     parser.add_argument("option_file", metavar="option-file", nargs="+")
     args = parser.parse_args(argv[1:])
 
