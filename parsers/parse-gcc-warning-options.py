@@ -78,12 +78,19 @@ def parse_warning_blocks(fp):
     return blocks
 
 
-def apply_listener(string_value, listener):
+def get_parse_tree(string_value: str):
     string_input = antlr4.InputStream(string_value)
     lexer = GccOptionsLexer.GccOptionsLexer(string_input)
     stream = antlr4.CommonTokenStream(lexer)
     parser = GccOptionsParser.GccOptionsParser(stream)
-    tree = parser.optionAttributes()
+    return parser.optionAttributes()
+
+
+def apply_listener(input, listener: GccOptionsListener.GccOptionsListener):
+    if isinstance(input, str):
+        tree = get_parse_tree(input)
+    else:
+        tree = input
     walker = antlr4.ParseTreeWalker()
     walker.walk(listener, tree)
 
@@ -549,19 +556,21 @@ class GccDiagnostics:
 
         for option_name, option_arguments in blocks:
             option = self.get(option_name)
+
+            parse_tree = get_parse_tree(option_arguments)
             warning_option = WarningOptionListener()
-            apply_listener(option_arguments, warning_option)
+            apply_listener(parse_tree, warning_option)
 
             if warning_option.is_warning or could_be_warning(option_name):
                 option.set_warning()
 
             dummy_option = DummyWarningListener()
-            apply_listener(option_arguments, dummy_option)
+            apply_listener(parse_tree, dummy_option)
             if dummy_option.is_dummy:
                 option.set_dummy()
 
             language_enablers = LanguagesEnabledListener()
-            apply_listener(option_arguments, language_enablers)
+            apply_listener(parse_tree, language_enablers)
             qualified_option = option_name
             if qualified_option[-1:] == "=" and language_enablers.arg is not None:
                 qualified_option += language_enablers.arg
@@ -571,28 +580,28 @@ class GccDiagnostics:
                 other_option.set_warning()
 
             flag_enablers = EnabledByListener()
-            apply_listener(option_arguments, flag_enablers)
+            apply_listener(parse_tree, flag_enablers)
             if flag_enablers.enabled_by:
                 flag = flag_enablers.enabled_by
                 self.get(flag).add_child(option_name)
 
             bydefault_option = DefaultsListener()
-            apply_listener(option_arguments, bydefault_option)
+            apply_listener(parse_tree, bydefault_option)
             if bydefault_option.isEnabledByDefault():
                 option.set_default()
 
             deprecation_option = DeprecationsListener()
-            apply_listener(option_arguments, deprecation_option)
+            apply_listener(parse_tree, deprecation_option)
             if deprecation_option.isDeprecated():
                 option.set_deprecated()
 
             alias_enablers = AliasAssignmentListener()
-            apply_listener(option_arguments, alias_enablers)
+            apply_listener(parse_tree, alias_enablers)
             if alias_enablers.alias_name is not None:
                 option.add_alias(alias_enablers.alias_name)
 
             languages_listener = LanguagesListener()
-            apply_listener(option_arguments, languages_listener)
+            apply_listener(parse_tree, languages_listener)
             option.update_languages(languages_listener.languages)
 
     def _has_parent(self, option: GccOption) -> bool:
