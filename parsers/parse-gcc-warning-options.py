@@ -294,8 +294,8 @@ class DefaultsListener(GccOptionsListener.GccOptionsListener):
     default case) over type I errors (marking a flag as enabled-by-default
     when it is not).
 
-    - Presence of Enum, UInteger, or Joined indicates this is not an on-off
-      switch
+    - Presence of Enum, Host_Wide_Int, Joined, or UInteger indicates this is not
+      an on-off switch
     - A value of '1' or '-1' typically means on by default
     - A value of '0' typically means off by default
     - Another numeric value typically signifies more complex logic is used,
@@ -334,6 +334,10 @@ class DefaultsListener(GccOptionsListener.GccOptionsListener):
     >>> apply_listener("Init(-1) Joined", listener)
     >>> listener.isEnabledByDefault()
     False
+    >>> listener = DefaultsListener()
+    >>> apply_listener("Host_Wide_Int Init(1)", listener)
+    >>> listener.isEnabledByDefault()
+    False
     """
 
     def __init__(self):
@@ -344,7 +348,7 @@ class DefaultsListener(GccOptionsListener.GccOptionsListener):
     def enterVariableName(self, ctx):
         if ctx.getText() == "Init":
             self._last_name = "Init"
-        elif ctx.getText() in ("Enum", "Joined", "UInteger"):
+        elif ctx.getText() in ("Enum", "Host_Wide_Int", "Joined", "UInteger"):
             self._is_boolean = False
 
     def enterAtom(self, ctx):
