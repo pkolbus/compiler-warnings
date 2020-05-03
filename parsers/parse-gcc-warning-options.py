@@ -425,6 +425,45 @@ class DeprecationsListener(GccOptionsListener.GccOptionsListener):
         return self._deprecated
 
 
+class IntegerRangeListener(GccOptionsListener.GccOptionsListener):
+    """
+    Searches for IntegerRange attribute.
+
+    >>> listener = IntegerRangeListener()
+    >>> apply_listener("C C++ Warning IntegerRange(1, 3)", listener)
+    >>> listener.has_range()
+    True
+    >>> listener.get_range()
+    (1, 3)
+    >>> listener = IntegerRangeListener()
+    >>> apply_listener("C C++ Warning", listener)
+    >>> listener.has_range()
+    False
+    """
+
+    def __init__(self):
+        self._atoms: List[int] = []
+        self._variable_name = None
+
+    def enterVariableName(self, ctx):
+        self._variable_name = ctx.getText()
+        if self._variable_name == "IntegerRange":
+            self._atoms.clear()
+
+    def enterAtom(self, ctx):
+        if self._variable_name == "IntegerRange":
+            self._atoms.append(int(ctx.getText()))
+
+    def exitTrailer(self, ctx):
+        self._variable_name = None
+
+    def has_range(self) -> bool:
+        return len(self._atoms) == 2
+
+    def get_range(self) -> tuple:
+        return tuple(self._atoms)
+
+
 class WarningOptionListener(GccOptionsListener.GccOptionsListener):
     """
     Searches for Warning attributes.
@@ -623,6 +662,15 @@ class GccDiagnostics:
             apply_listener(parse_tree, dummy_option)
             if dummy_option.is_dummy:
                 option.set_dummy()
+
+            if option_name[-1:] == "=" and not display_name:
+                integer_range_listener = IntegerRangeListener()
+                apply_listener(parse_tree, integer_range_listener)
+                if integer_range_listener.has_range():
+                    min_value, max_value = integer_range_listener.get_range()
+                    option.set_display_name(
+                        "-{}<{}..{}>".format(option_name, min_value, max_value)
+                    )
 
             language_enablers = LanguagesEnabledListener()
             apply_listener(parse_tree, language_enablers)

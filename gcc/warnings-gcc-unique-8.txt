@@ -17,7 +17,7 @@
 -Walloca
 -Walloca-larger-than=<number>
 -Warray-bounds
--Warray-bounds=
+-Warray-bounds=<0..2>
 -Wassign-intercept # Applies to ObjC,ObjC++
 -Wattribute-alias # Enabled by default.
 -Wattributes # Enabled by default.
@@ -39,7 +39,7 @@
 -Wcast-function-type
 -Wcast-qual
 -Wcatch-value # Applies to C++,ObjC++
--Wcatch-value= # Applies to C++,ObjC++
+-Wcatch-value=<0..3> # Applies to C++,ObjC++
 -Wchar-subscripts
 -Wchkp
 -Wclass-memaccess # Applies to C++,ObjC++
@@ -83,14 +83,14 @@
 -Wformat-extra-args
 -Wformat-nonliteral
 -Wformat-overflow
--Wformat-overflow=
+-Wformat-overflow=<0..2>
 -Wformat-security
 -Wformat-signedness
 -Wformat-truncation
--Wformat-truncation=
+-Wformat-truncation=<0..2>
 -Wformat-y2k
 -Wformat-zero-length
--Wformat=
+-Wformat=<0..2>
 -Wformat=1
 -Wformat=2
 -Wframe-address
@@ -102,7 +102,7 @@
 -Wignored-qualifiers # Applies to C,C++
 -Wimplicit # Applies to C,ObjC
 -Wimplicit-fallthrough
--Wimplicit-fallthrough=
+-Wimplicit-fallthrough=<0..5>
 -Wimplicit-function-declaration # Enabled by default. Applies to C,ObjC
 -Wimplicit-int # Enabled by default. Applies to C,ObjC
 -Wimport # DUMMY switch
@@ -171,7 +171,7 @@
 -Wparentheses
 -Wpedantic
 -Wplacement-new # Applies to C++
--Wplacement-new= # Applies to C++
+-Wplacement-new=<0..2> # Applies to C++
 -Wpmf-conversions # Enabled by default. Applies to C++,ObjC++
 -Wpointer-arith
 -Wpointer-compare # Enabled by default.
@@ -201,7 +201,7 @@
 -Wshift-count-overflow # Enabled by default.
 -Wshift-negative-value # Enabled by default.
 -Wshift-overflow
--Wshift-overflow=
+-Wshift-overflow=<0..2>
 -Wsign-compare
 -Wsign-conversion
 -Wsign-promo # Applies to C++,ObjC++
@@ -212,14 +212,14 @@
 -Wstack-protector
 -Wstack-usage=<number>
 -Wstrict-aliasing
--Wstrict-aliasing=
+-Wstrict-aliasing=<0..3>
 -Wstrict-null-sentinel # Applies to C++,ObjC++
 -Wstrict-overflow
--Wstrict-overflow=
+-Wstrict-overflow=<0..5>
 -Wstrict-prototypes # Applies to C,ObjC
 -Wstrict-selector-match # Applies to ObjC,ObjC++
 -Wstringop-overflow
--Wstringop-overflow=
+-Wstringop-overflow=<0..4>
 -Wstringop-truncation # Enabled by default.
 -Wsubobject-linkage # Enabled by default. Applies to C++,ObjC++
 -Wsuggest-attribute=cold
@@ -258,7 +258,7 @@
 -Wunused-but-set-parameter
 -Wunused-but-set-variable
 -Wunused-const-variable
--Wunused-const-variable=
+-Wunused-const-variable=<0..2>
 -Wunused-function
 -Wunused-label
 -Wunused-local-typedefs

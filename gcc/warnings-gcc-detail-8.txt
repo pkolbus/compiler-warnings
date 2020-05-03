@@ -307,7 +307,7 @@
 #     Warn on any use of alloca.
 -Walloca-larger-than=<number>
 #     Warn on unbounded uses of alloca, and on bounded uses of alloca whose bound can be larger than <number> bytes.
--Warray-bounds=
+-Warray-bounds=<0..2>
 #     Warn if an array is accessed out of bounds.
 -Wassign-intercept
 #     Warn whenever an Objective-C assignment is being intercepted by the garbage collector.
@@ -323,7 +323,7 @@
 #     Warn about pointer casts which increase alignment.
 -Wcast-qual
 #     Warn about casts which discard qualifiers.
--Wcatch-value=
+-Wcatch-value=<0..3>
 #     Warn about catch handlers of non-reference type.
 -Wconditionally-supported
 #     Warn for conditionally-supported constructs.
@@ -389,13 +389,13 @@
 #     Warn about semicolon after in-class function definition.
 -Wfloat-equal
 #     Warn if testing floating point numbers for equality.
--Wformat-overflow=
+-Wformat-overflow=<0..2>
 #     Warn about function calls with format strings that write past the end of the destination region.
 -Wformat-signedness
 #     Warn about sign differences with format functions.
--Wformat-truncation=
+-Wformat-truncation=<0..2>
 #     Warn about calls to snprintf and similar functions that truncate output.
--Wformat=
+-Wformat=<0..2>
 #     Warn about printf/scanf/strftime/strfmon format string anomalies.
 -Wformat=2
 #    -Wformat-nonliteral
@@ -406,7 +406,7 @@
 #         Warn about strftime formats yielding 2-digit years.
 -Wframe-larger-than=<number>
 #     Warn if a function's stack frame requires more than <number> bytes.
--Wimplicit-fallthrough=
+-Wimplicit-fallthrough=<0..5>
 #     Warn when a switch case falls through.
 -Wimport # DUMMY switch
 -Winline
@@ -466,7 +466,7 @@
 #         Warn when a pointer differs in signedness in an assignment.
 #    -Wvariadic-macros
 #         Warn about using variadic macros.
--Wplacement-new=
+-Wplacement-new=<0..2>
 #     Warn for placement new expressions with undefined behavior.
 -Wredundant-decls
 #     Warn about multiple declarations of the same object.
@@ -482,7 +482,7 @@
 #         Warn when one local variable shadows another local variable or parameter.
 #      -Wshadow=compatible-local
 #           Warn when one local variable shadows another local variable or parameter of compatible type.
--Wshift-overflow=
+-Wshift-overflow=<0..2>
 #     Warn if left shift of a signed value overflows.
 -Wsign-promo
 #     Warn when overload promotes from unsigned to signed.
@@ -492,19 +492,19 @@
 #     Warn if stack usage might be larger than specified amount.
 -Wstrict-aliasing
 #     Warn about code which might break strict aliasing rules.
--Wstrict-aliasing=
+-Wstrict-aliasing=<0..3>
 #     Warn about code which might break strict aliasing rules.
 -Wstrict-null-sentinel
 #     Warn about uncasted NULL used as sentinel.
 -Wstrict-overflow
 #     Warn about optimizations that assume that signed overflow is undefined.
--Wstrict-overflow=
+-Wstrict-overflow=<0..5>
 #     Warn about optimizations that assume that signed overflow is undefined.
 -Wstrict-prototypes
 #     Warn about unprototyped function declarations.
 -Wstrict-selector-match
 #     Warn if type signatures of candidate methods do not match exactly.
--Wstringop-overflow=
+-Wstringop-overflow=<0..4>
 #     Under the control of Object Size type, warn about buffer overflow in string manipulation functions like memcpy and strcpy.
 -Wsuggest-attribute=cold
 #     Warn about functions which might be candidates for __attribute__((cold)).
@@ -552,7 +552,7 @@
 #     Does nothing. Preserved for backward compatibility.
 -Wunsuffixed-float-constants
 #     Warn about unsuffixed float constants.
--Wunused-const-variable=
+-Wunused-const-variable=<0..2>
 #     Warn when a const variable is unused.
 -Wunused-macros
 #     Warn about macros defined in the main file that are not used.

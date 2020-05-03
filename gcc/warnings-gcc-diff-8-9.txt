@@ -2,7 +2,7 @@
 +-Waddress-of-packed-member # Enabled by default.
 --Wattribute-alias # Enabled by default.
 +-Wattribute-alias
-+-Wattribute-alias=
++-Wattribute-alias=<0..2>
 +-Wattribute-warning # Enabled by default.
 +-Wc11-c2x-compat # Enabled by default. Applies to C,ObjC
 +-Wcannot-profile # Enabled by default.

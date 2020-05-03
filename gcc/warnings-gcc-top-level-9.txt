@@ -161,16 +161,16 @@
 -Walloca
 -Walloca-larger-than=<number>
 -Warray-bounds
--Warray-bounds=
+-Warray-bounds=<0..2>
 -Wassign-intercept
--Wattribute-alias=
+-Wattribute-alias=<0..2>
 -Wbad-function-cast
 -Wc++-compat
 #    -Wenum-compare
 -Wcast-align
 -Wcast-align=strict
 -Wcast-qual
--Wcatch-value=
+-Wcatch-value=<0..3>
 -Wchkp
 -Wconditionally-supported
 -Wconversion
@@ -208,16 +208,16 @@
 #    -Wunused-parameter
 -Wextra-semi
 -Wfloat-equal
--Wformat-overflow=
+-Wformat-overflow=<0..2>
 -Wformat-signedness
--Wformat-truncation=
--Wformat=
+-Wformat-truncation=<0..2>
+-Wformat=<0..2>
 -Wformat=2
 #    -Wformat-nonliteral
 #    -Wformat-security
 #    -Wformat-y2k
 -Wframe-larger-than=<byte-size>
--Wimplicit-fallthrough=
+-Wimplicit-fallthrough=<0..5>
 -Wimport # DUMMY switch
 -Winline
 -Winvalid-pch
@@ -248,7 +248,7 @@
 #    -Wpointer-arith
 #    -Wpointer-sign
 #    -Wvariadic-macros
--Wplacement-new=
+-Wplacement-new=<0..2>
 -Wredundant-decls
 -Wregister
 -Wselector
@@ -256,18 +256,18 @@
 #    -Wshadow-ivar
 #    -Wshadow=local
 #      -Wshadow=compatible-local
--Wshift-overflow=
+-Wshift-overflow=<0..2>
 -Wsign-promo
 -Wstack-protector
 -Wstack-usage=<byte-size>
 -Wstrict-aliasing
--Wstrict-aliasing=
+-Wstrict-aliasing=<0..3>
 -Wstrict-null-sentinel
 -Wstrict-overflow
--Wstrict-overflow=
+-Wstrict-overflow=<0..5>
 -Wstrict-prototypes
 -Wstrict-selector-match
--Wstringop-overflow=
+-Wstringop-overflow=<0..4>
 -Wsuggest-attribute=cold
 -Wsuggest-attribute=const
 -Wsuggest-attribute=format
@@ -291,7 +291,7 @@
 -Wunreachable-code # DUMMY switch
 -Wunsafe-loop-optimizations # DUMMY switch
 -Wunsuffixed-float-constants
--Wunused-const-variable=
+-Wunused-const-variable=<0..2>
 -Wunused-macros
 -Wuseless-cast
 -Wvector-operation-performance

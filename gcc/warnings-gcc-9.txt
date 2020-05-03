@@ -95,10 +95,10 @@
 -Walloca
 -Walloca-larger-than=<number>
 -Warray-bounds
--Warray-bounds=
+-Warray-bounds=<0..2>
 -Wassign-intercept
 -Wattribute-alias = -Wattribute_alias=1
--Wattribute-alias=
+-Wattribute-alias=<0..2>
 -Wattribute-warning
 -Wattributes
 -Wbad-function-cast
@@ -125,7 +125,7 @@
 -Wcast-function-type
 -Wcast-qual
 -Wcatch-value = -Wcatch-value=1
--Wcatch-value=
+-Wcatch-value=<0..3>
 -Wchar-subscripts
 -Wchkp
 -Wclass-conversion
@@ -195,14 +195,14 @@
 -Wformat-extra-args
 -Wformat-nonliteral
 -Wformat-overflow = -Wformat-overflow=1
--Wformat-overflow=
+-Wformat-overflow=<0..2>
 -Wformat-security
 -Wformat-signedness
 -Wformat-truncation = -Wformat-truncation=1
--Wformat-truncation=
+-Wformat-truncation=<0..2>
 -Wformat-y2k
 -Wformat-zero-length
--Wformat=
+-Wformat=<0..2>
 -Wformat=1
 #    -Wformat-contains-nul
 #    -Wformat-extra-args
@@ -225,7 +225,7 @@
 #    -Wimplicit-function-declaration
 #    -Wimplicit-int
 -Wimplicit-fallthrough = -Wimplicit-fallthrough=3
--Wimplicit-fallthrough=
+-Wimplicit-fallthrough=<0..5>
 -Wimplicit-function-declaration
 -Wimplicit-int
 -Wimport # DUMMY switch
@@ -308,7 +308,7 @@
 #    -Wvariadic-macros
 -Wpessimizing-move
 -Wplacement-new = -Wplacement-new=1
--Wplacement-new=
+-Wplacement-new=<0..2>
 -Wpmf-conversions
 -Wpointer-arith
 -Wpointer-compare
@@ -344,7 +344,7 @@
 -Wshift-count-overflow
 -Wshift-negative-value
 -Wshift-overflow = -Wshift-overflow=1
--Wshift-overflow=
+-Wshift-overflow=<0..2>
 -Wsign-compare
 -Wsign-conversion
 -Wsign-promo
@@ -355,14 +355,14 @@
 -Wstack-protector
 -Wstack-usage=<byte-size>
 -Wstrict-aliasing
--Wstrict-aliasing=
+-Wstrict-aliasing=<0..3>
 -Wstrict-null-sentinel
 -Wstrict-overflow
--Wstrict-overflow=
+-Wstrict-overflow=<0..5>
 -Wstrict-prototypes
 -Wstrict-selector-match
 -Wstringop-overflow = -Wstringop-overflow=2
--Wstringop-overflow=
+-Wstringop-overflow=<0..4>
 -Wstringop-truncation
 -Wsubobject-linkage
 -Wsuggest-attribute=cold
@@ -410,7 +410,7 @@
 -Wunused-but-set-parameter
 -Wunused-but-set-variable
 -Wunused-const-variable = -Wunused-const-variable=2
--Wunused-const-variable=
+-Wunused-const-variable=<0..2>
 -Wunused-function
 -Wunused-label
 -Wunused-local-typedefs

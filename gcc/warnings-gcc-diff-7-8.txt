@@ -1,19 +1,41 @@
+--Warray-bounds=
++-Warray-bounds=<0..2>
 +-Wattribute-alias # Enabled by default.
 +-Wcast-align=strict
 +-Wcast-function-type
 +-Wcatch-value # Applies to C++,ObjC++
-+-Wcatch-value= # Applies to C++,ObjC++
++-Wcatch-value=<0..3> # Applies to C++,ObjC++
 +-Wclass-memaccess # Applies to C++,ObjC++
 +-Wextra-semi # Applies to C++,ObjC++
+--Wformat-overflow=
++-Wformat-overflow=<0..2>
+--Wformat-truncation=
++-Wformat-truncation=<0..2>
+--Wformat=
++-Wformat=<0..2>
 +-Wif-not-aligned # Enabled by default.
+--Wimplicit-fallthrough=
++-Wimplicit-fallthrough=<0..5>
 +-Wmissing-attributes
 +-Wmultistatement-macros
 +-Wpacked-not-aligned
+--Wplacement-new= # Applies to C++
++-Wplacement-new=<0..2> # Applies to C++
 --Wreturn-type
 +-Wreturn-type # Enabled by default.
+--Wshift-overflow=
++-Wshift-overflow=<0..2>
 +-Wsizeof-pointer-div
+--Wstrict-aliasing=
++-Wstrict-aliasing=<0..3>
+--Wstrict-overflow=
++-Wstrict-overflow=<0..5>
+--Wstringop-overflow=
++-Wstringop-overflow=<0..4>
 +-Wstringop-truncation # Enabled by default.
 +-Wsuggest-attribute=cold
 +-Wsuggest-attribute=malloc
 --Wunsafe-loop-optimizations
 +-Wunsafe-loop-optimizations # DUMMY switch
+--Wunused-const-variable=
++-Wunused-const-variable=<0..2>
