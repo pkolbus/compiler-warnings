@@ -374,13 +374,17 @@ class DeprecationsListener(GccOptionsListener.GccOptionsListener):
     >>> apply_listener("Deprecated Enum", listener)
     >>> listener.isDeprecated()
     True
+    >>> listener = DeprecationsListener()
+    >>> apply_listener("WarnRemoved", listener)
+    >>> listener.isDeprecated()
+    True
     """
 
     def __init__(self):
         self._deprecated = False
 
     def enterVariableName(self, ctx):
-        if ctx.getText() == "Deprecated":
+        if ctx.getText() in ("Deprecated", "WarnRemoved"):
             self._deprecated = True
 
     def isDeprecated(self):
