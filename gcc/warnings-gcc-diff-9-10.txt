@@ -1,0 +1,36 @@
+--Walloc-size-larger-than=
++-Walloc-size-larger-than=<bytes>
++-Wanalyzer-double-fclose # Enabled by default.
++-Wanalyzer-double-free # Enabled by default.
++-Wanalyzer-exposure-through-output-file # Enabled by default.
++-Wanalyzer-file-leak # Enabled by default.
++-Wanalyzer-free-of-non-heap # Enabled by default.
++-Wanalyzer-malloc-leak # Enabled by default.
++-Wanalyzer-null-argument # Enabled by default.
++-Wanalyzer-null-dereference # Enabled by default.
++-Wanalyzer-possible-null-argument # Enabled by default.
++-Wanalyzer-possible-null-dereference # Enabled by default.
++-Wanalyzer-stale-setjmp-buffer # Enabled by default.
++-Wanalyzer-tainted-array-index # Enabled by default.
++-Wanalyzer-too-complex
++-Wanalyzer-unsafe-call-within-signal-handler # Enabled by default.
++-Wanalyzer-use-after-free # Enabled by default.
++-Wanalyzer-use-of-pointer-in-stale-stack-frame # Enabled by default.
++-Warith-conversion
++-Wc++20-compat # Applies to C++,ObjC++
++-Wc++2a-compat # Applies to C++,ObjC++
++-Wcomma-subscript # Applies to C++,ObjC++
++-Wenum-conversion # Applies to C,ObjC
++-Wformat-diag
++-Winaccessible-base # Enabled by default. Applies to C++,ObjC++
++-Wmismatched-tags # Applies to C++,ObjC++
++-Wno-frame-larger-than
++-Wno-larger-than
++-Wno-stack-usage
+--Wold-style-definition # Applies to C,ObjC
++-Wold-style-definition # Enabled by default. Applies to C,ObjC
++-Wredundant-tags # Applies to C++,ObjC++
++-Wstring-compare
++-Wswitch-outside-range # Enabled by default.
++-Wvolatile # Applies to C++,ObjC++
++-Wzero-length-bounds
