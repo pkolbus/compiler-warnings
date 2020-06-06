@@ -4,13 +4,12 @@ import argparse
 import antlr4
 import common
 import enum
-import io
 import sys
-from typing import Iterable, List, Set
+from typing import Dict, Iterable, List, Optional, Set, Tuple, Union
 
-import GccOptionsLexer
-import GccOptionsListener
-import GccOptionsParser
+from GccOptionsLexer import GccOptionsLexer
+from GccOptionsListener import GccOptionsListener
+from GccOptionsParser import GccOptionsParser
 
 
 class ParseState(enum.Enum):
@@ -28,7 +27,7 @@ NON_WARNING_WS = {"Werror", "Werror=", "Wfatal-errors"}
 WARNINGS_NON_W = {"pedantic"}
 
 # Many of these go into common.opt in GCC 4.6 but before that they are aliases:
-HIDDEN_WARNINGS = [
+HIDDEN_WARNINGS: List[Tuple[str, Set[str]]] = [
     # Pedantic is always in but in the options file it is only in 4.8 and later
     # GCC versions.
     ("pedantic", set()),
@@ -41,22 +40,26 @@ HIDDEN_WARNINGS = [
 # Languages of interest
 INTERESTING_LANGUAGES = ["C", "C++", "ObjC", "ObjC++"]
 
+# Tuple containing the option name, display name, option_properties, and help text
+# from an option definition record.
+OptionDefinition = Tuple[str, Optional[str], str, str]
 
-def parse_warning_blocks(fp: io.TextIOBase):
+
+def parse_warning_blocks(filename: str) -> List[OptionDefinition]:
     """
-    Parse option definition records from fp.
+    Parse option definition records from filename.
 
-    Parses option definition records and returns a list of 4-tuples containing
-    the option name, display name, option_properties, and help text.
+    Parses option definition records and returns a list of OptionDefinition.
 
     See https://gcc.gnu.org/onlinedocs/gccint/Option-file-format.html for the
     file format.
     """
-    blocks = []
+    blocks: List[OptionDefinition] = []
     state = ParseState.OPTION_NAME  # Expected content of line
-    help_lines = []
-    option_name = None
-    for line in fp.readlines():
+    help_lines: List[str] = []
+    option_name = str()
+    display_name: Optional[str] = None
+    for line in open(filename).readlines():
         line = line.rstrip("\n")  # Remove newline
         line = line.split(";", 1)[0]  # Remove trailing comment
         line = line.strip()  # Remove whitespace
@@ -101,15 +104,18 @@ def parse_warning_blocks(fp: io.TextIOBase):
     return blocks
 
 
-def get_parse_tree(string_value: str):
+def get_parse_tree(string_value: str) -> antlr4.tree.Tree.ParseTree:
     string_input = antlr4.InputStream(string_value)
-    lexer = GccOptionsLexer.GccOptionsLexer(string_input)
+    lexer = GccOptionsLexer(string_input)
     stream = antlr4.CommonTokenStream(lexer)
-    parser = GccOptionsParser.GccOptionsParser(stream)
-    return parser.optionAttributes()
+    parser = GccOptionsParser(stream)
+    return parser.optionAttributes()  # type: ignore[no-untyped-call]
 
 
-def apply_listener(listener_input, listener: GccOptionsListener.GccOptionsListener):
+def apply_listener(
+    listener_input: Union[str, antlr4.tree.Tree.ParseTree],
+    listener: GccOptionsListener,
+) -> None:
     if isinstance(listener_input, str):
         tree = get_parse_tree(listener_input)
     else:
@@ -118,7 +124,7 @@ def apply_listener(listener_input, listener: GccOptionsListener.GccOptionsListen
     walker.walk(listener, tree)
 
 
-class VariableAssignmentListener(GccOptionsListener.GccOptionsListener):
+class VariableAssignmentListener(GccOptionsListener):
     """
     >>> listener = VariableAssignmentListener()
     >>> apply_listener("Var(varname)", listener)
@@ -126,22 +132,22 @@ class VariableAssignmentListener(GccOptionsListener.GccOptionsListener):
     'varname'
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.variable_name = None
         self._last_name = None
 
-    def enterVariableName(self, ctx):
+    def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
         self._last_name = ctx.getText()
 
-    def enterAtom(self, ctx):
+    def enterAtom(self, ctx: GccOptionsParser.AtomContext) -> None:
         if self._last_name == "Var":
             self.variable_name = ctx.getText()
 
-    def exitTrailer(self, ctx):
+    def exitTrailer(self, ctx: GccOptionsParser.TrailerContext) -> None:
         self._last_name = None
 
 
-class AliasAssignmentListener(GccOptionsListener.GccOptionsListener):
+class AliasAssignmentListener(GccOptionsListener):
     """
     >>> listener = AliasAssignmentListener()
     >>> apply_listener("Alias(Wall)", listener)
@@ -153,29 +159,29 @@ class AliasAssignmentListener(GccOptionsListener.GccOptionsListener):
     'Wformat=1'
     """
 
-    def __init__(self):
-        self.alias_name = None
-        self._last_name = None
+    def __init__(self) -> None:
+        self.alias_name: Optional[str] = None
+        self._last_name: Optional[str] = None
         self._argument_id = 0
 
-    def enterVariableName(self, ctx):
+    def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
         self._last_name = ctx.getText()
         self._argument_id = 0
 
-    def enterArgument(self, ctx):
+    def enterArgument(self, ctx: GccOptionsParser.ArgumentContext) -> None:
         self._argument_id += 1
 
-    def enterAtom(self, ctx):
+    def enterAtom(self, ctx: GccOptionsParser.AtomContext) -> None:
         if self._last_name == "Alias" and self._argument_id == 1:
             self.alias_name = ctx.getText()
         if self._last_name == "Alias" and self._argument_id == 2:
             self.alias_name += ctx.getText()
 
-    def exitTrailer(self, ctx):
+    def exitTrailer(self, ctx: GccOptionsParser.TrailerContext) -> None:
         self._last_name = None
 
 
-class LanguagesEnabledListener(GccOptionsListener.GccOptionsListener):
+class LanguagesEnabledListener(GccOptionsListener):
     """
     Listens to LangEnabledBy(languagelist,warningflags) function calls
 
@@ -223,27 +229,27 @@ class LanguagesEnabledListener(GccOptionsListener.GccOptionsListener):
     '2'
     """
 
-    def __init__(self):
-        self._last_name = None
+    def __init__(self) -> None:
+        self._last_name: Optional[str] = None
         self._argument_id = 0
-        self._flag_name = None
+        self._flag_name = str()
         self._enabled_by_comparison = False
-        self.flags = []
-        self.arg = None
+        self.flags: List[str] = []
+        self.arg: Optional[str] = None
 
-    def enterVariableName(self, ctx):
+    def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
         if ctx.getText() == "LangEnabledBy":
             self._last_name = "LangEnabledBy"
             self._argument_id = 0
 
-    def enterArgument(self, ctx):
+    def enterArgument(self, ctx: GccOptionsParser.ArgumentContext) -> None:
         self._argument_id += 1
 
-    def enterCompOp(self, ctx):
+    def enterCompOp(self, ctx: GccOptionsParser.CompOpContext) -> None:
         if self._last_name == "LangEnabledBy" and self._argument_id == 3:
             self._enabled_by_comparison = True
 
-    def enterAtom(self, ctx):
+    def enterAtom(self, ctx: GccOptionsParser.AtomContext) -> None:
         if self._last_name == "LangEnabledBy":
             if self._argument_id == 2:
                 self._flag_name = ctx.getText()
@@ -259,11 +265,11 @@ class LanguagesEnabledListener(GccOptionsListener.GccOptionsListener):
                     # Argument form is N, so flags enables -Wthis=N
                     self.arg = ctx.getText()
 
-    def exitTrailer(self, ctx):
+    def exitTrailer(self, ctx: GccOptionsParser.TrailerContext) -> None:
         self._last_name = None
 
 
-class LanguagesListener(GccOptionsListener.GccOptionsListener):
+class LanguagesListener(GccOptionsListener):
     """
     Listens for applicable languages (C C++ ObjC)
 
@@ -281,15 +287,15 @@ class LanguagesListener(GccOptionsListener.GccOptionsListener):
     ['C', 'C++', 'ObjC']
     """
 
-    def __init__(self):
-        self.languages = set()
+    def __init__(self) -> None:
+        self.languages: Set[str] = set()
 
-    def enterVariableName(self, ctx):
+    def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
         if ctx.getText() in INTERESTING_LANGUAGES:
             self.languages.add(ctx.getText())
 
 
-class EnabledByListener(GccOptionsListener.GccOptionsListener):
+class EnabledByListener(GccOptionsListener):
     """
     Listens to EnabledBy(warningflag) function calls
 
@@ -299,23 +305,23 @@ class EnabledByListener(GccOptionsListener.GccOptionsListener):
     'Wextra'
     """
 
-    def __init__(self):
-        self._last_name = None
-        self.enabled_by = None
+    def __init__(self) -> None:
+        self._last_name: Optional[str] = None
+        self.enabled_by: Optional[str] = None
 
-    def enterVariableName(self, ctx):
+    def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
         if ctx.getText() == "EnabledBy":
             self._last_name = "EnabledBy"
 
-    def enterAtom(self, ctx):
+    def enterAtom(self, ctx: GccOptionsParser.AtomContext) -> None:
         if self._last_name == "EnabledBy":
             self.enabled_by = ctx.getText()
 
-    def exitTrailer(self, ctx):
+    def exitTrailer(self, ctx: GccOptionsParser.TrailerContext) -> None:
         self._last_name = None
 
 
-class DefaultsListener(GccOptionsListener.GccOptionsListener):
+class DefaultsListener(GccOptionsListener):
     """
     Listens to attributes to infer 'enabled by default' status
 
@@ -370,29 +376,29 @@ class DefaultsListener(GccOptionsListener.GccOptionsListener):
     False
     """
 
-    def __init__(self):
-        self._last_name = None
-        self._init_value = None
+    def __init__(self) -> None:
+        self._last_name: Optional[str] = None
+        self._init_value: Optional[str] = None
         self._is_boolean = True
 
-    def enterVariableName(self, ctx):
+    def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
         if ctx.getText() == "Init":
             self._last_name = "Init"
         elif ctx.getText() in ("Enum", "Host_Wide_Int", "Joined", "UInteger"):
             self._is_boolean = False
 
-    def enterAtom(self, ctx):
+    def enterAtom(self, ctx: GccOptionsParser.AtomContext) -> None:
         if self._last_name == "Init":
             self._init_value = ctx.getText()
 
-    def exitTrailer(self, ctx):
+    def exitTrailer(self, ctx: GccOptionsParser.TrailerContext) -> None:
         self._last_name = None
 
-    def isEnabledByDefault(self):
+    def isEnabledByDefault(self) -> bool:
         return self._is_boolean and self._init_value in ("1", "-1")
 
 
-class DeprecationsListener(GccOptionsListener.GccOptionsListener):
+class DeprecationsListener(GccOptionsListener):
     """
     Listens to attributes to infer deprecation status
 
@@ -414,18 +420,18 @@ class DeprecationsListener(GccOptionsListener.GccOptionsListener):
     True
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._deprecated = False
 
-    def enterVariableName(self, ctx):
+    def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
         if ctx.getText() in ("Deprecated", "WarnRemoved"):
             self._deprecated = True
 
-    def isDeprecated(self):
+    def isDeprecated(self) -> bool:
         return self._deprecated
 
 
-class IntegerRangeListener(GccOptionsListener.GccOptionsListener):
+class IntegerRangeListener(GccOptionsListener):
     """
     Searches for IntegerRange attribute.
 
@@ -441,30 +447,30 @@ class IntegerRangeListener(GccOptionsListener.GccOptionsListener):
     False
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._atoms: List[int] = []
         self._variable_name = None
 
-    def enterVariableName(self, ctx):
+    def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
         self._variable_name = ctx.getText()
         if self._variable_name == "IntegerRange":
             self._atoms.clear()
 
-    def enterAtom(self, ctx):
+    def enterAtom(self, ctx: GccOptionsParser.AtomContext) -> None:
         if self._variable_name == "IntegerRange":
             self._atoms.append(int(ctx.getText()))
 
-    def exitTrailer(self, ctx):
+    def exitTrailer(self, ctx: GccOptionsParser.TrailerContext) -> None:
         self._variable_name = None
 
     def has_range(self) -> bool:
         return len(self._atoms) == 2
 
-    def get_range(self) -> tuple:
+    def get_range(self) -> Tuple[int, ...]:
         return tuple(self._atoms)
 
 
-class WarningOptionListener(GccOptionsListener.GccOptionsListener):
+class WarningOptionListener(GccOptionsListener):
     """
     Searches for Warning attributes.
 
@@ -481,27 +487,27 @@ class WarningOptionListener(GccOptionsListener.GccOptionsListener):
     True
     """
 
-    def __init__(self):
-        self._last_name = None
+    def __init__(self) -> None:
+        self._last_name: Optional[str] = None
         self.is_warning = False
 
-    def enterVariableName(self, ctx):
+    def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
         if ctx.getText() == "Warning":
             self.is_warning = True
         elif ctx.getText() == "Var":
             self._last_name = "Var"
 
-    def enterAtom(self, ctx):
+    def enterAtom(self, ctx: GccOptionsParser.AtomContext) -> None:
         if self._last_name != "Var":
             return
         if ctx.getText().startswith("warn_"):
             self.is_warning = True
 
-    def exitTrailer(self, ctx):
+    def exitTrailer(self, ctx: GccOptionsParser.TrailerContext) -> None:
         self._last_name = None
 
 
-class DummyWarningListener(GccOptionsListener.GccOptionsListener):
+class DummyWarningListener(GccOptionsListener):
     """
     Checks if switch does nothing.
 
@@ -511,10 +517,10 @@ class DummyWarningListener(GccOptionsListener.GccOptionsListener):
     True
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.is_dummy = False
 
-    def enterVariableName(self, ctx):
+    def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
         if ctx.getText() == "Ignore":
             self.is_dummy = True
 
@@ -524,28 +530,36 @@ class GccOption:
 
     _WARN_REMOVED_HELP = "This option is deprecated and has no effect."
 
-    def __init__(self, name: str, aliases: Set[str] = None, warning=False):
+    def __init__(
+        self, name: str, aliases: Optional[Set[str]] = None, warning: bool = False
+    ) -> None:
         self._aliases = aliases if aliases else set()
         self._children: Set[str] = set()
         self._default = False
         self._deprecated = False
-        self._display_name = None
+        self._display_name: Optional[str] = None
         self._dummy = False
         self._help_text = str()
         self._languages: Set[str] = set()
         self._name = name
         self._warning = warning
 
-    def __eq__(self, other):
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, GccOption):
+            return NotImplemented
+
         return self._name == other._name
 
-    def __lt__(self, other):
+    def __lt__(self, other: object) -> bool:
+        if not isinstance(other, GccOption):
+            return NotImplemented
+
         return self._name.lower() < other._name.lower()
 
-    def add_alias(self, name: str):
+    def add_alias(self, name: str) -> None:
         self._aliases.add(name)
 
-    def add_child(self, name: str):
+    def add_child(self, name: str) -> None:
         self._children.add(name)
 
     def get_aliases(self) -> List[str]:
@@ -597,36 +611,36 @@ class GccOption:
     def is_warning(self) -> bool:
         return self._warning
 
-    def set_default(self):
+    def set_default(self) -> None:
         self._default = True
 
-    def set_deprecated(self):
+    def set_deprecated(self) -> None:
         self._deprecated = True
 
-    def set_display_name(self, display_name: str):
+    def set_display_name(self, display_name: str) -> None:
         if display_name.startswith("-"):
             self._display_name = display_name
         else:
             self._display_name = "-" + display_name
 
-    def set_dummy(self):
+    def set_dummy(self) -> None:
         self._dummy = True
 
-    def set_help_text(self, help_text: str):
+    def set_help_text(self, help_text: str) -> None:
         self._help_text = help_text
 
-    def set_warning(self):
+    def set_warning(self) -> None:
         self._warning = True
 
-    def update_languages(self, languages: Iterable[str]):
+    def update_languages(self, languages: Iterable[str]) -> None:
         self._languages.update(languages)
 
 
 class GccDiagnostics:
     """A collection of GccOption."""
 
-    def __init__(self):
-        self._options = {}  # Map from option name to GccOption
+    def __init__(self) -> None:
+        self._options: Dict[str, GccOption] = {}
 
     def get(self, option_name: str) -> GccOption:
         try:
@@ -635,9 +649,9 @@ class GccDiagnostics:
             self._options[option_name] = GccOption(option_name)
             return self._options[option_name]
 
-    def parse_options_file(self, filename: str):
+    def parse_options_file(self, filename: str) -> None:
         """Parse filename and add options from the file."""
-        blocks = parse_warning_blocks(open(filename))
+        blocks = parse_warning_blocks(filename)
 
         for option_name, display_name, option_arguments, help_text in blocks:
             option = self.get(option_name)
@@ -730,7 +744,7 @@ class GccDiagnostics:
         )
 
     @classmethod
-    def hidden_options(cls):
+    def hidden_options(cls) -> "GccDiagnostics":
         options = GccDiagnostics()
         for switch, aliases in HIDDEN_WARNINGS:
             options._options[switch] = GccOption(switch, aliases=aliases, warning=True)
@@ -773,7 +787,7 @@ class GccDiagnostics:
 
 def print_option(
     all_options: GccDiagnostics, option: GccOption, level: int, args: argparse.Namespace
-):
+) -> None:
     if level:
         print("#  " + "  " * level + option.get_display_name())
     else:
@@ -784,7 +798,9 @@ def print_option(
         print_option(all_options, child, level + 1, args)
 
 
-def print_default_options(all_options: GccDiagnostics, args: argparse.Namespace):
+def print_default_options(
+    all_options: GccDiagnostics, args: argparse.Namespace
+) -> None:
     defaults = all_options.get_default_warnings()
     if not defaults:
         return
@@ -794,7 +810,7 @@ def print_default_options(all_options: GccDiagnostics, args: argparse.Namespace)
         print_option(all_options, option, 1, args)
 
 
-def could_be_warning(option_name):
+def could_be_warning(option_name: str) -> bool:
     if "," in option_name:
         return False
     if option_name in NON_WARNING_WS:
@@ -803,7 +819,7 @@ def could_be_warning(option_name):
     return option_name.startswith("W")
 
 
-def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics):
+def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics) -> None:
     if args.top_level:
         # Print a group that has all enabled-by-default warnings together
         print_default_options(all_options, args)
@@ -836,7 +852,7 @@ def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics):
             print_option(all_options, child, 1, args)
 
 
-def main(argv):
+def main(argv: List[str]) -> None:
     parser = argparse.ArgumentParser(
         description="Parses GCC option files for warning options."
     )

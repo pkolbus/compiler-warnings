@@ -12,6 +12,7 @@ import json
 import sys
 from functools import total_ordering
 from itertools import chain
+from typing import Any, Dict, List
 import common
 
 
@@ -20,7 +21,7 @@ class ClangDiagnostic:
     One clang warning message (Diagnostic)
     """
 
-    def __init__(self, obj):
+    def __init__(self, obj: Dict[str, Any]) -> None:
         """
         Construct from a Diagnostic instance (JSON object)
         """
@@ -43,7 +44,7 @@ class ClangDiagGroup:
     clang diagnostic group (DiagGroup record)
     """
 
-    def __init__(self, obj):
+    def __init__(self, obj: Dict[str, Any], parent: "ClangDiagnostics") -> None:
         """
         Construct from a DiagGroup instance (JSON object)
         """
@@ -52,11 +53,11 @@ class ClangDiagGroup:
         self.child_names = [s["def"] for s in obj["SubGroups"]]
 
         self.has_parent = False
-        self.diagnostics = []  # List of ClangDiagnostic
-        self.children = []  # List of ClangDiagGroup
-        self.switch = None  # ClangWarningSwitch
+        self.diagnostics: List[ClangDiagnostic] = []
+        self.children: List[ClangDiagGroup] = []
+        self.switch: ClangWarningSwitch = parent.get_switch(self.switch_name)
 
-    def get_messages(self, enabled_by_default: bool) -> list:
+    def get_messages(self, enabled_by_default: bool) -> List[str]:
         """Returns a list of diagnostic messages in the group.
 
         If enabled_by_default is True, only the mesages enabled by default are
@@ -68,7 +69,7 @@ class ClangDiagGroup:
 
         return [diag.text for diag in self.diagnostics]
 
-    def is_dummy(self):
+    def is_dummy(self) -> bool:
         """
         Determines if a group does nothing
 
@@ -124,28 +125,36 @@ class ClangWarningSwitch:
         Construct from a name
         """
         self.name = name
-        self.groups = []  # List of ClangDiagGroup
+        self.groups: List[ClangDiagGroup] = []
 
-    def __eq__(self, other):
+    def __eq__(self, other: object) -> bool:
         """Returns True if self and other have the same name"""
+        if not isinstance(other, ClangWarningSwitch):
+            return NotImplemented
+
         return self.name.lower() == other.name.lower()
 
-    def __lt__(self, other):
+    def __lt__(self, other: object) -> bool:
         """Returns True if self should be before other in a sorted list"""
+        if not isinstance(other, ClangWarningSwitch):
+            return NotImplemented
+
         return self.name.lower() < other.name.lower()
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         """Returns a hash of the switch name"""
         return hash(self.name.lower())
 
-    def get_child_switches(self, enabled_by_default: bool) -> list:
+    def get_child_switches(
+        self, enabled_by_default: bool
+    ) -> List["ClangWarningSwitch"]:
         """
         Returns a list of child ClangWarningSwitch for the switch
 
         If enabled_by_default is True, include only the switches that are
         partially or completely enabled by default.
         """
-        child_groups = []
+        child_groups: List[ClangDiagGroup] = []
         for group in self.groups:
             child_groups += group.children
 
@@ -160,7 +169,7 @@ class ClangWarningSwitch:
 
         return child_switches
 
-    def get_messages(self, enabled_by_default: bool) -> list:
+    def get_messages(self, enabled_by_default: bool) -> List[str]:
         """Returns a list of diagnostic messages controlled by the switch"""
         messages = []
         for group in self.groups:
@@ -238,21 +247,16 @@ class ClangDiagnostics:
 
     def __init__(self, json_file: str):
         self.groups = {}  # Dict: group name -> ClangDiagGroup
-        self.switches = {}  # Dict: switch name -> ClangWarningSwitch
+        self.switches: Dict[str, ClangWarningSwitch] = {}
 
         json_data = json.loads(open(json_file).read())
 
         # Instantiate all group and switch objects
         for group_name in json_data["!instanceof"]["DiagGroup"]:
-            group = ClangDiagGroup(json_data[group_name])
+            group = ClangDiagGroup(json_data[group_name], self)
 
             self.groups[group_name] = group
-
-            switch_name = group.switch_name
-            if switch_name not in self.switches:
-                self.switches[switch_name] = ClangWarningSwitch(switch_name)
-            self.switches[switch_name].groups.append(group)
-            group.switch = self.switches[switch_name]
+            self.switches[group.switch_name].groups.append(group)
 
         # Resolve parent-child relationships in groups
         for group in self.groups.values():
@@ -266,6 +270,14 @@ class ClangDiagnostics:
 
             if diag.group_name is not None and diag.group_name in self.groups:
                 self.groups[diag.group_name].diagnostics.append(diag)
+
+    def get_switch(self, switch_name: str) -> ClangWarningSwitch:
+        """Return the ClangWarningSwitch with the given name."""
+        try:
+            return self.switches[switch_name]
+        except KeyError:
+            self.switches[switch_name] = ClangWarningSwitch(switch_name)
+            return self.switches[switch_name]
 
 
 def create_comment_text(
@@ -286,8 +298,11 @@ def create_comment_text(
 
 
 def print_references(
-    switch: ClangWarningSwitch, level: int, args: argparse.Namespace, enabled_by_default
-):
+    switch: ClangWarningSwitch,
+    level: int,
+    args: argparse.Namespace,
+    enabled_by_default: bool,
+) -> None:
     """
     Print all children of switch, indented
     """
@@ -300,7 +315,7 @@ def print_switch(
     level: int,
     args: argparse.Namespace,
     enabled_by_default: bool,
-):
+) -> None:
     """
     Print switch, indented
     """
@@ -313,7 +328,7 @@ def print_switch(
     print_references(switch, level + 1, args, enabled_by_default)
 
 
-def main(argv):
+def main(argv: List[str]) -> None:
     """Entry point"""
     parser = argparse.ArgumentParser(description="Clang diagnostics group parser")
     common.add_common_parser_options(parser)
