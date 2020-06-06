@@ -5,7 +5,7 @@ rule doctest
      command = python3 -mdoctest $in
 
 rule get-antlr
-     command = wget -O antlr.jar https://www.antlr.org/download/antlr-4.7.1-complete.jar
+     command = wget -O antlr.jar https://www.antlr.org/download/antlr-4.8-complete.jar
 
 build antlr.jar: get-antlr
 
