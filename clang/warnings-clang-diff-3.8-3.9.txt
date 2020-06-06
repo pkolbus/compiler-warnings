@@ -1,15 +1,17 @@
 --Wc++1z-extensions # Enabled by default.
-+-Wc++1z-extensions
++-Wc++1z-extensions # Partially enabled by default.
 +-Wcast-calling-convention # Enabled by default.
 +-Wclang-cl-pch # Enabled by default.
 +-Wcomma
 --Wcuda-compat # Enabled by default.
-+-Wcuda-compat
-+-Wexpansion-to-defined
++-Wcuda-compat # Partially enabled by default.
++-Wexpansion-to-defined # Partially enabled by default.
 +-Wfloat-overflow-conversion
 +-Wfloat-zero-conversion
 --Wgcc-compat # Enabled by default.
-+-Wgcc-compat
++-Wgcc-compat # Partially enabled by default.
+--Wimplicit-fallthrough # Partially enabled by default.
++-Wimplicit-fallthrough
 +-Wincompatible-sysroot # Enabled by default.
 --Winherited-variadic-ctor # Enabled by default.
 --Wliblto # Enabled by default.
@@ -22,6 +24,8 @@
 +-Wshadow-all
 +-Wshadow-field-in-constructor
 +-Wshadow-field-in-constructor-modified
+--Wsource-uses-openmp
++-Wsource-uses-openmp # Partially enabled by default.
 +-Wundefined-func-template
 +-Wundefined-var-template # Enabled by default.
 +-Wunguarded-availability # Enabled by default.

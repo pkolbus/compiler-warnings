@@ -1,13 +1,15 @@
 +-Wbinary-literal
 +-Wbinding-in-condition # Enabled by default.
+--Wc++11-compat-pedantic
++-Wc++11-compat-pedantic # Partially enabled by default.
 --Wc++17-compat # Enabled by default.
-+-Wc++17-compat
-+-Wc++17-compat-pedantic
++-Wc++17-compat # Partially enabled by default.
++-Wc++17-compat-pedantic # Partially enabled by default.
 --Wc++1z-compat # Enabled by default.
-+-Wc++1z-compat
-+-Wc++2a-compat
-+-Wc++2a-compat-pedantic
-+-Wc++2a-extensions
++-Wc++1z-compat # Partially enabled by default.
++-Wc++2a-compat # Partially enabled by default.
++-Wc++2a-compat-pedantic # Partially enabled by default.
++-Wc++2a-extensions # Partially enabled by default.
 +-Wc++98-c++11-c++14-c++17-compat
 +-Wc++98-c++11-c++14-c++17-compat-pedantic
 +-Wc++98-c++11-compat-binary-literal
@@ -22,7 +24,7 @@
 +-Wobjc-flexible-array # Enabled by default.
 +-Wobjc-messaging-id
 +-Wout-of-scope-function # Enabled by default.
-+-Wpragma-pack
++-Wpragma-pack # Partially enabled by default.
 +-Wpragma-pack-suspicious-include
 +-Wredundant-parens
 +-Wtautological-constant-compare # Enabled by default.
@@ -34,3 +36,5 @@
 +-Wunicode-homoglyph # Enabled by default.
 +-Wunsupported-abs # Enabled by default.
 +-Wunsupported-gpopt # Enabled by default.
+--Wvariadic-macros
++-Wvariadic-macros # Partially enabled by default.

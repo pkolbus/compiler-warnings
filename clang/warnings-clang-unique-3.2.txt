@@ -1,4 +1,4 @@
--W
+-W # Partially enabled by default.
 -W#pragma-messages # Enabled by default.
 -W#warnings # Enabled by default.
 -Wabi # DUMMY switch
@@ -7,7 +7,7 @@
 -Waddress-of-array-temporary # Enabled by default.
 -Waddress-of-temporary # Enabled by default.
 -Waggregate-return # DUMMY switch
--Wall
+-Wall # Partially enabled by default.
 -Wambiguous-macro # Enabled by default.
 -Wambiguous-member-template # Enabled by default.
 -Wanalyzer-incompatible-plugin # Enabled by default.
@@ -35,44 +35,44 @@
 -Wbackslash-newline-escape # Enabled by default.
 -Wbad-array-new-length # Enabled by default.
 -Wbad-function-cast
--Wbind-to-temporary-copy
+-Wbind-to-temporary-copy # Partially enabled by default.
 -Wbitwise-op-parentheses # Enabled by default.
 -Wbool-conversion # Enabled by default.
 -Wbool-conversions # Enabled by default.
 -Wbuiltin-macro-redefined # Enabled by default.
 -Wbuiltin-requires-header # Enabled by default.
 -Wc++-compat
--Wc++0x-compat
--Wc++0x-extensions
--Wc++0x-narrowing
--Wc++11-compat
+-Wc++0x-compat # Partially enabled by default.
+-Wc++0x-extensions # Partially enabled by default.
+-Wc++0x-narrowing # Partially enabled by default.
+-Wc++11-compat # Partially enabled by default.
 -Wc++11-compat-reserved-user-defined-literal
--Wc++11-extensions
+-Wc++11-extensions # Partially enabled by default.
 -Wc++11-extra-semi
 -Wc++11-long-long
--Wc++11-narrowing
+-Wc++11-narrowing # Partially enabled by default.
 -Wc++98-compat
 -Wc++98-compat-bind-to-temporary-copy
 -Wc++98-compat-local-type-template-args
 -Wc++98-compat-pedantic
 -Wc++98-compat-unnamed-type-template-args
 -Wc11-extensions
--Wc99-extensions
+-Wc99-extensions # Partially enabled by default.
 -Wcast-align
 -Wcast-of-sel-type # Enabled by default.
 -Wcast-qual # DUMMY switch
 -WCFString-literal # Enabled by default.
 -Wchar-align # DUMMY switch
 -Wchar-subscripts
--Wcomment
--Wcomments
+-Wcomment # Partially enabled by default.
+-Wcomments # Partially enabled by default.
 -Wcompare-distinct-pointer-types # Enabled by default.
 -Wcomplex-component-init
 -Wconditional-type-mismatch # Enabled by default.
 -Wconditional-uninitialized
 -Wconstant-conversion # Enabled by default.
 -Wconstant-logical-operand # Enabled by default.
--Wconversion
+-Wconversion # Partially enabled by default.
 -Wconversion-null # Enabled by default.
 -Wcovered-switch-default
 -Wctor-dtor-privacy # DUMMY switch
@@ -84,7 +84,7 @@
 -Wdefault-arg-special-member # Enabled by default.
 -Wdelegating-ctor-cycles # Enabled by default.
 -Wdelete-incomplete # Enabled by default.
--Wdelete-non-virtual-dtor
+-Wdelete-non-virtual-dtor # Partially enabled by default.
 -Wdeprecated # Enabled by default.
 -Wdeprecated-declarations # Enabled by default.
 -Wdeprecated-implementations
@@ -117,7 +117,7 @@
 -Wexplicit-ownership-type
 -Wextended-offsetof
 -Wextern-initializer # Enabled by default.
--Wextra
+-Wextra # Partially enabled by default.
 -Wextra-semi
 -Wextra-tokens # Enabled by default.
 -Wflexible-array-extensions
@@ -126,28 +126,28 @@
 -Wformat-extra-args # Enabled by default.
 -Wformat-invalid-specifier # Enabled by default.
 -Wformat-non-iso
--Wformat-nonliteral
+-Wformat-nonliteral # Partially enabled by default.
 -Wformat-security # Enabled by default.
 -Wformat-y2k # DUMMY switch
 -Wformat-zero-length # Enabled by default.
--Wformat=2
+-Wformat=2 # Partially enabled by default.
 -Wfour-char-constants
 -Wgcc-compat # Enabled by default.
 -Wglobal-constructors
--Wgnu
+-Wgnu # Partially enabled by default.
 -Wgnu-array-member-paren-init # Enabled by default.
--Wgnu-designator
+-Wgnu-designator # Partially enabled by default.
 -Wheader-hygiene
 -Widiomatic-parentheses
 -Wignored-attributes # Enabled by default.
 -Wignored-qualifiers
--Wimplicit
+-Wimplicit # Partially enabled by default.
 -Wimplicit-atomic-properties
 -Wimplicit-conversion-floating-point-to-bool # Enabled by default.
 -Wimplicit-exception-spec-mismatch # Enabled by default.
--Wimplicit-fallthrough
+-Wimplicit-fallthrough # Partially enabled by default.
 -Wimplicit-fallthrough-per-function
--Wimplicit-function-declaration
+-Wimplicit-function-declaration # Partially enabled by default.
 -Wimplicit-int # Enabled by default.
 -Wimplicit-retain-self
 -Wimport # DUMMY switch
@@ -175,7 +175,7 @@
 -Wlarge-by-value-copy # Enabled by default.
 -Wliteral-conversion # Enabled by default.
 -Wliteral-range # Enabled by default.
--Wlocal-type-template-args
+-Wlocal-type-template-args # Partially enabled by default.
 -Wlogical-op-parentheses # Enabled by default.
 -Wlong-long
 -Wloop-analysis
@@ -183,7 +183,7 @@
 -Wmain-return-type # Enabled by default.
 -Wmalformed-warning-check # Enabled by default.
 -Wmethod-signatures
--Wmicrosoft
+-Wmicrosoft # Partially enabled by default.
 -Wmicrosoft-exists # Enabled by default.
 -Wmismatched-method-attributes # Enabled by default.
 -Wmismatched-parameter-types # Enabled by default.
@@ -200,12 +200,12 @@
 -Wmissing-selector-name # Enabled by default.
 -Wmissing-variable-declarations
 -Wmodule-build
--Wmost
+-Wmost # Partially enabled by default.
 -Wmultichar # Enabled by default.
--Wnarrowing
+-Wnarrowing # Partially enabled by default.
 -Wnested-externs # DUMMY switch
 -Wnewline-eof
--Wnon-gcc
+-Wnon-gcc # Partially enabled by default.
 -Wnon-literal-null-conversion # Enabled by default.
 -Wnon-pod-varargs # Enabled by default.
 -Wnon-virtual-dtor
@@ -259,18 +259,18 @@
 -Wreadonly-iboutlet-property # Enabled by default.
 -Wreadonly-setter-attrs
 -Wreceiver-expr # Enabled by default.
--Wreceiver-forward-class
+-Wreceiver-forward-class # Partially enabled by default.
 -Wreceiver-is-weak
 -Wredundant-decls # DUMMY switch
 -Wreorder
 -Wrequires-super-attribute # Enabled by default.
--Wreserved-user-defined-literal
+-Wreserved-user-defined-literal # Partially enabled by default.
 -Wreturn-stack-address # Enabled by default.
 -Wreturn-type # Enabled by default.
 -Wreturn-type-c-linkage # Enabled by default.
 -Wsection # Enabled by default.
 -Wselector
--Wself-assign
+-Wself-assign # Partially enabled by default.
 -Wself-assign-field # Enabled by default.
 -Wsemicolon-before-method-body
 -Wsentinel # Enabled by default.
@@ -291,7 +291,7 @@
 -Wsizeof-pointer-memaccess # Enabled by default.
 -Wsometimes-uninitialized
 -Wstack-protector # DUMMY switch
--Wstatic-in-inline
+-Wstatic-in-inline # Partially enabled by default.
 -Wstrict-aliasing # DUMMY switch
 -Wstrict-aliasing=0 # DUMMY switch
 -Wstrict-aliasing=1 # DUMMY switch
@@ -332,15 +332,15 @@
 -Wundefined-internal # DUMMY switch
 -Wundefined-reinterpret-cast
 -Wunicode # Enabled by default.
--Wuninitialized
--Wunknown-pragmas
+-Wuninitialized # Partially enabled by default.
+-Wunknown-pragmas # Partially enabled by default.
 -Wunknown-warning-option # Enabled by default.
--Wunnamed-type-template-args
+-Wunnamed-type-template-args # Partially enabled by default.
 -Wunneeded-internal-declaration
 -Wunneeded-member-function
 -Wunreachable-code
 -Wunsupported-visibility # Enabled by default.
--Wunused
+-Wunused # Partially enabled by default.
 -Wunused-argument # DUMMY switch
 -Wunused-command-line-argument # Enabled by default.
 -Wunused-comparison # Enabled by default.

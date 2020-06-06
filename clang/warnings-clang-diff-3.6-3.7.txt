@@ -1,5 +1,7 @@
 +-Wauto-disable-vptr-sanitizer # Enabled by default.
 +-Wbraced-scalar-init # Enabled by default.
+--Wc99-compat
++-Wc99-compat # Partially enabled by default.
 +-Wdllexport-explicit-instantiation-decl # Enabled by default.
 +-Wexceptions # Enabled by default.
 +-Wflag-enum # Enabled by default.

@@ -1,7 +1,7 @@
 +-Wanonymous-pack-parens # Enabled by default.
 +-Wbitfield-constant-conversion # Enabled by default.
 +-Wc++11-compat-pedantic
-+-Wc++1y-extensions
++-Wc++1y-extensions # Partially enabled by default.
 +-Wc99-compat
 +-Wconfig-macros # Enabled by default.
 +-Wconstexpr-not-const # Enabled by default.
@@ -12,6 +12,8 @@
 +-Wdocumentation-unknown-command
 +-Wduplicate-enum
 +-Wgnu-static-float-init # Enabled by default.
+--Wignored-qualifiers
++-Wignored-qualifiers # Partially enabled by default.
 +-Wincompatible-library-redeclaration # Enabled by default.
 +-Wincompatible-pointer-types-discards-qualifiers # Enabled by default.
 +-Winherited-variadic-ctor # Enabled by default.

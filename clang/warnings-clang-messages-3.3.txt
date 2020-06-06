@@ -1,4 +1,11 @@
 # enabled by default:
+#   -W (partial)
+#     -Wextra (partial)
+#       -Wignored-qualifiers (partial)
+#             ARC %select{unused|__unsafe_unretained|__strong|__weak|__autoreleasing}0 lifetime qualifier on return type is ignored
+#       -Winitializer-overrides
+#             initializer overrides prior initialization of this subobject
+#             subobject initialization overrides initialization of other fields within its enclosing subobject
 #   -W#pragma-messages
 #         %0
 #   -W#warnings
@@ -9,6 +16,136 @@
 #         pointer is initialized by a temporary array, which will be destroyed at the end of the full-expression
 #   -Waddress-of-temporary
 #         taking the address of a temporary object of type %0
+#   -Wall (partial)
+#     -Wmost (partial)
+#       -Wcast-of-sel-type
+#             cast of type %0 to %1 is deprecated; use sel_getName instead
+#       -Wcomment (partial)
+#             '/*' within block comment
+#             escaped newline between */ characters at block comment end
+#       -Wdelete-non-virtual-dtor (partial)
+#             delete called on %0 that is abstract but has non-virtual destructor
+#       -Wformat
+#             %select{field width|precision}0 used with '%1' conversion specifier, resulting in undefined behavior
+#             '%select{*|.*}0' specified field %select{width|precision}0 is missing a matching 'int' argument
+#             cannot mix positional and non-positional arguments in format string
+#             data argument position '%0' exceeds the number of data arguments (%1)
+#             field %select{width|precision}0 should have type %1, but argument has type %2
+#             flag '%0' is ignored when flag '%1' is present
+#             flag '%0' results in undefined behavior with '%1' conversion specifier
+#             format specifies type %0 but the argument has type %1
+#             format string contains '\0' within the string body
+#             format string missing
+#             format string should not be a wide string
+#             incomplete format specifier
+#             invalid position specified for %select{field width|field precision}0
+#             length modifier '%0' results in undefined behavior or no effect with '%1' conversion specifier
+#             more '%%' conversions than data arguments
+#             no closing ']' for '%%[' in scanf format string
+#             position arguments in format strings start counting at 1 (not 0)
+#             values of type '%0' should not be used as format arguments; add an explicit cast to %1 instead
+#             zero field width in scanf format string is unused
+#         -Wformat-extra-args
+#               data argument not used by format string
+#         -Wformat-invalid-specifier
+#               invalid conversion specifier '%0'
+#         -Wformat-security
+#               format string is not a string literal (potentially insecure)
+#         -Wformat-zero-length
+#               format string is empty
+#         -Wnonnull
+#               null passed to a callee which requires a non-null argument
+#       -Wimplicit (partial)
+#         -Wimplicit-function-declaration (partial)
+#               implicit declaration of function %0 is invalid in C99
+#               use of unknown builtin %0
+#         -Wimplicit-int
+#               type specifier missing, defaults to 'int'
+#       -Wmultichar
+#             multi-character character constant
+#       -Wobjc-missing-super-calls
+#             method possibly missing a [super %0] call
+#       -Wprivate-extern
+#             use of __private_extern__ on a declaration may not produce external symbol private to the linkage unit and is deprecated
+#       -Wreturn-type
+#             %select{void function|void method|constructor|destructor}1 %0 should not return a value
+#             control may reach end of non-void function
+#             control may reach end of non-void lambda
+#             control reaches end of non-void function
+#             control reaches end of non-void lambda
+#             non-void %select{function|method}1 %0 should return a value
+#         -Wreturn-type-c-linkage
+#               %0 has C-linkage specified, but returns incomplete type %1 which could be incompatible with C
+#               %0 has C-linkage specified, but returns user-defined type %1 which is incompatible with C
+#       -Wself-assign (partial)
+#         -Wself-assign-field
+#               assigning %select{field|instance variable}0 to itself
+#       -Wsizeof-array-argument
+#             sizeof on array function parameter will return size of %0 instead of %1
+#       -Wsizeof-array-decay
+#             sizeof on pointer operation will return size of %0 instead of %1
+#       -Wstring-plus-int
+#             adding %0 to a string does not append to the string
+#       -Wtrigraphs
+#             ignored trigraph would end block comment
+#             trigraph converted to '%0' character
+#             trigraph ends block comment
+#             trigraph ignored
+#       -Wuninitialized (partial)
+#             field %0 is uninitialized when used here
+#             reference %0 is not yet bound to a value when used here
+#             reference %0 is not yet bound to a value when used within its own initialization
+#             variable %0 is uninitialized when used within its own initialization
+#         -Wstatic-self-init
+#               static variable %0 is suspiciously used within its own initialization
+#       -Wunknown-pragmas (partial)
+#             angle-bracketed include <%0> cannot be aliased to double-quoted include "%1"
+#             double-quoted include "%0" cannot be aliased to angle-bracketed include <%1>
+#             expected 'ON' or 'OFF' or 'DEFAULT' in pragma
+#             expected end of directive in pragma
+#             pragma STDC FENV_ACCESS ON is not supported, ignoring pragma
+#             pragma diagnostic expected 'error', 'warning', 'ignored', 'fatal', 'push', or 'pop'
+#             pragma diagnostic expected option name (e.g. "-Wundef")
+#             pragma diagnostic pop could not pop, no matching push
+#             pragma include_alias expected '%0'
+#             pragma include_alias expected include filename
+#             unexpected token in pragma diagnostic
+#             unknown pragma in STDC namespace
+#             unknown warning group '%0', ignored
+#       -Wunused (partial)
+#         -Wunused-value
+#               container access result unused - container access should not be used for side effects
+#               expression result unused
+#               expression result unused; should this cast be to 'void'?
+#               ignoring return value of function declared with %0 attribute
+#               property access result unused - getters should not be used for side effects
+#           -Wunused-comparison
+#                 %select{equality|inequality}0 comparison result unused
+#           -Wunused-result
+#                 ignoring return value of function declared with warn_unused_result attribute
+#     -Wparentheses
+#           %0 has lower precedence than %1; %1 will be evaluated first
+#           operator '?:' has lower precedence than '%0'; '%0' will be evaluated first
+#           using the result of an assignment as a condition without parentheses
+#       -Wbitwise-op-parentheses
+#             '&' within '|'
+#       -Wdangling-else
+#             add explicit braces to avoid dangling else
+#       -Wlogical-op-parentheses
+#             '&&' within '||'
+#       -Woverloaded-shift-op-parentheses
+#             overloaded operator %select{>>|<<}0 has lower precedence than comparison operator
+#       -Wparentheses-equality
+#             equality comparison with extraneous parentheses
+#       -Wshift-op-parentheses
+#             operator '%0' has lower precedence than '%1'; '%1' will be evaluated first
+#     -Wswitch
+#           %0 enumeration values not handled in switch: %1, %2, %3...
+#           case value not in enumerated type %0
+#           enumeration value %0 not handled in switch
+#           enumeration values %0 and %1 not handled in switch
+#           enumeration values %0, %1, and %2 not handled in switch
+#           overflow converting case value to switch condition type (%0 to %1)
 #   -Wambiguous-macro
 #         ambiguous expansion of macro %0
 #   -Wambiguous-member-template
@@ -59,6 +196,9 @@
 #   -Wbad-array-new-length
 #         array is too large (%0 elements)
 #         array size is negative
+#   -Wbind-to-temporary-copy (partial)
+#         C++98 requires an accessible copy constructor for class %2 when binding a reference to a temporary; was %select{private|protected}0
+#         no viable constructor %select{copying variable|copying parameter|returning object|throwing object|copying member subobject|copying array element|allocating object|copying temporary|initializing base subobject|initializing vector element|capturing value}0 of type %1; C++98 requires a copy constructor when binding a reference to a temporary
 #   -Wbool-conversions
 #     -Wbool-conversion
 #           address of function %q0 will always evaluate to 'true'
@@ -70,10 +210,58 @@
 #         declaration of built-in function '%0' requires inclusion of the header <setjmp.h>
 #         declaration of built-in function '%0' requires inclusion of the header <stdio.h>
 #         declaration of built-in function '%0' requires inclusion of the header <ucontext.h>
-#   -Wcast-of-sel-type
-#         cast of type %0 to %1 is deprecated; use sel_getName instead
+#   -Wc++0x-compat (partial)
+#     -Wc++11-compat (partial)
+#           use of right-shift operator ('>>') in template argument will require parentheses in C++11
+#       -Wc++11-narrowing (partial)
+#             %select{case value|enumerator value|non-type template argument}0 %select{cannot be narrowed from type %2 to %3|evaluates to %2, which cannot be narrowed to type %3}1
+#             constant expression evaluates to %0 which cannot be narrowed to type %1
+#             non-constant-expression cannot be narrowed from type %0 to %1 in initializer list
+#             type %0 cannot be narrowed to %1 in initializer list
+#   -Wc++0x-extensions (partial)
+#     -Wc++11-extensions (partial)
+#           '%0' keyword is a C++11 extension
+#           'auto' type specifier is a C++11 extension
+#           'template' keyword outside of a template
+#           'typename' occurs outside of a template
+#           alias declarations are a C++11 extension
+#           default template arguments for a function template are a C++11 extension
+#           defaulted function definitions are a C++11 extension
+#           deleted function definitions are a C++11 extension
+#           explicit conversion functions are a C++11 extension
+#           first declaration of %select{class template|class template partial|function template|member function|static data member|member class|member enumeration}0 specialization of %1 outside namespace %2 is a C++11 extension
+#           generalized initializer lists are a C++11 extension
+#           in-class initialization of non-static data member is a C++11 extension
+#           inline namespaces are a C++11 feature
+#           non-class friend type %0 is a C++11 extension
+#           non-type template argument referring to %select{function|object}0 %1 with internal linkage is a C++11 extension
+#           range-based for loop is a C++11 extension
+#           reference qualifiers on functions are a C++11 extension
+#           rvalue references are a C++11 extension
+#           scoped enumerations are a C++11 extension
+#           static data member %0 in union is a C++11 extension
+#           unelaborated friend declaration is a C++11 extension; specify '%select{struct|interface|union|class|enum}0' to befriend %1
+#           variadic templates are a C++11 extension
+#   -Wc++0x-narrowing (partial)
+#     -Wc++11-narrowing (partial)
+#           %select{case value|enumerator value|non-type template argument}0 %select{cannot be narrowed from type %2 to %3|evaluates to %2, which cannot be narrowed to type %3}1
+#           constant expression evaluates to %0 which cannot be narrowed to type %1
+#           non-constant-expression cannot be narrowed from type %0 to %1 in initializer list
+#           type %0 cannot be narrowed to %1 in initializer list
+#   -Wc++1y-extensions (partial)
+#         'decltype(auto)' type specifier is a C++1y extension
+#         multiple return statements in constexpr function is a C++1y extension
+#         type definition in a constexpr %select{function|constructor}0 is a C++1y extension
+#         use of this statement in a constexpr %select{function|constructor}0 is a C++1y extension
+#         variable declaration in a constexpr %select{function|constructor}0 is a C++1y extension
+#   -Wc99-extensions (partial)
+#         ISO C99 requires whitespace after the macro name
 #   -WCFString-literal
 #         input conversion stopped due to an input byte that does not belong to the input codeset UTF-8
+#   -Wcomments (partial)
+#     -Wcomment (partial)
+#           '/*' within block comment
+#           escaped newline between */ characters at block comment end
 #   -Wcompare-distinct-pointer-types
 #         comparison of distinct pointer types (%0 and %1) uses non-standard composite pointer type %2
 #         comparison of distinct pointer types%diff{ ($ and $)|}0,1
@@ -81,10 +269,6 @@
 #         pointer/integer type mismatch in conditional expression%diff{ ($ and $)|}0,1
 #   -Wconfig-macros
 #         %select{definition|#undef}0 of configuration macro '%1' has no effect on the import of '%2'; pass '%select{-D%1=...|-U%1}0' on the command line to configure the module
-#   -Wconstant-conversion
-#         implicit conversion from %2 to %3 changes value from %0 to %1
-#     -Wbitfield-constant-conversion
-#           implicit truncation from %2 to bitfield changes value from %0 to %1
 #   -Wconstant-logical-operand
 #         use of logical '%0' with constant operand
 #   -Wconstexpr-not-const
@@ -140,43 +324,24 @@
 #           extra tokens at end of '#pragma omp %0' are ignored
 #   -Wenum-compare
 #         comparison of two values with different enumeration types%diff{ ($ and $)|}0,1
-#   -Wenum-conversion
-#         implicit conversion from enumeration type %0 to different enumeration type %1
 #   -Wextern-initializer
 #         'extern' variable has an initializer
-#   -Wformat
-#         %select{field width|precision}0 used with '%1' conversion specifier, resulting in undefined behavior
-#         '%select{*|.*}0' specified field %select{width|precision}0 is missing a matching 'int' argument
-#         cannot mix positional and non-positional arguments in format string
-#         data argument position '%0' exceeds the number of data arguments (%1)
-#         field %select{width|precision}0 should have type %1, but argument has type %2
-#         flag '%0' is ignored when flag '%1' is present
-#         flag '%0' results in undefined behavior with '%1' conversion specifier
-#         format specifies type %0 but the argument has type %1
-#         format string contains '\0' within the string body
-#         format string missing
-#         format string should not be a wide string
-#         incomplete format specifier
-#         invalid position specified for %select{field width|field precision}0
-#         length modifier '%0' results in undefined behavior or no effect with '%1' conversion specifier
-#         more '%%' conversions than data arguments
-#         no closing ']' for '%%[' in scanf format string
-#         position arguments in format strings start counting at 1 (not 0)
-#         values of type '%0' should not be used as format arguments; add an explicit cast to %1 instead
-#         zero field width in scanf format string is unused
-#     -Wformat-extra-args
-#           data argument not used by format string
-#     -Wformat-invalid-specifier
-#           invalid conversion specifier '%0'
+#   -Wformat=2 (partial)
+#     -Wformat-nonliteral (partial)
+#       -Wformat-security
+#             format string is not a string literal (potentially insecure)
 #     -Wformat-security
 #           format string is not a string literal (potentially insecure)
-#     -Wformat-y2k # DUMMY switch
-#     -Wformat-zero-length
-#           format string is empty
-#     -Wnonnull
-#           null passed to a callee which requires a non-null argument
 #   -Wgcc-compat
 #         GCC does not allow %0 attribute in this position on a function definition
+#   -Wgnu (partial)
+#         %0 applied to an expression is a GNU extension
+#         field %0 with variable sized type %1 not at the end of a struct or class is a GNU extension
+#     -Wgnu-designator (partial)
+#           use of GNU 'missing =' extension in designator
+#           use of GNU old-style field designator extension
+#     -Wgnu-static-float-init
+#           in-class initializer for static data member of type %0 is a GNU extension
 #   -Wgnu-array-member-paren-init
 #         parenthesized initialization of a member array is a GNU extension
 #   -Wignored-attributes
@@ -222,8 +387,9 @@
 #         implicit conversion turns floating-point number into bool: %0 to %1
 #   -Wimplicit-exception-spec-mismatch
 #         function previously declared with an %select{explicit|implicit}0 exception specification redeclared with an %select{implicit|explicit}0 exception specification
-#   -Wimplicit-int
-#         type specifier missing, defaults to 'int'
+#   -Wimplicit-fallthrough (partial)
+#         fallthrough annotation does not directly precede switch label
+#         fallthrough annotation in unreachable code
 #   -Wincompatible-library-redeclaration
 #         incompatible redeclaration of library function %0
 #   -Wincompatible-pointer-types
@@ -238,9 +404,6 @@
 #         umbrella header for module '%0' does not include header '%1'
 #   -Winherited-variadic-ctor
 #         inheriting constructor does not inherit ellipsis
-#   -Winitializer-overrides
-#         initializer overrides prior initialization of this subobject
-#         subobject initialization overrides initialization of other fields within its enclosing subobject
 #   -Wint-conversions
 #     -Wint-conversion
 #           incompatible integer to pointer conversion %select{%diff{assigning to $ from $|assigning to different types}0,1|%diff{passing $ to parameter of type $|passing to parameter of different type}0,1|%diff{returning $ from a function with result type $|returning from function with different return type}0,1|%diff{converting $ to type $|converting between types}0,1|%diff{initializing $ with an expression of type $|initializing with expression of different type}0,1|%diff{sending $ to parameter of type $|sending to parameter of different type}0,1|%diff{casting $ to type $|casting between types}0,1}2%select{|; dereference with *|; take the address with &|; remove *|; remove &}3
@@ -273,11 +436,8 @@
 #   -Wlarge-by-value-copy
 #         %0 is a large (%1 bytes) pass-by-value argument; pass it by reference instead ?
 #         return value of %0 is a large (%1 bytes) pass-by-value object; pass it by reference instead ?
-#   -Wliteral-conversion
-#         implicit conversion from %0 to %1 changes value from %2 to %3
-#   -Wliteral-range
-#         magnitude of floating-point constant too large for type %0; maximum is %1
-#         magnitude of floating-point constant too small for type %0; minimum is %1
+#   -Wlocal-type-template-args (partial)
+#         template argument uses local type %0
 #   -Wmain
 #         'main' is not allowed to be declared _Noreturn
 #         'main' should not be declared static
@@ -286,6 +446,18 @@
 #         return type of 'main' is not 'int'
 #   -Wmalformed-warning-check
 #         __has_warning expected option name (e.g. "-Wundef")
+#   -Wmicrosoft (partial)
+#         anonymous structs are a Microsoft extension
+#         enumerator value is not representable in the underlying type %0
+#         exception specification of overriding function is more lax than base version
+#         explicit constructor calls are a Microsoft extension
+#         explicit specialization of %0 within class scope is a Microsoft extension
+#         extra qualification on member %0
+#         function definition with pure-specifier is a Microsoft extension
+#         goto into protected scope
+#         pseudo-destructors on type void are a Microsoft extension
+#         use of identifier %0 found via unqualified lookup into dependent bases of class templates is a Microsoft extension
+#         using declaration referring to inaccessible member '%0' (which refers to accessible member '%1') is a Microsoft compatibility extension
 #   -Wmicrosoft-exists
 #         dependent %select{__if_not_exists|__if_exists}0 declarations are ignored
 #   -Wmismatched-method-attributes
@@ -305,10 +477,35 @@
 #         no such sysroot directory: '%0'
 #   -Wmodule-conflict
 #         module '%0' conflicts with already-imported module '%1': %2
-#   -Wmultichar
-#         multi-character character constant
-#   -Wnon-literal-null-conversion
-#         expression which evaluates to zero treated as a null pointer constant of type %0
+#   -Wnarrowing (partial)
+#     -Wc++11-narrowing (partial)
+#           %select{case value|enumerator value|non-type template argument}0 %select{cannot be narrowed from type %2 to %3|evaluates to %2, which cannot be narrowed to type %3}1
+#           constant expression evaluates to %0 which cannot be narrowed to type %1
+#           non-constant-expression cannot be narrowed from type %0 to %1 in initializer list
+#           type %0 cannot be narrowed to %1 in initializer list
+#   -Wnon-gcc (partial)
+#     -Wconversion (partial)
+#       -Wbool-conversion
+#             address of function %q0 will always evaluate to 'true'
+#             initialization of pointer of type %0 to null from a constant boolean expression
+#       -Wconstant-conversion
+#             implicit conversion from %2 to %3 changes value from %0 to %1
+#         -Wbitfield-constant-conversion
+#               implicit truncation from %2 to bitfield changes value from %0 to %1
+#       -Wenum-conversion
+#             implicit conversion from enumeration type %0 to different enumeration type %1
+#       -Wint-conversion
+#             incompatible integer to pointer conversion %select{%diff{assigning to $ from $|assigning to different types}0,1|%diff{passing $ to parameter of type $|passing to parameter of different type}0,1|%diff{returning $ from a function with result type $|returning from function with different return type}0,1|%diff{converting $ to type $|converting between types}0,1|%diff{initializing $ with an expression of type $|initializing with expression of different type}0,1|%diff{sending $ to parameter of type $|sending to parameter of different type}0,1|%diff{casting $ to type $|casting between types}0,1}2%select{|; dereference with *|; take the address with &|; remove *|; remove &}3
+#             incompatible pointer to integer conversion %select{%diff{assigning to $ from $|assigning to different types}0,1|%diff{passing $ to parameter of type $|passing to parameter of different type}0,1|%diff{returning $ from a function with result type $|returning from function with different return type}0,1|%diff{converting $ to type $|converting between types}0,1|%diff{initializing $ with an expression of type $|initializing with expression of different type}0,1|%diff{sending $ to parameter of type $|sending to parameter of different type}0,1|%diff{casting $ to type $|casting between types}0,1}2%select{|; dereference with *|; take the address with &|; remove *|; remove &}3
+#       -Wliteral-conversion
+#             implicit conversion from %0 to %1 changes value from %2 to %3
+#       -Wnon-literal-null-conversion
+#             expression which evaluates to zero treated as a null pointer constant of type %0
+#       -Wnull-conversion
+#             implicit conversion of NULL constant to %0
+#     -Wliteral-range
+#           magnitude of floating-point constant too large for type %0; maximum is %1
+#           magnitude of floating-point constant too small for type %0; minimum is %1
 #   -Wnon-pod-varargs
 #         cannot pass %select{non-POD|non-trivial}0 object of type %1 to variadic %select{function|block|method|constructor}2; expected type from format string was %3
 #         cannot pass object of %select{non-POD|non-trivial}0 type %1 through variadic %select{function|block|method|constructor}2; call will abort at runtime
@@ -342,8 +539,6 @@
 #         instance method %0 found instead of class method %1
 #         instance method %0 is being used on 'Class' which is not in the root class
 #         instance method %objcinstance0 not found (return type defaults to 'id')
-#   -Wobjc-missing-super-calls
-#         method possibly missing a [super %0] call
 #   -Wobjc-noncopy-retain-block-property
 #         retain'ed block property does not copy the block - use copy attribute instead
 #   -Wobjc-nonunified-exceptions
@@ -371,60 +566,34 @@
 #         type %0 has incompatible definitions in different translation units
 #   -Wout-of-line-declaration
 #         out-of-line declaration of a member must be a definition
-#   -Wparentheses
-#         %0 has lower precedence than %1; %1 will be evaluated first
-#         operator '?:' has lower precedence than '%0'; '%0' will be evaluated first
-#         using the result of an assignment as a condition without parentheses
-#     -Wbitwise-op-parentheses
-#           '&' within '|'
-#     -Wdangling-else
-#           add explicit braces to avoid dangling else
-#     -Wlogical-op-parentheses
-#           '&&' within '||'
-#     -Woverloaded-shift-op-parentheses
-#           overloaded operator %select{>>|<<}0 has lower precedence than comparison operator
-#     -Wparentheses-equality
-#           equality comparison with extraneous parentheses
-#     -Wshift-op-parentheses
-#           operator '%0' has lower precedence than '%1'; '%1' will be evaluated first
 #   -Wpointer-sign
 #         %select{%diff{assigning to $ from $|assigning to different types}0,1|%diff{passing $ to parameter of type $|passing to parameter of different type}0,1|%diff{returning $ from a function with result type $|returning from function with different return type}0,1|%diff{converting $ to type $|converting between types}0,1|%diff{initializing $ with an expression of type $|initializing with expression of different type}0,1|%diff{sending $ to parameter of type $|sending to parameter of different type}0,1|%diff{casting $ to type $|casting between types}0,1}2 converts between pointers to integer types with different sign
 #   -Wpointer-type-mismatch
 #         pointer type mismatch%diff{ ($ and $)|}0,1
 #   -Wpredefined-identifier-outside-function
 #         predefined identifier is only valid inside function
-#   -Wprivate-extern
-#         use of __private_extern__ on a declaration may not produce external symbol private to the linkage unit and is deprecated
 #   -Wprotocol
 #         method %0 in protocol not implemented
 #   -Wreadonly-iboutlet-property
 #         readonly IBOutlet property '%0' when auto-synthesized may not work correctly with 'nib' loader
 #   -Wreceiver-expr
 #         receiver type %0 is not 'id' or interface pointer, consider casting it to 'id'
+#   -Wreceiver-forward-class (partial)
+#         receiver %0 is a forward class and corresponding @interface may not exist
 #   -Wreinterpret-base-class
 #         'reinterpret_cast' %select{from|to}3 class %0 %select{to|from}3 its %select{virtual base|base at non-zero offset}2 %1 behaves differently from 'static_cast'
 #   -Wrequires-super-attribute
 #         %0 attribute cannot be applied to %select{methods in protocols|dealloc}1
+#   -Wreserved-user-defined-literal (partial)
+#         invalid suffix on literal; C++11 requires a space between literal and identifier
 #   -Wreturn-stack-address
 #         address of stack memory associated with local variable %0 returned
 #         reference to stack memory associated with local variable %0 returned
 #         returning address of label, which is local
 #         returning address of local temporary object
 #         returning reference to local temporary object
-#   -Wreturn-type
-#         %select{void function|void method|constructor|destructor}1 %0 should not return a value
-#         control may reach end of non-void function
-#         control may reach end of non-void lambda
-#         control reaches end of non-void function
-#         control reaches end of non-void lambda
-#         non-void %select{function|method}1 %0 should return a value
-#     -Wreturn-type-c-linkage
-#           %0 has C-linkage specified, but returns incomplete type %1 which could be incompatible with C
-#           %0 has C-linkage specified, but returns user-defined type %1 which is incompatible with C
 #   -Wsection
 #         section does not match previous declaration
-#   -Wself-assign-field
-#         assigning %select{field|instance variable}0 to itself
 #   -Wsentinel
 #         missing sentinel in %select{function call|method dispatch|block call}0
 #         not enough variable arguments in %0 declaration to fit a sentinel
@@ -442,10 +611,6 @@
 #         shift count >= width of type
 #   -Wshift-overflow
 #         signed shift result (%0) requires %1 bits to represent, but %2 only has %3 bits
-#   -Wsizeof-array-argument
-#         sizeof on array function parameter will return size of %0 instead of %1
-#   -Wsizeof-array-decay
-#         sizeof on pointer operation will return size of %0 instead of %1
 #   -Wsizeof-pointer-memaccess
 #         '%0' call operates on objects of type %1 while the size is based on a different type %2
 #         argument to 'sizeof' in %0 call is the same pointer type %1 as the %select{destination|source}2; expected %3 or an explicit length
@@ -453,27 +618,18 @@
 #         in-class initializer for static data member of type %0 requires 'constexpr' specifier
 #     -Wgnu-static-float-init
 #           in-class initializer for static data member of type %0 is a GNU extension
+#   -Wstatic-in-inline (partial)
+#         static %select{function|variable}0 %1 is used in an inline function with external linkage
 #   -Wstatic-local-in-inline
 #         non-constant static local variable in inline function may be different in different files
-#   -Wstatic-self-init
-#         static variable %0 is suspiciously used within its own initialization
 #   -Wstring-compare
 #         result of comparison against %select{a string literal|@encode}0 is unspecified (use strncmp instead)
-#   -Wstring-plus-int
-#         adding %0 to a string does not append to the string
 #   -Wstrlcpy-strlcat-size
 #         size argument in %0 call appears to be size of the source; expected the size of the destination
 #   -Wstrncat-size
 #         size argument in 'strncat' call appears to be size of the source
 #         the value of the size argument in 'strncat' is too large, might lead to a buffer overflow
 #         the value of the size argument to 'strncat' is wrong
-#   -Wswitch
-#         %0 enumeration values not handled in switch: %1, %2, %3...
-#         case value not in enumerated type %0
-#         enumeration value %0 not handled in switch
-#         enumeration values %0 and %1 not handled in switch
-#         enumeration values %0, %1, and %2 not handled in switch
-#         overflow converting case value to switch condition type (%0 to %1)
 #   -Wtautological-compare
 #         %select{self-|array }0comparison always evaluates to %select{false|true|a constant}1
 #         comparison of %0 unsigned%select{| enum}2 expression is always %1
@@ -482,11 +638,6 @@
 #           comparison of constant %0 with expression of type %1 is always %select{false|true}2
 #   -Wtentative-definition-incomplete-type
 #         tentative definition of variable with internal linkage has incomplete non-array type %0
-#   -Wtrigraphs
-#         ignored trigraph would end block comment
-#         trigraph converted to '%0' character
-#         trigraph ends block comment
-#         trigraph ignored
 #   -Wtype-safety
 #         argument type %0 doesn't match specified '%1' type tag %select{that requires %3|}2
 #         specified %0 type tag requires a null pointer
@@ -511,6 +662,8 @@
 #         unknown %0 warning specifier: '%1'
 #         unknown warning option '%0'
 #         unknown warning option '%0'; did you mean '%1'?
+#   -Wunnamed-type-template-args (partial)
+#         template argument uses unnamed type
 #   -Wunsupported-visibility
 #         target does not support 'protected' visibility; using 'default'
 #   -Wunused-command-line-argument
@@ -521,16 +674,6 @@
 #         joined argument expects additional value: '%0'
 #     -Wunused-sanitize-argument
 #           '%0' is ignored in absence of '%1'
-#   -Wunused-value
-#         container access result unused - container access should not be used for side effects
-#         expression result unused
-#         expression result unused; should this cast be to 'void'?
-#         ignoring return value of function declared with %0 attribute
-#         property access result unused - getters should not be used for side effects
-#     -Wunused-comparison
-#           %select{equality|inequality}0 comparison result unused
-#     -Wunused-result
-#           ignoring return value of function declared with warn_unused_result attribute
 #   -Wunused-volatile-lvalue
 #         expression result unused; assign into a variable to force a volatile load
 #   -Wuser-defined-literals

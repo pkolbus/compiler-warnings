@@ -7,12 +7,12 @@
 --Wcxx98-cxx11-compat
 --Wcxx98-cxx11-compat-pedantic
 --Wdeprecated # Enabled by default.
-+-Wdeprecated
++-Wdeprecated # Partially enabled by default.
 +-Wdeprecated-increment-bool # Enabled by default.
 --Wdeprecated-writable-strings # Enabled by default.
 +-Wdeprecated-objc-pointer-introspection-performSelector # Enabled by default.
 +-Wdeprecated-register # Enabled by default.
-+-Wdeprecated-writable-strings
++-Wdeprecated-writable-strings # Partially enabled by default.
 +-Wextern-c-compat # Enabled by default.
 +-Wgnu-alignof-expression # Enabled by default.
 +-Wgnu-anonymous-struct
@@ -37,8 +37,8 @@
 +-Wgnu-zero-variadic-macro-arguments
 +-Wheader-guard # Enabled by default.
 --Wincomplete-umbrella # Enabled by default.
-+-Wincomplete-module
-+-Wincomplete-umbrella
++-Wincomplete-module # Partially enabled by default.
++-Wincomplete-umbrella # Partially enabled by default.
 +-Winline-new-delete # Enabled by default.
 +-Wint-to-void-pointer-cast # Enabled by default.
 +-Winvalid-command-line-argument # Enabled by default.
@@ -49,6 +49,8 @@
 +-Wobjc-property-implicit-mismatch # Enabled by default.
 +-Wobjc-string-concatenation # Enabled by default.
 +-Woverriding-t-option # Enabled by default.
+--Wpointer-arith
++-Wpointer-arith # Partially enabled by default.
 +-Wprotocol-property-synthesis-ambiguity # Enabled by default.
 +-Wredeclared-class-member # Enabled by default.
 +-Wretained-language-linkage
@@ -60,4 +62,4 @@
 +-Wunused-property-ivar
 +-Wvarargs # Enabled by default.
 --Wwrite-strings # Enabled by default.
-+-Wwrite-strings
++-Wwrite-strings # Partially enabled by default.

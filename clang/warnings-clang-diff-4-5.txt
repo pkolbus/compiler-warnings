@@ -4,7 +4,7 @@
 +-Wblock-capture-autoreleasing # Enabled by default.
 +-Wc++17-compat # Enabled by default.
 +-Wc++17-compat-mangling # Enabled by default.
-+-Wc++17-extensions
++-Wc++17-extensions # Partially enabled by default.
 +-Wc++1z-compat-mangling # Enabled by default.
 +-Wcoroutine # Enabled by default.
 +-Wcoroutine-missing-unhandled-exception # Enabled by default.
@@ -19,10 +19,14 @@
 +-Wmsvc-not-found # Enabled by default.
 +-Wnoexcept-type # Enabled by default.
 +-Wobjc-unsafe-perform-selector # Enabled by default.
+--Wpartial-availability
++-Wpartial-availability # Partially enabled by default.
 +-Wpragma-clang-attribute # Enabled by default.
 +-Wprofile-instr-missing
 +-Wshadow-field
 +-Wslash-u-filename # Enabled by default.
+--Wunguarded-availability
++-Wunguarded-availability # Partially enabled by default.
 +-Wunguarded-availability-new # Enabled by default.
 +-Wunsupported-availability-guard # Enabled by default.
 +-Wunused-lambda-capture

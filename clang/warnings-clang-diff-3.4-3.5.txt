@@ -9,12 +9,12 @@
 +-Wc++1z-extensions # Enabled by default.
 +-Wc++98-c++11-c++14-compat
 +-Wc++98-c++11-c++14-compat-pedantic
-+-Wclass-varargs
++-Wclass-varargs # Partially enabled by default.
 +-Wcuda-compat # Enabled by default.
 +-Wdate-time
 +-Wdealloc-in-category # Enabled by default.
 +-Wdebug-compression-unavailable # Enabled by default.
---Wdeprecated-writable-strings
+--Wdeprecated-writable-strings # Partially enabled by default.
 +-Wdeprecated-writable-strings # Enabled by default.
 +-Wdll-attribute-on-redeclaration # Enabled by default.
 +-Wdllimport-static-field-def # Enabled by default.
@@ -22,19 +22,21 @@
 +-Wextra-qualification # Enabled by default.
 +-Wfallback # Enabled by default.
 +-Wfloat-conversion
+--Wformat-nonliteral # Partially enabled by default.
++-Wformat-nonliteral
 +-Wframe-larger-than= # Enabled by default.
 +-Wfunction-def-in-objc-container # Enabled by default.
 +-Wignored-pragmas # Enabled by default.
 +-Wimplicitly-unsigned-literal # Enabled by default.
 +-Wincompatible-ms-struct # Enabled by default.
---Wincomplete-umbrella
+--Wincomplete-umbrella # Partially enabled by default.
 +-Wincomplete-umbrella # Enabled by default.
 +-Winfinite-recursion
 +-Winline-asm # Enabled by default.
 +-Winvalid-initializer-from-system-header # Enabled by default.
 --Wmain # Enabled by default.
 +-Wmacro-redefined # Enabled by default.
-+-Wmain
++-Wmain # Partially enabled by default.
 +-Wmemsize-comparison # Enabled by default.
 --Wmismatched-method-attributes # Enabled by default.
 +-Wmodule-build
@@ -55,14 +57,14 @@
 +-Wpass-failed # Enabled by default.
 +-Wpass-missed
 +-Wpointer-bool-conversion # Enabled by default.
-+-Wpragmas
++-Wpragmas # Partially enabled by default.
 +-Wprofile-instr-out-of-date # Enabled by default.
 +-Wprofile-instr-unprofiled # Enabled by default.
 --Wreadonly-setter-attrs
 +-Wremark-backend-plugin
 +-Wswitch-bool # Enabled by default.
 --Wtautological-compare # Enabled by default.
-+-Wtautological-compare
++-Wtautological-compare # Partially enabled by default.
 +-Wtautological-overlap-compare
 +-Wtautological-pointer-compare # Enabled by default.
 +-Wtautological-undefined-compare # Enabled by default.
@@ -77,6 +79,6 @@
 +-Wunsupported-dll-base-class-template # Enabled by default.
 --Wunused-sanitize-argument # Enabled by default.
 +-Wvoid-ptr-dereference
---Wwrite-strings
+--Wwrite-strings # Partially enabled by default.
 +-Wwritable-strings # Enabled by default.
 +-Wwrite-strings # Enabled by default.

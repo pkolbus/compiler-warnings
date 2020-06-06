@@ -56,8 +56,16 @@ class ClangDiagGroup:
         self.children = []  # List of ClangDiagGroup
         self.switch = None  # ClangWarningSwitch
 
-    def get_messages(self) -> list:
-        """Returns a list of diagnostic messages in the group"""
+    def get_messages(self, enabled_by_default: bool) -> list:
+        """Returns a list of diagnostic messages in the group.
+
+        If enabled_by_default is True, only the mesages enabled by default are
+        returned.
+        """
+
+        if enabled_by_default:
+            return [diag.text for diag in self.diagnostics if diag.enabled_by_default]
+
         return [diag.text for diag in self.diagnostics]
 
     def is_dummy(self):
@@ -90,6 +98,20 @@ class ClangDiagGroup:
 
         return False
 
+    def has_enabled_diagnostic(self) -> bool:
+        """
+        Determines if a group has an enabled diagnostic
+        """
+        for diagnostic in self.diagnostics:
+            if diagnostic.enabled_by_default:
+                return True
+
+        for child in self.children:
+            if child.has_enabled_diagnostic():
+                return True
+
+        return False
+
 
 @total_ordering
 class ClangWarningSwitch:
@@ -116,19 +138,33 @@ class ClangWarningSwitch:
         """Returns a hash of the switch name"""
         return hash(self.name.lower())
 
-    def get_child_switches(self) -> list:
-        """Returns a list of child ClangWarningSwitch for the switch"""
+    def get_child_switches(self, enabled_by_default: bool) -> list:
+        """
+        Returns a list of child ClangWarningSwitch for the switch
+
+        If enabled_by_default is True, include only the switches that are
+        partially or completely enabled by default.
+        """
         child_groups = []
         for group in self.groups:
             child_groups += group.children
 
-        return [group.switch for group in child_groups]
+        child_switches = [group.switch for group in child_groups]
+        if enabled_by_default:
+            child_switches = [
+                switch
+                for switch in child_switches
+                if switch.is_enabled_by_default()
+                or switch.partially_enabled_by_default()
+            ]
 
-    def get_messages(self) -> list:
+        return child_switches
+
+    def get_messages(self, enabled_by_default: bool) -> list:
         """Returns a list of diagnostic messages controlled by the switch"""
         messages = []
         for group in self.groups:
-            messages += group.get_messages()
+            messages += group.get_messages(enabled_by_default)
 
         return list(set(messages))  # Remove duplicates
 
@@ -159,6 +195,24 @@ class ClangWarningSwitch:
                 return False
 
         return not self.is_dummy()
+
+    def partially_enabled_by_default(self) -> bool:
+        """
+        Determines if a switch is partially enabled by default
+
+        A switch is partially enabled by default if it has both enabled and
+        disabled diagnostics.
+        """
+
+        has_enabled = False
+        has_disabled = False
+        for group in self.groups:
+            if group.has_disabled_diagnostic():
+                has_disabled = True
+            if group.has_enabled_diagnostic():
+                has_enabled = True
+
+        return has_enabled and has_disabled
 
     def is_top_level(self) -> bool:
         """
@@ -214,34 +268,49 @@ class ClangDiagnostics:
                 self.groups[diag.group_name].diagnostics.append(diag)
 
 
-def create_comment_text(switch: ClangWarningSwitch, args: argparse.Namespace) -> str:
+def create_comment_text(
+    switch: ClangWarningSwitch, args: argparse.Namespace, enabled_by_default: bool
+) -> str:
     """Returns a comment appropriate for the switch and output type"""
     if switch.is_dummy():
         return " # DUMMY switch"
-    elif args.unique and switch.is_enabled_by_default():
-        return " # Enabled by default."
+    elif args.unique:
+        if switch.is_enabled_by_default():
+            return " # Enabled by default."
+        if switch.partially_enabled_by_default():
+            return " # Partially enabled by default."
+    elif enabled_by_default and switch.partially_enabled_by_default():
+        return " (partial)"
+
     return ""
 
 
-def print_references(switch: ClangWarningSwitch, level: int, args: argparse.Namespace):
+def print_references(
+    switch: ClangWarningSwitch, level: int, args: argparse.Namespace, enabled_by_default
+):
     """
     Print all children of switch, indented
     """
-    for child_switch in sorted(switch.get_child_switches()):
-        print_switch(child_switch, level, args)
+    for child_switch in sorted(switch.get_child_switches(enabled_by_default)):
+        print_switch(child_switch, level, args, enabled_by_default)
 
 
-def print_switch(switch: ClangWarningSwitch, level: int, args: argparse.Namespace):
+def print_switch(
+    switch: ClangWarningSwitch,
+    level: int,
+    args: argparse.Namespace,
+    enabled_by_default: bool,
+):
     """
     Print switch, indented
     """
-    comment_string = create_comment_text(switch, args)
+    comment_string = create_comment_text(switch, args, enabled_by_default)
     print("# %s-W%s%s" % ("  " * level, switch.name, comment_string))
     if args.text:
-        for item in sorted(switch.get_messages()):
+        for item in sorted(switch.get_messages(enabled_by_default)):
             print("#       %s%s" % ("  " * level, item))
 
-    print_references(switch, level + 1, args)
+    print_references(switch, level + 1, args, enabled_by_default)
 
 
 def main(argv):
@@ -265,30 +334,32 @@ def main(argv):
         # Find all switches that are enabled by default and are not children
         # of another switch that is enabled by default.
         all_defaults = set(
-            s for s in diagnostics.switches.values() if s.is_enabled_by_default()
+            s
+            for s in diagnostics.switches.values()
+            if s.is_enabled_by_default() or s.partially_enabled_by_default()
         )
         children = set(
-            chain.from_iterable([s.get_child_switches() for s in all_defaults])
+            chain.from_iterable([s.get_child_switches(True) for s in all_defaults])
         )
         toplevel_defaults = all_defaults - children
 
         print("# enabled by default:")
         for switch in sorted(toplevel_defaults):
-            print_switch(switch, 1, args)
+            print_switch(switch, 1, args, enabled_by_default=True)
 
     for switch in sorted(diagnostics.switches.values()):
         if args.top_level and (
             not switch.is_top_level() or switch.is_enabled_by_default()
         ):
             continue
-        comment_string = create_comment_text(switch, args)
+        comment_string = create_comment_text(switch, args, enabled_by_default=False)
         print("-W%s%s" % (switch.name, comment_string))
         if args.text:
-            for item in sorted(switch.get_messages()):
+            for item in sorted(switch.get_messages(enabled_by_default=False)):
                 print("#     %s" % (item))
         if args.unique:
             continue
-        print_references(switch, 1, args)
+        print_references(switch, 1, args, enabled_by_default=False)
 
 
 if __name__ == "__main__":

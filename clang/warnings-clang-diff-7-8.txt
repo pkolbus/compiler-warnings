@@ -8,7 +8,7 @@
 +-Wdelete-abstract-non-virtual-dtor # Enabled by default.
 +-Wdelete-non-abstract-non-virtual-dtor
 --Wduplicate-decl-specifier # Enabled by default.
-+-Wduplicate-decl-specifier
++-Wduplicate-decl-specifier # Partially enabled by default.
 +-Wempty-init-stmt
 +-Wextra-semi-stmt
 +-Wfixed-enum-extension

@@ -10,7 +10,7 @@
 +-Wdiv-by-zero # Enabled by default.
 +-Wduplicate-protocol # Enabled by default.
 --Weffc++ # DUMMY switch
-+-Wdynamic-exception-spec
++-Wdynamic-exception-spec # Partially enabled by default.
 +-Weffc++
 +-Wempty-decomposition # Enabled by default.
 +-Wignored-pragma-intrinsic # Enabled by default.
@@ -23,6 +23,10 @@
 +-Wnullability-inferred-on-nested-type # Enabled by default.
 +-Wopencl-unsupported-rgba # Enabled by default.
 +-Wprivate-module # Enabled by default.
+--Wshadow
+--Wshadow-all
++-Wshadow # Partially enabled by default.
++-Wshadow-all # Partially enabled by default.
 +-Wshadow-uncaptured-local
 +-Wsigned-enum-bitfield
 +-Wspir-compat

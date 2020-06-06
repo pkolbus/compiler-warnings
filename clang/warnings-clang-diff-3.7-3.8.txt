@@ -3,7 +3,7 @@
 +-Wc++11-inline-namespace # Enabled by default.
 +-Wc++14-binary-literal
 +-Wc++1z-compat # Enabled by default.
-+-WCL4
++-WCL4 # Partially enabled by default.
 +-Wcoreturn-without-coawait # Enabled by default.
 +-Wdeprecated-attributes # Enabled by default.
 +-Wdouble-promotion
@@ -14,9 +14,9 @@
 +-Winclude-next-absolute-path # Enabled by default.
 +-Winclude-next-outside-header # Enabled by default.
 +-Wincrement-bool # Enabled by default.
-+-Winvalid-or-nonexistent-directory
++-Winvalid-or-nonexistent-directory # Partially enabled by default.
 +-Wliblto # Enabled by default.
-+-Wmicrosoft-anon-tag
++-Wmicrosoft-anon-tag # Partially enabled by default.
 +-Wmicrosoft-cast # Enabled by default.
 +-Wmicrosoft-charize
 +-Wmicrosoft-comment-paste
@@ -26,7 +26,7 @@
 +-Wmicrosoft-end-of-file
 +-Wmicrosoft-enum-forward-reference
 +-Wmicrosoft-enum-value # Enabled by default.
-+-Wmicrosoft-exception-spec
++-Wmicrosoft-exception-spec # Partially enabled by default.
 +-Wmicrosoft-explicit-constructor-call # Enabled by default.
 +-Wmicrosoft-extra-qualification # Enabled by default.
 +-Wmicrosoft-fixed-enum

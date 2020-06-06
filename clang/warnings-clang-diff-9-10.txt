@@ -1,16 +1,16 @@
 +-Walloca
 +-Wambiguous-reversed-operator # Enabled by default.
-+-Wanon-enum-enum-conversion
++-Wanon-enum-enum-conversion # Partially enabled by default.
 --Wbitwise-op-parentheses # Enabled by default.
 +-Wbitwise-conditional-parentheses # Enabled by default.
 +-Wbitwise-op-parentheses
 +-Wbool-operation # Enabled by default.
 +-Wbuiltin-assume-aligned-alignment # Enabled by default.
-+-Wc++20-compat
-+-Wc++20-compat-pedantic
++-Wc++20-compat # Partially enabled by default.
++-Wc++20-compat-pedantic # Partially enabled by default.
 +-Wc++20-designator
-+-Wc++20-extensions
-+-Wc99-designator
++-Wc++20-extensions # Partially enabled by default.
++-Wc99-designator # Partially enabled by default.
 +-Wconstant-evaluated # Enabled by default.
 +-Wdangling-gsl # Enabled by default.
 +-Wdeprecated-anon-enum-enum-conversion # Enabled by default.
@@ -23,16 +23,18 @@
 +-Wdeprecated-enum-enum-conversion # Enabled by default.
 +-Wdeprecated-enum-float-conversion # Enabled by default.
 +-Wdeprecated-volatile # Enabled by default.
-+-Wenum-compare-conditional
++-Wenum-compare-conditional # Partially enabled by default.
 --Wenum-conversion # Enabled by default.
-+-Wenum-conversion
-+-Wenum-enum-conversion
-+-Wenum-float-conversion
++-Wenum-conversion # Partially enabled by default.
++-Wenum-enum-conversion # Partially enabled by default.
++-Wenum-float-conversion # Partially enabled by default.
 +-Wfinal-dtor-non-final-class # Enabled by default.
 +-Wformat-type-confusion
 +-Wgnu-inline-cpp-without-extern # Enabled by default.
 +-Whip-only # Enabled by default.
-+-Wimplicit-int-float-conversion
+--Wimplicit-float-conversion
++-Wimplicit-float-conversion # Partially enabled by default.
++-Wimplicit-int-float-conversion # Partially enabled by default.
 +-Wint-in-bool-context
 +-Winvalid-no-builtin-names # Enabled by default.
 --Wlogical-op-parentheses # Enabled by default.
@@ -41,17 +43,19 @@
 +-Wmisexpect
 +-Wmisleading-indentation
 +-Wmissing-constinit # Enabled by default.
-+-Wobjc-signed-char-bool
++-Wobjc-signed-char-bool # Partially enabled by default.
 +-Wobjc-signed-char-bool-implicit-float-conversion # Enabled by default.
 +-Wobjc-signed-char-bool-implicit-int-conversion
-+-Wopenmp
++-Wopenmp # Partially enabled by default.
 +-Wopenmp-mapping # Enabled by default.
 --Wparentheses # Enabled by default.
-+-Wparentheses
++-Wparentheses # Partially enabled by default.
 +-Wpointer-compare # Enabled by default.
 +-Wpoison-system-directories
 +-Wrange-loop-bind-reference
 +-Wrange-loop-construct
+--Wreorder
++-Wreorder # Partially enabled by default.
 +-Wreorder-ctor
 +-Wreorder-init-list # Enabled by default.
 +-Wrequires-expression # Enabled by default.
