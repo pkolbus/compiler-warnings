@@ -11,7 +11,6 @@ For details of the option file format, see the gcc internals documentation at
 
 import argparse
 import enum
-import sys
 from typing import Dict, Iterable, List, Optional, Set, Tuple, Union
 
 import antlr4
@@ -1110,7 +1109,7 @@ def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics) -
             print_option(all_options, child, 1, args)
 
 
-def main(argv: List[str]) -> None:
+def main() -> None:
     """Entry point."""
     parser = argparse.ArgumentParser(
         description="Parses GCC option files for warning options."
@@ -1120,7 +1119,7 @@ def main(argv: List[str]) -> None:
         "--text", action="store_true", help="Show help text of each diagnostic.",
     )
     parser.add_argument("option_file", metavar="option-file", nargs="+")
-    args = parser.parse_args(argv[1:])
+    args = parser.parse_args()
 
     all_options = GccDiagnostics.hidden_options()
 
@@ -1131,4 +1130,4 @@ def main(argv: List[str]) -> None:
 
 
 if __name__ == "__main__":
-    main(sys.argv)
+    main()

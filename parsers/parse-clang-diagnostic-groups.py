@@ -11,7 +11,6 @@ import argparse
 from functools import total_ordering
 from itertools import chain
 import json
-import sys
 from typing import Any, Dict, List
 
 import common
@@ -305,7 +304,7 @@ def print_switch(
     print_references(switch, level + 1, args, enabled_by_default)
 
 
-def main(argv: List[str]) -> None:
+def main() -> None:
     """Entry point."""
     parser = argparse.ArgumentParser(description="Clang diagnostics group parser")
     common.add_common_parser_options(parser)
@@ -317,7 +316,7 @@ def main(argv: List[str]) -> None:
         metavar="json-path",
         help="The path to the JSON output from llvm-tblgen.",
     )
-    args = parser.parse_args(argv[1:])
+    args = parser.parse_args()
 
     diagnostics = ClangDiagnostics(args.json_path)
 
@@ -355,4 +354,4 @@ def main(argv: List[str]) -> None:
 
 
 if __name__ == "__main__":
-    main(sys.argv)
+    main()
