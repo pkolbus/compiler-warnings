@@ -1055,77 +1055,98 @@ class GccDiagnostics:
 
         :param filename: Filename to parse.
         """
-        blocks = OptionFile(filename).get_options()
+        for block in OptionFile(filename).get_options():
+            self._parse_option(block)
 
-        for option_name, display_name, option_arguments, help_text in blocks:
-            option = self.get(option_name)
+    def _parse_option(self, option_definition: OptionDefinition) -> None:
+        # Parse one option_definition.
 
-            if display_name:
-                option.set_display_name(display_name)
+        # Unpack the tuple
+        option_name, display_name, option_arguments, help_text = option_definition
 
+        # Get the underlying option
+        option = self.get(option_name)
+
+        if display_name:
+            option.set_display_name(display_name)
+
+        if help_text:
+            option.set_help_text(help_text)
+        else:
+            # Attempt to retrieve from previous instance
+            help_text = option.get_help_text()
+
+        parse_tree = get_parse_tree(option_arguments)
+
+        # Parse and apply warning indications
+        warning_option = WarningOptionListener()
+        apply_listener(parse_tree, warning_option)
+        if warning_option.is_warning or could_be_warning(option_name):
+            option.set_warning()
+
+        # Parse and apply dummy indications
+        dummy_option = DummyWarningListener()
+        apply_listener(parse_tree, dummy_option)
+        if dummy_option.is_dummy:
+            option.set_dummy()
+
+        # Parse and apply IntegerRange, if the option takes a value and doesn't
+        # have a more human-readable display form.
+        if option_name[-1:] == "=" and not display_name:
+            integer_range_listener = IntegerRangeListener()
+            apply_listener(parse_tree, integer_range_listener)
+            if integer_range_listener.has_range():
+                min_value, max_value = integer_range_listener.get_range()
+                option.set_display_name(
+                    "-{}<{}..{}>".format(option_name, min_value, max_value)
+                )
+
+        # Parse and apply LangEnabledBy
+        # - If option is enabled by another, option is a child of that one.
+        # - LangEnabledBy can identify possible values for qualified options.
+        language_enablers = LanguagesEnabledListener()
+        apply_listener(parse_tree, language_enablers)
+        qualified_option = option_name
+        if qualified_option[-1:] == "=" and language_enablers.arg is not None:
+            qualified_option += language_enablers.arg
             if help_text:
-                option.set_help_text(help_text)
-            else:
-                # Attempt to retrieve from previous instance
-                help_text = option.get_help_text()
+                self.get(qualified_option).set_help_text(help_text)
+        for flag in language_enablers.flags:
+            other_option = self.get(flag)
+            other_option.add_child(qualified_option)
+            other_option.set_warning()
 
-            parse_tree = get_parse_tree(option_arguments)
-            warning_option = WarningOptionListener()
-            apply_listener(parse_tree, warning_option)
+        # Parse and apply EnabledBy
+        # - If this option is enabled by another, this option is a child of the
+        #   other.
+        flag_enablers = EnabledByListener()
+        apply_listener(parse_tree, flag_enablers)
+        if flag_enablers.enabled_by:
+            flag = flag_enablers.enabled_by
+            self.get(flag).add_child(option_name)
 
-            if warning_option.is_warning or could_be_warning(option_name):
-                option.set_warning()
+        # Parse and apply enabled-by-default
+        bydefault_option = DefaultsListener()
+        apply_listener(parse_tree, bydefault_option)
+        if bydefault_option.isEnabledByDefault():
+            option.set_default()
 
-            dummy_option = DummyWarningListener()
-            apply_listener(parse_tree, dummy_option)
-            if dummy_option.is_dummy:
-                option.set_dummy()
+        # Parse and apply deprecation
+        deprecation_option = DeprecationsListener()
+        apply_listener(parse_tree, deprecation_option)
+        if deprecation_option.isDeprecated():
+            option.set_deprecated()
 
-            if option_name[-1:] == "=" and not display_name:
-                integer_range_listener = IntegerRangeListener()
-                apply_listener(parse_tree, integer_range_listener)
-                if integer_range_listener.has_range():
-                    min_value, max_value = integer_range_listener.get_range()
-                    option.set_display_name(
-                        "-{}<{}..{}>".format(option_name, min_value, max_value)
-                    )
+        # Parse and apply aliases
+        alias_enablers = AliasAssignmentListener()
+        apply_listener(parse_tree, alias_enablers)
+        if alias_enablers.alias_name is not None:
+            option.add_alias(alias_enablers.alias_name)
 
-            language_enablers = LanguagesEnabledListener()
-            apply_listener(parse_tree, language_enablers)
-            qualified_option = option_name
-            if qualified_option[-1:] == "=" and language_enablers.arg is not None:
-                qualified_option += language_enablers.arg
-                if help_text:
-                    self.get(qualified_option).set_help_text(help_text)
-            for flag in language_enablers.flags:
-                other_option = self.get(flag)
-                other_option.add_child(qualified_option)
-                other_option.set_warning()
-
-            flag_enablers = EnabledByListener()
-            apply_listener(parse_tree, flag_enablers)
-            if flag_enablers.enabled_by:
-                flag = flag_enablers.enabled_by
-                self.get(flag).add_child(option_name)
-
-            bydefault_option = DefaultsListener()
-            apply_listener(parse_tree, bydefault_option)
-            if bydefault_option.isEnabledByDefault():
-                option.set_default()
-
-            deprecation_option = DeprecationsListener()
-            apply_listener(parse_tree, deprecation_option)
-            if deprecation_option.isDeprecated():
-                option.set_deprecated()
-
-            alias_enablers = AliasAssignmentListener()
-            apply_listener(parse_tree, alias_enablers)
-            if alias_enablers.alias_name is not None:
-                option.add_alias(alias_enablers.alias_name)
-
-            languages_listener = LanguagesListener()
-            apply_listener(parse_tree, languages_listener)
-            option.update_languages(languages_listener.languages)
+        # Parse and apply applicable languages
+        languages_listener = LanguagesListener()
+        apply_listener(parse_tree, languages_listener)
+        option.update_languages(languages_listener.languages)
 
     def _has_parent(self, option: GccOption) -> bool:
         for parent in self._options.values():
