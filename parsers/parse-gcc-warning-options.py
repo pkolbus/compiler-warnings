@@ -1,4 +1,13 @@
 #!/usr/bin/env python3
+"""
+Parser for gcc option files.
+
+Parses the *.opt files in the gcc repository for warnings, and outputs relevant
+information about the compiler warning options.
+
+For details of the option file format, see the gcc internals documentation at
+<https://gcc.gnu.org/onlinedocs/gccint/Option-file-format.html>
+"""
 
 import argparse
 import enum
@@ -14,6 +23,8 @@ from GccOptionsParser import GccOptionsParser
 
 
 class ParseState(enum.Enum):
+    """Possible states for parse_warning_blocks()."""
+
     NEWLINE = enum.auto()
     OPTION_NAME = enum.auto()
     OPTION_ATTRIBUTES = enum.auto()
@@ -106,6 +117,12 @@ def parse_warning_blocks(filename: str) -> List[OptionDefinition]:
 
 
 def get_parse_tree(string_value: str) -> antlr4.tree.Tree.ParseTree:
+    """
+    Construct a ParseTree from the given string_value.
+
+    Computing the ParseTree once (instead of once per listener) improves
+    performance.
+    """
     string_input = antlr4.InputStream(string_value)
     lexer = GccOptionsLexer(string_input)
     stream = antlr4.CommonTokenStream(lexer)
@@ -117,6 +134,12 @@ def apply_listener(
     listener_input: Union[str, antlr4.tree.Tree.ParseTree],
     listener: GccOptionsListener,
 ) -> None:
+    """
+    Walk the ParseTree using the given listener.
+
+    If listener_input is a string, it is converted into a ParseTree before
+    processing.
+    """
     if isinstance(listener_input, str):
         tree = get_parse_tree(listener_input)
     else:
@@ -127,6 +150,19 @@ def apply_listener(
 
 class AliasAssignmentListener(GccOptionsListener):
     """
+    Listener for Alias(opt) expressions.
+
+    There are three forms of interest:
+        - Alias(opt)
+        - Alias(opt, posarg)
+        - Alias(opt, posarg, negarg)
+
+    In the first form, the alias is simply the value of <opt>. In the second and
+    third forms, the alias is <opt><posarg> (opt ends with an =).
+
+    The value of negarg is not used as the negative form of the alias is not
+    needed.
+
     >>> listener = AliasAssignmentListener()
     >>> apply_listener("Alias(Wall)", listener)
     >>> listener.alias_name
@@ -138,52 +174,90 @@ class AliasAssignmentListener(GccOptionsListener):
     """
 
     def __init__(self) -> None:
+        """Create an AliasAssignmentListener."""
         self.alias_name: Optional[str] = None
         self._last_name: Optional[str] = None
         self._argument_id = 0
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
+        """
+        Handle entry to the VariableName token.
+
+        Track the variable name, and reset the argument index, for use by
+        enterAtom.
+        """
         self._last_name = ctx.getText()
         self._argument_id = 0
 
     def enterArgument(self, ctx: GccOptionsParser.ArgumentContext) -> None:
+        """
+        Handle entry to the Argument token.
+
+        Track the argument index for use in enterAtom.
+        """
         self._argument_id += 1
 
     def enterAtom(self, ctx: GccOptionsParser.AtomContext) -> None:
+        """
+        Handle entry to the Atom token.
+
+        If the VariableName is Alias, decide if the Atom is the opt or the
+        posarg Argument, and capture into self.alias_name as appropriate.
+        """
         if self._last_name == "Alias" and self._argument_id == 1:
             self.alias_name = ctx.getText()
         if self._last_name == "Alias" and self._argument_id == 2:
             self.alias_name += ctx.getText()
 
     def exitTrailer(self, ctx: GccOptionsParser.TrailerContext) -> None:
+        """
+        Handle exit from the Trailer token.
+
+        Forget the variable name.
+        """
         self._last_name = None
 
 
 class LanguagesEnabledListener(GccOptionsListener):
     """
-    Listens to LangEnabledBy(languagelist,warningflags) function calls
+    Listener for LangEnabledBy(languagelist,warningflags) expressions.
 
     There are two forms:
-        - LangEnabledBy(languagelist,warningflags)
-        - LangEnabledBy(languagelist,warningflags,posarg,negarg)
+        - LangEnabledBy(language-list,other-opt)
+        - LangEnabledBy(language-list,other-opt,posarg,negarg)
 
-    "warningflags" are the most interesting ones, as it means that this warning
-    is enabled by another flag.
+    "other-opt" indicate the other options that cause this warning to be
+    enabled. This can be a single item or a list of || separated options.
+
+    If posarg is present, then it is considered the warning value when other-opt
+    is used. This can have two forms:
+        - a condition, which means that the warning gets a value of 1
+        - a number, which means the warning gets the given number.
+
+    A simple warning flag, enabled when -Wall is specified:
 
     >>> listener = LanguagesEnabledListener()
     >>> apply_listener("LangEnabledBy(C C++,Wall,0,1)", listener)
     >>> listener.flags
     ['Wall']
 
+    A simple warning flag, enabled by -Wall99:
+
     >>> listener = LanguagesEnabledListener()
     >>> apply_listener("LangEnabledBy(C C++,Wall99,0,1)", listener)
     >>> listener.flags
     ['Wall99']
 
+    A simple warning flag, enabled by -Wall or -Wc++-compat:
+
     >>> listener = LanguagesEnabledListener()
     >>> apply_listener("LangEnabledBy(C C++,Wall || Wc++-compat)", listener)
     >>> listener.flags
     ['Wall', 'Wc++-compat']
+
+    Use of comparison in posarg implies that the var is associated with the
+    enabled-by option. If true, posarg evaluates to 1. So the following example
+    would indicate the warning is enabled by -Wformat=2:
 
     >>> listener = LanguagesEnabledListener()
     >>> apply_listener("LangEnabledBy(C C++,Wformat=,v >= 2,0)", listener)
@@ -192,12 +266,21 @@ class LanguagesEnabledListener(GccOptionsListener):
     >>> listener.arg
     '1'
 
+    Use of a number in posarg means the warning flag gets that value when the
+    enabled-by option is present. If this were a record for Wfoo, this would
+    be interpreted as "-Wall enables -Wfoo=1". (Or simply -Wfoo, since a zero
+    or one is interpreted as a boolean:
+
     >>> listener = LanguagesEnabledListener()
     >>> apply_listener("LangEnabledBy(C C++,Wall,1,0)", listener)
     >>> listener.flags
     ['Wall']
     >>> listener.arg
     '1'
+
+    Use of a number in posarg means the warning flag gets that value when the
+    enabled-by option is present. If this were a record for Wfoo, this would
+    be interpreted as "-Wall enables -Wfoo=2":
 
     >>> listener = LanguagesEnabledListener()
     >>> apply_listener("LangEnabledBy(C C++,Wall,2,0)", listener)
@@ -208,6 +291,7 @@ class LanguagesEnabledListener(GccOptionsListener):
     """
 
     def __init__(self) -> None:
+        """Create a LanguagesEnabledListener."""
         self._last_name: Optional[str] = None
         self._argument_id = 0
         self._flag_name = str()
@@ -216,25 +300,54 @@ class LanguagesEnabledListener(GccOptionsListener):
         self.arg: Optional[str] = None
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
+        """
+        Handle entry to the VariableName token.
+
+        Track the variable name, and reset the argument index, for use by
+        enterAtom.
+        """
         if ctx.getText() == "LangEnabledBy":
             self._last_name = "LangEnabledBy"
             self._argument_id = 0
 
     def enterArgument(self, ctx: GccOptionsParser.ArgumentContext) -> None:
+        """
+        Handle entry to the Argument token.
+
+        Track the argument index for use in enterAtom.
+        """
         self._argument_id += 1
 
     def enterCompOp(self, ctx: GccOptionsParser.CompOpContext) -> None:
+        """
+        Handle entry to the CompOp token.
+
+        If this is the 3rd argument of the LangEnabledBy expression, track that
+        the option is conditionally enabled (if a comparison is true).
+        """
         if self._last_name == "LangEnabledBy" and self._argument_id == 3:
             self._enabled_by_comparison = True
 
     def enterAtom(self, ctx: GccOptionsParser.AtomContext) -> None:
+        """
+        Handle entry to an Atom token.
+
+        When parsing the second argument of LangEnabledBy (other-opt),
+        capture the atom as the "other" flag name.
+
+        When parsing the third argument of LangEnabledBy (posarg):
+            - if the Atom is the numeric value for a CompOp, edit the "other"
+              flag name to include the value.
+            - if the Atom is a simple number, track the number as the value
+              used with the warning.
+        """
         if self._last_name == "LangEnabledBy":
             if self._argument_id == 2:
                 self._flag_name = ctx.getText()
                 self.flags.append(self._flag_name)
             elif self._argument_id == 3 and ctx.getText().isdigit():
                 if self._enabled_by_comparison:
-                    # Argument form is var >= N, so is enabled by-Wflag=N
+                    # Argument form is var >= N, so is enabled by -Wflag=N
                     self.flags.remove(self._flag_name)
                     self.flags.append(self._flag_name + ctx.getText())
                     # When -Wflag=N, var >= N evaluates to 1
@@ -244,12 +357,17 @@ class LanguagesEnabledListener(GccOptionsListener):
                     self.arg = ctx.getText()
 
     def exitTrailer(self, ctx: GccOptionsParser.TrailerContext) -> None:
+        """
+        Handle exit from the Trailer token.
+
+        Forget the variable name.
+        """
         self._last_name = None
 
 
 class LanguagesListener(GccOptionsListener):
     """
-    Listens for applicable languages (C C++ ObjC)
+    Listens for applicable languages (C C++ ObjC ObjC++).
 
     >>> listener = LanguagesListener()
     >>> apply_listener("C C++ Enum", listener)
@@ -266,16 +384,22 @@ class LanguagesListener(GccOptionsListener):
     """
 
     def __init__(self) -> None:
+        """Create a LanguagesListener."""
         self.languages: Set[str] = set()
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
+        """
+        Handle entry to the VariableName token.
+
+        If the variable name is a language of interest, add it to the list.
+        """
         if ctx.getText() in INTERESTING_LANGUAGES:
             self.languages.add(ctx.getText())
 
 
 class EnabledByListener(GccOptionsListener):
     """
-    Listens to EnabledBy(warningflag) function calls
+    Listens for EnabledBy(warningflag) expressions.
 
     >>> listener = EnabledByListener()
     >>> apply_listener("EnabledBy(Wextra)", listener)
@@ -284,24 +408,41 @@ class EnabledByListener(GccOptionsListener):
     """
 
     def __init__(self) -> None:
+        """Create an EnabledByListener."""
         self._last_name: Optional[str] = None
         self.enabled_by: Optional[str] = None
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
+        """
+        Handle entry to the VariableName token.
+
+        Track the variable name for use by enterAtom.
+        """
         if ctx.getText() == "EnabledBy":
             self._last_name = "EnabledBy"
 
     def enterAtom(self, ctx: GccOptionsParser.AtomContext) -> None:
+        """
+        Handle entry to an Atom token.
+
+        If the variable name is EnabledBy, capture the atom as the "other" flag
+        name.
+        """
         if self._last_name == "EnabledBy":
             self.enabled_by = ctx.getText()
 
     def exitTrailer(self, ctx: GccOptionsParser.TrailerContext) -> None:
+        """
+        Handle exit from the Trailer token.
+
+        Forget the variable name.
+        """
         self._last_name = None
 
 
 class DefaultsListener(GccOptionsListener):
     """
-    Listens to attributes to infer 'enabled by default' status
+    Listens to attributes to infer 'enabled by default' status.
 
     This attempts to infer whether an option is enabled by default by use of
     idioms. The implementation favors type II errors (missing an enabled-by-
@@ -355,30 +496,52 @@ class DefaultsListener(GccOptionsListener):
     """
 
     def __init__(self) -> None:
+        """Create a DefaultsListener."""
         self._last_name: Optional[str] = None
         self._init_value: Optional[str] = None
         self._is_boolean = True
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
+        """
+        Handle entry to the VariableName token.
+
+        Track the variable name for use by enterAtom. If the variable name
+        indicates the warning is not on-off, mark the warning as such.
+        """
         if ctx.getText() == "Init":
             self._last_name = "Init"
         elif ctx.getText() in ("Enum", "Host_Wide_Int", "Joined", "UInteger"):
             self._is_boolean = False
 
     def enterAtom(self, ctx: GccOptionsParser.AtomContext) -> None:
+        """
+        Handle entry to an Atom token.
+
+        If the variable name is Init, capture the atom as the initial value of
+        the flag.
+        """
         if self._last_name == "Init":
             self._init_value = ctx.getText()
 
     def exitTrailer(self, ctx: GccOptionsParser.TrailerContext) -> None:
+        """
+        Handle exit from the Trailer token.
+
+        Forget the variable name.
+        """
         self._last_name = None
 
     def isEnabledByDefault(self) -> bool:
+        """Return True if the warning is enabled-by-default, False otherwise."""
         return self._is_boolean and self._init_value in ("1", "-1")
 
 
 class DeprecationsListener(GccOptionsListener):
     """
-    Listens to attributes to infer deprecation status
+    Listens to attributes to infer deprecation status.
+
+    In gcc 9 and earlier, the attribute of interest is "Deprecated". This was
+    changed to "WarnRemoved" for gcc 10.
 
     >>> listener = DeprecationsListener()
     >>> apply_listener("Deprecated", listener)
@@ -399,19 +562,29 @@ class DeprecationsListener(GccOptionsListener):
     """
 
     def __init__(self) -> None:
+        """Create a DeprecationsListener."""
         self._deprecated = False
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
+        """
+        Handle entry to the VariableName token.
+
+        If the variable name indicates deprecation, track the warning as such.
+        """
         if ctx.getText() in ("Deprecated", "WarnRemoved"):
             self._deprecated = True
 
     def isDeprecated(self) -> bool:
+        """Return True if the warning is deprecated, False otherwise."""
         return self._deprecated
 
 
 class IntegerRangeListener(GccOptionsListener):
     """
     Searches for IntegerRange attribute.
+
+    The IntegerRange indicates the allowed values for a warning option. The
+    range is closed (both the min and max values are allowed).
 
     >>> listener = IntegerRangeListener()
     >>> apply_listener("C C++ Warning IntegerRange(1, 3)", listener)
@@ -426,31 +599,55 @@ class IntegerRangeListener(GccOptionsListener):
     """
 
     def __init__(self) -> None:
+        """Create an IntegerRangeListener."""
         self._atoms: List[int] = []
         self._variable_name = None
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
+        """
+        Handle entry to the VariableName token.
+
+        Track the variable name for use by enterAtom. On entry to IntegerRange,
+        ensure the list of collected atoms is empty.
+        """
         self._variable_name = ctx.getText()
         if self._variable_name == "IntegerRange":
             self._atoms.clear()
 
     def enterAtom(self, ctx: GccOptionsParser.AtomContext) -> None:
+        """
+        Handle entry to an Atom token.
+
+        If the variable name is IntegerRange, capture the atom as a bound on the
+        range.
+        """
         if self._variable_name == "IntegerRange":
             self._atoms.append(int(ctx.getText()))
 
     def exitTrailer(self, ctx: GccOptionsParser.TrailerContext) -> None:
+        """
+        Handle exit from the Trailer token.
+
+        Forget the variable name.
+        """
         self._variable_name = None
 
     def has_range(self) -> bool:
+        """Return True if the warning has a range, False otherwise."""
         return len(self._atoms) == 2
 
     def get_range(self) -> Tuple[int, ...]:
+        """Return the allowed range, as a tuple."""
         return tuple(self._atoms)
 
 
 class WarningOptionListener(GccOptionsListener):
     """
-    Searches for Warning attributes.
+    Listener for expressions indicating a warning option.
+
+    There are two forms of interest:
+        - A VariableName of Warning
+        - A Var(var), where var starts with "warn_"
 
     >>> listener = WarningOptionListener()
     >>> apply_listener("C C++ Warning", listener)
@@ -466,28 +663,47 @@ class WarningOptionListener(GccOptionsListener):
     """
 
     def __init__(self) -> None:
+        """Create a WarningOptionListener."""
         self._last_name: Optional[str] = None
         self.is_warning = False
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
+        """
+        Handle entry to the VariableName token.
+
+        If the variable name is Warning, mark the warning as such. Otherwise,
+        track the variable name for use by enterAtom.
+        """
         if ctx.getText() == "Warning":
             self.is_warning = True
         elif ctx.getText() == "Var":
             self._last_name = "Var"
 
     def enterAtom(self, ctx: GccOptionsParser.AtomContext) -> None:
+        """
+        Handle entry to the Atom token.
+
+        Detect Var(warn_*) and set the is_warning flag if detected.
+        """
         if self._last_name != "Var":
             return
         if ctx.getText().startswith("warn_"):
             self.is_warning = True
 
     def exitTrailer(self, ctx: GccOptionsParser.TrailerContext) -> None:
+        """
+        Handle exit from the Trailer token.
+
+        Forget the variable name.
+        """
         self._last_name = None
 
 
 class DummyWarningListener(GccOptionsListener):
     """
     Checks if switch does nothing.
+
+    This is defined by the "Ignore" attribute.
 
     >>> listener = DummyWarningListener()
     >>> apply_listener("C C++ Warning Ignore", listener)
@@ -496,9 +712,15 @@ class DummyWarningListener(GccOptionsListener):
     """
 
     def __init__(self) -> None:
+        """Create a DummyWarningListener."""
         self.is_dummy = False
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
+        """
+        Handle entry to the VariableName token.
+
+        If the variable name is Ignore, mark the warning as a dummy.
+        """
         if ctx.getText() == "Ignore":
             self.is_dummy = True
 
@@ -511,6 +733,7 @@ class GccOption:
     def __init__(
         self, name: str, aliases: Optional[Set[str]] = None, warning: bool = False
     ) -> None:
+        """Create a GccOption from the given data."""
         self._aliases = aliases if aliases else set()
         self._children: Set[str] = set()
         self._default = False
@@ -523,30 +746,54 @@ class GccOption:
         self._warning = warning
 
     def __eq__(self, other: object) -> bool:
+        """
+        Return True if self is equal to other.
+
+        Two GccOption are equal if they have the same name.
+        """
         if not isinstance(other, GccOption):
             return NotImplemented
 
         return self._name == other._name
 
     def __lt__(self, other: object) -> bool:
+        """
+        Return True if self is less than other.
+
+        GccOption objects are ordered by their name, case-insensitive.
+        """
         if not isinstance(other, GccOption):
             return NotImplemented
 
         return self._name.lower() < other._name.lower()
 
     def add_alias(self, name: str) -> None:
+        """Add the given name as an alias."""
         self._aliases.add(name)
 
     def add_child(self, name: str) -> None:
+        """Add the given name as a a child option."""
         self._children.add(name)
 
     def get_aliases(self) -> List[str]:
+        """Return the list of aliases, sorted case-insensitively."""
         return sorted(self._aliases, key=lambda x: x.lower())
 
     def get_children(self) -> Set[str]:
+        """Return the list of child options."""
         return self._children
 
     def get_comment_text(self) -> str:
+        """
+        Return the comment to print for this option.
+
+        The comment indicates the following, as applicable:
+            - deprecated
+            - enabled by default
+            - applies to a subset of all interesting languages
+
+        If none of these conditions are applicable, an empty string is returned.
+        """
         has_comment = False
         comment = " #"
 
@@ -568,12 +815,20 @@ class GccOption:
             return ""
 
     def get_display_name(self) -> str:
+        """Return the display name for the option."""
         return self._display_name if self._display_name else "-" + self._name
 
     def get_dummy_text(self) -> str:
+        """
+        Return the dummy comment to print for this option.
+
+        If the option is a dummy switch, return a comment. Otherwise, return an
+        empty string.
+        """
         return " # DUMMY switch" if self._dummy else str()
 
     def get_help_text(self) -> str:
+        """Return the help text."""
         if self._help_text:
             return self._help_text
         if self._deprecated:
@@ -581,36 +836,46 @@ class GccOption:
         return self._help_text
 
     def get_name(self) -> str:
+        """Return the option name."""
         return self._name
 
     def is_default(self) -> bool:
+        """Return True if the option is enabled by default."""
         return self._default
 
     def is_warning(self) -> bool:
+        """Return True if the option is a warning flag."""
         return self._warning
 
     def set_default(self) -> None:
+        """Set the option as enabled by default."""
         self._default = True
 
     def set_deprecated(self) -> None:
+        """Set the option as deprecated."""
         self._deprecated = True
 
     def set_display_name(self, display_name: str) -> None:
+        """Set the display name of the option."""
         if display_name.startswith("-"):
             self._display_name = display_name
         else:
             self._display_name = "-" + display_name
 
     def set_dummy(self) -> None:
+        """Set the option as a dummy."""
         self._dummy = True
 
     def set_help_text(self, help_text: str) -> None:
+        """Set the help text for the option."""
         self._help_text = help_text
 
     def set_warning(self) -> None:
+        """Set the option as a warning."""
         self._warning = True
 
     def update_languages(self, languages: Iterable[str]) -> None:
+        """Add the given languages as applicable."""
         self._languages.update(languages)
 
 
@@ -618,9 +883,15 @@ class GccDiagnostics:
     """A collection of GccOption."""
 
     def __init__(self) -> None:
+        """Create a new collection."""
         self._options: Dict[str, GccOption] = {}
 
     def get(self, option_name: str) -> GccOption:
+        """
+        Return the GccOption with the given name.
+
+        If the given name is new, create a new GccOption.
+        """
         try:
             return self._options[option_name]
         except KeyError:
@@ -710,7 +981,7 @@ class GccDiagnostics:
 
     def is_top_level(self, option: GccOption) -> bool:
         """
-        Returns True if option_name is top-level, False otherwise.
+        Return True if option_name is top-level, False otherwise.
 
         An option is top-level if it is not an alias, is not enabled by default,
         and is not the child of any other option.
@@ -723,23 +994,25 @@ class GccDiagnostics:
 
     @classmethod
     def hidden_options(cls) -> "GccDiagnostics":
+        """Return a GccDiagnostics collection containing hidden warnings."""
         options = GccDiagnostics()
         for switch, aliases in HIDDEN_WARNINGS:
             options._options[switch] = GccOption(switch, aliases=aliases, warning=True)
         return options
 
     def get_children(self, option: GccOption) -> List[GccOption]:
+        """Return the children of the given option, sorted by name, case-insensitive."""
         option_names = [self.get(option_name) for option_name in option.get_children()]
         return sorted(option_names, key=lambda x: x.get_name().lower())
 
     def get_all_warnings(self) -> List[GccOption]:
-        """Returns a list of GccOption, sorted by name."""
+        """Return the list of warnings, sorted by name."""
         return sorted(
             switch for switch in self._options.values() if switch.is_warning()
         )
 
     def get_default_warnings(self) -> List[GccOption]:
-        """Returns a list of GccOption, sorted by name."""
+        """Return the list of enabled-by-default warnings, sorted by name."""
         return sorted(
             option
             for option in self._options.values()
@@ -748,7 +1021,7 @@ class GccDiagnostics:
 
     def _is_warning(self, option: GccOption) -> bool:
         """
-        Returns True if option is a warning, False otherwise.
+        Return True if option is a warning, False otherwise.
 
         option is a warning if it is set as a warning, or if any of its
         aliases are warnings.
@@ -766,6 +1039,7 @@ class GccDiagnostics:
 def print_option(
     all_options: GccDiagnostics, option: GccOption, level: int, args: argparse.Namespace
 ) -> None:
+    """Print detail of the given option (and all of its children)."""
     if level:
         print("#  " + "  " * level + option.get_display_name())
     else:
@@ -779,6 +1053,7 @@ def print_option(
 def print_default_options(
     all_options: GccDiagnostics, args: argparse.Namespace
 ) -> None:
+    """Print detail of the warnings that are enabled by default."""
     defaults = all_options.get_default_warnings()
     if not defaults:
         return
@@ -789,6 +1064,7 @@ def print_default_options(
 
 
 def could_be_warning(option_name: str) -> bool:
+    """Return True if option_name appears to be a warning."""
     if "," in option_name:
         return False
     if option_name in NON_WARNING_WS:
@@ -798,6 +1074,7 @@ def could_be_warning(option_name: str) -> bool:
 
 
 def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics) -> None:
+    """Print a report detailing the warning flags."""
     if args.top_level:
         # Print a group that has all enabled-by-default warnings together
         print_default_options(all_options, args)
@@ -831,6 +1108,7 @@ def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics) -
 
 
 def main(argv: List[str]) -> None:
+    """Entry point."""
     parser = argparse.ArgumentParser(
         description="Parses GCC option files for warning options."
     )

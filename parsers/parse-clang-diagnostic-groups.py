@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Parser for clang diagnostic groups
+Parser for clang diagnostic groups.
 
 Parses an extract of clang's Diagnostic.td as formatted by the command
 `llvm-tblgen -dump-json`, and identifies relevant information about the
@@ -18,14 +18,10 @@ import common
 
 
 class ClangDiagnostic:
-    """
-    One clang warning message (Diagnostic)
-    """
+    """One clang warning message (Diagnostic)."""
 
     def __init__(self, obj: Dict[str, Any]) -> None:
-        """
-        Construct from a Diagnostic instance (JSON object)
-        """
+        """Construct from a Diagnostic instance (JSON object)."""
         self.name = obj["!name"]
         self.text = obj["Text"]
         if obj["Group"] is not None:
@@ -41,14 +37,10 @@ class ClangDiagnostic:
 
 
 class ClangDiagGroup:
-    """
-    clang diagnostic group (DiagGroup record)
-    """
+    """One clang diagnostic group (DiagGroup record)."""
 
     def __init__(self, obj: Dict[str, Any], parent: "ClangDiagnostics") -> None:
-        """
-        Construct from a DiagGroup instance (JSON object)
-        """
+        """Construct from a DiagGroup instance (JSON object)."""
         self.name = obj["!name"]
         self.switch_name = obj["GroupName"]
         self.child_names = [s["def"] for s in obj["SubGroups"]]
@@ -59,12 +51,12 @@ class ClangDiagGroup:
         self.switch: ClangWarningSwitch = parent.get_switch(self.switch_name)
 
     def get_messages(self, enabled_by_default: bool) -> List[str]:
-        """Returns a list of diagnostic messages in the group.
+        """
+        Return a list of diagnostic messages in the group.
 
         If enabled_by_default is True, only the mesages enabled by default are
         returned.
         """
-
         if enabled_by_default:
             return [diag.text for diag in self.diagnostics if diag.enabled_by_default]
 
@@ -72,11 +64,10 @@ class ClangDiagGroup:
 
     def is_dummy(self) -> bool:
         """
-        Determines if a group does nothing
+        Return whether a group does nothing.
 
         A dummy group has no warnings, directly or indirectly.
         """
-
         if self.diagnostics:
             return False
 
@@ -87,9 +78,7 @@ class ClangDiagGroup:
         return True
 
     def has_disabled_diagnostic(self) -> bool:
-        """
-        Determines if a group has a disabled diagnostic
-        """
+        """Return whether a group has a disabled diagnostic."""
         for diagnostic in self.diagnostics:
             if not diagnostic.enabled_by_default:
                 return True
@@ -101,9 +90,7 @@ class ClangDiagGroup:
         return False
 
     def has_enabled_diagnostic(self) -> bool:
-        """
-        Determines if a group has an enabled diagnostic
-        """
+        """Return whether a group has an enabled diagnostic."""
         for diagnostic in self.diagnostics:
             if diagnostic.enabled_by_default:
                 return True
@@ -117,40 +104,36 @@ class ClangDiagGroup:
 
 @total_ordering
 class ClangWarningSwitch:
-    """
-    clang warning switch (-Wxxxx option)
-    """
+    """One clang warning switch (-Wxxxx option)."""
 
     def __init__(self, name: str):
-        """
-        Construct from a name
-        """
+        """Construct from a name."""
         self.name = name
         self.groups: List[ClangDiagGroup] = []
 
     def __eq__(self, other: object) -> bool:
-        """Returns True if self and other have the same name"""
+        """Return True if self and other have the same name."""
         if not isinstance(other, ClangWarningSwitch):
             return NotImplemented
 
         return self.name.lower() == other.name.lower()
 
     def __lt__(self, other: object) -> bool:
-        """Returns True if self should be before other in a sorted list"""
+        """Return True if self should be before other in a sorted list."""
         if not isinstance(other, ClangWarningSwitch):
             return NotImplemented
 
         return self.name.lower() < other.name.lower()
 
     def __hash__(self) -> int:
-        """Returns a hash of the switch name"""
+        """Return a hash of the switch name."""
         return hash(self.name.lower())
 
     def get_child_switches(
         self, enabled_by_default: bool
     ) -> List["ClangWarningSwitch"]:
         """
-        Returns a list of child ClangWarningSwitch for the switch
+        Return a list of child ClangWarningSwitch for the switch.
 
         If enabled_by_default is True, include only the switches that are
         partially or completely enabled by default.
@@ -171,7 +154,7 @@ class ClangWarningSwitch:
         return child_switches
 
     def get_messages(self, enabled_by_default: bool) -> List[str]:
-        """Returns a list of diagnostic messages controlled by the switch"""
+        """Return a list of diagnostic messages controlled by the switch."""
         messages = []
         for group in self.groups:
             messages += group.get_messages(enabled_by_default)
@@ -180,12 +163,10 @@ class ClangWarningSwitch:
 
     def is_dummy(self) -> bool:
         """
-        Determines if a switch does nothing
+        Return whether a switch does nothing.
 
-        A switch is a dummy if all groups are dummy, and therefore
-        should do nothing.
+        A switch is a dummy (does nothing) if all groups are dummy.
         """
-
         for group in self.groups:
             if not group.is_dummy():
                 return False
@@ -194,12 +175,11 @@ class ClangWarningSwitch:
 
     def is_enabled_by_default(self) -> bool:
         """
-        Determines if a switch is enabled by default
+        Return whether a switch is enabled by default.
 
         A switch is enabled by default if no diagnostic (in any group)
         is disabled by default and the switch is not a dummy.
         """
-
         for group in self.groups:
             if group.has_disabled_diagnostic():
                 return False
@@ -208,12 +188,11 @@ class ClangWarningSwitch:
 
     def partially_enabled_by_default(self) -> bool:
         """
-        Determines if a switch is partially enabled by default
+        Return whether a switch is partially enabled by default.
 
         A switch is partially enabled by default if it has both enabled and
         disabled diagnostics.
         """
-
         has_enabled = False
         has_disabled = False
         for group in self.groups:
@@ -226,9 +205,9 @@ class ClangWarningSwitch:
 
     def is_top_level(self) -> bool:
         """
-        Determines whether a switch is top-level
+        Return whether a switch is top-level.
 
-        A top-level switch is not controlled by any of its parents
+        A switch is top-level if none of its group(s) have a parent.
         """
         for group in self.groups:
             if group.has_parent:
@@ -239,18 +218,19 @@ class ClangWarningSwitch:
 
 class ClangDiagnostics:
     """
-    Data model for clang diagnostics
+    Data model for clang diagnostics.
 
     In the clang model, a switch controls one or more diagnostic groups. Each
     group is associated with one switch name, has zero or more warnings, and
     has zero or more subgroups.
     """
 
-    def __init__(self, json_file: str):
+    def __init__(self, filename: str):
+        """Construct from a JSON file."""
         self.groups = {}  # Dict: group name -> ClangDiagGroup
         self.switches: Dict[str, ClangWarningSwitch] = {}
 
-        json_data = json.loads(open(json_file).read())
+        json_data = json.loads(open(filename).read())
 
         # Instantiate all group and switch objects
         for group_name in json_data["!instanceof"]["DiagGroup"]:
@@ -284,7 +264,7 @@ class ClangDiagnostics:
 def create_comment_text(
     switch: ClangWarningSwitch, args: argparse.Namespace, enabled_by_default: bool
 ) -> str:
-    """Returns a comment appropriate for the switch and output type"""
+    """Return a comment appropriate for the switch and output type."""
     if switch.is_dummy():
         return " # DUMMY switch"
     elif args.unique:
@@ -304,9 +284,7 @@ def print_references(
     args: argparse.Namespace,
     enabled_by_default: bool,
 ) -> None:
-    """
-    Print all children of switch, indented
-    """
+    """Print all children of switch, indented."""
     for child_switch in sorted(switch.get_child_switches(enabled_by_default)):
         print_switch(child_switch, level, args, enabled_by_default)
 
@@ -317,9 +295,7 @@ def print_switch(
     args: argparse.Namespace,
     enabled_by_default: bool,
 ) -> None:
-    """
-    Print switch, indented
-    """
+    """Print the given switch (and its children), indented."""
     comment_string = create_comment_text(switch, args, enabled_by_default)
     print("# {}-W{}{}".format("  " * level, switch.name, comment_string))
     if args.text:
@@ -330,7 +306,7 @@ def print_switch(
 
 
 def main(argv: List[str]) -> None:
-    """Entry point"""
+    """Entry point."""
     parser = argparse.ArgumentParser(description="Clang diagnostics group parser")
     common.add_common_parser_options(parser)
     parser.add_argument(
