@@ -2,7 +2,7 @@
 """
 Parser for gcc option files.
 
-Parses the *.opt files in the gcc repository for warnings, and outputs relevant
+Parses the .opt files in the gcc repository for warnings, and outputs relevant
 information about the compiler warning options.
 
 For details of the option file format, see the gcc internals documentation at
@@ -223,16 +223,18 @@ class LanguagesEnabledListener(GccOptionsListener):
     Listener for LangEnabledBy(languagelist,warningflags) expressions.
 
     There are two forms:
-        - LangEnabledBy(language-list,other-opt)
-        - LangEnabledBy(language-list,other-opt,posarg,negarg)
+
+    - LangEnabledBy(language-list,other-opt)
+    - LangEnabledBy(language-list,other-opt,posarg,negarg)
 
     "other-opt" indicate the other options that cause this warning to be
     enabled. This can be a single item or a list of || separated options.
 
     If posarg is present, then it is considered the warning value when other-opt
     is used. This can have two forms:
-        - a condition, which means that the warning gets a value of 1
-        - a number, which means the warning gets the given number.
+
+    - a condition, which means that the warning gets a value of 1
+    - a number, which means the warning gets the given number.
 
     A simple warning flag, enabled when -Wall is specified:
 
@@ -646,8 +648,9 @@ class WarningOptionListener(GccOptionsListener):
     Listener for expressions indicating a warning option.
 
     There are two forms of interest:
-        - A VariableName of Warning
-        - A Var(var), where var starts with "warn_"
+
+    - A VariableName of Warning
+    - A Var(var), where var starts with `warn_`
 
     >>> listener = WarningOptionListener()
     >>> apply_listener("C C++ Warning", listener)
