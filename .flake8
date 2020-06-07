@@ -9,3 +9,6 @@ ignore=T499,W503
 
 # flake8-mypy
 mypy_config=mypy.ini
+
+# flake8-cognitive-complexity
+max_cognitive_complexity=20
