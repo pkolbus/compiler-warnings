@@ -56,66 +56,93 @@ INTERESTING_LANGUAGES = ["C", "C++", "ObjC", "ObjC++"]
 OptionDefinition = Tuple[str, Optional[str], str, str]
 
 
-def parse_warning_blocks(filename: str) -> List[OptionDefinition]:
+class OptionFile:
     """
-    Parse option definition records from filename.
-
-    Parses option definition records and returns a list of OptionDefinition.
+    Represents one gcc options file.
 
     See https://gcc.gnu.org/onlinedocs/gccint/Option-file-format.html for the
     file format.
-
-    :param filename: Filename to parse.
-    :return: The OptionDefinition parsed from the file.
     """
-    blocks: List[OptionDefinition] = []
-    state = ParseState.OPTION_NAME  # Expected content of line
-    help_lines: List[str] = []
-    option_name = str()
-    display_name: Optional[str] = None
-    for line in open(filename).readlines():
-        line = line.rstrip("\n")  # Remove newline
-        line = line.split(";", 1)[0]  # Remove trailing comment
-        line = line.strip()  # Remove whitespace
 
-        if state == ParseState.OPTION_NAME:
-            if line:
-                option_name = line
-                state = ParseState.OPTION_ATTRIBUTES
-        elif state == ParseState.OPTION_ATTRIBUTES:
-            if line:
-                option_attributes = line
-                help_lines = []
-                if "Undocumented" in option_attributes:
-                    state = ParseState.FINALIZE
-                else:
-                    state = ParseState.OPTION_HELP
-        elif state == ParseState.OPTION_HELP:
-            if line:
-                help_lines.append(line)
+    def __init__(self, filename: str) -> None:
+        """
+        Create a new OptionFile from filename.
+
+        :param filename: Filename to parse.
+        """
+        self._filename = filename
+        self._options: List[OptionDefinition] = []
+
+        # Initialize the parse state
+        self._state = ParseState.OPTION_NAME  # Expected content of line
+        self._help_lines: List[str] = []
+        self._option_name = str()
+        self._display_name: Optional[str] = None
+
+        self._parse_file()
+
+    def get_options(self) -> List[OptionDefinition]:
+        """:return: The list of OptionDefinition parsed from the file."""
+        return self._options
+
+    def _parse_file(self) -> None:
+        # Parse option definition records in the file.
+        for line in open(self._filename).readlines():
+            line = line.rstrip("\n")  # Remove newline
+            line = line.split(";", 1)[0]  # Remove trailing comment
+            line = line.strip()  # Remove whitespace
+
+            if self._state == ParseState.OPTION_NAME:
+                self._parse_option_name(line)
+            elif self._state == ParseState.OPTION_ATTRIBUTES:
+                self._parse_option_attributes(line)
+            elif self._state == ParseState.OPTION_HELP:
+                self._parse_option_help(line)
+
+            if self._state == ParseState.FINALIZE:
+                self._finalize_option()
+
+        if self._state == ParseState.OPTION_HELP:
+            self._finalize_option()
+
+    def _parse_option_attributes(self, line: str) -> None:
+        # Parse line as option attributes.
+        if line:
+            self._option_attributes = line
+            self._help_lines = []
+            if "Undocumented" in self._option_attributes:
+                self._state = ParseState.FINALIZE
             else:
-                state = ParseState.FINALIZE
+                self._state = ParseState.OPTION_HELP
 
-        if state == ParseState.FINALIZE:
-            state = ParseState.OPTION_NAME
-            if option_name in BORING_OPTIONS:
-                continue
-            help_text = " ".join(help_lines)
-            if "\t" in help_text:
-                display_name, help_text = help_text.split("\t", maxsplit=1)
-            else:
-                display_name = None
-            blocks.append((option_name, display_name, option_attributes, help_text))
+    def _parse_option_help(self, line: str) -> None:
+        # Parse line as option help.
+        if line:
+            self._help_lines.append(line)
+        else:
+            self._state = ParseState.FINALIZE
 
-    if state == ParseState.OPTION_HELP and option_name not in BORING_OPTIONS:
-        help_text = " ".join(help_lines)
+    def _parse_option_name(self, line: str) -> None:
+        # Parse line as the option name.
+        if line:
+            self._option_name = line
+            self._state = ParseState.OPTION_ATTRIBUTES
+
+    def _finalize_option(self) -> None:
+        # Add the option from the parse state to self._options.
+        self._state = ParseState.OPTION_NAME
+        if self._option_name in BORING_OPTIONS:
+            return
+
+        help_text = " ".join(self._help_lines)
+        display_name: Optional[str] = None
+
         if "\t" in help_text:
             display_name, help_text = help_text.split("\t", maxsplit=1)
-        else:
-            display_name = None
-        blocks.append((option_name, display_name, option_attributes, help_text))
 
-    return blocks
+        self._options.append(
+            (self._option_name, display_name, self._option_attributes, help_text)
+        )
 
 
 def get_parse_tree(string_value: str) -> antlr4.tree.Tree.ParseTree:
@@ -1028,7 +1055,7 @@ class GccDiagnostics:
 
         :param filename: Filename to parse.
         """
-        blocks = parse_warning_blocks(filename)
+        blocks = OptionFile(filename).get_options()
 
         for option_name, display_name, option_arguments, help_text in blocks:
             option = self.get(option_name)
