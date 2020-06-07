@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 
 import argparse
-import antlr4
-import common
 import enum
 import sys
 from typing import Dict, Iterable, List, Optional, Set, Tuple, Union
 
+import antlr4
+
+import common
 from GccOptionsLexer import GccOptionsLexer
 from GccOptionsListener import GccOptionsListener
 from GccOptionsParser import GccOptionsParser

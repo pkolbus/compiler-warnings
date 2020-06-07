@@ -8,11 +8,12 @@ compiler warning options.
 """
 
 import argparse
-import json
-import sys
 from functools import total_ordering
 from itertools import chain
+import json
+import sys
 from typing import Any, Dict, List
+
 import common
 
 
