@@ -125,29 +125,6 @@ def apply_listener(
     walker.walk(listener, tree)
 
 
-class VariableAssignmentListener(GccOptionsListener):
-    """
-    >>> listener = VariableAssignmentListener()
-    >>> apply_listener("Var(varname)", listener)
-    >>> listener.variable_name
-    'varname'
-    """
-
-    def __init__(self) -> None:
-        self.variable_name = None
-        self._last_name = None
-
-    def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
-        self._last_name = ctx.getText()
-
-    def enterAtom(self, ctx: GccOptionsParser.AtomContext) -> None:
-        if self._last_name == "Var":
-            self.variable_name = ctx.getText()
-
-    def exitTrailer(self, ctx: GccOptionsParser.TrailerContext) -> None:
-        self._last_name = None
-
-
 class AliasAssignmentListener(GccOptionsListener):
     """
     >>> listener = AliasAssignmentListener()
