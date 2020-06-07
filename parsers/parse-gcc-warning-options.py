@@ -64,6 +64,9 @@ def parse_warning_blocks(filename: str) -> List[OptionDefinition]:
 
     See https://gcc.gnu.org/onlinedocs/gccint/Option-file-format.html for the
     file format.
+
+    :param filename: Filename to parse.
+    :return: The OptionDefinition parsed from the file.
     """
     blocks: List[OptionDefinition] = []
     state = ParseState.OPTION_NAME  # Expected content of line
@@ -121,6 +124,9 @@ def get_parse_tree(string_value: str) -> antlr4.tree.Tree.ParseTree:
 
     Computing the ParseTree once (instead of once per listener) improves
     performance.
+
+    :param string_value: The input to parse.
+    :return: The antlr4 ParseTree for, use in apply_listener().
     """
     string_input = antlr4.InputStream(string_value)
     lexer = GccOptionsLexer(string_input)
@@ -136,8 +142,11 @@ def apply_listener(
     """
     Walk the ParseTree using the given listener.
 
-    If listener_input is a string, it is converted into a ParseTree before
-    processing.
+    :param listener_input: The data to parse, may be either a string or a
+        ParseTree. If it is a string, it is converted into a ParseTree before
+        processing.
+    :param listener: The GccOptionsListener to be called when walking the
+        ParseTree.
     """
     if isinstance(listener_input, str):
         tree = get_parse_tree(listener_input)
@@ -184,6 +193,9 @@ class AliasAssignmentListener(GccOptionsListener):
 
         Track the variable name, and reset the argument index, for use by
         enterAtom.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         self._last_name = ctx.getText()
         self._argument_id = 0
@@ -193,6 +205,9 @@ class AliasAssignmentListener(GccOptionsListener):
         Handle entry to the Argument token.
 
         Track the argument index for use in enterAtom.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         self._argument_id += 1
 
@@ -202,6 +217,9 @@ class AliasAssignmentListener(GccOptionsListener):
 
         If the VariableName is Alias, decide if the Atom is the opt or the
         posarg Argument, and capture into self.alias_name as appropriate.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         if self._last_name == "Alias" and self._argument_id == 1:
             self.alias_name = ctx.getText()
@@ -213,6 +231,9 @@ class AliasAssignmentListener(GccOptionsListener):
         Handle exit from the Trailer token.
 
         Forget the variable name.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         self._last_name = None
 
@@ -306,6 +327,9 @@ class LanguagesEnabledListener(GccOptionsListener):
 
         Track the variable name, and reset the argument index, for use by
         enterAtom.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         if ctx.getText() == "LangEnabledBy":
             self._last_name = "LangEnabledBy"
@@ -316,6 +340,9 @@ class LanguagesEnabledListener(GccOptionsListener):
         Handle entry to the Argument token.
 
         Track the argument index for use in enterAtom.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         self._argument_id += 1
 
@@ -325,6 +352,9 @@ class LanguagesEnabledListener(GccOptionsListener):
 
         If this is the 3rd argument of the LangEnabledBy expression, track that
         the option is conditionally enabled (if a comparison is true).
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         if self._last_name == "LangEnabledBy" and self._argument_id == 3:
             self._enabled_by_comparison = True
@@ -341,6 +371,9 @@ class LanguagesEnabledListener(GccOptionsListener):
               flag name to include the value.
             - if the Atom is a simple number, track the number as the value
               used with the warning.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         if self._last_name == "LangEnabledBy":
             if self._argument_id == 2:
@@ -362,6 +395,9 @@ class LanguagesEnabledListener(GccOptionsListener):
         Handle exit from the Trailer token.
 
         Forget the variable name.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         self._last_name = None
 
@@ -393,6 +429,9 @@ class LanguagesListener(GccOptionsListener):
         Handle entry to the VariableName token.
 
         If the variable name is a language of interest, add it to the list.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         if ctx.getText() in INTERESTING_LANGUAGES:
             self.languages.add(ctx.getText())
@@ -418,6 +457,9 @@ class EnabledByListener(GccOptionsListener):
         Handle entry to the VariableName token.
 
         Track the variable name for use by enterAtom.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         if ctx.getText() == "EnabledBy":
             self._last_name = "EnabledBy"
@@ -428,6 +470,9 @@ class EnabledByListener(GccOptionsListener):
 
         If the variable name is EnabledBy, capture the atom as the "other" flag
         name.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         if self._last_name == "EnabledBy":
             self.enabled_by = ctx.getText()
@@ -437,6 +482,9 @@ class EnabledByListener(GccOptionsListener):
         Handle exit from the Trailer token.
 
         Forget the variable name.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         self._last_name = None
 
@@ -508,6 +556,9 @@ class DefaultsListener(GccOptionsListener):
 
         Track the variable name for use by enterAtom. If the variable name
         indicates the warning is not on-off, mark the warning as such.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         if ctx.getText() == "Init":
             self._last_name = "Init"
@@ -520,6 +571,9 @@ class DefaultsListener(GccOptionsListener):
 
         If the variable name is Init, capture the atom as the initial value of
         the flag.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         if self._last_name == "Init":
             self._init_value = ctx.getText()
@@ -529,11 +583,14 @@ class DefaultsListener(GccOptionsListener):
         Handle exit from the Trailer token.
 
         Forget the variable name.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         self._last_name = None
 
     def isEnabledByDefault(self) -> bool:
-        """Return True if the warning is enabled-by-default, False otherwise."""
+        """:return: True if the warning is enabled-by-default, False otherwise."""
         return self._is_boolean and self._init_value in ("1", "-1")
 
 
@@ -571,12 +628,15 @@ class DeprecationsListener(GccOptionsListener):
         Handle entry to the VariableName token.
 
         If the variable name indicates deprecation, track the warning as such.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         if ctx.getText() in ("Deprecated", "WarnRemoved"):
             self._deprecated = True
 
     def isDeprecated(self) -> bool:
-        """Return True if the warning is deprecated, False otherwise."""
+        """:return: True if the warning is deprecated, False otherwise."""
         return self._deprecated
 
 
@@ -610,6 +670,9 @@ class IntegerRangeListener(GccOptionsListener):
 
         Track the variable name for use by enterAtom. On entry to IntegerRange,
         ensure the list of collected atoms is empty.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         self._variable_name = ctx.getText()
         if self._variable_name == "IntegerRange":
@@ -621,6 +684,9 @@ class IntegerRangeListener(GccOptionsListener):
 
         If the variable name is IntegerRange, capture the atom as a bound on the
         range.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         if self._variable_name == "IntegerRange":
             self._atoms.append(int(ctx.getText()))
@@ -630,15 +696,18 @@ class IntegerRangeListener(GccOptionsListener):
         Handle exit from the Trailer token.
 
         Forget the variable name.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         self._variable_name = None
 
     def has_range(self) -> bool:
-        """Return True if the warning has a range, False otherwise."""
+        """:return: True if the warning has a range, False otherwise."""
         return len(self._atoms) == 2
 
     def get_range(self) -> Tuple[int, ...]:
-        """Return the allowed range, as a tuple."""
+        """:return: the allowed range, as a tuple."""
         return tuple(self._atoms)
 
 
@@ -675,6 +744,9 @@ class WarningOptionListener(GccOptionsListener):
 
         If the variable name is Warning, mark the warning as such. Otherwise,
         track the variable name for use by enterAtom.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         if ctx.getText() == "Warning":
             self.is_warning = True
@@ -686,6 +758,9 @@ class WarningOptionListener(GccOptionsListener):
         Handle entry to the Atom token.
 
         Detect Var(warn_*) and set the is_warning flag if detected.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         if self._last_name != "Var":
             return
@@ -697,6 +772,9 @@ class WarningOptionListener(GccOptionsListener):
         Handle exit from the Trailer token.
 
         Forget the variable name.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         self._last_name = None
 
@@ -722,6 +800,9 @@ class DummyWarningListener(GccOptionsListener):
         Handle entry to the VariableName token.
 
         If the variable name is Ignore, mark the warning as a dummy.
+
+        :param ctx: The rule invocation context. Contains relevant information
+            about the rule from parsing.
         """
         if ctx.getText() == "Ignore":
             self.is_dummy = True
@@ -735,7 +816,13 @@ class GccOption:
     def __init__(
         self, name: str, aliases: Optional[Set[str]] = None, warning: bool = False
     ) -> None:
-        """Create a GccOption from the given data."""
+        """
+        Create a GccOption from the given data.
+
+        :param name: The name of the option.
+        :param aliases: Names of any aliases.
+        :param warning: If True, this option is known to be a warning.
+        """
         self._aliases = aliases if aliases else set()
         self._children: Set[str] = set()
         self._default = False
@@ -749,9 +836,13 @@ class GccOption:
 
     def __eq__(self, other: object) -> bool:
         """
-        Return True if self is equal to other.
+        Return True if self and other are equal.
 
         Two GccOption are equal if they have the same name.
+
+        :param other: The object to compare for equality.
+        :return: NotImplemented if `other` is _not_ a GccOption, True if self
+            and other have the same name, or False otherwise.
         """
         if not isinstance(other, GccOption):
             return NotImplemented
@@ -760,9 +851,14 @@ class GccOption:
 
     def __lt__(self, other: object) -> bool:
         """
-        Return True if self is less than other.
+        Return True if self should be before other in a sorted list.
 
-        GccOption objects are ordered by their name, case-insensitive.
+        Two GccOption should be sorted by name, case-insensitive.
+
+        :param other: The object to compare against.
+        :return: NotImplemented if `other` is _not_ a GccOption, True if the
+            name of self is less than the name of other, case-insensitive,
+            or False otherwise.
         """
         if not isinstance(other, GccOption):
             return NotImplemented
@@ -770,24 +866,32 @@ class GccOption:
         return self._name.lower() < other._name.lower()
 
     def add_alias(self, name: str) -> None:
-        """Add the given name as an alias."""
+        """
+        Add the given name as an alias.
+
+        :param name: The alias to add.
+        """
         self._aliases.add(name)
 
     def add_child(self, name: str) -> None:
-        """Add the given name as a a child option."""
+        """
+        Add the given name as a a child option.
+
+        :param name: The name of the chid option to add.
+        """
         self._children.add(name)
 
     def get_aliases(self) -> List[str]:
-        """Return the list of aliases, sorted case-insensitively."""
+        """:return: the list of aliases, sorted case-insensitively."""
         return sorted(self._aliases, key=lambda x: x.lower())
 
     def get_children(self) -> Set[str]:
-        """Return the list of child options."""
+        """:return: the list of child options."""
         return self._children
 
     def get_comment_text(self) -> str:
         """
-        Return the comment to print for this option.
+        Get the comment to print for this option.
 
         The comment indicates the following, as applicable:
             - deprecated
@@ -795,6 +899,8 @@ class GccOption:
             - applies to a subset of all interesting languages
 
         If none of these conditions are applicable, an empty string is returned.
+
+        :return: The comment text.
         """
         has_comment = False
         comment = " #"
@@ -817,20 +923,20 @@ class GccOption:
             return ""
 
     def get_display_name(self) -> str:
-        """Return the display name for the option."""
+        """:return: the display name for the option."""
         return self._display_name if self._display_name else "-" + self._name
 
     def get_dummy_text(self) -> str:
         """
-        Return the dummy comment to print for this option.
+        Get the dummy comment to print for this option.
 
-        If the option is a dummy switch, return a comment. Otherwise, return an
-        empty string.
+        :return: a comment if the option is a dummy switch, an empty string
+            otherwise.
         """
         return " # DUMMY switch" if self._dummy else str()
 
     def get_help_text(self) -> str:
-        """Return the help text."""
+        """:return: the help text."""
         if self._help_text:
             return self._help_text
         if self._deprecated:
@@ -838,15 +944,15 @@ class GccOption:
         return self._help_text
 
     def get_name(self) -> str:
-        """Return the option name."""
+        """:return: the option name."""
         return self._name
 
     def is_default(self) -> bool:
-        """Return True if the option is enabled by default."""
+        """:return: True if the option is enabled by default, False otherwise."""
         return self._default
 
     def is_warning(self) -> bool:
-        """Return True if the option is a warning flag."""
+        """:return: True if the option is a warning flag, False otherwise."""
         return self._warning
 
     def set_default(self) -> None:
@@ -858,7 +964,12 @@ class GccOption:
         self._deprecated = True
 
     def set_display_name(self, display_name: str) -> None:
-        """Set the display name of the option."""
+        """
+        Set the display name of the option.
+
+        :param display_name: The alternate display name to use. If this does not
+            start with a hyphen, one is added.
+        """
         if display_name.startswith("-"):
             self._display_name = display_name
         else:
@@ -869,7 +980,11 @@ class GccOption:
         self._dummy = True
 
     def set_help_text(self, help_text: str) -> None:
-        """Set the help text for the option."""
+        """
+        Set the help text for the option.
+
+        :param help_text: The help text to use.
+        """
         self._help_text = help_text
 
     def set_warning(self) -> None:
@@ -877,7 +992,11 @@ class GccOption:
         self._warning = True
 
     def update_languages(self, languages: Iterable[str]) -> None:
-        """Add the given languages as applicable."""
+        """
+        Add the given languages as applicable.
+
+        :param languages: The languages to add.
+        """
         self._languages.update(languages)
 
 
@@ -893,6 +1012,9 @@ class GccDiagnostics:
         Return the GccOption with the given name.
 
         If the given name is new, create a new GccOption.
+
+        :param option_name: The name of the GccOption to retrieve.
+        :return: The GccOption with the given name.
         """
         try:
             return self._options[option_name]
@@ -901,7 +1023,11 @@ class GccDiagnostics:
             return self._options[option_name]
 
     def parse_options_file(self, filename: str) -> None:
-        """Parse filename and add options from the file."""
+        """
+        Parse an options file and add/update options from the file.
+
+        :param filename: Filename to parse.
+        """
         blocks = parse_warning_blocks(filename)
 
         for option_name, display_name, option_arguments, help_text in blocks:
@@ -983,10 +1109,13 @@ class GccDiagnostics:
 
     def is_top_level(self, option: GccOption) -> bool:
         """
-        Return True if option_name is top-level, False otherwise.
+        Return whether or not the option is top-level.
 
         An option is top-level if it is not an alias, is not enabled by default,
         and is not the child of any other option.
+
+        :param option: The option of interest.
+        :return: True if the given option is top-level, False otherwise.
         """
         return (
             not option.get_aliases()
@@ -996,25 +1125,31 @@ class GccDiagnostics:
 
     @classmethod
     def hidden_options(cls) -> "GccDiagnostics":
-        """Return a GccDiagnostics collection containing hidden warnings."""
+        """:return: a GccDiagnostics collection containing hidden warnings."""
         options = GccDiagnostics()
         for switch, aliases in HIDDEN_WARNINGS:
             options._options[switch] = GccOption(switch, aliases=aliases, warning=True)
         return options
 
     def get_children(self, option: GccOption) -> List[GccOption]:
-        """Return the children of the given option, sorted by name, case-insensitive."""
+        """
+        Return the children of the given option.
+
+        :param option: The GccOption of interest.
+        :return: the direct children of the given option, sorted by name,
+            case-insensitive.
+        """
         option_names = [self.get(option_name) for option_name in option.get_children()]
         return sorted(option_names, key=lambda x: x.get_name().lower())
 
     def get_all_warnings(self) -> List[GccOption]:
-        """Return the list of warnings, sorted by name."""
+        """:return: the list of warnings, sorted by name."""
         return sorted(
             switch for switch in self._options.values() if switch.is_warning()
         )
 
     def get_default_warnings(self) -> List[GccOption]:
-        """Return the list of enabled-by-default warnings, sorted by name."""
+        """:return: the list of enabled-by-default warnings, sorted by name."""
         return sorted(
             option
             for option in self._options.values()
@@ -1023,10 +1158,11 @@ class GccDiagnostics:
 
     def _is_warning(self, option: GccOption) -> bool:
         """
-        Return True if option is a warning, False otherwise.
+        Return whether or not the given option is a warning.
 
-        option is a warning if it is set as a warning, or if any of its
-        aliases are warnings.
+        :param option: The GccOption of interest.
+        :return: True if option is a warning or if any of its aliases are
+            warnings; False otherwise.
         """
         if option.is_warning():
             return True
@@ -1041,7 +1177,16 @@ class GccDiagnostics:
 def print_option(
     all_options: GccDiagnostics, option: GccOption, level: int, args: argparse.Namespace
 ) -> None:
-    """Print detail of the given option (and all of its children)."""
+    """
+    Print detail of the given option (and all of its children).
+
+    :param option: The GccOption to print.
+    :param level: The indentation level of `option` in the hierarchy. The top
+        level is zero, and each subsequent level increments this value by 1.
+    :param args: The command-line arguments. These control the format of the
+        report.
+    :param all_options: The GccDiagnostics collection to report on.
+    """
     if level:
         print("#  " + "  " * level + option.get_display_name())
     else:
@@ -1055,7 +1200,13 @@ def print_option(
 def print_default_options(
     all_options: GccDiagnostics, args: argparse.Namespace
 ) -> None:
-    """Print detail of the warnings that are enabled by default."""
+    """
+    Print detail of the warnings that are enabled by default.
+
+    :param args: The command-line arguments. These control the format of the
+        report.
+    :param all_options: The GccDiagnostics collection to report on.
+    """
     defaults = all_options.get_default_warnings()
     if not defaults:
         return
@@ -1066,7 +1217,15 @@ def print_default_options(
 
 
 def could_be_warning(option_name: str) -> bool:
-    """Return True if option_name appears to be a warning."""
+    """
+    Return whether or not option_name could be a warning.
+
+    Warning options start with W, unless the name contains a comma or is one of
+    a few exceptions (such as Werror).
+
+    :param option_name: The option name of interest.
+    :return: True if option_name could be a warning, False otherwise.
+    """
     if "," in option_name:
         return False
     if option_name in NON_WARNING_WS:
@@ -1076,7 +1235,13 @@ def could_be_warning(option_name: str) -> bool:
 
 
 def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics) -> None:
-    """Print a report detailing the warning flags."""
+    """
+    Print a report detailing the warning flags.
+
+    :param args: The command-line arguments. These control the format of the
+        report.
+    :param all_options: The GccDiagnostics collection to report on.
+    """
     if args.top_level:
         # Print a group that has all enabled-by-default warnings together
         print_default_options(all_options, args)
