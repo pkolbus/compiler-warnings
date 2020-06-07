@@ -402,20 +402,24 @@ class LanguagesEnabledListener(GccOptionsListener):
         :param ctx: The rule invocation context. Contains relevant information
             about the rule from parsing.
         """
-        if self._last_name == "LangEnabledBy":
-            if self._argument_id == 2:
-                self._flag_name = ctx.getText()
-                self.flags.append(self._flag_name)
-            elif self._argument_id == 3 and ctx.getText().isdigit():
-                if self._enabled_by_comparison:
-                    # Argument form is var >= N, so is enabled by -Wflag=N
-                    self.flags.remove(self._flag_name)
-                    self.flags.append(self._flag_name + ctx.getText())
-                    # When -Wflag=N, var >= N evaluates to 1
-                    self.arg = "1"
-                else:
-                    # Argument form is N, so flags enables -Wthis=N
-                    self.arg = ctx.getText()
+        if self._last_name != "LangEnabledBy":
+            return
+
+        if self._argument_id == 2:
+            self._flag_name = ctx.getText()
+            self.flags.append(self._flag_name)
+            return
+
+        if self._argument_id == 3 and ctx.getText().isdigit():
+            if self._enabled_by_comparison:
+                # Argument form is var >= N, so is enabled by -Wflag=N
+                self.flags.remove(self._flag_name)
+                self.flags.append(self._flag_name + ctx.getText())
+                # When -Wflag=N, var >= N evaluates to 1
+                self.arg = "1"
+            else:
+                # Argument form is N, so flags enables -Wthis=N
+                self.arg = ctx.getText()
 
     def exitTrailer(self, ctx: GccOptionsParser.TrailerContext) -> None:
         """
