@@ -350,12 +350,12 @@ def create_comment_text(
     """
     if switch.is_dummy():
         return " # DUMMY switch"
-    elif args.unique:
+    if args.unique:
         if switch.is_enabled_by_default():
             return " # Enabled by default."
         if switch.partially_enabled_by_default():
             return " # Partially enabled by default."
-    elif enabled_by_default and switch.partially_enabled_by_default():
+    if enabled_by_default and switch.partially_enabled_by_default():
         return " (partial)"
 
     return ""
