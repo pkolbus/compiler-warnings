@@ -333,11 +333,11 @@ def main(argv):
     if args.top_level:
         # Find all switches that are enabled by default and are not children
         # of another switch that is enabled by default.
-        all_defaults = set(
+        all_defaults = {
             s
             for s in diagnostics.switches.values()
             if s.is_enabled_by_default() or s.partially_enabled_by_default()
-        )
+        }
         children = set(
             chain.from_iterable([s.get_child_switches(True) for s in all_defaults])
         )

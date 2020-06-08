@@ -626,7 +626,7 @@ class GccDiagnostics:
     """A collection of GccOption."""
 
     def __init__(self):
-        self._options = dict()  # Map from option name to GccOption
+        self._options = {}  # Map from option name to GccOption
 
     def get(self, option_name: str) -> GccOption:
         try:
@@ -737,25 +737,21 @@ class GccDiagnostics:
         return options
 
     def get_children(self, option: GccOption) -> List[GccOption]:
-        return sorted(
-            [self.get(option_name) for option_name in option.get_children()],
-            key=lambda x: x.get_name().lower(),
-        )
+        option_names = [self.get(option_name) for option_name in option.get_children()]
+        return sorted(option_names, key=lambda x: x.get_name().lower())
 
     def get_all_warnings(self) -> List[GccOption]:
         """Returns a list of GccOption, sorted by name."""
         return sorted(
-            [switch for switch in self._options.values() if switch.is_warning()]
+            switch for switch in self._options.values() if switch.is_warning()
         )
 
     def get_default_warnings(self) -> List[GccOption]:
         """Returns a list of GccOption, sorted by name."""
         return sorted(
-            [
-                option
-                for option in self._options.values()
-                if option.is_warning() and option.is_default()
-            ]
+            option
+            for option in self._options.values()
+            if option.is_warning() and option.is_default()
         )
 
     def _is_warning(self, option: GccOption) -> bool:
