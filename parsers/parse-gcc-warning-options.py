@@ -109,11 +109,11 @@ def get_parse_tree(string_value: str):
     return parser.optionAttributes()
 
 
-def apply_listener(input, listener: GccOptionsListener.GccOptionsListener):
-    if isinstance(input, str):
-        tree = get_parse_tree(input)
+def apply_listener(listener_input, listener: GccOptionsListener.GccOptionsListener):
+    if isinstance(listener_input, str):
+        tree = get_parse_tree(listener_input)
     else:
-        tree = input
+        tree = listener_input
     walker = antlr4.ParseTreeWalker()
     walker.walk(listener, tree)
 
