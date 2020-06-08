@@ -826,14 +826,15 @@ def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics):
         sorted_aliases = option.get_aliases()
         if sorted_aliases:
             print(
-                "%s = -%s%s"
-                % (option.get_display_name(), ", -".join(sorted_aliases), dummy_text)
+                "{} = -{}{}".format(
+                    option.get_display_name(), ", -".join(sorted_aliases), dummy_text
+                )
             )
         else:
             print(option.get_display_name() + dummy_text)
 
         if args.text and option.get_help_text():
-            print("#     %s" % (option.get_help_text()))
+            print("#     {}".format(option.get_help_text()))
 
         for child in all_options.get_children(option):
             print_option(all_options, child, 1, args)

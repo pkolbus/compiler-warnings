@@ -305,10 +305,10 @@ def print_switch(
     Print switch, indented
     """
     comment_string = create_comment_text(switch, args, enabled_by_default)
-    print("# %s-W%s%s" % ("  " * level, switch.name, comment_string))
+    print("# {}-W{}{}".format("  " * level, switch.name, comment_string))
     if args.text:
         for item in sorted(switch.get_messages(enabled_by_default)):
-            print("#       %s%s" % ("  " * level, item))
+            print("#       {}{}".format("  " * level, item))
 
     print_references(switch, level + 1, args, enabled_by_default)
 
@@ -353,10 +353,10 @@ def main(argv):
         ):
             continue
         comment_string = create_comment_text(switch, args, enabled_by_default=False)
-        print("-W%s%s" % (switch.name, comment_string))
+        print("-W{}{}".format(switch.name, comment_string))
         if args.text:
             for item in sorted(switch.get_messages(enabled_by_default=False)):
-                print("#     %s" % (item))
+                print("#     {}".format(item))
         if args.unique:
             continue
         print_references(switch, 1, args, enabled_by_default=False)
