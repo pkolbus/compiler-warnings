@@ -104,6 +104,9 @@ run_in_docker flake8 .
 mkdir -p build
 
 if [ "${BUILD_CLANG}" == "true" ]; then
+    echo "Testing the clang parser..."
+    run_in_docker python3 -mdoctest ./parsers/parse-clang-diagnostic-groups.py
+
     echo "Running the clang parser..."
     CLANG_REMOTE="https://github.com/llvm/llvm-project.git"
 
