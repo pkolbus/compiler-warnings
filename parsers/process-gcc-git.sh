@@ -63,13 +63,13 @@ parse_gcc_info 5 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 git -C "$GIT_DIR" checkout gcc-6_5_0-release
 parse_gcc_info 6 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 
-git -C "$GIT_DIR" checkout gcc-7_4_0-release
+git -C "$GIT_DIR" checkout releases/gcc-7.5.0
 parse_gcc_info 7 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 
-git -C "$GIT_DIR" checkout gcc-8_3_0-release
+git -C "$GIT_DIR" checkout releases/gcc-8.4.0
 parse_gcc_info 8 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 
-git -C "$GIT_DIR" checkout gcc-9_1_0-release
+git -C "$GIT_DIR" checkout releases/gcc-9.3.0
 parse_gcc_info 9 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 
 git -C "$GIT_DIR" checkout releases/gcc-10.1.0
