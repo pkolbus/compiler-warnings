@@ -94,6 +94,11 @@ ${DOCKER} image build \
     --cache-from=${DOCKER_IMAGE_TAG}:latest \
     ./docker/
 
+# Linting requires the gcc parser to be built
+echo "Building the gcc parser..."
+run_in_docker ninja -C parsers
+run_in_docker ninja -C parsers test
+
 # Run formatting/linting on the Python code
 run_in_docker black .
 run_in_docker flake8 .
@@ -121,11 +126,6 @@ if [ "${BUILD_CLANG}" == "true" ]; then
 fi
 
 if [ "${BUILD_GCC}" == "true" ]; then
-    echo "Building the gcc parser..."
-
-    run_in_docker ninja -C parsers
-    run_in_docker ninja -C parsers test
-
     echo "Running the gcc parser..."
 
     if [ -e build/gcc/.git ]; then
