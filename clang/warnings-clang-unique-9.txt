@@ -535,7 +535,7 @@
 -Wpass-failed # Enabled by default.
 -Wpass-missed
 -Wpch-date-time # Enabled by default.
--Wpedantic # DUMMY switch
+-Wpedantic
 -Wpedantic-core-features
 -Wpessimizing-move
 -Wpointer-arith # Partially enabled by default.

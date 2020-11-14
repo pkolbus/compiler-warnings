@@ -343,7 +343,6 @@
 #     -Wcxx98-cxx11-compat
 #   -Wcxx98-cxx11-compat-pedantic
 #     -Wcxx98-cxx11-compat
--Wc11-extensions
 -Wc99-compat
 -Wc99-extensions
 -Wcast-align
@@ -351,11 +350,9 @@
 -Wchar-align # DUMMY switch
 -Wcomments
 #   -Wcomment
--Wcomplex-component-init
 -Wconditional-uninitialized
 -Wcovered-switch-default
 -Wctor-dtor-privacy # DUMMY switch
--Wdeclaration-after-statement
 -Wdeprecated-implementations
 -Wdirect-ivar-access
 -Wdisabled-macro-expansion
@@ -367,27 +364,20 @@
 #   -Wdocumentation-html
 -Wdocumentation-pedantic
 #   -Wdocumentation-unknown-command
--Wdollar-in-identifier-extension
 -Wduplicate-enum
 -Wduplicate-method-arg
 -Wduplicate-method-match
 -Weffc++ # DUMMY switch
--Wembedded-directive
--Wempty-translation-unit
 -Wexit-time-destructors
 -Wexplicit-ownership-type
--Wextended-offsetof
 -Wextra-semi
 #   -Wc++11-extra-semi
--Wflexible-array-extensions
 -Wfloat-equal
--Wformat-non-iso
 -Wformat=2
 #   -Wformat-nonliteral
 #     -Wformat-security
 #   -Wformat-security
 #   -Wformat-y2k # DUMMY switch
--Wfour-char-constants
 -Wglobal-constructors
 -Wgnu
 #   -Wgnu-designator
@@ -400,15 +390,11 @@
 #   -Wimplicit-fallthrough-per-function
 -Wimplicit-retain-self
 -Wimport # DUMMY switch
--Wimport-preprocessor-directive-pedantic
 -Winit-self # DUMMY switch
 -Winline # DUMMY switch
 -Winvalid-pch # DUMMY switch
--Wlanguage-extension-token
 -Wlocal-type-template-args
 #   -Wc++98-compat-local-type-template-args
--Wlong-long
-#   -Wc++11-long-long
 -Wloop-analysis
 -Wmethod-signatures
 -Wmicrosoft
@@ -419,9 +405,7 @@
 -Wmissing-variable-declarations
 -Wnarrowing
 #   -Wc++11-narrowing
--Wnested-anon-types
 -Wnested-externs # DUMMY switch
--Wnewline-eof
 -Wnon-gcc
 #   -Wconversion
 #     -Wbool-conversion
@@ -445,12 +429,32 @@
 -Wold-style-definition # DUMMY switch
 -Wover-aligned
 -Woverflow # DUMMY switch
--Woverlength-strings
 -Woverriding-method-mismatch
 -Wpacked
 -Wpadded
--Wpedantic # DUMMY switch
--Wpointer-arith
+-Wpedantic
+#   -Wc++11-extra-semi
+#   -Wc11-extensions
+#   -Wcomplex-component-init
+#   -Wdeclaration-after-statement
+#   -Wdollar-in-identifier-extension
+#   -Wembedded-directive
+#   -Wempty-translation-unit
+#   -Wextended-offsetof
+#   -Wflexible-array-extensions
+#   -Wformat-non-iso
+#   -Wfour-char-constants
+#   -Wimport-preprocessor-directive-pedantic
+#   -Wlanguage-extension-token
+#   -Wlong-long
+#     -Wc++11-long-long
+#   -Wnested-anon-types
+#   -Wnewline-eof
+#   -Woverlength-strings
+#   -Wpointer-arith
+#   -Wvariadic-macros
+#   -Wvla-extension
+#   -Wzero-length-array
 -Wpointer-to-int-cast # DUMMY switch
 -Wreadonly-setter-attrs
 -Wreceiver-forward-class
@@ -499,7 +503,6 @@
 -Wunused-member-function
 #   -Wunneeded-member-function
 -Wused-but-marked-unused
--Wvariadic-macros
 -Wvector-conversions
 #   -Wvector-conversion
 -Wvla

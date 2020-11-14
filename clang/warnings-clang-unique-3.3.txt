@@ -268,7 +268,7 @@
 -Wpadded
 -Wparentheses # Enabled by default.
 -Wparentheses-equality # Enabled by default.
--Wpedantic # DUMMY switch
+-Wpedantic
 -Wpointer-arith
 -Wpointer-sign # Enabled by default.
 -Wpointer-to-int-cast # DUMMY switch

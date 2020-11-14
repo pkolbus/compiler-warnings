@@ -616,7 +616,6 @@
 #     -Wc++98-compat-unnamed-type-template-args
 #   -Wc++98-compat-bind-to-temporary-copy
 #   -Wc++98-compat-extra-semi
--Wc11-extensions
 -Wc99-compat
 -Wc99-extensions
 -Wcast-align
@@ -715,7 +714,6 @@
 -Wcomma
 -Wcomments
 #   -Wcomment
--Wcomplex-component-init
 -Wconditional-uninitialized
 -Wconsumed
 -Wcovered-switch-default
@@ -723,7 +721,6 @@
 -Wctor-dtor-privacy # DUMMY switch
 -Wcuda-compat
 -Wdate-time
--Wdeclaration-after-statement
 -Wdeprecated
 #   -Wdeprecated-attributes
 #   -Wdeprecated-declarations
@@ -743,7 +740,6 @@
 #   -Wdocumentation-html
 -Wdocumentation-pedantic
 #   -Wdocumentation-unknown-command
--Wdollar-in-identifier-extension
 -Wdouble-promotion
 -Wduplicate-decl-specifier
 -Wduplicate-enum
@@ -753,8 +749,6 @@
 #   -Wdeprecated-dynamic-exception-spec
 -Weffc++
 #   -Wnon-virtual-dtor
--Wembedded-directive
--Wempty-translation-unit
 -Wexit-time-destructors
 -Wexpansion-to-defined
 -Wexplicit-ownership-type
@@ -763,8 +757,6 @@
 #   -Wc++98-compat-extra-semi
 -Wextra-semi-stmt
 #   -Wempty-init-stmt
--Wfixed-enum-extension
--Wflexible-array-extensions
 -Wfloat-equal
 -Wformat-non-iso
 -Wformat-pedantic
@@ -772,7 +764,6 @@
 #   -Wformat-nonliteral
 #   -Wformat-security
 #   -Wformat-y2k # DUMMY switch
--Wfour-char-constants
 -Wfuture-compat # DUMMY switch
 -Wgcc-compat
 -Wglobal-constructors
@@ -811,7 +802,6 @@
 #   -Wimplicit-fallthrough-per-function
 -Wimplicit-retain-self
 -Wimport # DUMMY switch
--Wimport-preprocessor-directive-pedantic
 -Wincomplete-module
 #   -Wincomplete-umbrella
 #   -Wnon-modular-include-in-module
@@ -821,13 +811,9 @@
 -Winline # DUMMY switch
 -Winvalid-or-nonexistent-directory
 -Winvalid-pch # DUMMY switch
--Wkeyword-macro
--Wlanguage-extension-token
 -Wliblto # DUMMY switch
 -Wlocal-type-template-args
 #   -Wc++98-compat-local-type-template-args
--Wlong-long
-#   -Wc++11-long-long
 -Wloop-analysis
 #   -Wfor-loop-analysis
 #   -Wrange-loop-analysis
@@ -869,7 +855,6 @@
 -Wmodule-build
 -Wnarrowing
 #   -Wc++11-narrowing
--Wnested-anon-types
 -Wnested-externs # DUMMY switch
 -Wnewline-eof
 -Wnon-gcc
@@ -898,7 +883,6 @@
 #   -Wsign-compare
 -Wnonportable-cfstrings # DUMMY switch
 -Wnonportable-system-include-path
--Wnullability-extension
 -Wnullable-to-nonnull-conversion
 -Wobjc-interface-ivars
 -Wobjc-messaging-id
@@ -908,7 +892,6 @@
 -Wold-style-definition # DUMMY switch
 -Wover-aligned
 -Woverflow # DUMMY switch
--Woverlength-strings
 -Woverriding-method-mismatch
 -Wpacked
 -Wpadded
@@ -918,7 +901,58 @@
 -Wpass
 -Wpass-analysis
 -Wpass-missed
--Wpedantic # DUMMY switch
+-Wpedantic
+#   -Wc++11-extra-semi
+#   -Wc++14-binary-literal
+#   -Wc11-extensions
+#   -Wcomplex-component-init
+#   -Wdeclaration-after-statement
+#   -Wdollar-in-identifier-extension
+#   -Wembedded-directive
+#   -Wempty-translation-unit
+#   -Wfixed-enum-extension
+#   -Wflexible-array-extensions
+#   -Wfour-char-constants
+#   -Wgnu-anonymous-struct
+#   -Wgnu-auto-type
+#   -Wgnu-binary-literal
+#   -Wgnu-case-range
+#   -Wgnu-complex-integer
+#   -Wgnu-compound-literal-initializer
+#   -Wgnu-conditional-omitted-operand
+#   -Wgnu-empty-initializer
+#   -Wgnu-empty-struct
+#   -Wgnu-flexible-array-initializer
+#   -Wgnu-flexible-array-union-member
+#   -Wgnu-folding-constant
+#   -Wgnu-imaginary-constant
+#   -Wgnu-include-next
+#   -Wgnu-label-as-value
+#   -Wgnu-redeclared-enum
+#   -Wgnu-statement-expression
+#   -Wgnu-union-cast
+#   -Wgnu-zero-line-directive
+#   -Wgnu-zero-variadic-macro-arguments
+#   -Wimport-preprocessor-directive-pedantic
+#   -Wkeyword-macro
+#   -Wlanguage-extension-token
+#   -Wlong-long
+#     -Wc++11-long-long
+#   -Wmicrosoft-charize
+#   -Wmicrosoft-comment-paste
+#   -Wmicrosoft-cpp-macro
+#   -Wmicrosoft-end-of-file
+#   -Wmicrosoft-enum-value
+#   -Wmicrosoft-fixed-enum
+#   -Wmicrosoft-flexible-array
+#   -Wmicrosoft-redeclare-static
+#   -Wnested-anon-types
+#   -Wnullability-extension
+#   -Woverlength-strings
+#   -Wretained-language-linkage
+#   -Wundefined-internal-type
+#   -Wvla-extension
+#   -Wzero-length-array
 -Wpedantic-core-features
 -Wpointer-arith
 -Wpointer-to-int-cast # DUMMY switch
@@ -939,7 +973,6 @@
 -Wreserved-id-macro
 -Wreserved-user-defined-literal
 #   -Wc++11-compat-reserved-user-defined-literal
--Wretained-language-linkage
 -Wreturn-std-move-in-c++11
 -Wsanitize-address
 -Wselector
@@ -998,7 +1031,6 @@
 -Wundeclared-selector
 -Wundef
 -Wundefined-func-template
--Wundefined-internal-type
 -Wundefined-reinterpret-cast
 -Wunnamed-type-template-args
 #   -Wc++98-compat-unnamed-type-template-args

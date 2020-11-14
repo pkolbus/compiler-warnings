@@ -1609,13 +1609,6 @@
 #           unnamed type as template argument is incompatible with C++98
 #   -Wc++98-compat-bind-to-temporary-copy
 #         <copying variable|copying parameter|returning object|throwing object|copying member subobject|copying array element|allocating object|copying temporary|initializing base subobject|initializing vector element> of type C when binding a reference to a temporary would <invoke an inaccessible constructor|find no viable constructor|find ambiguous constructors|invoke a deleted constructor> in C++98
--Wc11-extensions
-#     A is a C11-specific feature
-#     _Noreturn functions are a C11-specific feature
-#     _Static_assert is a C11-specific feature
-#     anonymous structs are a C11 extension
-#     anonymous unions are a C11 extension
-#     generic selections are a C11-specific feature
 -Wc99-compat
 #     <using this character in an identifier|starting an identifier with this character> is incompatible with C99
 #     integer literal is too large to be represented in type 'long', interpreting as 'unsigned long' per C89; this literal will <have type 'long long'|be ill-formed> in C99 onwards
@@ -1890,8 +1883,6 @@
 #         // comments are not allowed in this language
 #         escaped newline between */ characters at block comment end
 #         multi-line // comment
--Wcomplex-component-init
-#     complex initialization specifying real and imaginary components is an extension
 -Wconditional-uninitialized
 #     variable A may be uninitialized when <used here|captured by block>
 -Wconsumed
@@ -1916,8 +1907,6 @@
 #     nvcc does not allow '__A__' to appear after '()' in lambdas
 -Wdate-time
 #     expansion of date or time macro is not reproducible
--Wdeclaration-after-statement
-#     ISO C90 forbids mixing declarations and code
 -Wdeprecated
 #     -O4 is equivalent to -O3
 #     OpenCL version A does not support the option 'B'
@@ -1983,8 +1972,6 @@
 #   -Wdocumentation-unknown-command
 #         unknown command tag name
 #         unknown command tag name 'A'; did you mean 'B'?
--Wdollar-in-identifier-extension
-#     '$' in identifier
 -Wdouble-promotion
 #     implicit conversion increases floating-point precision: A to B
 -Wduplicate-enum
@@ -2000,42 +1987,29 @@
 -Weffc++
 #   -Wnon-virtual-dtor
 #         A has virtual functions but non-virtual destructor
--Wembedded-directive
-#     embedding a directive within macro arguments has undefined behavior
--Wempty-translation-unit
-#     ISO C requires a translation unit to contain at least one declaration
 -Wexit-time-destructors
 #     declaration requires an exit-time destructor
 -Wexpansion-to-defined
 #     macro expansion producing 'defined' has undefined behavior
 -Wexplicit-ownership-type
 #     method parameter of type A with no explicit ownership
--Wextended-offsetof
-#     using extended field designator is an extension
 -Wextra-semi
 #     extra ';' <outside of a function|inside a B|inside instance variable list|after member function definition>
 #     extra ';' after member function definition
 #   -Wc++11-extra-semi
 #         extra ';' outside of a function is a C++11 extension
--Wflexible-array-extensions
-#     A may not be nested in a struct due to flexible array member
-#     A may not be used as an array element due to flexible array member
 -Wfloat-equal
 #     comparing floating point with == or != is unsafe
 -Wformat-non-iso
 #     'A' <length modifier|conversion specifier> is not supported by ISO C
 #     positional arguments are not supported by ISO C
 #     using length modifier 'A' with conversion specifier 'B' is not supported by ISO C
--Wformat-pedantic
-#     format specifies type A but the argument has <type|underlying type> B
 -Wformat=2
 #   -Wformat-nonliteral
 #         format string is not a string literal
 #   -Wformat-security
 #         format string is not a string literal (potentially insecure)
 #   -Wformat-y2k # DUMMY switch
--Wfour-char-constants
-#     multi-character character constant
 -Wfuture-compat # DUMMY switch
 -Wgcc-compat
 #     'A' is bound to current loop, GCC binds it to the enclosing loop
@@ -2126,8 +2100,6 @@
 -Wimplicit-retain-self
 #     block implicitly retains 'self'; explicitly mention 'self' to indicate this is intended behavior
 -Wimport # DUMMY switch
--Wimport-preprocessor-directive-pedantic
-#     #import is a language extension
 -Wincomplete-module
 #   -Wincomplete-umbrella
 #         missing submodule 'A'
@@ -2142,19 +2114,11 @@
 #     environment variable SCE_ORBIS_SDK_DIR is set, but points to invalid or nonexistent directory 'A'
 #     unable to find A directory, expected to be in 'B'
 -Winvalid-pch # DUMMY switch
--Wkeyword-macro
-#     keyword is hidden by macro definition
--Wlanguage-extension-token
-#     extension used
 -Wliblto # DUMMY switch
 -Wlocal-type-template-args
 #     template argument uses local type A
 #   -Wc++98-compat-local-type-template-args
 #         local type A as template argument is incompatible with C++98
--Wlong-long
-#     'long long' is an extension when C99 mode is not enabled
-#   -Wc++11-long-long
-#         'long long' is a C++11 extension
 -Wloop-analysis
 #   -Wfor-loop-analysis
 #         variable A is <decremented|incremented> both in the loop header and in the loop body
@@ -2266,8 +2230,6 @@
 #         non-constant-expression cannot be narrowed from type A to B in initializer list in C++11
 #         type A cannot be narrowed to B in initializer list
 #         type A cannot be narrowed to B in initializer list in C++11
--Wnested-anon-types
-#     anonymous types declared in an anonymous <struct|union> are an extension
 -Wnested-externs # DUMMY switch
 -Wnewline-eof
 #     no newline at end of file
@@ -2326,8 +2288,6 @@
 -Wnonportable-cfstrings # DUMMY switch
 -Wnonportable-system-include-path
 #     non-portable path to file 'A'; specified path differs in case from file name on disk
--Wnullability-extension
-#     type nullability specifier A is a Clang extension
 -Wnullable-to-nonnull-conversion
 #     implicit conversion from nullable pointer A to non-nullable pointer type B
 -Wobjc-interface-ivars
@@ -2340,8 +2300,6 @@
 -Wover-aligned
 #     type A requires B bytes of alignment and the default allocator only guarantees C bytes
 -Woverflow # DUMMY switch
--Woverlength-strings
-#     string literal of length A exceeds maximum length B that <C90|ISO C99|C++> compilers are required to support
 -Woverriding-method-mismatch
 #     conflicting distributed object modifiers on parameter type in declaration of A
 #     conflicting distributed object modifiers on return type in declaration of A
@@ -2370,7 +2328,152 @@
 #     The text of this diagnostic is not controlled by Clang
 -Wpass-missed
 #     The text of this diagnostic is not controlled by Clang
--Wpedantic # DUMMY switch
+-Wpedantic
+#     #ident is a language extension
+#     #warning is a language extension
+#     'A' cannot be signed or unsigned
+#     '__thread' before 'A'
+#     <assigning to different types|passing to parameter of different type|returning from function with different return type|converting between types|initializing with expression of different type|sending to parameter of different type|casting between types> converts between void pointer and function pointer
+#     C requires #line number to be less than A, allowed as extension
+#     C99 forbids casting nonscalar type A to the same type
+#     C99 forbids conditional expressions with only one void side
+#     ISO C does not support '++'/'--' on complex integer type A
+#     ISO C does not support '~' for complex conjugation of A
+#     ISO C forbids forward references to 'enum' types
+#     ISO C forbids taking the address of an expression of type 'void'
+#     ISO C restricts enumerator values to range of 'int' (A is too <small|large>)
+#     ISO C90 does not allow subscripting non-lvalue array
+#     __VA_ARGS__ can only appear in the expansion of a C99 variadic macro
+#     anonymous <struct|union> cannot be 'B'
+#     cast between pointer-to-function and pointer-to-object is an extension
+#     comma operator in operand of #if
+#     complex numbers are an extension in a freestanding C99 implementation
+#     equality comparison between function pointer and void pointer (A and B)
+#     ordered comparison between pointer and zero (A and B) is an extension
+#     parameter A was not declared, defaulting to type 'int'
+#     qualifier in explicit instantiation of A requires a template-id (a typedef is not permitted)
+#     size of static array must be an integer constant expression
+#     type-less parameter names in function declaration
+#     use of non-standard escape character '\A'
+#     void <function|method|block> A should not return void expression
+#   -Wc++11-extra-semi
+#         extra ';' outside of a function is a C++11 extension
+#   -Wc++14-binary-literal
+#         binary integer literals are a C++14 extension
+#   -Wc11-extensions
+#         A is a C11-specific feature
+#         _Noreturn functions are a C11-specific feature
+#         _Static_assert is a C11-specific feature
+#         anonymous structs are a C11 extension
+#         anonymous unions are a C11 extension
+#         generic selections are a C11-specific feature
+#   -Wcomplex-component-init
+#         complex initialization specifying real and imaginary components is an extension
+#   -Wdeclaration-after-statement
+#         ISO C90 forbids mixing declarations and code
+#   -Wdollar-in-identifier-extension
+#         '$' in identifier
+#   -Wembedded-directive
+#         embedding a directive within macro arguments has undefined behavior
+#   -Wempty-translation-unit
+#         ISO C requires a translation unit to contain at least one declaration
+#   -Wextended-offsetof
+#         using extended field designator is an extension
+#   -Wflexible-array-extensions
+#         A may not be nested in a struct due to flexible array member
+#         A may not be used as an array element due to flexible array member
+#   -Wformat-pedantic
+#         format specifies type A but the argument has <type|underlying type> B
+#   -Wfour-char-constants
+#         multi-character character constant
+#   -Wgnu-anonymous-struct
+#         anonymous structs are a GNU extension
+#   -Wgnu-auto-type
+#         '__auto_type' is a GNU extension
+#   -Wgnu-binary-literal
+#         binary integer literals are a GNU extension
+#   -Wgnu-case-range
+#         use of GNU case range extension
+#   -Wgnu-complex-integer
+#         complex integer types are a GNU extension
+#   -Wgnu-compound-literal-initializer
+#         initialization of an array from a compound literal is a GNU extension
+#   -Wgnu-conditional-omitted-operand
+#         use of GNU ?: conditional expression extension, omitting middle operand
+#   -Wgnu-empty-initializer
+#         use of GNU empty initializer extension
+#   -Wgnu-empty-struct
+#         <struct|union> without named members is a GNU extension
+#         empty <struct|union> is a GNU extension
+#         flexible array member A in otherwise empty <struct|interface|union|class|enum> is a GNU extension
+#   -Wgnu-flexible-array-initializer
+#         flexible array initialization is a GNU extension
+#   -Wgnu-flexible-array-union-member
+#         flexible array member A in a union is a GNU extension
+#   -Wgnu-folding-constant
+#         expression is not an <integer|integral> constant expression; folding it to a constant is a GNU extension
+#         in-class initializer for static data member is not a constant expression; folding it to a constant is a GNU extension
+#         variable length array folded to constant array as an extension
+#   -Wgnu-imaginary-constant
+#         imaginary constants are a GNU extension
+#   -Wgnu-include-next
+#         #include_next is a language extension
+#   -Wgnu-label-as-value
+#         use of GNU address-of-label extension
+#         use of GNU indirect-goto extension
+#   -Wgnu-redeclared-enum
+#         redeclaration of already-defined enum A is a GNU extension
+#   -Wgnu-statement-expression
+#         use of GNU statement expression extension
+#   -Wgnu-union-cast
+#         cast to union type is a GNU extension
+#   -Wgnu-zero-line-directive
+#         #line directive with zero argument is a GNU extension
+#   -Wgnu-zero-variadic-macro-arguments
+#         must specify at least one argument for '...' parameter of variadic macro
+#         token pasting of ',' and __VA_ARGS__ is a GNU extension
+#   -Wimport-preprocessor-directive-pedantic
+#         #import is a language extension
+#   -Wkeyword-macro
+#         keyword is hidden by macro definition
+#   -Wlanguage-extension-token
+#         extension used
+#   -Wlong-long
+#         'long long' is an extension when C99 mode is not enabled
+#     -Wc++11-long-long
+#           'long long' is a C++11 extension
+#   -Wmicrosoft-charize
+#         charizing operator #@ is a Microsoft extension
+#   -Wmicrosoft-comment-paste
+#         pasting two '/' tokens into a '//' comment is a Microsoft extension
+#   -Wmicrosoft-cpp-macro
+#         C++ operator A (aka B) used as a macro name
+#   -Wmicrosoft-end-of-file
+#         treating Ctrl-Z as end-of-file is a Microsoft extension
+#   -Wmicrosoft-enum-forward-reference
+#         forward references to 'enum' types are a Microsoft extension
+#   -Wmicrosoft-fixed-enum
+#         enumeration types with a fixed underlying type are a Microsoft extension
+#   -Wmicrosoft-flexible-array
+#         flexible array member A in a union is a Microsoft extension
+#         flexible array member A in otherwise empty <struct|interface|union|class|enum> is a Microsoft extension
+#   -Wmicrosoft-redeclare-static
+#         redeclaring non-static A as static is a Microsoft extension
+#   -Wnested-anon-types
+#         anonymous types declared in an anonymous <struct|union> are an extension
+#   -Wnullability-extension
+#         type nullability specifier A is a Clang extension
+#   -Woverlength-strings
+#         string literal of length A exceeds maximum length B that <C90|ISO C99|C++> compilers are required to support
+#   -Wretained-language-linkage
+#         friend function A retaining previous language linkage is an extension
+#   -Wvariadic-macros
+#         named variadic macros are a GNU extension
+#         variadic macros are a C99 feature
+#   -Wvla-extension
+#         variable length arrays are a C99 feature
+#   -Wzero-length-array
+#         zero size arrays are an extension
 -Wpedantic-core-features
 #     OpenCL extension A is core feature or supported optional core feature - ignoring
 -Wpointer-arith
@@ -2455,8 +2558,6 @@
 #     invalid suffix on literal; C++11 requires a space between literal and identifier
 #   -Wc++11-compat-reserved-user-defined-literal
 #         identifier after literal will be treated as a reserved user-defined literal suffix in C++11
--Wretained-language-linkage
-#     friend function A retaining previous language linkage is an extension
 -Wsanitize-address
 #     -fsanitize-address-field-padding applied to A
 #     -fsanitize-address-field-padding ignored for A because it <is not C++|is packed|is a union|is trivially copyable|has trivial destructor|is standard layout|is in a blacklisted file|is blacklisted>
@@ -2603,9 +2704,6 @@
 #         member function A is not needed and will not be emitted
 -Wused-but-marked-unused
 #     A was marked unused but was used
--Wvariadic-macros
-#     named variadic macros are a GNU extension
-#     variadic macros are a C99 feature
 -Wvector-conversions
 #   -Wvector-conversion
 #         incompatible vector types <assigning to different types|passing to parameter of different type|returning from function with different return type|converting between types|initializing with expression of different type|sending to parameter of different type|casting between types>

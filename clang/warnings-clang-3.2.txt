@@ -444,7 +444,28 @@
 #   -Wparentheses-equality
 #   -Wshift-op-parentheses
 -Wparentheses-equality
--Wpedantic # DUMMY switch
+-Wpedantic
+#   -Wc++11-extra-semi
+#   -Wc11-extensions
+#   -Wcomplex-component-init
+#   -Wdeclaration-after-statement
+#   -Wdollar-in-identifier-extension
+#   -Wembedded-directive
+#   -Wempty-translation-unit
+#   -Wextended-offsetof
+#   -Wflexible-array-extensions
+#   -Wformat-non-iso
+#   -Wfour-char-constants
+#   -Wimport-preprocessor-directive-pedantic
+#   -Wlanguage-extension-token
+#   -Wlong-long
+#     -Wc++11-long-long
+#   -Wnewline-eof
+#   -Woverlength-strings
+#   -Wpointer-arith
+#   -Wvariadic-macros
+#   -Wvla
+#   -Wzero-length-array
 -Wpointer-arith
 -Wpointer-sign
 -Wpointer-to-int-cast # DUMMY switch

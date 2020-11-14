@@ -700,7 +700,48 @@
 -Wpass-analysis
 -Wpass-failed
 -Wpass-missed
--Wpedantic # DUMMY switch
+-Wpedantic
+#   -Wc++11-extra-semi
+#   -Wc11-extensions
+#   -Wcomplex-component-init
+#   -Wdeclaration-after-statement
+#   -Wdollar-in-identifier-extension
+#   -Wembedded-directive
+#   -Wempty-translation-unit
+#   -Wextended-offsetof
+#   -Wflexible-array-extensions
+#   -Wformat-pedantic
+#   -Wfour-char-constants
+#   -Wgnu-anonymous-struct
+#   -Wgnu-binary-literal
+#   -Wgnu-case-range
+#   -Wgnu-complex-integer
+#   -Wgnu-compound-literal-initializer
+#   -Wgnu-conditional-omitted-operand
+#   -Wgnu-empty-initializer
+#   -Wgnu-empty-struct
+#   -Wgnu-flexible-array-initializer
+#   -Wgnu-flexible-array-union-member
+#   -Wgnu-folding-constant
+#   -Wgnu-imaginary-constant
+#   -Wgnu-label-as-value
+#   -Wgnu-redeclared-enum
+#   -Wgnu-statement-expression
+#   -Wgnu-union-cast
+#   -Wgnu-zero-line-directive
+#   -Wgnu-zero-variadic-macro-arguments
+#   -Wimport-preprocessor-directive-pedantic
+#   -Wkeyword-macro
+#   -Wlanguage-extension-token
+#   -Wlong-long
+#     -Wc++11-long-long
+#   -Wnested-anon-types
+#   -Wnullability-extension
+#   -Woverlength-strings
+#   -Wretained-language-linkage
+#   -Wvariadic-macros
+#   -Wvla-extension
+#   -Wzero-length-array
 -Wpessimizing-move
 -Wpointer-arith
 -Wpointer-bool-conversion

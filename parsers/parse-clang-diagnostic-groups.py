@@ -339,6 +339,8 @@ class ClangDiagnostic:
             # clang 3.4 (and earlier)
             self.enabled_by_default = obj["DefaultMapping"]["def"] != "MAP_IGNORE"
 
+        self.is_extension = obj["Class"]["def"] == "CLASS_EXTENSION"
+
     @property
     def text(self) -> str:
         """:return: the text of the warning."""
@@ -400,6 +402,28 @@ class ClangDiagGroup:
 
         return True
 
+    def is_pedantic(self) -> bool:
+        """
+        Return whether a group is inferred pedantic.
+
+        A group is inferred pedantic if it has at least one diagnostic (directly
+        or indirectly), and all diagnostics are off-by-default extensions.
+
+        :return: True if the group is inferred pedantic, False otherwise.
+        """
+        if self.is_dummy():
+            return False
+
+        for diagnostic in self.diagnostics:
+            if diagnostic.enabled_by_default or not diagnostic.is_extension:
+                return False
+
+        for child in self.children:
+            if not child.is_pedantic():
+                return False
+
+        return True
+
     def has_disabled_diagnostic(self) -> bool:
         """
         Return whether a group has a disabled diagnostic.
@@ -433,6 +457,16 @@ class ClangDiagGroup:
                 return True
 
         return False
+
+    def resolve_children(self, all_groups: "Dict[str, ClangDiagGroup]") -> None:
+        """
+        Resolve self.child_names to self.children.
+
+        :param all_groups: List of all available diagnostic groups.
+        """
+        self.children = [all_groups[name] for name in self.child_names]
+        for child_group in self.children:
+            child_group.has_parent = True
 
 
 @total_ordering
@@ -626,18 +660,36 @@ class ClangDiagnostics:
             self.groups[group_name] = group
             self.switches[group.switch_name].groups.append(group)
 
-        # Resolve parent-child relationships in groups
-        for group in self.groups.values():
-            group.children = [self.groups[name] for name in group.child_names]
-            for child_group in group.children:
-                child_group.has_parent = True
-
         # Instantiate all diagnostics and link to groups
+        pedantic_group = self.groups["Pedantic"]
         for diag_name in json_data["!instanceof"]["Diagnostic"]:
             diag = ClangDiagnostic(json_data[diag_name], self._substitutions)
 
             if diag.group_name is not None and diag.group_name in self.groups:
                 self.groups[diag.group_name].diagnostics.append(diag)
+            elif diag.is_extension and not diag.enabled_by_default:
+                pedantic_group.diagnostics.append(diag)
+
+        # Resolve parent-child relationships in groups
+        for group in self.groups.values():
+            group.resolve_children(self.groups)
+
+        # Find inferred-pedantic groups, filter to top-level groups, and add to
+        # the pedantic group
+        pedantic_group_names = []
+        pedantic_subgroup_names = []
+        for group in self.groups.values():
+            if group.name != "Pedantic" and group.is_pedantic():
+                pedantic_group_names.append(group.name)
+                pedantic_subgroup_names += group.child_names
+
+        pedantic_group_names = [
+            group_name
+            for group_name in pedantic_group_names
+            if group_name not in pedantic_subgroup_names
+        ]
+        pedantic_group.child_names += pedantic_group_names
+        pedantic_group.resolve_children(self.groups)
 
     def get_switch(self, switch_name: str) -> ClangWarningSwitch:
         """

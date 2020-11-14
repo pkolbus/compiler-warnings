@@ -351,7 +351,7 @@
 -Wpass-analysis
 -Wpass-failed # Enabled by default.
 -Wpass-missed
--Wpedantic # DUMMY switch
+-Wpedantic
 -Wpointer-arith # Partially enabled by default.
 -Wpointer-bool-conversion # Enabled by default.
 -Wpointer-sign # Enabled by default.
