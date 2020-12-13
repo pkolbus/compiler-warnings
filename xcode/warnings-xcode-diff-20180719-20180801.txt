@@ -1,0 +1,9 @@
+--Waddress-of-array-temporary # Enabled by default.
+--Watimport-in-framework-header # Enabled by default.
++-Watimport-in-framework-header
++-Wdangling # Enabled by default.
++-Wdarwin-sdk-settings # Enabled by default.
+--Wframework-include-private-from-public # Enabled by default.
++-Wframework-include-private-from-public
++-Wfunction-multiversion # Enabled by default.
++-Wunsupported-target-opt # Enabled by default.

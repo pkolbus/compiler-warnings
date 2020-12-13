@@ -1,0 +1,44 @@
++-Walloca
++-Wambiguous-reversed-operator # Enabled by default.
+--Wbitwise-op-parentheses # Enabled by default.
++-Wbitwise-conditional-parentheses # Enabled by default.
++-Wbitwise-op-parentheses
++-Wbool-operation # Enabled by default.
++-Wbuiltin-assume-aligned-alignment # Enabled by default.
++-Wc++2a-designator
++-Wc99-designator # Partially enabled by default.
++-Wconcepts-ts-compat # Enabled by default.
++-Wconstant-evaluated # Enabled by default.
++-Wdangling-gsl # Enabled by default.
++-Wdefaulted-comparison # Enabled by default.
++-Wdeprecated-comma-subscript # Enabled by default.
++-Wdeprecated-volatile # Enabled by default.
++-Wenum-compare-conditional
++-Wfinal-dtor-non-final-class # Enabled by default.
++-Wformat-type-confusion
++-Wgnu-inline-cpp-without-extern # Enabled by default.
++-Whip-only # Enabled by default.
+--Wimplicit-int-float-conversion # DUMMY switch
++-Wimplicit-int-float-conversion # Partially enabled by default.
++-Wincomplete-setjmp-declaration # Enabled by default.
++-Wint-in-bool-context
++-Winvalid-no-builtin-names # Enabled by default.
+--Wlogical-op-parentheses # Enabled by default.
++-Wlogical-op-parentheses
++-Wmicrosoft-drectve-section # Enabled by default.
++-Wmisexpect
++-Wmissing-constinit # Enabled by default.
+--Wparentheses # Enabled by default.
++-Wparentheses # Partially enabled by default.
++-Wpointer-compare # Enabled by default.
++-Wpoison-system-directories
++-Wptrauth-null-pointers # Enabled by default.
+--Wreorder
++-Wreorder # Partially enabled by default.
++-Wreorder-ctor
++-Wreorder-init-list # Enabled by default.
++-Wsigned-unsigned-wchar # Enabled by default.
++-Wsizeof-array-div # Enabled by default.
++-Wstack-exhausted # Enabled by default.
++-Wtautological-bitwise-compare
++-Wxor-used-as-pow # Enabled by default.

@@ -1,0 +1,40 @@
++-Walloca-with-align-alignof # Enabled by default.
++-Wambiguous-delete # Enabled by default.
++-Wapinotes # Enabled by default.
++-Wasm-ignored-qualifier # Enabled by default.
+--Wbad-array-new-length # Enabled by default.
+--Wblock-capture-autoreleasing
++-Wblock-capture-autoreleasing # Enabled by default.
++-Wc++1z-compat-mangling # Enabled by default.
+--Wcoreturn-without-coawait # Enabled by default.
++-Wdeprecated-dynamic-exception-spec
+--Wdiv-by-zero # DUMMY switch
++-Wdiv-by-zero # Enabled by default.
++-Wduplicate-protocol # Enabled by default.
+--Weffc++ # DUMMY switch
++-Wdynamic-exception-spec # Partially enabled by default.
++-Weffc++
+--Wexpansion-to-defined # Partially enabled by default.
++-Wignored-pragma-intrinsic # Enabled by default.
++-Wincompatible-exception-spec # Enabled by default.
++-Windex-store
++-Winstantiation-after-specialization # Enabled by default.
++-Winvalid-ios-deployment-target # Enabled by default.
++-Winvalid-partial-specialization # Enabled by default.
++-Wmax-unsigned-zero # Enabled by default.
++-Wobjc-unsafe-perform-selector # Enabled by default.
++-Wopencl-unsupported-rgba # Enabled by default.
++-Wpragma-clang-attribute # Enabled by default.
++-Wprivate-module # Enabled by default.
++-Wprofile-instr-missing
+--Wshadow
+--Wshadow-all
++-Wshadow # Partially enabled by default.
++-Wshadow-all # Partially enabled by default.
++-Wsigned-enum-bitfield
+--Wstrict-prototypes # DUMMY switch
++-Wstrict-prototypes
++-Wunsupported-availability-guard # Enabled by default.
++-Wunusable-partial-specialization # Enabled by default.
++-Wuser-defined-warnings # Enabled by default.
++-Wvec-elem-size # Enabled by default.

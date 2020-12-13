@@ -1,0 +1,18 @@
++-Wavr-rtlib-linking-quirks # Enabled by default.
++-Wctad-maybe-unsupported
++-Wexport-unnamed # Enabled by default.
++-Wexport-using-directive # Enabled by default.
++-Wfortify-source # Enabled by default.
+--Wimplicit-float-conversion
++-Wimplicit-fixed-point-conversion # Enabled by default.
++-Wimplicit-float-conversion # Partially enabled by default.
++-Wimplicit-int-float-conversion # DUMMY switch
++-Wobjc-bool-constant-conversion # Enabled by default.
++-Wobjc-signed-char-bool # Partially enabled by default.
++-Wobjc-signed-char-bool-implicit-float-conversion # Enabled by default.
++-Wobjc-signed-char-bool-implicit-int-conversion
++-Woverride-init # Enabled by default.
++-Wpointer-integer-compare # Enabled by default.
++-Wtautological-objc-bool-compare # Enabled by default.
+--Wtype-limits # DUMMY switch
++-Wtype-limits

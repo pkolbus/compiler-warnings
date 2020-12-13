@@ -1,0 +1,19 @@
++-Wanon-enum-enum-conversion # Partially enabled by default.
+--Wdefaulted-comparison # Enabled by default.
++-Wdeprecated-anon-enum-enum-conversion # Enabled by default.
++-Wdeprecated-array-compare # Enabled by default.
++-Wdeprecated-copy
++-Wdeprecated-copy-dtor
++-Wdeprecated-enum-compare # Enabled by default.
++-Wdeprecated-enum-compare-conditional # Enabled by default.
++-Wdeprecated-enum-enum-conversion # Enabled by default.
++-Wdeprecated-enum-float-conversion # Enabled by default.
+--Wenum-compare-conditional
++-Wenum-compare-conditional # Partially enabled by default.
+--Wenum-conversion # Enabled by default.
++-Wenum-conversion # Partially enabled by default.
++-Wenum-enum-conversion # Partially enabled by default.
++-Wenum-float-conversion # Partially enabled by default.
++-Wmisleading-indentation
++-Wopenmp # Partially enabled by default.
++-Wopenmp-mapping # Enabled by default.

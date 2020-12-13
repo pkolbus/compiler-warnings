@@ -1,0 +1,16 @@
++-Wcalled-once-parameter # Partially enabled by default.
++-Wcompletion-handler
++-Wcompound-token-split # Partially enabled by default.
++-Wcompound-token-split-by-macro # Enabled by default.
++-Wcompound-token-split-by-space
++-Wfree-nonheap-object
++-Wfuse-ld-path
+--Wgnu-folding-constant
++-Wgnu-folding-constant # Partially enabled by default.
+--Wmisexpect
++-Wmisspelled-assumption # Enabled by default.
++-Wrtti # Enabled by default.
++-Wstring-concatenation
++-Wtautological-value-range-compare
++-Wtcb-enforcement # Enabled by default.
++-Wunknown-assumption # Enabled by default.

@@ -1,0 +1,3044 @@
+# enabled by default:
+#   -W (partial)
+#     -Wextra (partial)
+#           call to function without interrupt attribute could clobber interruptee's VFP registers
+#       -Wignored-qualifiers (partial)
+#             'A' qualifier on function type B has no effect
+#             'A' qualifier on omitted return type B has no effect
+#             'A' qualifier on reference type B has no effect
+#             ARC <unused|__unsafe_unretained|__strong|__weak|__autoreleasing> lifetime qualifier on return type is ignored
+#       -Winitializer-overrides
+#             initializer overrides prior initialization of this subobject
+#             subobject initialization overrides initialization of other fields within its enclosing subobject
+#   -W#pragma-messages
+#         The text of this diagnostic is not controlled by Clang
+#   -Wabsolute-value
+#         absolute value function A given an argument of type B but has parameter of type C which may cause truncation of value
+#         taking the absolute value of <pointer|function|array> type B is suspicious
+#         taking the absolute value of unsigned type A has no effect
+#         using <integer|floating point|complex> absolute value function A when argument is of <integer|floating point|complex> type
+#   -Wabstract-final-class
+#         abstract class is marked '<final|sealed>'
+#   -Waddress
+#     -Wpointer-bool-conversion
+#           address of[ function| array] 'B' will always evaluate to 'true'
+#           nonnull <function call|parameter> 'B' will evaluate to 'true' on first encounter
+#     -Wstring-compare
+#           result of comparison against <a string literal|@encode> is unspecified (use strncmp instead)
+#     -Wtautological-pointer-compare
+#           comparison of <address of|function|array> 'B' [not ]equal to a null pointer is always <true|false>
+#           comparison of nonnull <function call|parameter> 'B' [not ]equal to a null pointer is '<true|false>' on first encounter
+#   -Waddress-of-array-temporary
+#         pointer is initialized by a temporary array, which will be destroyed at the end of the full-expression
+#   -Waddress-of-packed-member
+#         taking address of packed member A of class or structure B may result in an unaligned pointer value
+#   -Waddress-of-temporary
+#         taking the address of a temporary object of type A
+#   -Waligned-allocation-unavailable
+#         aligned <allocation|deallocation> function of type 'B' is only available on C D or newer
+#   -Walloca-with-align-alignof
+#         second argument to __builtin_alloca_with_align is supposed to be in bits
+#   -Wambiguous-delete
+#         multiple suitable A functions for B; no 'operator delete' function will be invoked if initialization throws an exception
+#   -Wambiguous-ellipsis
+#         '...' in this location creates a C-style varargs function[, not a function parameter pack]
+#   -Wambiguous-macro
+#         ambiguous expansion of macro A
+#   -Wambiguous-member-template
+#         lookup of A in member access expression is ambiguous; using member of B
+#   -Wanalyzer-incompatible-plugin
+#         checker plugin 'A' is not compatible with this version of the analyzer
+#   -Wanonymous-pack-parens
+#         ISO C++11 requires a parenthesized pack declaration to have a name
+#   -Wapinotes
+#         The text of this diagnostic is not controlled by Clang
+#   -Warc
+#     -Warc-non-pod-memaccess
+#           <destination for|source of> this B call is a pointer to ownership-qualified type C
+#     -Warc-retain-cycles
+#           capturing A strongly in this block is likely to lead to a retain cycle
+#     -Warc-unsafe-retained-assign
+#           assigning <array literal|dictionary literal|numeric literal|boxed expression|<should not happen>|block literal> to a weak <property|variable>; object will be released after assignment
+#           assigning retained object to <weak|unsafe_unretained> <property|variable>; object will be released after assignment
+#           assigning retained object to unsafe property; object will be released after assignment
+#   -Warc-bridge-casts-disallowed-in-nonarc
+#         'A' casts have no effect when not using ARC
+#   -Warc-performSelector-leaks
+#         performSelector may cause a leak because its selector is unknown
+#   -Warray-bounds
+#         'static' has no effect on zero-length arrays
+#         array argument is too small; contains A elements, callee requires at least B
+#         array index A is before the beginning of the array
+#         array index A is past the end of the array (which contains B element(s))
+#   -Wasm
+#     -Wasm-ignored-qualifier
+#           ignored A qualifier on asm
+#           meaningless 'volatile' on asm outside function
+#     -Wasm-operand-widths
+#           value size does not match register size specified by the constraint and modifier
+#   -Wassume
+#         the argument to A has side effects that will be discarded
+#   -Wat-protocol
+#         @protocol is using a forward protocol declaration of A
+#   -Watomic-memory-ordering
+#         memory order argument to atomic operation is invalid
+#   -Watomic-property-with-user-defined-accessor
+#         writable atomic property A cannot pair a synthesized <getter|setter> with a user defined <getter|setter>
+#   -Wattribute-packed-for-bitfield
+#         'packed' attribute was ignored on bit-fields with single-byte alignment in older versions of GCC and Clang
+#   -Wattributes
+#     -Wignored-attributes
+#           'A' attribute cannot be specified on a definition
+#           'A' only applies to <function|pointer|Objective-C object or block pointer> types; type here is C
+#           'abi_tag' attribute on <non-inline|anonymous> namespace ignored
+#           'deprecated' attribute on anonymous namespace ignored
+#           'gnu_inline' attribute requires function to be marked 'inline', attribute ignored
+#           'internal_linkage' attribute on a non-static local variable is ignored
+#           'noescape' attribute ignored on parameter of non-pointer type A
+#           'nonnull' attribute applied to function with no pointer arguments
+#           'nonnull' attribute when used on parameters takes no arguments
+#           'sentinel' attribute only supported for variadic <functions|blocks>
+#           'sentinel' attribute requires named arguments
+#           'trivial_abi' cannot be applied to A
+#           <alias|ifunc> will always resolve to A even if weak definition of B is overridden
+#           <alias|ifunc> will not be in section 'A' but in the same section as the <aliasee|resolver>
+#           <alignment|size> of field B (C bits) does not match the <alignment|size> of the first field in transparent union; transparent_union attribute ignored
+#           A attribute argument not supported: B
+#           A attribute can only be applied to instance variables or properties
+#           A attribute ignored
+#           A attribute ignored for field of type B
+#           A attribute ignored on inline function
+#           A attribute ignored when parsing type
+#           A attribute is deprecated and ignored in OpenCL version B
+#           A attribute only applies to <Objective-C object|pointer|pointer-to-CF-pointer> parameters
+#           A attribute only applies to <functions|methods|properties> that return <an Objective-C object|a pointer|a non-retainable pointer>
+#           A attribute only applies to <functions|unions|variables and functions|functions and methods|functions, methods and blocks|functions, methods, and parameters|variables|variables and fields|variables, data members and tag types|types and namespaces|variables, functions and classes|kernel functions|non-K&R-style functions|variables, functions, methods, types, enumerations, enumerators, labels, and non-static data members>
+#           A attribute only applies to B
+#           A attribute only applies to a pointer or reference (B is invalid)
+#           A attribute only applies to return values that are pointers
+#           A attribute only applies to return values that are pointers or references
+#           A attribute only applies to[ constant] pointer arguments
+#           A calling convention ignored on constructor/destructor
+#           A calling convention ignored on variadic function
+#           A redeclared inline; B attribute ignored
+#           MIPS 'interrupt' attribute only applies to functions that have <no parameters|a 'void' return type>
+#           Objective-C GC does not allow weak variables on the stack
+#           __declspec attribute A is not supported
+#           __weak attribute cannot be specified on a field declaration
+#           __weak attribute cannot be specified on an automatic variable when ARC is not enabled
+#           attribute A after definition is ignored
+#           attribute A cannot be applied to <functions|Objective-C method> without return value
+#           attribute A ignored, because it cannot be applied to a type
+#           attribute A ignored, because it cannot be applied to omitted return type
+#           attribute A ignored, because it is not attached to a declaration
+#           attribute A is already applied
+#           attribute A is already applied with different parameters
+#           attribute A is ignored, place it after "<class|struct|interface|union|enum>" to apply attribute to type declaration
+#           attribute declaration must precede definition
+#           calling convention A ignored for this target
+#           first field of a transparent union cannot have <floating point|vector> type B; transparent_union attribute ignored
+#           ignoring <unsupported|duplicate>[ architecture] 'C' in the target attribute string
+#           inheritance model ignored on <primary template|partial specialization>
+#           qualifiers after comma in declarator list are ignored
+#           transparent union definition must contain at least one field; transparent_union attribute ignored
+#           transparent_union attribute can only be applied to a union definition; attribute ignored
+#           unknown attribute 'A'
+#           unknown visibility A
+#     -Wunknown-attributes
+#           unknown attribute A ignored
+#   -Wauto-disable-vptr-sanitizer
+#         implicitly disabling vptr sanitizer because rtti wasn't enabled
+#   -Wauto-storage-class
+#         'auto' storage class specifier is not permitted in C++11, and will not be supported in future releases
+#   -Wauto-var-id
+#         'auto' deduced as 'id' in declaration of A
+#   -Wavailability
+#         'unavailable' availability overrides all other availability information
+#         [overriding ]method <introduced after|deprecated before|obsoleted before> <the protocol method it implements|overridden method> on B (C vs. D)
+#         [overriding ]method cannot be unavailable on A when <the protocol method it implements|its overridden method> is available
+#         availability does not match previous declaration
+#         feature cannot be <introduced|deprecated|obsoleted> in B version C before it was <introduced|deprecated|obsoleted> in version E; attribute ignored
+#         ignoring availability attribute <on '+load' method|with constructor attribute|with destructor attribute>
+#         only 'unavailable' and 'deprecated' are supported for Swift availability
+#         unknown platform A in availability macro
+#         use same version number separators '_' or '.'; as in 'major[.minor[.subminor]]'
+#   -Wbackend-plugin
+#         The text of this diagnostic is not controlled by Clang
+#   -Wbackslash-newline-escape
+#         backslash and newline separated by space
+#   -Wbinding-in-condition
+#         ISO C++17 does not permit structured binding declaration in a condition
+#   -Wbitfield-width
+#         width of anonymous bit-field (A bits) exceeds width of its type; value will be truncated to B bit(s)
+#         width of bit-field A (B bits) exceeds the width of its type; value will be truncated to C bit(s)
+#   -Wblock-capture-autoreleasing
+#         block captures an autoreleasing out-parameter, which may result in use-after-free bugs
+#   -Wbool-conversions
+#     -Wbool-conversion
+#           initialization of pointer of type A to null from a constant boolean expression
+#       -Wpointer-bool-conversion
+#             address of[ function| array] 'B' will always evaluate to 'true'
+#             nonnull <function call|parameter> 'B' will evaluate to 'true' on first encounter
+#       -Wundefined-bool-conversion
+#             'this' pointer cannot be null in well-defined C++ code; pointer may be assumed to always convert to true
+#             reference cannot be bound to dereferenced null pointer in well-defined C++ code; pointer may be assumed to always convert to true
+#   -Wbraced-scalar-init
+#         braces around scalar initializer
+#   -Wbridge-cast
+#         A bridges to B, not C
+#         A cannot bridge to B
+#   -Wbuiltin-macro-redefined
+#         redefining builtin macro
+#         undefining builtin macro
+#   -Wbuiltin-memcpy-chk-size
+#         A will always overflow destination buffer
+#   -Wbuiltin-requires-header
+#         declaration of built-in function 'B' requires inclusion of the header <A>
+#   -Wc++0x-compat (partial)
+#     -Wc++11-compat (partial)
+#           integer literal is too large to be represented in type 'long' and is subject to undefined behavior under C++98, interpreting as 'unsigned long'; this literal will <have type 'long long'|be ill-formed> in C++11 onwards
+#           integer literal is too large to be represented in type 'long', interpreting as 'unsigned long' per C++98; this literal will <have type 'long long'|be ill-formed> in C++11 onwards
+#           use of right-shift operator ('>>') in template argument will require parentheses in C++11
+#       -Wc++11-compat-deprecated-writable-strings
+#             conversion from string literal to A is deprecated
+#       -Wc++11-narrowing (partial)
+#             <case value|enumerator value|non-type template argument|array size|constexpr if condition> <cannot be narrowed from type C to D|evaluates to C, which cannot be narrowed to type D>
+#             constant expression evaluates to A which cannot be narrowed to type B
+#             non-constant-expression cannot be narrowed from type A to B in initializer list
+#             type A cannot be narrowed to B in initializer list
+#   -Wc++0x-extensions (partial)
+#     -Wc++11-extensions (partial)
+#           'A' keyword is a C++11 extension
+#           'auto' type specifier is a C++11 extension
+#           'template' keyword outside of a template
+#           'typename' occurs outside of a template
+#           <defaulted|deleted> function definitions are a C++11 extension
+#           alias declarations are a C++11 extension
+#           befriending enumeration type A is a C++11 extension
+#           default template arguments for a function template are a C++11 extension
+#           explicit conversion functions are a C++11 extension
+#           first declaration of <class template|class template partial|variable template|variable template partial|function template|member function|static data member|member class|member enumeration> specialization of B outside namespace C is a C++11 extension
+#           generalized initializer lists are a C++11 extension
+#           in-class initialization of non-static data member is a C++11 extension
+#           non-class friend type A is a C++11 extension
+#           non-type template argument referring to <function|object> B with internal linkage is a C++11 extension
+#           range-based for loop is a C++11 extension
+#           reference qualifiers on functions are a C++11 extension
+#           rvalue references are a C++11 extension
+#           scoped enumerations are a C++11 extension
+#           static data member A in union is a C++11 extension
+#           unelaborated friend declaration is a C++11 extension; specify '<struct|interface|union|class|enum>' to befriend B
+#           use of enumeration in a nested name specifier is a C++11 extension
+#           variadic templates are a C++11 extension
+#       -Wc++11-inline-namespace
+#             inline namespaces are a C++11 feature
+#   -Wc++0x-narrowing (partial)
+#     -Wc++11-narrowing (partial)
+#           <case value|enumerator value|non-type template argument|array size|constexpr if condition> <cannot be narrowed from type C to D|evaluates to C, which cannot be narrowed to type D>
+#           constant expression evaluates to A which cannot be narrowed to type B
+#           non-constant-expression cannot be narrowed from type A to B in initializer list
+#           type A cannot be narrowed to B in initializer list
+#   -Wc++11-compat-pedantic (partial)
+#     -Wc++11-compat (partial)
+#           integer literal is too large to be represented in type 'long' and is subject to undefined behavior under C++98, interpreting as 'unsigned long'; this literal will <have type 'long long'|be ill-formed> in C++11 onwards
+#           integer literal is too large to be represented in type 'long', interpreting as 'unsigned long' per C++98; this literal will <have type 'long long'|be ill-formed> in C++11 onwards
+#           use of right-shift operator ('>>') in template argument will require parentheses in C++11
+#       -Wc++11-compat-deprecated-writable-strings
+#             conversion from string literal to A is deprecated
+#       -Wc++11-narrowing (partial)
+#             <case value|enumerator value|non-type template argument|array size|constexpr if condition> <cannot be narrowed from type C to D|evaluates to C, which cannot be narrowed to type D>
+#             constant expression evaluates to A which cannot be narrowed to type B
+#             non-constant-expression cannot be narrowed from type A to B in initializer list
+#             type A cannot be narrowed to B in initializer list
+#   -Wc++17-compat-pedantic (partial)
+#     -Wc++17-compat (partial)
+#       -Wc++17-compat-mangling
+#             mangled name of A will change in C++17 due to non-throwing exception specification in function signature
+#       -Wdeprecated-increment-bool
+#             incrementing expression of type bool is deprecated and incompatible with C++17
+#       -Wdeprecated-register
+#             'register' storage class specifier is deprecated and incompatible with C++17
+#   -Wc++1y-extensions (partial)
+#     -Wc++14-extensions (partial)
+#           'decltype(auto)' type specifier is a C++14 extension
+#           initialized lambda captures are a C++14 extension
+#           multiple return statements in constexpr function is a C++14 extension
+#           type definition in a constexpr <function|constructor> is a C++14 extension
+#           use of this statement in a constexpr <function|constructor> is a C++14 extension
+#           variable declaration in a constexpr <function|constructor> is a C++14 extension
+#           variable templates are a C++14 extension
+#   -Wc++1z-compat (partial)
+#     -Wc++17-compat (partial)
+#       -Wc++17-compat-mangling
+#             mangled name of A will change in C++17 due to non-throwing exception specification in function signature
+#       -Wdeprecated-increment-bool
+#             incrementing expression of type bool is deprecated and incompatible with C++17
+#       -Wdeprecated-register
+#             'register' storage class specifier is deprecated and incompatible with C++17
+#   -Wc++1z-compat-mangling
+#     -Wc++17-compat-mangling
+#           mangled name of A will change in C++17 due to non-throwing exception specification in function signature
+#   -Wc++1z-extensions (partial)
+#     -Wc++17-extensions (partial)
+#           '<if|switch>' initialization statements are a C++17 extension
+#           'begin' and 'end' returning different types (A and B) is a C++17 extension
+#           'constexpr' on lambda expressions is a C++17 extension
+#           capture of '*this' by copy is a C++17 extension
+#           constexpr if is a C++17 extension
+#           decomposition declarations are a C++17 extension
+#           default scope specifier for attributes is a C++17 extension
+#           inline variables are a C++17 extension
+#           nested namespace definition is a C++17 extension; define each namespace separately
+#           pack expansion of using declaration is a C++17 extension
+#           pack fold expression is a C++17 extension
+#           static_assert with no message is a C++17 extension
+#           template template parameter using 'typename' is a C++17 extension
+#           use of multiple declarators in a single using declaration is a C++17 extension
+#   -Wc++2a-compat-pedantic (partial)
+#     -Wc++2a-compat (partial)
+#           '<=>' is a single token in C++2a; add a space to avoid a change in behavior
+#   -Wc++2a-extensions (partial)
+#         default member initializer for bit-field is a C++2a extension
+#         explicit capture of 'this' with a capture default of '=' is a C++2a extension
+#   -Wc99-compat (partial)
+#         integer literal is too large to be represented in type 'long', interpreting as 'unsigned long' per C89; this literal will <have type 'long long'|be ill-formed> in C99 onwards
+#   -Wc99-extensions (partial)
+#         ISO C99 requires whitespace after the macro name
+#   -Wcast-calling-convention
+#         cast between incompatible calling conventions 'A' and 'B'; calls through this pointer may abort at runtime
+#   -WCFString-literal
+#         input conversion stopped due to an input byte that does not belong to the input codeset UTF-8
+#   -WCL4 (partial)
+#     -Wall (partial)
+#       -Wmost (partial)
+#         -Wcast-of-sel-type
+#               cast of type A to B is deprecated; use sel_getName instead
+#         -Wcomment (partial)
+#               '/*' within block comment
+#               escaped newline between */ characters at block comment end
+#         -Wdelete-non-virtual-dtor (partial)
+#               <delete|destructor> called on B that is abstract but has non-virtual destructor
+#         -Wextern-c-compat
+#               [empty ]<struct|union> has size 0 in C, <size 1|non-zero size> in C++
+#         -Wformat
+#               '<*|.*>' specified field <width|precision> is missing a matching 'int' argument
+#               'A' is not a valid object format flag
+#               <field width|precision> used with 'B' conversion specifier, resulting in undefined behavior
+#               <values of type|enum values with underlying type> 'A' should not be used as format arguments; add an explicit cast to B instead
+#               cannot mix positional and non-positional arguments in format string
+#               data argument position 'A' exceeds the number of data arguments (B)
+#               field <width|precision> should have type B, but argument has type C
+#               flag 'A' is ignored when flag 'B' is present
+#               flag 'A' results in undefined behavior with 'B' conversion specifier
+#               format specifies type A but the argument has <type|underlying type> B
+#               format string contains '\0' within the string body
+#               format string is not null-terminated
+#               format string missing
+#               format string should not be a wide string
+#               incomplete format specifier
+#               invalid position specified for <field width|field precision>
+#               length modifier 'A' results in undefined behavior or no effect with 'B' conversion specifier
+#               missing object format flag
+#               more '%' conversions than data arguments
+#               no closing ']' for '%[' in scanf format string
+#               object format flags cannot be used with 'A' conversion specifier
+#               position arguments in format strings start counting at 1 (not 0)
+#               using '%P' format specifier without precision
+#               using 'A' format specifier annotation outside of os_log()/os_trace()
+#               zero field width in scanf format string is unused
+#           -Wformat-extra-args
+#                 data argument not used by format string
+#           -Wformat-invalid-specifier
+#                 invalid conversion specifier 'A'
+#           -Wformat-security
+#                 format string is not a string literal (potentially insecure)
+#           -Wformat-zero-length
+#                 format string is empty
+#           -Wnonnull
+#                 null passed to a callee that requires a non-null argument
+#                 null returned from <function|method> that requires a non-null return value
+#         -Wimplicit (partial)
+#           -Wimplicit-function-declaration (partial)
+#                 implicit declaration of function A is invalid in <C99|OpenCL>
+#                 implicitly declaring library function 'A' with type B
+#                 use of unknown builtin A
+#           -Wimplicit-int
+#                 type specifier missing, defaults to 'int'
+#         -Wmultichar
+#               multi-character character constant
+#         -Wobjc-designated-initializers
+#               convenience initializer missing a 'self' call to another initializer
+#               convenience initializer should not invoke an initializer on 'super'
+#               designated initializer invoked a non-designated initializer
+#               designated initializer missing a 'super' call to a designated initializer of the super class
+#               designated initializer should only invoke a designated initializer on 'super'
+#               method override for the designated initializer of the superclass A not found
+#         -Wobjc-flexible-array
+#               field A can overwrite instance variable B with variable sized type C in superclass D
+#               field A with variable sized type B is not visible to subclasses and can conflict with their instance variables
+#         -Wobjc-missing-super-calls
+#               method possibly missing a [super A] call
+#         -Wprivate-extern
+#               use of __private_extern__ on a declaration may not produce external symbol private to the linkage unit and is deprecated
+#         -Wreturn-type
+#               <void function|void method|constructor|destructor> A should not return a value
+#               control may reach end of coroutine; which is undefined behavior because the promise type A does not declare 'return_void()'
+#               control may reach end of non-void function
+#               control may reach end of non-void lambda
+#               control reaches end of coroutine; which is undefined behavior because the promise type A does not declare 'return_void()'
+#               control reaches end of non-void function
+#               control reaches end of non-void lambda
+#               non-void <function|method> A should return a value
+#           -Wreturn-type-c-linkage
+#                 A has C-linkage specified, but returns incomplete type B which could be incompatible with C
+#                 A has C-linkage specified, but returns user-defined type B which is incompatible with C
+#         -Wself-assign (partial)
+#           -Wself-assign-field
+#                 assigning <field|instance variable> to itself
+#         -Wsizeof-array-argument
+#               sizeof on array function parameter will return size of A instead of B
+#         -Wsizeof-array-decay
+#               sizeof on pointer operation will return size of A instead of B
+#         -Wstring-plus-int
+#               adding A to a string does not append to the string
+#         -Wtrigraphs
+#               ignored trigraph would end block comment
+#               trigraph converted to 'A' character
+#               trigraph ends block comment
+#               trigraph ignored
+#         -Wuninitialized (partial)
+#               base class A is uninitialized when used here to access B
+#               field A is uninitialized when used here
+#               reference A is not yet bound to a value when used here
+#               reference A is not yet bound to a value when used within its own initialization
+#               variable A is uninitialized when used within its own initialization
+#           -Wstatic-self-init
+#                 static variable A is suspiciously used within its own initialization
+#         -Wunknown-pragmas (partial)
+#               #pragma warning expected 'A'
+#               #pragma warning expected 'push', 'pop', 'default', 'disable', 'error', 'once', 'suppress', 1, 2, 3, or 4
+#               #pragma warning expected a warning number
+#               #pragma warning(push, level) requires a level between 0 and 4
+#               angle-bracketed include <A> cannot be aliased to double-quoted include "B"
+#               double-quoted include "A" cannot be aliased to angle-bracketed include <B>
+#               expected 'ON' or 'OFF' or 'DEFAULT' in pragma
+#               expected end of directive in pragma
+#               pragma STDC FENV_ACCESS ON is not supported, ignoring pragma
+#               pragma diagnostic expected 'error', 'warning', 'ignored', 'fatal', 'push', or 'pop'
+#               pragma diagnostic expected option name (e.g. "-Wundef")
+#               pragma diagnostic pop could not pop, no matching push
+#               pragma include_alias expected 'A'
+#               pragma include_alias expected include filename
+#               unexpected token in pragma diagnostic
+#               unknown pragma in STDC namespace
+#         -Wunused (partial)
+#           -Wunused-value
+#                 container access result unused - container access should not be used for side effects
+#                 expression result unused
+#                 expression result unused; should this cast be to 'void'?
+#                 ignoring return value of function declared with A attribute
+#             -Wunevaluated-expression
+#                   expression with side effects has no effect in an unevaluated context
+#               -Wpotentially-evaluated-expression
+#                     expression with side effects will be evaluated despite being used as an operand to 'typeid'
+#             -Wunused-comparison
+#                   <equality|inequality|relational|three-way> comparison result unused
+#             -Wunused-result
+#                   ignoring return value of function declared with A attribute
+#         -Wuser-defined-warnings
+#               The text of this diagnostic is not controlled by Clang
+#       -Wparentheses
+#             A has lower precedence than B; B will be evaluated first
+#             operator '?:' has lower precedence than 'A'; 'A' will be evaluated first
+#             using the result of an assignment as a condition without parentheses
+#         -Wbitwise-op-parentheses
+#               'A' within 'B'
+#         -Wdangling-else
+#               add explicit braces to avoid dangling else
+#         -Wlogical-not-parentheses
+#               logical not is only applied to the left hand side of this <comparison|bitwise operator>
+#         -Wlogical-op-parentheses
+#               '&&' within '||'
+#         -Woverloaded-shift-op-parentheses
+#               overloaded operator <>>|<<> has higher precedence than comparison operator
+#         -Wparentheses-equality
+#               equality comparison with extraneous parentheses
+#         -Wshift-op-parentheses
+#               operator 'A' has lower precedence than 'B'; 'B' will be evaluated first
+#       -Wswitch
+#             <enumeration value B not handled in switch|enumeration values B and C not handled in switch|enumeration values B, C, and D not handled in switch|A enumeration values not handled in switch>
+#             case value not in enumerated type A
+#             overflow converting case value to switch condition type (A to B)
+#       -Wswitch-bool
+#             switch condition has boolean value
+#     -Wextra (partial)
+#           call to function without interrupt attribute could clobber interruptee's VFP registers
+#       -Wignored-qualifiers (partial)
+#             'A' qualifier on function type B has no effect
+#             'A' qualifier on omitted return type B has no effect
+#             'A' qualifier on reference type B has no effect
+#             ARC <unused|__unsafe_unretained|__strong|__weak|__autoreleasing> lifetime qualifier on return type is ignored
+#       -Winitializer-overrides
+#             initializer overrides prior initialization of this subobject
+#             subobject initialization overrides initialization of other fields within its enclosing subobject
+#   -Wclang-cl-pch
+#         support for '/Yc' and '/Yu' with different filenames not implemented yet; flags ignored
+#         support for '/Yc' with more than one source file not implemented yet; flag ignored
+#         support for 'A' without a corresponding /FI flag not implemented yet; flag ignored
+#         support for 'A' without a filename not implemented yet; flag ignored
+#   -Wclass-varargs (partial)
+#     -Wnon-pod-varargs
+#           cannot pass <non-POD|non-trivial> object of type B to variadic <function|block|method|constructor>; expected type from format string was D
+#           cannot pass object of <non-POD|non-trivial> type B through variadic <function|block|method|constructor>; call will abort at runtime
+#           second argument to 'va_arg' is of ARC ownership-qualified type A
+#           second argument to 'va_arg' is of non-POD type A
+#   -Wcomments (partial)
+#     -Wcomment (partial)
+#           '/*' within block comment
+#           escaped newline between */ characters at block comment end
+#   -Wcompare-distinct-pointer-types
+#         comparison of distinct pointer types
+#   -Wconditional-type-mismatch
+#         pointer/integer type mismatch in conditional expression
+#   -Wconfig-macros
+#         <definition|#undef> of configuration macro 'B' has no effect on the import of 'C'; pass '<-DB=...|-UB>' on the command line to configure the module
+#   -Wconstant-logical-operand
+#         use of logical 'A' with constant operand
+#   -Wconstexpr-not-const
+#         'constexpr' non-static member function will not be implicitly 'const' in C++14; add 'const' to avoid a change in behavior
+#   -Wconversion-null
+#     -Wnull-conversion
+#           implicit conversion of <NULL|nullptr> constant to B
+#   -Wcoroutine
+#     -Wcoroutine-missing-unhandled-exception
+#           A is required to declare the member 'unhandled_exception()' when exceptions are enabled
+#   -Wcpp
+#     -W#warnings
+#           The text of this diagnostic is not controlled by Clang
+#   -Wcuda-compat (partial)
+#         A attribute parameter B is negative and will be ignored
+#         argument to '#pragma unroll' should not be in parentheses in CUDA C/C++
+#         ignored 'inline' attribute on kernel function A
+#         nvcc does not allow '__A__' to appear after '()' in lambdas
+#   -Wdangling-field
+#         binding reference [subobject of ]member A to a temporary value
+#         binding reference member A to stack allocated parameter B
+#         initializing pointer member A with the stack address of parameter B
+#   -Wdangling-initializer-list
+#         array backing the initializer list will be destroyed at the end of <the full-expression|the constructor>
+#   -Wdealloc-in-category
+#         -dealloc is being overridden in a category
+#   -Wdebug-compression-unavailable
+#         cannot compress debug sections (zlib not installed)
+#   -Wdelegating-ctor-cycles
+#         constructor for A creates a delegation cycle
+#   -Wdelete-incomplete
+#         cannot delete expression with pointer-to-'void' type A
+#         deleting pointer to incomplete type A may cause undefined behavior
+#   -Wdeprecated (partial)
+#         -O4 is equivalent to -O3
+#         OpenCL version A does not support the option 'B'
+#         Use of 'long' with '__vector' is deprecated
+#         access declarations are deprecated; use using declarations instead
+#         argument 'A' is deprecated, use 'B' instead
+#         treating 'A' input as 'B' when in C++ mode, this behavior is deprecated
+#     -Wdeprecated-attributes
+#           specifying vector types with the 'mode' attribute is deprecated; use the 'vector_size' attribute instead
+#     -Wdeprecated-declarations
+#           A is deprecated
+#           A is deprecated: B
+#           A may be deprecated because the receiver type is unknown
+#           property access is using A method which is deprecated
+#           specifying 'uuid' as an ATL attribute is deprecated; use __declspec instead
+#           use of C-style parameters in Objective-C method declarations is deprecated
+#     -Wdeprecated-increment-bool
+#           incrementing expression of type bool is deprecated and incompatible with C++17
+#     -Wdeprecated-register
+#           'register' storage class specifier is deprecated and incompatible with C++17
+#     -Wdeprecated-writable-strings
+#       -Wc++11-compat-deprecated-writable-strings
+#             conversion from string literal to A is deprecated
+#   -Wdeprecated-objc-isa-usage
+#         assignment to Objective-C's isa is deprecated in favor of object_setClass()
+#         direct access to Objective-C's isa is deprecated in favor of object_getClass()
+#   -Wdeprecated-objc-pointer-introspection
+#         bitmasking for introspection of Objective-C object pointers is strongly discouraged
+#     -Wdeprecated-objc-pointer-introspection-performSelector
+#           bitmasking for introspection of Objective-C object pointers is strongly discouraged
+#   -Wdistributed-object-modifiers
+#         conflicting distributed object modifiers on parameter type in implementation of A
+#         conflicting distributed object modifiers on return type in implementation of A
+#   -Wdiv-by-zero
+#     -Wdivision-by-zero
+#           <remainder|division> by zero is undefined
+#   -Wdll-attribute-on-redeclaration
+#         redeclaration of A should not add B attribute
+#   -Wdllexport-explicit-instantiation-decl
+#         explicit instantiation declaration should not be 'dllexport'
+#   -Wdllimport-static-field-def
+#         definition of dllimport static field
+#   -Wduplicate-decl-specifier
+#         duplicate 'A' declaration specifier
+#   -Wduplicate-protocol
+#         duplicate protocol definition of A is ignored
+#   -Wdynamic-class-memaccess
+#         <destination for|source of|first operand of|second operand of> this B call is a pointer to [class containing a ]dynamic class D; vtable pointer will be <overwritten|copied|moved|compared>
+#   -Wdynamic-exception-spec (partial)
+#         ISO C++17 does not allow dynamic exception specifications
+#   -Wempty-body
+#         for loop has empty body
+#         if statement has empty body
+#         range-based for loop has empty body
+#         switch statement has empty body
+#         while loop has empty body
+#   -Wempty-decomposition
+#         ISO C++17 does not allow a decomposition group to be empty
+#   -Wencode-type
+#         encoding of A type is incomplete because B component has unknown encoding
+#   -Wendif-labels
+#     -Wextra-tokens
+#           extra tokens at end of #A directive
+#           extra tokens at the end of '#pragma omp A' are ignored
+#   -Wenum-compare
+#         comparison of two values with different enumeration types
+#     -Wenum-compare-switch
+#           comparison of two values with different enumeration types in switch statement
+#   -Wenum-too-large
+#         enumeration values exceed range of largest integer
+#         incremented enumerator value A is not representable in the largest integer type
+#   -Wexceptions
+#         A has a non-throwing exception specification but can still throw
+#         cannot refer to a non-static member from the handler of a <constructor|destructor> function try block
+#         exception of type A will be caught by earlier handler
+#   -Wexpansion-to-defined (partial)
+#         macro expansion producing 'defined' has undefined behavior
+#   -Wexperimental-isel
+#         -fexperimental-isel support for the 'A' architecture is incomplete
+#         -fexperimental-isel support is incomplete for this architecture at the current optimization level
+#   -Wexplicit-initialize-call
+#         explicit call to +initialize results in duplicate call to +initialize
+#         explicit call to [super initialize] should only be in implementation of +initialize
+#   -Wextern-initializer
+#         'extern' variable has an initializer
+#   -Wextra-qualification
+#         extra qualification on member A
+#   -Wfallback
+#         falling back to A
+#   -Wflag-enum
+#         enumeration value A is out of range of flags in enumeration type B
+#   -Wformat=2 (partial)
+#     -Wformat-security
+#           format string is not a string literal (potentially insecure)
+#   -Wframe-larger-than=
+#         The text of this diagnostic is not controlled by Clang
+#         stack frame size of A bytes in B
+#   -Wfunction-def-in-objc-container
+#         function definition inside an Objective-C container is deprecated
+#   -Wgcc-compat (partial)
+#         'A' is bound to current loop, GCC binds it to the enclosing loop
+#         'break' is bound to loop, GCC binds it to switch
+#         GCC does not allow A attribute in this position on a function definition
+#         GCC does not allow an attribute in this position on a function declaration
+#         GCC does not allow the 'cleanup' attribute argument to be anything other than a simple identifier
+#         __final is a GNU extension, consider using C++11 final
+#   -Wgnu (partial)
+#     -Wgnu-alignof-expression
+#           A applied to an expression is a GNU extension
+#     -Wgnu-designator (partial)
+#           use of GNU 'missing =' extension in designator
+#           use of GNU old-style field designator extension
+#     -Wgnu-static-float-init
+#           in-class initializer for static data member of type A is a GNU extension
+#     -Wgnu-string-literal-operator-template
+#           string literal operator templates are a GNU extension
+#     -Wgnu-variable-sized-type-not-at-end
+#           field A with variable sized type B not at the end of a struct or class is a GNU extension
+#     -Wredeclared-class-member
+#           class member cannot be redeclared
+#   -Wgnu-array-member-paren-init
+#         parenthesized initialization of a member array is a GNU extension
+#   -Wheader-guard
+#         A is used as a header guard here, followed by #define of a different macro
+#   -Wimplicit-conversion-floating-point-to-bool
+#         implicit conversion turns floating-point number into bool: A to B
+#   -Wimplicit-exception-spec-mismatch
+#         function previously declared with an <explicit|implicit> exception specification redeclared with an <implicit|explicit> exception specification
+#   -Wimplicitly-unsigned-literal
+#         integer literal is too large to be represented in a signed integer type, interpreting as unsigned
+#   -Winaccessible-base
+#         direct base A is inaccessible due to ambiguity:B
+#   -Winclude-next-absolute-path
+#         #include_next with absolute path
+#   -Winclude-next-outside-header
+#         #include_next in primary source file
+#   -Wincompatible-exception-spec
+#         exception specifications of <return|argument> types differ
+#         target exception specification is not superset of source
+#   -Wincompatible-library-redeclaration
+#         incompatible redeclaration of library function A
+#   -Wincompatible-ms-struct
+#         ms_struct may not produce Microsoft-compatible layouts for classes with base classes or virtual functions
+#         ms_struct may not produce Microsoft-compatible layouts with fundamental data types with sizes that aren't a power of two
+#   -Wincompatible-pointer-types
+#         incompatible pointer types <assigning to different types|passing to parameter of different type|returning from function with different return type|converting between types|initializing with expression of different type|sending to parameter of different type|casting between types>[; dereference with *|; take the address with &|; remove *|; remove &]
+#     -Wincompatible-function-pointer-types
+#           incompatible function pointer types <assigning to different types|passing to parameter of different type|returning from function with different return type|converting between types|initializing with expression of different type|sending to parameter of different type|casting between types>[; dereference with *|; take the address with &|; remove *|; remove &]
+#     -Wincompatible-pointer-types-discards-qualifiers
+#           <assigning to different types|passing to parameter of different type|returning from function with different return type|converting between types|initializing with expression of different type|sending to parameter of different type|casting between types> discards qualifiers
+#           <assigning to different types|passing to parameter of different type|returning from function with different return type|converting between types|initializing with expression of different type|sending to parameter of different type|casting between types> discards qualifiers in nested pointer types
+#   -Wincompatible-property-type
+#         property type A is incompatible with type B inherited from C
+#   -Wincompatible-sysroot
+#         using sysroot for 'A' but targeting 'B'
+#   -Wincomplete-implementation
+#         method definition for A not found
+#   -Wincomplete-module (partial)
+#     -Wincomplete-umbrella
+#           missing submodule 'A'
+#           umbrella directory 'A' not found
+#           umbrella header for module 'A' does not include header 'B'
+#   -Winconsistent-missing-override
+#         A overrides a member function but is not marked 'override'
+#   -Wincrement-bool
+#         ISO C++17 does not allow incrementing expression of type bool
+#     -Wdeprecated-increment-bool
+#           incrementing expression of type bool is deprecated and incompatible with C++17
+#   -WIndependentClass-attribute
+#         'objc_independent_class' attribute may be put on Objective-C object pointer type only; attribute is ignored
+#         'objc_independent_class' attribute may be put on a typedef only; attribute is ignored
+#   -Winjected-class-name
+#         ISO C++ specifies that qualified reference to A is a constructor name rather than a <template name|type> in this context, despite preceding <'typename'|'template'> keyword
+#   -Winline-asm
+#         The text of this diagnostic is not controlled by Clang
+#   -Winline-new-delete
+#         replacement function A cannot be declared 'inline'
+#   -Winstantiation-after-specialization
+#         explicit instantiation of A that occurs after an explicit specialization has no effect
+#   -Wint-conversions
+#     -Wint-conversion
+#           incompatible integer to pointer conversion <assigning to different types|passing to parameter of different type|returning from function with different return type|converting between types|initializing with expression of different type|sending to parameter of different type|casting between types>[; dereference with *|; take the address with &|; remove *|; remove &]
+#           incompatible pointer to integer conversion <assigning to different types|passing to parameter of different type|returning from function with different return type|converting between types|initializing with expression of different type|sending to parameter of different type|casting between types>[; dereference with *|; take the address with &|; remove *|; remove &]
+#   -Wint-to-pointer-cast
+#         cast to B from smaller integer type A
+#     -Wint-to-void-pointer-cast
+#           cast to B from smaller integer type A
+#   -Winteger-overflow
+#         overflow in expression; result is A with type B
+#   -Winvalid-command-line-argument
+#         optimization level 'A' is not supported; using 'BC' instead
+#         the object size sanitizer has no effect at -O0, but is explicitly enabled: A
+#     -Wignored-optimization-argument
+#           optimization flag 'A' is not supported
+#           optimization flag 'A' is not supported for target 'B'
+#   -Winvalid-constexpr
+#         constexpr <function|constructor> never produces a constant expression
+#   -Winvalid-iboutlet
+#         <instance variable|property> with A attribute must be an object type (invalid B)
+#         IBOutletCollection properties should be copy/strong and not assign
+#   -Winvalid-initializer-from-system-header
+#         invalid constructor form class in system header, should not be explicit
+#   -Winvalid-ios-deployment-target
+#         invalid iOS deployment version 'A', iOS 10 is the maximum deployment target for 32-bit targets
+#   -Winvalid-noreturn
+#         function A declared 'noreturn' should not return
+#         function declared 'noreturn' should not return
+#   -Winvalid-offsetof
+#         offset of on non-POD type A
+#         offset of on non-standard-layout type A
+#   -Winvalid-or-nonexistent-directory (partial)
+#         environment variable SCE_ORBIS_SDK_DIR is set, but points to invalid or nonexistent directory 'A'
+#   -Winvalid-partial-specialization
+#         <class|variable> template partial specialization is not more specialized than the primary template
+#   -Winvalid-pp-token
+#         empty character constant
+#         missing terminating <'|'"'> character
+#   -Winvalid-source-encoding
+#         illegal character encoding in character literal
+#         illegal character encoding in string literal
+#   -Winvalid-token-paste
+#         pasting formed 'A', an invalid preprocessing token
+#   -Wjump-seh-finally
+#         jump out of __finally block has undefined behavior
+#   -Wkeyword-compat
+#         keyword 'A' will be made available as an identifier <here|for the remainder of the translation unit>
+#   -Wknr-promoted-parameter
+#         promoted type of K&R function parameter is not compatible with parameter type declared in a previous prototype
+#   -Wlarge-by-value-copy
+#         A is a large (B bytes) pass-by-value argument; pass it by reference instead ?
+#         return value of A is a large (B bytes) pass-by-value object; pass it by reference instead ?
+#   -Wlocal-type-template-args (partial)
+#         template argument uses local type A
+#   -Wmacro-redefined
+#         A macro redefined
+#   -Wmain (partial)
+#         'main' is not allowed to be declared _Noreturn
+#         'main' is not allowed to be declared variadic
+#         'main' should not be declared static
+#         bool literal returned from 'main'
+#         only one parameter on 'main' declaration
+#         variable named 'main' with external linkage has undefined behavior
+#   -Wmain-return-type
+#         return type of 'main' is not 'int'
+#   -Wmalformed-warning-check
+#         __has_warning expected option name (e.g. "-Wundef")
+#   -Wmany-braces-around-scalar-init
+#         too many braces around scalar initializer
+#   -Wmax-unsigned-zero
+#         taking the max of <a value and unsigned zero|unsigned zero and a value> is always equal to the other value
+#   -Wmemsize-comparison
+#         size argument in A call is a comparison
+#   -Wmicrosoft (partial)
+#     -Winconsistent-dllimport
+#           A redeclared without 'dllimport' attribute: 'dllexport' attribute added
+#           A redeclared without B attribute: previous B ignored
+#     -Wmicrosoft-anon-tag (partial)
+#           anonymous <structs|unions> are a Microsoft extension
+#     -Wmicrosoft-cast
+#           implicit conversion between pointer-to-function and pointer-to-object is a Microsoft extension
+#           static_cast between pointer-to-function and pointer-to-object is a Microsoft extension
+#     -Wmicrosoft-const-init
+#           default initialization of an object of const type A[ without a user-provided default constructor] is a Microsoft extension
+#     -Wmicrosoft-default-arg-redefinition
+#           redefinition of default argument
+#     -Wmicrosoft-enum-forward-reference
+#           forward references to 'enum' types are a Microsoft extension
+#     -Wmicrosoft-exception-spec (partial)
+#           A is missing exception specification 'B'
+#           [pointer to |reference to ]incomplete type B is not allowed in exception specification
+#           exception specification in declaration does not match previous declaration
+#           exception specification in explicit instantiation does not match instantiated one
+#           exception specification of overriding function is more lax than base version
+#     -Wmicrosoft-explicit-constructor-call
+#           explicit constructor calls are a Microsoft extension
+#     -Wmicrosoft-extra-qualification
+#           extra qualification on member A
+#     -Wmicrosoft-goto
+#           jump from this goto statement to its label is a Microsoft extension
+#     -Wmicrosoft-include
+#           #include resolved using non-portable Microsoft search rules as: A
+#     -Wmicrosoft-mutable-reference
+#           'mutable' on a reference type is a Microsoft extension
+#     -Wmicrosoft-pure-definition
+#           function definition with pure-specifier is a Microsoft extension
+#     -Wmicrosoft-sealed
+#           'sealed' keyword is a Microsoft extension
+#     -Wmicrosoft-template
+#           <class template|class template partial|variable template|variable template partial|function template|member function|static data member|member class|member enumeration> specialization of B outside namespace enclosing C is a Microsoft extension
+#           duplicate explicit instantiation of A ignored as a Microsoft extension
+#           explicit specialization of A within class scope is a Microsoft extension
+#           non-type template argument containing a dereference operation is a Microsoft extension
+#           template argument for template type parameter must be a type; omitted 'typename' is a Microsoft extension
+#           use of identifier A found via unqualified lookup into dependent bases of class templates is a Microsoft extension
+#           use of undeclared identifier A; unqualified lookup into dependent bases of class template B is a Microsoft extension
+#           using the undeclared type A as a default template argument is a Microsoft extension
+#     -Wmicrosoft-union-member-reference
+#           union member A has reference type B, which is a Microsoft extension
+#     -Wmicrosoft-unqualified-friend
+#           unqualified friend declaration referring to type outside of the nearest enclosing namespace is a Microsoft extension; add a nested name specifier
+#     -Wmicrosoft-using-decl
+#           using declaration referring to inaccessible member 'A' (which refers to accessible member 'B') is a Microsoft compatibility extension
+#     -Wmicrosoft-void-pseudo-dtor
+#           pseudo-destructors on type void are a Microsoft extension
+#   -Wmicrosoft-exists
+#         dependent <__if_not_exists|__if_exists> declarations are ignored
+#   -Wmicrosoft-inaccessible-base
+#         accessing inaccessible direct base A of B is a Microsoft extension
+#   -Wmismatched-new-delete
+#         'delete[[]]' applied to a pointer that was allocated with 'new[[]]'; did you mean 'delete[[]]'?
+#   -Wmismatched-parameter-types
+#         conflicting parameter types in implementation of A
+#   -Wmismatched-return-types
+#         conflicting return type in implementation of A
+#   -Wmissing-declarations
+#         'A' ignored on this declaration
+#         'A' is not permitted on a declaration of a type
+#         declaration does not declare anything
+#         typedef requires a name
+#   -Wmissing-exception-spec
+#         A is missing exception specification 'B'
+#   -Wmissing-noescape
+#         parameter of overriding method should be annotated with __attribute__((noescape))
+#   -Wmissing-prototype-for-cc
+#         function with no prototype cannot use the A calling convention
+#   -Wmissing-selector-name
+#         A used as the name of the previous parameter rather than as part of the selector
+#   -Wmissing-sysroot
+#         no such sysroot directory: 'A'
+#   -Wmodule-conflict
+#         module 'A' conflicts with already-imported module 'B': C
+#         module file 'A' was validated as a system module and is now being imported as a non-system module; any difference in diagnostic options will be ignored
+#   -Wmodule-file-config-mismatch
+#         module file A cannot be loaded due to a configuration mismatch with the current compilation
+#   -Wmodule-file-extension
+#         duplicate module file extension block name 'A'
+#   -Wmodule-import-in-extern-c
+#         import of C++ module 'A' appears within extern "C" language linkage specification
+#   -Wmodules-ambiguous-internal-linkage
+#         ambiguous use of internal linkage declaration A defined in multiple modules
+#   -Wmodules-import-nested-redundant
+#         redundant #include of module 'A' appears within B
+#   -Wmsvc-include
+#     -Wmicrosoft-include
+#           #include resolved using non-portable Microsoft search rules as: A
+#   -Wmsvc-not-found
+#         unable to find a Visual Studio installation; try running Clang from a developer command prompt
+#   -Wmultiple-move-vbase
+#         defaulted move assignment operator of A will move assign virtual base class B multiple times
+#   -Wnarrowing (partial)
+#     -Wc++11-narrowing (partial)
+#           <case value|enumerator value|non-type template argument|array size|constexpr if condition> <cannot be narrowed from type C to D|evaluates to C, which cannot be narrowed to type D>
+#           constant expression evaluates to A which cannot be narrowed to type B
+#           non-constant-expression cannot be narrowed from type A to B in initializer list
+#           type A cannot be narrowed to B in initializer list
+#   -Wnew-returns-null
+#         A should not return a null pointer unless it is declared 'throw()'[ or 'noexcept']
+#   -Wnoexcept-type
+#     -Wc++17-compat-mangling
+#           mangled name of A will change in C++17 due to non-throwing exception specification in function signature
+#   -Wnon-gcc (partial)
+#     -Wconversion (partial)
+#       -Wbool-conversion
+#             initialization of pointer of type A to null from a constant boolean expression
+#         -Wpointer-bool-conversion
+#               address of[ function| array] 'B' will always evaluate to 'true'
+#               nonnull <function call|parameter> 'B' will evaluate to 'true' on first encounter
+#         -Wundefined-bool-conversion
+#               'this' pointer cannot be null in well-defined C++ code; pointer may be assumed to always convert to true
+#               reference cannot be bound to dereferenced null pointer in well-defined C++ code; pointer may be assumed to always convert to true
+#       -Wconstant-conversion
+#             implicit conversion from C to D changes value from A to B
+#         -Wbitfield-constant-conversion
+#               implicit truncation from C to bit-field changes value from A to B
+#       -Wenum-conversion
+#             implicit conversion from enumeration type A to different enumeration type B
+#       -Wint-conversion
+#             incompatible integer to pointer conversion <assigning to different types|passing to parameter of different type|returning from function with different return type|converting between types|initializing with expression of different type|sending to parameter of different type|casting between types>[; dereference with *|; take the address with &|; remove *|; remove &]
+#             incompatible pointer to integer conversion <assigning to different types|passing to parameter of different type|returning from function with different return type|converting between types|initializing with expression of different type|sending to parameter of different type|casting between types>[; dereference with *|; take the address with &|; remove *|; remove &]
+#       -Wliteral-conversion
+#             implicit conversion from A to B changes value from C to D
+#       -Wnon-literal-null-conversion
+#             expression which evaluates to zero treated as a null pointer constant of type A
+#       -Wnull-conversion
+#             implicit conversion of <NULL|nullptr> constant to B
+#       -Wobjc-literal-conversion
+#             implicit boolean conversion of Objective-C object literal always evaluates to true
+#             object of type A is not compatible with <array element type|dictionary key type|dictionary value type> C
+#     -Wliteral-range
+#           magnitude of floating-point constant too large for type A; maximum is B
+#           magnitude of floating-point constant too small for type A; minimum is B
+#   -Wnonportable-include-path
+#         non-portable path to file 'A'; specified path differs in case from file name on disk
+#   -Wnonportable-private-apinotes-path
+#         private API notes file for module 'A' should be named 'A_private.apinotes', not 'B'
+#   -Wnonportable-vector-initialization
+#         vector initializers are not compatible with NEON intrinsics in big endian mode
+#   -Wnontrivial-memaccess
+#         <destination for|source of|first operand of|second operand of> this B call is a pointer to record C that is not trivial to <primitive-default-initialize|primitive-copy>
+#   -Wnsconsumed-mismatch
+#         overriding method has mismatched ns_consumed attribute on its parameter
+#   -WNSObject-attribute
+#         'NSObject' attribute may be put on a typedef only; attribute is ignored
+#   -Wnsreturns-mismatch
+#         overriding method has mismatched ns_returns_<not_retained|retained> attributes
+#   -Wnull-arithmetic
+#         comparison between NULL and non-pointer <(B and NULL)|(NULL and B)>
+#         use of NULL in arithmetic operation
+#   -Wnull-character
+#         null character ignored
+#         null character(s) preserved in <char|string> literal
+#   -Wnull-dereference
+#         binding dereferenced null pointer to reference has undefined behavior
+#         indirection of non-volatile null pointer will be deleted, not trap
+#   -Wnullability
+#         conflicting nullability specifier on parameter types, A conflicts with existing specifier B
+#         conflicting nullability specifier on return types, A conflicts with existing specifier B
+#         duplicate nullability specifier A
+#         nullability specifier A conflicts with existing specifier B
+#         synthesized setter A for null_resettable property B does not handle nil
+#   -Wnullability-completeness
+#         <pointer|block pointer|member pointer> is missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified)
+#     -Wnullability-completeness-on-arrays
+#           array parameter is missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified)
+#   -Wnullability-declspec
+#         nullability specifier A cannot be applied to non-pointer type B; did you mean to apply the specifier to the <pointer|block pointer|member pointer|function pointer|member function pointer>?
+#   -Wnullability-inferred-on-nested-type
+#         inferring '_Nonnull' for pointer type within <array|reference> is deprecated
+#   -Wobjc-autosynthesis-property-ivar-name-match
+#         autosynthesized property A will use [synthesized] instance variable C, not existing instance variable D
+#   -Wobjc-circular-container
+#         adding 'A' to 'B' might cause circular dependency in container
+#   -Wobjc-cocoa-api
+#     -Wobjc-redundant-api-use
+#       -Wobjc-redundant-literal-use
+#             using A with a literal is redundant
+#   -Wobjc-forward-class-redefinition
+#         redefinition of forward class A of a typedef name of an object type is ignored
+#   -Wobjc-literal-compare
+#         direct comparison of [an array literal|a dictionary literal|a numeric literal|a boxed expression] has undefined behavior
+#     -Wobjc-string-compare
+#           direct comparison of a string literal has undefined behavior
+#   -Wobjc-macro-redefinition
+#         ignoring redefinition of Objective-C qualifier macro
+#   -Wobjc-method-access
+#         class method A not found (return type defaults to 'id')
+#         class method A not found (return type defaults to 'id'); did you mean C?
+#         instance method A found instead of class method B
+#         instance method A is being used on 'Class' which is not in the root class
+#         instance method A not found (return type defaults to 'id')
+#         instance method A not found (return type defaults to 'id'); did you mean C?
+#   -Wobjc-multiple-method-names
+#         multiple methods named A found
+#   -Wobjc-noncopy-retain-block-property
+#         retain'ed block property does not copy the block - use copy attribute instead
+#   -Wobjc-nonunified-exceptions
+#         cannot catch an exception thrown with @throw in C++ in the non-unified exception model
+#   -Wobjc-property-implementation
+#         class property A requires method B to be defined - use @dynamic or provide a method implementation in this category
+#         class property A requires method B to be defined - use @dynamic or provide a method implementation in this class implementation
+#         property A requires method B to be defined - use @dynamic or provide a method implementation in this category
+#         property A requires method B to be defined - use @synthesize, @dynamic or provide a method implementation in this class implementation
+#   -Wobjc-property-implicit-mismatch
+#         primary property declaration is implicitly strong while redeclaration in class extension is weak
+#   -Wobjc-property-matches-cocoa-ownership-rule
+#         property follows Cocoa naming convention for returning 'owned' objects
+#   -Wobjc-property-no-attribute
+#         default property attribute 'assign' not appropriate for object
+#         no 'assign', 'retain', or 'copy' attribute is specified - 'assign' is assumed
+#   -Wobjc-property-synthesis
+#         auto property synthesis will not synthesize property A because it cannot share an ivar with another synthesized property
+#         auto property synthesis will not synthesize property A because it is 'readwrite' but it will be synthesized 'readonly' via another property
+#         auto property synthesis will not synthesize property A; it will be implemented by its superclass, use @dynamic to acknowledge intention
+#   -Wobjc-protocol-method-implementation
+#         category is implementing a method which will also be implemented by its primary class
+#   -Wobjc-protocol-property-synthesis
+#         auto property synthesis will not synthesize property A declared in protocol B
+#   -Wobjc-protocol-qualifiers
+#         parameterized class A already conforms to the protocols listed; did you forget a '*'?
+#   -Wobjc-readonly-with-setter-property
+#         setter cannot be specified for a readonly property
+#   -Wobjc-root-class
+#         class A defined without specifying a base class
+#   -Wobjc-string-concatenation
+#         concatenated NSString literal for an NSArray expression - possibly missing a comma
+#   -Wobjc-unsafe-perform-selector
+#         A is incompatible with selectors that return a <struct|union|vector> type
+#   -Wodr
+#         type A has incompatible definitions in different translation units
+#   -Wopencl-unsupported-rgba
+#         vector component name 'A' is an OpenCL version 2.2 feature
+#   -Wopenmp-clauses
+#         aligned clause will be ignored because the requested alignment is not a power of 2
+#         zero linear step (A [and other variables in clause ]should probably be const)
+#   -Wopenmp-loop-form
+#         OpenMP loop iteration variable cannot have more than 64 bits size and will be narrowed
+#         initialization clause of OpenMP for loop is not in canonical form ('var = init' or 'T var = init')
+#   -Wopenmp-target
+#         The OpenMP offloading target 'A' is similar to target 'B' already specified - will be ignored.
+#         declaration is not declared in any declare target region
+#   -Woption-ignored
+#         ignoring '-mabicalls' option as it cannot be used with non position-independent code and the N64 ABI
+#         ignoring '-mlong-calls' option as it is not currently supported with [the implicit usage of ]-mabicalls
+#         option '-ffine-grained-bitfield-accesses' cannot be enabled together with a sanitizer; flag ignored
+#         option 'A' was ignored by the PS4 toolchain, using '-fPIC'
+#   -Wout-of-line-declaration
+#         out-of-line declaration of a member must be a definition
+#   -Wout-of-scope-function
+#         use of out-of-scope declaration of A[ whose type is not compatible with that of an implicit declaration]
+#   -Woverride-module
+#         overriding the module target triple with A
+#   -Woverriding-t-option
+#         overriding 'A' option with 'B'
+#   -Wpartial-availability (partial)
+#     -Wunguarded-availability (partial)
+#       -Wunguarded-availability-new
+#             A is only available on B C or newer
+#   -Wpass-failed
+#         The text of this diagnostic is not controlled by Clang
+#   -Wpch-date-time
+#         <precompiled header|module> uses __DATE__ or __TIME__
+#   -Wpointer-arith (partial)
+#         subtraction of pointers to type A of zero size has undefined behavior
+#   -Wpointer-sign
+#         <assigning to different types|passing to parameter of different type|returning from function with different return type|converting between types|initializing with expression of different type|sending to parameter of different type|casting between types> converts between pointers to integer types with different sign
+#   -Wpointer-type-mismatch
+#         pointer type mismatch
+#   -Wpragma-once-outside-header
+#         #pragma once in main file
+#   -Wpragma-system-header-outside-header
+#         #pragma system_header ignored in main file
+#   -Wpragmas (partial)
+#         #pragma redefine_extname is applicable to external C declarations only; not applied to <function|variable> B
+#     -Wignored-pragmas
+#           #pragma A(pop, ...) failed: B
+#           #pragma options align=reset failed: A
+#           '#pragma comment A' ignored
+#           '#pragma init_seg' is only supported when targeting a Microsoft environment
+#           OpenCL extension end directive mismatches begin directive - ignoring
+#           expected #pragma pack parameter to be '1', '2', '4', '8', or '16'
+#           expected '#pragma unused' argument to be a variable name
+#           expected ')' or ',' in '#pragma A'
+#           expected '=' following '#pragma <align|options align>' - ignored
+#           expected 'align' following '#pragma options' - ignored
+#           expected 'compiler', 'lib', 'user', or a string literal for the section name in '#pragma A' - ignored
+#           expected <'enable', 'disable', 'begin' or 'end'|'disable'> - ignoring
+#           expected a stack label or a string literal for the section name in '#pragma A' - ignored
+#           expected a string literal for the section name in '#pragma A' - ignored
+#           expected action or ')' in '#pragma A' - ignored
+#           expected identifier in '#pragma A' - ignored
+#           expected integer between A and B inclusive in '#pragma C' - ignored
+#           expected integer or identifier in '#pragma pack' - ignored
+#           expected non-wide string literal in '#pragma A'
+#           expected push, pop or a string literal for the section name in '#pragma A' - ignored
+#           extra tokens at end of '#pragma A' - ignored
+#           incorrect use of #pragma clang force_cuda_host_device begin|end
+#           incorrect use of '#pragma ms_struct on|off' - ignored
+#           invalid alignment option in '#pragma <align|options align>' - ignored
+#           known but unsupported action 'B' for '#pragma A' - ignored
+#           missing '(' after '#pragma A' - ignoring
+#           missing ')' after '#pragma A' - ignoring
+#           missing ':' after A - ignoring
+#           missing ':' or ')' after A - ignoring
+#           missing argument to debug command 'A'
+#           only variables can be arguments to '#pragma unused'
+#           pragma pop_macro could not pop 'A', no matching push_macro
+#           undeclared variable A used as an argument for '#pragma unused'
+#           unexpected debug command 'A'
+#           unknown OpenCL extension A - ignoring
+#           unknown action 'B' for '#pragma A' - ignored
+#           unknown action for '#pragma A' - ignored
+#           unsupported OpenCL extension A - ignoring
+#       -Wignored-pragma-intrinsic
+#             A is not a recognized builtin[; consider including <intrin.h> to access non-builtin intrinsics]
+#     -Wpragma-clang-attribute
+#           unused attribute A in '#pragma clang attribute push' region
+#     -Wpragma-pack (partial)
+#           the current #pragma pack aligment value is modified in the included file
+#           unterminated '#pragma pack (push, ...)' at end of file
+#     -Wunknown-pragmas (partial)
+#           #pragma warning expected 'A'
+#           #pragma warning expected 'push', 'pop', 'default', 'disable', 'error', 'once', 'suppress', 1, 2, 3, or 4
+#           #pragma warning expected a warning number
+#           #pragma warning(push, level) requires a level between 0 and 4
+#           angle-bracketed include <A> cannot be aliased to double-quoted include "B"
+#           double-quoted include "A" cannot be aliased to angle-bracketed include <B>
+#           expected 'ON' or 'OFF' or 'DEFAULT' in pragma
+#           expected end of directive in pragma
+#           pragma STDC FENV_ACCESS ON is not supported, ignoring pragma
+#           pragma diagnostic expected 'error', 'warning', 'ignored', 'fatal', 'push', or 'pop'
+#           pragma diagnostic expected option name (e.g. "-Wundef")
+#           pragma diagnostic pop could not pop, no matching push
+#           pragma include_alias expected 'A'
+#           pragma include_alias expected include filename
+#           unexpected token in pragma diagnostic
+#           unknown pragma in STDC namespace
+#   -Wpredefined-identifier-outside-function
+#         predefined identifier is only valid inside function
+#   -Wprivate-header
+#         use of private header from outside its module: 'A'
+#   -Wprivate-module
+#         expected canonical name for private module 'A'
+#         module 'A' already re-exported as 'B'
+#         no submodule named A in module 'B'; using top level 'C'
+#         private submodule 'A' in private module map, expected top-level module
+#   -Wprofile-instr-out-of-date
+#         profile data may be out of date: of A function(s), B <has|have> mismatched data that will be ignored
+#   -Wprofile-instr-unprofiled
+#         no profile data available for file "A"
+#   -Wproperty-access-dot-syntax
+#         property A not found on object of type B; did you mean to access property C?
+#   -Wproperty-attribute-mismatch
+#         'B' attribute on property A does not match the property inherited from C
+#         attribute 'readonly' of property A restricts attribute 'readwrite' of property inherited from B
+#         getter name mismatch between property redeclaration (B) and its original declaration (A)
+#         property attribute in class extension does not match the primary class
+#   -Wprotocol
+#         <class|category> B does not conform to protocol< D|s D and E|s D, E and F|s D, E, F, ...>
+#         method A in protocol B not implemented
+#   -Wprotocol-property-synthesis-ambiguity
+#         property <of type B|with attribute 'B'|without attribute 'B'|with getter B|with setter B> was selected for synthesis
+#   -Wqualified-void-return-type
+#         function cannot return qualified void type A
+#   -Wreadonly-iboutlet-property
+#         readonly IBOutlet property A when auto-synthesized may not work correctly with 'nib' loader
+#   -Wreceiver-expr
+#         receiver type A is not 'id' or interface pointer, consider casting it to 'id'
+#   -Wreceiver-forward-class (partial)
+#         receiver A is a forward class and corresponding @interface may not exist
+#   -Wregister
+#         ISO C++17 does not allow 'register' storage class specifier
+#     -Wdeprecated-register
+#           'register' storage class specifier is deprecated and incompatible with C++17
+#   -Wreinterpret-base-class
+#         'reinterpret_cast' <from|to> class A <to|from> its <virtual base|base at non-zero offset> B behaves differently from 'static_cast'
+#   -Wrequires-super-attribute
+#         A attribute cannot be applied to <methods in protocols|dealloc>
+#   -Wreserved-user-defined-literal (partial)
+#         invalid suffix on literal; C++11 requires a space between literal and identifier
+#   -Wreturn-stack-address
+#         <address of|reference to> stack memory associated with local variable B returned
+#         returning <address of|reference to> local temporary object
+#         returning address of label, which is local
+#   -Wrtti-for-exceptions
+#         implicitly enabling rtti for exception handling
+#   -Wsection
+#         section attribute is specified on redeclared variable
+#         section does not match previous declaration
+#   -Wsentinel
+#         missing sentinel in <function call|method dispatch|block call>
+#         not enough variable arguments in A declaration to fit a sentinel
+#   -Wsequence-point
+#     -Wunsequenced
+#           multiple unsequenced modifications to A
+#           unsequenced modification and access to A
+#   -Wserialized-diagnostics
+#         unable to merge a subprocess's serialized diagnostics
+#         unable to open file A for serializing diagnostics (B)
+#   -Wshadow-all (partial)
+#     -Wshadow (partial)
+#       -Wshadow-ivar
+#             local declaration of A hides instance variable
+#   -Wshift-count-negative
+#         shift count is negative
+#   -Wshift-count-overflow
+#         shift count >= width of type
+#   -Wshift-negative-value
+#         shifting a negative signed value is undefined
+#   -Wshift-overflow
+#         signed shift result (A) requires B bits to represent, but C only has D bits
+#   -Wsizeof-pointer-memaccess
+#         'A' call operates on objects of type B while the size is based on a different type C
+#         argument to 'sizeof' in A call is the same pointer type B as the <destination|source>; expected D or an explicit length
+#   -Wslash-u-filename
+#         '/UA' treated as the '/U' option
+#   -Wsource-uses-openmp (partial)
+#         OpenMP only allows an ordered construct with the simd clause nested in a simd construct
+#   -Wstatic-float-init
+#         in-class initializer for static data member of type A requires 'constexpr' specifier
+#     -Wgnu-static-float-init
+#           in-class initializer for static data member of type A is a GNU extension
+#   -Wstatic-in-inline (partial)
+#         static <function|variable> B is used in an inline function with external linkage
+#   -Wstatic-inline-explicit-instantiation
+#         ignoring '<static|inline>' keyword on explicit template instantiation
+#   -Wstatic-local-in-inline
+#         non-constant static local variable in inline function may be different in different files
+#   -Wstdlibcxx-not-found
+#         include path for stdlibc++ headers not found; pass '-std=libc++' on the command line to use the libc++ standard library instead
+#   -Wstring-plus-char
+#         adding A to a string pointer does not append to the string
+#   -Wstrlcpy-strlcat-size
+#         size argument in A call appears to be size of the source; expected the size of the destination
+#   -Wstrncat-size
+#         size argument in 'strncat' call appears to be size of the source
+#         the value of the size argument in 'strncat' is too large, might lead to a buffer overflow
+#         the value of the size argument to 'strncat' is wrong
+#   -Wswift-name-attribute
+#         A attribute can only be applied to function declarations with prototypes
+#         A attribute cannot be applied to this declaration
+#         A attribute cannot specify more than one 'self:' parameter
+#         A attribute for 'subscript' getter cannot take a 'newValue:' parameter
+#         A attribute for 'subscript' must be a getter or setter
+#         A attribute for 'subscript' must take a 'self:' parameter
+#         A attribute for 'subscript' must take at least one parameter
+#         A attribute for 'subscript' setter cannot take multiple 'newValue:' parameters
+#         A attribute for 'subscript' setter must take a 'newValue:' parameter
+#         A attribute for getter must not take any parameters besides 'self:'
+#         A attribute for setter must take one parameter for new value
+#         A attribute has invalid identifier for base name
+#         A attribute has invalid identifier for context name
+#         A attribute has invalid identifier for parameter name
+#         A attribute is missing parameter label clause
+#         parameter of A attribute must be a Swift function name string
+#         too <few|many> parameters in B attribute (expected C; got D)
+#   -Wswift-newtype-attribute
+#         'swift_newtype' attribute may be put on a typedef only; attribute is ignored
+#   -Wsync-fetch-and-nand-semantics-changed
+#         the semantics of this intrinsic changed with GCC version 4.4 - the newer semantics are provided here
+#   -Wtautological-compare (partial)
+#         <self-|array >comparison always evaluates to <false|true|a constant>
+#         bitwise comparison always evaluates to <false|true>
+#     -Wtautological-constant-compare
+#           result of comparison of <constant A|true|false> with <expression of type C|boolean expression> is always E
+#       -Wtautological-constant-out-of-range-compare
+#             result of comparison of <constant A|true|false> with <expression of type C|boolean expression> is always E
+#     -Wtautological-pointer-compare
+#           comparison of <address of|function|array> 'B' [not ]equal to a null pointer is always <true|false>
+#           comparison of nonnull <function call|parameter> 'B' [not ]equal to a null pointer is '<true|false>' on first encounter
+#     -Wtautological-undefined-compare
+#           'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to <true|false>
+#           reference cannot be bound to dereferenced null pointer in well-defined C++ code; comparison may be assumed to always evaluate to <true|false>
+#   -Wtentative-definition-incomplete-type
+#         tentative definition of variable with internal linkage has incomplete non-array type A
+#   -Wtype-safety
+#         argument type A doesn't match specified B type tag [that requires D]
+#         specified A type tag requires a null pointer
+#         this type tag was not designed to be used with this function
+#   -Wtypedef-redefinition
+#         redefinition of typedef A is a C11 feature
+#   -Wtypename-missing
+#         missing 'typename' prior to dependent type name 'AB'
+#   -Wunable-to-open-stats-file
+#         unable to open statistics output file 'A': 'B'
+#   -Wunavailable-declarations
+#         A may be unavailable because the receiver type is unknown
+#   -Wundefined-inline
+#         inline function A is not defined
+#   -Wundefined-internal
+#         <function|variable> B has internal linkage but is not defined
+#   -Wundefined-var-template
+#         instantiation of variable A required here, but no definition is available
+#   -Wunicode
+#         \A used with no following hex digits; treating as '\' followed by identifier
+#         incomplete universal character name; treating as '\' followed by identifier
+#         universal character name refers to a surrogate character
+#         universal character names are only valid in C99 or C++
+#         universal character names are only valid in C99 or C++; treating as '\' followed by identifier
+#   -Wunicode-homoglyph
+#         treating Unicode character <U+A> as identifier character rather than as 'B' symbol
+#   -Wunicode-whitespace
+#         treating Unicode character as whitespace
+#   -Wunknown-argument
+#         unknown argument ignored in clang-cl: 'A'
+#   -Wunknown-escape-sequence
+#         unknown escape sequence '\A'
+#   -Wunknown-sanitizers
+#         unknown sanitizer 'A' ignored
+#   -Wunknown-warning-option
+#         unknown <warning|remark> option 'B'[; did you mean 'D'?]
+#         unknown A warning specifier: 'B'
+#         unknown warning group 'A', ignored
+#   -Wunnamed-type-template-args (partial)
+#         template argument uses unnamed type
+#   -Wunsupported-abs
+#         ignoring '-mabs=2008' option because the 'A' architecture does not support it
+#         ignoring '-mabs=legacy' option because the 'A' architecture does not support it
+#   -Wunsupported-availability-guard
+#         <@available|__builtin_available> does not guard availability here; use if (<@available|__builtin_available>) instead
+#   -Wunsupported-cb
+#         ignoring '-mcompact-branches=' option because the 'A' architecture does not support it
+#   -Wunsupported-friend
+#         dependent nested name specifier 'A' for friend class declaration is not supported; turning off access control for B
+#         dependent nested name specifier 'A' for friend template declaration is not supported; ignoring this friend declaration
+#   -Wunsupported-gpopt
+#         ignoring '-mgpopt' option as it cannot be used with [the implicit usage of ]-mabicalls
+#   -Wunsupported-nan
+#         ignoring '-mnan=2008' option because the 'A' architecture does not support it
+#         ignoring '-mnan=legacy' option because the 'A' architecture does not support it
+#   -Wunsupported-visibility
+#         target does not support 'protected' visibility; using 'default'
+#   -Wunusable-partial-specialization
+#         <class|variable> template partial specialization contains <a template parameter|template parameters> that cannot be deduced; this partial specialization will never be used
+#   -Wunused-command-line-argument
+#         A: 'B' input unused in cpp mode
+#         A: 'B' input unused[ when 'D' is present]
+#         A: previously preprocessed input[ unused when 'C' is present]
+#         argument 'A' requires profile-guided optimization information
+#         argument unused during compilation: 'A'
+#         joined argument expects additional value: 'A'
+#         the flag 'A' has been deprecated and will be ignored
+#   -Wunused-getter-return-value
+#         property access result unused - getters should not be used for side effects
+#   -Wunused-volatile-lvalue
+#         expression result unused; assign into a variable to force a volatile load
+#   -Wuser-defined-literals
+#         user-defined literal suffixes not starting with '_' are reserved[; no literal will invoke this operator]
+#   -Wvarargs
+#         passing <an object that undergoes default argument promotion|an object of reference type|a parameter declared with the 'register' keyword> to 'va_start' has undefined behavior
+#         second argument to 'va_arg' is of promotable type A; this va_arg has undefined behavior because arguments will be promoted to B
+#         second argument to 'va_start' is not the last named parameter
+#   -Wvariadic-macros (partial)
+#         __VA_OPT__ can only appear in the expansion of a variadic macro
+#   -Wvec-elem-size
+#         vector operands do not have the same elements sizes (A and B)
+#   -Wvexing-parse
+#         empty parentheses interpreted as a function declaration
+#         parentheses were disambiguated as a function declaration
+#         parentheses were disambiguated as redundant parentheses around declaration of variable named A
+#   -Wvisibility
+#         declaration of A will not be visible outside of this function
+#         redefinition of A will not be visible outside of this function
+#   -Wvoid-ptr-dereference
+#         ISO C++ does not allow indirection on operand of type A
+#   -Wwrite-strings
+#     -Wwritable-strings
+#           ISO C++11 does not allow conversion from string literal to A
+#       -Wdeprecated-writable-strings
+#         -Wc++11-compat-deprecated-writable-strings
+#               conversion from string literal to A is deprecated
+-W
+#   -Wextra
+#         call to function without interrupt attribute could clobber interruptee's VFP registers
+#     -Wignored-qualifiers
+#           'A' qualifier on function type B has no effect
+#           'A' qualifier on omitted return type B has no effect
+#           'A' qualifier on reference type B has no effect
+#           'A' type qualifier(s) on return type <has|have> no effect
+#           ARC <unused|__unsafe_unretained|__strong|__weak|__autoreleasing> lifetime qualifier on return type is ignored
+#     -Winitializer-overrides
+#           initializer overrides prior initialization of this subobject
+#           subobject initialization overrides initialization of other fields within its enclosing subobject
+#     -Wmissing-field-initializers
+#           missing field A initializer
+#     -Wmissing-method-return-type
+#           method has no return type specified; defaults to 'id'
+#     -Wnull-pointer-arithmetic
+#           arithmetic on a null pointer treated as a cast from integer to pointer is a GNU extension
+#           performing pointer arithmetic on a null pointer has undefined behavior[ if the offset is nonzero]
+#     -Wsemicolon-before-method-body
+#           semicolon before method body is ignored
+#     -Wsign-compare
+#           comparison of integers of different signs: A and B
+#     -Wunused-parameter
+#           unused parameter A
+-Wabi # DUMMY switch
+-Wabstract-vbase-init
+#     initializer for virtual base class A of abstract class B will never be used
+-Waggregate-return # DUMMY switch
+-Warc-repeated-use-of-weak
+#     weak <variable|property|implicit property|instance variable> B is accessed multiple times in this <function|method|block|lambda> but may be unpredictably set to nil; assign to a strong variable to keep the object alive
+#   -Warc-maybe-repeated-use-of-weak
+#         weak <variable|property|implicit property|instance variable> B may be accessed multiple times in this <function|method|block|lambda> and may be unpredictably set to nil; assign to a strong variable to keep the object alive
+-Warray-bounds-pointer-arithmetic
+#     the pointer decremented by A refers before the beginning of the array
+#     the pointer incremented by A refers past the end of the array (that contains B element(s))
+-Wassign-enum
+#     integer constant not in range of enumerated type A
+-Watomic-properties
+#   -Wcustom-atomic-properties
+#         atomic by default property A has a user defined <getter|setter> (property should be marked 'atomic' if this is intended)
+#   -Wimplicit-atomic-properties
+#         property is assumed atomic by default
+#         property is assumed atomic when auto-synthesizing the property
+-Wauto-import
+#     treating #<include|import|include_next|__include_macros> as an import of module 'B'
+-Wbad-function-cast
+#     cast from function call of type A to non-matching type B
+-Wbinary-literal
+#   -Wc++14-binary-literal
+#         binary integer literals are a C++14 extension
+#   -Wc++98-c++11-compat-binary-literal
+#         binary integer literals are incompatible with C++ standards before C++14
+#   -Wgnu-binary-literal
+#         binary integer literals are a GNU extension
+-Wbind-to-temporary-copy
+#     C++98 requires an accessible copy constructor for class C when binding a reference to a temporary; was <private|protected>
+#     no viable constructor <copying variable|copying parameter|returning object|throwing object|copying member subobject|copying array element|allocating object|copying temporary|initializing base subobject|initializing vector element|capturing value> of type B; C++98 requires a copy constructor when binding a reference to a temporary
+#   -Wc++98-compat-bind-to-temporary-copy
+#         <copying variable|copying parameter|returning object|throwing object|copying member subobject|copying array element|allocating object|copying temporary|initializing base subobject|initializing vector element> of type C when binding a reference to a temporary would <invoke an inaccessible constructor|find no viable constructor|find ambiguous constructors|invoke a deleted constructor> in C++98
+-Wc++-compat
+#     [empty ]<struct|union> has size 0 in C, <size 1|non-zero size> in C++
+-Wc++0x-compat
+#   -Wc++11-compat
+#         'A' is a keyword in C++11
+#         'auto' storage class specifier is redundant and incompatible with C++11
+#         explicit instantiation cannot be 'inline'
+#         explicit instantiation of A must occur at global scope
+#         explicit instantiation of A must occur in namespace B
+#         explicit instantiation of A not in a namespace enclosing B
+#         identifier after literal will be treated as a user-defined literal suffix in C++11
+#         integer literal is too large to be represented in type 'long' and is subject to undefined behavior under C++98, interpreting as 'unsigned long'; this literal will <have type 'long long'|be ill-formed> in C++11 onwards
+#         integer literal is too large to be represented in type 'long', interpreting as 'unsigned long' per C++98; this literal will <have type 'long long'|be ill-formed> in C++11 onwards
+#         use of right-shift operator ('>>') in template argument will require parentheses in C++11
+#     -Wc++11-compat-deprecated-writable-strings
+#           conversion from string literal to A is deprecated
+#     -Wc++11-compat-reserved-user-defined-literal
+#           identifier after literal will be treated as a reserved user-defined literal suffix in C++11
+#     -Wc++11-narrowing
+#           <case value|enumerator value|non-type template argument|array size|constexpr if condition> <cannot be narrowed from type C to D|evaluates to C, which cannot be narrowed to type D>
+#           constant expression evaluates to A which cannot be narrowed to type B
+#           constant expression evaluates to A which cannot be narrowed to type B in C++11
+#           non-constant-expression cannot be narrowed from type A to B in initializer list
+#           non-constant-expression cannot be narrowed from type A to B in initializer list in C++11
+#           type A cannot be narrowed to B in initializer list
+#           type A cannot be narrowed to B in initializer list in C++11
+#     -Wc++98-c++11-c++14-c++17-compat
+#           '<=>' operator is incompatible with C++ standards before C++2a
+#           default member initializer for bit-field is incompatible with C++ standards before C++2a
+#           explicit capture of 'this' with a capture default of '=' is incompatible with C++ standards before C++2a
+#     -Wc++98-c++11-c++14-compat
+#           'begin' and 'end' returning different types (A and B) is incompatible with C++ standards before C++17
+#           <if|switch> initialization statements are incompatible with C++ standards before C++17
+#           by value capture of '*this' is incompatible with C++ standards before C++17
+#           constexpr if is incompatible with C++ standards before C++17
+#           constexpr on lambda expressions is incompatible with C++ standards before C++17
+#           decomposition declarations are incompatible with C++ standards before C++17
+#           default scope specifier for attributes is incompatible with C++ standards before C++17
+#           inline variables are incompatible with C++ standards before C++17
+#           nested namespace definition is incompatible with C++ standards before C++17
+#           non-type template parameters declared with A are incompatible with C++ standards before C++17
+#           pack expansion using declaration is incompatible with C++ standards before C++17
+#           pack fold expression is incompatible with C++ standards before C++17
+#           static_assert with no message is incompatible with C++ standards before C++17
+#           template template parameter using 'typename' is incompatible with C++ standards before C++17
+#           unicode literals are incompatible with C++ standards before C++17
+#           use of multiple declarators in a single using declaration is incompatible with C++ standards before C++17
+#     -Wc++98-c++11-compat
+#           'decltype(auto)' type specifier is incompatible with C++ standards before C++14
+#           constexpr function with no return statements is incompatible with C++ standards before C++14
+#           digit separators are incompatible with C++ standards before C++14
+#           initialized lambda captures are incompatible with C++ standards before C++14
+#           multiple return statements in constexpr function is incompatible with C++ standards before C++14
+#           type definition in a constexpr <function|constructor> is incompatible with C++ standards before C++14
+#           use of this statement in a constexpr <function|constructor> is incompatible with C++ standards before C++14
+#           variable declaration in a constexpr <function|constructor> is incompatible with C++ standards before C++14
+#           variable templates are incompatible with C++ standards before C++14
+-Wc++0x-extensions
+#   -Wc++11-extensions
+#         'A' keyword is a C++11 extension
+#         'auto' type specifier is a C++11 extension
+#         'template' keyword outside of a template
+#         'typename' occurs outside of a template
+#         <defaulted|deleted> function definitions are a C++11 extension
+#         alias declarations are a C++11 extension
+#         befriending enumeration type A is a C++11 extension
+#         commas at the end of enumerator lists are a C++11 extension
+#         default template arguments for a function template are a C++11 extension
+#         enumeration types with a fixed underlying type are a C++11 extension
+#         explicit conversion functions are a C++11 extension
+#         extern templates are a C++11 extension
+#         first declaration of <class template|class template partial|variable template|variable template partial|function template|member function|static data member|member class|member enumeration> specialization of B outside namespace C is a C++11 extension
+#         generalized initializer lists are a C++11 extension
+#         implicit conversion from array size expression of type A to <integral|enumeration> type C is a C++11 extension
+#         in-class initialization of non-static data member is a C++11 extension
+#         non-class friend type A is a C++11 extension
+#         non-type template argument referring to <function|object> B with internal linkage is a C++11 extension
+#         range-based for loop is a C++11 extension
+#         reference qualifiers on functions are a C++11 extension
+#         rvalue references are a C++11 extension
+#         scoped enumerations are a C++11 extension
+#         static data member A in union is a C++11 extension
+#         unelaborated friend declaration is a C++11 extension; specify '<struct|interface|union|class|enum>' to befriend B
+#         use of enumeration in a nested name specifier is a C++11 extension
+#         variadic templates are a C++11 extension
+#     -Wc++11-extra-semi
+#           extra ';' outside of a function is a C++11 extension
+#     -Wc++11-inline-namespace
+#           inline namespaces are a C++11 feature
+#     -Wc++11-long-long
+#           'long long' is a C++11 extension
+-Wc++0x-narrowing
+#   -Wc++11-narrowing
+#         <case value|enumerator value|non-type template argument|array size|constexpr if condition> <cannot be narrowed from type C to D|evaluates to C, which cannot be narrowed to type D>
+#         constant expression evaluates to A which cannot be narrowed to type B
+#         constant expression evaluates to A which cannot be narrowed to type B in C++11
+#         non-constant-expression cannot be narrowed from type A to B in initializer list
+#         non-constant-expression cannot be narrowed from type A to B in initializer list in C++11
+#         type A cannot be narrowed to B in initializer list
+#         type A cannot be narrowed to B in initializer list in C++11
+-Wc++11-compat-pedantic
+#   -Wc++11-compat
+#         'A' is a keyword in C++11
+#         'auto' storage class specifier is redundant and incompatible with C++11
+#         explicit instantiation cannot be 'inline'
+#         explicit instantiation of A must occur at global scope
+#         explicit instantiation of A must occur in namespace B
+#         explicit instantiation of A not in a namespace enclosing B
+#         identifier after literal will be treated as a user-defined literal suffix in C++11
+#         integer literal is too large to be represented in type 'long' and is subject to undefined behavior under C++98, interpreting as 'unsigned long'; this literal will <have type 'long long'|be ill-formed> in C++11 onwards
+#         integer literal is too large to be represented in type 'long', interpreting as 'unsigned long' per C++98; this literal will <have type 'long long'|be ill-formed> in C++11 onwards
+#         use of right-shift operator ('>>') in template argument will require parentheses in C++11
+#     -Wc++11-compat-deprecated-writable-strings
+#           conversion from string literal to A is deprecated
+#     -Wc++11-compat-reserved-user-defined-literal
+#           identifier after literal will be treated as a reserved user-defined literal suffix in C++11
+#     -Wc++11-narrowing
+#           <case value|enumerator value|non-type template argument|array size|constexpr if condition> <cannot be narrowed from type C to D|evaluates to C, which cannot be narrowed to type D>
+#           constant expression evaluates to A which cannot be narrowed to type B
+#           constant expression evaluates to A which cannot be narrowed to type B in C++11
+#           non-constant-expression cannot be narrowed from type A to B in initializer list
+#           non-constant-expression cannot be narrowed from type A to B in initializer list in C++11
+#           type A cannot be narrowed to B in initializer list
+#           type A cannot be narrowed to B in initializer list in C++11
+#     -Wc++98-c++11-c++14-c++17-compat
+#           '<=>' operator is incompatible with C++ standards before C++2a
+#           default member initializer for bit-field is incompatible with C++ standards before C++2a
+#           explicit capture of 'this' with a capture default of '=' is incompatible with C++ standards before C++2a
+#     -Wc++98-c++11-c++14-compat
+#           'begin' and 'end' returning different types (A and B) is incompatible with C++ standards before C++17
+#           <if|switch> initialization statements are incompatible with C++ standards before C++17
+#           by value capture of '*this' is incompatible with C++ standards before C++17
+#           constexpr if is incompatible with C++ standards before C++17
+#           constexpr on lambda expressions is incompatible with C++ standards before C++17
+#           decomposition declarations are incompatible with C++ standards before C++17
+#           default scope specifier for attributes is incompatible with C++ standards before C++17
+#           inline variables are incompatible with C++ standards before C++17
+#           nested namespace definition is incompatible with C++ standards before C++17
+#           non-type template parameters declared with A are incompatible with C++ standards before C++17
+#           pack expansion using declaration is incompatible with C++ standards before C++17
+#           pack fold expression is incompatible with C++ standards before C++17
+#           static_assert with no message is incompatible with C++ standards before C++17
+#           template template parameter using 'typename' is incompatible with C++ standards before C++17
+#           unicode literals are incompatible with C++ standards before C++17
+#           use of multiple declarators in a single using declaration is incompatible with C++ standards before C++17
+#     -Wc++98-c++11-compat
+#           'decltype(auto)' type specifier is incompatible with C++ standards before C++14
+#           constexpr function with no return statements is incompatible with C++ standards before C++14
+#           digit separators are incompatible with C++ standards before C++14
+#           initialized lambda captures are incompatible with C++ standards before C++14
+#           multiple return statements in constexpr function is incompatible with C++ standards before C++14
+#           type definition in a constexpr <function|constructor> is incompatible with C++ standards before C++14
+#           use of this statement in a constexpr <function|constructor> is incompatible with C++ standards before C++14
+#           variable declaration in a constexpr <function|constructor> is incompatible with C++ standards before C++14
+#           variable templates are incompatible with C++ standards before C++14
+#   -Wc++98-c++11-c++14-c++17-compat-pedantic
+#         invoking a pointer to a 'const &' member function on an rvalue is incompatible with C++ standards before C++2a
+#     -Wc++98-c++11-c++14-c++17-compat
+#           '<=>' operator is incompatible with C++ standards before C++2a
+#           default member initializer for bit-field is incompatible with C++ standards before C++2a
+#           explicit capture of 'this' with a capture default of '=' is incompatible with C++ standards before C++2a
+#   -Wc++98-c++11-c++14-compat-pedantic
+#         attributes on <a namespace|an enumerator> declaration are incompatible with C++ standards before C++17
+#         hexadecimal floating literals are incompatible with C++ standards before C++17
+#     -Wc++98-c++11-c++14-compat
+#           'begin' and 'end' returning different types (A and B) is incompatible with C++ standards before C++17
+#           <if|switch> initialization statements are incompatible with C++ standards before C++17
+#           by value capture of '*this' is incompatible with C++ standards before C++17
+#           constexpr if is incompatible with C++ standards before C++17
+#           constexpr on lambda expressions is incompatible with C++ standards before C++17
+#           decomposition declarations are incompatible with C++ standards before C++17
+#           default scope specifier for attributes is incompatible with C++ standards before C++17
+#           inline variables are incompatible with C++ standards before C++17
+#           nested namespace definition is incompatible with C++ standards before C++17
+#           non-type template parameters declared with A are incompatible with C++ standards before C++17
+#           pack expansion using declaration is incompatible with C++ standards before C++17
+#           pack fold expression is incompatible with C++ standards before C++17
+#           static_assert with no message is incompatible with C++ standards before C++17
+#           template template parameter using 'typename' is incompatible with C++ standards before C++17
+#           unicode literals are incompatible with C++ standards before C++17
+#           use of multiple declarators in a single using declaration is incompatible with C++ standards before C++17
+#   -Wc++98-c++11-compat-pedantic
+#     -Wc++98-c++11-compat
+#           'decltype(auto)' type specifier is incompatible with C++ standards before C++14
+#           constexpr function with no return statements is incompatible with C++ standards before C++14
+#           digit separators are incompatible with C++ standards before C++14
+#           initialized lambda captures are incompatible with C++ standards before C++14
+#           multiple return statements in constexpr function is incompatible with C++ standards before C++14
+#           type definition in a constexpr <function|constructor> is incompatible with C++ standards before C++14
+#           use of this statement in a constexpr <function|constructor> is incompatible with C++ standards before C++14
+#           variable declaration in a constexpr <function|constructor> is incompatible with C++ standards before C++14
+#           variable templates are incompatible with C++ standards before C++14
+#     -Wc++98-c++11-compat-binary-literal
+#           binary integer literals are incompatible with C++ standards before C++14
+-Wc++14-compat-pedantic
+#   -Wc++14-compat
+#     -Wc++98-c++11-c++14-c++17-compat
+#           '<=>' operator is incompatible with C++ standards before C++2a
+#           default member initializer for bit-field is incompatible with C++ standards before C++2a
+#           explicit capture of 'this' with a capture default of '=' is incompatible with C++ standards before C++2a
+#     -Wc++98-c++11-c++14-compat
+#           'begin' and 'end' returning different types (A and B) is incompatible with C++ standards before C++17
+#           <if|switch> initialization statements are incompatible with C++ standards before C++17
+#           by value capture of '*this' is incompatible with C++ standards before C++17
+#           constexpr if is incompatible with C++ standards before C++17
+#           constexpr on lambda expressions is incompatible with C++ standards before C++17
+#           decomposition declarations are incompatible with C++ standards before C++17
+#           default scope specifier for attributes is incompatible with C++ standards before C++17
+#           inline variables are incompatible with C++ standards before C++17
+#           nested namespace definition is incompatible with C++ standards before C++17
+#           non-type template parameters declared with A are incompatible with C++ standards before C++17
+#           pack expansion using declaration is incompatible with C++ standards before C++17
+#           pack fold expression is incompatible with C++ standards before C++17
+#           static_assert with no message is incompatible with C++ standards before C++17
+#           template template parameter using 'typename' is incompatible with C++ standards before C++17
+#           unicode literals are incompatible with C++ standards before C++17
+#           use of multiple declarators in a single using declaration is incompatible with C++ standards before C++17
+#   -Wc++98-c++11-c++14-c++17-compat-pedantic
+#         invoking a pointer to a 'const &' member function on an rvalue is incompatible with C++ standards before C++2a
+#     -Wc++98-c++11-c++14-c++17-compat
+#           '<=>' operator is incompatible with C++ standards before C++2a
+#           default member initializer for bit-field is incompatible with C++ standards before C++2a
+#           explicit capture of 'this' with a capture default of '=' is incompatible with C++ standards before C++2a
+#   -Wc++98-c++11-c++14-compat-pedantic
+#         attributes on <a namespace|an enumerator> declaration are incompatible with C++ standards before C++17
+#         hexadecimal floating literals are incompatible with C++ standards before C++17
+#     -Wc++98-c++11-c++14-compat
+#           'begin' and 'end' returning different types (A and B) is incompatible with C++ standards before C++17
+#           <if|switch> initialization statements are incompatible with C++ standards before C++17
+#           by value capture of '*this' is incompatible with C++ standards before C++17
+#           constexpr if is incompatible with C++ standards before C++17
+#           constexpr on lambda expressions is incompatible with C++ standards before C++17
+#           decomposition declarations are incompatible with C++ standards before C++17
+#           default scope specifier for attributes is incompatible with C++ standards before C++17
+#           inline variables are incompatible with C++ standards before C++17
+#           nested namespace definition is incompatible with C++ standards before C++17
+#           non-type template parameters declared with A are incompatible with C++ standards before C++17
+#           pack expansion using declaration is incompatible with C++ standards before C++17
+#           pack fold expression is incompatible with C++ standards before C++17
+#           static_assert with no message is incompatible with C++ standards before C++17
+#           template template parameter using 'typename' is incompatible with C++ standards before C++17
+#           unicode literals are incompatible with C++ standards before C++17
+#           use of multiple declarators in a single using declaration is incompatible with C++ standards before C++17
+-Wc++17-compat-pedantic
+#   -Wc++17-compat
+#     -Wc++17-compat-mangling
+#           mangled name of A will change in C++17 due to non-throwing exception specification in function signature
+#     -Wc++98-c++11-c++14-c++17-compat
+#           '<=>' operator is incompatible with C++ standards before C++2a
+#           default member initializer for bit-field is incompatible with C++ standards before C++2a
+#           explicit capture of 'this' with a capture default of '=' is incompatible with C++ standards before C++2a
+#     -Wdeprecated-increment-bool
+#           incrementing expression of type bool is deprecated and incompatible with C++17
+#     -Wdeprecated-register
+#           'register' storage class specifier is deprecated and incompatible with C++17
+#   -Wc++98-c++11-c++14-c++17-compat-pedantic
+#         invoking a pointer to a 'const &' member function on an rvalue is incompatible with C++ standards before C++2a
+#     -Wc++98-c++11-c++14-c++17-compat
+#           '<=>' operator is incompatible with C++ standards before C++2a
+#           default member initializer for bit-field is incompatible with C++ standards before C++2a
+#           explicit capture of 'this' with a capture default of '=' is incompatible with C++ standards before C++2a
+-Wc++1y-extensions
+#   -Wc++14-extensions
+#         'decltype(auto)' type specifier is a C++14 extension
+#         initialized lambda captures are a C++14 extension
+#         multiple return statements in constexpr function is a C++14 extension
+#         type definition in a constexpr <function|constructor> is a C++14 extension
+#         use of the A attribute is a C++14 extension
+#         use of this statement in a constexpr <function|constructor> is a C++14 extension
+#         variable declaration in a constexpr <function|constructor> is a C++14 extension
+#         variable templates are a C++14 extension
+#     -Wc++14-binary-literal
+#           binary integer literals are a C++14 extension
+-Wc++1z-compat
+#   -Wc++17-compat
+#     -Wc++17-compat-mangling
+#           mangled name of A will change in C++17 due to non-throwing exception specification in function signature
+#     -Wc++98-c++11-c++14-c++17-compat
+#           '<=>' operator is incompatible with C++ standards before C++2a
+#           default member initializer for bit-field is incompatible with C++ standards before C++2a
+#           explicit capture of 'this' with a capture default of '=' is incompatible with C++ standards before C++2a
+#     -Wdeprecated-increment-bool
+#           incrementing expression of type bool is deprecated and incompatible with C++17
+#     -Wdeprecated-register
+#           'register' storage class specifier is deprecated and incompatible with C++17
+-Wc++1z-extensions
+#   -Wc++17-extensions
+#         '<if|switch>' initialization statements are a C++17 extension
+#         'begin' and 'end' returning different types (A and B) is a C++17 extension
+#         'constexpr' on lambda expressions is a C++17 extension
+#         ISO C++ standards before C++17 do not allow new expression for type A to use list-initialization
+#         attributes on <a namespace|an enumerator> declaration are a C++17 extension
+#         capture of '*this' by copy is a C++17 extension
+#         constexpr if is a C++17 extension
+#         decomposition declarations are a C++17 extension
+#         default scope specifier for attributes is a C++17 extension
+#         hexadecimal floating literals are a C++17 feature
+#         inline variables are a C++17 extension
+#         nested namespace definition is a C++17 extension; define each namespace separately
+#         pack expansion of using declaration is a C++17 extension
+#         pack fold expression is a C++17 extension
+#         static_assert with no message is a C++17 extension
+#         template template parameter using 'typename' is a C++17 extension
+#         use of multiple declarators in a single using declaration is a C++17 extension
+#         use of the A attribute is a C++17 extension
+-Wc++2a-compat-pedantic
+#   -Wc++2a-compat
+#         '<=>' is a single token in C++2a; add a space to avoid a change in behavior
+#         'A' is a keyword in C++2a
+-Wc++2a-extensions
+#     default member initializer for bit-field is a C++2a extension
+#     explicit capture of 'this' with a capture default of '=' is a C++2a extension
+#     invoking a pointer to a 'const &' member function on an rvalue is a C++2a extension
+-Wc++98-compat-pedantic
+#     #line number greater than 32767 is incompatible with C++98
+#     'long long' is incompatible with C++98
+#     C++98 requires newline at end of file
+#     cast between pointer-to-function and pointer-to-object is incompatible with C++98
+#     commas at the end of enumerator lists are incompatible with C++98
+#     empty macro arguments are incompatible with C++98
+#     extern templates are incompatible with C++98
+#     extra ';' outside of a function is incompatible with C++98
+#     implicit conversion from array size expression of type A to <integral|enumeration> type C is incompatible with C++98
+#     variadic macros are incompatible with C++98
+#   -Wc++98-c++11-c++14-c++17-compat-pedantic
+#         invoking a pointer to a 'const &' member function on an rvalue is incompatible with C++ standards before C++2a
+#     -Wc++98-c++11-c++14-c++17-compat
+#           '<=>' operator is incompatible with C++ standards before C++2a
+#           default member initializer for bit-field is incompatible with C++ standards before C++2a
+#           explicit capture of 'this' with a capture default of '=' is incompatible with C++ standards before C++2a
+#   -Wc++98-c++11-c++14-compat-pedantic
+#         attributes on <a namespace|an enumerator> declaration are incompatible with C++ standards before C++17
+#         hexadecimal floating literals are incompatible with C++ standards before C++17
+#     -Wc++98-c++11-c++14-compat
+#           'begin' and 'end' returning different types (A and B) is incompatible with C++ standards before C++17
+#           <if|switch> initialization statements are incompatible with C++ standards before C++17
+#           by value capture of '*this' is incompatible with C++ standards before C++17
+#           constexpr if is incompatible with C++ standards before C++17
+#           constexpr on lambda expressions is incompatible with C++ standards before C++17
+#           decomposition declarations are incompatible with C++ standards before C++17
+#           default scope specifier for attributes is incompatible with C++ standards before C++17
+#           inline variables are incompatible with C++ standards before C++17
+#           nested namespace definition is incompatible with C++ standards before C++17
+#           non-type template parameters declared with A are incompatible with C++ standards before C++17
+#           pack expansion using declaration is incompatible with C++ standards before C++17
+#           pack fold expression is incompatible with C++ standards before C++17
+#           static_assert with no message is incompatible with C++ standards before C++17
+#           template template parameter using 'typename' is incompatible with C++ standards before C++17
+#           unicode literals are incompatible with C++ standards before C++17
+#           use of multiple declarators in a single using declaration is incompatible with C++ standards before C++17
+#   -Wc++98-c++11-compat-pedantic
+#     -Wc++98-c++11-compat
+#           'decltype(auto)' type specifier is incompatible with C++ standards before C++14
+#           constexpr function with no return statements is incompatible with C++ standards before C++14
+#           digit separators are incompatible with C++ standards before C++14
+#           initialized lambda captures are incompatible with C++ standards before C++14
+#           multiple return statements in constexpr function is incompatible with C++ standards before C++14
+#           type definition in a constexpr <function|constructor> is incompatible with C++ standards before C++14
+#           use of this statement in a constexpr <function|constructor> is incompatible with C++ standards before C++14
+#           variable declaration in a constexpr <function|constructor> is incompatible with C++ standards before C++14
+#           variable templates are incompatible with C++ standards before C++14
+#     -Wc++98-c++11-compat-binary-literal
+#           binary integer literals are incompatible with C++ standards before C++14
+#   -Wc++98-compat
+#         '<::' is treated as digraph '<:' (aka '[') followed by ':' in C++98
+#         'A' keyword is incompatible with C++98
+#         'A' type specifier is incompatible with C++98
+#         'alignas' is incompatible with C++98
+#         'auto' type specifier is incompatible with C++98
+#         'constexpr' specifier is incompatible with C++98
+#         'decltype' type specifier is incompatible with C++98
+#         'nullptr' is incompatible with C++98
+#         <anonymous struct|union> member B with a non-trivial <constructor|copy constructor|move constructor|copy assignment operator|move assignment operator|destructor> is incompatible with C++98
+#         <class template|class template partial|variable template|variable template partial|function template|member function|static data member|member class|member enumeration> specialization of B outside namespace C is incompatible with C++98
+#         <defaulted|deleted> function definitions are incompatible with C++98
+#         C++11 attribute syntax is incompatible with C++98
+#         alias declarations are incompatible with C++98
+#         alignof expressions are incompatible with C++98
+#         befriending B without '<struct|interface|union|class|enum>' keyword is incompatible with C++98
+#         befriending enumeration type A is incompatible with C++98
+#         consecutive right angle brackets are incompatible with C++98 (use '> >')
+#         constructor call from initializer list is incompatible with C++98
+#         default template arguments for a function template are incompatible with C++98
+#         delegating constructors are incompatible with C++98
+#         enumeration type in nested name specifier is incompatible with C++98
+#         enumeration types with a fixed underlying type are incompatible with C++98
+#         explicit conversion functions are incompatible with C++98
+#         friend declaration naming a member of the declaring class is incompatible with C++98
+#         generalized initializer lists are incompatible with C++98
+#         in-class initialization of non-static data members is incompatible with C++98
+#         inheriting constructors are incompatible with C++98
+#         initialization of initializer_list object is incompatible with C++98
+#         inline namespaces are incompatible with C++98
+#         jump from switch statement to this case label is incompatible with C++98
+#         jump from this goto statement to its label is incompatible with C++98
+#         jump from this indirect goto statement to one of its possible targets is incompatible with C++98
+#         lambda expressions are incompatible with C++98
+#         literal operators are incompatible with C++98
+#         noexcept expressions are incompatible with C++98
+#         noexcept specifications are incompatible with C++98
+#         non-class friend type A is incompatible with C++98
+#         non-type template argument referring to <function|object> B with internal linkage is incompatible with C++98
+#         passing object of trivial but non-POD type A through variadic <function|block|method|constructor> is incompatible with C++98
+#         range-based for loop is incompatible with C++98
+#         raw string literals are incompatible with C++98
+#         redundant parentheses surrounding address non-type template argument are incompatible with C++98
+#         reference initialized from initializer list is incompatible with C++98
+#         reference qualifiers on functions are incompatible with C++98
+#         rvalue references are incompatible with C++98
+#         scalar initialized from empty initializer list is incompatible with C++98
+#         scoped enumerations are incompatible with C++98
+#         specifying character 'A' with a universal character name is incompatible with C++98
+#         static data member A in union is incompatible with C++98
+#         static_assert declarations are incompatible with C++98
+#         substitution failure due to access control is incompatible with C++98
+#         trailing return types are incompatible with C++98
+#         unicode literals are incompatible with C++98
+#         universal character name referring to a control character is incompatible with C++98
+#         use of 'template' keyword outside of a template is incompatible with C++98
+#         use of 'typename' outside of a template is incompatible with C++98
+#         use of non-static data member A in an unevaluated context is incompatible with C++98
+#         use of null pointer as non-type template argument is incompatible with C++98
+#         using this character in an identifier is incompatible with C++98
+#         variadic templates are incompatible with C++98
+#     -Wc++98-c++11-c++14-c++17-compat
+#           '<=>' operator is incompatible with C++ standards before C++2a
+#           default member initializer for bit-field is incompatible with C++ standards before C++2a
+#           explicit capture of 'this' with a capture default of '=' is incompatible with C++ standards before C++2a
+#     -Wc++98-c++11-c++14-compat
+#           'begin' and 'end' returning different types (A and B) is incompatible with C++ standards before C++17
+#           <if|switch> initialization statements are incompatible with C++ standards before C++17
+#           by value capture of '*this' is incompatible with C++ standards before C++17
+#           constexpr if is incompatible with C++ standards before C++17
+#           constexpr on lambda expressions is incompatible with C++ standards before C++17
+#           decomposition declarations are incompatible with C++ standards before C++17
+#           default scope specifier for attributes is incompatible with C++ standards before C++17
+#           inline variables are incompatible with C++ standards before C++17
+#           nested namespace definition is incompatible with C++ standards before C++17
+#           non-type template parameters declared with A are incompatible with C++ standards before C++17
+#           pack expansion using declaration is incompatible with C++ standards before C++17
+#           pack fold expression is incompatible with C++ standards before C++17
+#           static_assert with no message is incompatible with C++ standards before C++17
+#           template template parameter using 'typename' is incompatible with C++ standards before C++17
+#           unicode literals are incompatible with C++ standards before C++17
+#           use of multiple declarators in a single using declaration is incompatible with C++ standards before C++17
+#     -Wc++98-c++11-compat
+#           'decltype(auto)' type specifier is incompatible with C++ standards before C++14
+#           constexpr function with no return statements is incompatible with C++ standards before C++14
+#           digit separators are incompatible with C++ standards before C++14
+#           initialized lambda captures are incompatible with C++ standards before C++14
+#           multiple return statements in constexpr function is incompatible with C++ standards before C++14
+#           type definition in a constexpr <function|constructor> is incompatible with C++ standards before C++14
+#           use of this statement in a constexpr <function|constructor> is incompatible with C++ standards before C++14
+#           variable declaration in a constexpr <function|constructor> is incompatible with C++ standards before C++14
+#           variable templates are incompatible with C++ standards before C++14
+#     -Wc++98-compat-local-type-template-args
+#           local type A as template argument is incompatible with C++98
+#     -Wc++98-compat-unnamed-type-template-args
+#           unnamed type as template argument is incompatible with C++98
+#   -Wc++98-compat-bind-to-temporary-copy
+#         <copying variable|copying parameter|returning object|throwing object|copying member subobject|copying array element|allocating object|copying temporary|initializing base subobject|initializing vector element> of type C when binding a reference to a temporary would <invoke an inaccessible constructor|find no viable constructor|find ambiguous constructors|invoke a deleted constructor> in C++98
+-Wc99-compat
+#     <using this character in an identifier|starting an identifier with this character> is incompatible with C99
+#     integer literal is too large to be represented in type 'long', interpreting as 'unsigned long' per C89; this literal will <have type 'long long'|be ill-formed> in C99 onwards
+#     unicode literals are incompatible with C99
+-Wc99-extensions
+#     ISO C99 requires whitespace after the macro name
+#     [qualifier in |static ]array size ['[*] ']is a C99 feature
+#     commas at the end of enumerator lists are a C99-specific feature
+#     compound literals are a C99-specific feature
+#     designated initializers are a C99 feature
+#     empty macro arguments are a C99 feature
+#     flexible array members are a C99 feature
+#     hexadecimal floating constants are a C99 feature
+#     initializer for aggregate is not a compile-time constant
+#     variable declaration in for loop is a C99-specific feature
+-Wcast-align
+#     cast from A to B increases required alignment from C to D
+-Wcast-qual
+#     cast from A to B drops <const and volatile qualifiers|const qualifier|volatile qualifier>
+#     cast from A to B must have all intermediate pointers const qualified to be safe
+-Wchar-align # DUMMY switch
+-WCL4
+#   -Wall
+#     -Wmost
+#       -Wcast-of-sel-type
+#             cast of type A to B is deprecated; use sel_getName instead
+#       -Wchar-subscripts
+#             array section <lower bound|length> is of type 'char'
+#             array subscript is of type 'char'
+#       -Wcomment
+#             '/*' within block comment
+#             // comments are not allowed in this language
+#             escaped newline between */ characters at block comment end
+#             multi-line // comment
+#       -Wdelete-non-virtual-dtor
+#             <delete|destructor> called on B that is abstract but has non-virtual destructor
+#             <delete|destructor> called on non-final B that has virtual functions but non-virtual destructor
+#       -Wextern-c-compat
+#             [empty ]<struct|union> has size 0 in C, <size 1|non-zero size> in C++
+#       -Wfor-loop-analysis
+#             variable A is <decremented|incremented> both in the loop header and in the loop body
+#             variable<s| B|s B and C|s B, C, and D|s B, C, D, and E> used in loop condition not modified in loop body
+#       -Wformat
+#             '<*|.*>' specified field <width|precision> is missing a matching 'int' argument
+#             'A' is not a valid object format flag
+#             <field width|precision> used with 'B' conversion specifier, resulting in undefined behavior
+#             <values of type|enum values with underlying type> 'A' should not be used as format arguments; add an explicit cast to B instead
+#             cannot mix positional and non-positional arguments in format string
+#             data argument position 'A' exceeds the number of data arguments (B)
+#             field <width|precision> should have type B, but argument has type C
+#             flag 'A' is ignored when flag 'B' is present
+#             flag 'A' results in undefined behavior with 'B' conversion specifier
+#             format specifies type A but the argument has <type|underlying type> B
+#             format string contains '\0' within the string body
+#             format string is not null-terminated
+#             format string missing
+#             format string should not be a wide string
+#             incomplete format specifier
+#             invalid position specified for <field width|field precision>
+#             length modifier 'A' results in undefined behavior or no effect with 'B' conversion specifier
+#             missing object format flag
+#             more '%' conversions than data arguments
+#             no closing ']' for '%[' in scanf format string
+#             object format flags cannot be used with 'A' conversion specifier
+#             position arguments in format strings start counting at 1 (not 0)
+#             using '%P' format specifier without precision
+#             using 'A' format specifier annotation outside of os_log()/os_trace()
+#             zero field width in scanf format string is unused
+#         -Wformat-extra-args
+#               data argument not used by format string
+#         -Wformat-invalid-specifier
+#               invalid conversion specifier 'A'
+#         -Wformat-security
+#               format string is not a string literal (potentially insecure)
+#         -Wformat-y2k # DUMMY switch
+#         -Wformat-zero-length
+#               format string is empty
+#         -Wnonnull
+#               null passed to a callee that requires a non-null argument
+#               null returned from <function|method> that requires a non-null return value
+#       -Wimplicit
+#         -Wimplicit-function-declaration
+#               implicit declaration of function A
+#               implicit declaration of function A is invalid in <C99|OpenCL>
+#               implicitly declaring library function 'A' with type B
+#               use of unknown builtin A
+#         -Wimplicit-int
+#               type specifier missing, defaults to 'int'
+#       -Winfinite-recursion
+#             all paths through this function will call itself
+#       -Wmismatched-tags
+#             <struct|interface|class>[ template] C was previously declared as a <struct|interface|class>[ template]
+#             C defined as <a struct|an interface|a class>[ template] here but previously declared as <a struct|an interface|a class>[ template]
+#       -Wmissing-braces
+#             suggest braces around initialization of subobject
+#       -Wmove
+#         -Wpessimizing-move
+#               moving a local object in a return statement prevents copy elision
+#               moving a temporary object prevents copy elision
+#         -Wredundant-move
+#               redundant move in return statement
+#         -Wself-move
+#               explicitly moving variable of type A to itself
+#       -Wmultichar
+#             multi-character character constant
+#       -Wobjc-designated-initializers
+#             convenience initializer missing a 'self' call to another initializer
+#             convenience initializer should not invoke an initializer on 'super'
+#             designated initializer invoked a non-designated initializer
+#             designated initializer missing a 'super' call to a designated initializer of the super class
+#             designated initializer should only invoke a designated initializer on 'super'
+#             method override for the designated initializer of the superclass A not found
+#       -Wobjc-flexible-array
+#             field A can overwrite instance variable B with variable sized type C in superclass D
+#             field A with variable sized type B is not visible to subclasses and can conflict with their instance variables
+#       -Wobjc-missing-super-calls
+#             method possibly missing a [super A] call
+#       -Woverloaded-virtual
+#             A hides overloaded virtual <function|functions>
+#       -Wprivate-extern
+#             use of __private_extern__ on a declaration may not produce external symbol private to the linkage unit and is deprecated
+#       -Wreorder
+#             <field|base class> B will be initialized after <field|base> D
+#       -Wreturn-type
+#             <void function|void method|constructor|destructor> A should not return a value
+#             control may reach end of coroutine; which is undefined behavior because the promise type A does not declare 'return_void()'
+#             control may reach end of non-void function
+#             control may reach end of non-void lambda
+#             control reaches end of coroutine; which is undefined behavior because the promise type A does not declare 'return_void()'
+#             control reaches end of non-void function
+#             control reaches end of non-void lambda
+#             non-void <function|method> A should return a value
+#         -Wreturn-type-c-linkage
+#               A has C-linkage specified, but returns incomplete type B which could be incompatible with C
+#               A has C-linkage specified, but returns user-defined type B which is incompatible with C
+#       -Wself-assign
+#             explicitly assigning value of variable of type A to itself
+#         -Wself-assign-field
+#               assigning <field|instance variable> to itself
+#       -Wself-move
+#             explicitly moving variable of type A to itself
+#       -Wsizeof-array-argument
+#             sizeof on array function parameter will return size of A instead of B
+#       -Wsizeof-array-decay
+#             sizeof on pointer operation will return size of A instead of B
+#       -Wstring-plus-int
+#             adding A to a string does not append to the string
+#       -Wtrigraphs
+#             ignored trigraph would end block comment
+#             trigraph converted to 'A' character
+#             trigraph ends block comment
+#             trigraph ignored
+#       -Wuninitialized
+#             base class A is uninitialized when used here to access B
+#             block pointer variable A is uninitialized when captured by block
+#             field A is uninitialized when used here
+#             reference A is not yet bound to a value when used here
+#             reference A is not yet bound to a value when used within its own initialization
+#             variable A is uninitialized when <used here|captured by block>
+#             variable A is uninitialized when used within its own initialization
+#         -Wsometimes-uninitialized
+#               variable A is <used|captured> uninitialized whenever <'D' condition is <true|false>|'D' loop <is entered|exits because its condition is false>|'D' loop <condition is true|exits because its condition is false>|switch D is taken|its declaration is reached|D is called>
+#         -Wstatic-self-init
+#               static variable A is suspiciously used within its own initialization
+#       -Wunknown-pragmas
+#             #pragma warning expected 'A'
+#             #pragma warning expected 'push', 'pop', 'default', 'disable', 'error', 'once', 'suppress', 1, 2, 3, or 4
+#             #pragma warning expected a warning number
+#             #pragma warning(push, level) requires a level between 0 and 4
+#             angle-bracketed include <A> cannot be aliased to double-quoted include "B"
+#             double-quoted include "A" cannot be aliased to angle-bracketed include <B>
+#             expected 'ON' or 'OFF' or 'DEFAULT' in pragma
+#             expected end of directive in pragma
+#             pragma STDC FENV_ACCESS ON is not supported, ignoring pragma
+#             pragma diagnostic expected 'error', 'warning', 'ignored', 'fatal', 'push', or 'pop'
+#             pragma diagnostic expected option name (e.g. "-Wundef")
+#             pragma diagnostic pop could not pop, no matching push
+#             pragma include_alias expected 'A'
+#             pragma include_alias expected include filename
+#             unexpected token in pragma diagnostic
+#             unknown pragma ignored
+#             unknown pragma in STDC namespace
+#       -Wunused
+#         -Wunused-argument # DUMMY switch
+#         -Wunused-function
+#               unused function A
+#           -Wunneeded-internal-declaration
+#                 'static' function A declared in header file should be declared 'static inline'
+#                 <function|variable> B is not needed and will not be emitted
+#         -Wunused-label
+#               unused label A
+#         -Wunused-lambda-capture
+#               lambda capture A is not <used|required to be captured for this use>
+#         -Wunused-local-typedef
+#               unused <typedef|type alias> B
+#         -Wunused-private-field
+#               private field A is not used
+#         -Wunused-property-ivar
+#               ivar A which backs the property is not referenced in this property's accessor
+#         -Wunused-value
+#               container access result unused - container access should not be used for side effects
+#               expression result unused
+#               expression result unused; should this cast be to 'void'?
+#               ignoring return value of function declared with A attribute
+#           -Wunevaluated-expression
+#                 expression with side effects has no effect in an unevaluated context
+#             -Wpotentially-evaluated-expression
+#                   expression with side effects will be evaluated despite being used as an operand to 'typeid'
+#           -Wunused-comparison
+#                 <equality|inequality|relational|three-way> comparison result unused
+#           -Wunused-result
+#                 ignoring return value of function declared with A attribute
+#         -Wunused-variable
+#               unused variable A
+#           -Wunused-const-variable
+#                 unused variable A
+#       -Wuser-defined-warnings
+#             The text of this diagnostic is not controlled by Clang
+#       -Wvolatile-register-var # DUMMY switch
+#     -Wparentheses
+#           A has lower precedence than B; B will be evaluated first
+#           operator '?:' has lower precedence than 'A'; 'A' will be evaluated first
+#           using the result of an assignment as a condition without parentheses
+#       -Wbitwise-op-parentheses
+#             'A' within 'B'
+#       -Wdangling-else
+#             add explicit braces to avoid dangling else
+#       -Wlogical-not-parentheses
+#             logical not is only applied to the left hand side of this <comparison|bitwise operator>
+#       -Wlogical-op-parentheses
+#             '&&' within '||'
+#       -Woverloaded-shift-op-parentheses
+#             overloaded operator <>>|<<> has higher precedence than comparison operator
+#       -Wparentheses-equality
+#             equality comparison with extraneous parentheses
+#       -Wshift-op-parentheses
+#             operator 'A' has lower precedence than 'B'; 'B' will be evaluated first
+#     -Wswitch
+#           <enumeration value B not handled in switch|enumeration values B and C not handled in switch|enumeration values B, C, and D not handled in switch|A enumeration values not handled in switch>
+#           case value not in enumerated type A
+#           overflow converting case value to switch condition type (A to B)
+#     -Wswitch-bool
+#           switch condition has boolean value
+#   -Wextra
+#         call to function without interrupt attribute could clobber interruptee's VFP registers
+#     -Wignored-qualifiers
+#           'A' qualifier on function type B has no effect
+#           'A' qualifier on omitted return type B has no effect
+#           'A' qualifier on reference type B has no effect
+#           'A' type qualifier(s) on return type <has|have> no effect
+#           ARC <unused|__unsafe_unretained|__strong|__weak|__autoreleasing> lifetime qualifier on return type is ignored
+#     -Winitializer-overrides
+#           initializer overrides prior initialization of this subobject
+#           subobject initialization overrides initialization of other fields within its enclosing subobject
+#     -Wmissing-field-initializers
+#           missing field A initializer
+#     -Wmissing-method-return-type
+#           method has no return type specified; defaults to 'id'
+#     -Wnull-pointer-arithmetic
+#           arithmetic on a null pointer treated as a cast from integer to pointer is a GNU extension
+#           performing pointer arithmetic on a null pointer has undefined behavior[ if the offset is nonzero]
+#     -Wsemicolon-before-method-body
+#           semicolon before method body is ignored
+#     -Wsign-compare
+#           comparison of integers of different signs: A and B
+#     -Wunused-parameter
+#           unused parameter A
+-Wclass-varargs
+#     passing object of class type A through variadic <function|block|method|constructor>[; did you mean to call 'D'?]
+#   -Wnon-pod-varargs
+#         cannot pass <non-POD|non-trivial> object of type B to variadic <function|block|method|constructor>; expected type from format string was D
+#         cannot pass object of <non-POD|non-trivial> type B through variadic <function|block|method|constructor>; call will abort at runtime
+#         second argument to 'va_arg' is of ARC ownership-qualified type A
+#         second argument to 'va_arg' is of non-POD type A
+-Wcomma
+#     possible misuse of comma operator here
+-Wcomments
+#   -Wcomment
+#         '/*' within block comment
+#         // comments are not allowed in this language
+#         escaped newline between */ characters at block comment end
+#         multi-line // comment
+-Wconditional-uninitialized
+#     variable A may be uninitialized when <used here|captured by block>
+-Wconsumed
+#     argument not in expected state; expected 'A', observed 'B'
+#     consumed analysis attribute is attached to member of class 'A' which isn't marked as consumable
+#     invalid invocation of method 'A' on a temporary object while it is in the 'B' state
+#     invalid invocation of method 'A' on object 'B' while it is in the 'C' state
+#     parameter 'A' not in expected state when the function returns: expected 'B', observed 'C'
+#     return state set for an unconsumable type 'A'
+#     return value not in expected state; expected 'A', observed 'B'
+#     state of variable 'A' must match at the entry and exit of loop
+-Wcovered-switch-default
+#     default label in switch which covers all enumeration values
+-Wcstring-format-directive
+#     using A directive in <NSString|CFString> which is being passed as a formatting argument to the formatting <method|CFfunction>
+-Wctor-dtor-privacy # DUMMY switch
+-Wcuda-compat
+#     A attribute parameter B is negative and will be ignored
+#     argument to '#pragma unroll' should not be in parentheses in CUDA C/C++
+#     ignored 'inline' attribute on kernel function A
+#     kernel function A is a member function; this may not be accepted by nvcc
+#     nvcc does not allow '__A__' to appear after '()' in lambdas
+-Wdate-time
+#     expansion of date or time macro is not reproducible
+-Wdeprecated
+#     -O4 is equivalent to -O3
+#     OpenCL version A does not support the option 'B'
+#     Use of 'long' with '__vector' is deprecated
+#     access declarations are deprecated; use using declarations instead
+#     argument 'A' is deprecated, use 'B' instead
+#     definition of implicit copy <constructor|assignment operator> for A is deprecated because it has a user-declared <copy <assignment operator|constructor>|destructor>
+#     out-of-line definition of constexpr static data member is redundant in C++17 and is deprecated
+#     treating 'A' input as 'B' when in C++ mode, this behavior is deprecated
+#   -Wdeprecated-attributes
+#         specifying vector types with the 'mode' attribute is deprecated; use the 'vector_size' attribute instead
+#   -Wdeprecated-declarations
+#         A is deprecated
+#         A is deprecated: B
+#         A may be deprecated because the receiver type is unknown
+#         property access is using A method which is deprecated
+#         specifying 'uuid' as an ATL attribute is deprecated; use __declspec instead
+#         use of C-style parameters in Objective-C method declarations is deprecated
+#   -Wdeprecated-dynamic-exception-spec
+#         dynamic exception specifications are deprecated
+#   -Wdeprecated-increment-bool
+#         incrementing expression of type bool is deprecated and incompatible with C++17
+#   -Wdeprecated-register
+#         'register' storage class specifier is deprecated and incompatible with C++17
+#   -Wdeprecated-writable-strings
+#     -Wc++11-compat-deprecated-writable-strings
+#           conversion from string literal to A is deprecated
+-Wdeprecated-implementations
+#     implementing deprecated <method|class|category>
+#     implementing unavailable method
+-Wdirect-ivar-access
+#     instance variable A is being directly accessed
+-Wdisabled-macro-expansion
+#     disabled expansion of recursive macro
+-Wdisabled-optimization # DUMMY switch
+-Wdiscard-qual # DUMMY switch
+-Wdocumentation
+#     '<\|@><classdesign|coclass|dependency|helper|helperclass|helps|instancesize|ownership|performance|security|superclass>' command should not be used in a comment attached to a non-container declaration
+#     '<\|@><class|interface|protocol|struct|union>' command should not be used in a comment attached to a non-<class|interface|protocol|struct|union> declaration
+#     '<\|@><function|functiongroup|method|methodgroup|callback>' command should be used in a comment attached to <a function|an Objective-C method|a pointer to function> declaration
+#     '<\|@>B' command does not terminate a verbatim text block
+#     '<\|@>B' command used in a comment that is attached to a <function returning void|constructor|destructor|method returning void>
+#     '<\|@>B' command used in a comment that is not attached to a function or method declaration
+#     '<\|@>param' command used in a comment that is not attached to a function declaration
+#     '<\|@>tparam' command used in a comment that is not attached to a template declaration
+#     HTML start tag prematurely ended, expected attribute name or '>'
+#     duplicated command '<\|@>B'
+#     empty paragraph passed to '<\|@>B' command
+#     expected quoted string after equals sign
+#     not a Doxygen trailing comment
+#     parameter 'A' is already documented
+#     parameter 'A' not found in the function declaration
+#     template parameter 'A' is already documented
+#     template parameter 'A' not found in the template declaration
+#     unrecognized parameter passing direction, valid directions are '[in]', '[out]' and '[in,out]'
+#   -Wdocumentation-deprecated-sync
+#         declaration is marked with '\deprecated' command but does not have a deprecation attribute
+#   -Wdocumentation-html
+#         HTML end tag 'A' is forbidden
+#         HTML end tag does not match any start tag
+#         HTML start tag 'A' closed by 'B'
+#         HTML tag 'A' requires an end tag
+-Wdocumentation-pedantic
+#     whitespace is not allowed in parameter passing direction
+#   -Wdocumentation-unknown-command
+#         unknown command tag name
+#         unknown command tag name 'A'; did you mean 'B'?
+-Wdouble-promotion
+#     implicit conversion increases floating-point precision: A to B
+-Wduplicate-enum
+#     element A has been implicitly assigned B which another element has been assigned
+-Wduplicate-method-arg
+#     redeclaration of method parameter A
+-Wduplicate-method-match
+#     multiple declarations of method A found and ignored
+-Wdynamic-exception-spec
+#     ISO C++17 does not allow dynamic exception specifications
+#   -Wdeprecated-dynamic-exception-spec
+#         dynamic exception specifications are deprecated
+-Weffc++
+#   -Wnon-virtual-dtor
+#         A has virtual functions but non-virtual destructor
+-Wexit-time-destructors
+#     declaration requires an exit-time destructor
+-Wexpansion-to-defined
+#     macro expansion producing 'defined' has undefined behavior
+-Wexplicit-ownership-type
+#     method parameter of type A with no explicit ownership
+-Wextra-semi
+#     extra ';' <outside of a function|inside a B|inside instance variable list|after member function definition>
+#     extra ';' after member function definition
+#   -Wc++11-extra-semi
+#         extra ';' outside of a function is a C++11 extension
+-Wfloat-equal
+#     comparing floating point with == or != is unsafe
+-Wformat-non-iso
+#     'A' <length modifier|conversion specifier> is not supported by ISO C
+#     positional arguments are not supported by ISO C
+#     using length modifier 'A' with conversion specifier 'B' is not supported by ISO C
+-Wformat-pedantic
+#     <values of type|enum values with underlying type> 'A' should not be used as format arguments; add an explicit cast to B instead
+#     format specifies type A but the argument has <type|underlying type> B
+-Wformat=2
+#   -Wformat-nonliteral
+#         format string is not a string literal
+#   -Wformat-security
+#         format string is not a string literal (potentially insecure)
+#   -Wformat-y2k # DUMMY switch
+-Wfuture-compat # DUMMY switch
+-Wgcc-compat
+#     'A' is bound to current loop, GCC binds it to the enclosing loop
+#     'break' is bound to loop, GCC binds it to switch
+#     'diagnose_if' is a clang extension
+#     'enable_if' is a clang extension
+#     GCC does not allow A attribute in this position on a function definition
+#     GCC does not allow an attribute in this position on a function declaration
+#     GCC does not allow the 'cleanup' attribute argument to be anything other than a simple identifier
+#     __final is a GNU extension, consider using C++11 final
+-Wglobal-constructors
+#     declaration requires a global constructor
+#     declaration requires a global destructor
+-Wgnu
+#   -Wgnu-alignof-expression
+#         A applied to an expression is a GNU extension
+#   -Wgnu-anonymous-struct
+#         anonymous structs are a GNU extension
+#   -Wgnu-auto-type
+#         '__auto_type' is a GNU extension
+#   -Wgnu-binary-literal
+#         binary integer literals are a GNU extension
+#   -Wgnu-case-range
+#         use of GNU case range extension
+#   -Wgnu-complex-integer
+#         complex integer types are a GNU extension
+#   -Wgnu-compound-literal-initializer
+#         initialization of an array from a compound literal is a GNU extension
+#   -Wgnu-conditional-omitted-operand
+#         use of GNU ?: conditional expression extension, omitting middle operand
+#   -Wgnu-designator
+#         use of GNU 'missing =' extension in designator
+#         use of GNU array range extension
+#         use of GNU old-style field designator extension
+#   -Wgnu-empty-initializer
+#         use of GNU empty initializer extension
+#   -Wgnu-empty-struct
+#         <struct|union> without named members is a GNU extension
+#         empty <struct|union> is a GNU extension
+#         flexible array member A in otherwise empty <struct|interface|union|class|enum> is a GNU extension
+#   -Wgnu-flexible-array-initializer
+#         flexible array initialization is a GNU extension
+#   -Wgnu-flexible-array-union-member
+#         flexible array member A in a union is a GNU extension
+#   -Wgnu-folding-constant
+#         expression is not an <integer|integral> constant expression; folding it to a constant is a GNU extension
+#         in-class initializer for static data member is not a constant expression; folding it to a constant is a GNU extension
+#         variable length array folded to constant array as an extension
+#   -Wgnu-imaginary-constant
+#         imaginary constants are a GNU extension
+#   -Wgnu-include-next
+#         #include_next is a language extension
+#   -Wgnu-label-as-value
+#         use of GNU address-of-label extension
+#         use of GNU indirect-goto extension
+#   -Wgnu-redeclared-enum
+#         redeclaration of already-defined enum A is a GNU extension
+#   -Wgnu-statement-expression
+#         use of GNU statement expression extension
+#   -Wgnu-static-float-init
+#         in-class initializer for static data member of type A is a GNU extension
+#   -Wgnu-string-literal-operator-template
+#         string literal operator templates are a GNU extension
+#   -Wgnu-union-cast
+#         cast to union type is a GNU extension
+#   -Wgnu-variable-sized-type-not-at-end
+#         field A with variable sized type B not at the end of a struct or class is a GNU extension
+#   -Wgnu-zero-line-directive
+#         #line directive with zero argument is a GNU extension
+#   -Wgnu-zero-variadic-macro-arguments
+#         must specify at least one argument for '...' parameter of variadic macro
+#         token pasting of ',' and __VA_ARGS__ is a GNU extension
+#   -Wredeclared-class-member
+#         class member cannot be redeclared
+#   -Wvla-extension
+#         variable length arrays are a C99 feature
+#   -Wzero-length-array
+#         zero size arrays are an extension
+-Wheader-hygiene
+#     using namespace directive in global context in header
+-Widiomatic-parentheses
+#     using the result of an assignment as a condition without parentheses
+-Wimplicit-fallthrough
+#     fallthrough annotation in unreachable code
+#     unannotated fall-through between switch labels
+#   -Wimplicit-fallthrough-per-function
+#         unannotated fall-through between switch labels in partly-annotated function
+-Wimplicit-retain-self
+#     block implicitly retains 'self'; explicitly mention 'self' to indicate this is intended behavior
+-Wimport # DUMMY switch
+-Wincomplete-module
+#   -Wincomplete-umbrella
+#         missing submodule 'A'
+#         umbrella directory 'A' not found
+#         umbrella header for module 'A' does not include header 'B'
+#   -Wnon-modular-include-in-module
+#         include of non-modular header inside module 'A': 'B'
+#     -Wnon-modular-include-in-framework-module
+#           include of non-modular header inside framework module 'A': 'B'
+-Winconsistent-missing-destructor-override
+#     A overrides a destructor but is not marked 'override'
+-Windex-store
+#     producing index data for module file 'A'
+-Winit-self # DUMMY switch
+-Winline # DUMMY switch
+-Winvalid-or-nonexistent-directory
+#     environment variable SCE_ORBIS_SDK_DIR is set, but points to invalid or nonexistent directory 'A'
+#     unable to find A directory, expected to be in 'B'
+-Winvalid-pch # DUMMY switch
+-Wliblto # DUMMY switch
+-Wlocal-type-template-args
+#     template argument uses local type A
+#   -Wc++98-compat-local-type-template-args
+#         local type A as template argument is incompatible with C++98
+-Wloop-analysis
+#   -Wfor-loop-analysis
+#         variable A is <decremented|incremented> both in the loop header and in the loop body
+#         variable<s| B|s B and C|s B, C, and D|s B, C, D, and E> used in loop condition not modified in loop body
+#   -Wrange-loop-analysis
+#         loop variable A  is initialized with a value of a different type resulting in a copy
+#         loop variable A is always a copy because the range of type B does not return a reference
+#         loop variable A of type B creates a copy from type C
+-Wmain
+#     'main' is not allowed to be declared _Noreturn
+#     'main' is not allowed to be declared variadic
+#     'main' should not be declared static
+#     ISO C++ does not allow 'main' to be used by a program
+#     bool literal returned from 'main'
+#     only one parameter on 'main' declaration
+#     variable named 'main' with external linkage has undefined behavior
+-Wmethod-signatures
+#     conflicting parameter types in implementation of A: B vs C
+#     conflicting return type in implementation of A: B vs C
+-Wmicrosoft
+#   -Winconsistent-dllimport
+#         A redeclared without 'dllimport' attribute: 'dllexport' attribute added
+#         A redeclared without B attribute: previous B ignored
+#   -Wmicrosoft-anon-tag
+#         anonymous <structs|unions> are a Microsoft extension
+#         types declared in an anonymous <struct|union> are a Microsoft extension
+#   -Wmicrosoft-cast
+#         implicit conversion between pointer-to-function and pointer-to-object is a Microsoft extension
+#         static_cast between pointer-to-function and pointer-to-object is a Microsoft extension
+#   -Wmicrosoft-charize
+#         charizing operator #@ is a Microsoft extension
+#   -Wmicrosoft-comment-paste
+#         pasting two '/' tokens into a '//' comment is a Microsoft extension
+#   -Wmicrosoft-const-init
+#         default initialization of an object of const type A[ without a user-provided default constructor] is a Microsoft extension
+#   -Wmicrosoft-cpp-macro
+#         C++ operator A (aka B) used as a macro name
+#   -Wmicrosoft-default-arg-redefinition
+#         redefinition of default argument
+#   -Wmicrosoft-end-of-file
+#         treating Ctrl-Z as end-of-file is a Microsoft extension
+#   -Wmicrosoft-enum-forward-reference
+#         forward references to 'enum' types are a Microsoft extension
+#   -Wmicrosoft-enum-value
+#         enumerator value is not representable in the underlying type A
+#   -Wmicrosoft-exception-spec
+#         A is missing exception specification 'B'
+#         [pointer to |reference to ]incomplete type B is not allowed in exception specification
+#         exception specification in declaration does not match previous declaration
+#         exception specification in explicit instantiation does not match instantiated one
+#         exception specification of '...' is a Microsoft extension
+#         exception specification of overriding function is more lax than base version
+#   -Wmicrosoft-explicit-constructor-call
+#         explicit constructor calls are a Microsoft extension
+#   -Wmicrosoft-extra-qualification
+#         extra qualification on member A
+#   -Wmicrosoft-fixed-enum
+#         enumeration types with a fixed underlying type are a Microsoft extension
+#   -Wmicrosoft-flexible-array
+#         flexible array member A in a union is a Microsoft extension
+#         flexible array member A in otherwise empty <struct|interface|union|class|enum> is a Microsoft extension
+#   -Wmicrosoft-goto
+#         jump from this goto statement to its label is a Microsoft extension
+#   -Wmicrosoft-include
+#         #include resolved using non-portable Microsoft search rules as: A
+#   -Wmicrosoft-mutable-reference
+#         'mutable' on a reference type is a Microsoft extension
+#   -Wmicrosoft-pure-definition
+#         function definition with pure-specifier is a Microsoft extension
+#   -Wmicrosoft-redeclare-static
+#         redeclaring non-static A as static is a Microsoft extension
+#   -Wmicrosoft-sealed
+#         'sealed' keyword is a Microsoft extension
+#   -Wmicrosoft-template
+#         <class template|class template partial|variable template|variable template partial|function template|member function|static data member|member class|member enumeration> specialization of B outside namespace enclosing C is a Microsoft extension
+#         duplicate explicit instantiation of A ignored as a Microsoft extension
+#         explicit specialization of A within class scope is a Microsoft extension
+#         non-type template argument containing a dereference operation is a Microsoft extension
+#         template argument for template type parameter must be a type; omitted 'typename' is a Microsoft extension
+#         use of identifier A found via unqualified lookup into dependent bases of class templates is a Microsoft extension
+#         use of undeclared identifier A; unqualified lookup into dependent bases of class template B is a Microsoft extension
+#         using the undeclared type A as a default template argument is a Microsoft extension
+#   -Wmicrosoft-union-member-reference
+#         union member A has reference type B, which is a Microsoft extension
+#   -Wmicrosoft-unqualified-friend
+#         unqualified friend declaration referring to type outside of the nearest enclosing namespace is a Microsoft extension; add a nested name specifier
+#   -Wmicrosoft-using-decl
+#         using declaration referring to inaccessible member 'A' (which refers to accessible member 'B') is a Microsoft compatibility extension
+#   -Wmicrosoft-void-pseudo-dtor
+#         pseudo-destructors on type void are a Microsoft extension
+-Wmissing-format-attribute # DUMMY switch
+-Wmissing-include-dirs # DUMMY switch
+-Wmissing-noreturn
+#     <function|method> B could be declared with attribute 'noreturn'
+#     block could be declared with attribute 'noreturn'
+-Wmissing-prototypes
+#     no previous prototype for function A
+-Wmissing-variable-declarations
+#     no previous extern declaration for non-static variable A
+-Wmodule-build
+#     building module 'A' as 'B'
+#     could not acquire lock file for module 'A': B
+#     finished building module 'A'
+#     timed out waiting to acquire lock file for module 'A'
+-Wnarrowing
+#   -Wc++11-narrowing
+#         <case value|enumerator value|non-type template argument|array size|constexpr if condition> <cannot be narrowed from type C to D|evaluates to C, which cannot be narrowed to type D>
+#         constant expression evaluates to A which cannot be narrowed to type B
+#         constant expression evaluates to A which cannot be narrowed to type B in C++11
+#         non-constant-expression cannot be narrowed from type A to B in initializer list
+#         non-constant-expression cannot be narrowed from type A to B in initializer list in C++11
+#         type A cannot be narrowed to B in initializer list
+#         type A cannot be narrowed to B in initializer list in C++11
+-Wnested-externs # DUMMY switch
+-Wnewline-eof
+#     no newline at end of file
+-Wnon-gcc
+#   -Wconversion
+#         implicit conversion discards imaginary component: A to B
+#         implicit conversion loses floating-point precision: A to B
+#         implicit conversion loses integer precision: A to B
+#         implicit conversion turns vector to scalar: A to B
+#         non-type template argument value 'A' truncated to 'B' for template parameter of type C
+#         non-type template argument with value 'A' converted to 'B' for unsigned template parameter of type C
+#     -Wbitfield-enum-conversion
+#           assigning value of signed enum type B to unsigned bit-field A; negative enumerators of enum B will be converted to positive values
+#           bit-field A is not wide enough to store all enumerators of B
+#           signed bit-field A needs an extra bit to represent the largest positive enumerators of B
+#     -Wbool-conversion
+#           initialization of pointer of type A to null from a constant boolean expression
+#       -Wpointer-bool-conversion
+#             address of[ function| array] 'B' will always evaluate to 'true'
+#             nonnull <function call|parameter> 'B' will evaluate to 'true' on first encounter
+#       -Wundefined-bool-conversion
+#             'this' pointer cannot be null in well-defined C++ code; pointer may be assumed to always convert to true
+#             reference cannot be bound to dereferenced null pointer in well-defined C++ code; pointer may be assumed to always convert to true
+#     -Wconstant-conversion
+#           implicit conversion from C to D changes value from A to B
+#       -Wbitfield-constant-conversion
+#             implicit truncation from C to bit-field changes value from A to B
+#     -Wenum-conversion
+#           implicit conversion from enumeration type A to different enumeration type B
+#     -Wfloat-conversion
+#           implicit conversion turns floating-point number into integer: A to B
+#       -Wfloat-overflow-conversion
+#             implicit conversion of out of range value from A to B changes value from C to D
+#       -Wfloat-zero-conversion
+#             implicit conversion from A to B changes non-zero value from C to D
+#     -Wint-conversion
+#           incompatible integer to pointer conversion <assigning to different types|passing to parameter of different type|returning from function with different return type|converting between types|initializing with expression of different type|sending to parameter of different type|casting between types>[; dereference with *|; take the address with &|; remove *|; remove &]
+#           incompatible pointer to integer conversion <assigning to different types|passing to parameter of different type|returning from function with different return type|converting between types|initializing with expression of different type|sending to parameter of different type|casting between types>[; dereference with *|; take the address with &|; remove *|; remove &]
+#     -Wliteral-conversion
+#           implicit conversion from A to B changes value from C to D
+#     -Wnon-literal-null-conversion
+#           expression which evaluates to zero treated as a null pointer constant of type A
+#     -Wnull-conversion
+#           implicit conversion of <NULL|nullptr> constant to B
+#     -Wobjc-literal-conversion
+#           implicit boolean conversion of Objective-C object literal always evaluates to true
+#           object of type A is not compatible with <array element type|dictionary key type|dictionary value type> C
+#     -Wshorten-64-to-32
+#           implicit conversion loses integer precision: A to B
+#     -Wsign-conversion
+#           implicit conversion changes signedness: A to B
+#           operand of ? changes signedness: A to B
+#     -Wstring-conversion
+#           implicit conversion turns string literal into bool: A to B
+#   -Wliteral-range
+#         magnitude of floating-point constant too large for type A; maximum is B
+#         magnitude of floating-point constant too small for type A; minimum is B
+#   -Wsign-compare
+#         comparison of integers of different signs: A and B
+-Wnonportable-cfstrings # DUMMY switch
+-Wnonportable-private-system-apinotes-path
+#     private API notes file for module 'A' should be named 'A_private.apinotes', not 'B'
+-Wnonportable-system-include-path
+#     non-portable path to file 'A'; specified path differs in case from file name on disk
+-Wnullable-to-nonnull-conversion
+#     implicit conversion from nullable pointer A to non-nullable pointer type B
+-Wobjc-interface-ivars
+#     declaration of instance variables in the interface is deprecated
+-Wobjc-messaging-id
+#     messaging unqualified id
+-Wobjc-missing-property-synthesis
+#     auto property synthesis is synthesizing property not explicitly synthesized
+-Wold-style-cast
+#     use of old-style cast
+-Wold-style-definition # DUMMY switch
+-Wover-aligned
+#     type A requires B bytes of alignment and the default allocator only guarantees C bytes
+-Woverflow # DUMMY switch
+-Woverriding-method-mismatch
+#     conflicting distributed object modifiers on parameter type in declaration of A
+#     conflicting distributed object modifiers on return type in declaration of A
+#     conflicting parameter types in declaration of A
+#     conflicting parameter types in declaration of A: B vs C
+#     conflicting return type in declaration of A
+#     conflicting return type in declaration of A: B vs C
+#     conflicting variadic declaration of method and its implementation
+-Wpacked
+#     packed attribute is unnecessary for A
+-Wpadded
+#     padding <struct|interface|class> B with C <byte|bit>(s) to align E
+#     padding <struct|interface|class> B with C <byte|bit>(s) to align anonymous bit-field
+#     padding size of A with B <byte|bit>(s) to alignment boundary
+-Wpartial-availability
+#   -Wunguarded-availability
+#         A is only available on B C or newer
+#     -Wunguarded-availability-new
+#           A is only available on B C or newer
+-Wpass
+#     The text of this diagnostic is not controlled by Clang
+-Wpass-analysis
+#     A; allow reordering by specifying '#pragma clang loop vectorize(enable)' before the loop or by providing the compiler option '-ffast-math'.
+#     A; allow reordering by specifying '#pragma clang loop vectorize(enable)' before the loop. If the arrays will always be independent specify '#pragma clang loop vectorize(assume_safety)' before the loop or provide the '__restrict__' qualifier with the independent array arguments. Erroneous results will occur if these options are incorrectly applied!
+#     The text of this diagnostic is not controlled by Clang
+-Wpass-missed
+#     The text of this diagnostic is not controlled by Clang
+-Wpedantic
+#     #ident is a language extension
+#     #warning is a language extension
+#     'A' cannot be signed or unsigned
+#     '__thread' before 'A'
+#     <assigning to different types|passing to parameter of different type|returning from function with different return type|converting between types|initializing with expression of different type|sending to parameter of different type|casting between types> converts between void pointer and function pointer
+#     C requires #line number to be less than A, allowed as extension
+#     C99 forbids casting nonscalar type A to the same type
+#     C99 forbids conditional expressions with only one void side
+#     ISO C does not support '++'/'--' on complex integer type A
+#     ISO C does not support '~' for complex conjugation of A
+#     ISO C forbids forward references to 'enum' types
+#     ISO C forbids taking the address of an expression of type 'void'
+#     ISO C restricts enumerator values to range of 'int' (A is too <small|large>)
+#     ISO C90 does not allow subscripting non-lvalue array
+#     __VA_ARGS__ can only appear in the expansion of a C99 variadic macro
+#     anonymous <struct|union> cannot be 'B'
+#     cast between pointer-to-function and pointer-to-object is an extension
+#     comma operator in operand of #if
+#     complex numbers are an extension in a freestanding C99 implementation
+#     equality comparison between function pointer and void pointer (A and B)
+#     ordered comparison between pointer and zero (A and B) is an extension
+#     parameter A was not declared, defaulting to type 'int'
+#     qualifier in explicit instantiation of A requires a template-id (a typedef is not permitted)
+#     size of static array must be an integer constant expression
+#     type-less parameter names in function declaration
+#     use of non-standard escape character '\A'
+#     void <function|method|block> A should not return void expression
+#   -Wc++11-extra-semi
+#         extra ';' outside of a function is a C++11 extension
+#   -Wc++14-binary-literal
+#         binary integer literals are a C++14 extension
+#   -Wc11-extensions
+#         A is a C11-specific feature
+#         _Noreturn functions are a C11-specific feature
+#         _Static_assert is a C11-specific feature
+#         anonymous structs are a C11 extension
+#         anonymous unions are a C11 extension
+#         generic selections are a C11-specific feature
+#   -Wcomplex-component-init
+#         complex initialization specifying real and imaginary components is an extension
+#   -Wdeclaration-after-statement
+#         ISO C90 forbids mixing declarations and code
+#   -Wdollar-in-identifier-extension
+#         '$' in identifier
+#   -Wembedded-directive
+#         embedding a directive within macro arguments has undefined behavior
+#   -Wempty-translation-unit
+#         ISO C requires a translation unit to contain at least one declaration
+#   -Wflexible-array-extensions
+#         A may not be nested in a struct due to flexible array member
+#         A may not be used as an array element due to flexible array member
+#   -Wfour-char-constants
+#         multi-character character constant
+#   -Wgnu-anonymous-struct
+#         anonymous structs are a GNU extension
+#   -Wgnu-auto-type
+#         '__auto_type' is a GNU extension
+#   -Wgnu-binary-literal
+#         binary integer literals are a GNU extension
+#   -Wgnu-case-range
+#         use of GNU case range extension
+#   -Wgnu-complex-integer
+#         complex integer types are a GNU extension
+#   -Wgnu-compound-literal-initializer
+#         initialization of an array from a compound literal is a GNU extension
+#   -Wgnu-conditional-omitted-operand
+#         use of GNU ?: conditional expression extension, omitting middle operand
+#   -Wgnu-empty-initializer
+#         use of GNU empty initializer extension
+#   -Wgnu-empty-struct
+#         <struct|union> without named members is a GNU extension
+#         empty <struct|union> is a GNU extension
+#         flexible array member A in otherwise empty <struct|interface|union|class|enum> is a GNU extension
+#   -Wgnu-flexible-array-initializer
+#         flexible array initialization is a GNU extension
+#   -Wgnu-flexible-array-union-member
+#         flexible array member A in a union is a GNU extension
+#   -Wgnu-folding-constant
+#         expression is not an <integer|integral> constant expression; folding it to a constant is a GNU extension
+#         in-class initializer for static data member is not a constant expression; folding it to a constant is a GNU extension
+#         variable length array folded to constant array as an extension
+#   -Wgnu-imaginary-constant
+#         imaginary constants are a GNU extension
+#   -Wgnu-include-next
+#         #include_next is a language extension
+#   -Wgnu-label-as-value
+#         use of GNU address-of-label extension
+#         use of GNU indirect-goto extension
+#   -Wgnu-redeclared-enum
+#         redeclaration of already-defined enum A is a GNU extension
+#   -Wgnu-statement-expression
+#         use of GNU statement expression extension
+#   -Wgnu-union-cast
+#         cast to union type is a GNU extension
+#   -Wgnu-zero-line-directive
+#         #line directive with zero argument is a GNU extension
+#   -Wgnu-zero-variadic-macro-arguments
+#         must specify at least one argument for '...' parameter of variadic macro
+#         token pasting of ',' and __VA_ARGS__ is a GNU extension
+#   -Wimport-preprocessor-directive-pedantic
+#         #import is a language extension
+#   -Wkeyword-macro
+#         keyword is hidden by macro definition
+#   -Wlanguage-extension-token
+#         extension used
+#   -Wlong-long
+#         'long long' is an extension when C99 mode is not enabled
+#     -Wc++11-long-long
+#           'long long' is a C++11 extension
+#   -Wmicrosoft-charize
+#         charizing operator #@ is a Microsoft extension
+#   -Wmicrosoft-comment-paste
+#         pasting two '/' tokens into a '//' comment is a Microsoft extension
+#   -Wmicrosoft-cpp-macro
+#         C++ operator A (aka B) used as a macro name
+#   -Wmicrosoft-end-of-file
+#         treating Ctrl-Z as end-of-file is a Microsoft extension
+#   -Wmicrosoft-enum-value
+#         enumerator value is not representable in the underlying type A
+#   -Wmicrosoft-fixed-enum
+#         enumeration types with a fixed underlying type are a Microsoft extension
+#   -Wmicrosoft-flexible-array
+#         flexible array member A in a union is a Microsoft extension
+#         flexible array member A in otherwise empty <struct|interface|union|class|enum> is a Microsoft extension
+#   -Wmicrosoft-redeclare-static
+#         redeclaring non-static A as static is a Microsoft extension
+#   -Wnested-anon-types
+#         anonymous types declared in an anonymous <struct|union> are an extension
+#   -Wnullability-extension
+#         type nullability specifier A is a Clang extension
+#   -Woverlength-strings
+#         string literal of length A exceeds maximum length B that <C90|ISO C99|C++> compilers are required to support
+#   -Wretained-language-linkage
+#         friend function A retaining previous language linkage is an extension
+#   -Wundefined-internal-type
+#         ISO C++ requires a definition in this translation unit for <function|variable> B because its type does not have linkage
+#   -Wvla-extension
+#         variable length arrays are a C99 feature
+#   -Wzero-length-array
+#         zero size arrays are an extension
+-Wpedantic-core-features
+#     OpenCL extension A is core feature or supported optional core feature - ignoring
+-Wpointer-arith
+#     arithmetic on[ a] pointer[s] to void is a GNU extension
+#     arithmetic on[ a] pointer[s] to[ the] function type[s] B[ and D] is a GNU extension
+#     invalid application of '<sizeof|alignof|vec_step>' to a function type
+#     invalid application of '<sizeof|alignof|vec_step>' to a void type
+#     subscript of a pointer to void is a GNU extension
+#     subtraction of pointers to type A of zero size has undefined behavior
+-Wpointer-to-int-cast # DUMMY switch
+-Wpragmas
+#     #pragma redefine_extname is applicable to external C declarations only; not applied to <function|variable> B
+#   -Wignored-pragmas
+#         #pragma A(pop, ...) failed: B
+#         #pragma options align=reset failed: A
+#         '#pragma comment A' ignored
+#         '#pragma init_seg' is only supported when targeting a Microsoft environment
+#         OpenCL extension end directive mismatches begin directive - ignoring
+#         expected #pragma pack parameter to be '1', '2', '4', '8', or '16'
+#         expected '#pragma unused' argument to be a variable name
+#         expected ')' or ',' in '#pragma A'
+#         expected '=' following '#pragma <align|options align>' - ignored
+#         expected 'align' following '#pragma options' - ignored
+#         expected 'compiler', 'lib', 'user', or a string literal for the section name in '#pragma A' - ignored
+#         expected <'enable', 'disable', 'begin' or 'end'|'disable'> - ignoring
+#         expected a stack label or a string literal for the section name in '#pragma A' - ignored
+#         expected a string literal for the section name in '#pragma A' - ignored
+#         expected action or ')' in '#pragma A' - ignored
+#         expected identifier in '#pragma A' - ignored
+#         expected integer between A and B inclusive in '#pragma C' - ignored
+#         expected integer or identifier in '#pragma pack' - ignored
+#         expected non-wide string literal in '#pragma A'
+#         expected push, pop or a string literal for the section name in '#pragma A' - ignored
+#         extra tokens at end of '#pragma A' - ignored
+#         incorrect use of #pragma clang force_cuda_host_device begin|end
+#         incorrect use of '#pragma ms_struct on|off' - ignored
+#         invalid alignment option in '#pragma <align|options align>' - ignored
+#         known but unsupported action 'B' for '#pragma A' - ignored
+#         missing '(' after '#pragma A' - ignoring
+#         missing ')' after '#pragma A' - ignoring
+#         missing ':' after A - ignoring
+#         missing ':' or ')' after A - ignoring
+#         missing argument to debug command 'A'
+#         only variables can be arguments to '#pragma unused'
+#         pragma pop_macro could not pop 'A', no matching push_macro
+#         undeclared variable A used as an argument for '#pragma unused'
+#         unexpected debug command 'A'
+#         unknown OpenCL extension A - ignoring
+#         unknown action 'B' for '#pragma A' - ignored
+#         unknown action for '#pragma A' - ignored
+#         unsupported OpenCL extension A - ignoring
+#     -Wignored-pragma-intrinsic
+#           A is not a recognized builtin[; consider including <intrin.h> to access non-builtin intrinsics]
+#   -Wpragma-clang-attribute
+#         unused attribute A in '#pragma clang attribute push' region
+#   -Wpragma-pack
+#         the current #pragma pack aligment value is modified in the included file
+#         unterminated '#pragma pack (push, ...)' at end of file
+#     -Wpragma-pack-suspicious-include
+#           non-default #pragma pack value changes the alignment of struct or union members in the included file
+#   -Wunknown-pragmas
+#         #pragma warning expected 'A'
+#         #pragma warning expected 'push', 'pop', 'default', 'disable', 'error', 'once', 'suppress', 1, 2, 3, or 4
+#         #pragma warning expected a warning number
+#         #pragma warning(push, level) requires a level between 0 and 4
+#         angle-bracketed include <A> cannot be aliased to double-quoted include "B"
+#         double-quoted include "A" cannot be aliased to angle-bracketed include <B>
+#         expected 'ON' or 'OFF' or 'DEFAULT' in pragma
+#         expected end of directive in pragma
+#         pragma STDC FENV_ACCESS ON is not supported, ignoring pragma
+#         pragma diagnostic expected 'error', 'warning', 'ignored', 'fatal', 'push', or 'pop'
+#         pragma diagnostic expected option name (e.g. "-Wundef")
+#         pragma diagnostic pop could not pop, no matching push
+#         pragma include_alias expected 'A'
+#         pragma include_alias expected include filename
+#         unexpected token in pragma diagnostic
+#         unknown pragma ignored
+#         unknown pragma in STDC namespace
+-Wprofile-instr-missing
+#     profile data may be incomplete: of A function(s), B <has|have> no data
+-Wreceiver-forward-class
+#     receiver A is a forward class and corresponding @interface may not exist
+#     receiver type A for instance message is a forward declaration
+-Wredundant-decls # DUMMY switch
+-Wredundant-parens
+#     redundant parentheses surrounding declarator
+-Wremark-backend-plugin
+#     The text of this diagnostic is not controlled by Clang
+-Wreserved-id-macro
+#     macro name is a reserved identifier
+-Wreserved-user-defined-literal
+#     invalid suffix on literal; C++11 requires a space between literal and identifier
+#   -Wc++11-compat-reserved-user-defined-literal
+#         identifier after literal will be treated as a reserved user-defined literal suffix in C++11
+-Wsanitize-address
+#     -fsanitize-address-field-padding applied to A
+#     -fsanitize-address-field-padding ignored for A because it <is not C++|is packed|is a union|is trivially copyable|has trivial destructor|is standard layout|is in a blacklisted file|is blacklisted>
+-Wselector
+#     no method with selector A is implemented in this translation unit
+#   -Wselector-type-mismatch
+#         several methods with selector A of mismatched types are found for the @selector expression
+-Wshadow-all
+#   -Wshadow
+#         declaration shadows a <local variable|variable in C|static data member of C|field of C|typedef in C|type alias in C>
+#     -Wshadow-field-in-constructor-modified
+#           modifying constructor parameter A that shadows a field of B
+#     -Wshadow-ivar
+#           local declaration of A hides instance variable
+#   -Wshadow-field
+#         non-static data member 'A' of 'B' shadows member inherited from type 'C'
+#   -Wshadow-field-in-constructor
+#         constructor parameter A shadows the field B of C
+#     -Wshadow-field-in-constructor-modified
+#           modifying constructor parameter A that shadows a field of B
+#   -Wshadow-uncaptured-local
+#         declaration shadows a <local variable|variable in C|static data member of C|field of C|typedef in C|type alias in C>
+-Wshift-sign-overflow
+#     signed shift result (A) sets the sign bit of the shift expression's type (B) and becomes negative
+-Wsign-promo # DUMMY switch
+-Wsigned-enum-bitfield
+#     enums in the Microsoft ABI are signed integers by default; consider giving the enum A an unsigned underlying type to make this code portable
+-Wsource-uses-openmp
+#     OpenMP only allows an ordered construct with the simd clause nested in a simd construct
+#     unexpected '#pragma omp ...' in program
+-Wspir-compat
+#     sampler initializer has invalid A bits
+-Wstack-protector # DUMMY switch
+-Wstatic-in-inline
+#     static <function|variable> B is used in an inline function with external linkage
+-Wstrict-aliasing # DUMMY switch
+-Wstrict-aliasing=0 # DUMMY switch
+-Wstrict-aliasing=1 # DUMMY switch
+-Wstrict-aliasing=2 # DUMMY switch
+-Wstrict-overflow # DUMMY switch
+-Wstrict-overflow=0 # DUMMY switch
+-Wstrict-overflow=1 # DUMMY switch
+-Wstrict-overflow=2 # DUMMY switch
+-Wstrict-overflow=3 # DUMMY switch
+-Wstrict-overflow=4 # DUMMY switch
+-Wstrict-overflow=5 # DUMMY switch
+-Wstrict-prototypes
+#     this <function declaration is not|block declaration is not|old-style function definition is not preceded by> a prototype
+-Wstrict-selector-match
+#     multiple methods named A found
+-Wsuper-class-method-mismatch
+#     method parameter type does not match super class method parameter type
+-Wswitch-default # DUMMY switch
+-Wswitch-enum
+#     <enumeration value B not explicitly handled in switch|enumeration values B and C not explicitly handled in switch|enumeration values B, C, and D not explicitly handled in switch|A enumeration values not explicitly handled in switch>
+-Wsynth # DUMMY switch
+-Wtautological-compare
+#     <self-|array >comparison always evaluates to <false|true|a constant>
+#     bitwise comparison always evaluates to <false|true>
+#   -Wtautological-constant-compare
+#         result of comparison of <constant A|true|false> with <expression of type C|boolean expression> is always E
+#     -Wtautological-constant-out-of-range-compare
+#           result of comparison of <constant A|true|false> with <expression of type C|boolean expression> is always E
+#   -Wtautological-overlap-compare
+#         overlapping comparisons always evaluate to <false|true>
+#   -Wtautological-pointer-compare
+#         comparison of <address of|function|array> 'B' [not ]equal to a null pointer is always <true|false>
+#         comparison of nonnull <function call|parameter> 'B' [not ]equal to a null pointer is '<true|false>' on first encounter
+#   -Wtautological-undefined-compare
+#         'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to <true|false>
+#         reference cannot be bound to dereferenced null pointer in well-defined C++ code; comparison may be assumed to always evaluate to <true|false>
+-Wtautological-constant-in-range-compare
+#   -Wtautological-type-limit-compare
+#         result of comparison <D|B> C <B|D> is always E
+#   -Wtautological-unsigned-enum-zero-compare
+#         result of comparison of <D|unsigned enum expression> C <unsigned enum expression|D> is always E
+#   -Wtautological-unsigned-zero-compare
+#         result of comparison of <D|unsigned expression> C <unsigned expression|D> is always E
+-Wthread-safety
+#   -Wthread-safety-analysis
+#         <reading|writing> the value pointed to by 'A' requires holding <any mutex|any mutex exclusively>
+#         <reading|writing> the value pointed to by 'B' requires holding A <'C'|'C' exclusively>
+#         <reading|writing> variable 'A' requires holding <any mutex|any mutex exclusively>
+#         <reading|writing> variable 'B' requires holding A <'C'|'C' exclusively>
+#         A 'B' is acquired exclusively and shared in the same scope
+#         A 'B' is not held on every path through here
+#         A 'B' is still held at the end of function
+#         A 'B' must be acquired before 'C'
+#         Cycle in acquired_before/after dependencies, starting with 'A'
+#         acquiring A 'B' that is already held
+#         calling function 'B' requires holding A <'C'|'C' exclusively>
+#         cannot call function 'B' while A 'C' is held
+#         cannot resolve lock expression
+#         expecting A 'B' to be held at start of each loop
+#         expecting A 'B' to be held at the end of function
+#         releasing A 'B' that was not held
+#         releasing A 'B' using <shared|exclusive> access, expected <shared|exclusive> access
+#   -Wthread-safety-attributes
+#         A attribute can only be applied in a context annotated with 'capability("mutex")' attribute
+#         A attribute requires arguments whose type is annotated with 'capability' attribute; type here is B
+#         A only applies to pointer types; type here is B
+#         ignoring A attribute because its argument is invalid
+#         invalid capability name 'A'; capability name must be 'mutex' or 'role'
+#   -Wthread-safety-precise
+#         <reading|writing> the value pointed to by 'B' requires holding A <'C'|'C' exclusively>
+#         <reading|writing> variable 'B' requires holding A <'C'|'C' exclusively>
+#         calling function 'B' requires holding A <'C'|'C' exclusively>
+#   -Wthread-safety-reference
+#         passing the value that 'B' points to by reference requires holding A <'C'|'C' exclusively>
+#         passing variable 'B' by reference requires holding A <'C'|'C' exclusively>
+-Wthread-safety-beta
+#     Thread safety beta warning.
+-Wthread-safety-negative
+#     acquiring A 'B' requires negative capability 'C'
+-Wthread-safety-verbose
+#     Thread safety verbose warning.
+-Wtype-limits # DUMMY switch
+-Wundeclared-selector
+#     undeclared selector A
+#     undeclared selector A; did you mean B?
+-Wundef
+#     A is not defined, evaluates to 0
+-Wundefined-func-template
+#     instantiation of function A required here, but no definition is available
+-Wundefined-reinterpret-cast
+#     dereference of type B that was reinterpret_cast from type A has undefined behavior
+#     reinterpret_cast from A to B has undefined behavior
+-Wunnamed-type-template-args
+#     template argument uses unnamed type
+#   -Wc++98-compat-unnamed-type-template-args
+#         unnamed type as template argument is incompatible with C++98
+-Wunreachable-code-aggressive
+#   -Wunreachable-code
+#         code will never be executed
+#     -Wunreachable-code-loop-increment
+#           loop will run at most once (loop increment never executed)
+#   -Wunreachable-code-break
+#         'break' will never be executed
+#   -Wunreachable-code-return
+#         'return' will never be executed
+-Wunsupported-dll-base-class-template
+#     propagating dll attribute to <already instantiated|explicitly specialized> base class template without dll attribute is not supported
+-Wunused-exception-parameter
+#     unused exception parameter A
+-Wunused-local-typedefs
+#   -Wunused-local-typedef
+#         unused <typedef|type alias> B
+-Wunused-macros
+#     macro is not used
+-Wunused-member-function
+#     unused member function A
+#   -Wunneeded-member-function
+#         member function A is not needed and will not be emitted
+-Wunused-template
+#     unused <function|variable> template B
+#   -Wunneeded-internal-declaration
+#         'static' function A declared in header file should be declared 'static inline'
+#         <function|variable> B is not needed and will not be emitted
+-Wused-but-marked-unused
+#     A was marked unused but was used
+-Wvariadic-macros
+#     __VA_OPT__ can only appear in the expansion of a variadic macro
+#     named variadic macros are a GNU extension
+#     variadic macros are a C99 feature
+-Wvector-conversions
+#   -Wvector-conversion
+#         incompatible vector types <assigning to different types|passing to parameter of different type|returning from function with different return type|converting between types|initializing with expression of different type|sending to parameter of different type|casting between types>
+-Wvla
+#     variable length array used
+-Wweak-template-vtables
+#     explicit template instantiation A will emit a vtable in every translation unit
+-Wweak-vtables
+#     A has no out-of-line virtual method definitions; its vtable will be emitted in every translation unit
+-Wzero-as-null-pointer-constant
+#     zero as null pointer constant

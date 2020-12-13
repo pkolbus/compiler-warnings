@@ -1,0 +1,20 @@
+--Waligned-allocation-unavailable # Enabled by default.
++-Wargument-outside-range # Enabled by default.
++-Watimport-in-framework-header # Enabled by default.
++-Watomic-alignment # Enabled by default.
++-Watomic-implicit-seq-cst
++-Wc++98-compat-extra-semi
++-Wcast-qual-unrelated # Enabled by default.
++-Wdeprecated-this-capture
++-Wframework-include-private-from-public # Enabled by default.
++-Wignored-pragma-optimize # Enabled by default.
++-Wincomplete-framework-module-declaration # Enabled by default.
++-Wmemset-transposed-args # Enabled by default.
++-Wordered-compare-function-pointers # Enabled by default.
++-Wquoted-include-in-framework-header
++-Wreturn-std-move
++-Wreturn-std-move-in-c++11
+--Wrtti-for-exceptions # Enabled by default.
++-Wself-assign-overloaded
++-Wsuspicious-bzero # Enabled by default.
++-Wsuspicious-memaccess # Enabled by default.

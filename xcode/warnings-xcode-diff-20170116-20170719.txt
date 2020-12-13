@@ -1,0 +1,29 @@
++-Waligned-allocation-unavailable # Enabled by default.
++-Wbitfield-enum-conversion
++-Wc++17-compat # Enabled by default.
++-Wc++17-compat-mangling # Enabled by default.
++-Wc++17-extensions # Partially enabled by default.
++-Wcoroutine # Enabled by default.
++-Wcoroutine-missing-unhandled-exception # Enabled by default.
++-Wcpp # Enabled by default.
++-Wexpansion-to-defined # Partially enabled by default.
++-Winconsistent-missing-destructor-override
++-Winjected-class-name # Enabled by default.
+--Wmicrosoft-enum-forward-reference
+--Wmicrosoft-enum-value # Enabled by default.
++-Wmicrosoft-enum-forward-reference # Enabled by default.
++-Wmicrosoft-enum-value
++-Wmsvc-not-found # Enabled by default.
++-Wnoexcept-type # Enabled by default.
+--Wpartial-availability
++-Wpartial-availability # Partially enabled by default.
+--Wprivate-module # Enabled by default.
++-Wprivate-module # Partially enabled by default.
++-Wshadow-field
++-Wslash-u-filename # Enabled by default.
+--Wunguarded-availability
++-Wunguarded-availability # Partially enabled by default.
++-Wunguarded-availability-new # Enabled by default.
++-Wunused-lambda-capture
++-Wunused-template
++-Wzero-as-null-pointer-constant

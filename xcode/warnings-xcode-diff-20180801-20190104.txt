@@ -1,0 +1,19 @@
++-Wcall-to-pure-virtual-from-ctor-dtor # Enabled by default.
++-Wctu # Enabled by default.
++-Wdefaulted-function-deleted # Enabled by default.
++-Wdelete-abstract-non-virtual-dtor # Enabled by default.
++-Wdelete-non-abstract-non-virtual-dtor
+--Wduplicate-decl-specifier # Enabled by default.
++-Wduplicate-decl-specifier # Partially enabled by default.
++-Wempty-init-stmt
++-Wextra-semi-stmt
++-Wfixed-enum-extension
++-Wimplicit-float-conversion
++-Wimplicit-int-conversion
++-Wmodule-import
++-Wnoderef # Enabled by default.
++-Wobjc-boxing # Enabled by default.
++-Wobjc-property-assign-on-object-type
++-Wsizeof-pointer-div # Enabled by default.
++-Wunderaligned-exception-object # Enabled by default.
++-Wunicode-zero-width # Enabled by default.

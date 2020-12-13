@@ -1,0 +1,46 @@
++-Wbinary-literal
++-Wbinding-in-condition # Enabled by default.
+--Wc++11-compat-pedantic
++-Wc++11-compat-pedantic # Partially enabled by default.
+--Wc++17-compat # Enabled by default.
++-Wc++17-compat # Partially enabled by default.
++-Wc++17-compat-pedantic # Partially enabled by default.
+--Wc++1z-compat # Enabled by default.
++-Wc++1z-compat # Partially enabled by default.
++-Wc++2a-compat # Partially enabled by default.
++-Wc++2a-compat-pedantic # Partially enabled by default.
++-Wc++2a-extensions # Partially enabled by default.
++-Wc++98-c++11-c++14-c++17-compat
++-Wc++98-c++11-c++14-c++17-compat-pedantic
++-Wc++98-c++11-compat-binary-literal
++-Wenum-compare-switch # Enabled by default.
++-Wexperimental-isel # Enabled by default.
+--Wextended-offsetof
++-Wmicrosoft-inaccessible-base # Enabled by default.
++-Wmissing-noescape # Enabled by default.
++-Wnonportable-private-apinotes-path # Enabled by default.
++-Wnonportable-private-system-apinotes-path
++-Wnontrivial-memaccess # Enabled by default.
++-Wnsconsumed-mismatch # Enabled by default.
++-Wnsreturns-mismatch # Enabled by default.
++-Wnull-pointer-arithmetic
++-Wobjc-flexible-array # Enabled by default.
++-Wobjc-messaging-id
++-Wout-of-scope-function # Enabled by default.
++-Wpragma-pack # Partially enabled by default.
++-Wpragma-pack-suspicious-include
+--Wprivate-module # Partially enabled by default.
++-Wprivate-module # Enabled by default.
++-Wredundant-parens
++-Wstdlibcxx-not-found # Enabled by default.
++-Wtautological-constant-compare # Enabled by default.
++-Wtautological-constant-in-range-compare
++-Wtautological-type-limit-compare
++-Wtautological-unsigned-enum-zero-compare
++-Wtautological-unsigned-zero-compare
++-Wundefined-internal-type
++-Wunicode-homoglyph # Enabled by default.
++-Wunsupported-abs # Enabled by default.
++-Wunsupported-gpopt # Enabled by default.
+--Wvariadic-macros
++-Wvariadic-macros # Partially enabled by default.

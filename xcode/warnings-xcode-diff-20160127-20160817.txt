@@ -1,0 +1,40 @@
++-Waddress-of-packed-member # Enabled by default.
++-Wblock-capture-autoreleasing
+--Wc++1z-extensions # Enabled by default.
++-Wc++1z-extensions # Partially enabled by default.
++-Wcast-calling-convention # Enabled by default.
++-Wclang-cl-pch # Enabled by default.
++-Wcomma
+--Wcuda-compat # Enabled by default.
++-Wcuda-compat # Partially enabled by default.
++-Wempty-decomposition # Enabled by default.
++-Wexpansion-to-defined # Partially enabled by default.
++-Wfloat-overflow-conversion
++-Wfloat-zero-conversion
+--Wgcc-compat # Enabled by default.
++-Wgcc-compat # Partially enabled by default.
+--Wimplicit-fallthrough # Partially enabled by default.
++-Wimplicit-fallthrough
++-Wincompatible-function-pointer-types # Enabled by default.
+--Winherited-variadic-ctor # Enabled by default.
+--Wliblto # Enabled by default.
++-Wliblto # DUMMY switch
++-Wnonportable-include-path # Enabled by default.
++-Wnonportable-system-include-path
++-Wnullability-completeness-on-arrays # Enabled by default.
++-Wnullability-inferred-on-nested-type # Enabled by default.
++-Wopenmp-target # Enabled by default.
++-Wpedantic-core-features
++-Wshadow-all
++-Wshadow-field-in-constructor
++-Wshadow-field-in-constructor-modified
++-Wshadow-uncaptured-local
+--Wsource-uses-openmp
++-Wsource-uses-openmp # Partially enabled by default.
++-Wspir-compat
++-Wunable-to-open-stats-file # Enabled by default.
++-Wundefined-func-template
++-Wundefined-var-template # Enabled by default.
++-Wunguarded-availability
++-Wunknown-argument # Enabled by default.
++-Wunsupported-cb # Enabled by default.
