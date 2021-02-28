@@ -57,10 +57,10 @@ for v in "${versions[@]}"; do
     parse_clang_info ${v} "$target_dir" "$GIT_DIR"/clang/include/clang/Basic
 done
 
-# Parse NEXT (master)
+# Parse NEXT (main)
 versions=( "${versions[@]}" "NEXT" )
 
-git -C "$GIT_DIR" checkout origin/master
+git -C "$GIT_DIR" checkout origin/main
 parse_clang_info NEXT "$target_dir" "$GIT_DIR"/clang/include/clang/Basic
 
 # Generate diffs
