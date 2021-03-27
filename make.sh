@@ -52,7 +52,7 @@ while true; do
     esac
 done
 
-if [ ${BUILD_CLANG} -eq 0 -a ${BUILD_GCC} -eq 0 -a ${BUILD_XCODE} -eq 0 ]; then
+if [ ${BUILD_CLANG} -eq 0 ] && [ ${BUILD_GCC} -eq 0 ] && [ ${BUILD_XCODE} -eq 0 ]; then
     BUILD_CLANG=1
     BUILD_GCC=1
     BUILD_XCODE=1
@@ -118,7 +118,7 @@ done
 #
 mkdir -p build
 
-if [ ${BUILD_CLANG} -eq 1 -o ${BUILD_XCODE} -eq 1 ]; then
+if [ ${BUILD_CLANG} -eq 1 ] || [ ${BUILD_XCODE} -eq 1 ]; then
     echo "Testing the clang parser..."
     run_in_docker python3 -mdoctest ./parsers/parse-clang-diagnostic-groups.py
 fi
