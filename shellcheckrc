@@ -1,4 +1,3 @@
-disable=SC2196  # egrep is non-standard and deprecated. Use grep -E instead.
 disable=SC2207  # Prefer mapfile or read -a to split command output (or quote to avoid splitting).
 
 # Optional checks to enable
