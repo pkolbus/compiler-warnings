@@ -16,3 +16,4 @@ flake8-mypy
 flake8-pep3101
 flake8-rst-docstrings
 flake8-variables-names
+pip-tools

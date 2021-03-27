@@ -21,6 +21,7 @@ black==19.10b0
 click==7.1.2
     # via
     #   black
+    #   pip-tools
 cognitive-complexity==1.1.0
     # via flake8-cognitive-complexity
 darglint==1.5.1
@@ -91,6 +92,10 @@ pathspec==0.8.0
     # via black
 pbr==5.4.5
     # via stevedore
+pep517==0.10.0
+    # via pip-tools
+pip-tools==6.0.1
+    # via -r parsers/requirements.in
 pycodestyle==2.6.0
     # via
     #   flake8
@@ -119,6 +124,7 @@ toml==0.10.1
     # via
     #   black
     #   isort
+    #   pep517
 typed-ast==1.4.1
     # via
     #   black
@@ -127,4 +133,5 @@ typing-extensions==3.7.4.2
     # via mypy
 
 # The following packages are considered to be unsafe in a requirements file:
+# pip
 # setuptools

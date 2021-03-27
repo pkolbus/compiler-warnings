@@ -9,11 +9,14 @@ print_usage()
     echo " -c, --clang          build clang warning lists"
     echo " -g, --gcc            build gcc warning lists"
     echo " -x, --xcode          build xcode warning lists"
+    echo ""
+    echo " -r, --requirements   build requirements.txt"
+    echo ""
     echo " -h, --help           display this help"
 }
 
 
-if ! OPTS=$(getopt -o cgxh -l clang,gcc,xcode,help -- "$@"); then
+if ! OPTS=$(getopt -o cgxrh -l clang,gcc,xcode,requirements,help -- "$@"); then
     print_usage
     exit 1
 fi
@@ -23,6 +26,7 @@ eval set -- "${OPTS}"
 BUILD_CLANG=0
 BUILD_GCC=0
 BUILD_XCODE=0
+BUILD_REQUIREMENTS=0
 while true; do
     case "$1" in
         -c | --clang )
@@ -35,6 +39,10 @@ while true; do
             ;;
         -x | --xcode )
             BUILD_XCODE=1
+            shift
+            ;;
+        -r | --requirements )
+            BUILD_REQUIREMENTS=1
             shift
             ;;
         -h | --help )
@@ -88,18 +96,31 @@ run_in_docker()
         "$@"
 }
 
-#
-# Build the Docker image
-#
-echo "Getting docker image up to date (this may take a few minutes)..."
+build_docker_image()
+{
+    echo "Getting docker image up to date (this may take a few minutes)..."
 
-cp parsers/requirements.txt docker/requirements.txt
-${DOCKER} image build \
-    -q \
-    -t ${DOCKER_IMAGE_TAG} \
-    --network host \
-    --cache-from=${DOCKER_IMAGE_TAG}:latest \
-    ./docker/
+    cp parsers/requirements.txt docker/requirements.txt
+    ${DOCKER} image build \
+        -q \
+        -t ${DOCKER_IMAGE_TAG} \
+        --network host \
+        --cache-from=${DOCKER_IMAGE_TAG}:latest \
+        ./docker/
+}
+
+build_docker_image
+
+if [ ${BUILD_REQUIREMENTS} -eq 1 ]; then
+    echo "Compiling requirements.in"
+    run_in_docker pip-compile \
+        --quiet \
+        --cache-dir /tmp/pip-tools-cache \
+        parsers/requirements.in
+
+    # Rebuild the docker image in case requirements changed.
+    build_docker_image
+fi
 
 # Linting requires the gcc parser to be built
 echo "Building the gcc parser..."
