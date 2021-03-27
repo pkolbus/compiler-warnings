@@ -1,4 +1,3 @@
-disable=SC2046  # Quote this to prevent word splitting.
 disable=SC2068  # Double quote array expansions to avoid re-splitting elements
 disable=SC2086  # Double quote to prevent globbing and word splitting.
 disable=SC2140  # Word is of the form "A"B"C" (B indicated)

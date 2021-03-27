@@ -80,7 +80,7 @@ fi
 run_in_docker()
 {
     ${DOCKER} container run -it --rm \
-        --user $(id -u):$(id -g) \
+        --user "$(id -u)":"$(id -g)" \
         --network host \
         --volume ${PWD}:${PWD} \
         --workdir ${PWD} \
