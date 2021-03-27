@@ -106,9 +106,12 @@ echo "Building the gcc parser..."
 run_in_docker ninja -C parsers
 run_in_docker ninja -C parsers test
 
-# Run formatting/linting on the Python code
+# Run formatting/linting
 run_in_docker black .
 run_in_docker flake8 .
+for f in $(git ls-files "*.sh"); do
+    run_in_docker shellcheck "${f}"
+done
 
 #
 # Prepare to build the warning options

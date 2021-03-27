@@ -1,0 +1,14 @@
+disable=SC2006  # Use $(...) notation instead of legacy backticked `...`
+disable=SC2034  # <var> appears unused.
+disable=SC2046  # Quote this to prevent word splitting.
+disable=SC2068  # Double quote array expansions to avoid re-splitting elements
+disable=SC2086  # Double quote to prevent globbing and word splitting.
+disable=SC2140  # Word is of the form "A"B"C" (B indicated)
+disable=SC2166  # Prefer [ p ] <op> [ q ]
+disable=SC2181  # Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
+disable=SC2196  # egrep is non-standard and deprecated. Use grep -E instead.
+disable=SC2207  # Prefer mapfile or read -a to split command output (or quote to avoid splitting).
+
+# Optional checks to enable
+enable=avoid-nullary-conditions
+enable=check-unassigned-uppercase

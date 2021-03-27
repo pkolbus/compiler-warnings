@@ -13,6 +13,7 @@ RUN apt-get update \
     ninja-build \
     python3-minimal \
     python3-pip \
+    shellcheck \
     wget \
     && apt-get clean
 
