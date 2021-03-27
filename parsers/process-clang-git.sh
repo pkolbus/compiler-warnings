@@ -48,6 +48,7 @@ versions=(
     9
     10
     11
+    12
 )
 
 for v in "${versions[@]}"; do
