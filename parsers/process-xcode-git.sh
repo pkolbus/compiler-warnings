@@ -30,7 +30,7 @@ GIT_DIR=$1
 target_dir=$DIR/../xcode
 
 # Parse all apple/stable branches
-versions=( $(git -C "$GIT_DIR" branch --list -r "origin/apple/stable/*" | cut -f4 -d"/") )
+mapfile -t versions < <( git -C "$GIT_DIR" branch --list -r "origin/apple/stable/*" | cut -f4 -d"/")
 
 mkdir -p "$target_dir"
 
