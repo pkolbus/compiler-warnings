@@ -35,8 +35,8 @@ versions=( $(git -C "$GIT_DIR" branch --list -r "origin/apple/stable/*" | cut -f
 mkdir -p "$target_dir"
 
 for v in "${versions[@]}"; do
-    git -C "$GIT_DIR" checkout origin/apple/stable/${v}
-    parse_clang_info ${v} "$target_dir" "$GIT_DIR"/clang/include/clang/Basic
+    git -C "$GIT_DIR" checkout "origin/apple/stable/${v}"
+    parse_clang_info "${v}" "$target_dir" "$GIT_DIR"/clang/include/clang/Basic
 done
 
 # Parse NEXT (apple/main)

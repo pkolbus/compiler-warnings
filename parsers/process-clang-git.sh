@@ -51,8 +51,8 @@ versions=(
 )
 
 for v in "${versions[@]}"; do
-    git -C "$GIT_DIR" checkout origin/release/${v}.x
-    parse_clang_info ${v} "$target_dir" "$GIT_DIR"/clang/include/clang/Basic
+    git -C "$GIT_DIR" checkout "origin/release/${v}.x"
+    parse_clang_info "${v}" "$target_dir" "$GIT_DIR"/clang/include/clang/Basic
 done
 
 # Parse NEXT (main)
