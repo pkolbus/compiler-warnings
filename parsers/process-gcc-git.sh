@@ -103,7 +103,7 @@ seq 2 "${#versions[@]}" | while read -r version_idx; do
     current=${versions[$(( version_idx - 2 ))]}
     next=${versions[$(( version_idx - 1 ))]}
     "$DIR"/create-diff.sh \
-          "$target_dir"/warnings-gcc-unique-"$current".txt \
-          "$target_dir"/warnings-gcc-unique-"$next".txt \
-          > "$target_dir"/warnings-gcc-diff-"$current-$next".txt
+          "${target_dir}/warnings-gcc-unique-${current}.txt" \
+          "${target_dir}/warnings-gcc-unique-${next}.txt" \
+          > "${target_dir}/warnings-gcc-diff-${current}-${next}.txt"
 done

@@ -66,7 +66,7 @@ seq 2 "${#versions[@]}" | while read -r version_idx; do
     current=${versions[$(( version_idx - 2 ))]}
     next=${versions[$(( version_idx - 1 ))]}
     "$DIR"/create-diff.sh \
-          "$target_dir"/warnings-clang-unique-"$current".txt \
-          "$target_dir"/warnings-clang-unique-"$next".txt \
-          > "$target_dir"/warnings-clang-diff-"$current-$next".txt
+          "${target_dir}/warnings-clang-unique-${current}.txt" \
+          "${target_dir}/warnings-clang-unique-${next}.txt" \
+          > "${target_dir}/warnings-clang-diff-${current}-${next}.txt"
 done
