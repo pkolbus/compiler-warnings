@@ -99,9 +99,9 @@ versions=(
     NEXT
 )
 
-seq 2 "${#versions[@]}" | while read -r current_version in ; do
-    current=${versions[$(( current_version - 2 ))]}
-    next=${versions[$(( current_version - 1 ))]}
+seq 2 "${#versions[@]}" | while read -r version_idx; do
+    current=${versions[$(( version_idx - 2 ))]}
+    next=${versions[$(( version_idx - 1 ))]}
     "$DIR"/create-diff.sh \
           "$target_dir"/warnings-gcc-unique-"$current".txt \
           "$target_dir"/warnings-gcc-unique-"$next".txt \

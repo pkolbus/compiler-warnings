@@ -9,8 +9,6 @@ function parse_clang_info()
     local target_dir=$2
     local input_dir=$3
 
-    local input_files="${input_dir}/DiagnosticGroups.td"
-
     local json_file="$target_dir"/warnings-xcode-"$version".json
 
     llvm-tblgen -dump-json -I "${input_dir}" \
@@ -48,9 +46,9 @@ git -C "$GIT_DIR" checkout origin/apple/main
 parse_clang_info NEXT "$target_dir" "$GIT_DIR"/clang/include/clang/Basic
 
 # Generate diffs
-seq 2 "${#versions[@]}" | while read -r current_version in ; do
-    current=${versions[$(( current_version - 2 ))]}
-    next=${versions[$(( current_version - 1 ))]}
+seq 2 "${#versions[@]}" | while read -r version_idx; do
+    current=${versions[$(( version_idx - 2 ))]}
+    next=${versions[$(( version_idx - 1 ))]}
     "$DIR"/create-diff.sh \
           "$target_dir"/warnings-xcode-unique-"$current".txt \
           "$target_dir"/warnings-xcode-unique-"$next".txt \
