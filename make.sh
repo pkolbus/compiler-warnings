@@ -12,7 +12,7 @@ print_usage()
     echo " -h, --help           display this help"
 }
 
-OPTS=`getopt -o cgxh -l clang,gcc,xcode,help -- $@`
+OPTS=$(getopt -o cgxh -l clang,gcc,xcode,help -- $@)
 if [ $? != 0 ]; then
     print_usage
     exit 1

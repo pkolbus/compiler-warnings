@@ -1,4 +1,3 @@
-disable=SC2006  # Use $(...) notation instead of legacy backticked `...`
 disable=SC2034  # <var> appears unused.
 disable=SC2046  # Quote this to prevent word splitting.
 disable=SC2068  # Double quote array expansions to avoid re-splitting elements
