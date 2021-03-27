@@ -1,3 +1,4 @@
 # Optional checks to enable
 enable=avoid-nullary-conditions
 enable=check-unassigned-uppercase
+enable=require-variable-braces

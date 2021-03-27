@@ -18,7 +18,7 @@ if ! OPTS=$(getopt -o cgxh -l clang,gcc,xcode,help -- "$@"); then
     exit 1
 fi
 
-eval set -- "$OPTS"
+eval set -- "${OPTS}"
 
 BUILD_CLANG=0
 BUILD_GCC=0
@@ -82,7 +82,7 @@ run_in_docker()
     ${DOCKER} container run -it --rm \
         --user "$(id -u)":"$(id -g)" \
         --network host \
-        --volume "${PWD}":"${PWD}" \
+        --volume "${PWD}:${PWD}" \
         --workdir "${PWD}" \
         ${DOCKER_IMAGE_TAG} \
         "$@"
