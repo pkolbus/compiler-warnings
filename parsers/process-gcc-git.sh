@@ -72,7 +72,7 @@ parse_gcc_info 8 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 git -C "$GIT_DIR" checkout releases/gcc-9.3.0
 parse_gcc_info 9 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt}
 
-git -C "$GIT_DIR" checkout releases/gcc-10.1.0
+git -C "$GIT_DIR" checkout releases/gcc-10.2.0
 parse_gcc_info 10 "$target_dir" "$GIT_DIR"/gcc/{common.opt,c-family/c.opt,analyzer/analyzer.opt}
 
 git -C "$GIT_DIR" checkout origin/master
