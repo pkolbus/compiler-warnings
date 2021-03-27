@@ -1591,7 +1591,7 @@
 #         unknown argument ignored in clang-cl 'A'; did you mean 'B'?
 #         unknown argument ignored in clang-cl: 'A'
 #   -Wunknown-cuda-version
-#         Unknown CUDA version A. Assuming the latest supported version B
+#         Unknown CUDA version. A Assuming the latest supported version B
 #   -Wunknown-escape-sequence
 #         unknown escape sequence '\A'
 #   -Wunknown-sanitizers
