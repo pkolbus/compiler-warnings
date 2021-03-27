@@ -115,6 +115,7 @@ if [ ${BUILD_REQUIREMENTS} -eq 1 ]; then
     echo "Compiling requirements.in"
     run_in_docker pip-compile \
         --quiet \
+        --upgrade \
         --cache-dir /tmp/pip-tools-cache \
         parsers/requirements.in
 

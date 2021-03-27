@@ -17,5 +17,5 @@ def add_common_parser_options(parser: argparse.ArgumentParser) -> None:
         " instances from the output.",
     )
     group.add_argument(
-        "--unique", action="store_true", help="Show only unique switches.",
+        "--unique", action="store_true", help="Show only unique switches."
     )

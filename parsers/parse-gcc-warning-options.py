@@ -1333,7 +1333,7 @@ def main() -> None:
     )
     common.add_common_parser_options(parser)
     parser.add_argument(
-        "--text", action="store_true", help="Show help text of each diagnostic.",
+        "--text", action="store_true", help="Show help text of each diagnostic."
     )
     parser.add_argument("option_file", metavar="option-file", nargs="+")
     args = parser.parse_args()

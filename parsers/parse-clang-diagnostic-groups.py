@@ -786,7 +786,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Clang diagnostics group parser")
     common.add_common_parser_options(parser)
     parser.add_argument(
-        "--text", action="store_true", help="Show text of each diagnostic message.",
+        "--text", action="store_true", help="Show text of each diagnostic message."
     )
     parser.add_argument(
         "json_path",
