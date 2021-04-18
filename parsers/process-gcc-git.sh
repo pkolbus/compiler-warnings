@@ -24,43 +24,43 @@ GIT_DIR=$1
 
 target_dir=${DIR}/../gcc
 
-git -C "${GIT_DIR}" checkout gcc-3_4_6-release
+git -C "${GIT_DIR}" checkout releases/gcc-3.4.6
 parse_gcc_info 3.4 "${target_dir}" "${GIT_DIR}"/gcc/{common.opt,c.opt}
 
-git -C "${GIT_DIR}" checkout gcc-4_0_4-release
+git -C "${GIT_DIR}" checkout releases/gcc-4.0.4
 parse_gcc_info 4.0 "${target_dir}" "${GIT_DIR}"/gcc/{common.opt,c.opt}
 
-git -C "${GIT_DIR}" checkout gcc-4_1_2-release
+git -C "${GIT_DIR}" checkout releases/gcc-4.1.2
 parse_gcc_info 4.1 "${target_dir}" "${GIT_DIR}"/gcc/{common.opt,c.opt}
 
-git -C "${GIT_DIR}" checkout gcc-4_2_4-release
+git -C "${GIT_DIR}" checkout releases/gcc-4.2.4
 parse_gcc_info 4.2 "${target_dir}" "${GIT_DIR}"/gcc/{common.opt,c.opt}
 
-git -C "${GIT_DIR}" checkout gcc-4_3_6-release
+git -C "${GIT_DIR}" checkout releases/gcc-4.3.6
 parse_gcc_info 4.3 "${target_dir}" "${GIT_DIR}"/gcc/{common.opt,c.opt}
 
-git -C "${GIT_DIR}" checkout gcc-4_4_7-release
+git -C "${GIT_DIR}" checkout releases/gcc-4.4.7
 parse_gcc_info 4.4 "${target_dir}" "${GIT_DIR}"/gcc/{common.opt,c.opt}
 
-git -C "${GIT_DIR}" checkout gcc-4_5_4-release
+git -C "${GIT_DIR}" checkout releases/gcc-4.5.4
 parse_gcc_info 4.5 "${target_dir}" "${GIT_DIR}"/gcc/{common.opt,c.opt}
 
-git -C "${GIT_DIR}" checkout gcc-4_6_4-release
+git -C "${GIT_DIR}" checkout releases/gcc-4.6.4
 parse_gcc_info 4.6 "${target_dir}" "${GIT_DIR}"/gcc/{common.opt,c-family/c.opt}
 
-git -C "${GIT_DIR}" checkout gcc-4_7_4-release
+git -C "${GIT_DIR}" checkout releases/gcc-4.7.4
 parse_gcc_info 4.7 "${target_dir}" "${GIT_DIR}"/gcc/{common.opt,c-family/c.opt}
 
-git -C "${GIT_DIR}" checkout gcc-4_8_5-release
+git -C "${GIT_DIR}" checkout releases/gcc-4.8.5
 parse_gcc_info 4.8 "${target_dir}" "${GIT_DIR}"/gcc/{common.opt,c-family/c.opt}
 
-git -C "${GIT_DIR}" checkout gcc-4_9_4-release
+git -C "${GIT_DIR}" checkout releases/gcc-4.9.4
 parse_gcc_info 4.9 "${target_dir}" "${GIT_DIR}"/gcc/{common.opt,c-family/c.opt}
 
-git -C "${GIT_DIR}" checkout gcc-5_5_0-release
+git -C "${GIT_DIR}" checkout releases/gcc-5.5.0
 parse_gcc_info 5 "${target_dir}" "${GIT_DIR}"/gcc/{common.opt,c-family/c.opt}
 
-git -C "${GIT_DIR}" checkout gcc-6_5_0-release
+git -C "${GIT_DIR}" checkout releases/gcc-6.5.0
 parse_gcc_info 6 "${target_dir}" "${GIT_DIR}"/gcc/{common.opt,c-family/c.opt}
 
 git -C "${GIT_DIR}" checkout releases/gcc-7.5.0
