@@ -1,0 +1,26 @@
++-Wanalyzer-mismatching-deallocation # Enabled by default.
++-Wanalyzer-shift-count-negative # Enabled by default.
++-Wanalyzer-shift-count-overflow # Enabled by default.
++-Wanalyzer-write-to-const # Enabled by default.
++-Wanalyzer-write-to-string-literal # Enabled by default.
++-Warray-parameter
++-Warray-parameter=<0..2>
++-Wctad-maybe-unsupported # Applies to C++,ObjC++
++-Wdeprecated-enum-enum-conversion # Applies to C++,ObjC++
++-Wdeprecated-enum-float-conversion # Applies to C++,ObjC++
+--Wenum-conversion # Applies to C,ObjC
++-Wenum-conversion
++-Wexceptions # Enabled by default. Applies to C++,ObjC++
+--Whsa # Enabled by default.
++-Whsa # DUMMY switch
++-Winvalid-imported-macros # Applies to C++,ObjC++
++-Wmismatched-dealloc
++-Wmismatched-new-delete # Applies to C++,ObjC++
++-WNSObject-attribute # Enabled by default.
++-Wobjc-root-class # Enabled by default. Applies to ObjC,ObjC++
++-Wrange-loop-construct # Applies to C++,ObjC++
++-Wsizeof-array-div
++-Wstringop-overread # Enabled by default.
++-Wtsan # Enabled by default.
++-Wvexing-parse # Enabled by default. Applies to C++,ObjC++
++-Wvla-parameter
