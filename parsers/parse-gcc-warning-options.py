@@ -76,7 +76,7 @@ class OptionFile:
         # Initialize the parse state
         self._state = ParseState.OPTION_NAME  # Expected content of line
         self._help_lines: List[str] = []
-        self._option_name = str()
+        self._option_name = ""
         self._display_name: Optional[str] = None
 
         self._parse_file()
@@ -343,7 +343,7 @@ class LanguagesEnabledListener(GccOptionsListener):
         """Create a LanguagesEnabledListener."""
         self._last_name: Optional[str] = None
         self._argument_id = 0
-        self._flag_name = str()
+        self._flag_name = ""
         self._enabled_by_comparison = False
         self.flags: List[str] = []
         self.arg: Optional[str] = None
@@ -860,7 +860,7 @@ class GccOption:
         self._deprecated = False
         self._display_name: Optional[str] = None
         self._dummy = False
-        self._help_text = str()
+        self._help_text = ""
         self._languages: Set[str] = set()
         self._name = name
         self._warning = warning
@@ -964,7 +964,7 @@ class GccOption:
         :return: a comment if the option is a dummy switch, an empty string
             otherwise.
         """
-        return " # DUMMY switch" if self._dummy else str()
+        return " # DUMMY switch" if self._dummy else ""
 
     def get_help_text(self) -> str:
         """:return: the help text."""
@@ -1101,9 +1101,7 @@ class GccDiagnostics:
             apply_listener(parse_tree, integer_range_listener)
             if integer_range_listener.has_range():
                 min_value, max_value = integer_range_listener.get_range()
-                option.set_display_name(
-                    "-{}<{}..{}>".format(option_name, min_value, max_value)
-                )
+                option.set_display_name(f"-{option_name}<{min_value}..{max_value}>")
 
         # Parse and apply LangEnabledBy
         # - If option is enabled by another, option is a child of that one.
@@ -1320,7 +1318,7 @@ def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics) -
             print(option.get_display_name() + dummy_text)
 
         if args.text and option.get_help_text():
-            print("#     {}".format(option.get_help_text()))
+            print(f"#     {option.get_help_text()}")
 
         for child in all_options.get_children(option):
             print_option(all_options, child, 1, args)

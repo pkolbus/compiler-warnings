@@ -188,7 +188,7 @@ def format_arguments(
     if modifier == "sub":
         return substitutions[arguments[0]].text
 
-    raise NotImplementedError("Unhandled modifier %{}".format(modifier))
+    raise NotImplementedError(f"Unhandled modifier %{modifier}")
 
 
 def format_modifier(modifier: Optional[str], argument_idx: int) -> str:
@@ -210,7 +210,7 @@ def format_modifier(modifier: Optional[str], argument_idx: int) -> str:
     if modifier == "ordinal":
         return "Nth"
 
-    raise NotImplementedError("Unhandled modifier %{}".format(modifier))
+    raise NotImplementedError(f"Unhandled modifier %{modifier}")
 
 
 def resolve_format_string(message: str, substitutions: ClangTextSubstitutions) -> str:
@@ -283,7 +283,7 @@ def resolve_format_string(message: str, substitutions: ClangTextSubstitutions) -
     :return: The message, better formatted for readability.
     :raises RuntimeError: if a failure is detected.
     """
-    out_str = str()
+    out_str = ""
     cur_idx = 0
 
     while cur_idx < len(message):
@@ -307,7 +307,7 @@ def resolve_format_string(message: str, substitutions: ClangTextSubstitutions) -
             out_str += format_modifier(modifier, argument_idx)
         else:
             if modifier is None:
-                raise RuntimeError("arguments with no modifier: {}".format(message))
+                raise RuntimeError(f"arguments with no modifier: {message}")
             out_str += format_arguments(modifier, arguments, substitutions)
 
     return out_str
@@ -821,10 +821,10 @@ def main() -> None:
         ):
             continue
         comment_string = create_comment_text(switch, args, enabled_by_default=False)
-        print("-W{}{}".format(switch.name, comment_string))
+        print(f"-W{switch.name}{comment_string}")
         if args.text:
             for item in sorted(switch.get_messages(enabled_by_default=False)):
-                print("#     {}".format(item))
+                print(f"#     {item}")
         if args.unique:
             continue
         print_references(switch, 1, args, enabled_by_default=False)

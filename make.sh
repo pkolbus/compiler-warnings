@@ -131,6 +131,8 @@ run_in_docker ninja -C parsers
 run_in_docker ninja -C parsers test
 
 # Run formatting/linting
+# shellcheck disable=SC2046
+run_in_docker pyupgrade --exit-zero-even-if-changed --py37-plus $(git ls-files "*.py")
 run_in_docker black .
 run_in_docker flake8 .
 for f in $(git ls-files "*.sh"); do

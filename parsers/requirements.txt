@@ -107,6 +107,8 @@ pyflakes==2.3.1
     # via flake8
 pygments==2.10.0
     # via flake8-rst-docstrings
+pyupgrade==2.29.0
+    # via -r parsers/requirements.in
 pyyaml==5.4.1
     # via bandit
 regex==2021.9.30
@@ -123,6 +125,8 @@ stevedore==3.4.0
     # via bandit
 testfixtures==6.18.3
     # via flake8-isort
+tokenize-rt==4.1.0
+    # via pyupgrade
 toml==0.10.2
     # via mypy
 tomli==1.2.1
