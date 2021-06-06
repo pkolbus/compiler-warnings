@@ -303,7 +303,7 @@ their dependencies):
 
 * [Ninja](https://ninja-build.org/)
 * [ANTLR4](http://www.antlr.org/)
-* [Python 3.7+](https://www.python.org/)
+* [Python 3.9+](https://www.python.org/)
 * [antlr4-python3-runtime](https://pypi.python.org/pypi/antlr4-python3-runtime/)
 * llvm-tblgen from [LLVM 7 or newer](https://llvm.org/)
 

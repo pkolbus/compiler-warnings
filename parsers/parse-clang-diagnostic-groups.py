@@ -6,12 +6,13 @@ Parses an extract of clang's Diagnostic.td as formatted by the command
 `llvm-tblgen -dump-json`, and identifies relevant information about the
 compiler warning options.
 """
+from __future__ import annotations
 
 import argparse
 from functools import total_ordering
 from itertools import chain
 import json
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any
 
 import common
 
@@ -28,7 +29,7 @@ class ClangTextSubstitution:
         self._substitution = substitution
 
     @classmethod
-    def from_json(cls, obj: Dict[str, str]) -> "ClangTextSubstitution":
+    def from_json(cls, obj: dict[str, str]) -> ClangTextSubstitution:
         """
         Construct from a TextSubstitution instance (JSON object).
 
@@ -44,10 +45,10 @@ class ClangTextSubstitution:
 
 
 # Map from text substitution name to contents.
-ClangTextSubstitutions = Dict[str, ClangTextSubstitution]
+ClangTextSubstitutions = dict[str, ClangTextSubstitution]  # noqa: T484
 
 
-def find_argument(message: str, start: int) -> Tuple[int, List[str]]:
+def find_argument(message: str, start: int) -> tuple[int, list[str]]:
     """
     Find and return the complete argument.
 
@@ -92,7 +93,7 @@ def find_argument(message: str, start: int) -> Tuple[int, List[str]]:
 
 def parse_placeholder(
     message: str, start: int
-) -> Tuple[int, int, Optional[str], Optional[List[str]]]:
+) -> tuple[int, int, str | None, list[str] | None]:
     """Parse the placeholder starting at message[cur_idx].
 
     message[start:] must be a placeholder for a diagnostic argument.  The format
@@ -109,8 +110,8 @@ def parse_placeholder(
     """
     cur_idx = start + 1  # Skip over the %
 
-    modifier: Optional[str] = None
-    arguments: Optional[List[str]] = None
+    modifier: str | None = None
+    arguments: list[str] | None = None
     if not message[cur_idx].isdigit():
         modifier_start = cur_idx
         while message[cur_idx] == "-" or message[cur_idx].islower():
@@ -133,7 +134,7 @@ def parse_placeholder(
 
 
 def format_alternative_list(
-    alternatives: List[str], substitutions: ClangTextSubstitutions
+    alternatives: list[str], substitutions: ClangTextSubstitutions
 ) -> str:
     """
     Format a list of alternatives.
@@ -164,7 +165,7 @@ def format_alternative_list(
 
 
 def format_arguments(
-    modifier: str, arguments: List[str], substitutions: ClangTextSubstitutions
+    modifier: str, arguments: list[str], substitutions: ClangTextSubstitutions
 ) -> str:
     """
     Format modifier and arguments for readability.
@@ -191,7 +192,7 @@ def format_arguments(
     raise NotImplementedError(f"Unhandled modifier %{modifier}")
 
 
-def format_modifier(modifier: Optional[str], argument_idx: int) -> str:
+def format_modifier(modifier: str | None, argument_idx: int) -> str:
     """
     Format modifier for readability.
 
@@ -317,7 +318,7 @@ class ClangDiagnostic:
     """One clang warning message (Diagnostic)."""
 
     def __init__(
-        self, obj: Dict[str, Any], substitutions: ClangTextSubstitutions
+        self, obj: dict[str, Any], substitutions: ClangTextSubstitutions
     ) -> None:
         """
         Construct from a Diagnostic instance (JSON object).
@@ -355,7 +356,7 @@ class ClangDiagnostic:
 class ClangDiagGroup:
     """One clang diagnostic group (DiagGroup record)."""
 
-    def __init__(self, obj: Dict[str, Any], parent: "ClangDiagnostics") -> None:
+    def __init__(self, obj: dict[str, Any], parent: ClangDiagnostics) -> None:
         """
         Construct from a DiagGroup instance (JSON object).
 
@@ -368,11 +369,11 @@ class ClangDiagGroup:
         self.child_names = [s["def"] for s in obj["SubGroups"]]
 
         self.has_parent = False
-        self.diagnostics: List[ClangDiagnostic] = []
-        self.children: List[ClangDiagGroup] = []
+        self.diagnostics: list[ClangDiagnostic] = []
+        self.children: list[ClangDiagGroup] = []
         self.switch: ClangWarningSwitch = parent.get_switch(self.switch_name)
 
-    def get_messages(self, enabled_by_default: bool) -> List[str]:
+    def get_messages(self, enabled_by_default: bool) -> list[str]:
         """
         Return a list of diagnostic messages in the group.
 
@@ -458,7 +459,7 @@ class ClangDiagGroup:
 
         return False
 
-    def resolve_children(self, all_groups: "Dict[str, ClangDiagGroup]") -> None:
+    def resolve_children(self, all_groups: dict[str, ClangDiagGroup]) -> None:
         """
         Resolve self.child_names to self.children.
 
@@ -480,7 +481,7 @@ class ClangWarningSwitch:
         :param name: The name of the switch.
         """
         self.name = name
-        self.groups: List[ClangDiagGroup] = []
+        self.groups: list[ClangDiagGroup] = []
 
     def __eq__(self, other: object) -> bool:
         """
@@ -519,9 +520,7 @@ class ClangWarningSwitch:
         """:return: a hash of the switch name."""
         return hash(self.name.lower())
 
-    def get_child_switches(
-        self, enabled_by_default: bool
-    ) -> List["ClangWarningSwitch"]:
+    def get_child_switches(self, enabled_by_default: bool) -> list[ClangWarningSwitch]:
         """
         Return a list of child ClangWarningSwitch for the switch.
 
@@ -530,7 +529,7 @@ class ClangWarningSwitch:
             switches are returned.
         :return: a list of direct children.
         """
-        child_groups: List[ClangDiagGroup] = []
+        child_groups: list[ClangDiagGroup] = []
         for group in self.groups:
             child_groups += group.children
 
@@ -545,7 +544,7 @@ class ClangWarningSwitch:
 
         return child_switches
 
-    def get_messages(self, enabled_by_default: bool) -> List[str]:
+    def get_messages(self, enabled_by_default: bool) -> list[str]:
         """
         Return a list of diagnostic messages controlled by the switch.
 
@@ -640,7 +639,7 @@ class ClangDiagnostics:
         :param filename: The path to the JSON file to parse.
         """
         self.groups = {}  # Dict: group name -> ClangDiagGroup
-        self.switches: Dict[str, ClangWarningSwitch] = {}
+        self.switches: dict[str, ClangWarningSwitch] = {}
         self._substitutions: ClangTextSubstitutions = {}
 
         json_data = json.loads(open(filename).read())

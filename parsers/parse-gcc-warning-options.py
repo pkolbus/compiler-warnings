@@ -8,10 +8,12 @@ information about the compiler warning options.
 For details of the option file format, see the gcc internals documentation at
 <https://gcc.gnu.org/onlinedocs/gccint/Option-file-format.html>
 """
+from __future__ import annotations
 
 import argparse
+from collections.abc import Iterable
+from dataclasses import dataclass
 import enum
-from typing import Dict, Iterable, List, Optional, Set, Tuple, Union
 
 import antlr4
 
@@ -38,7 +40,7 @@ NON_WARNING_WS = {"Werror", "Werror=", "Wfatal-errors"}
 WARNINGS_NON_W = {"pedantic"}
 
 # Many of these go into common.opt in GCC 4.6 but before that they are aliases:
-HIDDEN_WARNINGS: List[Tuple[str, Set[str]]] = [
+HIDDEN_WARNINGS: list[tuple[str, set[str]]] = [
     # Pedantic is always in but in the options file it is only in 4.8 and later
     # GCC versions.
     ("pedantic", set()),
@@ -51,9 +53,15 @@ HIDDEN_WARNINGS: List[Tuple[str, Set[str]]] = [
 # Languages of interest
 INTERESTING_LANGUAGES = ["C", "C++", "ObjC", "ObjC++"]
 
-# Tuple containing the option name, display name, option_properties, and help text
-# from an option definition record.
-OptionDefinition = Tuple[str, Optional[str], str, str]
+
+@dataclass
+class OptionDefinition:
+    """Data from an option definition record."""
+
+    name: str
+    display_name: str | None
+    properties: str
+    help_text: str
 
 
 class OptionFile:
@@ -71,17 +79,17 @@ class OptionFile:
         :param filename: Filename to parse.
         """
         self._filename = filename
-        self._options: List[OptionDefinition] = []
+        self._options: list[OptionDefinition] = []
 
         # Initialize the parse state
         self._state = ParseState.OPTION_NAME  # Expected content of line
-        self._help_lines: List[str] = []
+        self._help_lines: list[str] = []
         self._option_name = ""
-        self._display_name: Optional[str] = None
+        self._display_name: str | None = None
 
         self._parse_file()
 
-    def get_options(self) -> List[OptionDefinition]:
+    def get_options(self) -> list[OptionDefinition]:
         """:return: The list of OptionDefinition parsed from the file."""
         return self._options
 
@@ -135,13 +143,15 @@ class OptionFile:
             return
 
         help_text = " ".join(self._help_lines)
-        display_name: Optional[str] = None
+        display_name: str | None = None
 
         if "\t" in help_text:
             display_name, help_text = help_text.split("\t", maxsplit=1)
 
         self._options.append(
-            (self._option_name, display_name, self._option_attributes, help_text)
+            OptionDefinition(
+                self._option_name, display_name, self._option_attributes, help_text
+            )
         )
 
 
@@ -163,7 +173,7 @@ def get_parse_tree(string_value: str) -> antlr4.tree.Tree.ParseTree:
 
 
 def apply_listener(
-    listener_input: Union[str, antlr4.tree.Tree.ParseTree],
+    listener_input: str | antlr4.tree.Tree.ParseTree,
     listener: GccOptionsListener,
 ) -> None:
     """
@@ -210,8 +220,8 @@ class AliasAssignmentListener(GccOptionsListener):
 
     def __init__(self) -> None:
         """Create an AliasAssignmentListener."""
-        self.alias_name: Optional[str] = None
-        self._last_name: Optional[str] = None
+        self.alias_name: str | None = None
+        self._last_name: str | None = None
         self._argument_id = 0
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
@@ -341,12 +351,12 @@ class LanguagesEnabledListener(GccOptionsListener):
 
     def __init__(self) -> None:
         """Create a LanguagesEnabledListener."""
-        self._last_name: Optional[str] = None
+        self._last_name: str | None = None
         self._argument_id = 0
         self._flag_name = ""
         self._enabled_by_comparison = False
-        self.flags: List[str] = []
-        self.arg: Optional[str] = None
+        self.flags: list[str] = []
+        self.arg: str | None = None
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
         """
@@ -453,7 +463,7 @@ class LanguagesListener(GccOptionsListener):
 
     def __init__(self) -> None:
         """Create a LanguagesListener."""
-        self.languages: Set[str] = set()
+        self.languages: set[str] = set()
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
         """
@@ -480,8 +490,8 @@ class EnabledByListener(GccOptionsListener):
 
     def __init__(self) -> None:
         """Create an EnabledByListener."""
-        self._last_name: Optional[str] = None
-        self.enabled_by: Optional[str] = None
+        self._last_name: str | None = None
+        self.enabled_by: str | None = None
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
         """
@@ -577,8 +587,8 @@ class DefaultsListener(GccOptionsListener):
 
     def __init__(self) -> None:
         """Create a DefaultsListener."""
-        self._last_name: Optional[str] = None
-        self._init_value: Optional[str] = None
+        self._last_name: str | None = None
+        self._init_value: str | None = None
         self._is_boolean = True
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
@@ -692,7 +702,7 @@ class IntegerRangeListener(GccOptionsListener):
 
     def __init__(self) -> None:
         """Create an IntegerRangeListener."""
-        self._atoms: List[int] = []
+        self._atoms: list[int] = []
         self._variable_name = None
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
@@ -737,7 +747,7 @@ class IntegerRangeListener(GccOptionsListener):
         """:return: True if the warning has a range, False otherwise."""
         return len(self._atoms) == 2
 
-    def get_range(self) -> Tuple[int, ...]:
+    def get_range(self) -> tuple[int, ...]:
         """:return: the allowed range, as a tuple."""
         return tuple(self._atoms)
 
@@ -766,7 +776,7 @@ class WarningOptionListener(GccOptionsListener):
 
     def __init__(self) -> None:
         """Create a WarningOptionListener."""
-        self._last_name: Optional[str] = None
+        self._last_name: str | None = None
         self.is_warning = False
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
@@ -845,7 +855,7 @@ class GccOption:
     _WARN_REMOVED_HELP = "This option is deprecated and has no effect."
 
     def __init__(
-        self, name: str, aliases: Optional[Set[str]] = None, warning: bool = False
+        self, name: str, aliases: set[str] | None = None, warning: bool = False
     ) -> None:
         """
         Create a GccOption from the given data.
@@ -855,13 +865,13 @@ class GccOption:
         :param warning: If True, this option is known to be a warning.
         """
         self._aliases = aliases if aliases else set()
-        self._children: Set[str] = set()
+        self._children: set[str] = set()
         self._default = False
         self._deprecated = False
-        self._display_name: Optional[str] = None
+        self._display_name: str | None = None
         self._dummy = False
         self._help_text = ""
-        self._languages: Set[str] = set()
+        self._languages: set[str] = set()
         self._name = name
         self._warning = warning
 
@@ -912,11 +922,11 @@ class GccOption:
         """
         self._children.add(name)
 
-    def get_aliases(self) -> List[str]:
+    def get_aliases(self) -> list[str]:
         """:return: the list of aliases, sorted case-insensitively."""
         return sorted(self._aliases, key=lambda x: x.lower())
 
-    def get_children(self) -> Set[str]:
+    def get_children(self) -> set[str]:
         """:return: the list of child options."""
         return self._children
 
@@ -1036,7 +1046,7 @@ class GccDiagnostics:
 
     def __init__(self) -> None:
         """Create a new collection."""
-        self._options: Dict[str, GccOption] = {}
+        self._options: dict[str, GccOption] = {}
 
     def get(self, option_name: str) -> GccOption:
         """
@@ -1065,27 +1075,24 @@ class GccDiagnostics:
     def _parse_option(self, option_definition: OptionDefinition) -> None:
         # Parse one option_definition.
 
-        # Unpack the tuple
-        option_name, display_name, option_arguments, help_text = option_definition
+        # Get the underlying GccOption
+        option = self.get(option_definition.name)
 
-        # Get the underlying option
-        option = self.get(option_name)
+        if option_definition.display_name:
+            option.set_display_name(option_definition.display_name)
 
-        if display_name:
-            option.set_display_name(display_name)
-
-        if help_text:
-            option.set_help_text(help_text)
+        if option_definition.help_text:
+            option.set_help_text(option_definition.help_text)
         else:
             # Attempt to retrieve from previous instance
-            help_text = option.get_help_text()
+            option_definition.help_text = option.get_help_text()
 
-        parse_tree = get_parse_tree(option_arguments)
+        parse_tree = get_parse_tree(option_definition.properties)
 
         # Parse and apply warning indications
         warning_option = WarningOptionListener()
         apply_listener(parse_tree, warning_option)
-        if warning_option.is_warning or could_be_warning(option_name):
+        if warning_option.is_warning or could_be_warning(option_definition.name):
             option.set_warning()
 
         # Parse and apply dummy indications
@@ -1096,23 +1103,25 @@ class GccDiagnostics:
 
         # Parse and apply IntegerRange, if the option takes a value and doesn't
         # have a more human-readable display form.
-        if option_name[-1:] == "=" and not display_name:
+        if option_definition.name[-1:] == "=" and not option_definition.display_name:
             integer_range_listener = IntegerRangeListener()
             apply_listener(parse_tree, integer_range_listener)
             if integer_range_listener.has_range():
                 min_value, max_value = integer_range_listener.get_range()
-                option.set_display_name(f"-{option_name}<{min_value}..{max_value}>")
+                option.set_display_name(
+                    f"-{option_definition.name}<{min_value}..{max_value}>"
+                )
 
         # Parse and apply LangEnabledBy
         # - If option is enabled by another, option is a child of that one.
         # - LangEnabledBy can identify possible values for qualified options.
         language_enablers = LanguagesEnabledListener()
         apply_listener(parse_tree, language_enablers)
-        qualified_option = option_name
+        qualified_option = option_definition.name
         if qualified_option[-1:] == "=" and language_enablers.arg is not None:
             qualified_option += language_enablers.arg
-            if help_text:
-                self.get(qualified_option).set_help_text(help_text)
+            if option_definition.help_text:
+                self.get(qualified_option).set_help_text(option_definition.help_text)
         for flag in language_enablers.flags:
             other_option = self.get(flag)
             other_option.add_child(qualified_option)
@@ -1125,7 +1134,7 @@ class GccDiagnostics:
         apply_listener(parse_tree, flag_enablers)
         if flag_enablers.enabled_by:
             flag = flag_enablers.enabled_by
-            self.get(flag).add_child(option_name)
+            self.get(flag).add_child(option_definition.name)
 
         # Parse and apply enabled-by-default
         bydefault_option = DefaultsListener()
@@ -1174,14 +1183,14 @@ class GccDiagnostics:
         )
 
     @classmethod
-    def hidden_options(cls) -> "GccDiagnostics":
+    def hidden_options(cls) -> GccDiagnostics:
         """:return: a GccDiagnostics collection containing hidden warnings."""
         options = GccDiagnostics()
         for switch, aliases in HIDDEN_WARNINGS:
             options._options[switch] = GccOption(switch, aliases=aliases, warning=True)
         return options
 
-    def get_children(self, option: GccOption) -> List[GccOption]:
+    def get_children(self, option: GccOption) -> list[GccOption]:
         """
         Return the children of the given option.
 
@@ -1192,13 +1201,13 @@ class GccDiagnostics:
         option_names = [self.get(option_name) for option_name in option.get_children()]
         return sorted(option_names, key=lambda x: x.get_name().lower())
 
-    def get_all_warnings(self) -> List[GccOption]:
+    def get_all_warnings(self) -> list[GccOption]:
         """:return: the list of warnings, sorted by name."""
         return sorted(
             switch for switch in self._options.values() if switch.is_warning()
         )
 
-    def get_default_warnings(self) -> List[GccOption]:
+    def get_default_warnings(self) -> list[GccOption]:
         """:return: the list of enabled-by-default warnings, sorted by name."""
         return sorted(
             option
