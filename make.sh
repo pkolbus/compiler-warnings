@@ -112,15 +112,17 @@ build_docker_image()
 build_docker_image
 
 if [ ${BUILD_REQUIREMENTS} -eq 1 ]; then
-    echo "Compiling requirements.in"
-    run_in_docker pip-compile \
-        --quiet \
-        --upgrade \
-        --cache-dir /tmp/pip-tools-cache \
-        parsers/requirements.in
+    for _ in $(seq 2); do
+        echo "Compiling requirements.in"
+        run_in_docker pip-compile \
+            --quiet \
+            --upgrade \
+            --cache-dir /tmp/pip-tools-cache \
+            parsers/requirements.in
 
-    # Rebuild the docker image in case requirements changed.
-    build_docker_image
+        # Rebuild the docker image in case requirements changed.
+        build_docker_image
+    done
 fi
 
 # Linting requires the gcc parser to be built
