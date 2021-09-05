@@ -1,0 +1,32 @@
++-Walign-mismatch # Enabled by default.
++-Wc++2b-extensions # Enabled by default.
++-Wcast-function-type
++-Wcxx-attribute-extension # Enabled by default.
++-Wdeprecated-copy-with-dtor
++-Wdeprecated-copy-with-user-provided-copy
++-Wdeprecated-copy-with-user-provided-dtor
+--Wfallback # Enabled by default.
++-Wframe-larger-than # Enabled by default.
+--Wfree-nonheap-object
++-Wfree-nonheap-object # Enabled by default.
++-Winterrupt-service-routine # Enabled by default.
++-Wmicrosoft-abstract # Enabled by default.
++-Wmicrosoft-static-assert # Enabled by default.
++-Wpre-c++14-compat
++-Wpre-c++14-compat-pedantic
++-Wpre-c++17-compat
++-Wpre-c++17-compat-pedantic
++-Wpre-c++20-compat
++-Wpre-c++20-compat-pedantic
++-Wpre-c++2b-compat
++-Wpre-c++2b-compat-pedantic
++-Wpre-c2x-compat
++-Wpre-c2x-compat-pedantic
++-Wreserved-identifier
++-Wreserved-macro-identifier
+--Wreturn-std-move-in-c++11
++-Wround-trip-cc1-args
++-Wsource-mgr # Enabled by default.
++-Wtautological-unsigned-char-zero-compare
++-Wunused-but-set-parameter
++-Wunused-but-set-variable
