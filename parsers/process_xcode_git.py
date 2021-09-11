@@ -70,28 +70,22 @@ def main() -> None:
 
     target_dir = f"{DIR}/../xcode"
 
-    # Parse all apple/stable branches
+    # Parse all apple/stable branches as well as apple/main
     branches = sorted(
         ref.name for ref in repo.refs if ref.name.startswith("origin/apple/stable/")
     )
-    versions = [branch.split("/")[-1] for branch in branches]
+    versions = [(branch.split("/")[-1], branch) for branch in branches]
+    versions += [("NEXT", "origin/apple/main")]
 
     os.makedirs(target_dir, exist_ok=True)
 
-    for version in versions:
+    for version, ref in versions:
         print(f"Processing {version=}")
-        repo.git.checkout(f"origin/apple/stable/{version}")
+        repo.git.checkout(ref)
         parse_clang_info(version, target_dir, f"{GIT_DIR}/clang/include/clang/Basic")
 
-    # Parse NEXT (apple/main)
-    versions.append("NEXT")
-
-    print("Processing apple/main")
-    repo.git.checkout("origin/apple/main")
-    parse_clang_info("NEXT", target_dir, f"{GIT_DIR}/clang/include/clang/Basic")
-
     # Generate diffs
-    create_diffs(target_dir, versions)
+    create_diffs(target_dir, [version for version, _ in versions])
 
 
 if __name__ == "__main__":
