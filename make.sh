@@ -185,5 +185,5 @@ if [ ${BUILD_XCODE} -eq 1 ]; then
         run_in_docker git clone ${CLANG_REMOTE} build/xcode
     fi
 
-    run_in_docker ./parsers/process-xcode-git.sh build/xcode
+    run_in_docker ./parsers/process_xcode_git.py build/xcode
 fi
