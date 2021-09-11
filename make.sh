@@ -171,7 +171,7 @@ if [ ${BUILD_GCC} -eq 1 ]; then
     else
         run_in_docker git clone git://gcc.gnu.org/git/gcc.git build/gcc
     fi
-    run_in_docker ./parsers/process-gcc-git.sh build/gcc
+    run_in_docker ./parsers/process_gcc_git.py build/gcc
 fi
 
 if [ ${BUILD_XCODE} -eq 1 ]; then
