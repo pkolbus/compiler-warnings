@@ -160,7 +160,7 @@ if [ ${BUILD_CLANG} -eq 1 ]; then
         run_in_docker git clone ${CLANG_REMOTE} build/clang
     fi
 
-    run_in_docker ./parsers/process-clang-git.sh build/clang
+    run_in_docker ./parsers/process_clang_git.py build/clang
 fi
 
 if [ ${BUILD_GCC} -eq 1 ]; then

@@ -362,6 +362,6 @@ that unit tests pass.
 
 When parser gets a change that affects formatting or other output for
 multiple files these warning lists need to be recreated. There are
-`process-clang-git.sh` and `process-gcc-git.sh` scripts that take the
+`process_clang_git.py` and `process-gcc-git.sh` scripts that take the
 git repository root as their first parameter and apply all different
 variants of these commands to create final text files.
