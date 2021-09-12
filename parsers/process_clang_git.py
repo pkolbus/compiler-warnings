@@ -98,41 +98,26 @@ def main() -> None:
 
     target_dir = f"{DIR}/../clang"
 
-    # Parse all released versions
-    versions = [
-        "3.2",
-        "3.3",
-        "3.4",
-        "3.5",
-        "3.6",
-        "3.7",
-        "3.8",
-        "3.9",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "11",
-        "12",
-    ]
+    # Parse all release branches
+    branches = [ref.name for ref in repo.refs if ref.name.startswith("origin/release/")]
 
-    for version in versions:
+    # Remove everything up to the last / as well as the ".x"
+    versions = [(branch.split("/")[-1][:-2], branch) for branch in branches]
+
+    # Filter to 3.2 and later, and sort numerically
+    versions = [(version, ref) for version, ref in versions if float(version) >= 3.2]
+    versions = sorted(versions, key=lambda v: float(v[0]))
+
+    # Add the main branch
+    versions += [("NEXT", "origin/main")]
+
+    for version, ref in versions:
         print(f"Processing {version=}")
-        repo.git.checkout(f"origin/release/{version}.x")
+        repo.git.checkout(ref)
         parse_clang_info(version, target_dir, f"{GIT_DIR}/clang/include/clang/Basic")
 
-    # Parse NEXT (main)
-    versions.append("NEXT")
-
-    print("Processing main")
-    repo.git.checkout("origin/main")
-    parse_clang_info("NEXT", target_dir, f"{GIT_DIR}/clang/include/clang/Basic")
-
     # Generate diffs
-    create_diffs(target_dir, versions)
+    create_diffs(target_dir, [version for version, _ in versions])
 
 
 if __name__ == "__main__":
