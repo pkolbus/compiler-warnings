@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Process a clang git repository for diagnostic groups."""
+import difflib
 import json
 import os
 import subprocess  # noqa: S404
@@ -30,6 +31,16 @@ that enables all warnings. Clang documentation also provides a
 """
 
 
+def is_interesting(line: str) -> bool:
+    """
+    Return whether line is interesting for a diff.
+
+    :param line: The line to examine.
+    :returns: True if the line is interesting for a diff, False otherwise.
+    """
+    return line.startswith("+-") or line.startswith("--") and not line.startswith("---")
+
+
 def create_diffs(target_dir: str, versions: list[str]) -> None:
     """
     Generate diffs for adjacent versions of the 'unique' warning lists.
@@ -40,14 +51,18 @@ def create_diffs(target_dir: str, versions: list[str]) -> None:
     for version_idx in range(0, len(versions) - 1):
         current_ver = versions[version_idx]
         next_ver = versions[version_idx + 1]
-        shell(
-            [
-                f"{DIR}/create-diff.sh",
-                f"{target_dir}/warnings-unique-{current_ver}.txt",
-                f"{target_dir}/warnings-unique-{next_ver}.txt",
-            ],
-            f"{target_dir}/warnings-diff-{current_ver}-{next_ver}.txt",
-        )
+
+        with open(f"{target_dir}/warnings-unique-{current_ver}.txt") as current_file:
+            current_lines = current_file.readlines()
+        with open(f"{target_dir}/warnings-unique-{next_ver}.txt") as next_file:
+            next_lines = next_file.readlines()
+
+        with open(
+            f"{target_dir}/warnings-diff-{current_ver}-{next_ver}.txt", "w"
+        ) as diff:
+            lines = difflib.unified_diff(current_lines, next_lines, n=0)
+            lines = filter(is_interesting, lines)
+            diff.writelines(lines)
 
 
 def create_readme(target_dir: str, versions: list[str], readme_template: str) -> None:
