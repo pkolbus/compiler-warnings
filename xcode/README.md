@@ -1,3 +1,4 @@
+
 # Apple clang (Xcode) warning flags
 
 Apple's fork of clang (as shipped with Xcode) is _based on_ the LLVM project but
@@ -12,6 +13,7 @@ sources especially with regard to available compiler warnings. For example, the
 delta between `apple/stable/20200108` and Xcode 12.2 is about ten flags.
 
 Warnings available in each `apple/stable` branch are as follows:
+
 
 * 20210628 [all](warnings-20210628.txt)
   • [top level](warnings-top-level-20210628.txt)
