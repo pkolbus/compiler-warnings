@@ -4,29 +4,9 @@ import os
 import sys
 
 import git
-from process_clang_git import shell
+from process_clang_git import create_diffs, shell
 
 DIR = os.path.dirname(os.path.realpath(__file__))
-
-
-def create_diffs(target_dir: str, versions: list[str]) -> None:
-    """
-    Generate diffs for adjacent versions of the 'unique' warning lists.
-
-    :param target_dir: Directory containing files to compare
-    :param versions: List of versions to compare
-    """
-    for version_idx in range(0, len(versions) - 1):
-        current_ver = versions[version_idx]
-        next_ver = versions[version_idx + 1]
-        shell(
-            [
-                f"{DIR}/create-diff.sh",
-                f"{target_dir}/warnings-gcc-unique-{current_ver}.txt",
-                f"{target_dir}/warnings-gcc-unique-{next_ver}.txt",
-            ],
-            f"{target_dir}/warnings-gcc-diff-{current_ver}-{next_ver}.txt",
-        )
 
 
 def parse_gcc_info(version: str, target_dir: str, input_files: list[str]) -> None:
@@ -39,19 +19,19 @@ def parse_gcc_info(version: str, target_dir: str, input_files: list[str]) -> Non
     """
     shell(
         [f"{DIR}/parse-gcc-warning-options.py"] + input_files,
-        f"{target_dir}/warnings-gcc-{version}.txt",
+        f"{target_dir}/warnings-{version}.txt",
     )
     shell(
         [f"{DIR}/parse-gcc-warning-options.py", "--unique"] + input_files,
-        f"{target_dir}/warnings-gcc-unique-{version}.txt",
+        f"{target_dir}/warnings-unique-{version}.txt",
     )
     shell(
         [f"{DIR}/parse-gcc-warning-options.py", "--top-level"] + input_files,
-        f"{target_dir}/warnings-gcc-top-level-{version}.txt",
+        f"{target_dir}/warnings-top-level-{version}.txt",
     )
     shell(
         [f"{DIR}/parse-gcc-warning-options.py", "--top-level", "--text"] + input_files,
-        f"{target_dir}/warnings-gcc-detail-{version}.txt",
+        f"{target_dir}/warnings-detail-{version}.txt",
     )
 
 
