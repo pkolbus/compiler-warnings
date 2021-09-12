@@ -7,8 +7,27 @@ import sys
 from typing import Optional
 
 import git
+import jinja2
 
 DIR = os.path.dirname(os.path.realpath(__file__))
+
+README_TEMPLATE = """
+# Clang warning flags
+
+Clang includes `-Weverything` flag, that is not shown in these lists,
+that enables all warnings. Clang documentation also provides a
+[reference](https://clang.llvm.org/docs/DiagnosticsReference.html).
+
+{% for prev, current in versions %}
+* clang {{current}} [all](warnings-{{current}}.txt)
+  • [top level](warnings-top-level-{{current}}.txt)
+  • [messages](warnings-messages-{{current}}.txt)
+  • [unique](warnings-unique-{{current}}.txt)
+{%- if prev %}
+  • [diff](warnings-diff-{{prev}}-{{current}}.txt)
+{%- endif %}
+{%- endfor %}
+"""
 
 
 def create_diffs(target_dir: str, versions: list[str]) -> None:
@@ -29,6 +48,26 @@ def create_diffs(target_dir: str, versions: list[str]) -> None:
             ],
             f"{target_dir}/warnings-diff-{current_ver}-{next_ver}.txt",
         )
+
+
+def create_readme(target_dir: str, versions: list[str], readme_template: str) -> None:
+    """Write the README.md.
+
+    :param target_dir: The directory to write to.
+    :param versions: The list of versions to include in the README.
+    :param readme_template: String containing the text of the Jinja2 template.
+        In the template, versions is a list of (prev, current) version tuples.
+    """
+    # Prev/current version pairs. Generate in reverse order, and treat the first
+    # as a special case.
+    version_pairs: list[tuple[Optional[str], str]] = [
+        (versions[i], versions[i + 1]) for i in range(len(versions) - 2, -1, -1)
+    ]
+    version_pairs += [(None, versions[0])]
+
+    template = jinja2.Template(readme_template)
+    with open(f"{target_dir}/README.md", "w") as index:
+        index.write(template.render(versions=version_pairs))
 
 
 def format_json(json_path: str) -> None:
@@ -117,7 +156,11 @@ def main() -> None:
         parse_clang_info(version, target_dir, f"{GIT_DIR}/clang/include/clang/Basic")
 
     # Generate diffs
-    create_diffs(target_dir, [version for version, _ in versions])
+    version_numbers = [version for version, _ in versions]
+    create_diffs(target_dir, version_numbers)
+
+    # Generate index (README.md) except for NEXT
+    create_readme(target_dir, version_numbers[:-1], README_TEMPLATE)
 
 
 if __name__ == "__main__":
