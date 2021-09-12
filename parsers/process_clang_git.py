@@ -24,10 +24,10 @@ def create_diffs(target_dir: str, versions: list[str]) -> None:
         shell(
             [
                 f"{DIR}/create-diff.sh",
-                f"{target_dir}/warnings-clang-unique-{current_ver}.txt",
-                f"{target_dir}/warnings-clang-unique-{next_ver}.txt",
+                f"{target_dir}/warnings-unique-{current_ver}.txt",
+                f"{target_dir}/warnings-unique-{next_ver}.txt",
             ],
-            f"{target_dir}/warnings-clang-diff-{current_ver}-{next_ver}.txt",
+            f"{target_dir}/warnings-diff-{current_ver}-{next_ver}.txt",
         )
 
 
@@ -51,7 +51,7 @@ def parse_clang_info(version: str, target_dir: str, input_dir: str) -> None:
     :param target_dir: Directory to write outputs
     :param input_dir: Directory containing Diagnostic.td file
     """
-    json_file = f"{target_dir}/warnings-clang-{version}.json"
+    json_file = f"{target_dir}/warnings-{version}.json"
 
     shell(
         ["llvm-tblgen", "-dump-json", "-I", input_dir, f"{input_dir}/Diagnostic.td"],
@@ -61,19 +61,19 @@ def parse_clang_info(version: str, target_dir: str, input_dir: str) -> None:
 
     shell(
         [f"{DIR}/parse-clang-diagnostic-groups.py", json_file],
-        f"{target_dir}/warnings-clang-{version}.txt",
+        f"{target_dir}/warnings-{version}.txt",
     )
     shell(
         [f"{DIR}/parse-clang-diagnostic-groups.py", "--unique", json_file],
-        f"{target_dir}/warnings-clang-unique-{version}.txt",
+        f"{target_dir}/warnings-unique-{version}.txt",
     )
     shell(
         [f"{DIR}/parse-clang-diagnostic-groups.py", "--top-level", json_file],
-        f"{target_dir}/warnings-clang-top-level-{version}.txt",
+        f"{target_dir}/warnings-top-level-{version}.txt",
     )
     shell(
         [f"{DIR}/parse-clang-diagnostic-groups.py", "--top-level", "--text", json_file],
-        f"{target_dir}/warnings-clang-messages-{version}.txt",
+        f"{target_dir}/warnings-messages-{version}.txt",
     )
 
 
