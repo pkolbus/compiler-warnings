@@ -4,9 +4,30 @@ import os
 import sys
 
 import git
-from process_clang_git import create_diffs, shell
+from process_clang_git import create_diffs, create_readme, shell
 
 DIR = os.path.dirname(os.path.realpath(__file__))
+
+README_TEMPLATE = """
+# GCC warning flags
+
+If you need a full list of
+[GCC warning options](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html),
+for a specific version of GCC that you have, you can run GCC with `gcc
+--help=warnings` to get that list. Otherwise some plain GCC warning
+options lists are available below:
+
+{% for prev, current in versions %}
+* GCC {{current}} [all](warnings-{{current}}.txt)
+  • [top level](warnings-top-level-{{current}}.txt)
+  • [detail](warnings-detail-{{current}}.txt)
+  • [unique](warnings-unique-{{current}}.txt)
+{%- if prev %}
+  • [diff](warnings-diff-{{prev}}-{{current}}.txt)
+{%- endif %}
+{%- endfor %}
+  (first GCC with domain specific language options file)
+"""
 
 
 def parse_gcc_info(version: str, target_dir: str, input_files: list[str]) -> None:
@@ -86,7 +107,12 @@ def main() -> None:
         inputs = [path for path in all_inputs if os.path.exists(path)]
         parse_gcc_info(version, target_dir, inputs)
 
-    create_diffs(target_dir, [version for version, _ in versions])
+    # Generate diffs
+    version_numbers = [version for version, _ in versions]
+    create_diffs(target_dir, version_numbers)
+
+    # Generate index (README.md) except for NEXT
+    create_readme(target_dir, version_numbers[:-1], README_TEMPLATE)
 
 
 if __name__ == "__main__":

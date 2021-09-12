@@ -1,3 +1,4 @@
+
 # GCC warning flags
 
 If you need a full list of
@@ -5,6 +6,7 @@ If you need a full list of
 for a specific version of GCC that you have, you can run GCC with `gcc
 --help=warnings` to get that list. Otherwise some plain GCC warning
 options lists are available below:
+
 
 * GCC 11 [all](warnings-11.txt)
   • [top level](warnings-top-level-11.txt)
