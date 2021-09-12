@@ -55,6 +55,19 @@ def parse_gcc_info(version: str, target_dir: str, input_files: list[str]) -> Non
     )
 
 
+def tryfloat(number: str) -> float:
+    """
+    Return number as a float, or zero.
+
+    :param number: The number to convert.
+    :returns: The number as a float, or zero if the number cannot be converted.
+    """
+    try:
+        return float(number)
+    except ValueError:
+        return 0
+
+
 def main() -> None:
     """Entry point."""
     GIT_DIR = sys.argv[1]
@@ -62,27 +75,20 @@ def main() -> None:
 
     target_dir = f"{DIR}/../gcc"
 
-    versions = [
-        ("3.4", "releases/gcc-3.4.6"),
-        {"4.0", "releases/gcc-4.0.4"},
-        ("4.1", "releases/gcc-4.1.2"),
-        ("4.2", "releases/gcc-4.2.4"),
-        ("4.3", "releases/gcc-4.3.6"),
-        ("4.4", "releases/gcc-4.4.7"),
-        ("4.5", "releases/gcc-4.5.4"),
-        ("4.6", "releases/gcc-4.6.4"),
-        ("4.7", "releases/gcc-4.7.4"),
-        ("4.8", "releases/gcc-4.8.5"),
-        ("4.9", "releases/gcc-4.9.4"),
-        ("5", "releases/gcc-5.5.0"),
-        ("6", "releases/gcc-6.5.0"),
-        ("7", "releases/gcc-7.5.0"),
-        ("8", "releases/gcc-8.4.0"),
-        ("9", "releases/gcc-9.3.0"),
-        ("10", "releases/gcc-10.2.0"),
-        ("11", "releases/gcc-11.1.0"),
-        ("NEXT", "origin/master"),
+    # Parse all release branches
+    branches = [
+        ref.name for ref in repo.refs if ref.name.startswith("origin/releases/gcc-")
     ]
+
+    # Remove everything up to the last / as well as the "gcc-"
+    versions = [(branch.split("/")[-1][4:], branch) for branch in branches]
+
+    # Filter to 3.4 and later, and sort numerically
+    versions = [(version, ref) for version, ref in versions if tryfloat(version) >= 3.4]
+    versions = sorted(versions, key=lambda v: float(v[0]))
+
+    # Add the master branch
+    versions += [("NEXT", "origin/master")]
 
     all_inputs = [
         f"{GIT_DIR}/gcc/{path}"
