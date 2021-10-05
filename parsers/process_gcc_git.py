@@ -3,6 +3,7 @@
 import os
 import sys
 
+import git
 from process_clang_git import shell
 
 DIR = os.path.dirname(os.path.realpath(__file__))
@@ -57,6 +58,7 @@ def parse_gcc_info(version: str, target_dir: str, input_files: list[str]) -> Non
 def main() -> None:
     """Entry point."""
     GIT_DIR = sys.argv[1]
+    repo = git.Repo(GIT_DIR)
 
     target_dir = f"{DIR}/../gcc"
 
@@ -94,7 +96,7 @@ def main() -> None:
 
     for version, ref in versions:
         print(f"Processing {version=}")
-        shell(["git", "-C", GIT_DIR, "checkout", ref])
+        repo.git.checkout(ref)
         inputs = [path for path in all_inputs if os.path.exists(path)]
         parse_gcc_info(version, target_dir, inputs)
 

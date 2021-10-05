@@ -6,6 +6,8 @@ import subprocess  # noqa: S404
 import sys
 from typing import Optional
 
+import git
+
 DIR = os.path.dirname(os.path.realpath(__file__))
 
 
@@ -92,6 +94,7 @@ def shell(cmd: list[str], stdout_path: Optional[str] = None) -> None:
 def main() -> None:
     """Entry point."""
     GIT_DIR = sys.argv[1]
+    repo = git.Repo(GIT_DIR)
 
     target_dir = f"{DIR}/../clang"
 
@@ -118,14 +121,14 @@ def main() -> None:
 
     for version in versions:
         print(f"Processing {version=}")
-        shell(["git", "-C", GIT_DIR, "checkout", f"origin/release/{version}.x"])
+        repo.git.checkout(f"origin/release/{version}.x")
         parse_clang_info(version, target_dir, f"{GIT_DIR}/clang/include/clang/Basic")
 
     # Parse NEXT (main)
     versions.append("NEXT")
 
     print("Processing main")
-    shell(["git", "-C", GIT_DIR, "checkout", "origin/main"])
+    repo.git.checkout("origin/main")
     parse_clang_info("NEXT", target_dir, f"{GIT_DIR}/clang/include/clang/Basic")
 
     # Generate diffs

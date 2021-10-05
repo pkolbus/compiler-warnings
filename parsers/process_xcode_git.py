@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Process an Apple LLVM (Xcode) git repository for diagnostic groups."""
 import os
-import subprocess  # noqa: S404
 import sys
 
+import git
 from process_clang_git import format_json, shell
 
 DIR = os.path.dirname(os.path.realpath(__file__))
@@ -66,28 +66,28 @@ def parse_clang_info(version: str, target_dir: str, input_dir: str) -> None:
 def main() -> None:
     """Entry point."""
     GIT_DIR = sys.argv[1]
+    repo = git.Repo(GIT_DIR)
 
     target_dir = f"{DIR}/../xcode"
 
     # Parse all apple/stable branches
-    cmd = ["git", "-C", GIT_DIR, "branch", "--list", "-r", "origin/apple/stable/*"]
-    result = subprocess.run(cmd, capture_output=True, check=True)  # noqa: S603
-
-    versions = [branch.split("/")[-1] for branch in result.stdout.decode().splitlines()]
-    result.stdout.decode().splitlines()
+    branches = sorted(
+        ref.name for ref in repo.refs if ref.name.startswith("origin/apple/stable/")
+    )
+    versions = [branch.split("/")[-1] for branch in branches]
 
     os.makedirs(target_dir, exist_ok=True)
 
     for version in versions:
         print(f"Processing {version=}")
-        shell(["git", "-C", GIT_DIR, "checkout", f"origin/apple/stable/{version}"])
+        repo.git.checkout(f"origin/apple/stable/{version}")
         parse_clang_info(version, target_dir, f"{GIT_DIR}/clang/include/clang/Basic")
 
     # Parse NEXT (apple/main)
     versions.append("NEXT")
 
     print("Processing apple/main")
-    shell(["git", "-C", GIT_DIR, "checkout", "origin/apple/main"])
+    repo.git.checkout("origin/apple/main")
     parse_clang_info("NEXT", target_dir, f"{GIT_DIR}/clang/include/clang/Basic")
 
     # Generate diffs

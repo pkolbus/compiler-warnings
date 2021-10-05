@@ -75,8 +75,10 @@ flake8-variables-names==0.0.4
     # via -r parsers/requirements.in
 gitdb==4.0.7
     # via gitpython
-gitpython==3.1.24
-    # via bandit
+gitpython==3.1.18
+    # via
+    #   -r parsers/requirements.in
+    #   bandit
 isort==5.9.3
     # via flake8-isort
 mccabe==0.6.1
@@ -136,7 +138,6 @@ tomli==1.2.1
 typing-extensions==3.10.0.2
     # via
     #   black
-    #   gitpython
     #   mypy
 wheel==0.37.0
     # via pip-tools
