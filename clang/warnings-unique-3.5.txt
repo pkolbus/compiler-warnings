@@ -280,7 +280,7 @@
 -Wmissing-selector-name # Enabled by default.
 -Wmissing-sysroot # Enabled by default.
 -Wmissing-variable-declarations
--Wmodule-build
+-Rmodule-build
 -Wmodule-conflict # Enabled by default.
 -Wmost # Partially enabled by default.
 -Wmsvc-include # Enabled by default.
@@ -347,10 +347,10 @@
 -Wpadded
 -Wparentheses # Enabled by default.
 -Wparentheses-equality # Enabled by default.
--Wpass
--Wpass-analysis
+-Rpass
+-Rpass-analysis
 -Wpass-failed # Enabled by default.
--Wpass-missed
+-Rpass-missed
 -Wpedantic
 -Wpointer-arith # Partially enabled by default.
 -Wpointer-bool-conversion # Enabled by default.
@@ -371,7 +371,7 @@
 -Wredeclared-class-member # Enabled by default.
 -Wredundant-decls # DUMMY switch
 -Wreinterpret-base-class # Enabled by default.
--Wremark-backend-plugin
+-Rremark-backend-plugin
 -Wreorder
 -Wrequires-super-attribute # Enabled by default.
 -Wreserved-user-defined-literal # Partially enabled by default.

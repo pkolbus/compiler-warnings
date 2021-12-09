@@ -22,7 +22,7 @@
 +-Wproperty-access-dot-syntax # Enabled by default.
 +-Wproperty-attribute-mismatch # Enabled by default.
 +-Wreserved-id-macro
-+-Wsanitize-address
++-Rsanitize-address
 +-Wself-move
 +-Wsync-fetch-and-nand-semantics-changed # Enabled by default.
 +-Wthread-safety-negative

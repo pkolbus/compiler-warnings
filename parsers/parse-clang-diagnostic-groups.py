@@ -341,6 +341,7 @@ class ClangDiagnostic:
             self.enabled_by_default = obj["DefaultMapping"]["def"] != "MAP_IGNORE"
 
         self.is_extension = obj["Class"]["def"] == "CLASS_EXTENSION"
+        self.is_remark = obj["Class"]["def"] == "CLASS_REMARK"
 
     @property
     def text(self) -> str:
@@ -385,6 +386,20 @@ class ClangDiagGroup:
             return [diag.text for diag in self.diagnostics if diag.enabled_by_default]
 
         return [diag.text for diag in self.diagnostics]
+
+    def is_remark(self) -> bool:
+        """
+        Return whether a group is a remark.
+
+        :return: True if the group has remark diagnostics, False otherwise.
+        """
+        rem=False
+
+        for child in self.diagnostics:
+            if child.is_remark:
+                rem=True
+
+        return rem
 
     def is_dummy(self) -> bool:
         """
@@ -557,6 +572,19 @@ class ClangWarningSwitch:
             messages += group.get_messages(enabled_by_default)
 
         return list(set(messages))  # Remove duplicates
+
+    def is_remark(self) -> bool:
+        """
+        Return whether a switch is a remark.
+
+        :return: True if the switch has remark diagnostics, False otherwise.
+        """
+        for group in self.groups:
+            if not group.is_remark():
+                return False
+
+        return True
+
 
     def is_dummy(self) -> bool:
         """
@@ -772,7 +800,8 @@ def print_switch(
         section of the output.
     """
     comment_string = create_comment_text(switch, args, enabled_by_default)
-    print("# {}-W{}{}".format("  " * level, switch.name, comment_string))
+    flag_type = "-R" if switch.is_remark() else "-W"
+    print("# {}{}{}{}".format("  " * level, flag_type, switch.name, comment_string))
     if args.text:
         for item in sorted(switch.get_messages(enabled_by_default)):
             print("#       {}{}".format("  " * level, item))
@@ -820,7 +849,8 @@ def main() -> None:
         ):
             continue
         comment_string = create_comment_text(switch, args, enabled_by_default=False)
-        print(f"-W{switch.name}{comment_string}")
+        flag_type = "-R" if switch.is_remark() else "-W"
+        print(f"{flag_type}{switch.name}{comment_string}")
         if args.text:
             for item in sorted(switch.get_messages(enabled_by_default=False)):
                 print(f"#     {item}")

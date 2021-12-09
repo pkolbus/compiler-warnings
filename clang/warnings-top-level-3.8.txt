@@ -680,7 +680,7 @@
 -Wmissing-noreturn
 -Wmissing-prototypes
 -Wmissing-variable-declarations
--Wmodule-build
+-Rmodule-build
 -Wnarrowing
 #   -Wc++11-narrowing
 -Wnested-externs # DUMMY switch
@@ -717,9 +717,9 @@
 -Wpacked
 -Wpadded
 -Wpartial-availability
--Wpass
--Wpass-analysis
--Wpass-missed
+-Rpass
+-Rpass-analysis
+-Rpass-missed
 -Wpedantic
 #   -Wc++11-extra-semi
 #   -Wc++14-binary-literal
@@ -781,11 +781,11 @@
 -Wreceiver-forward-class
 -Wreceiver-is-weak # DUMMY switch
 -Wredundant-decls # DUMMY switch
--Wremark-backend-plugin
+-Rremark-backend-plugin
 -Wreserved-id-macro
 -Wreserved-user-defined-literal
 #   -Wc++11-compat-reserved-user-defined-literal
--Wsanitize-address
+-Rsanitize-address
 -Wselector
 #   -Wselector-type-mismatch
 -Wshadow

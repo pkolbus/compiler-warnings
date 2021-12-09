@@ -401,7 +401,7 @@
 -Wmissing-selector-name # Enabled by default.
 -Wmissing-sysroot # Enabled by default.
 -Wmissing-variable-declarations
--Wmodule-build
+-Rmodule-build
 -Wmodule-conflict # Enabled by default.
 -Wmodule-file-config-mismatch # Enabled by default.
 -Wmodule-file-extension # Enabled by default.
@@ -503,10 +503,10 @@
 -Wparentheses # Enabled by default.
 -Wparentheses-equality # Enabled by default.
 -Wpartial-availability # Partially enabled by default.
--Wpass
--Wpass-analysis
+-Rpass
+-Rpass-analysis
 -Wpass-failed # Enabled by default.
--Wpass-missed
+-Rpass-missed
 -Wpch-date-time # Enabled by default.
 -Wpedantic
 -Wpedantic-core-features
@@ -546,7 +546,7 @@
 -Wredundant-parens
 -Wregister # Enabled by default.
 -Wreinterpret-base-class # Enabled by default.
--Wremark-backend-plugin
+-Rremark-backend-plugin
 -Wreorder
 -Wrequires-super-attribute # Enabled by default.
 -Wreserved-id-macro
@@ -557,7 +557,7 @@
 -Wreturn-std-move-in-c++11
 -Wreturn-type # Enabled by default.
 -Wreturn-type-c-linkage # Enabled by default.
--Wsanitize-address
+-Rsanitize-address
 -Wsection # Enabled by default.
 -Wselector
 -Wselector-type-mismatch

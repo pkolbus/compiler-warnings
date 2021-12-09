@@ -1849,7 +1849,7 @@
 #     no previous prototype for function A
 -Wmissing-variable-declarations
 #     no previous extern declaration for non-static variable A
--Wmodule-build
+-Rmodule-build
 #     building module 'A' as 'B'
 #     finished building module 'A'
 -Wnarrowing
@@ -1945,11 +1945,11 @@
 #     A is only available conditionally
 #     A is partial: B
 #     A may be partial because the receiver type is unknown
--Wpass
+-Rpass
 #     The text of this diagnostic is not controlled by Clang
--Wpass-analysis
+-Rpass-analysis
 #     The text of this diagnostic is not controlled by Clang
--Wpass-missed
+-Rpass-missed
 #     The text of this diagnostic is not controlled by Clang
 -Wpedantic
 #     #ident is a language extension
@@ -2141,7 +2141,7 @@
 #     receiver type A for instance message is a forward declaration
 -Wreceiver-is-weak # DUMMY switch
 -Wredundant-decls # DUMMY switch
--Wremark-backend-plugin
+-Rremark-backend-plugin
 #     The text of this diagnostic is not controlled by Clang
 -Wreserved-id-macro
 #     macro name is a reserved identifier
@@ -2149,7 +2149,7 @@
 #     invalid suffix on literal; C++11 requires a space between literal and identifier
 #   -Wc++11-compat-reserved-user-defined-literal
 #         identifier after literal will be treated as a reserved user-defined literal suffix in C++11
--Wsanitize-address
+-Rsanitize-address
 #     -fsanitize-address-field-padding applied to A
 #     -fsanitize-address-field-padding ignored for A because it <is not C++|is packed|is a union|is trivially copyable|has trivial destructor|is standard layout|is in a blacklisted file|is blacklisted>
 -Wselector

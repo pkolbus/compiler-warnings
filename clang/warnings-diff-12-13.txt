@@ -31,7 +31,7 @@
 --Wreturn-std-move
 --Wreturn-std-move-in-c++11
 +-Wreturn-std-move # DUMMY switch
-+-Wround-trip-cc1-args
++-Rround-trip-cc1-args
 +-Wsource-mgr # Enabled by default.
 +-Wtautological-unsigned-char-zero-compare
 +-Wunused-but-set-parameter
