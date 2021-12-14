@@ -108,7 +108,7 @@ def parse_clang_info(version: str, target_dir: str, input_dir: str) -> None:
     json_file = f"{target_dir}/warnings-{version}.json"
 
     shell(
-        ["llvm-tblgen-11", "-dump-json", "-I", input_dir, f"{input_dir}/Diagnostic.td"],
+        ["llvm-tblgen", "-dump-json", "-I", input_dir, f"{input_dir}/Diagnostic.td"],
         json_file,
     )
     format_json(json_file)
