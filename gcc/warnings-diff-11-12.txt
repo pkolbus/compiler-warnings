@@ -1,0 +1,41 @@
+--Wanalyzer-double-fclose # Enabled by default.
+--Wanalyzer-double-free # Enabled by default.
+--Wanalyzer-exposure-through-output-file # Enabled by default.
+--Wanalyzer-file-leak # Enabled by default.
+--Wanalyzer-free-of-non-heap # Enabled by default.
+--Wanalyzer-malloc-leak # Enabled by default.
+--Wanalyzer-mismatching-deallocation # Enabled by default.
+--Wanalyzer-null-argument # Enabled by default.
+--Wanalyzer-null-dereference # Enabled by default.
+--Wanalyzer-possible-null-argument # Enabled by default.
+--Wanalyzer-possible-null-dereference # Enabled by default.
+--Wanalyzer-shift-count-negative # Enabled by default.
+--Wanalyzer-shift-count-overflow # Enabled by default.
+--Wanalyzer-stale-setjmp-buffer # Enabled by default.
+--Wanalyzer-tainted-array-index # Enabled by default.
+--Wanalyzer-too-complex
+--Wanalyzer-unsafe-call-within-signal-handler # Enabled by default.
+--Wanalyzer-use-after-free # Enabled by default.
+--Wanalyzer-use-of-pointer-in-stale-stack-frame # Enabled by default.
+--Wanalyzer-write-to-const # Enabled by default.
+--Wanalyzer-write-to-string-literal # Enabled by default.
++-Warray-compare
++-Wattributes=
++-Wbidi-chars
++-Wbidi-chars=
++-Wc++11-extensions # Enabled by default. Applies to C++,ObjC++
++-Wc++14-extensions # Enabled by default. Applies to C++,ObjC++
++-Wc++17-extensions # Enabled by default. Applies to C++,ObjC++
++-Wc++20-extensions # Enabled by default. Applies to C++,ObjC++
++-Wc++23-extensions # Enabled by default. Applies to C++,ObjC++
++-Wcoverage-invalid-line-number # Enabled by default.
++-Wdangling-pointer
++-Wdangling-pointer=<0..2>
++-Winfinite-recursion
++-Winterference-size # Enabled by default. Applies to C++,ObjC++
++-Wmissing-requires # Enabled by default. Applies to C++,ObjC++
++-Wmissing-template-keyword # Enabled by default. Applies to C++,ObjC++
++-Wopenacc-parallelism # Applies to C,C++
++-Wtrivial-auto-var-init
++-Wuse-after-free
++-Wuse-after-free=<0..3>

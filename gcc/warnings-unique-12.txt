@@ -1,0 +1,350 @@
+--all-warnings
+--extra-warnings
+--pedantic
+-pedantic
+-W
+-Wabi
+-Wabi-tag # Applies to C++,ObjC++
+-Wabi=
+-Wabsolute-value # Applies to C,ObjC
+-Waddress
+-Waddress-of-packed-member # Enabled by default.
+-Waggregate-return
+-Waggressive-loop-optimizations # Enabled by default.
+-Waligned-new # Applies to C++,ObjC++
+-Waligned-new=[none|global|all] # Applies to C++,ObjC++
+-Wall
+-Walloc-size-larger-than=<bytes>
+-Walloc-zero
+-Walloca
+-Walloca-larger-than=<number>
+-Warith-conversion
+-Warray-bounds
+-Warray-bounds=<0..2>
+-Warray-compare
+-Warray-parameter
+-Warray-parameter=<0..2>
+-Wassign-intercept # Applies to ObjC,ObjC++
+-Wattribute-alias
+-Wattribute-alias=<0..2>
+-Wattribute-warning # Enabled by default.
+-Wattributes # Enabled by default.
+-Wattributes=
+-Wbad-function-cast # Applies to C,ObjC
+-Wbidi-chars
+-Wbidi-chars=
+-Wbool-compare
+-Wbool-operation
+-Wbuiltin-declaration-mismatch # Enabled by default.
+-Wbuiltin-macro-redefined # Enabled by default.
+-Wc++-compat # Applies to C,ObjC
+-Wc++0x-compat # Applies to C++,ObjC++
+-Wc++11-compat # Applies to C++,ObjC++
+-Wc++11-extensions # Enabled by default. Applies to C++,ObjC++
+-Wc++14-compat # Applies to C++,ObjC++
+-Wc++14-extensions # Enabled by default. Applies to C++,ObjC++
+-Wc++17-compat # Applies to C++,ObjC++
+-Wc++17-extensions # Enabled by default. Applies to C++,ObjC++
+-Wc++1z-compat # Applies to C++,ObjC++
+-Wc++20-compat # Applies to C++,ObjC++
+-Wc++20-extensions # Enabled by default. Applies to C++,ObjC++
+-Wc++23-extensions # Enabled by default. Applies to C++,ObjC++
+-Wc++2a-compat # Applies to C++,ObjC++
+-Wc11-c2x-compat # Enabled by default. Applies to C,ObjC
+-Wc90-c99-compat # Enabled by default. Applies to C,ObjC
+-Wc99-c11-compat # Enabled by default. Applies to C,ObjC
+-Wcannot-profile # Enabled by default.
+-Wcast-align
+-Wcast-align=strict
+-Wcast-function-type
+-Wcast-qual
+-Wcatch-value # Applies to C++,ObjC++
+-Wcatch-value=<0..3> # Applies to C++,ObjC++
+-Wchar-subscripts
+-Wchkp # Deprecated.
+-Wclass-conversion # Enabled by default. Applies to C++,ObjC++
+-Wclass-memaccess # Applies to C++,ObjC++
+-Wclobbered
+-Wcomma-subscript # Applies to C++,ObjC++
+-Wcomment
+-Wcomments
+-Wconditionally-supported # Applies to C++,ObjC++
+-Wconversion
+-Wconversion-null # Enabled by default. Applies to C++,ObjC++
+-Wcoverage-invalid-line-number # Enabled by default.
+-Wcoverage-mismatch # Enabled by default.
+-Wcpp # Enabled by default.
+-Wctad-maybe-unsupported # Applies to C++,ObjC++
+-Wctor-dtor-privacy # Applies to C++,ObjC++
+-Wdangling-else
+-Wdangling-pointer
+-Wdangling-pointer=<0..2>
+-Wdate-time
+-Wdeclaration-after-statement # Enabled by default. Applies to C,ObjC
+-Wdelete-incomplete # Enabled by default. Applies to C++,ObjC++
+-Wdelete-non-virtual-dtor # Applies to C++,ObjC++
+-Wdeprecated # Enabled by default.
+-Wdeprecated-copy # Applies to C++,ObjC++
+-Wdeprecated-copy-dtor # Applies to C++,ObjC++
+-Wdeprecated-declarations # Enabled by default.
+-Wdeprecated-enum-enum-conversion # Applies to C++,ObjC++
+-Wdeprecated-enum-float-conversion # Applies to C++,ObjC++
+-Wdesignated-init # Enabled by default. Applies to C,ObjC
+-Wdisabled-optimization
+-Wdiscarded-array-qualifiers # Enabled by default. Applies to C,ObjC
+-Wdiscarded-qualifiers # Enabled by default. Applies to C,ObjC
+-Wdiv-by-zero # Enabled by default.
+-Wdouble-promotion
+-Wduplicate-decl-specifier # Applies to C,ObjC
+-Wduplicated-branches
+-Wduplicated-cond
+-Weffc++ # Applies to C++,ObjC++
+-Wempty-body
+-Wendif-labels # Enabled by default.
+-Wenum-compare # Enabled by default.
+-Wenum-conversion
+-Werror-implicit-function-declaration # Applies to C,ObjC
+-Wexceptions # Enabled by default. Applies to C++,ObjC++
+-Wexpansion-to-defined
+-Wextra
+-Wextra-semi # Applies to C++,ObjC++
+-Wfloat-conversion
+-Wfloat-equal
+-Wformat
+-Wformat-contains-nul
+-Wformat-diag
+-Wformat-extra-args
+-Wformat-nonliteral
+-Wformat-overflow
+-Wformat-overflow=<0..2>
+-Wformat-security
+-Wformat-signedness
+-Wformat-truncation
+-Wformat-truncation=<0..2>
+-Wformat-y2k
+-Wformat-zero-length
+-Wformat=<0..2>
+-Wformat=1
+-Wformat=2
+-Wframe-address
+-Wframe-larger-than=<byte-size>
+-Wfree-nonheap-object # Enabled by default.
+-Whsa # DUMMY switch
+-Wif-not-aligned # Enabled by default.
+-Wignored-attributes # Enabled by default. Applies to C,C++
+-Wignored-qualifiers # Applies to C,C++
+-Wimplicit # Applies to C,ObjC
+-Wimplicit-fallthrough
+-Wimplicit-fallthrough=<0..5>
+-Wimplicit-function-declaration # Enabled by default. Applies to C,ObjC
+-Wimplicit-int # Enabled by default. Applies to C,ObjC
+-Wimport # DUMMY switch
+-Winaccessible-base # Enabled by default. Applies to C++,ObjC++
+-Wincompatible-pointer-types # Enabled by default. Applies to C,ObjC
+-Winfinite-recursion
+-Winherited-variadic-ctor # Enabled by default. Applies to C++,ObjC++
+-Winit-list-lifetime # Enabled by default. Applies to C++,ObjC++
+-Winit-self
+-Winline
+-Wint-conversion # Enabled by default. Applies to C,ObjC
+-Wint-in-bool-context
+-Wint-to-pointer-cast # Enabled by default.
+-Winterference-size # Enabled by default. Applies to C++,ObjC++
+-Winvalid-imported-macros # Applies to C++,ObjC++
+-Winvalid-memory-model # Enabled by default.
+-Winvalid-offsetof # Enabled by default. Applies to C++,ObjC++
+-Winvalid-pch
+-Wjump-misses-init # Applies to C,ObjC
+-Wlarger-than-
+-Wlarger-than=<byte-size>
+-Wliteral-suffix # Enabled by default. Applies to C++,ObjC++
+-Wlogical-not-parentheses
+-Wlogical-op
+-Wlong-long # Enabled by default.
+-Wlto-type-mismatch # Enabled by default.
+-Wmain # Enabled by default.
+-Wmaybe-uninitialized
+-Wmemset-elt-size
+-Wmemset-transposed-args
+-Wmisleading-indentation # Applies to C,C++
+-Wmismatched-dealloc
+-Wmismatched-new-delete # Applies to C++,ObjC++
+-Wmismatched-tags # Applies to C++,ObjC++
+-Wmissing-attributes
+-Wmissing-braces
+-Wmissing-declarations
+-Wmissing-field-initializers
+-Wmissing-format-attribute
+-Wmissing-include-dirs
+-Wmissing-noreturn
+-Wmissing-parameter-type # Applies to C,ObjC
+-Wmissing-profile # Enabled by default.
+-Wmissing-prototypes # Applies to C,ObjC
+-Wmissing-requires # Enabled by default. Applies to C++,ObjC++
+-Wmissing-template-keyword # Enabled by default. Applies to C++,ObjC++
+-Wmudflap # Deprecated.
+-Wmultichar
+-Wmultiple-inheritance # Applies to C++,ObjC++
+-Wmultistatement-macros
+-Wnamespaces # Applies to C++,ObjC++
+-Wnarrowing # Enabled by default.
+-Wnested-externs # Applies to C,ObjC
+-Wno-alloc-size-larger-than
+-Wno-alloca-larger-than
+-Wno-frame-larger-than
+-Wno-larger-than
+-Wno-stack-usage
+-Wno-vla-larger-than
+-Wnoexcept # Applies to C++,ObjC++
+-Wnoexcept-type # Applies to C++,ObjC++
+-Wnon-template-friend # Enabled by default. Applies to C++,ObjC++
+-Wnon-virtual-dtor # Applies to C++,ObjC++
+-Wnonnull
+-Wnonnull-compare
+-Wnormalized
+-Wnormalized=[none|id|nfc|nfkc]
+-WNSObject-attribute # Enabled by default.
+-Wnull-dereference
+-Wobjc-root-class # Enabled by default. Applies to ObjC,ObjC++
+-Wodr # Enabled by default.
+-Wold-style-cast # Applies to C++,ObjC++
+-Wold-style-declaration # Applies to C,ObjC
+-Wold-style-definition # Enabled by default. Applies to C,ObjC
+-Wopenacc-parallelism # Applies to C,C++
+-Wopenmp-simd # Applies to C,C++
+-Woverflow # Enabled by default.
+-Woverlength-strings
+-Woverloaded-virtual # Applies to C++,ObjC++
+-Woverride-init # Applies to C,ObjC
+-Woverride-init-side-effects # Enabled by default. Applies to C,ObjC
+-Wpacked
+-Wpacked-bitfield-compat # Enabled by default.
+-Wpacked-not-aligned
+-Wpadded
+-Wparentheses
+-Wpedantic
+-Wpessimizing-move # Applies to C++,ObjC++
+-Wplacement-new # Applies to C++
+-Wplacement-new=<0..2> # Applies to C++
+-Wpmf-conversions # Enabled by default. Applies to C++,ObjC++
+-Wpointer-arith
+-Wpointer-compare # Enabled by default.
+-Wpointer-sign # Applies to C,ObjC
+-Wpointer-to-int-cast # Enabled by default. Applies to C,ObjC
+-Wpragmas # Enabled by default.
+-Wprio-ctor-dtor # Enabled by default.
+-Wproperty-assign-default # Enabled by default. Applies to ObjC,ObjC++
+-Wprotocol # Enabled by default. Applies to ObjC,ObjC++
+-Wpsabi # Enabled by default.
+-Wrange-loop-construct # Applies to C++,ObjC++
+-Wredundant-decls
+-Wredundant-move # Applies to C++,ObjC++
+-Wredundant-tags # Applies to C++,ObjC++
+-Wregister # Applies to C++,ObjC++
+-Wreorder # Applies to C++,ObjC++
+-Wrestrict
+-Wreturn-local-addr # Enabled by default.
+-Wreturn-type # Enabled by default.
+-Wscalar-storage-order # Enabled by default.
+-Wselector # Applies to ObjC,ObjC++
+-Wsequence-point
+-Wshadow
+-Wshadow-compatible-local
+-Wshadow-ivar # Enabled by default. Applies to ObjC,ObjC++
+-Wshadow-local
+-Wshadow=compatible-local
+-Wshadow=global
+-Wshadow=local
+-Wshift-count-negative # Enabled by default.
+-Wshift-count-overflow # Enabled by default.
+-Wshift-negative-value # Enabled by default.
+-Wshift-overflow
+-Wshift-overflow=<0..2>
+-Wsign-compare
+-Wsign-conversion
+-Wsign-promo # Applies to C++,ObjC++
+-Wsized-deallocation # Applies to C++,ObjC++
+-Wsizeof-array-argument # Enabled by default.
+-Wsizeof-array-div
+-Wsizeof-pointer-div
+-Wsizeof-pointer-memaccess
+-Wstack-protector
+-Wstack-usage=<byte-size>
+-Wstrict-aliasing
+-Wstrict-aliasing=<0..3>
+-Wstrict-null-sentinel # Applies to C++,ObjC++
+-Wstrict-overflow
+-Wstrict-overflow=<0..5>
+-Wstrict-prototypes # Applies to C,ObjC
+-Wstrict-selector-match # Applies to ObjC,ObjC++
+-Wstring-compare
+-Wstringop-overflow
+-Wstringop-overflow=<0..4>
+-Wstringop-overread # Enabled by default.
+-Wstringop-truncation # Enabled by default.
+-Wsubobject-linkage # Enabled by default. Applies to C++,ObjC++
+-Wsuggest-attribute=cold
+-Wsuggest-attribute=const
+-Wsuggest-attribute=format
+-Wsuggest-attribute=malloc
+-Wsuggest-attribute=noreturn
+-Wsuggest-attribute=pure
+-Wsuggest-final-methods
+-Wsuggest-final-types
+-Wsuggest-override # Applies to C++,ObjC++
+-Wswitch
+-Wswitch-bool # Enabled by default.
+-Wswitch-default
+-Wswitch-enum
+-Wswitch-outside-range # Enabled by default.
+-Wswitch-unreachable # Enabled by default.
+-Wsync-nand # Enabled by default. Applies to C,C++
+-Wsynth # Applies to C++,ObjC++
+-Wsystem-headers
+-Wtautological-compare
+-Wtemplates # Applies to C++,ObjC++
+-Wterminate # Enabled by default. Applies to C++,ObjC++
+-Wtraditional # Applies to C,ObjC
+-Wtraditional-conversion # Applies to C,ObjC
+-Wtrampolines
+-Wtrigraphs
+-Wtrivial-auto-var-init
+-Wtsan # Enabled by default.
+-Wtype-limits
+-Wundeclared-selector # Applies to ObjC,ObjC++
+-Wundef
+-Wuninitialized
+-Wunknown-pragmas
+-Wunreachable-code # DUMMY switch
+-Wunsafe-loop-optimizations # DUMMY switch
+-Wunsuffixed-float-constants # Applies to C,ObjC
+-Wunused
+-Wunused-but-set-parameter
+-Wunused-but-set-variable
+-Wunused-const-variable
+-Wunused-const-variable=<0..2>
+-Wunused-function
+-Wunused-label
+-Wunused-local-typedefs
+-Wunused-macros
+-Wunused-parameter
+-Wunused-result # Enabled by default.
+-Wunused-value
+-Wunused-variable
+-Wuse-after-free
+-Wuse-after-free=<0..3>
+-Wuseless-cast # Applies to C++,ObjC++
+-Wvarargs # Enabled by default.
+-Wvariadic-macros
+-Wvector-operation-performance
+-Wvexing-parse # Enabled by default. Applies to C++,ObjC++
+-Wvirtual-inheritance # Applies to C++,ObjC++
+-Wvirtual-move-assign # Enabled by default. Applies to C++,ObjC++
+-Wvla # Enabled by default.
+-Wvla-larger-than=<number>
+-Wvla-parameter
+-Wvolatile # Applies to C++,ObjC++
+-Wvolatile-register-var
+-Wwrite-strings
+-Wzero-as-null-pointer-constant # Applies to C++,ObjC++
+-Wzero-length-bounds
