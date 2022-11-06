@@ -8,6 +8,11 @@ for a specific version of GCC that you have, you can run GCC with `gcc
 options lists are available below:
 
 
+* GCC 12 [all](warnings-12.txt)
+  • [top level](warnings-top-level-12.txt)
+  • [detail](warnings-detail-12.txt)
+  • [unique](warnings-unique-12.txt)
+  • [diff](warnings-diff-11-12.txt)
 * GCC 11 [all](warnings-11.txt)
   • [top level](warnings-top-level-11.txt)
   • [detail](warnings-detail-11.txt)

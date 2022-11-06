@@ -1,0 +1,25 @@
++-Wanalyzer-tainted-allocation-size # Enabled by default.
++-Wanalyzer-tainted-divisor # Enabled by default.
++-Wanalyzer-tainted-offset # Enabled by default.
++-Wanalyzer-tainted-size # Enabled by default.
++-Wanalyzer-use-of-uninitialized-value # Enabled by default.
++-Warray-compare
++-Wattributes=
++-Wbidi-chars
++-Wbidi-chars=
++-Wc++11-extensions # Enabled by default. Applies to C++,ObjC++
++-Wc++14-extensions # Enabled by default. Applies to C++,ObjC++
++-Wc++17-extensions # Enabled by default. Applies to C++,ObjC++
++-Wc++20-extensions # Enabled by default. Applies to C++,ObjC++
++-Wc++23-extensions # Enabled by default. Applies to C++,ObjC++
++-Wcoverage-invalid-line-number # Enabled by default.
++-Wdangling-pointer
++-Wdangling-pointer=<0..2>
++-Winfinite-recursion
++-Winterference-size # Enabled by default. Applies to C++,ObjC++
++-Wmissing-requires # Enabled by default. Applies to C++,ObjC++
++-Wmissing-template-keyword # Enabled by default. Applies to C++,ObjC++
++-Wopenacc-parallelism # Applies to C,C++
++-Wtrivial-auto-var-init
++-Wuse-after-free
++-Wuse-after-free=<0..3>
