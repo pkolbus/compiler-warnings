@@ -15,6 +15,11 @@ delta between `apple/stable/20200108` and Xcode 12.2 is about ten flags.
 Warnings available in each `apple/stable` branch are as follows:
 
 
+* 20221013 [all](warnings-20221013.txt)
+  • [top level](warnings-top-level-20221013.txt)
+  • [messages](warnings-messages-20221013.txt)
+  • [unique](warnings-unique-20221013.txt)
+  • [diff](warnings-diff-20210628-20221013.txt)
 * 20210628 [all](warnings-20210628.txt)
   • [top level](warnings-top-level-20210628.txt)
   • [messages](warnings-messages-20210628.txt)
