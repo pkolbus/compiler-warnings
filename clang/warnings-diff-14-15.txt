@@ -1,0 +1,32 @@
++-Walways-inline-coroutine # Enabled by default.
++-Warray-parameter
++-Watomic-access # Enabled by default.
+--Wauto-import
++-Wauto-import # DUMMY switch
++-Wdeprecate-lax-vec-conv-all # Enabled by default.
++-Wdeprecated-builtins # Enabled by default.
++-Wdeprecated-non-prototype # Enabled by default.
++-Wdeprecated-static-analyzer-flag # Enabled by default.
++-Wgnu-line-marker
++-Wgnu-null-pointer-arithmetic
++-Wgnu-pointer-arith
++-Wgnu-statement-expression-from-macro-expansion
++-Whlsl-extensions # Enabled by default.
+--Wignored-pragma-optimize # Enabled by default.
++-Wignored-pragma-optimize # DUMMY switch
+--Wimplicit-int # Enabled by default.
++-Wimplicit-int # Partially enabled by default.
++-Winvalid-utf8
++-Wmisexpect # Enabled by default.
++-Rmodule-include-translation
++-Wsarif-format-unstable # Enabled by default.
+--Wstrict-prototypes
++-Wstrict-prototypes # Partially enabled by default.
++-Wunaligned-qualifier-implicit-cast # Enabled by default.
++-Wunknown-directives # Enabled by default.
+--Wunreachable-code
+--Wunreachable-code-aggressive
++-Wunqualified-std-cast-call # Enabled by default.
++-Wunreachable-code # Partially enabled by default.
++-Wunreachable-code-aggressive # Partially enabled by default.
++-Wunreachable-code-generic-assoc # Enabled by default.

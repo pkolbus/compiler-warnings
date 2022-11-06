@@ -1,0 +1,31 @@
++-Wargument-undefined-behaviour # Enabled by default.
++-Wattribute-warning # Enabled by default.
++-Wbit-int-extension
++-Wbitwise-instead-of-logical
+--Wbool-operation # Enabled by default.
++-Wbool-operation
++-Wbranch-protection # Enabled by default.
++-Wc++14-attribute-extensions
++-Wc++17-attribute-extensions
++-Wc++20-attribute-extensions
++-Wdelimited-escape-sequence-extension
++-Wdeprecated-coroutine # Enabled by default.
++-Wdeprecated-experimental-coroutine # Enabled by default.
++-Wdeprecated-pragma # Enabled by default.
++-Wdeprecated-type # Enabled by default.
++-Wfinal-macro # Enabled by default.
++-Wfuture-attribute-extensions
++-Wgpu-maybe-wrong-side # Enabled by default.
++-Wignored-reference-qualifiers # Enabled by default.
++-Wlinker-warnings # Enabled by default.
++-Rmodule-lock
++-Wpedantic-macros # Enabled by default.
++-Wredundant-consteval-if # Enabled by default.
+--Wrequires-expression # Enabled by default.
++-Wrestrict-expansion # Enabled by default.
++-Rsearch-path-usage
++-Wspirv-compat
++-Wtarget-clones-mixed-specifiers # Enabled by default.
++-Wunaligned-access
++-Wunreachable-code-fallthrough
++-Wunsupported-abi # Enabled by default.
