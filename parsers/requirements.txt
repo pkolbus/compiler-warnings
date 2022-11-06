@@ -4,32 +4,34 @@
 #
 #    pip-compile parsers/requirements.in
 #
-antlr4-python3-runtime==4.9.2
+antlr4-python3-runtime==4.11.1
     # via -r parsers/requirements.in
-attrs==21.2.0
+attrs==22.1.0
     # via
     #   flake8-bugbear
     #   flake8-eradicate
     #   flake8-mypy
-bandit==1.7.0
+bandit==1.7.4
     # via flake8-bandit
-black==21.9b0
+black==22.10.0
     # via -r parsers/requirements.in
-click==8.0.1
+build==0.9.0
+    # via pip-tools
+click==8.1.3
     # via
     #   black
     #   pip-tools
-cognitive-complexity==1.2.0
+cognitive-complexity==1.3.0
     # via flake8-cognitive-complexity
-darglint==1.8.0
+darglint==1.8.1
     # via -r parsers/requirements.in
-dlint==0.11.0
+dlint==0.13.0
     # via -r parsers/requirements.in
-docutils==0.17.1
+docutils==0.19
     # via restructuredtext-lint
-eradicate==2.0.0
+eradicate==2.1.0
     # via flake8-eradicate
-flake8==3.9.2
+flake8==5.0.4
     # via
     #   -r parsers/requirements.in
     #   dlint
@@ -43,107 +45,100 @@ flake8==3.9.2
     #   flake8-mutable
     #   flake8-mypy
     #   flake8-pep3101
-    #   flake8-polyfill
     #   flake8-rst-docstrings
-flake8-bandit==2.1.2
+flake8-bandit==4.1.1
     # via -r parsers/requirements.in
-flake8-bugbear==21.9.2
+flake8-bugbear==22.10.27
     # via -r parsers/requirements.in
-flake8-builtins==1.5.3
+flake8-builtins==2.0.1
     # via -r parsers/requirements.in
 flake8-cognitive-complexity==0.1.0
     # via -r parsers/requirements.in
-flake8-comprehensions==3.6.1
+flake8-comprehensions==3.10.1
     # via -r parsers/requirements.in
 flake8-docstrings==1.6.0
     # via -r parsers/requirements.in
-flake8-eradicate==1.1.0
+flake8-eradicate==1.4.0
     # via -r parsers/requirements.in
-flake8-isort==4.0.0
+flake8-isort==5.0.0
     # via -r parsers/requirements.in
 flake8-mutable==1.2.0
     # via -r parsers/requirements.in
 flake8-mypy==17.8.0
     # via -r parsers/requirements.in
-flake8-pep3101==1.3.0
+flake8-pep3101==2.0.0
     # via -r parsers/requirements.in
-flake8-polyfill==1.0.2
-    # via flake8-bandit
-flake8-rst-docstrings==0.2.3
+flake8-rst-docstrings==0.2.7
     # via -r parsers/requirements.in
-flake8-variables-names==0.0.4
+flake8-variables-names==0.0.5
     # via -r parsers/requirements.in
-gitdb==4.0.7
+gitdb==4.0.9
     # via gitpython
 gitpython==3.1.18
     # via
     #   -r parsers/requirements.in
     #   bandit
-isort==5.9.3
+isort==5.10.1
     # via flake8-isort
-jinja2==3.0.2
+jinja2==3.1.2
     # via -r parsers/requirements.in
-markupsafe==2.0.1
+markupsafe==2.1.1
     # via jinja2
-mccabe==0.6.1
+mccabe==0.7.0
     # via flake8
-mypy==0.910
+mypy==0.982
     # via flake8-mypy
 mypy-extensions==0.4.3
     # via
     #   black
     #   mypy
-pathspec==0.9.0
+packaging==21.3
+    # via build
+pathspec==0.10.1
     # via black
-pbr==5.6.0
+pbr==5.11.0
     # via stevedore
-pep517==0.11.0
-    # via pip-tools
-pip-tools==6.3.0
+pep517==0.13.0
+    # via build
+pip-tools==6.9.0
     # via -r parsers/requirements.in
-platformdirs==2.4.0
+platformdirs==2.5.2
     # via black
-pycodestyle==2.7.0
-    # via
-    #   flake8
-    #   flake8-bandit
+pycodestyle==2.9.1
+    # via flake8
 pydocstyle==6.1.1
     # via flake8-docstrings
-pyflakes==2.3.1
+pyflakes==2.5.0
     # via flake8
-pygments==2.10.0
+pygments==2.13.0
     # via flake8-rst-docstrings
-pyupgrade==2.29.0
+pyparsing==3.0.9
+    # via packaging
+pyupgrade==3.2.0
     # via -r parsers/requirements.in
-pyyaml==5.4.1
+pyyaml==6.0
     # via bandit
-regex==2021.9.30
-    # via black
-restructuredtext-lint==1.3.2
+restructuredtext-lint==1.4.0
     # via flake8-rst-docstrings
-six==1.16.0
-    # via bandit
-smmap==4.0.0
+smmap==5.0.0
     # via gitdb
-snowballstemmer==2.1.0
+snowballstemmer==2.2.0
     # via pydocstyle
-stevedore==3.4.0
+stevedore==4.1.0
     # via bandit
-testfixtures==6.18.3
-    # via flake8-isort
-tokenize-rt==4.1.0
+tokenize-rt==5.0.0
     # via pyupgrade
-toml==0.10.2
-    # via mypy
-tomli==1.2.1
+tomli==2.0.1
     # via
     #   black
+    #   build
+    #   mypy
     #   pep517
-typing-extensions==3.10.0.2
+typing-extensions==4.4.0
     # via
     #   black
     #   mypy
-wheel==0.37.0
+wheel==0.38.2
     # via pip-tools
 
 # The following packages are considered to be unsafe in a requirements file:
