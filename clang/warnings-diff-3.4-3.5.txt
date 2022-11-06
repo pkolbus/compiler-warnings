@@ -39,7 +39,7 @@
 +-Wmain # Partially enabled by default.
 +-Wmemsize-comparison # Enabled by default.
 --Wmismatched-method-attributes # Enabled by default.
-+-Wmodule-build
++-Rmodule-build
 +-Wmsvc-include # Enabled by default.
 +-Wnew-returns-null # Enabled by default.
 +-Wnon-modular-include-in-framework-module
@@ -52,16 +52,16 @@
 +-Wold-style-cast
 +-Wopenmp-clauses # Enabled by default.
 +-Wopenmp-loop-form # Enabled by default.
-+-Wpass
-+-Wpass-analysis
++-Rpass
++-Rpass-analysis
 +-Wpass-failed # Enabled by default.
-+-Wpass-missed
++-Rpass-missed
 +-Wpointer-bool-conversion # Enabled by default.
 +-Wpragmas # Partially enabled by default.
 +-Wprofile-instr-out-of-date # Enabled by default.
 +-Wprofile-instr-unprofiled # Enabled by default.
 --Wreadonly-setter-attrs
-+-Wremark-backend-plugin
++-Rremark-backend-plugin
 +-Wswitch-bool # Enabled by default.
 --Wtautological-compare # Enabled by default.
 +-Wtautological-compare # Partially enabled by default.

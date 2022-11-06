@@ -7,7 +7,7 @@
 +-Wimplicit-fixed-point-conversion # Enabled by default.
 +-Wincomplete-setjmp-declaration # Enabled by default.
 +-Wmicrosoft-drectve-section # Enabled by default.
-+-Wmodule-import
++-Rmodule-import
 +-Wobjc-bool-constant-conversion # Enabled by default.
 +-Wobjc-boxing # Enabled by default.
 +-Wtautological-objc-bool-compare # Enabled by default.

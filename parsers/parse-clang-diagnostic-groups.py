@@ -341,6 +341,7 @@ class ClangDiagnostic:
             self.enabled_by_default = obj["DefaultMapping"]["def"] != "MAP_IGNORE"
 
         self.is_extension = obj["Class"]["def"] == "CLASS_EXTENSION"
+        self.is_remark = obj["Class"]["def"] == "CLASS_REMARK"
 
     @property
     def text(self) -> str:
@@ -362,7 +363,7 @@ class ClangDiagGroup:
 
         :param obj: The JSON object containing a DiagGroup instance.
         :param parent: The parent diagnostics collection. Used to retrieve the
-            associated ClangWarningSwitch.
+            associated ClangDiagnosticSwitch.
         """
         self.name = obj["!name"]
         self.switch_name = obj["GroupName"]
@@ -371,7 +372,7 @@ class ClangDiagGroup:
         self.has_parent = False
         self.diagnostics: list[ClangDiagnostic] = []
         self.children: list[ClangDiagGroup] = []
-        self.switch: ClangWarningSwitch = parent.get_switch(self.switch_name)
+        self.switch: ClangDiagnosticSwitch = parent.get_switch(self.switch_name)
 
     def get_messages(self, enabled_by_default: bool) -> list[str]:
         """
@@ -385,6 +386,35 @@ class ClangDiagGroup:
             return [diag.text for diag in self.diagnostics if diag.enabled_by_default]
 
         return [diag.text for diag in self.diagnostics]
+
+    def is_remark(self) -> bool:
+        """
+        Return whether a group is a remark.
+
+        :return: True if the group has remark diagnostics, False otherwise.
+        :raises RuntimeError: if disagreement about if it's a remark between the
+            different subgroups and disagnostics
+        """
+        isRemarkArray = []
+
+        for diagnostic in self.diagnostics:
+            if diagnostic.is_remark:
+                isRemarkArray.append(True)
+
+        for subgroup in self.children:
+            if subgroup.is_remark():
+                isRemarkArray.append(True)
+
+        # if not all the elements are the same (some subgroups/diagnostics think
+        # it's a remark, others don't)
+        if len(isRemarkArray) == 0:
+            return False
+        if not all(x == isRemarkArray[0] for x in isRemarkArray):
+            raise RuntimeError(
+                "disagrement about if this group is a remark in subgroups/diagnostics"
+            )
+
+        return isRemarkArray[0]
 
     def is_dummy(self) -> bool:
         """
@@ -471,8 +501,8 @@ class ClangDiagGroup:
 
 
 @total_ordering
-class ClangWarningSwitch:
-    """One clang warning switch (-Wxxxx option)."""
+class ClangDiagnosticSwitch:
+    """One clang warning switch (-Wxxxx option) or a remark (-Rxxxx)."""
 
     def __init__(self, name: str):
         """
@@ -487,15 +517,15 @@ class ClangWarningSwitch:
         """
         Return True if self and other are equal.
 
-        Two ClangWarningSwitch are equal if they have the same name,
+        Two ClangDiagnosticSwitch are equal if they have the same name,
         case-insensitive.
 
         :param other: The object to compare for equality.
-        :return: NotImplemented if `other` is _not_ a ClangWarningSwitch,
+        :return: NotImplemented if `other` is _not_ a ClangDiagnosticSwitch,
             True if self and other have the same name, case-insensitive, or
             False otherwise.
         """
-        if not isinstance(other, ClangWarningSwitch):
+        if not isinstance(other, ClangDiagnosticSwitch):
             return NotImplemented
 
         return self.name.lower() == other.name.lower()
@@ -504,14 +534,14 @@ class ClangWarningSwitch:
         """
         Return True if self should be before other in a sorted list.
 
-        Two ClangWarningSwitch should be sorted by name, case-insensitive.
+        Two ClangDiagnosticSwitch should be sorted by name, case-insensitive.
 
         :param other: The object to compare against.
-        :return: NotImplemented if `other` is _not_ a ClangWarningSwitch,
+        :return: NotImplemented if `other` is _not_ a ClangDiagnosticSwitch,
             True if the name of self is less than the name of other, case-insensitive,
             or False otherwise.
         """
-        if not isinstance(other, ClangWarningSwitch):
+        if not isinstance(other, ClangDiagnosticSwitch):
             return NotImplemented
 
         return self.name.lower() < other.name.lower()
@@ -520,9 +550,11 @@ class ClangWarningSwitch:
         """:return: a hash of the switch name."""
         return hash(self.name.lower())
 
-    def get_child_switches(self, enabled_by_default: bool) -> list[ClangWarningSwitch]:
+    def get_child_switches(
+        self, enabled_by_default: bool
+    ) -> list[ClangDiagnosticSwitch]:
         """
-        Return a list of child ClangWarningSwitch for the switch.
+        Return a list of child ClangDiagnosticSwitch for the switch.
 
         :param enabled_by_default: If True, return only the switches that are
             partially or completely enabled by default. Otherwise, all child
@@ -557,6 +589,18 @@ class ClangWarningSwitch:
             messages += group.get_messages(enabled_by_default)
 
         return list(set(messages))  # Remove duplicates
+
+    def is_remark(self) -> bool:
+        """
+        Return whether a switch is a remark.
+
+        :return: True if the switch has remark diagnostics, False otherwise.
+        """
+        for group in self.groups:
+            if not group.is_remark():
+                return False
+
+        return True
 
     def is_dummy(self) -> bool:
         """
@@ -639,7 +683,7 @@ class ClangDiagnostics:
         :param filename: The path to the JSON file to parse.
         """
         self.groups = {}  # Dict: group name -> ClangDiagGroup
-        self.switches: dict[str, ClangWarningSwitch] = {}
+        self.switches: dict[str, ClangDiagnosticSwitch] = {}
         self._substitutions: ClangTextSubstitutions = {}
 
         json_data = json.loads(open(filename).read())
@@ -690,24 +734,24 @@ class ClangDiagnostics:
         pedantic_group.child_names += pedantic_group_names
         pedantic_group.resolve_children(self.groups)
 
-    def get_switch(self, switch_name: str) -> ClangWarningSwitch:
+    def get_switch(self, switch_name: str) -> ClangDiagnosticSwitch:
         """
-        Get the ClangWarningSwitch with the given name.
+        Get the ClangDiagnosticSwitch with the given name.
 
-        Creates a new ClangWarningSwitch if the given name is new.
+        Creates a new ClangDiagnosticSwitch if the given name is new.
 
-        :param switch_name: The name of the ClangWarningSwitch to retrieve.
-        :return: the ClangWarningSwitch with the given name.
+        :param switch_name: The name of the ClangDiagnosticSwitch to retrieve.
+        :return: the ClangDiagnosticSwitch with the given name.
         """
         try:
             return self.switches[switch_name]
         except KeyError:
-            self.switches[switch_name] = ClangWarningSwitch(switch_name)
+            self.switches[switch_name] = ClangDiagnosticSwitch(switch_name)
             return self.switches[switch_name]
 
 
 def create_comment_text(
-    switch: ClangWarningSwitch, args: argparse.Namespace, enabled_by_default: bool
+    switch: ClangDiagnosticSwitch, args: argparse.Namespace, enabled_by_default: bool
 ) -> str:
     """
     Return a comment appropriate for the switch and output type.
@@ -733,7 +777,7 @@ def create_comment_text(
 
 
 def print_references(
-    switch: ClangWarningSwitch,
+    switch: ClangDiagnosticSwitch,
     level: int,
     args: argparse.Namespace,
     enabled_by_default: bool,
@@ -755,7 +799,7 @@ def print_references(
 
 
 def print_switch(
-    switch: ClangWarningSwitch,
+    switch: ClangDiagnosticSwitch,
     level: int,
     args: argparse.Namespace,
     enabled_by_default: bool,
@@ -772,7 +816,8 @@ def print_switch(
         section of the output.
     """
     comment_string = create_comment_text(switch, args, enabled_by_default)
-    print("# {}-W{}{}".format("  " * level, switch.name, comment_string))
+    flag_type = "-R" if switch.is_remark() else "-W"
+    print("# {}{}{}{}".format("  " * level, flag_type, switch.name, comment_string))
     if args.text:
         for item in sorted(switch.get_messages(enabled_by_default)):
             print("#       {}{}".format("  " * level, item))
@@ -820,7 +865,8 @@ def main() -> None:
         ):
             continue
         comment_string = create_comment_text(switch, args, enabled_by_default=False)
-        print(f"-W{switch.name}{comment_string}")
+        flag_type = "-R" if switch.is_remark() else "-W"
+        print(f"{flag_type}{switch.name}{comment_string}")
         if args.text:
             for item in sorted(switch.get_messages(enabled_by_default=False)):
                 print(f"#     {item}")

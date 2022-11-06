@@ -488,7 +488,7 @@
 -Wmissing-selector-name
 -Wmissing-sysroot
 -Wmissing-variable-declarations
--Wmodule-build
+-Rmodule-build
 -Wmodule-conflict
 -Wmost
 #   -Wcast-of-sel-type
@@ -634,10 +634,10 @@
 #   -Wparentheses-equality
 #   -Wshift-op-parentheses
 -Wparentheses-equality
--Wpass
--Wpass-analysis
+-Rpass
+-Rpass-analysis
 -Wpass-failed
--Wpass-missed
+-Rpass-missed
 -Wpedantic
 #   -Wc++11-extra-semi
 #   -Wc11-extensions
@@ -699,7 +699,7 @@
 -Wredeclared-class-member
 -Wredundant-decls # DUMMY switch
 -Wreinterpret-base-class
--Wremark-backend-plugin
+-Rremark-backend-plugin
 -Wreorder
 -Wrequires-super-attribute
 -Wreserved-user-defined-literal
