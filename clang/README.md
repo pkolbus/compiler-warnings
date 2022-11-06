@@ -1,8 +1,10 @@
 
-# Clang warning flags
+# Clang diagnostic flags
 
-Clang includes `-Weverything` flag, that is not shown in these lists,
-that enables all warnings. Clang documentation also provides a
+Clang has both warnings (flags starting with `-W`) and remarks (flags starting
+with `-R`); both are in these lists for completeness. Clang also has
+`-Weverything` and `-Reverything` flags (not shown in these lists), to enable
+all warnings or all remarks respectively. Clang documentation also provides a
 [reference](https://clang.llvm.org/docs/DiagnosticsReference.html).
 
 
