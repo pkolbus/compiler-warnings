@@ -5,7 +5,6 @@ import json
 import os
 import subprocess  # noqa: S404
 import sys
-from typing import Optional
 
 import git
 import jinja2
@@ -77,7 +76,7 @@ def create_readme(target_dir: str, versions: list[str], readme_template: str) ->
     """
     # Prev/current version pairs. Generate in reverse order, and treat the first
     # as a special case.
-    version_pairs: list[tuple[Optional[str], str]] = [
+    version_pairs: list[tuple[str | None, str]] = [
         (versions[i], versions[i + 1]) for i in range(len(versions) - 2, -1, -1)
     ]
     version_pairs += [(None, versions[0])]
@@ -133,7 +132,7 @@ def parse_clang_info(version: str, target_dir: str, input_dir: str) -> None:
     )
 
 
-def shell(cmd: list[str], stdout_path: Optional[str] = None) -> None:
+def shell(cmd: list[str], stdout_path: str | None = None) -> None:
     """
     Run cmd in a subprocess.
 
