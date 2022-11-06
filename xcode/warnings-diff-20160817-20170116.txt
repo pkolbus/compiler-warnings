@@ -17,7 +17,7 @@
 --Wexpansion-to-defined # Partially enabled by default.
 +-Wignored-pragma-intrinsic # Enabled by default.
 +-Wincompatible-exception-spec # Enabled by default.
-+-Windex-store
++-Rindex-store
 +-Winstantiation-after-specialization # Enabled by default.
 +-Winvalid-ios-deployment-target # Enabled by default.
 +-Winvalid-partial-specialization # Enabled by default.

@@ -10,7 +10,7 @@
 +-Wfixed-enum-extension
 +-Wimplicit-float-conversion
 +-Wimplicit-int-conversion
-+-Wmodule-import
++-Rmodule-import
 +-Wnoderef # Enabled by default.
 +-Wobjc-boxing # Enabled by default.
 +-Wobjc-property-assign-on-object-type

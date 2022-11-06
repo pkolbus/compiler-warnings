@@ -2,6 +2,7 @@
 #   -W (partial)
 #     -Wextra (partial)
 #       -Wignored-qualifiers (partial)
+#         -Wignored-reference-qualifiers
 #       -Winitializer-overrides
 #   -W#pragma-messages
 #   -Wabsolute-value
@@ -12,6 +13,8 @@
 #     -Wtautological-pointer-compare
 #   -Waddress-of-packed-member
 #   -Waddress-of-temporary
+#   -Waix-compat
+#   -Walign-mismatch
 #   -Walloca-with-align-alignof
 #   -Wambiguous-delete
 #   -Wambiguous-ellipsis
@@ -30,15 +33,18 @@
 #   -Warc-bridge-casts-disallowed-in-nonarc
 #   -Warc-performSelector-leaks
 #   -Wargument-outside-range
+#   -Wargument-undefined-behaviour
 #   -Warray-bounds
 #   -Wasm
 #     -Wasm-operand-widths
 #   -Wassume
 #   -Wat-protocol
+#   -Watomic-access
 #   -Watomic-alignment
 #   -Watomic-memory-ordering
 #   -Watomic-property-with-user-defined-accessor
 #   -Wattribute-packed-for-bitfield
+#   -Wattribute-warning
 #   -Wattributes
 #     -Wignored-attributes
 #     -Wunknown-attributes
@@ -56,11 +62,10 @@
 #     -Wbool-conversion
 #       -Wpointer-bool-conversion
 #       -Wundefined-bool-conversion
-#   -Wbool-operation
 #   -Wbraced-scalar-init
+#   -Wbranch-protection
 #   -Wbridge-cast
 #   -Wbuiltin-assume-aligned-alignment
-#   -Wbuiltin-macro-redefined
 #   -Wbuiltin-memcpy-chk-size
 #   -Wbuiltin-requires-header
 #   -Wc++0x-compat (partial)
@@ -99,11 +104,13 @@
 #       -Wc++20-compat (partial)
 #   -Wc++2a-extensions (partial)
 #     -Wc++20-extensions (partial)
-#   -Wc2x-extensions
+#   -Wc++2b-extensions
+#   -Wc2x-extensions (partial)
 #   -Wc99-compat (partial)
 #   -Wc99-extensions (partial)
 #     -Wc99-designator (partial)
 #   -Wcall-to-pure-virtual-from-ctor-dtor
+#   -Wcalled-once-parameter (partial)
 #   -Wcast-calling-convention
 #   -Wcast-qual-unrelated
 #   -WCFString-literal
@@ -124,7 +131,7 @@
 #           -Wnonnull
 #         -Wimplicit (partial)
 #           -Wimplicit-function-declaration (partial)
-#           -Wimplicit-int
+#           -Wimplicit-int (partial)
 #         -Wmultichar
 #         -Wobjc-designated-initializers
 #         -Wobjc-flexible-array
@@ -167,7 +174,9 @@
 #       -Wswitch-bool
 #     -Wextra (partial)
 #       -Wignored-qualifiers (partial)
+#         -Wignored-reference-qualifiers
 #       -Winitializer-overrides
+#   -Wclang-cache
 #   -Wclang-cl-pch
 #   -Wclass-conversion
 #   -Wclass-varargs (partial)
@@ -176,6 +185,8 @@
 #   -Wcomments (partial)
 #     -Wcomment (partial)
 #   -Wcompare-distinct-pointer-types
+#   -Wcompound-token-split (partial)
+#     -Wcompound-token-split-by-macro
 #   -Wconcepts-ts-compat
 #   -Wconditional-type-mismatch
 #   -Wconfig-macros
@@ -185,11 +196,16 @@
 #   -Wconversion-null
 #     -Wnull-conversion
 #   -Wcoroutine
+#     -Walways-inline-coroutine
+#     -Wcoro-non-aligned-allocation-funciton
 #     -Wcoroutine-missing-unhandled-exception
+#     -Wdeprecated-coroutine
+#       -Wdeprecated-experimental-coroutine
 #   -Wcpp
 #     -W#warnings
 #   -Wctu
 #   -Wcuda-compat (partial)
+#   -Wcxx-attribute-extension
 #   -Wdangling
 #     -Wdangling-field
 #     -Wdangling-gsl
@@ -201,10 +217,12 @@
 #   -Wdefaulted-function-deleted
 #   -Wdelegating-ctor-cycles
 #   -Wdelete-incomplete
+#   -Wdeprecate-lax-vec-conv-all
 #   -Wdeprecated (partial)
 #     -Wdeprecated-anon-enum-enum-conversion
 #     -Wdeprecated-array-compare
 #     -Wdeprecated-attributes
+#     -Wdeprecated-builtins
 #     -Wdeprecated-comma-subscript
 #     -Wdeprecated-declarations
 #     -Wdeprecated-enum-compare
@@ -212,13 +230,17 @@
 #     -Wdeprecated-enum-enum-conversion
 #     -Wdeprecated-enum-float-conversion
 #     -Wdeprecated-increment-bool
+#     -Wdeprecated-pragma
 #     -Wdeprecated-register
+#     -Wdeprecated-type
 #     -Wdeprecated-volatile
 #     -Wdeprecated-writable-strings
 #       -Wc++11-compat-deprecated-writable-strings
+#   -Wdeprecated-altivec-src-compat
 #   -Wdeprecated-objc-isa-usage
 #   -Wdeprecated-objc-pointer-introspection
 #     -Wdeprecated-objc-pointer-introspection-performSelector
+#   -Wdeprecated-static-analyzer-flag
 #   -Wdistributed-object-modifiers
 #   -Wdiv-by-zero
 #     -Wdivision-by-zero
@@ -240,6 +262,7 @@
 #   -Wenum-compare
 #     -Wdeprecated-enum-compare
 #     -Wenum-compare-switch
+#   -Wenum-constexpr-conversion
 #   -Wenum-too-large
 #   -Wexceptions
 #   -Wexcess-initializers
@@ -249,7 +272,6 @@
 #   -Wexport-using-directive
 #   -Wextern-initializer
 #   -Wextra-qualification
-#   -Wfallback
 #   -Wfinal-dtor-non-final-class
 #   -Wfixed-point-overflow
 #   -Wflag-enum
@@ -257,21 +279,28 @@
 #     -Wformat-security
 #   -Wfortify-source
 #   -Wframe-larger-than=
+#     -Wframe-larger-than
+#   -Wfree-nonheap-object
 #   -Wfunction-def-in-objc-container
 #   -Wfunction-multiversion
+#     -Wtarget-clones-mixed-specifiers
 #   -Wgcc-compat (partial)
 #   -Wglobal-isel
 #   -Wgnu (partial)
 #     -Wgnu-alignof-expression
 #     -Wgnu-designator (partial)
+#     -Wgnu-folding-constant (partial)
 #     -Wgnu-static-float-init
 #     -Wgnu-string-literal-operator-template
 #     -Wgnu-variable-sized-type-not-at-end
 #     -Wredeclared-class-member
 #   -Wgnu-array-member-paren-init
 #   -Wgnu-inline-cpp-without-extern
+#   -Wgpu-maybe-wrong-side
 #   -Wheader-guard
 #   -Whip-only
+#   -Whlsl-extensions
+#   -Wignored-availability-without-sdk-settings
 #   -Wimplicit-conversion-floating-point-to-bool
 #   -Wimplicit-exception-spec-mismatch
 #   -Wimplicit-fixed-point-conversion
@@ -306,6 +335,7 @@
 #   -Wint-to-pointer-cast
 #     -Wint-to-void-pointer-cast
 #   -Winteger-overflow
+#   -Winterrupt-service-routine
 #   -Winvalid-command-line-argument
 #     -Wignored-optimization-argument
 #   -Winvalid-constexpr
@@ -324,8 +354,8 @@
 #   -Wkeyword-compat
 #   -Wknr-promoted-parameter
 #   -Wlarge-by-value-copy
+#   -Wlinker-warnings
 #   -Wlocal-type-template-args (partial)
-#   -Wmacro-redefined
 #   -Wmain (partial)
 #   -Wmain-return-type
 #   -Wmalformed-warning-check
@@ -334,6 +364,7 @@
 #   -Wmemsize-comparison
 #   -Wmicrosoft (partial)
 #     -Winconsistent-dllimport
+#     -Wmicrosoft-abstract
 #     -Wmicrosoft-anon-tag (partial)
 #     -Wmicrosoft-cast
 #     -Wmicrosoft-const-init
@@ -348,6 +379,7 @@
 #     -Wmicrosoft-mutable-reference
 #     -Wmicrosoft-pure-definition
 #     -Wmicrosoft-sealed
+#     -Wmicrosoft-static-assert
 #     -Wmicrosoft-template
 #       -Wmicrosoft-template-shadow
 #     -Wmicrosoft-union-member-reference
@@ -356,6 +388,7 @@
 #     -Wmicrosoft-void-pseudo-dtor
 #   -Wmicrosoft-exists
 #   -Wmicrosoft-inaccessible-base
+#   -Wmisexpect
 #   -Wmismatched-new-delete
 #   -Wmismatched-parameter-types
 #   -Wmismatched-return-types
@@ -366,6 +399,7 @@
 #   -Wmissing-prototype-for-cc
 #   -Wmissing-selector-name
 #   -Wmissing-sysroot
+#   -Wmisspelled-assumption
 #   -Wmodule-conflict
 #   -Wmodule-file-config-mismatch
 #   -Wmodule-file-extension
@@ -390,6 +424,7 @@
 #         -Wundefined-bool-conversion
 #       -Wconstant-conversion
 #         -Wbitfield-constant-conversion
+#           -Wsingle-bit-bitfield-constant-conversion
 #         -Wobjc-bool-constant-conversion
 #       -Wenum-conversion (partial)
 #         -Wenum-compare-conditional (partial)
@@ -457,6 +492,7 @@
 #   -Wodr
 #   -Wopencl-unsupported-rgba
 #   -Wopenmp (partial)
+#     -Wopenmp-51-extensions
 #     -Wopenmp-clauses
 #     -Wopenmp-loop-form
 #     -Wopenmp-mapping
@@ -476,6 +512,12 @@
 #       -Wunguarded-availability-new
 #   -Wpass-failed
 #   -Wpch-date-time
+#   -Wpedantic-macros
+#     -Wbuiltin-macro-redefined
+#     -Wdeprecated-pragma
+#     -Wfinal-macro
+#     -Wmacro-redefined
+#     -Wrestrict-expansion
 #   -Wpointer-arith (partial)
 #   -Wpointer-compare
 #   -Wpointer-integer-compare
@@ -491,7 +533,6 @@
 #   -Wpragmas (partial)
 #     -Wignored-pragmas
 #       -Wignored-pragma-intrinsic
-#       -Wignored-pragma-optimize
 #     -Wpragma-clang-attribute
 #     -Wpragma-pack (partial)
 #     -Wunknown-pragmas (partial)
@@ -510,13 +551,16 @@
 #   -Wreadonly-iboutlet-property
 #   -Wreceiver-expr
 #   -Wreceiver-forward-class (partial)
+#   -Wredundant-consteval-if
 #   -Wregister
 #     -Wdeprecated-register
 #   -Wreinterpret-base-class
-#   -Wrequires-expression
+#   -Wreproducible-caching
 #   -Wrequires-super-attribute
 #   -Wreserved-user-defined-literal (partial)
 #   -Wrewrite-not-bool
+#   -Wrtti
+#   -Wsarif-format-unstable
 #   -Wsection
 #   -Wsentinel
 #   -Wsequence-point
@@ -534,6 +578,7 @@
 #   -Wsizeof-pointer-div
 #   -Wslash-u-filename
 #   -Wslh-asm-goto
+#   -Wsource-mgr
 #   -Wstack-exhausted
 #   -Wstack-protector
 #   -Wstatic-float-init
@@ -544,6 +589,8 @@
 #   -Wstdlibcxx-not-found
 #   -Wstrict-potentially-direct-selector (partial)
 #     -Wpotentially-direct-selector
+#   -Wstrict-prototypes (partial)
+#     -Wdeprecated-non-prototype
 #   -Wstring-plus-char
 #   -Wstrlcpy-strlcat-size
 #   -Wstrncat-size
@@ -556,11 +603,13 @@
 #   -Wswift-name-attribute
 #   -Wswift-newtype-attribute
 #   -Wsync-fetch-and-nand-semantics-changed
+#   -Wtcb-enforcement
 #   -Wtentative-definition-incomplete-type
 #   -Wtype-safety
 #   -Wtypedef-redefinition
 #   -Wtypename-missing
 #   -Wunable-to-open-stats-file
+#   -Wunaligned-qualifier-implicit-cast
 #   -Wunavailable-declarations
 #   -Wundefined-inline
 #   -Wundefined-internal
@@ -571,11 +620,18 @@
 #   -Wunicode-whitespace
 #   -Wunicode-zero-width
 #   -Wunknown-argument
+#   -Wunknown-assumption
 #   -Wunknown-cuda-version
+#   -Wunknown-directives
 #   -Wunknown-escape-sequence
 #   -Wunknown-sanitizers
 #   -Wunknown-warning-option
 #   -Wunnamed-type-template-args (partial)
+#   -Wunqualified-std-cast-call
+#   -Wunreachable-code-aggressive (partial)
+#     -Wunreachable-code (partial)
+#       -Wunreachable-code-generic-assoc
+#   -Wunsupported-abi
 #   -Wunsupported-abs
 #   -Wunsupported-availability-guard
 #   -Wunsupported-cb
@@ -605,14 +661,21 @@
 -W
 #   -Wextra
 #     -Wdeprecated-copy
+#       -Wdeprecated-copy-with-user-provided-copy
 #     -Wempty-init-stmt
+#     -Wfuse-ld-path
 #     -Wignored-qualifiers
+#       -Wignored-reference-qualifiers
 #     -Winitializer-overrides
 #     -Wmissing-field-initializers
 #     -Wmissing-method-return-type
 #     -Wnull-pointer-arithmetic
+#       -Wgnu-null-pointer-arithmetic
+#     -Wnull-pointer-subtraction
 #     -Wsemicolon-before-method-body
 #     -Wsign-compare
+#     -Wstring-concatenation
+#     -Wunused-but-set-parameter
 #     -Wunused-parameter
 -Wabi # DUMMY switch
 -Wabstract-vbase-init
@@ -629,7 +692,7 @@
 -Watomic-properties
 #   -Wcustom-atomic-properties
 #   -Wimplicit-atomic-properties
--Wauto-import
+-Wauto-import # DUMMY switch
 -Wbad-function-cast
 -Wbinary-literal
 #   -Wc++14-binary-literal
@@ -643,9 +706,10 @@
 #     -Wc++11-compat-deprecated-writable-strings
 #     -Wc++11-compat-reserved-user-defined-literal
 #     -Wc++11-narrowing
-#     -Wc++98-c++11-c++14-c++17-compat
-#     -Wc++98-c++11-c++14-compat
-#     -Wc++98-c++11-compat
+#     -Wpre-c++14-compat
+#     -Wpre-c++17-compat
+#     -Wpre-c++20-compat
+#     -Wpre-c++2b-compat
 -Wc++0x-extensions
 #   -Wc++11-extensions
 #     -Wc++11-extra-semi
@@ -658,78 +722,122 @@
 #     -Wc++11-compat-deprecated-writable-strings
 #     -Wc++11-compat-reserved-user-defined-literal
 #     -Wc++11-narrowing
-#     -Wc++98-c++11-c++14-c++17-compat
-#     -Wc++98-c++11-c++14-compat
-#     -Wc++98-c++11-compat
-#   -Wc++98-c++11-c++14-c++17-compat-pedantic
-#     -Wc++98-c++11-c++14-c++17-compat
-#   -Wc++98-c++11-c++14-compat-pedantic
-#     -Wc++98-c++11-c++14-compat
-#   -Wc++98-c++11-compat-pedantic
-#     -Wc++98-c++11-compat
+#     -Wpre-c++14-compat
+#     -Wpre-c++17-compat
+#     -Wpre-c++20-compat
+#     -Wpre-c++2b-compat
+#   -Wpre-c++14-compat-pedantic
 #     -Wc++98-c++11-compat-binary-literal
+#     -Wpre-c++14-compat
+#   -Wpre-c++17-compat-pedantic
+#     -Wpre-c++17-compat
+#   -Wpre-c++20-compat-pedantic
+#     -Wpre-c++20-compat
+#   -Wpre-c++2b-compat-pedantic
+#     -Wpre-c++2b-compat
 -Wc++14-compat-pedantic
 #   -Wc++14-compat
-#     -Wc++98-c++11-c++14-c++17-compat
-#     -Wc++98-c++11-c++14-compat
-#   -Wc++98-c++11-c++14-c++17-compat-pedantic
-#     -Wc++98-c++11-c++14-c++17-compat
-#   -Wc++98-c++11-c++14-compat-pedantic
-#     -Wc++98-c++11-c++14-compat
+#     -Wpre-c++17-compat
+#     -Wpre-c++20-compat
+#     -Wpre-c++2b-compat
+#   -Wpre-c++17-compat-pedantic
+#     -Wpre-c++17-compat
+#   -Wpre-c++20-compat-pedantic
+#     -Wpre-c++20-compat
+#   -Wpre-c++2b-compat-pedantic
+#     -Wpre-c++2b-compat
 -Wc++17-compat-pedantic
 #   -Wc++17-compat
 #     -Wc++17-compat-mangling
-#     -Wc++98-c++11-c++14-c++17-compat
 #     -Wdeprecated-increment-bool
 #     -Wdeprecated-register
-#   -Wc++98-c++11-c++14-c++17-compat-pedantic
-#     -Wc++98-c++11-c++14-c++17-compat
+#     -Wpre-c++20-compat
+#     -Wpre-c++2b-compat
+#   -Wpre-c++20-compat-pedantic
+#     -Wpre-c++20-compat
+#   -Wpre-c++2b-compat-pedantic
+#     -Wpre-c++2b-compat
 -Wc++1y-extensions
 #   -Wc++14-extensions
+#     -Wc++14-attribute-extensions
 #     -Wc++14-binary-literal
 -Wc++1z-compat
 #   -Wc++17-compat
 #     -Wc++17-compat-mangling
-#     -Wc++98-c++11-c++14-c++17-compat
 #     -Wdeprecated-increment-bool
 #     -Wdeprecated-register
+#     -Wpre-c++20-compat
+#     -Wpre-c++2b-compat
 -Wc++1z-extensions
 #   -Wc++17-extensions
+#     -Wc++17-attribute-extensions
 -Wc++2a-compat
 #   -Wc++20-compat
+#     -Wpre-c++2b-compat
 -Wc++2a-compat-pedantic
 #   -Wc++20-compat-pedantic
 #     -Wc++20-compat
+#       -Wpre-c++2b-compat
+#     -Wpre-c++2b-compat-pedantic
+#       -Wpre-c++2b-compat
 -Wc++2a-extensions
 #   -Wc++20-extensions
+#     -Wc++20-attribute-extensions
 #     -Wc++20-designator
--Wc++98-compat-pedantic
-#   -Wc++98-c++11-c++14-c++17-compat-pedantic
-#     -Wc++98-c++11-c++14-c++17-compat
-#   -Wc++98-c++11-c++14-compat-pedantic
-#     -Wc++98-c++11-c++14-compat
-#   -Wc++98-c++11-compat-pedantic
-#     -Wc++98-c++11-compat
+-Wc++98-c++11-c++14-c++17-compat
+#   -Wpre-c++20-compat
+-Wc++98-c++11-c++14-c++17-compat-pedantic
+#   -Wpre-c++20-compat-pedantic
+#     -Wpre-c++20-compat
+-Wc++98-c++11-c++14-compat
+#   -Wpre-c++17-compat
+-Wc++98-c++11-c++14-compat-pedantic
+#   -Wpre-c++17-compat-pedantic
+#     -Wpre-c++17-compat
+-Wc++98-c++11-compat
+#   -Wpre-c++14-compat
+-Wc++98-c++11-compat-pedantic
+#   -Wpre-c++14-compat-pedantic
 #     -Wc++98-c++11-compat-binary-literal
+#     -Wpre-c++14-compat
+-Wc++98-compat-pedantic
 #   -Wc++98-compat
-#     -Wc++98-c++11-c++14-c++17-compat
-#     -Wc++98-c++11-c++14-compat
-#     -Wc++98-c++11-compat
 #     -Wc++98-compat-local-type-template-args
 #     -Wc++98-compat-unnamed-type-template-args
+#     -Wpre-c++14-compat
+#     -Wpre-c++17-compat
+#     -Wpre-c++20-compat
+#     -Wpre-c++2b-compat
 #   -Wc++98-compat-bind-to-temporary-copy
 #   -Wc++98-compat-extra-semi
+#   -Wpre-c++14-compat-pedantic
+#     -Wc++98-c++11-compat-binary-literal
+#     -Wpre-c++14-compat
+#   -Wpre-c++17-compat-pedantic
+#     -Wpre-c++17-compat
+#   -Wpre-c++20-compat-pedantic
+#     -Wpre-c++20-compat
+#   -Wpre-c++2b-compat-pedantic
+#     -Wpre-c++2b-compat
+-Wc2x-compat
+-Wc2x-extensions
 -Wc99-compat
 -Wc99-extensions
 #   -Wc99-designator
 #     -Wc++20-designator
+-Wcalled-once-parameter
+#   -Wcompletion-handler
 -Wcast-align
+-Wcast-function-type
 -Wcast-qual
 -Wchar-align # DUMMY switch
 -WCL4
 #   -Wall
 #     -Wmisleading-indentation
 #     -Wmost
+#       -Warray-parameter
+#       -Wbool-operation
+#         -Wbitwise-instead-of-logical
 #       -Wcast-of-sel-type
 #       -Wchar-subscripts
 #       -Wcomment
@@ -757,7 +865,7 @@
 #       -Wmove
 #         -Wpessimizing-move
 #         -Wredundant-move
-#         -Wreturn-std-move
+#         -Wreturn-std-move # DUMMY switch
 #         -Wself-move
 #       -Wmultichar
 #       -Wobjc-designated-initializers
@@ -794,6 +902,7 @@
 #       -Wunknown-pragmas
 #       -Wunused
 #         -Wunused-argument # DUMMY switch
+#         -Wunused-but-set-variable
 #         -Wunused-function
 #           -Wunneeded-internal-declaration
 #         -Wunused-label
@@ -823,20 +932,34 @@
 #     -Wswitch-bool
 #   -Wextra
 #     -Wdeprecated-copy
+#       -Wdeprecated-copy-with-user-provided-copy
 #     -Wempty-init-stmt
+#     -Wfuse-ld-path
 #     -Wignored-qualifiers
+#       -Wignored-reference-qualifiers
 #     -Winitializer-overrides
 #     -Wmissing-field-initializers
 #     -Wmissing-method-return-type
 #     -Wnull-pointer-arithmetic
+#       -Wgnu-null-pointer-arithmetic
+#     -Wnull-pointer-subtraction
 #     -Wsemicolon-before-method-body
 #     -Wsign-compare
+#     -Wstring-concatenation
+#     -Wunused-but-set-parameter
 #     -Wunused-parameter
 -Wclass-varargs
 #   -Wnon-pod-varargs
 -Wcomma
 -Wcomments
 #   -Wcomment
+-Rcompile-job-cache
+#   -Rcompile-job-cache-hit
+#   -Rcompile-job-cache-miss
+-Rcompile-job-cache-timing
+-Wcompound-token-split
+#   -Wcompound-token-split-by-macro
+#   -Wcompound-token-split-by-space
 -Wconditional-uninitialized
 -Wconsumed
 -Wcovered-switch-default
@@ -845,13 +968,17 @@
 -Wctor-dtor-privacy # DUMMY switch
 -Wcuda-compat
 -Wdate-time
+-Wdeclaration-after-statement
 -Wdeprecated
 #   -Wdeprecated-anon-enum-enum-conversion
 #   -Wdeprecated-array-compare
 #   -Wdeprecated-attributes
+#   -Wdeprecated-builtins
 #   -Wdeprecated-comma-subscript
 #   -Wdeprecated-copy
-#   -Wdeprecated-copy-dtor
+#     -Wdeprecated-copy-with-user-provided-copy
+#   -Wdeprecated-copy-with-dtor
+#     -Wdeprecated-copy-with-user-provided-dtor
 #   -Wdeprecated-declarations
 #   -Wdeprecated-dynamic-exception-spec
 #   -Wdeprecated-enum-compare
@@ -859,11 +986,16 @@
 #   -Wdeprecated-enum-enum-conversion
 #   -Wdeprecated-enum-float-conversion
 #   -Wdeprecated-increment-bool
+#   -Wdeprecated-pragma
 #   -Wdeprecated-register
 #   -Wdeprecated-this-capture
+#   -Wdeprecated-type
 #   -Wdeprecated-volatile
 #   -Wdeprecated-writable-strings
 #     -Wc++11-compat-deprecated-writable-strings
+-Wdeprecated-copy-dtor
+#   -Wdeprecated-copy-with-dtor
+#     -Wdeprecated-copy-with-user-provided-dtor
 -Wdeprecated-implementations
 -Wdirect-ivar-access
 -Wdisabled-macro-expansion
@@ -900,6 +1032,7 @@
 #   -Wformat-nonliteral
 #   -Wformat-security
 #   -Wformat-y2k # DUMMY switch
+-Wfour-char-constants
 -Wframework-include-private-from-public
 -Wfuture-compat # DUMMY switch
 -Wgcc-compat
@@ -922,8 +1055,12 @@
 #   -Wgnu-imaginary-constant
 #   -Wgnu-include-next
 #   -Wgnu-label-as-value
+#   -Wgnu-line-marker
+#   -Wgnu-null-pointer-arithmetic
+#   -Wgnu-pointer-arith
 #   -Wgnu-redeclared-enum
 #   -Wgnu-statement-expression
+#     -Wgnu-statement-expression-from-macro-expansion
 #   -Wgnu-static-float-init
 #   -Wgnu-string-literal-operator-template
 #   -Wgnu-union-cast
@@ -962,6 +1099,7 @@
 -Wmethod-signatures
 -Wmicrosoft
 #   -Winconsistent-dllimport
+#   -Wmicrosoft-abstract
 #   -Wmicrosoft-anon-tag
 #   -Wmicrosoft-cast
 #   -Wmicrosoft-charize
@@ -984,13 +1122,13 @@
 #   -Wmicrosoft-pure-definition
 #   -Wmicrosoft-redeclare-static
 #   -Wmicrosoft-sealed
+#   -Wmicrosoft-static-assert
 #   -Wmicrosoft-template
 #     -Wmicrosoft-template-shadow
 #   -Wmicrosoft-union-member-reference
 #   -Wmicrosoft-unqualified-friend
 #   -Wmicrosoft-using-decl
 #   -Wmicrosoft-void-pseudo-dtor
--Wmisexpect
 -Wmissing-format-attribute # DUMMY switch
 -Wmissing-include-dirs # DUMMY switch
 -Wmissing-noreturn
@@ -998,6 +1136,8 @@
 -Wmissing-variable-declarations
 -Rmodule-build
 -Rmodule-import
+-Rmodule-include-translation
+-Rmodule-lock
 -Wnarrowing
 #   -Wc++11-narrowing
 -Wnested-externs # DUMMY switch
@@ -1010,6 +1150,7 @@
 #       -Wundefined-bool-conversion
 #     -Wconstant-conversion
 #       -Wbitfield-constant-conversion
+#         -Wsingle-bit-bitfield-constant-conversion
 #       -Wobjc-bool-constant-conversion
 #     -Wenum-conversion
 #       -Wenum-compare-conditional
@@ -1053,6 +1194,7 @@
 -Wold-style-cast
 -Wold-style-definition # DUMMY switch
 -Wopenmp
+#   -Wopenmp-51-extensions
 #   -Wopenmp-clauses
 #   -Wopenmp-loop-form
 #   -Wopenmp-mapping
@@ -1071,18 +1213,22 @@
 -Rpass-analysis
 -Rpass-missed
 -Wpedantic
+#   -Wbit-int-extension
 #   -Wc++11-extra-semi
 #   -Wc++14-binary-literal
 #   -Wc++20-designator
 #   -Wc11-extensions
 #   -Wcomplex-component-init
-#   -Wdeclaration-after-statement
+#   -Wdelimited-escape-sequence-extension
 #   -Wdollar-in-identifier-extension
 #   -Wembedded-directive
 #   -Wempty-translation-unit
 #   -Wfixed-enum-extension
 #   -Wflexible-array-extensions
-#   -Wfour-char-constants
+#   -Wfuture-attribute-extensions
+#     -Wc++14-attribute-extensions
+#     -Wc++17-attribute-extensions
+#     -Wc++20-attribute-extensions
 #   -Wgnu-anonymous-struct
 #   -Wgnu-auto-type
 #   -Wgnu-binary-literal
@@ -1094,16 +1240,20 @@
 #   -Wgnu-empty-struct
 #   -Wgnu-flexible-array-initializer
 #   -Wgnu-flexible-array-union-member
-#   -Wgnu-folding-constant
 #   -Wgnu-imaginary-constant
 #   -Wgnu-include-next
 #   -Wgnu-label-as-value
+#   -Wgnu-line-marker
+#   -Wgnu-null-pointer-arithmetic
+#   -Wgnu-pointer-arith
 #   -Wgnu-redeclared-enum
 #   -Wgnu-statement-expression
+#     -Wgnu-statement-expression-from-macro-expansion
 #   -Wgnu-union-cast
 #   -Wgnu-zero-line-directive
 #   -Wgnu-zero-variadic-macro-arguments
 #   -Wimport-preprocessor-directive-pedantic
+#   -Winvalid-utf8
 #   -Wkeyword-macro
 #   -Wlanguage-extension-token
 #   -Wlong-long
@@ -1125,15 +1275,19 @@
 #   -Wzero-length-array
 -Wpedantic-core-features
 -Wpointer-arith
+#   -Wgnu-pointer-arith
 -Wpoison-system-directories
 -Wpragmas
 #   -Wignored-pragmas
 #     -Wignored-pragma-intrinsic
-#     -Wignored-pragma-optimize
+#     -Wignored-pragma-optimize # DUMMY switch
 #   -Wpragma-clang-attribute
 #   -Wpragma-pack
 #     -Wpragma-pack-suspicious-include
 #   -Wunknown-pragmas
+-Wpre-c2x-compat-pedantic
+#   -Wpre-c2x-compat
+-Wpre-openmp-51-compat
 -Wprofile-instr-missing
 -Wquoted-include-in-framework-header
 -Wreceiver-forward-class
@@ -1141,10 +1295,14 @@
 -Wredundant-parens
 -Rremark-backend-plugin
 -Wreserved-id-macro
+#   -Wreserved-macro-identifier
+-Wreserved-identifier
+#   -Wreserved-macro-identifier
 -Wreserved-user-defined-literal
 #   -Wc++11-compat-reserved-user-defined-literal
--Wreturn-std-move-in-c++11
+-Rround-trip-cc1-args
 -Rsanitize-address
+-Rsearch-path-usage
 -Wselector
 #   -Wselector-type-mismatch
 -Wshadow-all
@@ -1158,7 +1316,8 @@
 -Wshift-sign-overflow
 -Wsign-promo # DUMMY switch
 -Wsigned-enum-bitfield
--Wspir-compat
+-Wspirv-compat
+#   -Wspir-compat
 -Wstatic-in-inline
 -Wstrict-aliasing # DUMMY switch
 -Wstrict-aliasing=0 # DUMMY switch
@@ -1174,6 +1333,7 @@
 -Wstrict-potentially-direct-selector
 #   -Wpotentially-direct-selector
 -Wstrict-prototypes
+#   -Wdeprecated-non-prototype
 -Wstrict-selector-match
 -Wsuggest-destructor-override
 -Wsuggest-override
@@ -1181,6 +1341,13 @@
 -Wswitch-default # DUMMY switch
 -Wswitch-enum
 -Wsynth # DUMMY switch
+-Wtautological-constant-in-range-compare
+#   -Wtautological-value-range-compare
+#   -Wtype-limits
+#     -Wtautological-type-limit-compare
+#     -Wtautological-unsigned-char-zero-compare
+#     -Wtautological-unsigned-enum-zero-compare
+#     -Wtautological-unsigned-zero-compare
 -Wthread-safety
 #   -Wthread-safety-analysis
 #   -Wthread-safety-attributes
@@ -1189,11 +1356,7 @@
 -Wthread-safety-beta
 -Wthread-safety-negative
 -Wthread-safety-verbose
--Wtype-limits
-#   -Wtautological-constant-in-range-compare
-#     -Wtautological-type-limit-compare
-#     -Wtautological-unsigned-enum-zero-compare
-#     -Wtautological-unsigned-zero-compare
+-Wunaligned-access
 -Wundeclared-selector
 -Wundef
 -Wundef-prefix
@@ -1203,6 +1366,8 @@
 #   -Wc++98-compat-unnamed-type-template-args
 -Wunreachable-code-aggressive
 #   -Wunreachable-code
+#     -Wunreachable-code-fallthrough
+#     -Wunreachable-code-generic-assoc
 #     -Wunreachable-code-loop-increment
 #   -Wunreachable-code-break
 #   -Wunreachable-code-return
@@ -1220,6 +1385,7 @@
 -Wvector-conversions
 #   -Wvector-conversion
 -Wvla
+#   -Wvla-extension
 -Wweak-template-vtables
 -Wweak-vtables
 -Wzero-as-null-pointer-constant

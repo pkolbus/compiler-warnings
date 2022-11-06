@@ -3403,7 +3403,7 @@
 #           include of non-modular header inside framework module 'A': 'B'
 -Winconsistent-missing-destructor-override
 #     A overrides a destructor but is not marked 'override'
--Windex-store
+-Rindex-store
 #     producing index data for module file 'A'
 -Winit-self # DUMMY switch
 -Winline # DUMMY switch
@@ -3529,12 +3529,12 @@
 #     no previous prototype for function A
 -Wmissing-variable-declarations
 #     no previous extern declaration for non-static variable A
--Wmodule-build
+-Rmodule-build
 #     building module 'A' as 'B'
 #     could not acquire lock file for module 'A': B
 #     finished building module 'A'
 #     timed out waiting to acquire lock file for module 'A'
--Wmodule-import
+-Rmodule-import
 #     importing module 'A'[ into 'D'] from 'B'
 -Wnarrowing
 #   -Wc++11-narrowing
@@ -3722,13 +3722,13 @@
 #         A is only available on B C or newer
 #     -Wunguarded-availability-new
 #           A is only available on B C or newer
--Wpass
+-Rpass
 #     The text of this diagnostic is not controlled by Clang
--Wpass-analysis
+-Rpass-analysis
 #     A; allow reordering by specifying '#pragma clang loop vectorize(enable)' before the loop or by providing the compiler option '-ffast-math'.
 #     A; allow reordering by specifying '#pragma clang loop vectorize(enable)' before the loop. If the arrays will always be independent specify '#pragma clang loop vectorize(assume_safety)' before the loop or provide the '__restrict__' qualifier with the independent array arguments. Erroneous results will occur if these options are incorrectly applied!
 #     The text of this diagnostic is not controlled by Clang
--Wpass-missed
+-Rpass-missed
 #     The text of this diagnostic is not controlled by Clang
 -Wpedantic
 #     #ident is a language extension
@@ -3972,7 +3972,7 @@
 -Wredundant-decls # DUMMY switch
 -Wredundant-parens
 #     redundant parentheses surrounding declarator
--Wremark-backend-plugin
+-Rremark-backend-plugin
 #     The text of this diagnostic is not controlled by Clang
 -Wreserved-id-macro
 #   -Wreserved-macro-identifier
@@ -3985,9 +3985,9 @@
 #     invalid suffix on literal; C++11 requires a space between literal and identifier
 #   -Wc++11-compat-reserved-user-defined-literal
 #         identifier after literal will be treated as a reserved user-defined literal suffix in C++11
--Wround-trip-cc1-args
+-Rround-trip-cc1-args
 #     Generated arguments #A in round-trip: B
--Wsanitize-address
+-Rsanitize-address
 #     -fsanitize-address-field-padding applied to A
 #     -fsanitize-address-field-padding ignored for A because it <is not C++|is packed|is a union|is trivially copyable|has trivial destructor|is standard layout|is in a blacklisted file|is blacklisted>
 -Wselector

@@ -1,11 +1,11 @@
 
-# Apple clang (Xcode) warning flags
+# Apple clang (Xcode) diagnostic flags
 
 Apple's fork of clang (as shipped with Xcode) is _based on_ the LLVM project but
-is not a 100% match; some warnings are added, others are removed, and the
-versioning scheme is different. The official Xcode releases are built from an
-Apple-internal repository, so the exact list of compiler warning flags is not
-truly knowable without experimentation.
+is not a 100% match in the warning and remark flags supported; some are added,
+others are removed, and the versioning scheme is different. The official Xcode
+releases are built from an Apple-internal repository, so the exact list of flags
+is not truly knowable without experimentation.
 
 That said, [Apple's public fork of LLVM](https://github.com/apple/llvm-project)
 has `apple/stable/*` branches which are a close approximation of the Xcode

@@ -354,7 +354,7 @@
 -Winconsistent-missing-override # Enabled by default.
 -Wincrement-bool # Enabled by default.
 -WIndependentClass-attribute # Enabled by default.
--Windex-store
+-Rindex-store
 -Winfinite-recursion
 -Winit-self # DUMMY switch
 -Winitializer-overrides # Enabled by default.
@@ -457,11 +457,11 @@
 -Wmissing-selector-name # Enabled by default.
 -Wmissing-sysroot # Enabled by default.
 -Wmissing-variable-declarations
--Wmodule-build
+-Rmodule-build
 -Wmodule-conflict # Enabled by default.
 -Wmodule-file-config-mismatch # Enabled by default.
 -Wmodule-file-extension # Enabled by default.
--Wmodule-import
+-Rmodule-import
 -Wmodule-import-in-extern-c # Enabled by default.
 -Wmodules-ambiguous-internal-linkage # Enabled by default.
 -Wmodules-import-nested-redundant # Enabled by default.
@@ -572,10 +572,10 @@
 -Wparentheses # Partially enabled by default.
 -Wparentheses-equality # Enabled by default.
 -Wpartial-availability # Partially enabled by default.
--Wpass
--Wpass-analysis
+-Rpass
+-Rpass-analysis
 -Wpass-failed # Enabled by default.
--Wpass-missed
+-Rpass-missed
 -Wpch-date-time # Enabled by default.
 -Wpedantic
 -Wpedantic-core-features
@@ -619,7 +619,7 @@
 -Wredundant-parens
 -Wregister # Enabled by default.
 -Wreinterpret-base-class # Enabled by default.
--Wremark-backend-plugin
+-Rremark-backend-plugin
 -Wreorder # Partially enabled by default.
 -Wreorder-ctor
 -Wreorder-init-list # Enabled by default.
@@ -632,7 +632,7 @@
 -Wreturn-std-move-in-c++11
 -Wreturn-type # Enabled by default.
 -Wreturn-type-c-linkage # Enabled by default.
--Wsanitize-address
+-Rsanitize-address
 -Wsection # Enabled by default.
 -Wselector
 -Wselector-type-mismatch

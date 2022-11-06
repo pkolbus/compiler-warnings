@@ -714,7 +714,7 @@
 -Wincrement-bool
 #   -Wdeprecated-increment-bool
 -WIndependentClass-attribute
--Windex-store
+-Rindex-store
 -Winfinite-recursion
 -Winit-self # DUMMY switch
 -Winitializer-overrides
@@ -845,11 +845,11 @@
 -Wmissing-selector-name
 -Wmissing-sysroot
 -Wmissing-variable-declarations
--Wmodule-build
+-Rmodule-build
 -Wmodule-conflict
 -Wmodule-file-config-mismatch
 -Wmodule-file-extension
--Wmodule-import
+-Rmodule-import
 -Wmodule-import-in-extern-c
 -Wmodules-ambiguous-internal-linkage
 -Wmodules-import-nested-redundant
@@ -1063,10 +1063,10 @@
 -Wpartial-availability
 #   -Wunguarded-availability
 #     -Wunguarded-availability-new
--Wpass
--Wpass-analysis
+-Rpass
+-Rpass-analysis
 -Wpass-failed
--Wpass-missed
+-Rpass-missed
 -Wpch-date-time
 -Wpedantic
 #   -Wc++11-extra-semi
@@ -1166,7 +1166,7 @@
 -Wregister
 #   -Wdeprecated-register
 -Wreinterpret-base-class
--Wremark-backend-plugin
+-Rremark-backend-plugin
 -Wreorder
 -Wrequires-super-attribute
 -Wreserved-id-macro
@@ -1179,7 +1179,7 @@
 -Wreturn-type
 #   -Wreturn-type-c-linkage
 -Wreturn-type-c-linkage
--Wsanitize-address
+-Rsanitize-address
 -Wsection
 -Wselector
 #   -Wselector-type-mismatch

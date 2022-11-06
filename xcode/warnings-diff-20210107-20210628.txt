@@ -25,7 +25,7 @@
 +-Wreserved-identifier
 +-Wreserved-macro-identifier
 --Wreturn-std-move-in-c++11
-+-Wround-trip-cc1-args
++-Rround-trip-cc1-args
 +-Wsource-mgr # Enabled by default.
 +-Wtautological-unsigned-char-zero-compare
 +-Wunused-but-set-parameter
