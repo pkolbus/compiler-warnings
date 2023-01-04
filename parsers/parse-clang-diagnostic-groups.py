@@ -39,8 +39,8 @@ class ClangTextSubstitution:
         return ClangTextSubstitution(obj["Substitution"])
 
     @property
-    def text(self) -> str:
-        """:return: the text of the substitution, resolved."""
+    def summary(self) -> str:
+        """:return: the summary text of the substitution, resolved."""
         return resolve_format_string(self._substitution, {})
 
 
@@ -187,7 +187,7 @@ def format_arguments(
         return arguments[-1]
 
     if modifier == "sub":
-        return substitutions[arguments[0]].text
+        return substitutions[arguments[0]].summary
 
     raise NotImplementedError(f"Unhandled modifier %{modifier}")
 
@@ -327,7 +327,11 @@ class ClangDiagnostic:
         :param substitutions: Dictionary of available substitutions.
         """
         self.name = obj["!name"]
-        self._text = obj["Text"]
+        try:
+            self._summary = obj["Summary"]
+        except KeyError:
+            self._summary = obj["Text"]
+
         self._substitutions = substitutions
         if obj["Group"] is not None:
             self.group_name = obj["Group"]["def"]
@@ -344,14 +348,14 @@ class ClangDiagnostic:
         self.is_remark = obj["Class"]["def"] == "CLASS_REMARK"
 
     @property
-    def text(self) -> str:
-        """:return: the text of the warning."""
-        if self._text == "%0":
+    def summary(self) -> str:
+        """:return: the summary text of the warning."""
+        if self._summary == "%0":
             # Special case for W#pragma and similar. The text is taken from
             # clang/utils/TableGen/ClangDiagnosticsEmitter.cpp.
             return "The text of this diagnostic is not controlled by Clang"
 
-        return resolve_format_string(self._text, self._substitutions)
+        return resolve_format_string(self._summary, self._substitutions)
 
 
 class ClangDiagGroup:
@@ -383,9 +387,11 @@ class ClangDiagGroup:
         :return: the messages in the group.
         """
         if enabled_by_default:
-            return [diag.text for diag in self.diagnostics if diag.enabled_by_default]
+            return [
+                diag.summary for diag in self.diagnostics if diag.enabled_by_default
+            ]
 
-        return [diag.text for diag in self.diagnostics]
+        return [diag.summary for diag in self.diagnostics]
 
     def is_remark(self) -> bool:
         """
