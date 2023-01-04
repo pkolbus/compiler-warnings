@@ -1,0 +1,26 @@
++-Warray-parameter
+--Wauto-import
++-Wauto-import # DUMMY switch
++-Wc2x-compat
++-Wcoro-non-aligned-allocation-funciton # Enabled by default.
++-Wdeprecate-lax-vec-conv-all # Enabled by default.
++-Wdeprecated-builtins # Enabled by default.
++-Wdeprecated-static-analyzer-flag # Enabled by default.
++-Wenum-constexpr-conversion # Enabled by default.
++-Wgnu-line-marker
++-Wgnu-statement-expression-from-macro-expansion
++-Whlsl-extensions # Enabled by default.
+--Wignored-pragma-optimize # Enabled by default.
++-Wignored-pragma-optimize # DUMMY switch
+--Wimplicit-int # Enabled by default.
++-Wimplicit-int # Partially enabled by default.
++-Winvalid-utf8
++-Rmodule-include-translation
++-Wsarif-format-unstable # Enabled by default.
++-Wsingle-bit-bitfield-constant-conversion # Enabled by default.
++-Wunknown-directives # Enabled by default.
+--Wunreachable-code
+--Wunreachable-code-aggressive
++-Wunreachable-code # Partially enabled by default.
++-Wunreachable-code-aggressive # Partially enabled by default.
++-Wunreachable-code-generic-assoc # Enabled by default.

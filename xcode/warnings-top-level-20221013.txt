@@ -105,7 +105,7 @@
 #   -Wc++2a-extensions (partial)
 #     -Wc++20-extensions (partial)
 #   -Wc++2b-extensions
-#   -Wc2x-extensions (partial)
+#   -Wc2x-extensions
 #   -Wc99-compat (partial)
 #   -Wc99-extensions (partial)
 #     -Wc99-designator (partial)
@@ -548,6 +548,7 @@
 #   -Wpsabi
 #   -Wptrauth-null-pointers
 #   -Wqualified-void-return-type
+#   -Wread-only-types
 #   -Wreadonly-iboutlet-property
 #   -Wreceiver-expr
 #   -Wreceiver-forward-class (partial)
@@ -555,7 +556,6 @@
 #   -Wregister
 #     -Wdeprecated-register
 #   -Wreinterpret-base-class
-#   -Wreproducible-caching
 #   -Wrequires-super-attribute
 #   -Wreserved-user-defined-literal (partial)
 #   -Wrewrite-not-bool
@@ -820,7 +820,6 @@
 #   -Wpre-c++2b-compat-pedantic
 #     -Wpre-c++2b-compat
 -Wc2x-compat
--Wc2x-extensions
 -Wc99-compat
 -Wc99-extensions
 #   -Wc99-designator
@@ -1294,6 +1293,7 @@
 -Wredundant-decls # DUMMY switch
 -Wredundant-parens
 -Rremark-backend-plugin
+-Wreproducible-caching
 -Wreserved-id-macro
 #   -Wreserved-macro-identifier
 -Wreserved-identifier

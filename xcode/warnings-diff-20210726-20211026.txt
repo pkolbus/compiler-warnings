@@ -1,0 +1,17 @@
++-Wargument-undefined-behaviour # Enabled by default.
++-Wattribute-warning # Enabled by default.
++-Wbitwise-instead-of-logical
+--Wbool-operation # Enabled by default.
++-Wbool-operation
++-Wdelimited-escape-sequence-extension
++-Wdeprecated-pragma # Enabled by default.
++-Wfinal-macro # Enabled by default.
++-Wgpu-maybe-wrong-side # Enabled by default.
++-Wignored-reference-qualifiers # Enabled by default.
++-Wlinker-warnings # Enabled by default.
++-Wpedantic-macros # Enabled by default.
++-Wredundant-consteval-if # Enabled by default.
+--Wrequires-expression # Enabled by default.
++-Wrestrict-expansion # Enabled by default.
++-Wunreachable-code-fallthrough
+--Wweak-template-vtables

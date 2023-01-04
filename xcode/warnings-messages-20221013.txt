@@ -78,7 +78,7 @@
 #   -Warray-bounds
 #         array argument is too small; <contains A elements|is of size A>, callee requires at least B
 #         array index A is before the beginning of the array
-#         array index A is past the end of the array (that has type B[, cast to D])
+#         array index A is past the end of the array (which contains B element(s))
 #         array index A refers past the last possible element for an array in B-bit address space containing C-bit (D-byte) elements (max possible E element(s))
 #         the pointer incremented by A refers past the last possible element for an array in B-bit address space containing C-bit (D-byte) elements (max possible E element(s))
 #   -Wasm
@@ -388,7 +388,7 @@
 #         static lambdas are a C++2b extension
 #         use of a '#<<BUG IF SEEN>|elifdef|elifndef>' directive is a C++2b extension
 #         use of this statement in a constexpr <function|constructor> is a C++2b extension
-#   -Wc2x-extensions (partial)
+#   -Wc2x-extensions
 #         '_BitInt' suffix for literals is a C2x extension
 #         '_Static_assert' with no message is a C2x extension
 #         label at end of compound statement is a C2x extension
@@ -1608,6 +1608,8 @@
 #         signing a null pointer will yield a non-null pointer
 #   -Wqualified-void-return-type
 #         function cannot return qualified void type A
+#   -Wread-only-types
+#         object of type A cannot be placed in read-only memory
 #   -Wreadonly-iboutlet-property
 #         readonly IBOutlet property A when auto-synthesized may not work correctly with 'nib' loader
 #   -Wreceiver-expr
@@ -1622,8 +1624,6 @@
 #           'register' storage class specifier is deprecated and incompatible with C++17
 #   -Wreinterpret-base-class
 #         'reinterpret_cast' <from|to> class A <to|from> its <virtual base|base at non-zero offset> B behaves differently from 'static_cast'
-#   -Wreproducible-caching
-#         encountered non-reproducible token, caching will be skipped
 #   -Wrequires-super-attribute
 #         A attribute cannot be applied to <methods in protocols|dealloc>
 #   -Wreserved-user-defined-literal (partial)
@@ -1933,7 +1933,7 @@
 #         weak <variable|property|implicit property|instance variable> B may be accessed multiple times in this <function|method|block|lambda> and may be unpredictably set to nil; assign to a strong variable to keep the object alive
 -Warray-bounds-pointer-arithmetic
 #     the pointer decremented by A refers before the beginning of the array
-#     the pointer incremented by A refers past the end of the array (that has type B)
+#     the pointer incremented by A refers past the end of the array (that contains B element(s))
 -Wassign-enum
 #     integer constant not in range of enumerated type A
 -Watimport-in-framework-header
@@ -3058,13 +3058,6 @@
 #           use of this statement in a constexpr <function|constructor> is incompatible with C++ standards before C++2b
 -Wc2x-compat
 #     'A' is a keyword in C2x
--Wc2x-extensions
-#     '_BitInt' suffix for literals is a C2x extension
-#     '_Static_assert' with no message is a C2x extension
-#     'nullptr' is a C2x extension
-#     label at end of compound statement is a C2x extension
-#     omitting the parameter name in a function definition is a C2x extension
-#     use of a '#<<BUG IF SEEN>|elifdef|elifndef>' directive is a C2x extension
 -Wc99-compat
 #     'A' is a keyword in C99
 #     <using this character in an identifier|starting an identifier with this character> is incompatible with C99
@@ -4375,7 +4368,6 @@
 #         '_BitInt' is incompatible with C standards before C2x
 #         '_BitInt' suffix for literals is incompatible with C standards before C2x
 #         '_Static_assert' with no message is incompatible with C standards before C2x
-#         'nullptr' is incompatible with C standards before C2x
 #         digit separators are incompatible with C standards before C2x
 #         label at end of compound statement is incompatible with C standards before C2x
 #         use of a '#<<BUG IF SEEN>|elifdef|elifndef>' directive is incompatible with C standards before C2x
@@ -4393,6 +4385,8 @@
 #     redundant parentheses surrounding declarator
 -Rremark-backend-plugin
 #     The text of this diagnostic is not controlled by Clang
+-Wreproducible-caching
+#     encountered non-reproducible token, caching will be skipped
 -Wreserved-id-macro
 #   -Wreserved-macro-identifier
 #         macro name is a reserved identifier

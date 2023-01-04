@@ -1,0 +1,31 @@
++-Walways-inline-coroutine # Enabled by default.
++-Watomic-access # Enabled by default.
++-Wbit-int-extension
++-Wbranch-protection # Enabled by default.
++-Wc++14-attribute-extensions
++-Wc++17-attribute-extensions
++-Wc++20-attribute-extensions
++-Wclang-cache # Enabled by default.
++-Rcompile-job-cache
++-Rcompile-job-cache-hit
++-Rcompile-job-cache-miss
++-Rcompile-job-cache-timing
++-Wdeprecated-coroutine # Enabled by default.
++-Wdeprecated-experimental-coroutine # Enabled by default.
++-Wdeprecated-non-prototype # Enabled by default.
++-Wdeprecated-type # Enabled by default.
++-Wfuture-attribute-extensions
++-Wgnu-null-pointer-arithmetic
++-Wgnu-pointer-arith
++-Wmisexpect # Enabled by default.
++-Wread-only-types # Enabled by default.
++-Wreproducible-caching
++-Wspirv-compat
+--Wstrict-prototypes
++-Wstrict-prototypes # Partially enabled by default.
++-Wtarget-clones-mixed-specifiers # Enabled by default.
++-Wunaligned-access
++-Wunaligned-qualifier-implicit-cast # Enabled by default.
++-Wunqualified-std-cast-call # Enabled by default.
++-Wunsupported-abi # Enabled by default.
++-Wweak-template-vtables

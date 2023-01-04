@@ -8,23 +8,34 @@ releases are built from an Apple-internal repository, so the exact list of flags
 is not truly knowable without experimentation.
 
 That said, [Apple's public fork of LLVM](https://github.com/apple/llvm-project)
-has `apple/stable/*` branches which are a close approximation of the Xcode
-sources especially with regard to available compiler warnings. For example, the
-delta between `apple/stable/20200108` and Xcode 12.2 is about ten flags.
+has `apple/stable/*` and `stable/*` branches which are a close approximation of
+the Xcode sources especially with regard to available compiler warnings. For
+example, the delta between `apple/stable/20200108` and Xcode 12.2 is about ten
+flags.
 
-Warnings available in each `apple/stable` branch are as follows:
+Warnings available in each branch are as follows:
 
 
 * 20221013 [all](warnings-20221013.txt)
   • [top level](warnings-top-level-20221013.txt)
   • [messages](warnings-messages-20221013.txt)
   • [unique](warnings-unique-20221013.txt)
-  • [diff](warnings-diff-20210628-20221013.txt)
-* 20210628 [all](warnings-20210628.txt)
-  • [top level](warnings-top-level-20210628.txt)
-  • [messages](warnings-messages-20210628.txt)
-  • [unique](warnings-unique-20210628.txt)
-  • [diff](warnings-diff-20210107-20210628.txt)
+  • [diff](warnings-diff-20220421-20221013.txt)
+* 20220421 [all](warnings-20220421.txt)
+  • [top level](warnings-top-level-20220421.txt)
+  • [messages](warnings-messages-20220421.txt)
+  • [unique](warnings-unique-20220421.txt)
+  • [diff](warnings-diff-20211026-20220421.txt)
+* 20211026 [all](warnings-20211026.txt)
+  • [top level](warnings-top-level-20211026.txt)
+  • [messages](warnings-messages-20211026.txt)
+  • [unique](warnings-unique-20211026.txt)
+  • [diff](warnings-diff-20210726-20211026.txt)
+* 20210726 [all](warnings-20210726.txt)
+  • [top level](warnings-top-level-20210726.txt)
+  • [messages](warnings-messages-20210726.txt)
+  • [unique](warnings-unique-20210726.txt)
+  • [diff](warnings-diff-20210107-20210726.txt)
 * 20210107 [all](warnings-20210107.txt)
   • [top level](warnings-top-level-20210107.txt)
   • [messages](warnings-messages-20210107.txt)

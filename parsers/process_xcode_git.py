@@ -19,11 +19,12 @@ releases are built from an Apple-internal repository, so the exact list of flags
 is not truly knowable without experimentation.
 
 That said, [Apple's public fork of LLVM](https://github.com/apple/llvm-project)
-has `apple/stable/*` branches which are a close approximation of the Xcode
-sources especially with regard to available compiler warnings. For example, the
-delta between `apple/stable/20200108` and Xcode 12.2 is about ten flags.
+has `apple/stable/*` and `stable/*` branches which are a close approximation of
+the Xcode sources especially with regard to available compiler warnings. For
+example, the delta between `apple/stable/20200108` and Xcode 12.2 is about ten
+flags.
 
-Warnings available in each `apple/stable` branch are as follows:
+Warnings available in each branch are as follows:
 
 {% for prev, current in versions %}
 * {{current}} [all](warnings-{{current}}.txt)
@@ -46,9 +47,12 @@ def main() -> None:
     shutil.rmtree(target_dir, ignore_errors=True)
     os.mkdir(target_dir)
 
-    # Parse all apple/stable branches as well as apple/main
+    # Parse all apple/stable/ and stable/ branches as well as apple/main
     branches = sorted(
-        ref.name for ref in repo.refs if ref.name.startswith("origin/apple/stable/")
+        ref.name
+        for ref in repo.refs
+        if ref.name.startswith("origin/apple/stable/")
+        or ref.name.startswith("origin/stable/")
     )
     versions = [(branch.split("/")[-1], branch) for branch in branches]
     versions += [("NEXT", "origin/apple/main")]

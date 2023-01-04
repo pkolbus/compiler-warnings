@@ -133,7 +133,7 @@
 -Wc++98-compat-unnamed-type-template-args
 -Wc11-extensions
 -Wc2x-compat
--Wc2x-extensions # Partially enabled by default.
+-Wc2x-extensions # Enabled by default.
 -Wc99-compat # Partially enabled by default.
 -Wc99-designator # Partially enabled by default.
 -Wc99-extensions # Partially enabled by default.
@@ -711,6 +711,7 @@
 -Wrange-loop-analysis
 -Wrange-loop-bind-reference
 -Wrange-loop-construct
+-Wread-only-types # Enabled by default.
 -Wreadonly-iboutlet-property # Enabled by default.
 -Wreceiver-expr # Enabled by default.
 -Wreceiver-forward-class # Partially enabled by default.
@@ -725,7 +726,7 @@
 -Wreorder # Partially enabled by default.
 -Wreorder-ctor
 -Wreorder-init-list # Enabled by default.
--Wreproducible-caching # Enabled by default.
+-Wreproducible-caching
 -Wrequires-super-attribute # Enabled by default.
 -Wreserved-id-macro
 -Wreserved-identifier

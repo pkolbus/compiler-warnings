@@ -1577,6 +1577,7 @@
 #   -Wrange-loop-construct
 -Wrange-loop-bind-reference
 -Wrange-loop-construct
+-Wread-only-types
 -Wreadonly-iboutlet-property
 -Wreceiver-expr
 -Wreceiver-forward-class
