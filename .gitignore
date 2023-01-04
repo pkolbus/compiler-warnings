@@ -1,2 +1,4 @@
 build/
 .mypy_cache/
+*-NEXT.txt
+*-NEXT.json

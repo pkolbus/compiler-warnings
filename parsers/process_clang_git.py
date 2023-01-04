@@ -3,6 +3,7 @@
 import difflib
 import json
 import os
+import shutil
 import subprocess  # noqa: S404
 import sys
 
@@ -152,6 +153,8 @@ def main() -> None:
     repo = git.Repo(GIT_DIR)
 
     target_dir = f"{DIR}/../clang"
+    shutil.rmtree(target_dir, ignore_errors=True)
+    os.mkdir(target_dir)
 
     # Parse all release branches
     branches = [ref.name for ref in repo.refs if ref.name.startswith("origin/release/")]

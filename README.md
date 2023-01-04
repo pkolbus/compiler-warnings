@@ -27,7 +27,7 @@ available rudimentary compiler flag differences between two consequent
 compiler versions as diff-files, but for more specific differences you
 need to use some (visual) diff program, as shown below:
 
-![Some GCC 5 and 6 -Wall differences shown with meld](gcc/meld-gcc-5-6-wall.png)
+![Some GCC 5 and 6 -Wall differences shown with meld](meld-gcc-5-6-wall.png)
 
 # Development
 

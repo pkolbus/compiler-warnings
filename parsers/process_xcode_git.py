@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Process an Apple LLVM (Xcode) git repository for diagnostic groups."""
 import os
+import shutil
 import sys
 
 import git
@@ -42,6 +43,8 @@ def main() -> None:
     repo = git.Repo(GIT_DIR)
 
     target_dir = f"{DIR}/../xcode"
+    shutil.rmtree(target_dir, ignore_errors=True)
+    os.mkdir(target_dir)
 
     # Parse all apple/stable branches as well as apple/main
     branches = sorted(

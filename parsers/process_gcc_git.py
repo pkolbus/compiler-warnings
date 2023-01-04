@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Process a gcc git repository for diagnostic options."""
 import os
+import shutil
 import sys
 
 import git
@@ -75,6 +76,8 @@ def main() -> None:
     repo = git.Repo(GIT_DIR)
 
     target_dir = f"{DIR}/../gcc"
+    shutil.rmtree(target_dir, ignore_errors=True)
+    os.mkdir(target_dir)
 
     # Parse all release branches
     branches = [

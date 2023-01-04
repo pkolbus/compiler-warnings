@@ -155,7 +155,7 @@ if [ ${BUILD_CLANG} -eq 1 ]; then
 
     if [ -e build/clang/.git ]; then
         run_in_docker git -C build/clang remote set-url origin ${CLANG_REMOTE}
-        run_in_docker git -C build/clang remote update
+        run_in_docker git -C build/clang remote update -p
     else
         run_in_docker git clone ${CLANG_REMOTE} build/clang
     fi
@@ -167,7 +167,7 @@ if [ ${BUILD_GCC} -eq 1 ]; then
     echo "Running the gcc parser..."
 
     if [ -e build/gcc/.git ]; then
-        run_in_docker git -C build/gcc remote update
+        run_in_docker git -C build/gcc remote update -p
     else
         run_in_docker git clone git://gcc.gnu.org/git/gcc.git build/gcc
     fi
@@ -180,7 +180,7 @@ if [ ${BUILD_XCODE} -eq 1 ]; then
 
     if [ -e build/xcode/.git ]; then
         run_in_docker git -C build/xcode remote set-url origin ${CLANG_REMOTE}
-        run_in_docker git -C build/xcode remote update
+        run_in_docker git -C build/xcode remote update -p
     else
         run_in_docker git clone ${CLANG_REMOTE} build/xcode
     fi
