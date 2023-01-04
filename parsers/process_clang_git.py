@@ -133,7 +133,7 @@ def parse_clang_info(version: str, target_dir: str, input_dir: str) -> None:
     )
 
 
-def shell(cmd: list[str], stdout_path: str | None = None) -> None:
+def shell(cmd: list[str], stdout_path: str) -> None:
     """
     Run cmd in a subprocess.
 
@@ -142,9 +142,8 @@ def shell(cmd: list[str], stdout_path: str | None = None) -> None:
     """
     result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)  # noqa: S603
 
-    if stdout_path:
-        with open(stdout_path, "wb") as stdout_file:
-            stdout_file.write(result.stdout)
+    with open(stdout_path, "wb") as stdout_file:
+        stdout_file.write(result.stdout)
 
 
 def main() -> None:
