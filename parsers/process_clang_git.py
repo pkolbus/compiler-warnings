@@ -139,7 +139,7 @@ def shell(cmd: list[str], stdout_path: str | None = None) -> None:
     :param cmd: The command to run.
     :param stdout_path: Optional path to write stdout.
     """
-    result = subprocess.run(cmd, capture_output=True, check=True)  # noqa: S603
+    result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)  # noqa: S603
 
     if stdout_path:
         with open(stdout_path, "wb") as stdout_file:
