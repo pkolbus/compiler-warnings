@@ -157,7 +157,11 @@ def main() -> None:
     os.mkdir(target_dir)
 
     # Parse all release branches
-    branches = [ref.name for ref in repo.refs if ref.name.startswith("origin/release/")]
+    branches = [
+        ref.name
+        for ref in repo.refs  # type: ignore[attr-defined]
+        if ref.name.startswith("origin/release/")
+    ]
 
     # Remove everything up to the last / as well as the ".x"
     versions = [(branch.split("/")[-1][:-2], branch) for branch in branches]

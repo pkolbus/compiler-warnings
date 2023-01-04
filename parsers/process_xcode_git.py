@@ -50,7 +50,7 @@ def main() -> None:
     # Parse all apple/stable/ and stable/ branches as well as apple/main
     branches = sorted(
         ref.name
-        for ref in repo.refs
+        for ref in repo.refs  # type: ignore[attr-defined]
         if ref.name.startswith("origin/apple/stable/")
         or ref.name.startswith("origin/stable/")
     )
