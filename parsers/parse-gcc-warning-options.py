@@ -1306,7 +1306,6 @@ def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics) -
         print_default_options(all_options, args)
 
     for option in all_options.get_all_warnings():
-
         dummy_text = option.get_dummy_text()
         if args.unique:
             comment_text = option.get_comment_text()
