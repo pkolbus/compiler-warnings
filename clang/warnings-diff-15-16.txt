@@ -1,0 +1,17 @@
+--Wc2x-extensions # Enabled by default.
++-Wc2x-compat
++-Wc2x-extensions # Partially enabled by default.
++-Wcast-function-type-strict
+--Wconcepts-ts-compat # Enabled by default.
++-Wcoro-non-aligned-allocation-funciton # Enabled by default.
++-Wdeprecated-module-ts # Enabled by default.
++-Wenum-constexpr-conversion # Enabled by default.
++-Wgnu-offsetof-extensions
++-Wincompatible-function-pointer-types-strict
++-Wmathematical-notation-identifier-extension # Enabled by default.
++-Wpacked-non-pod
++-Wread-only-types # Enabled by default.
++-Wreturn-local-addr # Enabled by default.
++-Wsingle-bit-bitfield-constant-conversion # Enabled by default.
++-Rsloc-usage # Enabled by default.
++-Wunsafe-buffer-usage
