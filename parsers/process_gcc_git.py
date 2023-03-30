@@ -40,19 +40,22 @@ def parse_gcc_info(version: str, target_dir: str, input_files: list[str]) -> Non
     :param input_files: List of opt files to read
     """
     shell(
-        [f"{DIR}/parse-gcc-warning-options.py"] + input_files,
+        [sys.executable, f"{DIR}/parse-gcc-warning-options.py"] + input_files,
         f"{target_dir}/warnings-{version}.txt",
     )
     shell(
-        [f"{DIR}/parse-gcc-warning-options.py", "--unique"] + input_files,
+        [sys.executable, f"{DIR}/parse-gcc-warning-options.py", "--unique"]
+        + input_files,
         f"{target_dir}/warnings-unique-{version}.txt",
     )
     shell(
-        [f"{DIR}/parse-gcc-warning-options.py", "--top-level"] + input_files,
+        [sys.executable, f"{DIR}/parse-gcc-warning-options.py", "--top-level"]
+        + input_files,
         f"{target_dir}/warnings-top-level-{version}.txt",
     )
     shell(
-        [f"{DIR}/parse-gcc-warning-options.py", "--top-level", "--text"] + input_files,
+        [sys.executable, f"{DIR}/parse-gcc-warning-options.py", "--top-level", "--text"]
+        + input_files,
         f"{target_dir}/warnings-detail-{version}.txt",
     )
 

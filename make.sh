@@ -100,7 +100,6 @@ build_docker_image()
 {
     echo "Getting docker image up to date (this may take a few minutes)..."
 
-    cp parsers/requirements.txt docker/requirements.txt
     ${DOCKER} image build \
         -q \
         -t ${DOCKER_IMAGE_TAG} \
@@ -109,32 +108,45 @@ build_docker_image()
         ./docker/
 }
 
+run_in_virtualenv()
+{
+    cmd="$1"
+    shift
+    run_in_docker ".venv/bin/${cmd}" "$@"
+}
+
+build_virtualenv()
+{
+    run_in_docker virtualenv -p python3 .venv
+    run_in_virtualenv pip install -q --no-cache-dir -r parsers/requirements.txt
+}
+
 build_docker_image
+build_virtualenv
 
 if [ ${BUILD_REQUIREMENTS} -eq 1 ]; then
     for _ in $(seq 2); do
         echo "Compiling requirements.in"
-        run_in_docker pip-compile \
+        run_in_virtualenv pip-compile \
             --quiet \
             --upgrade \
             --cache-dir /tmp/pip-tools-cache \
             parsers/requirements.in
 
-        # Rebuild the docker image in case requirements changed.
-        build_docker_image
+        # Rebuild the virtualenv in case requirements changed.
+        build_virtualenv
     done
 fi
 
 # Linting requires the gcc parser to be built
 echo "Building the gcc parser..."
 run_in_docker ninja -C parsers
-run_in_docker ninja -C parsers test
 
 # Run formatting/linting
 # shellcheck disable=SC2046
-run_in_docker pyupgrade --exit-zero-even-if-changed --py310-plus $(git ls-files "*.py")
-run_in_docker black .
-run_in_docker flake8 .
+run_in_virtualenv pyupgrade --exit-zero-even-if-changed --py310-plus $(git ls-files "*.py")
+run_in_virtualenv black .
+run_in_virtualenv flake8 .
 for f in $(git ls-files "*.sh"); do
     run_in_docker shellcheck "${f}"
 done
@@ -146,7 +158,12 @@ mkdir -p build
 
 if [ ${BUILD_CLANG} -eq 1 ] || [ ${BUILD_XCODE} -eq 1 ]; then
     echo "Testing the clang parser..."
-    run_in_docker python3 -mdoctest ./parsers/parse-clang-diagnostic-groups.py
+    run_in_virtualenv python -m doctest parsers/parse-clang-diagnostic-groups.py
+fi
+
+if [ ${BUILD_GCC} -eq 1 ]; then
+    echo "Testing the gcc parser..."
+    run_in_virtualenv python -m doctest parsers/parse-gcc-warning-options.py
 fi
 
 if [ ${BUILD_CLANG} -eq 1 ]; then
@@ -160,7 +177,7 @@ if [ ${BUILD_CLANG} -eq 1 ]; then
         run_in_docker git clone ${CLANG_REMOTE} build/clang
     fi
 
-    run_in_docker ./parsers/process_clang_git.py build/clang
+    run_in_virtualenv python parsers/process_clang_git.py build/clang
 fi
 
 if [ ${BUILD_GCC} -eq 1 ]; then
@@ -171,7 +188,7 @@ if [ ${BUILD_GCC} -eq 1 ]; then
     else
         run_in_docker git clone git://gcc.gnu.org/git/gcc.git build/gcc
     fi
-    run_in_docker ./parsers/process_gcc_git.py build/gcc
+    run_in_virtualenv python parsers/process_gcc_git.py build/gcc
 fi
 
 if [ ${BUILD_XCODE} -eq 1 ]; then
@@ -185,5 +202,5 @@ if [ ${BUILD_XCODE} -eq 1 ]; then
         run_in_docker git clone ${CLANG_REMOTE} build/xcode
     fi
 
-    run_in_docker ./parsers/process_xcode_git.py build/xcode
+    run_in_virtualenv python parsers/process_xcode_git.py build/xcode
 fi

@@ -12,12 +12,9 @@ RUN apt-get update \
     llvm \
     ninja-build \
     python3-minimal \
-    python3-pip \
+    python3-virtualenv \
     shellcheck \
     wget \
     && apt-get clean
-
-COPY requirements.txt /tmp/requirements.txt
-RUN python3 -m pip install -r /tmp/requirements.txt
 
 CMD ["/bin/bash"]

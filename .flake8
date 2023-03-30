@@ -1,6 +1,6 @@
 [flake8]
 max-line-length=88
-exclude=.git,build,parsers/.antlr,parsers/GccOptions*er.py
+exclude=.git,.venv,build,parsers/.antlr,parsers/GccOptions*er.py
 
 # Ignore certain warnings:
 # - T499 is noise (Success: no issues found in 1 source file)

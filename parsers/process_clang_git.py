@@ -116,19 +116,35 @@ def parse_clang_info(version: str, target_dir: str, input_dir: str) -> None:
     format_json(json_file)
 
     shell(
-        [f"{DIR}/parse-clang-diagnostic-groups.py", json_file],
+        [sys.executable, f"{DIR}/parse-clang-diagnostic-groups.py", json_file],
         f"{target_dir}/warnings-{version}.txt",
     )
     shell(
-        [f"{DIR}/parse-clang-diagnostic-groups.py", "--unique", json_file],
+        [
+            sys.executable,
+            f"{DIR}/parse-clang-diagnostic-groups.py",
+            "--unique",
+            json_file,
+        ],
         f"{target_dir}/warnings-unique-{version}.txt",
     )
     shell(
-        [f"{DIR}/parse-clang-diagnostic-groups.py", "--top-level", json_file],
+        [
+            sys.executable,
+            f"{DIR}/parse-clang-diagnostic-groups.py",
+            "--top-level",
+            json_file,
+        ],
         f"{target_dir}/warnings-top-level-{version}.txt",
     )
     shell(
-        [f"{DIR}/parse-clang-diagnostic-groups.py", "--top-level", "--text", json_file],
+        [
+            sys.executable,
+            f"{DIR}/parse-clang-diagnostic-groups.py",
+            "--top-level",
+            "--text",
+            json_file,
+        ],
         f"{target_dir}/warnings-messages-{version}.txt",
     )
 

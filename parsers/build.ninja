@@ -1,9 +1,6 @@
 rule antlr
      command = java -jar antlr.jar $in
 
-rule doctest
-     command = python3 -mdoctest $in
-
 rule get-antlr
      command = wget -O antlr.jar https://www.antlr.org/download/antlr-4.12.0-complete.jar
 
@@ -12,9 +9,5 @@ build antlr.jar: get-antlr
 build GccOptionsLexer.py GccOptionsLexer.tokens GccOptionsListener.py GccOptionsParser.py GccOptions.tokens: antlr GccOptions.g4 | antlr.jar requirements.txt
 
 build all: phony GccOptionsLexer.py GccOptionsLexer.tokens GccOptionsListener.py GccOptionsParser.py GccOptions.tokens
-
-build test-gcc: doctest parse-gcc-warning-options.py | all
-
-build test: phony test-gcc
 
 default all
