@@ -1,0 +1,31 @@
++-Wanalyzer-allocation-size # Enabled by default.
++-Wanalyzer-deref-before-check # Enabled by default.
++-Wanalyzer-exposure-through-uninit-copy # Enabled by default.
++-Wanalyzer-fd-access-mode-mismatch # Enabled by default.
++-Wanalyzer-fd-double-close # Enabled by default.
++-Wanalyzer-fd-leak # Enabled by default.
++-Wanalyzer-fd-phase-mismatch # Enabled by default.
++-Wanalyzer-fd-type-mismatch # Enabled by default.
++-Wanalyzer-fd-use-after-close # Enabled by default.
++-Wanalyzer-fd-use-without-check # Enabled by default.
++-Wanalyzer-imprecise-fp-arithmetic # Enabled by default.
++-Wanalyzer-infinite-recursion # Enabled by default.
++-Wanalyzer-jump-through-null # Enabled by default.
++-Wanalyzer-out-of-bounds # Enabled by default.
++-Wanalyzer-putenv-of-auto-var # Enabled by default.
++-Wanalyzer-tainted-assertion # Enabled by default.
++-Wanalyzer-va-arg-type-mismatch # Enabled by default.
++-Wanalyzer-va-list-exhausted # Enabled by default.
++-Wanalyzer-va-list-leak # Enabled by default.
++-Wanalyzer-va-list-use-after-va-end # Enabled by default.
++-Wchanges-meaning # Enabled by default. Applies to C++,ObjC++
++-Wcomplain-wrong-lang # Enabled by default.
++-Wdangling-reference # Applies to C++,ObjC++
++-Wenum-int-mismatch # Applies to C,ObjC
++-Winvalid-constexpr # Enabled by default. Applies to C++,ObjC++
++-Winvalid-utf8
++-Woverloaded-virtual=<0..2> # Applies to C++,ObjC++
++-Wself-move # Applies to C++,ObjC++
++-Wstrict-flex-arrays # Applies to C,C++
++-Wunicode # Enabled by default.
++-Wxor-used-as-pow # Enabled by default.
