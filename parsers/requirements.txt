@@ -9,7 +9,6 @@ antlr4-python3-runtime==4.12.0
 attrs==22.2.0
     # via
     #   flake8-bugbear
-    #   flake8-eradicate
     #   flake8-mypy
 bandit==1.7.5
     # via flake8-bandit
@@ -29,8 +28,6 @@ dlint==0.14.0
     # via -r parsers/requirements.in
 docutils==0.19
     # via restructuredtext-lint
-eradicate==2.2.0
-    # via flake8-eradicate
 flake8==5.0.4
     # via
     #   -r parsers/requirements.in
@@ -40,7 +37,6 @@ flake8==5.0.4
     #   flake8-builtins
     #   flake8-comprehensions
     #   flake8-docstrings
-    #   flake8-eradicate
     #   flake8-isort
     #   flake8-mutable
     #   flake8-mypy
@@ -57,8 +53,6 @@ flake8-cognitive-complexity==0.1.0
 flake8-comprehensions==3.11.0
     # via -r parsers/requirements.in
 flake8-docstrings==1.7.0
-    # via -r parsers/requirements.in
-flake8-eradicate==1.4.0
     # via -r parsers/requirements.in
 flake8-isort==6.0.0
     # via -r parsers/requirements.in
