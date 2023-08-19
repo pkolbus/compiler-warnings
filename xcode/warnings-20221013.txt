@@ -1350,6 +1350,7 @@
 #     -Wobjc-redundant-literal-use
 -Wobjc-designated-initializers
 -Wobjc-dictionary-duplicate-keys
+-Wobjc-duplicate-category-definition
 -Wobjc-flexible-array
 -Wobjc-forward-class-redefinition
 -Wobjc-interface-ivars

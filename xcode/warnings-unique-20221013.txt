@@ -596,6 +596,7 @@
 -Wobjc-cocoa-api # Enabled by default.
 -Wobjc-designated-initializers # Enabled by default.
 -Wobjc-dictionary-duplicate-keys # Enabled by default.
+-Wobjc-duplicate-category-definition # Enabled by default.
 -Wobjc-flexible-array # Enabled by default.
 -Wobjc-forward-class-redefinition # Enabled by default.
 -Wobjc-interface-ivars
@@ -726,7 +727,7 @@
 -Wreorder # Partially enabled by default.
 -Wreorder-ctor
 -Wreorder-init-list # Enabled by default.
--Wreproducible-caching
+-Wreproducible-caching # Enabled by default.
 -Wrequires-super-attribute # Enabled by default.
 -Wreserved-id-macro
 -Wreserved-identifier

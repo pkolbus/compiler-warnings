@@ -465,6 +465,7 @@
 #     -Wobjc-redundant-api-use
 #       -Wobjc-redundant-literal-use
 #   -Wobjc-dictionary-duplicate-keys
+#   -Wobjc-duplicate-category-definition
 #   -Wobjc-forward-class-redefinition
 #   -Wobjc-literal-compare
 #     -Wobjc-string-compare
@@ -556,6 +557,7 @@
 #   -Wregister
 #     -Wdeprecated-register
 #   -Wreinterpret-base-class
+#   -Wreproducible-caching
 #   -Wrequires-super-attribute
 #   -Wreserved-user-defined-literal (partial)
 #   -Wrewrite-not-bool
@@ -1293,7 +1295,6 @@
 -Wredundant-decls # DUMMY switch
 -Wredundant-parens
 -Rremark-backend-plugin
--Wreproducible-caching
 -Wreserved-id-macro
 #   -Wreserved-macro-identifier
 -Wreserved-identifier

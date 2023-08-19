@@ -1,0 +1,51 @@
++-Wc++23-default-comp-relaxed-constexpr
++-Wc++23-extensions # Enabled by default.
++-Wc++26-extensions # DUMMY switch
++-Wc++2c-extensions # DUMMY switch
+--Wc2x-extensions # Enabled by default.
++-Wc2x-extensions # Partially enabled by default.
++-Wcast-function-type-strict
+--Wconcepts-ts-compat # Enabled by default.
+--Wcoro-non-aligned-allocation-funciton # Enabled by default.
++-Wcoro-non-aligned-allocation-function # Enabled by default.
+--Wdeprecated-experimental-coroutine # Enabled by default.
++-Wdeprecated-literal-operator
++-Wdeprecated-redundant-constexpr-static-def
+--Wdeprecated-this-capture
++-Wdeprecated-this-capture # Enabled by default.
++-Wdxil-validation # Enabled by default.
++-Weager-load-cxx-named-modules # Enabled by default.
++-Wexperimental-header-units # Enabled by default.
+--Wexport-unnamed # Enabled by default.
+--Wexport-using-directive # Enabled by default.
++-Wexport-unnamed # DUMMY switch
++-Wgeneric-type-extension
+--Wgnu-empty-initializer
++-Wgnu-offsetof-extensions
++-Whip-omp-target-directives # Enabled by default.
++-Wincompatible-function-pointer-types-strict
+--Winvalid-or-nonexistent-directory # Partially enabled by default.
++-Winvalid-or-nonexistent-directory
++-Winvalid-static-assert-message # Enabled by default.
++-Winvalid-unevaluated-string # Enabled by default.
++-Wmathematical-notation-identifier-extension # Enabled by default.
++-Wmicrosoft-init-from-predefined # Enabled by default.
++-Wmissing-multilib # Enabled by default.
++-Wmulti-gpu # Enabled by default.
++-Wpacked-non-pod
+--Wpre-c++2b-compat
+--Wpre-c++2b-compat-pedantic
++-Wpre-c++23-compat
++-Wpre-c++23-compat-pedantic
++-Wpre-c++26-compat # DUMMY switch
++-Wpre-c++26-compat-pedantic # DUMMY switch
++-Wpre-c++2c-compat # DUMMY switch
++-Wpre-c++2c-compat-pedantic # DUMMY switch
++-Wread-modules-implicitly # Enabled by default.
+--Wreserved-identifier
++-Wreserved-identifier # Partially enabled by default.
++-Wreserved-module-identifier # Enabled by default.
++-Wreturn-local-addr # Enabled by default.
++-Rsloc-usage # Enabled by default.
++-Wsync-alignment # Enabled by default.
++-Wunsafe-buffer-usage

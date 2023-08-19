@@ -1308,6 +1308,8 @@
 #             using A with a literal is redundant
 #   -Wobjc-dictionary-duplicate-keys
 #         duplicate key in dictionary literal
+#   -Wobjc-duplicate-category-definition
+#         duplicate definition of category B on interface A
 #   -Wobjc-forward-class-redefinition
 #         redefinition of forward class A of a typedef name of an object type is ignored
 #   -Wobjc-literal-compare
@@ -1624,6 +1626,8 @@
 #           'register' storage class specifier is deprecated and incompatible with C++17
 #   -Wreinterpret-base-class
 #         'reinterpret_cast' <from|to> class A <to|from> its <virtual base|base at non-zero offset> B behaves differently from 'static_cast'
+#   -Wreproducible-caching
+#         encountered non-reproducible token, caching will be skipped
 #   -Wrequires-super-attribute
 #         A attribute cannot be applied to <methods in protocols|dealloc>
 #   -Wreserved-user-defined-literal (partial)
@@ -4385,8 +4389,6 @@
 #     redundant parentheses surrounding declarator
 -Rremark-backend-plugin
 #     The text of this diagnostic is not controlled by Clang
--Wreproducible-caching
-#     encountered non-reproducible token, caching will be skipped
 -Wreserved-id-macro
 #   -Wreserved-macro-identifier
 #         macro name is a reserved identifier

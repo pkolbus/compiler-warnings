@@ -16,6 +16,9 @@
 +-Wimplicit-int # Partially enabled by default.
 +-Winvalid-utf8
 +-Rmodule-include-translation
++-Wobjc-duplicate-category-definition # Enabled by default.
+--Wreproducible-caching
++-Wreproducible-caching # Enabled by default.
 +-Wsarif-format-unstable # Enabled by default.
 +-Wsingle-bit-bitfield-constant-conversion # Enabled by default.
 +-Wunknown-directives # Enabled by default.
