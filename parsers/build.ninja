@@ -2,7 +2,7 @@ rule antlr
      command = java -jar antlr.jar $in
 
 rule get-antlr
-     command = wget -O antlr.jar https://www.antlr.org/download/antlr-4.12.0-complete.jar
+     command = wget -O antlr.jar https://www.antlr.org/download/antlr-4.13.0-complete.jar
 
 build antlr.jar: get-antlr
 
