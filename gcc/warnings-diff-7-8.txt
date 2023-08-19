@@ -36,6 +36,6 @@
 +-Wsuggest-attribute=cold
 +-Wsuggest-attribute=malloc
 --Wunsafe-loop-optimizations
-+-Wunsafe-loop-optimizations # DUMMY switch
++-Wunsafe-loop-optimizations # IGNORED switch
 --Wunused-const-variable=
 +-Wunused-const-variable=<0..2>

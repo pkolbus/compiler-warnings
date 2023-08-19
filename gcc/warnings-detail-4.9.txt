@@ -244,7 +244,7 @@
 #         Warn about strftime formats yielding 2-digit years
 -Wframe-larger-than=<number>
 #     Warn if a function's stack frame requires more than <number> bytes
--Wimport # DUMMY switch
+-Wimport # IGNORED switch
 -Winline
 #     Warn when an inlined function cannot be inlined
 -Winvalid-pch
@@ -263,7 +263,7 @@
 #     Warn about user-specified include directories that do not exist
 -Wmissing-prototypes
 #     Warn about global functions without prototypes
--Wmudflap # DUMMY switch
+-Wmudflap # IGNORED switch
 -Wmultichar
 #     Warn about use of multi-character character constants
 -Wnested-externs
@@ -346,7 +346,7 @@
 #     Warn about @selector()s without previously declared methods
 -Wundef
 #     Warn if an undefined macro is used in an #if directive
--Wunreachable-code # DUMMY switch
+-Wunreachable-code # IGNORED switch
 #     Does nothing. Preserved for backward compatibility.
 -Wunsafe-loop-optimizations
 #     Warn if the loop cannot be optimized due to nontrivial assumptions.

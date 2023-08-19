@@ -24,7 +24,7 @@
 +-Wnon-c-typedef-for-linkage # Enabled by default.
 +-Wnon-power-of-two-alignment # Enabled by default.
 +-Wobjc-dictionary-duplicate-keys # Enabled by default.
---Wpointer-to-int-cast # DUMMY switch
+--Wpointer-to-int-cast # IGNORED switch
 +-Wpointer-to-enum-cast # Enabled by default.
 +-Wpointer-to-int-cast # Enabled by default.
 +-Wpotentially-direct-selector # Enabled by default.
@@ -34,7 +34,7 @@
 +-Wrequires-expression # Enabled by default.
 +-Wrewrite-not-bool # Enabled by default.
 +-Wslh-asm-goto # Enabled by default.
---Wstack-protector # DUMMY switch
+--Wstack-protector # IGNORED switch
 +-Wstack-protector # Enabled by default.
 +-Wstrict-potentially-direct-selector # Partially enabled by default.
 +-Wsuggest-destructor-override

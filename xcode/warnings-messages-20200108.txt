@@ -1637,10 +1637,10 @@
 #           comparison of integers of different signs: A and B
 #     -Wunused-parameter
 #           unused parameter A
--Wabi # DUMMY switch
+-Wabi # IGNORED switch
 -Wabstract-vbase-init
 #     initializer for virtual base class A of abstract class B will never be used
--Waggregate-return # DUMMY switch
+-Waggregate-return # IGNORED switch
 -Walloca
 #     use of function A is discouraged; there is no way to check for failure but failure may still occur, resulting in a possibly exploitable security vulnerability
 -Wanon-enum-enum-conversion
@@ -2370,7 +2370,7 @@
 -Wcast-qual
 #     cast from A to B drops <const and volatile qualifiers|const qualifier|volatile qualifier>
 #     cast from A to B must have all intermediate pointers const qualified to be safe
--Wchar-align # DUMMY switch
+-Wchar-align # IGNORED switch
 -WCL4
 #   -Wall
 #     -Wmisleading-indentation
@@ -2426,7 +2426,7 @@
 #               invalid conversion specifier 'A'
 #         -Wformat-security
 #               format string is not a string literal (potentially insecure)
-#         -Wformat-y2k # DUMMY switch
+#         -Wformat-y2k # IGNORED switch
 #         -Wformat-zero-length
 #               format string is empty
 #         -Wnonnull
@@ -2577,7 +2577,7 @@
 #             unknown pragma ignored
 #             unknown pragma in STDC namespace
 #       -Wunused
-#         -Wunused-argument # DUMMY switch
+#         -Wunused-argument # IGNORED switch
 #         -Wunused-function
 #               unused function A
 #           -Wunneeded-internal-declaration
@@ -2615,7 +2615,7 @@
 #                 unused variable A
 #       -Wuser-defined-warnings
 #             The text of this diagnostic is not controlled by Clang
-#       -Wvolatile-register-var # DUMMY switch
+#       -Wvolatile-register-var # IGNORED switch
 #     -Wparentheses
 #           A has lower precedence than B; B will be evaluated first
 #           operator '?:' has lower precedence than 'A'; 'A' will be evaluated first
@@ -2701,7 +2701,7 @@
 #     using A directive in <NSString|CFString> which is being passed as a formatting argument to the formatting <method|CFfunction>
 -Wctad-maybe-unsupported
 #     A may not intend to support class template argument deduction
--Wctor-dtor-privacy # DUMMY switch
+-Wctor-dtor-privacy # IGNORED switch
 -Wcuda-compat
 #     A attribute parameter B is negative and will be ignored
 #     argument to '#pragma unroll' should not be in parentheses in CUDA C/C++
@@ -2770,8 +2770,8 @@
 #     instance variable A is being directly accessed
 -Wdisabled-macro-expansion
 #     disabled expansion of recursive macro
--Wdisabled-optimization # DUMMY switch
--Wdiscard-qual # DUMMY switch
+-Wdisabled-optimization # IGNORED switch
+-Wdiscard-qual # IGNORED switch
 -Wdocumentation
 #     '<\|@><classdesign|coclass|dependency|helper|helperclass|helps|instancesize|ownership|performance|security|superclass>' command should not be used in a comment attached to a non-container declaration
 #     '<\|@><class|interface|protocol|struct|union>' command should not be used in a comment attached to a non-<class|interface|protocol|struct|union> declaration
@@ -2855,10 +2855,10 @@
 #         format string is not a string literal
 #   -Wformat-security
 #         format string is not a string literal (potentially insecure)
-#   -Wformat-y2k # DUMMY switch
+#   -Wformat-y2k # IGNORED switch
 -Wframework-include-private-from-public
 #     public framework header includes private framework header 'A'
--Wfuture-compat # DUMMY switch
+-Wfuture-compat # IGNORED switch
 -Wgcc-compat
 #     'A' is bound to current loop, GCC binds it to the enclosing loop
 #     'break' is bound to loop, GCC binds it to switch
@@ -2949,7 +2949,7 @@
 #         unannotated fall-through between switch labels in partly-annotated function
 -Wimplicit-retain-self
 #     block implicitly retains 'self'; explicitly mention 'self' to indicate this is intended behavior
--Wimport # DUMMY switch
+-Wimport # IGNORED switch
 -Wincomplete-module
 #   -Wincomplete-umbrella
 #         missing submodule 'A'
@@ -2963,13 +2963,13 @@
 #     A overrides a destructor but is not marked 'override'
 -Rindex-store
 #     producing index data for module file 'A'
--Winit-self # DUMMY switch
--Winline # DUMMY switch
+-Winit-self # IGNORED switch
+-Winline # IGNORED switch
 -Winvalid-or-nonexistent-directory
 #     environment variable SCE_ORBIS_SDK_DIR is set, but points to invalid or nonexistent directory 'A'
 #     unable to find A directory, expected to be in 'B'
--Winvalid-pch # DUMMY switch
--Wliblto # DUMMY switch
+-Winvalid-pch # IGNORED switch
+-Wliblto # IGNORED switch
 -Wlocal-type-template-args
 #     template argument uses local type A
 #   -Wc++98-compat-local-type-template-args
@@ -3061,8 +3061,8 @@
 #         pseudo-destructors on type void are a Microsoft extension
 -Wmisexpect
 #     Potential performance regression from use of __builtin_expect(): Annotation was correct on A of profiled executions.
--Wmissing-format-attribute # DUMMY switch
--Wmissing-include-dirs # DUMMY switch
+-Wmissing-format-attribute # IGNORED switch
+-Wmissing-include-dirs # IGNORED switch
 -Wmissing-noreturn
 #     <function|method> B could be declared with attribute 'noreturn'
 #     block could be declared with attribute 'noreturn'
@@ -3086,7 +3086,7 @@
 #         non-constant-expression cannot be narrowed from type A to B in initializer list in C++11
 #         type A cannot be narrowed to B in initializer list
 #         type A cannot be narrowed to B in initializer list in C++11
--Wnested-externs # DUMMY switch
+-Wnested-externs # IGNORED switch
 -Wnewline-eof
 #     no newline at end of file
 -Wnon-gcc
@@ -3174,7 +3174,7 @@
 #         magnitude of floating-point constant too small for type A; minimum is B
 #   -Wsign-compare
 #         comparison of integers of different signs: A and B
--Wnonportable-cfstrings # DUMMY switch
+-Wnonportable-cfstrings # IGNORED switch
 -Wnonportable-private-system-apinotes-path
 #     private API notes file for module 'A' should be named 'A_private.apinotes', not 'B'
 -Wnonportable-system-include-path
@@ -3200,7 +3200,7 @@
 #         result of comparison of constant A with expression of type 'BOOL' is always B, as the only well defined values for 'BOOL' are YES and NO
 -Wold-style-cast
 #     use of old-style cast
--Wold-style-definition # DUMMY switch
+-Wold-style-definition # IGNORED switch
 -Wopenmp
 #   -Wopenmp-clauses
 #         aligned clause will be ignored because the requested alignment is not a power of 2
@@ -3229,7 +3229,7 @@
 #         variant function in '#pragma omp declare variant' is itself marked as '#pragma omp declare variant'
 -Wover-aligned
 #     type A requires B bytes of alignment and the default allocator only guarantees C bytes
--Woverflow # DUMMY switch
+-Woverflow # IGNORED switch
 -Woverriding-method-mismatch
 #     conflicting distributed object modifiers on parameter type in declaration of A
 #     conflicting distributed object modifiers on return type in declaration of A
@@ -3408,7 +3408,7 @@
 #     invalid application of '<sizeof|alignof|vec_step|__builtin_omp_required_simd_align|__alignof>' to a void type
 #     subscript of a pointer to void is a GNU extension
 #     subtraction of pointers to type A of zero size has undefined behavior
--Wpointer-to-int-cast # DUMMY switch
+-Wpointer-to-int-cast # IGNORED switch
 -Wpoison-system-directories
 #     include location 'A' is unsafe for cross-compilation
 -Wpragmas
@@ -3496,7 +3496,7 @@
 -Wreceiver-forward-class
 #     receiver A is a forward class and corresponding @interface may not exist
 #     receiver type A for instance message is a forward declaration
--Wredundant-decls # DUMMY switch
+-Wredundant-decls # IGNORED switch
 -Wredundant-parens
 #     redundant parentheses surrounding declarator
 -Rremark-backend-plugin
@@ -3533,35 +3533,35 @@
 #         declaration shadows a <local variable|variable in C|static data member of C|field of C|typedef in C|type alias in C>
 -Wshift-sign-overflow
 #     signed shift result (A) sets the sign bit of the shift expression's type (B) and becomes negative
--Wsign-promo # DUMMY switch
+-Wsign-promo # IGNORED switch
 -Wsigned-enum-bitfield
 #     enums in the Microsoft ABI are signed integers by default; consider giving the enum A an unsigned underlying type to make this code portable
 -Wspir-compat
 #     sampler initializer has invalid A bits
--Wstack-protector # DUMMY switch
+-Wstack-protector # IGNORED switch
 -Wstatic-in-inline
 #     static <function|variable> B is used in an inline function with external linkage
--Wstrict-aliasing # DUMMY switch
--Wstrict-aliasing=0 # DUMMY switch
--Wstrict-aliasing=1 # DUMMY switch
--Wstrict-aliasing=2 # DUMMY switch
--Wstrict-overflow # DUMMY switch
--Wstrict-overflow=0 # DUMMY switch
--Wstrict-overflow=1 # DUMMY switch
--Wstrict-overflow=2 # DUMMY switch
--Wstrict-overflow=3 # DUMMY switch
--Wstrict-overflow=4 # DUMMY switch
--Wstrict-overflow=5 # DUMMY switch
+-Wstrict-aliasing # IGNORED switch
+-Wstrict-aliasing=0 # IGNORED switch
+-Wstrict-aliasing=1 # IGNORED switch
+-Wstrict-aliasing=2 # IGNORED switch
+-Wstrict-overflow # IGNORED switch
+-Wstrict-overflow=0 # IGNORED switch
+-Wstrict-overflow=1 # IGNORED switch
+-Wstrict-overflow=2 # IGNORED switch
+-Wstrict-overflow=3 # IGNORED switch
+-Wstrict-overflow=4 # IGNORED switch
+-Wstrict-overflow=5 # IGNORED switch
 -Wstrict-prototypes
 #     this <function declaration is not|block declaration is not|old-style function definition is not preceded by> a prototype
 -Wstrict-selector-match
 #     multiple methods named A found
 -Wsuper-class-method-mismatch
 #     method parameter type does not match super class method parameter type
--Wswitch-default # DUMMY switch
+-Wswitch-default # IGNORED switch
 -Wswitch-enum
 #     <enumeration value B not explicitly handled in switch|enumeration values B and C not explicitly handled in switch|enumeration values B, C, and D not explicitly handled in switch|A enumeration values not explicitly handled in switch>
--Wsynth # DUMMY switch
+-Wsynth # IGNORED switch
 -Wthread-safety
 #   -Wthread-safety-analysis
 #         <reading|writing> the value pointed to by A requires holding <any mutex|any mutex exclusively>

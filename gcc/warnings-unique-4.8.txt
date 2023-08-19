@@ -58,7 +58,7 @@
 -Wimplicit # Applies to C,ObjC
 -Wimplicit-function-declaration # Enabled by default. Applies to C,ObjC
 -Wimplicit-int # Applies to C,ObjC
--Wimport # DUMMY switch
+-Wimport # IGNORED switch
 -Winherited-variadic-ctor # Enabled by default. Applies to C++,ObjC++
 -Winit-self
 -Winline
@@ -150,7 +150,7 @@
 -Wundef
 -Wuninitialized
 -Wunknown-pragmas
--Wunreachable-code # DUMMY switch
+-Wunreachable-code # IGNORED switch
 -Wunsafe-loop-optimizations
 -Wunsuffixed-float-constants # Applies to C,ObjC
 -Wunused

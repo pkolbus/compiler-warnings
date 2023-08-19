@@ -18,7 +18,7 @@
 +-Wincompatible-function-pointer-types # Enabled by default.
 --Winherited-variadic-ctor # Enabled by default.
 --Wliblto # Enabled by default.
-+-Wliblto # DUMMY switch
++-Wliblto # IGNORED switch
 +-Wnonportable-include-path # Enabled by default.
 +-Wnonportable-system-include-path
 +-Wnullability-completeness-on-arrays # Enabled by default.

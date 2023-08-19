@@ -30,7 +30,7 @@
 +-Wreserved-macro-identifier
 --Wreturn-std-move
 --Wreturn-std-move-in-c++11
-+-Wreturn-std-move # DUMMY switch
++-Wreturn-std-move # IGNORED switch
 +-Rround-trip-cc1-args
 +-Wsource-mgr # Enabled by default.
 +-Wtautological-unsigned-char-zero-compare

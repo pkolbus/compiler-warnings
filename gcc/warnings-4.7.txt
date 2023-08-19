@@ -54,7 +54,7 @@
 -Wimplicit
 -Wimplicit-function-declaration
 -Wimplicit-int
--Wimport # DUMMY switch
+-Wimport # IGNORED switch
 -Winit-self
 -Winline
 -Wint-to-pointer-cast
@@ -140,7 +140,7 @@
 -Wundef
 -Wuninitialized
 -Wunknown-pragmas
--Wunreachable-code # DUMMY switch
+-Wunreachable-code # IGNORED switch
 -Wunsafe-loop-optimizations
 -Wunsuffixed-float-constants
 -Wunused

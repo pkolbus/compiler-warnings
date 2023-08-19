@@ -51,7 +51,7 @@
 -Wimplicit # Enabled by default. Applies to C,ObjC
 -Wimplicit-function-declaration # Enabled by default. Applies to C,ObjC
 -Wimplicit-int # Enabled by default. Applies to C,ObjC
--Wimport # DUMMY switch
+-Wimport # IGNORED switch
 -Winit-self
 -Winline
 -Wint-to-pointer-cast # Enabled by default.
@@ -133,7 +133,7 @@
 -Wundef
 -Wuninitialized # Enabled by default.
 -Wunknown-pragmas
--Wunreachable-code # DUMMY switch
+-Wunreachable-code # IGNORED switch
 -Wunsafe-loop-optimizations
 -Wunsuffixed-float-constants # Applies to C,ObjC
 -Wunused

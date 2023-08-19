@@ -155,7 +155,7 @@
 #    -Wimplicit-int
 -Wimplicit-function-declaration
 -Wimplicit-int
--Wimport # DUMMY switch
+-Wimport # IGNORED switch
 -Wincompatible-pointer-types
 -Winherited-variadic-ctor
 -Winit-self
@@ -183,7 +183,7 @@
 -Wmissing-noreturn = -Wsuggest-attribute=noreturn
 -Wmissing-parameter-type
 -Wmissing-prototypes
--Wmudflap # DUMMY switch
+-Wmudflap # IGNORED switch
 -Wmultichar
 -Wnarrowing
 -Wnested-externs
@@ -272,7 +272,7 @@
 -Wuninitialized
 #    -Wmaybe-uninitialized
 -Wunknown-pragmas
--Wunreachable-code # DUMMY switch
+-Wunreachable-code # IGNORED switch
 -Wunsafe-loop-optimizations
 -Wunsuffixed-float-constants
 -Wunused

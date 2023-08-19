@@ -11,6 +11,6 @@
 +-Wobjc-bool-constant-conversion # Enabled by default.
 +-Wobjc-boxing # Enabled by default.
 +-Wtautological-objc-bool-compare # Enabled by default.
---Wtype-limits # DUMMY switch
+--Wtype-limits # IGNORED switch
 +-Wtype-limits
 +-Wunderaligned-exception-object # Enabled by default.

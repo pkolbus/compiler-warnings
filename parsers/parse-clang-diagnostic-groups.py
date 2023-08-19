@@ -422,19 +422,19 @@ class ClangDiagGroup:
 
         return isRemarkArray[0]
 
-    def is_dummy(self) -> bool:
+    def is_ignored(self) -> bool:
         """
         Return whether a group does nothing.
 
-        A dummy group has no warnings, directly or indirectly.
+        An ignored group has no warnings, directly or indirectly.
 
-        :return: True if the group is a dummy, False otherwise.
+        :return: True if the group is ignored, False otherwise.
         """
         if self.diagnostics:
             return False
 
         for child in self.children:
-            if not child.is_dummy():
+            if not child.is_ignored():
                 return False
 
         return True
@@ -448,7 +448,7 @@ class ClangDiagGroup:
 
         :return: True if the group is inferred pedantic, False otherwise.
         """
-        if self.is_dummy():
+        if self.is_ignored():
             return False
 
         for diagnostic in self.diagnostics:
@@ -608,16 +608,16 @@ class ClangDiagnosticSwitch:
 
         return True
 
-    def is_dummy(self) -> bool:
+    def is_ignored(self) -> bool:
         """
         Return whether a switch does nothing.
 
-        A switch is a dummy (does nothing) if all groups are dummy.
+        A switch is ignored (does nothing) if all groups are ignored.
 
         :return: True if the switch does nothing, False otherwise.
         """
         for group in self.groups:
-            if not group.is_dummy():
+            if not group.is_ignored():
                 return False
 
         return True
@@ -627,7 +627,7 @@ class ClangDiagnosticSwitch:
         Return whether a switch is enabled by default.
 
         A switch is enabled by default if no diagnostic (in any group)
-        is disabled by default and the switch is not a dummy.
+        is disabled by default and the switch is not ignored.
 
         :return: True if all diagnostics controlled by the switch are enabled by
             default, False otherwise.
@@ -636,7 +636,7 @@ class ClangDiagnosticSwitch:
             if group.has_disabled_diagnostic():
                 return False
 
-        return not self.is_dummy()
+        return not self.is_ignored()
 
     def partially_enabled_by_default(self) -> bool:
         """
@@ -769,8 +769,8 @@ def create_comment_text(
         section of the output.
     :return: The comment text.
     """
-    if switch.is_dummy():
-        return " # DUMMY switch"
+    if switch.is_ignored():
+        return " # IGNORED switch"
     if args.unique:
         if switch.is_enabled_by_default():
             return " # Enabled by default."

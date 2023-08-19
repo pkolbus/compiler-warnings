@@ -27,7 +27,7 @@
 +-Wodr # Enabled by default.
 +-Woverloaded-shift-op-parentheses # Enabled by default.
 +-Wreinterpret-base-class # Enabled by default.
---Wsequence-point # DUMMY switch
+--Wsequence-point # IGNORED switch
 +-Wsequence-point # Enabled by default.
 +-Wsizeof-array-decay # Enabled by default.
 +-Wsource-uses-openmp
@@ -35,7 +35,7 @@
 +-Wstatic-local-in-inline # Enabled by default.
 +-Wstatic-self-init # Enabled by default.
 +-Wthread-safety-beta
---Wundefined-internal # DUMMY switch
+--Wundefined-internal # IGNORED switch
 +-Wundefined-inline # Enabled by default.
 +-Wundefined-internal # Enabled by default.
 +-Wunicode-whitespace # Enabled by default.

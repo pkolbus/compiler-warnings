@@ -33,7 +33,7 @@
 +-Wreserved-macro-identifier
 --Wreturn-std-move
 --Wreturn-std-move-in-c++11
-+-Wreturn-std-move # DUMMY switch
++-Wreturn-std-move # IGNORED switch
 +-Rround-trip-cc1-args
 +-Rsearch-path-usage
 +-Wsource-mgr # Enabled by default.

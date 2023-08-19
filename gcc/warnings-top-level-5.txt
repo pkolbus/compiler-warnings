@@ -150,7 +150,7 @@
 #    -Wformat-security
 #    -Wformat-y2k
 -Wframe-larger-than=<number>
--Wimport # DUMMY switch
+-Wimport # IGNORED switch
 -Winline
 -Winvalid-pch
 -Wjump-misses-init
@@ -159,7 +159,7 @@
 -Wmissing-declarations
 -Wmissing-include-dirs
 -Wmissing-prototypes
--Wmudflap # DUMMY switch
+-Wmudflap # IGNORED switch
 -Wmultichar
 -Wnested-externs
 -Wnoexcept
@@ -207,7 +207,7 @@
 -Wtrampolines
 -Wundeclared-selector
 -Wundef
--Wunreachable-code # DUMMY switch
+-Wunreachable-code # IGNORED switch
 -Wunsafe-loop-optimizations
 -Wunsuffixed-float-constants
 -Wunused-macros

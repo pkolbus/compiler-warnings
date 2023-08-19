@@ -1,11 +1,11 @@
 +-Wambiguous-ellipsis # Enabled by default.
---Warc-abi # DUMMY switch
+--Warc-abi # IGNORED switch
 +-Wat-protocol # Enabled by default.
 --Wbind-to-temporary-copy # Partially enabled by default.
 +-Wbind-to-temporary-copy
 +-Wbuiltin-memcpy-chk-size # Enabled by default.
 +-Wc++14-extensions # Partially enabled by default.
---Wcast-qual # DUMMY switch
+--Wcast-qual # IGNORED switch
 +-Wcast-qual
 +-Wcstring-format-directive
 +-Wencode-type # Enabled by default.

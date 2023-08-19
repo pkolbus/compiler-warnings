@@ -820,33 +820,33 @@ class WarningOptionListener(GccOptionsListener):
         self._last_name = None
 
 
-class DummyWarningListener(GccOptionsListener):
+class IgnoredWarningListener(GccOptionsListener):
     """
     Checks if switch does nothing.
 
     This is defined by the "Ignore" attribute.
 
-    >>> listener = DummyWarningListener()
+    >>> listener = IgnoredWarningListener()
     >>> apply_listener("C C++ Warning Ignore", listener)
-    >>> listener.is_dummy
+    >>> listener.is_ignored
     True
     """
 
     def __init__(self) -> None:
-        """Create a DummyWarningListener."""
-        self.is_dummy = False
+        """Create an ignoredWarningListener."""
+        self.is_ignored = False
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
         """
         Handle entry to the VariableName token.
 
-        If the variable name is Ignore, mark the warning as a dummy.
+        If the variable name is Ignore, mark the warning as ignored.
 
         :param ctx: The rule invocation context. Contains relevant information
             about the rule from parsing.
         """
         if ctx.getText() == "Ignore":
-            self.is_dummy = True
+            self.is_ignored = True
 
 
 class GccOption:
@@ -869,7 +869,7 @@ class GccOption:
         self._default = False
         self._deprecated = False
         self._display_name: str | None = None
-        self._dummy = False
+        self._ignored = False
         self._help_text = ""
         self._languages: set[str] = set()
         self._name = name
@@ -967,14 +967,14 @@ class GccOption:
         """:return: the display name for the option."""
         return self._display_name if self._display_name else "-" + self._name
 
-    def get_dummy_text(self) -> str:
+    def get_ignored_text(self) -> str:
         """
-        Get the dummy comment to print for this option.
+        Get the ignored comment to print for this option.
 
-        :return: a comment if the option is a dummy switch, an empty string
+        :return: a comment if the option is an ignored switch, an empty string
             otherwise.
         """
-        return " # DUMMY switch" if self._dummy else ""
+        return " # IGNORED switch" if self._ignored else ""
 
     def get_help_text(self) -> str:
         """:return: the help text."""
@@ -1016,9 +1016,9 @@ class GccOption:
         else:
             self._display_name = "-" + display_name
 
-    def set_dummy(self) -> None:
-        """Set the option as a dummy."""
-        self._dummy = True
+    def set_ignored(self) -> None:
+        """Set the option as ignored."""
+        self._ignored = True
 
     def set_help_text(self, help_text: str) -> None:
         """
@@ -1095,11 +1095,11 @@ class GccDiagnostics:
         if warning_option.is_warning or could_be_warning(option_definition.name):
             option.set_warning()
 
-        # Parse and apply dummy indications
-        dummy_option = DummyWarningListener()
-        apply_listener(parse_tree, dummy_option)
-        if dummy_option.is_dummy:
-            option.set_dummy()
+        # Parse and apply ignored indications
+        ignored_option = IgnoredWarningListener()
+        apply_listener(parse_tree, ignored_option)
+        if ignored_option.is_ignored:
+            option.set_ignored()
 
         # Parse and apply IntegerRange, if the option takes a value and doesn't
         # have a more human-readable display form.
@@ -1306,10 +1306,10 @@ def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics) -
         print_default_options(all_options, args)
 
     for option in all_options.get_all_warnings():
-        dummy_text = option.get_dummy_text()
+        ignored_text = option.get_ignored_text()
         if args.unique:
             comment_text = option.get_comment_text()
-            print(option.get_display_name() + dummy_text + comment_text)
+            print(option.get_display_name() + ignored_text + comment_text)
             continue
 
         if args.top_level and not all_options.is_top_level(option):
@@ -1319,11 +1319,11 @@ def print_warning_flags(args: argparse.Namespace, all_options: GccDiagnostics) -
         if sorted_aliases:
             print(
                 "{} = -{}{}".format(
-                    option.get_display_name(), ", -".join(sorted_aliases), dummy_text
+                    option.get_display_name(), ", -".join(sorted_aliases), ignored_text
                 )
             )
         else:
-            print(option.get_display_name() + dummy_text)
+            print(option.get_display_name() + ignored_text)
 
         if args.text and option.get_help_text():
             print(f"#     {option.get_help_text()}")

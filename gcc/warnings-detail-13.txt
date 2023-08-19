@@ -626,11 +626,11 @@
 #         Warn about strftime formats yielding 2-digit years.
 -Wframe-larger-than=<byte-size>
 #     Warn if a function's stack frame requires in excess of <byte-size>.
--Whsa # DUMMY switch
+-Whsa # IGNORED switch
 #     Does nothing.  Preserved for backward compatibility.
 -Wimplicit-fallthrough=<0..5>
 #     Warn when a switch case falls through.
--Wimport # DUMMY switch
+-Wimport # IGNORED switch
 -Winline
 #     Warn when an inlined function cannot be inlined.
 -Winvalid-imported-macros
@@ -781,9 +781,9 @@
 #     Warn about @selector()s without previously declared methods.
 -Wundef
 #     Warn if an undefined macro is used in an #if directive.
--Wunreachable-code # DUMMY switch
+-Wunreachable-code # IGNORED switch
 #     Does nothing. Preserved for backward compatibility.
--Wunsafe-loop-optimizations # DUMMY switch
+-Wunsafe-loop-optimizations # IGNORED switch
 #     Does nothing. Preserved for backward compatibility.
 -Wunsuffixed-float-constants
 #     Warn about unsuffixed float constants.

@@ -2,7 +2,7 @@
 +-Warray-parameter
 +-Watomic-access # Enabled by default.
 --Wauto-import
-+-Wauto-import # DUMMY switch
++-Wauto-import # IGNORED switch
 +-Wdeprecate-lax-vec-conv-all # Enabled by default.
 +-Wdeprecated-builtins # Enabled by default.
 +-Wdeprecated-non-prototype # Enabled by default.
@@ -13,7 +13,7 @@
 +-Wgnu-statement-expression-from-macro-expansion
 +-Whlsl-extensions # Enabled by default.
 --Wignored-pragma-optimize # Enabled by default.
-+-Wignored-pragma-optimize # DUMMY switch
++-Wignored-pragma-optimize # IGNORED switch
 --Wimplicit-int # Enabled by default.
 +-Wimplicit-int # Partially enabled by default.
 +-Winvalid-utf8

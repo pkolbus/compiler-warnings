@@ -7,7 +7,7 @@
 --Wimplicit-int # Applies to C,ObjC
 --Wimport
 +-Wimplicit-int # Enabled by default. Applies to C,ObjC
-+-Wimport # DUMMY switch
++-Wimport # IGNORED switch
 --Wint-to-pointer-cast # Enabled by default. Applies to C,ObjC
 +-Wint-to-pointer-cast # Enabled by default.
 +-Wnoexcept # Applies to C++,ObjC++
@@ -17,6 +17,6 @@
 +-Wsuggest-attribute=pure
 +-Wtrampolines
 --Wunreachable-code
-+-Wunreachable-code # DUMMY switch
++-Wunreachable-code # IGNORED switch
 +-Wunused-but-set-parameter # Enabled by default.
 +-Wunused-but-set-variable # Enabled by default.

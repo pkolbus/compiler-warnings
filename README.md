@@ -8,7 +8,7 @@ have for C family languages (C, C++, and Objective-C). This also shows all
 aliases and warning flags that a certain flag enables (prefixed with "#"
 character) so that you can easily see which flag is enabled by
 what. There are also warning flags that do nothing for compatibility
-or deprecation reasons. They are suffixed with "# DUMMY switch" text.
+or deprecation reasons. They are suffixed with "# IGNORED switch" text.
 
 The purpose of these collections is to make it more easy to use the
 static code analysis tools that compilers provide.

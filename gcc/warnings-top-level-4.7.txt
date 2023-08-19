@@ -85,7 +85,7 @@
 -Wformat-zero-length
 -Wformat=
 -Wframe-larger-than=<number>
--Wimport # DUMMY switch
+-Wimport # IGNORED switch
 -Winit-self
 -Winline
 -Winvalid-pch
@@ -142,7 +142,7 @@
 -Wundeclared-selector
 -Wundef
 -Wunknown-pragmas
--Wunreachable-code # DUMMY switch
+-Wunreachable-code # IGNORED switch
 -Wunsafe-loop-optimizations
 -Wunsuffixed-float-constants
 -Wunused

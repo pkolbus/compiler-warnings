@@ -15,12 +15,12 @@
 +-Wincompatible-sysroot # Enabled by default.
 --Winherited-variadic-ctor # Enabled by default.
 --Wliblto # Enabled by default.
-+-Wliblto # DUMMY switch
++-Wliblto # IGNORED switch
 +-Wnonportable-include-path # Enabled by default.
 +-Wnonportable-system-include-path
 +-Wopenmp-target # Enabled by default.
 +-Wpedantic-core-features
---Wreceiver-is-weak # DUMMY switch
+--Wreceiver-is-weak # IGNORED switch
 +-Wshadow-all
 +-Wshadow-field-in-constructor
 +-Wshadow-field-in-constructor-modified

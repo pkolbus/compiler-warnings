@@ -27,7 +27,7 @@
 +-Wqualified-void-return-type # Enabled by default.
 +-Wrange-loop-analysis
 --Wreceiver-is-weak
-+-Wreceiver-is-weak # DUMMY switch
++-Wreceiver-is-weak # IGNORED switch
 +-Wredundant-move
 +-Wrtti-for-exceptions # Enabled by default.
 +-Wshift-negative-value # Enabled by default.

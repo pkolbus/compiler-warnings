@@ -6,10 +6,10 @@
 +-Wblock-capture-autoreleasing
 --Wcoreturn-without-coawait # Enabled by default.
 +-Wdeprecated-dynamic-exception-spec
---Wdiv-by-zero # DUMMY switch
+--Wdiv-by-zero # IGNORED switch
 +-Wdiv-by-zero # Enabled by default.
 +-Wduplicate-protocol # Enabled by default.
---Weffc++ # DUMMY switch
+--Weffc++ # IGNORED switch
 +-Wdynamic-exception-spec # Partially enabled by default.
 +-Weffc++
 +-Wempty-decomposition # Enabled by default.
@@ -30,7 +30,7 @@
 +-Wshadow-uncaptured-local
 +-Wsigned-enum-bitfield
 +-Wspir-compat
---Wstrict-prototypes # DUMMY switch
+--Wstrict-prototypes # IGNORED switch
 +-Wstrict-prototypes
 +-Wunable-to-open-stats-file # Enabled by default.
 --Wunguarded-availability # Enabled by default.

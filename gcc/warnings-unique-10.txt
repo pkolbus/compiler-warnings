@@ -136,7 +136,7 @@
 -Wimplicit-fallthrough=<0..5>
 -Wimplicit-function-declaration # Enabled by default. Applies to C,ObjC
 -Wimplicit-int # Enabled by default. Applies to C,ObjC
--Wimport # DUMMY switch
+-Wimport # IGNORED switch
 -Winaccessible-base # Enabled by default. Applies to C++,ObjC++
 -Wincompatible-pointer-types # Enabled by default. Applies to C,ObjC
 -Winherited-variadic-ctor # Enabled by default. Applies to C++,ObjC++
@@ -298,8 +298,8 @@
 -Wundef
 -Wuninitialized
 -Wunknown-pragmas
--Wunreachable-code # DUMMY switch
--Wunsafe-loop-optimizations # DUMMY switch
+-Wunreachable-code # IGNORED switch
+-Wunsafe-loop-optimizations # IGNORED switch
 -Wunsuffixed-float-constants # Applies to C,ObjC
 -Wunused
 -Wunused-but-set-parameter

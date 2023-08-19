@@ -284,7 +284,7 @@
 -Wframe-address
 -Wframe-larger-than=<byte-size>
 -Wfree-nonheap-object
--Whsa # DUMMY switch
+-Whsa # IGNORED switch
 -Wif-not-aligned
 -Wignored-attributes
 -Wignored-qualifiers
@@ -295,7 +295,7 @@
 -Wimplicit-fallthrough=<0..5>
 -Wimplicit-function-declaration
 -Wimplicit-int
--Wimport # DUMMY switch
+-Wimport # IGNORED switch
 -Winaccessible-base
 -Wincompatible-pointer-types
 -Winfinite-recursion
@@ -486,8 +486,8 @@
 -Wuninitialized
 #    -Wmaybe-uninitialized
 -Wunknown-pragmas
--Wunreachable-code # DUMMY switch
--Wunsafe-loop-optimizations # DUMMY switch
+-Wunreachable-code # IGNORED switch
+-Wunsafe-loop-optimizations # IGNORED switch
 -Wunsuffixed-float-constants
 -Wunused
 #    -Wunused-but-set-variable

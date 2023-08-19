@@ -205,7 +205,7 @@
 #    -Wformat-y2k
 -Wframe-larger-than=<number>
 -Wimplicit-fallthrough=<0..5>
--Wimport # DUMMY switch
+-Wimport # IGNORED switch
 -Winline
 -Winvalid-pch
 -Wjump-misses-init
@@ -214,7 +214,7 @@
 -Wmissing-declarations
 -Wmissing-include-dirs
 -Wmissing-prototypes
--Wmudflap # DUMMY switch
+-Wmudflap # IGNORED switch
 -Wmultichar
 -Wmultiple-inheritance
 -Wnamespaces
@@ -275,8 +275,8 @@
 -Wtrampolines
 -Wundeclared-selector
 -Wundef
--Wunreachable-code # DUMMY switch
--Wunsafe-loop-optimizations # DUMMY switch
+-Wunreachable-code # IGNORED switch
+-Wunsafe-loop-optimizations # IGNORED switch
 -Wunsuffixed-float-constants
 -Wunused-const-variable=<0..2>
 -Wunused-macros

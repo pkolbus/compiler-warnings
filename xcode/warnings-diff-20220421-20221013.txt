@@ -1,6 +1,6 @@
 +-Warray-parameter
 --Wauto-import
-+-Wauto-import # DUMMY switch
++-Wauto-import # IGNORED switch
 +-Wc2x-compat
 +-Wcoro-non-aligned-allocation-funciton # Enabled by default.
 +-Wdeprecate-lax-vec-conv-all # Enabled by default.
@@ -11,7 +11,7 @@
 +-Wgnu-statement-expression-from-macro-expansion
 +-Whlsl-extensions # Enabled by default.
 --Wignored-pragma-optimize # Enabled by default.
-+-Wignored-pragma-optimize # DUMMY switch
++-Wignored-pragma-optimize # IGNORED switch
 --Wimplicit-int # Enabled by default.
 +-Wimplicit-int # Partially enabled by default.
 +-Winvalid-utf8

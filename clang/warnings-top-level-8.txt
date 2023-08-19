@@ -519,14 +519,14 @@
 #     -Wsemicolon-before-method-body
 #     -Wsign-compare
 #     -Wunused-parameter
--Wabi # DUMMY switch
+-Wabi # IGNORED switch
 -Wabstract-vbase-init
--Waggregate-return # DUMMY switch
+-Waggregate-return # IGNORED switch
 -Warc-repeated-use-of-weak
 #   -Warc-maybe-repeated-use-of-weak
 -Warray-bounds-pointer-arithmetic
 -Wassign-enum
--Wat-protocol # DUMMY switch
+-Wat-protocol # IGNORED switch
 -Watomic-implicit-seq-cst
 -Watomic-properties
 #   -Wcustom-atomic-properties
@@ -620,7 +620,7 @@
 -Wc99-extensions
 -Wcast-align
 -Wcast-qual
--Wchar-align # DUMMY switch
+-Wchar-align # IGNORED switch
 -WCL4
 #   -Wall
 #     -Wmost
@@ -636,7 +636,7 @@
 #         -Wformat-extra-args
 #         -Wformat-invalid-specifier
 #         -Wformat-security
-#         -Wformat-y2k # DUMMY switch
+#         -Wformat-y2k # IGNORED switch
 #         -Wformat-zero-length
 #         -Wnonnull
 #       -Wimplicit
@@ -672,7 +672,7 @@
 #         -Wstatic-self-init
 #       -Wunknown-pragmas
 #       -Wunused
-#         -Wunused-argument # DUMMY switch
+#         -Wunused-argument # IGNORED switch
 #         -Wunused-function
 #           -Wunneeded-internal-declaration
 #         -Wunused-label
@@ -688,7 +688,7 @@
 #         -Wunused-variable
 #           -Wunused-const-variable
 #       -Wuser-defined-warnings
-#       -Wvolatile-register-var # DUMMY switch
+#       -Wvolatile-register-var # IGNORED switch
 #     -Wparentheses
 #       -Wbitwise-op-parentheses
 #       -Wdangling-else
@@ -718,7 +718,7 @@
 -Wconsumed
 -Wcovered-switch-default
 -Wcstring-format-directive
--Wctor-dtor-privacy # DUMMY switch
+-Wctor-dtor-privacy # IGNORED switch
 -Wcuda-compat
 -Wdate-time
 -Wdeprecated
@@ -733,8 +733,8 @@
 -Wdeprecated-implementations
 -Wdirect-ivar-access
 -Wdisabled-macro-expansion
--Wdisabled-optimization # DUMMY switch
--Wdiscard-qual # DUMMY switch
+-Wdisabled-optimization # IGNORED switch
+-Wdiscard-qual # IGNORED switch
 -Wdocumentation
 #   -Wdocumentation-deprecated-sync
 #   -Wdocumentation-html
@@ -763,8 +763,8 @@
 -Wformat=2
 #   -Wformat-nonliteral
 #   -Wformat-security
-#   -Wformat-y2k # DUMMY switch
--Wfuture-compat # DUMMY switch
+#   -Wformat-y2k # IGNORED switch
+-Wfuture-compat # IGNORED switch
 -Wgcc-compat
 -Wglobal-constructors
 -Wgnu
@@ -801,17 +801,17 @@
 -Wimplicit-fallthrough
 #   -Wimplicit-fallthrough-per-function
 -Wimplicit-retain-self
--Wimport # DUMMY switch
+-Wimport # IGNORED switch
 -Wincomplete-module
 #   -Wincomplete-umbrella
 #   -Wnon-modular-include-in-module
 #     -Wnon-modular-include-in-framework-module
 -Winconsistent-missing-destructor-override
--Winit-self # DUMMY switch
--Winline # DUMMY switch
+-Winit-self # IGNORED switch
+-Winline # IGNORED switch
 -Winvalid-or-nonexistent-directory
--Winvalid-pch # DUMMY switch
--Wliblto # DUMMY switch
+-Winvalid-pch # IGNORED switch
+-Wliblto # IGNORED switch
 -Wlocal-type-template-args
 #   -Wc++98-compat-local-type-template-args
 -Wloop-analysis
@@ -847,15 +847,15 @@
 #   -Wmicrosoft-unqualified-friend
 #   -Wmicrosoft-using-decl
 #   -Wmicrosoft-void-pseudo-dtor
--Wmissing-format-attribute # DUMMY switch
--Wmissing-include-dirs # DUMMY switch
+-Wmissing-format-attribute # IGNORED switch
+-Wmissing-include-dirs # IGNORED switch
 -Wmissing-noreturn
 -Wmissing-prototypes
 -Wmissing-variable-declarations
 -Rmodule-build
 -Wnarrowing
 #   -Wc++11-narrowing
--Wnested-externs # DUMMY switch
+-Wnested-externs # IGNORED switch
 -Wnewline-eof
 -Wnon-gcc
 #   -Wconversion
@@ -881,7 +881,7 @@
 #     -Wstring-conversion
 #   -Wliteral-range
 #   -Wsign-compare
--Wnonportable-cfstrings # DUMMY switch
+-Wnonportable-cfstrings # IGNORED switch
 -Wnonportable-system-include-path
 -Wnullable-to-nonnull-conversion
 -Wobjc-interface-ivars
@@ -889,9 +889,9 @@
 -Wobjc-missing-property-synthesis
 -Wobjc-property-assign-on-object-type
 -Wold-style-cast
--Wold-style-definition # DUMMY switch
+-Wold-style-definition # IGNORED switch
 -Wover-aligned
--Woverflow # DUMMY switch
+-Woverflow # IGNORED switch
 -Woverriding-method-mismatch
 -Wpacked
 -Wpadded
@@ -955,7 +955,7 @@
 #   -Wzero-length-array
 -Wpedantic-core-features
 -Wpointer-arith
--Wpointer-to-int-cast # DUMMY switch
+-Wpointer-to-int-cast # IGNORED switch
 -Wpragmas
 #   -Wignored-pragmas
 #     -Wignored-pragma-intrinsic
@@ -967,7 +967,7 @@
 -Wprofile-instr-missing
 -Wquoted-include-in-framework-header
 -Wreceiver-forward-class
--Wredundant-decls # DUMMY switch
+-Wredundant-decls # IGNORED switch
 -Wredundant-parens
 -Rremark-backend-plugin
 -Wreserved-id-macro
@@ -986,29 +986,29 @@
 #     -Wshadow-field-in-constructor-modified
 #   -Wshadow-uncaptured-local
 -Wshift-sign-overflow
--Wsign-promo # DUMMY switch
+-Wsign-promo # IGNORED switch
 -Wsigned-enum-bitfield
 -Wsource-uses-openmp
 -Wspir-compat
--Wstack-protector # DUMMY switch
+-Wstack-protector # IGNORED switch
 -Wstatic-in-inline
--Wstrict-aliasing # DUMMY switch
--Wstrict-aliasing=0 # DUMMY switch
--Wstrict-aliasing=1 # DUMMY switch
--Wstrict-aliasing=2 # DUMMY switch
--Wstrict-overflow # DUMMY switch
--Wstrict-overflow=0 # DUMMY switch
--Wstrict-overflow=1 # DUMMY switch
--Wstrict-overflow=2 # DUMMY switch
--Wstrict-overflow=3 # DUMMY switch
--Wstrict-overflow=4 # DUMMY switch
--Wstrict-overflow=5 # DUMMY switch
+-Wstrict-aliasing # IGNORED switch
+-Wstrict-aliasing=0 # IGNORED switch
+-Wstrict-aliasing=1 # IGNORED switch
+-Wstrict-aliasing=2 # IGNORED switch
+-Wstrict-overflow # IGNORED switch
+-Wstrict-overflow=0 # IGNORED switch
+-Wstrict-overflow=1 # IGNORED switch
+-Wstrict-overflow=2 # IGNORED switch
+-Wstrict-overflow=3 # IGNORED switch
+-Wstrict-overflow=4 # IGNORED switch
+-Wstrict-overflow=5 # IGNORED switch
 -Wstrict-prototypes
 -Wstrict-selector-match
 -Wsuper-class-method-mismatch
--Wswitch-default # DUMMY switch
+-Wswitch-default # IGNORED switch
 -Wswitch-enum
--Wsynth # DUMMY switch
+-Wsynth # IGNORED switch
 -Wtautological-compare
 #   -Wtautological-constant-compare
 #     -Wtautological-constant-out-of-range-compare
@@ -1027,7 +1027,7 @@
 -Wthread-safety-beta
 -Wthread-safety-negative
 -Wthread-safety-verbose
--Wtype-limits # DUMMY switch
+-Wtype-limits # IGNORED switch
 -Wundeclared-selector
 -Wundef
 -Wundefined-func-template

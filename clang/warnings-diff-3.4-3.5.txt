@@ -1,5 +1,5 @@
 +-Wabsolute-value # Enabled by default.
---Waddress # DUMMY switch
+--Waddress # IGNORED switch
 +-Waddress # Enabled by default.
 +-Wassume # Enabled by default.
 +-Watomic-memory-ordering # Enabled by default.
@@ -48,7 +48,7 @@
 +-Wobjc-designated-initializers # Enabled by default.
 --Wobjc-literal-missing-atsign # Enabled by default.
 +-Wobjc-literal-conversion # Enabled by default.
---Wold-style-cast # DUMMY switch
+--Wold-style-cast # IGNORED switch
 +-Wold-style-cast
 +-Wopenmp-clauses # Enabled by default.
 +-Wopenmp-loop-form # Enabled by default.

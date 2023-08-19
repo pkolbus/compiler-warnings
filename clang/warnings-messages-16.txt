@@ -1921,10 +1921,10 @@
 #           parameter A set but not used
 #     -Wunused-parameter
 #           unused parameter A
--Wabi # DUMMY switch
+-Wabi # IGNORED switch
 -Wabstract-vbase-init
 #     initializer for virtual base class A of abstract class B will never be used
--Waggregate-return # DUMMY switch
+-Waggregate-return # IGNORED switch
 -Walloca
 #     use of function A is discouraged; there is no way to check for failure but failure may still occur, resulting in a possibly exploitable security vulnerability
 -Wanon-enum-enum-conversion
@@ -1940,7 +1940,7 @@
 #     the pointer incremented by A refers past the end of the array (that has type B)
 -Wassign-enum
 #     integer constant not in range of enumerated type A
--Wat-protocol # DUMMY switch
+-Wat-protocol # IGNORED switch
 -Watomic-implicit-seq-cst
 #     implicit use of sequentially-consistent atomic may incur stronger memory barriers than necessary
 -Watomic-properties
@@ -1949,7 +1949,7 @@
 #   -Wimplicit-atomic-properties
 #         property is assumed atomic by default
 #         property is assumed atomic when auto-synthesizing the property
--Wauto-import # DUMMY switch
+-Wauto-import # IGNORED switch
 -Wbad-function-cast
 #     cast from function call of type A to non-matching type B
 -Wbinary-literal
@@ -3110,7 +3110,7 @@
 -Wcast-qual
 #     cast from A to B drops <const and volatile qualifiers|const qualifier|volatile qualifier>
 #     cast from A to B must have all intermediate pointers const qualified to be safe
--Wchar-align # DUMMY switch
+-Wchar-align # IGNORED switch
 -WCL4
 #   -Wall
 #     -Wmisleading-indentation
@@ -3177,7 +3177,7 @@
 #               invalid conversion specifier 'A'
 #         -Wformat-security
 #               format string is not a string literal (potentially insecure)
-#         -Wformat-y2k # DUMMY switch
+#         -Wformat-y2k # IGNORED switch
 #         -Wformat-zero-length
 #               format string is empty
 #         -Wnonnull
@@ -3212,7 +3212,7 @@
 #               moving a temporary object prevents copy elision
 #         -Wredundant-move
 #               redundant move in return statement
-#         -Wreturn-std-move # DUMMY switch
+#         -Wreturn-std-move # IGNORED switch
 #         -Wself-move
 #               explicitly moving variable of type A to itself[; did you mean to move to member C?]
 #       -Wmultichar
@@ -3331,7 +3331,7 @@
 #             unknown pragma ignored
 #             unknown pragma in STDC namespace
 #       -Wunused
-#         -Wunused-argument # DUMMY switch
+#         -Wunused-argument # IGNORED switch
 #         -Wunused-but-set-variable
 #               variable A set but not used
 #         -Wunused-function
@@ -3372,7 +3372,7 @@
 #                 unused variable A
 #       -Wuser-defined-warnings
 #             The text of this diagnostic is not controlled by Clang
-#       -Wvolatile-register-var # DUMMY switch
+#       -Wvolatile-register-var # IGNORED switch
 #     -Wparentheses
 #           A has lower precedence than B; B will be evaluated first
 #           operator '?:' has lower precedence than 'A'; 'A' will be evaluated first
@@ -3475,7 +3475,7 @@
 #     using A directive in <NSString|CFString> which is being passed as a formatting argument to the formatting <method|CFfunction>
 -Wctad-maybe-unsupported
 #     A may not intend to support class template argument deduction
--Wctor-dtor-privacy # DUMMY switch
+-Wctor-dtor-privacy # IGNORED switch
 -Wcuda-compat
 #     A attribute parameter B is negative and will be ignored
 #     argument to '#pragma unroll' should not be in parentheses in CUDA C/C++
@@ -3563,8 +3563,8 @@
 #     instance variable A is being directly accessed
 -Wdisabled-macro-expansion
 #     disabled expansion of recursive macro
--Wdisabled-optimization # DUMMY switch
--Wdiscard-qual # DUMMY switch
+-Wdisabled-optimization # IGNORED switch
+-Wdiscard-qual # IGNORED switch
 -Wdocumentation
 #     '<\|@><classdesign|coclass|dependency|helper|helperclass|helps|instancesize|ownership|performance|security|superclass>' command should not be used in a comment attached to a non-container declaration
 #     '<\|@><class|interface|protocol|struct|union>' command should not be used in a comment attached to a non-<class|interface|protocol|struct|union> declaration
@@ -3652,10 +3652,10 @@
 #         format string is not a string literal
 #   -Wformat-security
 #         format string is not a string literal (potentially insecure)
-#   -Wformat-y2k # DUMMY switch
+#   -Wformat-y2k # IGNORED switch
 -Wfour-char-constants
 #     multi-character character constant
--Wfuture-compat # DUMMY switch
+-Wfuture-compat # IGNORED switch
 -Wgcc-compat
 #     'A' is bound to current loop, GCC binds it to the enclosing loop
 #     'break' is bound to loop, GCC binds it to switch
@@ -3758,7 +3758,7 @@
 #         unannotated fall-through between switch labels in partly-annotated function
 -Wimplicit-retain-self
 #     block implicitly retains 'self'; explicitly mention 'self' to indicate this is intended behavior
--Wimport # DUMMY switch
+-Wimport # IGNORED switch
 -Wincompatible-function-pointer-types-strict
 #     incompatible function pointer types <assigning to different types|passing to parameter of different type|returning from function with different return type|converting between types|initializing with expression of different type|sending to parameter of different type|casting between types>[; dereference with *|; take the address with &|; remove *|; remove &]
 -Wincomplete-module
@@ -3772,13 +3772,13 @@
 #           include of non-modular header inside framework module 'A': 'B'
 -Winconsistent-missing-destructor-override
 #     A overrides a destructor but is not marked 'override'
--Winit-self # DUMMY switch
--Winline # DUMMY switch
+-Winit-self # IGNORED switch
+-Winline # IGNORED switch
 -Winvalid-or-nonexistent-directory
 #     environment variable 'A' is set, but points to invalid or nonexistent directory 'B'
 #     unable to find A directory, expected to be in 'B'
--Winvalid-pch # DUMMY switch
--Wliblto # DUMMY switch
+-Winvalid-pch # IGNORED switch
+-Wliblto # IGNORED switch
 -Wlocal-type-template-args
 #     template argument uses local type A
 #   -Wc++98-compat-local-type-template-args
@@ -3887,8 +3887,8 @@
 #         using declaration referring to inaccessible member 'A' (which refers to accessible member 'B') is a Microsoft compatibility extension
 #   -Wmicrosoft-void-pseudo-dtor
 #         pseudo-destructors on type void are a Microsoft extension
--Wmissing-format-attribute # DUMMY switch
--Wmissing-include-dirs # DUMMY switch
+-Wmissing-format-attribute # IGNORED switch
+-Wmissing-include-dirs # IGNORED switch
 -Wmissing-noreturn
 #     <function|method> B could be declared with attribute 'noreturn'
 #     block could be declared with attribute 'noreturn'
@@ -3916,7 +3916,7 @@
 #         non-constant-expression cannot be narrowed from type A to B in initializer list in C++11
 #         type A cannot be narrowed to B in initializer list
 #         type A cannot be narrowed to B in initializer list in C++11
--Wnested-externs # DUMMY switch
+-Wnested-externs # IGNORED switch
 -Wnewline-eof
 #     no newline at end of file
 -Wnon-gcc
@@ -4008,7 +4008,7 @@
 #         magnitude of floating-point constant too small for type A; minimum is B
 #   -Wsign-compare
 #         comparison of integers of different signs: A and B
--Wnonportable-cfstrings # DUMMY switch
+-Wnonportable-cfstrings # IGNORED switch
 -Wnonportable-system-include-path
 #     non-portable path to file 'A'; specified path differs in case from file name on disk
 -Wnullable-to-nonnull-conversion
@@ -4032,7 +4032,7 @@
 #         result of comparison of constant A with expression of type 'BOOL' is always B, as the only well defined values for 'BOOL' are YES and NO
 -Wold-style-cast
 #     use of old-style cast
--Wold-style-definition # DUMMY switch
+-Wold-style-definition # IGNORED switch
 -Wopenmp
 #   -Wopenmp-51-extensions
 #         specifying OpenMP directives with [[]] is an OpenMP 5.1 extension
@@ -4078,7 +4078,7 @@
 #         variant function in '#pragma omp declare variant' is itself marked as '#pragma omp declare variant'
 -Wover-aligned
 #     type A requires B bytes of alignment and the default allocator only guarantees C bytes
--Woverflow # DUMMY switch
+-Woverflow # IGNORED switch
 -Woverriding-method-mismatch
 #     conflicting distributed object modifiers on parameter type in declaration of A
 #     conflicting distributed object modifiers on return type in declaration of A
@@ -4334,7 +4334,7 @@
 #         unsupported OpenCL extension A - ignoring
 #     -Wignored-pragma-intrinsic
 #           A is not a recognized builtin[; consider including <intrin.h> to access non-builtin intrinsics]
-#     -Wignored-pragma-optimize # DUMMY switch
+#     -Wignored-pragma-optimize # IGNORED switch
 #   -Wpragma-clang-attribute
 #         unused attribute A in '#pragma clang attribute push' region
 #   -Wpragma-pack
@@ -4384,7 +4384,7 @@
 -Wreceiver-forward-class
 #     receiver A is a forward class and corresponding @interface may not exist
 #     receiver type A for instance message is a forward declaration
--Wredundant-decls # DUMMY switch
+-Wredundant-decls # IGNORED switch
 -Wredundant-parens
 #     redundant parentheses surrounding declarator
 -Rremark-backend-plugin
@@ -4428,7 +4428,7 @@
 #         declaration shadows a <local variable|variable in C|static data member of C|field of C|typedef in C|type alias in C|structured binding>
 -Wshift-sign-overflow
 #     signed shift result (A) sets the sign bit of the shift expression's type (B) and becomes negative
--Wsign-promo # DUMMY switch
+-Wsign-promo # IGNORED switch
 -Wsigned-enum-bitfield
 #     enums in the Microsoft ABI are signed integers by default; consider giving the enum A an unsigned underlying type to make this code portable
 -Wspirv-compat
@@ -4436,17 +4436,17 @@
 #         sampler initializer has invalid A bits
 -Wstatic-in-inline
 #     static <function|variable> B is used in an inline function with external linkage
--Wstrict-aliasing # DUMMY switch
--Wstrict-aliasing=0 # DUMMY switch
--Wstrict-aliasing=1 # DUMMY switch
--Wstrict-aliasing=2 # DUMMY switch
--Wstrict-overflow # DUMMY switch
--Wstrict-overflow=0 # DUMMY switch
--Wstrict-overflow=1 # DUMMY switch
--Wstrict-overflow=2 # DUMMY switch
--Wstrict-overflow=3 # DUMMY switch
--Wstrict-overflow=4 # DUMMY switch
--Wstrict-overflow=5 # DUMMY switch
+-Wstrict-aliasing # IGNORED switch
+-Wstrict-aliasing=0 # IGNORED switch
+-Wstrict-aliasing=1 # IGNORED switch
+-Wstrict-aliasing=2 # IGNORED switch
+-Wstrict-overflow # IGNORED switch
+-Wstrict-overflow=0 # IGNORED switch
+-Wstrict-overflow=1 # IGNORED switch
+-Wstrict-overflow=2 # IGNORED switch
+-Wstrict-overflow=3 # IGNORED switch
+-Wstrict-overflow=4 # IGNORED switch
+-Wstrict-overflow=5 # IGNORED switch
 -Wstrict-potentially-direct-selector
 #     @selector expression formed with potentially direct selector A
 #   -Wpotentially-direct-selector
@@ -4464,10 +4464,10 @@
 #     A overrides a member function but is not marked 'override'
 -Wsuper-class-method-mismatch
 #     method parameter type does not match super class method parameter type
--Wswitch-default # DUMMY switch
+-Wswitch-default # IGNORED switch
 -Wswitch-enum
 #     <enumeration value B not explicitly handled in switch|enumeration values B and C not explicitly handled in switch|enumeration values B, C, and D not explicitly handled in switch|A enumeration values not explicitly handled in switch>
--Wsynth # DUMMY switch
+-Wsynth # IGNORED switch
 -Wtautological-constant-in-range-compare
 #   -Wtautological-value-range-compare
 #         result of comparison of <E|A-bit <signed|unsigned> value,2> D <A-bit <signed|unsigned> value,2|E> is always F

@@ -12,7 +12,7 @@
 +-Wenum-conversion
 +-Wexceptions # Enabled by default. Applies to C++,ObjC++
 --Whsa # Enabled by default.
-+-Whsa # DUMMY switch
++-Whsa # IGNORED switch
 +-Winvalid-imported-macros # Applies to C++,ObjC++
 +-Wmismatched-dealloc
 +-Wmismatched-new-delete # Applies to C++,ObjC++

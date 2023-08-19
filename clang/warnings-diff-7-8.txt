@@ -1,5 +1,5 @@
 --Wat-protocol # Enabled by default.
-+-Wat-protocol # DUMMY switch
++-Wat-protocol # IGNORED switch
 +-Watomic-implicit-seq-cst
 +-Wcall-to-pure-virtual-from-ctor-dtor # Enabled by default.
 +-Wctu # Enabled by default.

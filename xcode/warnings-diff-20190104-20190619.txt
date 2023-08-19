@@ -6,7 +6,7 @@
 --Wimplicit-float-conversion
 +-Wimplicit-fixed-point-conversion # Enabled by default.
 +-Wimplicit-float-conversion # Partially enabled by default.
-+-Wimplicit-int-float-conversion # DUMMY switch
++-Wimplicit-int-float-conversion # IGNORED switch
 +-Wobjc-bool-constant-conversion # Enabled by default.
 +-Wobjc-signed-char-bool # Partially enabled by default.
 +-Wobjc-signed-char-bool-implicit-float-conversion # Enabled by default.
@@ -14,5 +14,5 @@
 +-Woverride-init # Enabled by default.
 +-Wpointer-integer-compare # Enabled by default.
 +-Wtautological-objc-bool-compare # Enabled by default.
---Wtype-limits # DUMMY switch
+--Wtype-limits # IGNORED switch
 +-Wtype-limits

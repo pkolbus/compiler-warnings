@@ -17,7 +17,7 @@
 --Wlarger-than=<number>
 +-Wlarger-than=<byte-size>
 +-Wmissing-profile # Enabled by default.
---Wmudflap # DUMMY switch
+--Wmudflap # IGNORED switch
 +-Wmudflap # Deprecated.
 +-Wno-alloc-size-larger-than
 +-Wno-alloca-larger-than

@@ -1,7 +1,7 @@
 -W # Partially enabled by default.
 -W#pragma-messages # Enabled by default.
 -W#warnings # Enabled by default.
--Wabi # DUMMY switch
+-Wabi # IGNORED switch
 -Wabsolute-value # Enabled by default.
 -Wabstract-final-class # Enabled by default.
 -Wabstract-vbase-init
@@ -9,7 +9,7 @@
 -Waddress-of-array-temporary # Enabled by default.
 -Waddress-of-packed-member # Enabled by default.
 -Waddress-of-temporary # Enabled by default.
--Waggregate-return # DUMMY switch
+-Waggregate-return # IGNORED switch
 -Waligned-allocation-unavailable # Enabled by default.
 -Wall # Partially enabled by default.
 -Walloca-with-align-alignof # Enabled by default.
@@ -112,7 +112,7 @@
 -Wcast-of-sel-type # Enabled by default.
 -Wcast-qual
 -WCFString-literal # Enabled by default.
--Wchar-align # DUMMY switch
+-Wchar-align # IGNORED switch
 -Wchar-subscripts
 -WCL4 # Partially enabled by default.
 -Wclang-cl-pch # Enabled by default.
@@ -136,7 +136,7 @@
 -Wcovered-switch-default
 -Wcpp # Enabled by default.
 -Wcstring-format-directive
--Wctor-dtor-privacy # DUMMY switch
+-Wctor-dtor-privacy # IGNORED switch
 -Wcuda-compat # Partially enabled by default.
 -Wcustom-atomic-properties
 -Wdangling-else # Enabled by default.
@@ -162,8 +162,8 @@
 -Wdeprecated-writable-strings # Enabled by default.
 -Wdirect-ivar-access
 -Wdisabled-macro-expansion
--Wdisabled-optimization # DUMMY switch
--Wdiscard-qual # DUMMY switch
+-Wdisabled-optimization # IGNORED switch
+-Wdiscard-qual # IGNORED switch
 -Wdistributed-object-modifiers # Enabled by default.
 -Wdiv-by-zero # Enabled by default.
 -Wdivision-by-zero # Enabled by default.
@@ -222,13 +222,13 @@
 -Wformat-nonliteral
 -Wformat-pedantic
 -Wformat-security # Enabled by default.
--Wformat-y2k # DUMMY switch
+-Wformat-y2k # IGNORED switch
 -Wformat-zero-length # Enabled by default.
 -Wformat=2 # Partially enabled by default.
 -Wfour-char-constants
 -Wframe-larger-than= # Enabled by default.
 -Wfunction-def-in-objc-container # Enabled by default.
--Wfuture-compat # DUMMY switch
+-Wfuture-compat # IGNORED switch
 -Wgcc-compat # Partially enabled by default.
 -Wglobal-constructors
 -Wgnu # Partially enabled by default.
@@ -276,7 +276,7 @@
 -Wimplicit-int # Enabled by default.
 -Wimplicit-retain-self
 -Wimplicitly-unsigned-literal # Enabled by default.
--Wimport # DUMMY switch
+-Wimport # IGNORED switch
 -Wimport-preprocessor-directive-pedantic
 -Winaccessible-base # Enabled by default.
 -Winclude-next-absolute-path # Enabled by default.
@@ -299,10 +299,10 @@
 -WIndependentClass-attribute # Enabled by default.
 -Rindex-store
 -Winfinite-recursion
--Winit-self # DUMMY switch
+-Winit-self # IGNORED switch
 -Winitializer-overrides # Enabled by default.
 -Winjected-class-name # Enabled by default.
--Winline # DUMMY switch
+-Winline # IGNORED switch
 -Winline-asm # Enabled by default.
 -Winline-new-delete # Enabled by default.
 -Winstantiation-after-specialization # Enabled by default.
@@ -320,7 +320,7 @@
 -Winvalid-offsetof # Enabled by default.
 -Winvalid-or-nonexistent-directory # Partially enabled by default.
 -Winvalid-partial-specialization # Enabled by default.
--Winvalid-pch # DUMMY switch
+-Winvalid-pch # IGNORED switch
 -Winvalid-pp-token # Enabled by default.
 -Winvalid-source-encoding # Enabled by default.
 -Winvalid-token-paste # Enabled by default.
@@ -330,7 +330,7 @@
 -Wknr-promoted-parameter # Enabled by default.
 -Wlanguage-extension-token
 -Wlarge-by-value-copy # Enabled by default.
--Wliblto # DUMMY switch
+-Wliblto # IGNORED switch
 -Wliteral-conversion # Enabled by default.
 -Wliteral-range # Enabled by default.
 -Wlocal-type-template-args # Partially enabled by default.
@@ -383,8 +383,8 @@
 -Wmissing-declarations # Enabled by default.
 -Wmissing-exception-spec # Enabled by default.
 -Wmissing-field-initializers
--Wmissing-format-attribute # DUMMY switch
--Wmissing-include-dirs # DUMMY switch
+-Wmissing-format-attribute # IGNORED switch
+-Wmissing-include-dirs # IGNORED switch
 -Wmissing-method-return-type
 -Wmissing-noescape # Enabled by default.
 -Wmissing-noreturn
@@ -408,7 +408,7 @@
 -Wmultiple-move-vbase # Enabled by default.
 -Wnarrowing # Partially enabled by default.
 -Wnested-anon-types
--Wnested-externs # DUMMY switch
+-Wnested-externs # IGNORED switch
 -Wnew-returns-null # Enabled by default.
 -Wnewline-eof
 -Wnoexcept-type # Enabled by default.
@@ -419,7 +419,7 @@
 -Wnon-pod-varargs # Enabled by default.
 -Wnon-virtual-dtor
 -Wnonnull # Enabled by default.
--Wnonportable-cfstrings # DUMMY switch
+-Wnonportable-cfstrings # IGNORED switch
 -Wnonportable-include-path # Enabled by default.
 -Wnonportable-private-apinotes-path # Enabled by default.
 -Wnonportable-private-system-apinotes-path
@@ -475,7 +475,7 @@
 -Wobjc-unsafe-perform-selector # Enabled by default.
 -Wodr # Enabled by default.
 -Wold-style-cast
--Wold-style-definition # DUMMY switch
+-Wold-style-definition # IGNORED switch
 -Wopencl-unsupported-rgba # Enabled by default.
 -Wopenmp-clauses # Enabled by default.
 -Wopenmp-loop-form # Enabled by default.
@@ -484,7 +484,7 @@
 -Wout-of-line-declaration # Enabled by default.
 -Wout-of-scope-function # Enabled by default.
 -Wover-aligned
--Woverflow # DUMMY switch
+-Woverflow # IGNORED switch
 -Woverlength-strings
 -Woverloaded-shift-op-parentheses # Enabled by default.
 -Woverloaded-virtual
@@ -507,7 +507,7 @@
 -Wpointer-arith # Partially enabled by default.
 -Wpointer-bool-conversion # Enabled by default.
 -Wpointer-sign # Enabled by default.
--Wpointer-to-int-cast # DUMMY switch
+-Wpointer-to-int-cast # IGNORED switch
 -Wpointer-type-mismatch # Enabled by default.
 -Wpotentially-evaluated-expression # Enabled by default.
 -Wpragma-clang-attribute # Enabled by default.
@@ -533,7 +533,7 @@
 -Wreceiver-expr # Enabled by default.
 -Wreceiver-forward-class # Partially enabled by default.
 -Wredeclared-class-member # Enabled by default.
--Wredundant-decls # DUMMY switch
+-Wredundant-decls # IGNORED switch
 -Wredundant-move
 -Wredundant-parens
 -Wregister # Enabled by default.
@@ -575,7 +575,7 @@
 -Wshorten-64-to-32
 -Wsign-compare
 -Wsign-conversion
--Wsign-promo # DUMMY switch
+-Wsign-promo # IGNORED switch
 -Wsigned-enum-bitfield
 -Wsizeof-array-argument # Enabled by default.
 -Wsizeof-array-decay # Enabled by default.
@@ -584,24 +584,24 @@
 -Wsometimes-uninitialized
 -Wsource-uses-openmp # Partially enabled by default.
 -Wspir-compat
--Wstack-protector # DUMMY switch
+-Wstack-protector # IGNORED switch
 -Wstatic-float-init # Enabled by default.
 -Wstatic-in-inline # Partially enabled by default.
 -Wstatic-inline-explicit-instantiation # Enabled by default.
 -Wstatic-local-in-inline # Enabled by default.
 -Wstatic-self-init # Enabled by default.
 -Wstdlibcxx-not-found # Enabled by default.
--Wstrict-aliasing # DUMMY switch
--Wstrict-aliasing=0 # DUMMY switch
--Wstrict-aliasing=1 # DUMMY switch
--Wstrict-aliasing=2 # DUMMY switch
--Wstrict-overflow # DUMMY switch
--Wstrict-overflow=0 # DUMMY switch
--Wstrict-overflow=1 # DUMMY switch
--Wstrict-overflow=2 # DUMMY switch
--Wstrict-overflow=3 # DUMMY switch
--Wstrict-overflow=4 # DUMMY switch
--Wstrict-overflow=5 # DUMMY switch
+-Wstrict-aliasing # IGNORED switch
+-Wstrict-aliasing=0 # IGNORED switch
+-Wstrict-aliasing=1 # IGNORED switch
+-Wstrict-aliasing=2 # IGNORED switch
+-Wstrict-overflow # IGNORED switch
+-Wstrict-overflow=0 # IGNORED switch
+-Wstrict-overflow=1 # IGNORED switch
+-Wstrict-overflow=2 # IGNORED switch
+-Wstrict-overflow=3 # IGNORED switch
+-Wstrict-overflow=4 # IGNORED switch
+-Wstrict-overflow=5 # IGNORED switch
 -Wstrict-prototypes
 -Wstrict-selector-match
 -Wstring-compare # Enabled by default.
@@ -615,10 +615,10 @@
 -Wswift-newtype-attribute # Enabled by default.
 -Wswitch # Enabled by default.
 -Wswitch-bool # Enabled by default.
--Wswitch-default # DUMMY switch
+-Wswitch-default # IGNORED switch
 -Wswitch-enum
 -Wsync-fetch-and-nand-semantics-changed # Enabled by default.
--Wsynth # DUMMY switch
+-Wsynth # IGNORED switch
 -Wtautological-compare # Partially enabled by default.
 -Wtautological-constant-compare # Enabled by default.
 -Wtautological-constant-in-range-compare
@@ -639,7 +639,7 @@
 -Wthread-safety-reference
 -Wthread-safety-verbose
 -Wtrigraphs # Enabled by default.
--Wtype-limits # DUMMY switch
+-Wtype-limits # IGNORED switch
 -Wtype-safety # Enabled by default.
 -Wtypedef-redefinition # Enabled by default.
 -Wtypename-missing # Enabled by default.
@@ -686,7 +686,7 @@
 -Wunsupported-visibility # Enabled by default.
 -Wunusable-partial-specialization # Enabled by default.
 -Wunused # Partially enabled by default.
--Wunused-argument # DUMMY switch
+-Wunused-argument # IGNORED switch
 -Wunused-command-line-argument # Enabled by default.
 -Wunused-comparison # Enabled by default.
 -Wunused-const-variable
@@ -720,7 +720,7 @@
 -Wvla
 -Wvla-extension
 -Wvoid-ptr-dereference # Enabled by default.
--Wvolatile-register-var # DUMMY switch
+-Wvolatile-register-var # IGNORED switch
 -Wweak-template-vtables
 -Wweak-vtables
 -Wwritable-strings # Enabled by default.

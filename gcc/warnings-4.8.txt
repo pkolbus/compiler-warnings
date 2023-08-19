@@ -126,7 +126,7 @@
 #    -Wimplicit-int
 -Wimplicit-function-declaration
 -Wimplicit-int
--Wimport # DUMMY switch
+-Wimport # IGNORED switch
 -Winherited-variadic-ctor
 -Winit-self
 -Winline
@@ -222,7 +222,7 @@
 -Wuninitialized
 #    -Wmaybe-uninitialized
 -Wunknown-pragmas
--Wunreachable-code # DUMMY switch
+-Wunreachable-code # IGNORED switch
 -Wunsafe-loop-optimizations
 -Wunsuffixed-float-constants
 -Wunused

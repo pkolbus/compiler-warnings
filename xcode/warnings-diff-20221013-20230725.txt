@@ -1,7 +1,7 @@
 +-Wc++23-default-comp-relaxed-constexpr
 +-Wc++23-extensions # Enabled by default.
-+-Wc++26-extensions # DUMMY switch
-+-Wc++2c-extensions # DUMMY switch
++-Wc++26-extensions # IGNORED switch
++-Wc++2c-extensions # IGNORED switch
 --Wc2x-extensions # Enabled by default.
 +-Wc2x-extensions # Partially enabled by default.
 +-Wcast-function-type-strict
@@ -18,7 +18,7 @@
 +-Wexperimental-header-units # Enabled by default.
 --Wexport-unnamed # Enabled by default.
 --Wexport-using-directive # Enabled by default.
-+-Wexport-unnamed # DUMMY switch
++-Wexport-unnamed # IGNORED switch
 +-Wgeneric-type-extension
 --Wgnu-empty-initializer
 +-Wgnu-offsetof-extensions
@@ -37,10 +37,10 @@
 --Wpre-c++2b-compat-pedantic
 +-Wpre-c++23-compat
 +-Wpre-c++23-compat-pedantic
-+-Wpre-c++26-compat # DUMMY switch
-+-Wpre-c++26-compat-pedantic # DUMMY switch
-+-Wpre-c++2c-compat # DUMMY switch
-+-Wpre-c++2c-compat-pedantic # DUMMY switch
++-Wpre-c++26-compat # IGNORED switch
++-Wpre-c++26-compat-pedantic # IGNORED switch
++-Wpre-c++2c-compat # IGNORED switch
++-Wpre-c++2c-compat-pedantic # IGNORED switch
 +-Wread-modules-implicitly # Enabled by default.
 --Wreserved-identifier
 +-Wreserved-identifier # Partially enabled by default.

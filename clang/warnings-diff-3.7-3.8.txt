@@ -8,7 +8,7 @@
 +-Wdeprecated-attributes # Enabled by default.
 +-Wdouble-promotion
 --Wfuture-compat # Enabled by default.
-+-Wfuture-compat # DUMMY switch
++-Wfuture-compat # IGNORED switch
 +-Wgnu-auto-type
 +-Wgnu-include-next
 +-Winclude-next-absolute-path # Enabled by default.

@@ -8,10 +8,10 @@
 +-Wc++1z-compat-mangling # Enabled by default.
 --Wcoreturn-without-coawait # Enabled by default.
 +-Wdeprecated-dynamic-exception-spec
---Wdiv-by-zero # DUMMY switch
+--Wdiv-by-zero # IGNORED switch
 +-Wdiv-by-zero # Enabled by default.
 +-Wduplicate-protocol # Enabled by default.
---Weffc++ # DUMMY switch
+--Weffc++ # IGNORED switch
 +-Wdynamic-exception-spec # Partially enabled by default.
 +-Weffc++
 --Wexpansion-to-defined # Partially enabled by default.
@@ -32,7 +32,7 @@
 +-Wshadow # Partially enabled by default.
 +-Wshadow-all # Partially enabled by default.
 +-Wsigned-enum-bitfield
---Wstrict-prototypes # DUMMY switch
+--Wstrict-prototypes # IGNORED switch
 +-Wstrict-prototypes
 +-Wunsupported-availability-guard # Enabled by default.
 +-Wunusable-partial-specialization # Enabled by default.

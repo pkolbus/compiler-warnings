@@ -18,7 +18,7 @@
 +-Wformat-type-confusion
 +-Wgnu-inline-cpp-without-extern # Enabled by default.
 +-Whip-only # Enabled by default.
---Wimplicit-int-float-conversion # DUMMY switch
+--Wimplicit-int-float-conversion # IGNORED switch
 +-Wimplicit-int-float-conversion # Partially enabled by default.
 +-Wincomplete-setjmp-declaration # Enabled by default.
 +-Wint-in-bool-context
