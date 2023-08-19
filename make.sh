@@ -70,6 +70,8 @@ set -e
 
 DOCKER_IMAGE_TAG="pkolbus/compiler-warnings"
 
+SCRIPT_PATH="$(realpath "$(dirname "$0")")"
+
 #
 # Test Docker availability
 #
@@ -90,7 +92,7 @@ run_in_docker()
     ${DOCKER} container run -it --rm \
         --user "$(id -u)":"$(id -g)" \
         --network host \
-        --volume "${PWD}:${PWD}" \
+        --volume "${SCRIPT_PATH}:${SCRIPT_PATH}" \
         --workdir "${PWD}" \
         ${DOCKER_IMAGE_TAG} \
         "$@"
@@ -112,12 +114,12 @@ run_in_virtualenv()
 {
     cmd="$1"
     shift
-    run_in_docker ".venv/bin/${cmd}" "$@"
+    run_in_docker "${SCRIPT_PATH}/.venv/bin/${cmd}" "$@"
 }
 
 build_virtualenv()
 {
-    run_in_docker virtualenv -p python3 .venv
+    run_in_docker virtualenv -p python3 "${SCRIPT_PATH}/.venv"
     run_in_virtualenv pip install -q --no-cache-dir -r parsers/requirements.txt
 }
 
@@ -127,11 +129,13 @@ build_virtualenv
 if [ ${BUILD_REQUIREMENTS} -eq 1 ]; then
     for _ in $(seq 2); do
         echo "Compiling requirements.in"
+        pushd parsers
         run_in_virtualenv pip-compile \
             --quiet \
             --upgrade \
             --cache-dir /tmp/pip-tools-cache \
-            parsers/requirements.in
+            requirements.in
+        popd
 
         # Rebuild the virtualenv in case requirements changed.
         build_virtualenv
