@@ -167,7 +167,6 @@
 #    -Wclass-memaccess
 #    -Wcomment
 #    -Wdangling-pointer=2
-#    -Wdangling-reference
 #    -Wdelete-non-virtual-dtor
 #    -Wduplicate-decl-specifier
 #    -Wenum-compare
@@ -285,6 +284,7 @@
 #    -Wabsolute-value
 #    -Wcast-function-type
 #    -Wclobbered
+#    -Wdangling-reference
 #    -Wdeprecated-copy
 #    -Wempty-body
 #    -Wenum-conversion

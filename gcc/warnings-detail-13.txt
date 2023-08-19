@@ -333,8 +333,6 @@
 #         Warn about possibly nested block comments, and C++ comments spanning more than one physical line.
 #    -Wdangling-pointer=2
 #         Warn for uses of pointers to auto variables whose lifetime has ended.
-#    -Wdangling-reference
-#         Warn when a reference is bound to a temporary whose lifetime has ended.
 #    -Wdelete-non-virtual-dtor
 #         Warn about deleting polymorphic objects with non-virtual destructors.
 #    -Wduplicate-decl-specifier
@@ -569,6 +567,8 @@
 #         Warn about casts between incompatible function types.
 #    -Wclobbered
 #         Warn about variables that might be changed by \"longjmp\" or \"vfork\".
+#    -Wdangling-reference
+#         Warn when a reference is bound to a temporary whose lifetime has ended.
 #    -Wdeprecated-copy
 #         Mark implicitly-declared copy operations as deprecated if the class has a user-provided copy operation.
 #    -Wempty-body
