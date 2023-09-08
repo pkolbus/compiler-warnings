@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements.in
 #
-antlr4-python3-runtime==4.13.0
+antlr4-python3-runtime==4.13.1
     # via -r requirements.in
 attrs==23.1.0
     # via
@@ -14,7 +14,7 @@ bandit==1.7.5
     # via flake8-bandit
 black==23.7.0
     # via -r requirements.in
-build==0.10.0
+build==1.0.3
     # via pip-tools
 click==8.1.7
     # via
@@ -68,7 +68,7 @@ flake8-variables-names==0.0.6
     # via -r requirements.in
 gitdb==4.0.10
     # via gitpython
-gitpython==3.1.32
+gitpython==3.1.35
     # via
     #   -r requirements.in
     #   bandit
@@ -132,7 +132,7 @@ tokenize-rt==5.2.0
     # via pyupgrade
 typing-extensions==4.7.1
     # via mypy
-wheel==0.41.1
+wheel==0.41.2
     # via pip-tools
 
 # The following packages are considered to be unsafe in a requirements file:
