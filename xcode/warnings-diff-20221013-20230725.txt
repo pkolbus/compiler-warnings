@@ -21,6 +21,7 @@
 +-Wexport-unnamed # IGNORED switch
 +-Wgeneric-type-extension
 --Wgnu-empty-initializer
++-Wgnu-empty-initializer # IGNORED switch
 +-Wgnu-offsetof-extensions
 +-Whip-omp-target-directives # Enabled by default.
 +-Wincompatible-function-pointer-types-strict

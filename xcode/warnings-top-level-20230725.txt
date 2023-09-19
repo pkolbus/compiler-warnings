@@ -1093,6 +1093,7 @@
 #   -Wredeclared-class-member
 #   -Wvla-extension
 #   -Wzero-length-array
+-Wgnu-empty-initializer # IGNORED switch
 -Wheader-hygiene
 -Widiomatic-parentheses
 -Wimplicit-fallthrough

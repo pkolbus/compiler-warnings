@@ -926,6 +926,7 @@
 -Wgnu-compound-literal-initializer
 -Wgnu-conditional-omitted-operand
 -Wgnu-designator
+-Wgnu-empty-initializer # IGNORED switch
 -Wgnu-empty-struct
 -Wgnu-flexible-array-initializer
 -Wgnu-flexible-array-union-member

@@ -3830,6 +3830,7 @@
 #         variable length arrays are a C99 feature
 #   -Wzero-length-array
 #         zero size arrays are an extension
+-Wgnu-empty-initializer # IGNORED switch
 -Wheader-hygiene
 #     using namespace directive in global context in header
 -Widiomatic-parentheses
