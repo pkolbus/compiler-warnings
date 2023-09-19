@@ -1,0 +1,43 @@
++-Wc++23-default-comp-relaxed-constexpr
++-Wc++23-extensions # Enabled by default.
++-Wc++26-extensions # IGNORED switch
++-Wc++2c-extensions # IGNORED switch
+--Wcoro-non-aligned-allocation-funciton # Enabled by default.
++-Wcoro-non-aligned-allocation-function # Enabled by default.
+--Wdeprecated-experimental-coroutine # Enabled by default.
+--Wdeprecated-module-ts # Enabled by default.
++-Wdeprecated-literal-operator
++-Wdeprecated-redundant-constexpr-static-def
+--Wdeprecated-this-capture
++-Wdeprecated-this-capture # Enabled by default.
++-Wdxil-validation # Enabled by default.
++-Weager-load-cxx-named-modules # Enabled by default.
++-Wexperimental-header-units # Enabled by default.
+--Wexport-unnamed # Enabled by default.
+--Wexport-using-directive # Enabled by default.
++-Wexport-unnamed # IGNORED switch
++-Wgeneric-type-extension
+--Wgnu-empty-initializer
++-Wgnu-empty-initializer # IGNORED switch
++-Whip-omp-target-directives # Enabled by default.
+--Winvalid-or-nonexistent-directory # Partially enabled by default.
++-Winvalid-or-nonexistent-directory
++-Winvalid-static-assert-message # Enabled by default.
++-Winvalid-unevaluated-string # Enabled by default.
++-Wmicrosoft-init-from-predefined # Enabled by default.
++-Wmissing-multilib # Enabled by default.
++-Wmulti-gpu # Enabled by default.
++-Wobjc-duplicate-category-definition # Enabled by default.
+--Wpre-c++2b-compat
+--Wpre-c++2b-compat-pedantic
++-Wpre-c++23-compat
++-Wpre-c++23-compat-pedantic
++-Wpre-c++26-compat # IGNORED switch
++-Wpre-c++26-compat-pedantic # IGNORED switch
++-Wpre-c++2c-compat # IGNORED switch
++-Wpre-c++2c-compat-pedantic # IGNORED switch
++-Wread-modules-implicitly # Enabled by default.
+--Wreserved-identifier
++-Wreserved-identifier # Partially enabled by default.
++-Wreserved-module-identifier # Enabled by default.
++-Wsync-alignment # Enabled by default.
