@@ -8,6 +8,11 @@ all warnings or all remarks respectively. Clang documentation also provides a
 [reference](https://clang.llvm.org/docs/DiagnosticsReference.html).
 
 
+* clang 18 [all](warnings-18.txt)
+  • [top level](warnings-top-level-18.txt)
+  • [messages](warnings-messages-18.txt)
+  • [unique](warnings-unique-18.txt)
+  • [diff](warnings-diff-17-18.txt)
 * clang 17 [all](warnings-17.txt)
   • [top level](warnings-top-level-17.txt)
   • [messages](warnings-messages-17.txt)
