@@ -1,4 +1,5 @@
 """Common functions for the compiler options parsers."""
+
 import argparse
 
 
