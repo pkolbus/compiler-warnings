@@ -1,0 +1,26 @@
++-Walloc-size
++-Wanalyzer-infinite-loop # Enabled by default.
++-Wanalyzer-overlapping-buffers # Enabled by default.
++-Wanalyzer-symbol-too-complex
++-Wanalyzer-undefined-behavior-strtok # Enabled by default.
++-Wc++26-extensions # Enabled by default. Applies to C++,ObjC++
+--Wc11-c2x-compat # Enabled by default. Applies to C,ObjC
++-Wc11-c23-compat # Enabled by default. Applies to C,ObjC
++-Wc11-c2x-compat # Applies to C,ObjC
++-Wcalloc-transposed-args
++-Wcast-user-defined # Enabled by default. Applies to C++,ObjC++
++-Wcompare-distinct-pointer-types # Enabled by default. Applies to C,ObjC
++-Wcoverage-too-many-conditions # Enabled by default.
++-Wdeclaration-missing-parameter-type # Enabled by default. Applies to C,ObjC
++-Welaborated-enum-base # Enabled by default. Applies to C++,ObjC++
++-Wflex-array-member-not-at-end # Applies to C,C++
++-Wglobal-module # Enabled by default. Applies to C++,ObjC++
++-Whardened # Enabled by default.
++-Wmissing-variable-declarations # Applies to C,ObjC
++-Wnrvo # Applies to C++,ObjC++
++-Wopenmp # Enabled by default.
++-Wreturn-mismatch # Enabled by default. Applies to C,ObjC
++-Wsuggest-attribute=returns_nonnull
++-Wtemplate-id-cdtor # Applies to C++,ObjC++
+--Wuseless-cast # Applies to C++,ObjC++
++-Wuseless-cast
