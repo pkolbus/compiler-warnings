@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Process an Apple LLVM (Xcode) git repository for diagnostic groups."""
 import os
+import re
 import shutil
 import sys
 
@@ -8,6 +9,8 @@ import git
 from process_clang_git import create_diffs, create_readme, parse_clang_info
 
 DIR = os.path.dirname(os.path.realpath(__file__))
+
+VERSION_RE = re.compile("[0-9]{8}")
 
 README_TEMPLATE = """
 # Apple clang (Xcode) diagnostic flags
@@ -55,6 +58,11 @@ def main() -> None:
         or ref.name.startswith("origin/stable/")
     )
     versions = [(branch.split("/")[-1], branch) for branch in branches]
+    versions = [
+        (version, branch)
+        for (version, branch) in versions
+        if VERSION_RE.fullmatch(version)
+    ]
     versions += [("NEXT", "origin/apple/main")]
 
     os.makedirs(target_dir, exist_ok=True)
