@@ -10,11 +10,11 @@ attrs==23.2.0
     # via
     #   flake8-bugbear
     #   flake8-mypy
-bandit==1.7.7
+bandit==1.7.8
     # via flake8-bandit
-black==24.3.0
+black==24.4.2
     # via -r requirements.in
-build==1.1.1
+build==1.2.1
     # via pip-tools
 click==8.1.7
     # via
@@ -26,7 +26,7 @@ darglint==1.8.1
     # via -r requirements.in
 dlint==0.14.1
     # via -r requirements.in
-docutils==0.20.1
+docutils==0.21.2
     # via restructuredtext-lint
 flake8==7.0.0
     # via
@@ -44,9 +44,9 @@ flake8==7.0.0
     #   flake8-rst-docstrings
 flake8-bandit==4.1.1
     # via -r requirements.in
-flake8-bugbear==24.2.6
+flake8-bugbear==24.4.26
     # via -r requirements.in
-flake8-builtins==2.2.0
+flake8-builtins==2.5.0
     # via -r requirements.in
 flake8-cognitive-complexity==0.1.0
     # via -r requirements.in
@@ -68,7 +68,7 @@ flake8-variables-names==0.0.6
     # via -r requirements.in
 gitdb==4.0.11
     # via gitpython
-gitpython==3.1.42
+gitpython==3.1.43
     # via -r requirements.in
 isort==5.13.2
     # via flake8-isort
@@ -82,13 +82,13 @@ mccabe==0.7.0
     # via flake8
 mdurl==0.1.2
     # via markdown-it-py
-mypy==1.8.0
+mypy==1.10.0
     # via flake8-mypy
 mypy-extensions==1.0.0
     # via
     #   black
     #   mypy
-packaging==23.2
+packaging==24.0
     # via
     #   black
     #   build
@@ -98,7 +98,7 @@ pbr==6.0.0
     # via stevedore
 pip-tools==7.4.1
     # via -r requirements.in
-platformdirs==4.2.0
+platformdirs==4.2.1
     # via black
 pycodestyle==2.11.1
     # via flake8
@@ -106,15 +106,15 @@ pydocstyle==6.3.0
     # via flake8-docstrings
 pyflakes==3.2.0
     # via flake8
-pygments==2.17.2
+pygments==2.18.0
     # via
     #   flake8-rst-docstrings
     #   rich
-pyproject-hooks==1.0.0
+pyproject-hooks==1.1.0
     # via
     #   build
     #   pip-tools
-pyupgrade==3.15.1
+pyupgrade==3.15.2
     # via -r requirements.in
 pyyaml==6.0.1
     # via bandit
@@ -130,9 +130,9 @@ stevedore==5.2.0
     # via bandit
 tokenize-rt==5.2.0
     # via pyupgrade
-typing-extensions==4.10.0
+typing-extensions==4.11.0
     # via mypy
-wheel==0.42.0
+wheel==0.43.0
     # via pip-tools
 
 # The following packages are considered to be unsafe in a requirements file:
