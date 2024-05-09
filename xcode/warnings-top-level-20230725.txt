@@ -273,6 +273,7 @@
 #   -Wexplicit-initialize-call
 #   -Wextern-initializer
 #   -Wextra-qualification
+#   -Wextractapi-misuse
 #   -Wfinal-dtor-non-final-class
 #   -Wfixed-point-overflow
 #   -Wflag-enum
@@ -520,6 +521,7 @@
 #       -Wunguarded-availability-new
 #   -Wpass-failed
 #   -Wpch-date-time
+#   -Wpch-vfs-diff
 #   -Wpedantic-macros
 #     -Wbuiltin-macro-redefined
 #     -Wdeprecated-pragma
@@ -1408,6 +1410,7 @@
 #   -Wunreachable-code-break
 #   -Wunreachable-code-return
 -Wunsafe-buffer-usage
+#   -Wunsafe-buffer-usage-in-container
 -Wunsupported-dll-base-class-template
 -Wunused-exception-parameter
 -Wunused-local-typedefs

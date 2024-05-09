@@ -827,6 +827,7 @@
 -Wextra-semi-stmt
 #   -Wempty-init-stmt
 -Wextra-tokens
+-Wextractapi-misuse
 -Wfinal-dtor-non-final-class
 -Wfinal-macro
 -Wfixed-enum-extension
@@ -1466,6 +1467,7 @@
 -Wpass-failed
 -Rpass-missed
 -Wpch-date-time
+-Wpch-vfs-diff
 -Wpedantic
 #   -Wbit-int-extension
 #   -Wc++11-extra-semi
@@ -1881,6 +1883,8 @@
 -Wunreachable-code-loop-increment
 -Wunreachable-code-return
 -Wunsafe-buffer-usage
+#   -Wunsafe-buffer-usage-in-container
+-Wunsafe-buffer-usage-in-container
 -Wunsequenced
 -Wunsupported-abi
 -Wunsupported-abs

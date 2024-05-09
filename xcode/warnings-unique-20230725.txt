@@ -307,6 +307,7 @@
 -Wextra-semi
 -Wextra-semi-stmt
 -Wextra-tokens # Enabled by default.
+-Wextractapi-misuse # Enabled by default.
 -Wfinal-dtor-non-final-class # Enabled by default.
 -Wfinal-macro # Enabled by default.
 -Wfixed-enum-extension
@@ -680,6 +681,7 @@
 -Wpass-failed # Enabled by default.
 -Rpass-missed
 -Wpch-date-time # Enabled by default.
+-Wpch-vfs-diff # Enabled by default.
 -Wpedantic
 -Wpedantic-core-features
 -Wpedantic-macros # Enabled by default.
@@ -932,6 +934,7 @@
 -Wunreachable-code-loop-increment
 -Wunreachable-code-return
 -Wunsafe-buffer-usage
+-Wunsafe-buffer-usage-in-container
 -Wunsequenced # Enabled by default.
 -Wunsupported-abi # Enabled by default.
 -Wunsupported-abs # Enabled by default.

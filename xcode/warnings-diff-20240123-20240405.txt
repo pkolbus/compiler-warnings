@@ -1,0 +1,22 @@
++-Walias-template-in-declaration-name # Enabled by default.
+--Wc++23-default-comp-relaxed-constexpr
++-Wc++23-attribute-extensions
++-Wcast-function-type-mismatch
++-Wextractapi-misuse # Enabled by default.
++-Wformat-signedness
++-Wfriend-enum # Enabled by default.
+--Wgnu-binary-literal
++-Wgnu-binary-literal # IGNORED switch
+--Wgnu-offsetof-extensions
++-Wgnu-offsetof-extensions # IGNORED switch
++-Whigher-precision-fp # Enabled by default.
++-Winstallapi-violation # Enabled by default.
++-Wmissing-designated-field-initializers
++-Wpch-vfs-diff # Enabled by default.
++-Wpre-c11-compat
++-Wpre-c11-compat-pedantic
++-Wreturn-mismatch # Enabled by default.
++-Wstrict-primary-template-shadow # Enabled by default.
++-Wtemplate-in-declaration-name # Enabled by default.
+--Wunsafe-buffer-usage-in-container # IGNORED switch
++-Wunsafe-buffer-usage-in-container

@@ -861,6 +861,8 @@
 #         'extern' variable has an initializer
 #   -Wextra-qualification
 #         extra qualification on member A
+#   -Wextractapi-misuse
+#         Missing symbol graph output directory, defaulting to working directory
 #   -Wfinal-dtor-non-final-class
 #         class with destructor marked '<final|sealed>' cannot be inherited from
 #   -Wfixed-point-overflow
@@ -1488,6 +1490,8 @@
 #         The text of this diagnostic is not controlled by Clang
 #   -Wpch-date-time
 #         <precompiled header|module> uses __DATE__ or __TIME__
+#   -Wpch-vfs-diff
+#         PCH was compiled with different VFS overlay files than are currently in use
 #   -Wpedantic-macros
 #     -Wbuiltin-macro-redefined
 #           redefining builtin macro
@@ -4654,8 +4658,10 @@
 #   -Wunreachable-code-return
 #         'return' will never be executed
 -Wunsafe-buffer-usage
-#     <unsafe pointer operation|unsafe pointer arithmetic|unsafe buffer access|function introduces unsafe buffer manipulation>
+#     <unsafe pointer operation|unsafe pointer arithmetic|unsafe buffer access|function introduces unsafe buffer manipulation|unsafe invocation of span::data>
 #     A is an <unsafe pointer used for buffer access|unsafe buffer that does not perform bounds checks>
+#   -Wunsafe-buffer-usage-in-container
+#         the two-parameter std::span construction is unsafe as it can introduce mismatch between buffer size and the bound information
 -Wunsupported-dll-base-class-template
 #     propagating dll attribute to <already instantiated|explicitly specialized> base class template without dll attribute is not supported
 -Wunused-exception-parameter

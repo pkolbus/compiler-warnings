@@ -1,0 +1,60 @@
++-Wandroid-unversioned-fallback # Enabled by default.
++-Wauto-decl-extensions
++-Wc++11-narrowing-const-reference # Enabled by default.
+--Wc++26-extensions # IGNORED switch
++-Wc++23-lambda-attributes # Enabled by default.
++-Wc++26-extensions # Enabled by default.
+--Wc++2c-extensions # IGNORED switch
++-Wc++2c-extensions # Enabled by default.
++-Wc23-compat
++-Wc23-extensions # Partially enabled by default.
++-Wdelayed-template-parsing-in-cxx20 # Enabled by default.
++-Wdeprecated-module-dot-map # Enabled by default.
++-Wexcessive-regsave # Enabled by default.
+--Wextractapi-misuse # Enabled by default.
++-Wformat-overflow # Enabled by default.
++-Wformat-overflow-non-kprintf # Enabled by default.
++-Wformat-truncation # Enabled by default.
++-Wformat-truncation-non-kprintf # Enabled by default.
++-Wignored-gch # Enabled by default.
++-Winclude-angled-in-module-purview # Enabled by default.
++-Wincompatible-ms-pragma-section # Enabled by default.
+--Winterrupt-service-routine # Enabled by default.
++-Winvalid-feature-combination # Enabled by default.
++-Wknl-knm-isa-support-removed # Enabled by default.
++-Wmicrosoft-string-literal-from-predefined # Enabled by default.
++-Wnan-infinity-disabled # Enabled by default.
++-Wopenacc # Partially enabled by default.
++-Wopenmp-extensions # Enabled by default.
++-Wopenmp-target-exception # Enabled by default.
+--Woverriding-t-option # Enabled by default.
++-Woverriding-option # Enabled by default.
++-Wpadded-bitfield
+--Wpch-vfs-diff # Enabled by default.
+--Wpre-c++26-compat # IGNORED switch
+--Wpre-c++26-compat-pedantic # IGNORED switch
+--Wpre-c++2c-compat # IGNORED switch
+--Wpre-c++2c-compat-pedantic # IGNORED switch
++-Wpre-c++26-compat
++-Wpre-c++26-compat-pedantic
++-Wpre-c++2c-compat
++-Wpre-c++2c-compat-pedantic
++-Wpre-c23-compat
++-Wpre-c23-compat-pedantic
+--Wread-modules-implicitly # Enabled by default.
++-Wsource-uses-openacc # Partially enabled by default.
+--Wswitch-default # IGNORED switch
++-Wswitch-default
++-Wtautological-negation-compare
++-Wthread-safety-reference-return
++-Wundefined-arm-streaming # Enabled by default.
++-Wundefined-arm-za # Enabled by default.
++-Wundefined-arm-zt0 # Enabled by default.
+--Wunsafe-buffer-usage-in-container
++-Wunsafe-buffer-usage-in-container # IGNORED switch
+--Wvla
+--Wvla-extension
++-Wvla # Partially enabled by default.
++-Wvla-cxx-extension # Partially enabled by default.
++-Wvla-extension # Partially enabled by default.
++-Wvla-extension-static-assert # Partially enabled by default.

@@ -19,6 +19,7 @@
 --Wexport-unnamed # Enabled by default.
 --Wexport-using-directive # Enabled by default.
 +-Wexport-unnamed # IGNORED switch
++-Wextractapi-misuse # Enabled by default.
 +-Wgeneric-type-extension
 --Wgnu-empty-initializer
 +-Wgnu-empty-initializer # IGNORED switch
@@ -34,6 +35,7 @@
 +-Wmissing-multilib # Enabled by default.
 +-Wmulti-gpu # Enabled by default.
 +-Wpacked-non-pod
++-Wpch-vfs-diff # Enabled by default.
 --Wpre-c++2b-compat
 --Wpre-c++2b-compat-pedantic
 +-Wpre-c++23-compat
@@ -50,3 +52,4 @@
 +-Rsloc-usage # Enabled by default.
 +-Wsync-alignment # Enabled by default.
 +-Wunsafe-buffer-usage
++-Wunsafe-buffer-usage-in-container
