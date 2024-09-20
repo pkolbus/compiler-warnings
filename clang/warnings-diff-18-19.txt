@@ -1,0 +1,56 @@
++-Waarch64-sme-attributes # Partially enabled by default.
++-Walias-template-in-declaration-name # Enabled by default.
++-Warm-interrupt-vfp-clobber # Enabled by default.
++-Wbounds-safety-counted-by-elt-type-unknown-size # Enabled by default.
+--Wc++23-default-comp-relaxed-constexpr
++-Wc++23-attribute-extensions
++-Wc++23-compat
+--Wc++26-extensions # Enabled by default.
++-Wc++26-extensions # Partially enabled by default.
+--Wc++2c-extensions # Enabled by default.
++-Wc++2c-compat # Enabled by default.
++-Wc++2c-extensions # Partially enabled by default.
++-Wc2y-extensions
++-Wcast-function-type-mismatch
+--Wdangling # Enabled by default.
++-Wdangling # Partially enabled by default.
++-Wdangling-assignment # Enabled by default.
++-Wdangling-assignment-gsl
++-Wdeprecated-no-relaxed-template-template-args # Enabled by default.
++-Wdeprecated-ofast # Enabled by default.
+--Wdeprecated-static-analyzer-flag # Enabled by default.
++-Wexplicit-specialization-storage-class # Enabled by default.
++-Wextractapi-misuse # Enabled by default.
++-Wformat-signedness
++-Wfriend-enum # Enabled by default.
++-Wfunction-effects # Enabled by default.
+--Wgeneric-type-extension
+--Wgnu-binary-literal
++-Wgnu-binary-literal # IGNORED switch
+--Wgnu-offsetof-extensions
++-Wgnu-offsetof-extensions # IGNORED switch
++-Whigher-precision-fp # Enabled by default.
++-Whlsl-availability # Enabled by default.
++-Winstallapi-violation # Enabled by default.
+--Wknl-knm-isa-support-removed # Enabled by default.
++-Wmissing-designated-field-initializers
+--Wmissing-include-dirs # IGNORED switch
++-Wmissing-include-dirs
++-Wmissing-template-arg-list-after-template-kw # Enabled by default.
++-Wmix-packoffset # Enabled by default.
++-Wnvcc-compat
++-Wopenacc-deprecated-clause-alias # Enabled by default.
++-Wopenacc-self-if-potential-conflict # Enabled by default.
++-Wpch-vfs-diff # Enabled by default.
++-Wpre-c11-compat
++-Wpre-c11-compat-pedantic
++-Wpre-c2y-compat
++-Wpre-c2y-compat-pedantic
++-Wptrauth-null-pointers # Enabled by default.
++-Wreturn-mismatch # Enabled by default.
++-Wstrict-primary-template-shadow # Enabled by default.
++-Wtemplate-in-declaration-name # Enabled by default.
++-Wtentative-definition-array # Enabled by default.
+--Wundefined-arm-streaming # Enabled by default.
+--Wunsafe-buffer-usage-in-container # IGNORED switch
++-Wunsafe-buffer-usage-in-container
