@@ -1,0 +1,19 @@
++-Waarch64-sme-attributes
++-Wbounds-safety-counted-by-elt-type-unknown-size # Enabled by default.
+--Wc++26-extensions # Enabled by default.
++-Wc++26-extensions # Partially enabled by default.
+--Wc++2c-extensions # Enabled by default.
++-Wc++2c-extensions # Partially enabled by default.
++-Wdeprecated-no-relaxed-template-template-args # Enabled by default.
+--Wdeprecated-static-analyzer-flag # Enabled by default.
++-Whlsl-availability # Enabled by default.
+--Wknl-knm-isa-support-removed # Enabled by default.
+--Wmissing-include-dirs # IGNORED switch
++-Wmissing-include-dirs
++-Wmissing-template-arg-list-after-template-kw # Enabled by default.
++-Wmix-packoffset # Enabled by default.
++-Wnvcc-compat
++-Wopenacc-deprecated-clause-alias # Enabled by default.
++-Wopenacc-self-if-potential-conflict # Enabled by default.
++-Wtentative-definition-array # Enabled by default.
+--Wundefined-arm-streaming # Enabled by default.

@@ -1,0 +1,16 @@
+--Waarch64-sme-attributes
++-Waarch64-sme-attributes # Partially enabled by default.
++-Warm-interrupt-vfp-clobber # Enabled by default.
++-Wc++23-compat
++-Wc++2c-compat # Enabled by default.
++-Wc2y-extensions
+--Wdangling # Enabled by default.
++-Wdangling # Partially enabled by default.
++-Wdangling-assignment # Enabled by default.
++-Wdangling-assignment-gsl
++-Wdeprecated-ofast # Enabled by default.
++-Wexplicit-specialization-storage-class # Enabled by default.
++-Wfunction-effects # Enabled by default.
+--Wgeneric-type-extension
++-Wpre-c2y-compat
++-Wpre-c2y-compat-pedantic
