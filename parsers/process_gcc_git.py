@@ -84,9 +84,7 @@ def main() -> None:
 
     # Parse all release branches
     branches = [
-        ref.name
-        for ref in repo.refs  # type: ignore[attr-defined]
-        if ref.name.startswith("origin/releases/gcc-")
+        ref.name for ref in repo.refs if ref.name.startswith("origin/releases/gcc-")
     ]
 
     # Remove everything up to the last / as well as the "gcc-"
