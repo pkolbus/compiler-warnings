@@ -80,7 +80,26 @@
 -Wbool-conversion # Enabled by default.
 -Wbool-conversions # Enabled by default.
 -Wbool-operation
+-Wbounds-attributes-cxx-experimental-ignored # Enabled by default.
+-Wbounds-attributes-extern-array-count # Enabled by default.
+-Wbounds-attributes-implicit-conversion-single-to-explicit-indexable # Enabled by default.
+-Wbounds-attributes-init-list-side-effect # Enabled by default.
+-Wbounds-attributes-objc-experimental-ignored # Enabled by default.
+-Wbounds-attributes-redundant # Enabled by default.
+-Wbounds-safety-adoption-mode-ignored # Enabled by default.
+-Wbounds-safety-conversion-single-to-implicit-indexable # Enabled by default.
+-Wbounds-safety-conversion-single-to-implicit-indexable-then-convert-at-call-site # Enabled by default.
+-Wbounds-safety-conversion-single-to-implicit-indexable-then-convert-to-larger-type # Enabled by default.
 -Wbounds-safety-counted-by-elt-type-unknown-size # Enabled by default.
+-Wbounds-safety-externally-counted-ptr-arith-constant-count # Enabled by default.
+-Wbounds-safety-incomplete-array # Enabled by default.
+-Wbounds-safety-init-list # Enabled by default.
+-Wbounds-safety-init-list-partial-null # Enabled by default.
+-Wbounds-safety-nullability # Enabled by default.
+-Wbounds-safety-relaxed-system-headers-ignore # Enabled by default.
+-Wbounds-safety-single-to-count # Enabled by default.
+-Wbounds-safety-single-to-indexable-bounds-truncated # Enabled by default.
+-Wbounds-safety-strict-terminated-by-cast # Enabled by default.
 -Wbraced-scalar-init # Enabled by default.
 -Wbranch-protection # Enabled by default.
 -Wbridge-cast # Enabled by default.
@@ -366,7 +385,7 @@
 -Wfree-nonheap-object # Enabled by default.
 -Wfriend-enum # Enabled by default.
 -Wfunction-def-in-objc-container # Enabled by default.
--Wfunction-effects # Enabled by default.
+-Wfunction-effects
 -Wfunction-multiversion # Enabled by default.
 -Wfuse-ld-path
 -Wfuture-attribute-extensions
@@ -730,6 +749,7 @@
 -Wpedantic
 -Wpedantic-core-features
 -Wpedantic-macros # Enabled by default.
+-Wperf-constraint-implies-noexcept
 -Wpessimizing-move
 -Wpointer-arith # Partially enabled by default.
 -Wpointer-bool-conversion # Enabled by default.
@@ -994,6 +1014,7 @@
 -Wunreachable-code-return
 -Wunsafe-buffer-usage
 -Wunsafe-buffer-usage-in-container
+-Wunsafe-buffer-usage-in-libc-call
 -Wunsequenced # Enabled by default.
 -Wunsupported-abi # Enabled by default.
 -Wunsupported-abs # Enabled by default.
@@ -1035,6 +1056,7 @@
 -Wuser-defined-literals # Enabled by default.
 -Wuser-defined-warnings # Enabled by default.
 -Wvarargs # Enabled by default.
+-Wvariadic-macro-arguments-omitted
 -Wvariadic-macros # Partially enabled by default.
 -Wvec-elem-size # Enabled by default.
 -Wvector-conversion

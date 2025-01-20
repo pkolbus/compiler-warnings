@@ -139,6 +139,7 @@
 #     -Woverloaded-shift-op-parentheses
 #     -Wparentheses-equality
 #     -Wshift-op-parentheses
+#   -Wperf-constraint-implies-noexcept
 #   -Wswitch
 #   -Wswitch-bool
 #   -Wvla-cxx-extension
@@ -229,7 +230,26 @@
 #     -Wundefined-bool-conversion
 -Wbool-operation
 #   -Wbitwise-instead-of-logical
+-Wbounds-attributes-cxx-experimental-ignored
+-Wbounds-attributes-extern-array-count
+-Wbounds-attributes-implicit-conversion-single-to-explicit-indexable
+-Wbounds-attributes-init-list-side-effect
+-Wbounds-attributes-objc-experimental-ignored
+-Wbounds-attributes-redundant
+-Wbounds-safety-adoption-mode-ignored
+-Wbounds-safety-conversion-single-to-implicit-indexable
+-Wbounds-safety-conversion-single-to-implicit-indexable-then-convert-at-call-site
+-Wbounds-safety-conversion-single-to-implicit-indexable-then-convert-to-larger-type
 -Wbounds-safety-counted-by-elt-type-unknown-size
+-Wbounds-safety-externally-counted-ptr-arith-constant-count
+-Wbounds-safety-incomplete-array
+-Wbounds-safety-init-list
+-Wbounds-safety-init-list-partial-null
+-Wbounds-safety-nullability
+-Wbounds-safety-relaxed-system-headers-ignore
+-Wbounds-safety-single-to-count
+-Wbounds-safety-single-to-indexable-bounds-truncated
+-Wbounds-safety-strict-terminated-by-cast
 -Wbraced-scalar-init
 -Wbranch-protection
 -Wbridge-cast
@@ -383,6 +403,7 @@
 -Wc++20-extensions
 #   -Wc++20-attribute-extensions
 #   -Wc++20-designator
+#   -Wvariadic-macro-arguments-omitted
 -Wc++23-attribute-extensions
 -Wc++23-compat
 #   -Wpre-c++26-compat
@@ -407,6 +428,7 @@
 #   -Wc++20-extensions
 #     -Wc++20-attribute-extensions
 #     -Wc++20-designator
+#     -Wvariadic-macro-arguments-omitted
 -Wc++2b-extensions
 #   -Wc++23-extensions
 #     -Wc++23-lambda-attributes
@@ -468,10 +490,12 @@
 -Wc11-extensions
 -Wc23-compat
 -Wc23-extensions
+#   -Wvariadic-macro-arguments-omitted
 -Wc2x-compat
 #   -Wc23-compat
 -Wc2x-extensions
 #   -Wc23-extensions
+#     -Wvariadic-macro-arguments-omitted
 -Wc2y-extensions
 -Wc99-compat
 -Wc99-designator
@@ -599,6 +623,7 @@
 #       -Woverloaded-shift-op-parentheses
 #       -Wparentheses-equality
 #       -Wshift-op-parentheses
+#     -Wperf-constraint-implies-noexcept
 #     -Wswitch
 #     -Wswitch-bool
 #     -Wvla-cxx-extension
@@ -1015,6 +1040,7 @@
 #   -Wgnu-variable-sized-type-not-at-end
 #   -Wgnu-zero-line-directive
 #   -Wgnu-zero-variadic-macro-arguments
+#     -Wvariadic-macro-arguments-omitted
 #   -Wredeclared-class-member
 #   -Wvla-extension
 #     -Wvla-cxx-extension
@@ -1053,6 +1079,7 @@
 -Wgnu-variable-sized-type-not-at-end
 -Wgnu-zero-line-directive
 -Wgnu-zero-variadic-macro-arguments
+#   -Wvariadic-macro-arguments-omitted
 -Wgpu-maybe-wrong-side
 -Wheader-guard
 -Wheader-hygiene
@@ -1643,7 +1670,6 @@
 #     -Wgnu-statement-expression-from-macro-expansion
 #   -Wgnu-union-cast
 #   -Wgnu-zero-line-directive
-#   -Wgnu-zero-variadic-macro-arguments
 #   -Wimport-preprocessor-directive-pedantic
 #   -Winvalid-utf8
 #   -Wkeyword-macro
@@ -1671,6 +1697,7 @@
 #   -Wfinal-macro
 #   -Wmacro-redefined
 #   -Wrestrict-expansion
+-Wperf-constraint-implies-noexcept
 -Wpessimizing-move
 -Wpointer-arith
 #   -Wgnu-pointer-arith
@@ -1728,13 +1755,17 @@
 -Wpre-c11-compat-pedantic
 #   -Wpre-c11-compat
 -Wpre-c23-compat
+#   -Wvariadic-macro-arguments-omitted
 -Wpre-c23-compat-pedantic
 #   -Wpre-c23-compat
+#     -Wvariadic-macro-arguments-omitted
 -Wpre-c2x-compat
 #   -Wpre-c23-compat
+#     -Wvariadic-macro-arguments-omitted
 -Wpre-c2x-compat-pedantic
 #   -Wpre-c23-compat-pedantic
 #     -Wpre-c23-compat
+#       -Wvariadic-macro-arguments-omitted
 -Wpre-c2y-compat
 -Wpre-c2y-compat-pedantic
 #   -Wpre-c2y-compat
@@ -2040,7 +2071,9 @@
 -Wunreachable-code-return
 -Wunsafe-buffer-usage
 #   -Wunsafe-buffer-usage-in-container
+#   -Wunsafe-buffer-usage-in-libc-call
 -Wunsafe-buffer-usage-in-container
+-Wunsafe-buffer-usage-in-libc-call
 -Wunsequenced
 -Wunsupported-abi
 -Wunsupported-abs
@@ -2107,6 +2140,7 @@
 -Wuser-defined-literals
 -Wuser-defined-warnings
 -Wvarargs
+-Wvariadic-macro-arguments-omitted
 -Wvariadic-macros
 -Wvec-elem-size
 -Wvector-conversion

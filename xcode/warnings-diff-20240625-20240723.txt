@@ -1,6 +1,25 @@
 --Waarch64-sme-attributes
 +-Waarch64-sme-attributes # Partially enabled by default.
 +-Warm-interrupt-vfp-clobber # Enabled by default.
++-Wbounds-attributes-cxx-experimental-ignored # Enabled by default.
++-Wbounds-attributes-extern-array-count # Enabled by default.
++-Wbounds-attributes-implicit-conversion-single-to-explicit-indexable # Enabled by default.
++-Wbounds-attributes-init-list-side-effect # Enabled by default.
++-Wbounds-attributes-objc-experimental-ignored # Enabled by default.
++-Wbounds-attributes-redundant # Enabled by default.
++-Wbounds-safety-adoption-mode-ignored # Enabled by default.
++-Wbounds-safety-conversion-single-to-implicit-indexable # Enabled by default.
++-Wbounds-safety-conversion-single-to-implicit-indexable-then-convert-at-call-site # Enabled by default.
++-Wbounds-safety-conversion-single-to-implicit-indexable-then-convert-to-larger-type # Enabled by default.
++-Wbounds-safety-externally-counted-ptr-arith-constant-count # Enabled by default.
++-Wbounds-safety-incomplete-array # Enabled by default.
++-Wbounds-safety-init-list # Enabled by default.
++-Wbounds-safety-init-list-partial-null # Enabled by default.
++-Wbounds-safety-nullability # Enabled by default.
++-Wbounds-safety-relaxed-system-headers-ignore # Enabled by default.
++-Wbounds-safety-single-to-count # Enabled by default.
++-Wbounds-safety-single-to-indexable-bounds-truncated # Enabled by default.
++-Wbounds-safety-strict-terminated-by-cast # Enabled by default.
 +-Wc++23-compat
 +-Wc++2c-compat # Enabled by default.
 +-Wc2y-extensions
@@ -10,7 +29,10 @@
 +-Wdangling-assignment-gsl
 +-Wdeprecated-ofast # Enabled by default.
 +-Wexplicit-specialization-storage-class # Enabled by default.
-+-Wfunction-effects # Enabled by default.
++-Wfunction-effects
 --Wgeneric-type-extension
++-Wperf-constraint-implies-noexcept
 +-Wpre-c2y-compat
 +-Wpre-c2y-compat-pedantic
++-Wunsafe-buffer-usage-in-libc-call
++-Wvariadic-macro-arguments-omitted

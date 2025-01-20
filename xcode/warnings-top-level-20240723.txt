@@ -66,7 +66,26 @@
 #     -Wbool-conversion
 #       -Wpointer-bool-conversion
 #       -Wundefined-bool-conversion
+#   -Wbounds-attributes-cxx-experimental-ignored
+#   -Wbounds-attributes-extern-array-count
+#   -Wbounds-attributes-implicit-conversion-single-to-explicit-indexable
+#   -Wbounds-attributes-init-list-side-effect
+#   -Wbounds-attributes-objc-experimental-ignored
+#   -Wbounds-attributes-redundant
+#   -Wbounds-safety-adoption-mode-ignored
+#   -Wbounds-safety-conversion-single-to-implicit-indexable
+#   -Wbounds-safety-conversion-single-to-implicit-indexable-then-convert-at-call-site
+#   -Wbounds-safety-conversion-single-to-implicit-indexable-then-convert-to-larger-type
 #   -Wbounds-safety-counted-by-elt-type-unknown-size
+#   -Wbounds-safety-externally-counted-ptr-arith-constant-count
+#   -Wbounds-safety-incomplete-array
+#   -Wbounds-safety-init-list
+#   -Wbounds-safety-init-list-partial-null
+#   -Wbounds-safety-nullability
+#   -Wbounds-safety-relaxed-system-headers-ignore
+#   -Wbounds-safety-single-to-count
+#   -Wbounds-safety-single-to-indexable-bounds-truncated
+#   -Wbounds-safety-strict-terminated-by-cast
 #   -Wbraced-scalar-init
 #   -Wbranch-protection
 #   -Wbridge-cast
@@ -315,7 +334,6 @@
 #   -Wfree-nonheap-object
 #   -Wfriend-enum
 #   -Wfunction-def-in-objc-container
-#   -Wfunction-effects
 #   -Wfunction-multiversion
 #     -Wtarget-clones-mixed-specifiers
 #   -Wgcc-compat (partial)
@@ -884,6 +902,7 @@
 #   -Wc++20-extensions
 #     -Wc++20-attribute-extensions
 #     -Wc++20-designator
+#     -Wvariadic-macro-arguments-omitted
 -Wc++2c-extensions
 #   -Wc++26-extensions
 -Wc++98-c++11-c++14-c++17-compat
@@ -928,6 +947,7 @@
 #   -Wc23-compat
 -Wc2x-extensions
 #   -Wc23-extensions
+#     -Wvariadic-macro-arguments-omitted
 -Wc99-compat
 -Wc99-extensions
 #   -Wc99-designator
@@ -1044,6 +1064,7 @@
 #       -Woverloaded-shift-op-parentheses
 #       -Wparentheses-equality
 #       -Wshift-op-parentheses
+#     -Wperf-constraint-implies-noexcept
 #     -Wswitch
 #     -Wswitch-bool
 #     -Wvla-cxx-extension
@@ -1167,6 +1188,7 @@
 #   -Wformat-y2k # IGNORED switch
 -Wfour-char-constants
 -Wframework-include-private-from-public
+-Wfunction-effects
 -Wfuture-compat # IGNORED switch
 -Wgcc-compat
 -Wglobal-constructors
@@ -1200,6 +1222,7 @@
 #   -Wgnu-variable-sized-type-not-at-end
 #   -Wgnu-zero-line-directive
 #   -Wgnu-zero-variadic-macro-arguments
+#     -Wvariadic-macro-arguments-omitted
 #   -Wredeclared-class-member
 #   -Wvla-extension
 #     -Wvla-cxx-extension
@@ -1399,7 +1422,6 @@
 #     -Wgnu-statement-expression-from-macro-expansion
 #   -Wgnu-union-cast
 #   -Wgnu-zero-line-directive
-#   -Wgnu-zero-variadic-macro-arguments
 #   -Wimport-preprocessor-directive-pedantic
 #   -Winvalid-utf8
 #   -Wkeyword-macro
@@ -1441,9 +1463,11 @@
 #   -Wpre-c11-compat
 -Wpre-c2x-compat
 #   -Wpre-c23-compat
+#     -Wvariadic-macro-arguments-omitted
 -Wpre-c2x-compat-pedantic
 #   -Wpre-c23-compat-pedantic
 #     -Wpre-c23-compat
+#       -Wvariadic-macro-arguments-omitted
 -Wpre-c2y-compat-pedantic
 #   -Wpre-c2y-compat
 -Wpre-openmp-51-compat
@@ -1535,6 +1559,7 @@
 #   -Wunreachable-code-return
 -Wunsafe-buffer-usage
 #   -Wunsafe-buffer-usage-in-container
+#   -Wunsafe-buffer-usage-in-libc-call
 -Wunsupported-dll-base-class-template
 -Wunused-exception-parameter
 -Wunused-local-typedefs

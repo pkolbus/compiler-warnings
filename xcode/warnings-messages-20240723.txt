@@ -158,6 +158,7 @@
 #           A attribute only applies to <Objective-C object|pointer|pointer-to-CF-pointer|pointer/reference-to-OSObject-pointer> parameters
 #           A attribute only applies to <functions|methods|properties> that return <an Objective-C object|a pointer|a non-retainable pointer>
 #           A attribute only applies to a pointer or reference (B is invalid)
+#           A attribute only applies to a pointer, reference, class, struct, or union (B is invalid)
 #           A attribute only applies to return values that are pointers
 #           A attribute only applies to return values that are pointers or references
 #           A attribute only applies to[ constant] pointer arguments
@@ -247,8 +248,53 @@
 #       -Wundefined-bool-conversion
 #             'this' pointer cannot be null in well-defined C++ code; pointer may be assumed to always convert to true
 #             reference cannot be bound to dereferenced null pointer in well-defined C++ code; pointer may be assumed to always convert to true
+#   -Wbounds-attributes-cxx-experimental-ignored
+#         -fbounds-attributes-cxx-experimental without -fbounds-attributes is ignored
+#   -Wbounds-attributes-extern-array-count
+#         array with '<__counted_by|__sized_by>' and the argument of the attribute should be defined in the same translation unit
+#   -Wbounds-attributes-implicit-conversion-single-to-explicit-indexable
+#         [assigning%select{ __indexable| __bidi_indexable|}3 type from%select{ __single|}4 type|passing%select{ __single|}4 type to parameter of%select{ __indexable| __bidi_indexable|}3 type|returning%select{ __single|}4 type from a function with%select{ __indexable| __bidi_indexable|}3 result type|converting%select{ __single|}4 type to%select{ __indexable| __bidi_indexable|}3 type|initializing%select{ __indexable| __bidi_indexable|}3 type with an expression of%select{ __single|}4 type|sending%select{ __single|}4 type to parameter of%select{ __indexable| __bidi_indexable|}3 type|casting%select{ __single|}4 type to%select{ __indexable| __bidi_indexable|}3 type] results in <an __indexable|a __bidi_indexable> pointer that will trap if a non-zero offset is dereferenced[. consider adding '__counted_by' to 'H']
+#   -Wbounds-attributes-init-list-side-effect
+#         initializer A has a side effect; this may lead to an unexpected result because the evaluation order of initialization list expressions is indeterminate
+#   -Wbounds-attributes-objc-experimental-ignored
+#         -fbounds-attributes-objc-experimental without -fbounds-attributes is ignored
+#   -Wbounds-attributes-redundant
+#         <array|pointer> annotated with <__unsafe_indexable|__bidi_indexable|__indexable|__single|__terminated_by> multiple times. Annotate only once to remove this warning
+#   -Wbounds-safety-adoption-mode-ignored
+#         -fbounds-safety-adoption-mode without -fbounds-safety is ignored
+#   -Wbounds-safety-conversion-single-to-implicit-indexable
+#         <indexing into|pointer arithmetic over> __bidi_indexable local variable B that is assigned from a __single pointer results in <a trap|an out-of-bounds pointer>[ if the <index expression|offset> is >= D| if the <index expression|offset> is >= D or < 0| if the <index expression|offset> is < 0]
+#         <indexing into|pointer arithmetic over> a __bidi_indexable local variable C <assigned|initialized> from __single <parameter|global|local variable|return value from call to|element from array|struct member|union member> E results in <a trap|an out-of-bounds pointer>[ if the <index expression|offset> is >= G| if the <index expression|offset> is >= G or < 0| if the <index expression|offset> is < 0]
+#   -Wbounds-safety-conversion-single-to-implicit-indexable-then-convert-at-call-site
+#         <UNUSED|assigning from|returning|passing|casting> __bidi_indexable local variable B will <UNUSED|likely trap|trap|trap (unless B is null)>< | in a future compiler version >when converting to D due to B having the bounds of a __single pointer[. If B is non-null then any <count|size> > I will trap[. If B is null then any <count|size> != 0 will trap]]
+#   -Wbounds-safety-conversion-single-to-implicit-indexable-then-convert-to-larger-type
+#         <explicit|implicit> cast of __bidi_indexable B to a larger pointee type creates an out-of-bounds pointer. Later uses of the result may trap
+#         <explicit|implicit> cast of out-of-bounds __bidi_indexable to __single will trap in a future compiler version due to the bounds of B being too small to access a single element of type C
+#         <indexing|UNUSED|dereferencing|accessing field F through|assigning from|returning|passing> __bidi_indexable 'B'[ at any index] will <access out-of-bounds memory and will trap in a future compiler version|UNUSED|always trap|propagate an out-of-bounds pointer|return an out-of-bounds pointer|pass an out-of-bounds pointer>. At runtime E is assigned a __single pointer that results in 'B' having bounds smaller than a single C (D byte(s))
 #   -Wbounds-safety-counted-by-elt-type-unknown-size
 #         '<counted_by|sized_by|counted_by_or_null|sized_by_or_null>' <cannot|should not> be applied to <a pointer with pointee|an array with element> of unknown size because B is <an incomplete type|a sizeless type|a function type|a struct type with a flexible array member[. This will be an error in a future compiler version]>
+#   -Wbounds-safety-externally-counted-ptr-arith-constant-count
+#         <negative|positive> pointer arithmetic on 'B' attributed pointer with constant <count|size> <of E|E> always traps
+#         compound <subtraction|addition>-assignment on 'B' attributed pointer with constant <count|size> <of E|E> always traps
+#   -Wbounds-safety-incomplete-array
+#         accessing elements of an unannotated incomplete array always fails at runtime
+#   -Wbounds-safety-init-list
+#         possibly <assigning non-null to[ 'E' of type] B with implicit <count|size> value of 0|passing non-null to parameter[ 'E'] of type B with implicit <count|size> value of 0|returning non-null from a function with result type B and implicit <count|size> value of 0|converting non-null to type B with implicit <count|size> value of 0|initializing[ 'E' of type] B and implicit <count|size> value of 0 with non-null|sending non-null to parameter[ 'E'] of type B with implicit <count|size> value of 0|casting non-null to type B with implicit <count|size> value of 0>, which creates a non-dereferenceable pointer; explicitly set <count|size> value to 0 to remove this warning
+#         possibly <assigning non-null to[ 'F' of type] B with <count|size> value of D|passing non-null to parameter[ 'F'] of type B with <count|size> value of D|returning non-null from a function with result type B with <count|size> value of D|converting non-null to type B with <count|size> value of D|initializing[ 'F' of type] B and <count|size> value of D with non-null|sending non-null to parameter[ 'F'] of type B with <count|size> value of D|casting non-null to type B with <count|size> value of D>; explicitly <assign|pass|return|convert|initialize|send|cast> null to remove this warning
+#   -Wbounds-safety-init-list-partial-null
+#         [implicitly ]initializing field B of type C to NULL while 'D' is initialized with a value rarely succeeds
+#   -Wbounds-safety-nullability
+#         combining <'__counted_by'|'__sized_by'> with non-zero <count|size> (which cannot be null) and '_Nullable'; did you mean <'__counted_by_or_null'|'__sized_by_or_null'> instead?
+#         combining <'__counted_by_or_null'|'__sized_by_or_null'> and '_Nonnull'; did you mean <'__counted_by'|'__sized_by'> instead?
+#   -Wbounds-safety-relaxed-system-headers-ignore
+#         -fno-bounds-safety-relaxed-system-headers without -fbounds-safety is ignored
+#   -Wbounds-safety-single-to-count
+#         <count|size> value is not statically known: <assigning to[ 'G' of type] B from E|passing E to parameter[ 'G'] of type B|returning E from a function with result type B|converting E to type B|initializing[ 'G' of type] B with E|sending E to parameter[ 'G'] of type B|casting E to type B> is invalid for any <count other than 0 or 1|size greater than H>[ unless the pointer is null]
+#   -Wbounds-safety-single-to-indexable-bounds-truncated
+#         casting A to B creates a '<__indexable|__bidi_indexable>' pointer <with bounds containing only one D|with zero length due to D having unknown size)>
+#   -Wbounds-safety-strict-terminated-by-cast
+#         [assigning type from incompatible type|passing type to parameter of incompatible type|returning type from a function with incompatible result type|converting type to incompatible type|initializing type with an expression of incompatible type|sending type to parameter of incompatible type|casting type to incompatible type] is an unsafe operation; use '<__unsafe_terminated_by_from_indexable|__unsafe_null_terminated_from_indexable>()' or '<__unsafe_forge_terminated_by|__unsafe_forge_null_terminated>()' to perform this conversion
+#         [assigning type from incompatible type|passing type to parameter of incompatible type|returning type from a function with incompatible result type|converting type to incompatible type|initializing type with an expression of incompatible type|sending type to parameter of incompatible type|casting type to incompatible type] that adds '__terminated_by' attribute is not allowed
 #   -Wbraced-scalar-init
 #         braces around [scalar ]initializer
 #   -Wbranch-protection
@@ -960,11 +1006,6 @@
 #         elaborated enum specifier cannot be declared as a friend
 #   -Wfunction-def-in-objc-container
 #         function definition inside an Objective-C container is deprecated
-#   -Wfunction-effects
-#         attribute 'A' on function does not match previous declaration
-#         attribute 'A' on overriding function does not match base declaration
-#         attribute 'A' should not be added via type conversion
-#         effects conflict when merging declarations; kept 'A', discarded 'B'
 #   -Wfunction-multiversion
 #         CPU list contains duplicate entries; attribute ignored
 #         body of cpu_dispatch function will be ignored
@@ -2987,7 +3028,6 @@
 #         inline nested namespace definition is a C++20 extension
 #         invoking a pointer to a 'const &' member function on an rvalue is a C++20 extension
 #         missing 'typename' prior to dependent type name AB; implicit 'typename' is a C++20 extension
-#         passing no argument for the '...' parameter of a variadic macro is a C++20 extension
 #         range-based for loop initialization statements are a C++20 extension
 #         uninitialized variable in a constexpr <function|constructor> is a C++20 extension
 #         use of function template name with no prior declaration in function call with explicit template arguments is a C++20 extension
@@ -2998,6 +3038,10 @@
 #           use of the A attribute is a C++20 extension
 #     -Wc++20-designator
 #           designated initializers are a C++20 extension
+#     -Wvariadic-macro-arguments-omitted
+#           passing no argument for the '...' parameter of a variadic macro is a C++20 extension
+#           passing no argument for the '...' parameter of a variadic macro is a C23 extension
+#           passing no argument for the '...' parameter of a variadic macro is incompatible with C standards before C23
 -Wc++2c-extensions
 #   -Wc++26-extensions
 #          'A' in a raw string literal delimiter is a C++2c extension
@@ -3402,9 +3446,12 @@
 #         label at end of compound statement is a C23 extension
 #         label followed by a declaration is a C23 extension
 #         omitting the parameter name in a function definition is a C23 extension
-#         passing no argument for the '...' parameter of a variadic macro is a C23 extension
 #         use of a '#<<BUG IF SEEN>|elifdef|elifndef>' directive is a C23 extension
 #         use of an empty initializer is a C23 extension
+#     -Wvariadic-macro-arguments-omitted
+#           passing no argument for the '...' parameter of a variadic macro is a C++20 extension
+#           passing no argument for the '...' parameter of a variadic macro is a C23 extension
+#           passing no argument for the '...' parameter of a variadic macro is incompatible with C standards before C23
 -Wc99-compat
 #     'A' is a keyword in C99
 #     <using this character in an identifier|starting an identifier with this character> is incompatible with C99
@@ -3746,6 +3793,8 @@
 #             equality comparison with extraneous parentheses
 #       -Wshift-op-parentheses
 #             operator 'A' has lower precedence than 'B'; 'B' will be evaluated first
+#     -Wperf-constraint-implies-noexcept
+#           <function|constructor|destructor|lambda|block> with 'B' attribute should be declared noexcept
 #     -Wswitch
 #           <enumeration value B not handled in switch|enumeration values B and C not handled in switch|enumeration values B, C, and D not handled in switch|A enumeration values not handled in switch>
 #           case value not in enumerated type A
@@ -4066,6 +4115,14 @@
 #     multi-character character constant
 -Wframework-include-private-from-public
 #     public framework header includes private framework header 'A'
+-Wfunction-effects
+#     <function|constructor|destructor|lambda|block|member initializer of constructor> with 'B' attribute must not <allocate or deallocate memory|throw or catch exceptions|have static local variables|use thread-local variables|access ObjC methods or properties>
+#     <function|constructor|destructor|lambda|block|member initializer of constructor> with 'B' attribute must not call non-'B' <function|constructor|destructor|lambda|block> 'D'
+#     <function|constructor|destructor|lambda|block|member initializer of constructor> with 'B' attribute must not call non-'B' expression
+#     attribute 'A' on function does not match previous declaration
+#     attribute 'A' on overriding function does not match base declaration
+#     attribute 'A' should not be added via type conversion
+#     effects conflict when merging declarations; kept 'A', discarded 'B'
 -Wfuture-compat # IGNORED switch
 -Wgcc-compat
 #     'A' is bound to current loop, GCC binds it to the enclosing loop
@@ -4148,6 +4205,10 @@
 #         #line directive with zero argument is a GNU extension
 #   -Wgnu-zero-variadic-macro-arguments
 #         token pasting of ',' and __VA_ARGS__ is a GNU extension
+#     -Wvariadic-macro-arguments-omitted
+#           passing no argument for the '...' parameter of a variadic macro is a C++20 extension
+#           passing no argument for the '...' parameter of a variadic macro is a C23 extension
+#           passing no argument for the '...' parameter of a variadic macro is incompatible with C standards before C23
 #   -Wredeclared-class-member
 #         class member cannot be redeclared
 #   -Wvla-extension
@@ -4664,8 +4725,6 @@
 #         cast to union type is a GNU extension
 #   -Wgnu-zero-line-directive
 #         #line directive with zero argument is a GNU extension
-#   -Wgnu-zero-variadic-macro-arguments
-#         token pasting of ',' and __VA_ARGS__ is a GNU extension
 #   -Wimport-preprocessor-directive-pedantic
 #         #import is a language extension
 #   -Winvalid-utf8
@@ -4835,11 +4894,14 @@
 #         digit separators are incompatible with C standards before C23
 #         label at end of compound statement is incompatible with C standards before C23
 #         label followed by a declaration is incompatible with C standards before C23
-#         passing no argument for the '...' parameter of a variadic macro is incompatible with C standards before C23
 #         specifying character 'A' with a universal character name is incompatible with C standards before C23
 #         universal character name referring to a control character is incompatible with C standards before C23
 #         use of a '#<<BUG IF SEEN>|elifdef|elifndef>' directive is incompatible with C standards before C23
 #         use of an empty initializer is incompatible with C standards before C23
+#     -Wvariadic-macro-arguments-omitted
+#           passing no argument for the '...' parameter of a variadic macro is a C++20 extension
+#           passing no argument for the '...' parameter of a variadic macro is a C23 extension
+#           passing no argument for the '...' parameter of a variadic macro is incompatible with C standards before C23
 -Wpre-c2x-compat-pedantic
 #   -Wpre-c23-compat-pedantic
 #     -Wpre-c23-compat
@@ -4854,11 +4916,14 @@
 #           digit separators are incompatible with C standards before C23
 #           label at end of compound statement is incompatible with C standards before C23
 #           label followed by a declaration is incompatible with C standards before C23
-#           passing no argument for the '...' parameter of a variadic macro is incompatible with C standards before C23
 #           specifying character 'A' with a universal character name is incompatible with C standards before C23
 #           universal character name referring to a control character is incompatible with C standards before C23
 #           use of a '#<<BUG IF SEEN>|elifdef|elifndef>' directive is incompatible with C standards before C23
 #           use of an empty initializer is incompatible with C standards before C23
+#       -Wvariadic-macro-arguments-omitted
+#             passing no argument for the '...' parameter of a variadic macro is a C++20 extension
+#             passing no argument for the '...' parameter of a variadic macro is a C23 extension
+#             passing no argument for the '...' parameter of a variadic macro is incompatible with C standards before C23
 -Wpre-c2y-compat-pedantic
 #   -Wpre-c2y-compat
 #         '<--|++>' on an object of complex type is incompatible with C standards before C2y
@@ -5049,10 +5114,13 @@
 #   -Wunreachable-code-return
 #         'return' will never be executed
 -Wunsafe-buffer-usage
-#     <unsafe pointer operation|unsafe pointer arithmetic|unsafe buffer access|function introduces unsafe buffer manipulation|unsafe invocation of span::data|field B prone to unsafe buffer manipulation>
+#     <unsafe pointer operation|unsafe pointer arithmetic|unsafe buffer access|function introduces unsafe buffer manipulation|unsafe invocation of B|field B prone to unsafe buffer manipulation>
 #     A is an <unsafe pointer used for buffer access|unsafe buffer that does not perform bounds checks>
+#     unsafe assignment to function parameter of count-attributed type
 #   -Wunsafe-buffer-usage-in-container
 #         the two-parameter std::span construction is unsafe as it can introduce mismatch between buffer size and the bound information
+#   -Wunsafe-buffer-usage-in-libc-call
+#         function A is unsafe
 -Wunsupported-dll-base-class-template
 #     propagating dll attribute to <already instantiated|explicitly specialized> base class template without dll attribute is not supported
 -Wunused-exception-parameter
