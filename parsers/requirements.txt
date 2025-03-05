@@ -6,13 +6,13 @@
 #
 antlr4-python3-runtime==4.13.2
     # via -r requirements.in
-attrs==24.3.0
+attrs==25.1.0
     # via
     #   flake8-bugbear
     #   flake8-mypy
-bandit==1.8.2
+bandit==1.8.3
     # via flake8-bandit
-black==24.10.0
+black==25.1.0
     # via -r requirements.in
 build==1.2.2.post1
     # via pip-tools
@@ -28,7 +28,7 @@ dlint==0.16.0
     # via -r requirements.in
 docutils==0.21.2
     # via restructuredtext-lint
-flake8==7.1.1
+flake8==7.1.2
     # via
     #   -r requirements.in
     #   dlint
@@ -54,7 +54,7 @@ flake8-comprehensions==3.16.0
     # via -r requirements.in
 flake8-docstrings==1.7.0
     # via -r requirements.in
-flake8-isort==6.1.1
+flake8-isort==6.1.2
     # via -r requirements.in
 flake8-mutable==1.2.0
     # via -r requirements.in
@@ -70,7 +70,7 @@ gitdb==4.0.12
     # via gitpython
 gitpython==3.1.44
     # via -r requirements.in
-isort==5.13.2
+isort==6.0.1
     # via flake8-isort
 jinja2==3.1.5
     # via -r requirements.in
@@ -82,7 +82,7 @@ mccabe==0.7.0
     # via flake8
 mdurl==0.1.2
     # via markdown-it-py
-mypy==1.14.1
+mypy==1.15.0
     # via flake8-mypy
 mypy-extensions==1.0.0
     # via
@@ -94,7 +94,7 @@ packaging==24.2
     #   build
 pathspec==0.12.1
     # via black
-pbr==6.1.0
+pbr==6.1.1
     # via stevedore
 pip-tools==7.4.1
     # via -r requirements.in
@@ -126,7 +126,7 @@ smmap==5.0.2
     # via gitdb
 snowballstemmer==2.2.0
     # via pydocstyle
-stevedore==5.4.0
+stevedore==5.4.1
     # via bandit
 tokenize-rt==6.1.0
     # via pyupgrade
