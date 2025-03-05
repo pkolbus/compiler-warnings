@@ -293,7 +293,7 @@
 #   -Wbounds-safety-single-to-indexable-bounds-truncated
 #         casting A to B creates a '<__indexable|__bidi_indexable>' pointer <with bounds containing only one D|with zero length due to D having unknown size)>
 #   -Wbounds-safety-strict-terminated-by-cast
-#         [assigning type from incompatible type|passing type to parameter of incompatible type|returning type from a function with incompatible result type|converting type to incompatible type|initializing type with an expression of incompatible type|sending type to parameter of incompatible type|casting type to incompatible type] is an unsafe operation; use '<__unsafe_terminated_by_from_indexable|__unsafe_null_terminated_from_indexable>()' or '<__unsafe_forge_terminated_by|__unsafe_forge_null_terminated>()' to perform this conversion
+#         [assigning type from incompatible type|passing type to parameter of incompatible type|returning type from a function with incompatible result type|converting type to incompatible type|initializing type with an expression of incompatible type|sending type to parameter of incompatible type|casting type to incompatible type] is an unsafe operation[; use '__unsafe_terminated_by_from_indexable()' or '__unsafe_forge_terminated_by()' to perform this conversion|; use '__unsafe_null_terminated_from_indexable()' or '__unsafe_forge_null_terminated()' to perform this conversion]
 #         [assigning type from incompatible type|passing type to parameter of incompatible type|returning type from a function with incompatible result type|converting type to incompatible type|initializing type with an expression of incompatible type|sending type to parameter of incompatible type|casting type to incompatible type] that adds '__terminated_by' attribute is not allowed
 #   -Wbraced-scalar-init
 #         braces around [scalar ]initializer
@@ -525,11 +525,15 @@
 #               'A' is not a valid object format flag
 #               <field width|precision> used with 'B' conversion specifier, resulting in undefined behavior
 #               <values of type|enum values with underlying type> 'A' should not be used as format arguments; add an explicit cast to B instead
+#               argument sensitivity is <unspecified|private|public|sensitive>, but it should be <unspecified|private|public|sensitive>
 #               cannot mix positional and non-positional arguments in format string
 #               data argument position 'A' exceeds the number of data arguments (B)
 #               field <width|precision> should have type B, but argument has type C
 #               flag 'A' is ignored when flag 'B' is present
 #               flag 'A' results in undefined behavior with 'B' conversion specifier
+#               format argument is <a value|an indirect field width|an indirect precision|an auxiliary value>, but it should be <a value|an indirect field width|an indirect precision|an auxiliary value>
+#               format argument modifies specifier at position A, but it should modify specifier at position B
+#               format specifier 'A' is incompatible with 'B'
 #               format specifies type A but the argument has <type|underlying type> B
 #               format string contains '\0' within the string body
 #               format string is not null-terminated
@@ -541,7 +545,9 @@
 #               missing object format flag
 #               no closing ']' for '%[' in scanf format string
 #               object format flags cannot be used with 'A' conversion specifier
+#               passing 'A' format string where 'B' format string is expected
 #               position arguments in format strings start counting at 1 (not 0)
+#               signedness of format specifier 'A' is incompatible with 'B'
 #               using '%P' format specifier with an Objective-C pointer results in dumping runtime object structure, not object value
 #               using '%P' format specifier without precision
 #               using 'A' format specifier annotation outside of os_log()/os_trace()
@@ -550,6 +556,7 @@
 #           -Wformat-extra-args
 #                 data argument not used by format string
 #           -Wformat-insufficient-args
+#                 <fewer|more> specifiers in format string than expected
 #                 more '%' conversions than data arguments
 #           -Wformat-invalid-specifier
 #                 invalid conversion specifier 'A'
@@ -3532,11 +3539,15 @@
 #             'A' is not a valid object format flag
 #             <field width|precision> used with 'B' conversion specifier, resulting in undefined behavior
 #             <values of type|enum values with underlying type> 'A' should not be used as format arguments; add an explicit cast to B instead
+#             argument sensitivity is <unspecified|private|public|sensitive>, but it should be <unspecified|private|public|sensitive>
 #             cannot mix positional and non-positional arguments in format string
 #             data argument position 'A' exceeds the number of data arguments (B)
 #             field <width|precision> should have type B, but argument has type C
 #             flag 'A' is ignored when flag 'B' is present
 #             flag 'A' results in undefined behavior with 'B' conversion specifier
+#             format argument is <a value|an indirect field width|an indirect precision|an auxiliary value>, but it should be <a value|an indirect field width|an indirect precision|an auxiliary value>
+#             format argument modifies specifier at position A, but it should modify specifier at position B
+#             format specifier 'A' is incompatible with 'B'
 #             format specifies type A but the argument has <type|underlying type> B
 #             format string contains '\0' within the string body
 #             format string is not null-terminated
@@ -3548,7 +3559,9 @@
 #             missing object format flag
 #             no closing ']' for '%[' in scanf format string
 #             object format flags cannot be used with 'A' conversion specifier
+#             passing 'A' format string where 'B' format string is expected
 #             position arguments in format strings start counting at 1 (not 0)
+#             signedness of format specifier 'A' is incompatible with 'B'
 #             using '%P' format specifier with an Objective-C pointer results in dumping runtime object structure, not object value
 #             using '%P' format specifier without precision
 #             using 'A' format specifier annotation outside of os_log()/os_trace()
@@ -3557,6 +3570,7 @@
 #         -Wformat-extra-args
 #               data argument not used by format string
 #         -Wformat-insufficient-args
+#               <fewer|more> specifiers in format string than expected
 #               more '%' conversions than data arguments
 #         -Wformat-invalid-specifier
 #               invalid conversion specifier 'A'
@@ -4101,6 +4115,7 @@
 -Wformat-pedantic
 #     <values of type|enum values with underlying type> 'A' should not be used as format arguments; add an explicit cast to B instead
 #     format specifies type A but the argument has <type|underlying type> B
+#     signedness of format specifier 'A' is incompatible with 'B'
 -Wformat-signedness
 #     format specifies type A but the argument has <type|underlying type> B
 -Wformat-type-confusion
@@ -5116,6 +5131,7 @@
 -Wunsafe-buffer-usage
 #     <unsafe pointer operation|unsafe pointer arithmetic|unsafe buffer access|function introduces unsafe buffer manipulation|unsafe invocation of B|field B prone to unsafe buffer manipulation>
 #     A is an <unsafe pointer used for buffer access|unsafe buffer that does not perform bounds checks>
+#     unsafe assignment to function parameter of __single pointer type
 #     unsafe assignment to function parameter of count-attributed type
 #   -Wunsafe-buffer-usage-in-container
 #         the two-parameter std::span construction is unsafe as it can introduce mismatch between buffer size and the bound information
