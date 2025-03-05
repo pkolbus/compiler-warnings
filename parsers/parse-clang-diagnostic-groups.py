@@ -12,7 +12,8 @@ import argparse
 from functools import total_ordering
 from itertools import chain
 import json
-from typing import Any
+import logging
+from typing import Any, NotRequired, TypedDict
 
 import common
 
@@ -314,11 +315,25 @@ def resolve_format_string(message: str, substitutions: ClangTextSubstitutions) -
     return out_str
 
 
+ClangDiagnosticJson = TypedDict(
+    "ClangDiagnosticJson",
+    {
+        "!name": str,
+        "Summary": NotRequired[str],
+        "Text": str,
+        "Group": Any,
+        "DefaultSeverity": NotRequired[Any],
+        "DefaultMapping": Any,
+        "Class": Any,
+    },
+)
+
+
 class ClangDiagnostic:
     """One clang warning message (Diagnostic)."""
 
     def __init__(
-        self, obj: dict[str, Any], substitutions: ClangTextSubstitutions
+        self, obj: ClangDiagnosticJson, substitutions: ClangTextSubstitutions
     ) -> None:
         """
         Construct from a Diagnostic instance (JSON object).
@@ -355,7 +370,11 @@ class ClangDiagnostic:
             # clang/utils/TableGen/ClangDiagnosticsEmitter.cpp.
             return "The text of this diagnostic is not controlled by Clang"
 
-        return resolve_format_string(self._summary, self._substitutions)
+        try:
+            return resolve_format_string(self._summary, self._substitutions)
+        except RuntimeError:
+            logging.warning("Failed to resolve: %s", self._summary)
+            return self._summary
 
 
 class ClangDiagGroup:
