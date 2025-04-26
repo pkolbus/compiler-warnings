@@ -1,0 +1,6 @@
+--Wbinding-in-condition # Enabled by default.
++-Wdeprecated-octal-literals # Enabled by default.
++-Woctal-prefix-extension
++-Wopenacc-confusing-routine-name # Enabled by default.
++-Wshift-bool
++-Wunnecessary-virtual-specifier

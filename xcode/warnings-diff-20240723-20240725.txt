@@ -1,0 +1,57 @@
++-Warray-compare # Enabled by default.
++-Warray-compare-cxx26 # Enabled by default.
++-Wattribute-statement # Enabled by default.
+--Wc++14-compat
+--Wc++14-compat-pedantic
++-Wc++14-compat # Partially enabled by default.
++-Wc++14-compat-pedantic # Partially enabled by default.
+--Wc++23-compat
++-Wc++23-compat # Partially enabled by default.
+--Wc++98-compat
++-Wc++98-compat # Partially enabled by default.
+--Wc++98-compat-pedantic
++-Wc++98-compat-pedantic # Partially enabled by default.
+--Wdangling # Partially enabled by default.
++-Wdangling # Enabled by default.
+--Wdangling-assignment-gsl
++-Wdangling-assignment-gsl # Enabled by default.
++-Wdangling-capture # Enabled by default.
++-Wdecls-in-multiple-modules
+--Wdeprecated-literal-operator
++-Wdeprecated-literal-operator # Enabled by default.
++-Wdeprecated-missing-comma-variadic-parameter # Enabled by default.
+--Wdeprecated-no-relaxed-template-template-args # Enabled by default.
+--Wenum-constexpr-conversion # Enabled by default.
++-Wexperimental-option # Enabled by default.
++-Wextraneous-template-head # Enabled by default.
+--Wfixed-enum-extension
+--Whigher-precision-fp # Enabled by default.
++-Whigher-precision-for-complex-division # Enabled by default.
++-Whlsl-202y-extensions # Enabled by default.
++-Whlsl-dxc-compatability # Enabled by default.
++-Wimport-implementation-partition-unit-in-interface-unit # Enabled by default.
++-Winit-priority-reserved # Enabled by default.
++-Winvalid-gnu-asm-cast # Enabled by default.
++-Winvalid-specialization # Enabled by default.
++-Wlegacy-constant-register-binding # Enabled by default.
++-Wmath-errno-enabled-with-veclib # Enabled by default.
++-Wmicrosoft-inline-on-non-function # Enabled by default.
++-Wnonportable-sycl # Enabled by default.
++-Wnontrivial-memcall # Enabled by default.
+--Wpre-c++26-compat
+--Wpre-c++26-compat-pedantic
+--Wpre-c++2c-compat
+--Wpre-c++2c-compat-pedantic
++-Wpre-c++26-compat # Partially enabled by default.
++-Wpre-c++26-compat-pedantic # Partially enabled by default.
++-Wpre-c++2c-compat # Partially enabled by default.
++-Wpre-c++2c-compat-pedantic # Partially enabled by default.
++-Wreduced-bmi-output-overrided # Enabled by default.
++-Wredundant-attribute # Enabled by default.
++-Wreserved-attribute-identifier
++-Wthread-safety-pointer
+--Wundef
++-Wundef # Partially enabled by default.
++-Wundef-true # Enabled by default.
++-Wuninitialized-explicit-init # Enabled by default.
++-Wunique-object-duplication
