@@ -206,6 +206,10 @@ def format_modifier(modifier: str | None, argument_idx: int) -> str:
         # Translate 0-9 into A-J
         return chr(ord("A") + argument_idx)
 
+    if modifier == "quoted":
+        # Translate 0-9 into A-J
+        return "'" + chr(ord("A") + argument_idx) + "'"
+
     if modifier == "s":
         return "(s)"
 
