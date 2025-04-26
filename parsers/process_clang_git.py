@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Process a clang git repository for diagnostic groups."""
+
 import difflib
 import json
 import os

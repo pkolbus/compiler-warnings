@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Process a gcc git repository for diagnostic options."""
+
 import os
 import shutil
 import sys

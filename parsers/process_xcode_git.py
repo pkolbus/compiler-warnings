@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Process an Apple LLVM (Xcode) git repository for diagnostic groups."""
+
 import os
 import re
 import shutil
