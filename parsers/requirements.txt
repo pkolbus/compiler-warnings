@@ -10,7 +10,7 @@ attrs==25.4.0
     # via
     #   flake8-bugbear
     #   flake8-mypy
-bandit==1.9.3
+bandit==1.9.4
     # via flake8-bandit
 black==26.1.0
     # via -r requirements.in
@@ -70,11 +70,11 @@ gitdb==4.0.12
     # via gitpython
 gitpython==3.1.46
     # via -r requirements.in
-isort==7.0.0
+isort==8.0.0
     # via flake8-isort
 jinja2==3.1.6
     # via -r requirements.in
-librt==0.7.8
+librt==0.8.1
     # via mypy
 markdown-it-py==4.0.0
     # via rich
@@ -95,13 +95,13 @@ packaging==26.0
     #   black
     #   build
     #   wheel
-pathspec==1.0.3
+pathspec==1.0.4
     # via
     #   black
     #   mypy
-pip-tools==7.5.2
+pip-tools==7.5.3
     # via -r requirements.in
-platformdirs==4.5.1
+platformdirs==4.9.2
     # via black
 pycodestyle==2.14.0
     # via flake8
@@ -117,7 +117,7 @@ pyproject-hooks==1.2.0
     # via
     #   build
     #   pip-tools
-pytokens==0.4.0
+pytokens==0.4.1
     # via black
 pyupgrade==3.21.2
     # via -r requirements.in
@@ -125,13 +125,13 @@ pyyaml==6.0.3
     # via bandit
 restructuredtext-lint==2.0.2
     # via flake8-rst-docstrings
-rich==14.2.0
+rich==14.3.3
     # via bandit
 smmap==5.0.2
     # via gitdb
 snowballstemmer==3.0.1
     # via pydocstyle
-stevedore==5.6.0
+stevedore==5.7.0
     # via bandit
 tokenize-rt==6.2.0
     # via pyupgrade
