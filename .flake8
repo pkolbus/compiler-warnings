@@ -4,8 +4,8 @@ exclude=.git,.venv,build,parsers/.antlr,parsers/GccOptions*er.py
 
 # Ignore certain warnings:
 # - T499 is noise (Success: no issues found in 1 source file)
-# - W503 is noise because Black is used for formatting
-ignore=T499,W503
+# - W503 and E203 are noise because Black is used for formatting
+ignore=T499,W503,E203
 
 # flake8-mypy
 mypy_config=mypy.ini

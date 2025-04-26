@@ -92,6 +92,50 @@ def find_argument(message: str, start: int) -> tuple[int, list[str]]:
     return index + 1, arguments
 
 
+def find_enumerator_arguments(message: str, start: int) -> tuple[int, list[str]]:
+    """
+    Find and return the complete arguments for an enum_select.
+
+    :param message: The message to parse.
+    :param start: The index of the open bracket.
+    :return: A tuple of (end_index, arguments) where end_index is the index
+        immediately following the close brace and arguments is the list of
+        enumerators.
+    :raises RuntimeError: if an unsupported message is parsed.
+    """
+    depth = 0
+    index = start
+    arguments = []
+
+    # skip over the type to find the opening brace
+    while index < len(message):
+        if message[index] == "{":
+            break
+        index += 1
+
+    while index < len(message):
+        # Second { is the start of an enumerator
+        if message[index] == "{":
+            depth += 1
+            if depth == 2:
+                argument_start = index + 1
+            if depth == 3:
+                raise RuntimeError("Unexpected inner brace")
+        elif depth == 2 and message[index] == "}":
+            arguments.append(message[argument_start:index])
+        elif depth == 2 and message[index] == "%":
+            raise RuntimeError("Unexpected inner %")
+
+        if message[index] == "}":
+            depth -= 1
+            if depth == 0:
+                break
+
+        index += 1
+
+    return index + 1, arguments
+
+
 def parse_placeholder(
     message: str, start: int
 ) -> tuple[int, int, str | None, list[str] | None]:
@@ -115,9 +159,12 @@ def parse_placeholder(
     arguments: list[str] | None = None
     if not message[cur_idx].isdigit():
         modifier_start = cur_idx
-        while message[cur_idx] == "-" or message[cur_idx].islower():
+        while message[cur_idx] in ("-", "_") or message[cur_idx].islower():
             cur_idx += 1
         modifier = message[modifier_start:cur_idx]
+
+        if modifier == "enum_select":
+            cur_idx, arguments = find_enumerator_arguments(message, cur_idx)
 
         if message[cur_idx] == "{":
             cur_idx, arguments = find_argument(message, cur_idx)
@@ -127,7 +174,7 @@ def parse_placeholder(
 
     argument_no = message[cur_idx]
     if not argument_no.isdigit():
-        raise RuntimeError()
+        raise RuntimeError("Failed to parse modifier %s", modifier)
 
     cur_idx += 1  # Skip digit
 
@@ -177,7 +224,7 @@ def format_arguments(
     :return: A human-readable form of the argument.
     :raises NotImplementedError: if modifier is unknown.
     """
-    if modifier == "select":
+    if modifier in ("enum_select", "select"):
         return format_alternative_list(arguments, substitutions)
 
     if modifier == "plural":
@@ -271,6 +318,8 @@ def resolve_format_string(message: str, substitutions: ClangTextSubstitutions) -
     'from arg type to param type'
     >>> resolve_format_string("must not be %sub{sel_foo}1", subs)
     'must not be a <unary|binary> operator'
+    >>> resolve_format_string("void %enum_select<Kind>{%F{foo}|%B{bar}}0 does", subs)
+    'void <foo|bar> does'
 
     Duplicates are removed:
 
@@ -377,7 +426,7 @@ class ClangDiagnostic:
         try:
             return resolve_format_string(self._summary, self._substitutions)
         except RuntimeError:
-            logging.warning("Failed to resolve: %s", self._summary)
+            logging.exception("Failed to resolve: %s", self._summary)
             return self._summary
 
 

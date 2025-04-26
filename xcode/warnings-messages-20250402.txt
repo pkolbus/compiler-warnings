@@ -653,7 +653,7 @@
 #           -Wreorder-init-list
 #                 ISO C++ requires field designators to be specified in declaration order; field B will be initialized after field A
 #         -Wreturn-type
-#               non-void %enum_select<FalloffFunctionKind>{%Function{function}|%Block{block}|%Lambda{lambda}|%Coroutine{coroutine}}0 does not return a value%select{| in all control paths}1
+#               non-void <function|block|lambda|coroutine> does not return a value[ in all control paths]
 #           -Wreturn-mismatch
 #                 <void function|void method|constructor|destructor> A should not return a value
 #                 non-void <function|method> A should return a value
@@ -3850,7 +3850,7 @@
 #         -Wreorder-init-list
 #               ISO C++ requires field designators to be specified in declaration order; field B will be initialized after field A
 #       -Wreturn-type
-#             non-void %enum_select<FalloffFunctionKind>{%Function{function}|%Block{block}|%Lambda{lambda}|%Coroutine{coroutine}}0 does not return a value%select{| in all control paths}1
+#             non-void <function|block|lambda|coroutine> does not return a value[ in all control paths]
 #         -Wreturn-mismatch
 #               <void function|void method|constructor|destructor> A should not return a value
 #               non-void <function|method> A should return a value
