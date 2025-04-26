@@ -1,0 +1,891 @@
+# enabled by default:
+#    -Waddress-of-packed-member
+#         Warn when the address of packed member of struct or union is taken.
+#    -Waggressive-loop-optimizations
+#         Warn if a loop with constant number of iterations triggers undefined behavior.
+#    -Wanalyzer-allocation-size
+#         Warn about code paths in which a pointer to a buffer is assigned to an incompatible type.
+#    -Wanalyzer-deref-before-check
+#         Warn about code paths in which a pointer is checked for NULL after it has already been dereferenced.
+#    -Wanalyzer-double-fclose
+#         Warn about code paths in which a stdio FILE can be closed more than once.
+#    -Wanalyzer-double-free
+#         Warn about code paths in which a pointer can be freed more than once.
+#    -Wanalyzer-exposure-through-output-file
+#         Warn about code paths in which sensitive data is written to a file.
+#    -Wanalyzer-exposure-through-uninit-copy
+#         Warn about code paths in which sensitive data is copied across a security boundary.
+#    -Wanalyzer-fd-access-mode-mismatch
+#         Warn about code paths in which read on a write-only file descriptor is attempted, or vice versa.
+#    -Wanalyzer-fd-double-close
+#         Warn about code paths in which a file descriptor can be closed more than once.
+#    -Wanalyzer-fd-leak
+#         Warn about code paths in which a file descriptor is not closed.
+#    -Wanalyzer-fd-phase-mismatch
+#         Warn about code paths in which an operation is attempted in the wrong phase of a file descriptor's lifetime.
+#    -Wanalyzer-fd-type-mismatch
+#         Warn about code paths in which an operation is attempted on the wrong type of file descriptor.
+#    -Wanalyzer-fd-use-after-close
+#         Warn about code paths in which a read or write is performed on a closed file descriptor.
+#    -Wanalyzer-fd-use-without-check
+#         Warn about code paths in which a file descriptor is used without being checked for validity.
+#    -Wanalyzer-file-leak
+#         Warn about code paths in which a stdio FILE is not closed.
+#    -Wanalyzer-free-of-non-heap
+#         Warn about code paths in which a non-heap pointer is freed.
+#    -Wanalyzer-imprecise-fp-arithmetic
+#         Warn about code paths in which floating-point arithmetic is used in locations where precise computation is needed.
+#    -Wanalyzer-infinite-loop
+#         Warn about code paths which appear to lead to an infinite loop.
+#    -Wanalyzer-infinite-recursion
+#         Warn about code paths which appear to lead to infinite recursion.
+#    -Wanalyzer-jump-through-null
+#         Warn about code paths in which a NULL function pointer is called.
+#    -Wanalyzer-malloc-leak
+#         Warn about code paths in which a heap-allocated pointer leaks.
+#    -Wanalyzer-mismatching-deallocation
+#         Warn about code paths in which the wrong deallocation function is called.
+#    -Wanalyzer-null-argument
+#         Warn about code paths in which NULL is passed to a must-not-be-NULL function argument.
+#    -Wanalyzer-null-dereference
+#         Warn about code paths in which a NULL pointer is dereferenced.
+#    -Wanalyzer-out-of-bounds
+#         Warn about code paths in which a write or read to a buffer is out-of-bounds.
+#    -Wanalyzer-overlapping-buffers
+#         Warn about code paths in which undefined behavior would occur due to overlapping buffers.
+#    -Wanalyzer-possible-null-argument
+#         Warn about code paths in which a possibly-NULL value is passed to a must-not-be-NULL function argument.
+#    -Wanalyzer-possible-null-dereference
+#         Warn about code paths in which a possibly-NULL pointer is dereferenced.
+#    -Wanalyzer-putenv-of-auto-var
+#         Warn about code paths in which an on-stack buffer is passed to putenv.
+#    -Wanalyzer-shift-count-negative
+#         Warn about code paths in which a shift with negative count is attempted.
+#    -Wanalyzer-shift-count-overflow
+#         Warn about code paths in which a shift with count >= width of type is attempted.
+#    -Wanalyzer-stale-setjmp-buffer
+#         Warn about code paths in which a longjmp rewinds to a jmp_buf saved in a stack frame that has returned.
+#    -Wanalyzer-tainted-allocation-size
+#         Warn about code paths in which an unsanitized value is used as an allocation size.
+#    -Wanalyzer-tainted-array-index
+#         Warn about code paths in which an unsanitized value is used as an array index.
+#    -Wanalyzer-tainted-assertion
+#         Warn about code paths in which an 'assert()' is made involving an unsanitized value.
+#    -Wanalyzer-tainted-divisor
+#         Warn about code paths in which an unsanitized value is used as a divisor.
+#    -Wanalyzer-tainted-offset
+#         Warn about code paths in which an unsanitized value is used as a pointer offset.
+#    -Wanalyzer-tainted-size
+#         Warn about code paths in which an unsanitized value is used as a size.
+#    -Wanalyzer-undefined-behavior-ptrdiff
+#         Warn about code paths in which pointer subtraction involves undefined behavior.
+#    -Wanalyzer-undefined-behavior-strtok
+#         Warn about code paths in which a call is made to strtok with undefined behavior.
+#    -Wanalyzer-unsafe-call-within-signal-handler
+#         Warn about code paths in which an async-signal-unsafe function is called from a signal handler.
+#    -Wanalyzer-use-after-free
+#         Warn about code paths in which a freed value is used.
+#    -Wanalyzer-use-of-pointer-in-stale-stack-frame
+#         Warn about code paths in which a pointer to a stale stack frame is used.
+#    -Wanalyzer-use-of-uninitialized-value
+#         Warn about code paths in which an uninitialized value is used.
+#    -Wanalyzer-va-arg-type-mismatch
+#         Warn about code paths in which va_arg uses the wrong type.
+#    -Wanalyzer-va-list-exhausted
+#         Warn about code paths in which va_arg is used too many times on a va_list.
+#    -Wanalyzer-va-list-leak
+#         Warn about code paths in which va_start or va_copy is used without a corresponding va_end.
+#    -Wanalyzer-va-list-use-after-va-end
+#         Warn about code paths in which a va_list is used after va_end.
+#    -Wanalyzer-write-to-const
+#         Warn about code paths which attempt to write to a const object.
+#    -Wanalyzer-write-to-string-literal
+#         Warn about code paths which attempt to write to a string literal.
+#    -Wattribute-warning
+#         Warn about uses of __attribute__((warning)) declarations.
+#    -Wattributes
+#         Warn about inappropriate attribute usage.
+#    -Wbuiltin-declaration-mismatch
+#         Warn when a built-in function is declared with the wrong signature.
+#    -Wbuiltin-macro-redefined
+#         Warn when a built-in preprocessor macro is undefined or redefined.
+#    -Wc++11-extensions
+#         Warn about C++11 constructs in code compiled with an older standard.
+#    -Wc++14-extensions
+#         Warn about C++14 constructs in code compiled with an older standard.
+#    -Wc++17-extensions
+#         Warn about C++17 constructs in code compiled with an older standard.
+#    -Wc++20-extensions
+#         Warn about C++20 constructs in code compiled with an older standard.
+#    -Wc++23-extensions
+#         Warn about C++23 constructs in code compiled with an older standard.
+#    -Wc++26-extensions
+#         Warn about C++26 constructs in code compiled with an older standard.
+#    -Wc11-c23-compat
+#         Warn about features not present in ISO C11, but present in ISO C23.
+#    -Wc23-c2y-compat
+#         Warn about features not present in ISO C23, but present in ISO C2Y.
+#    -Wc90-c99-compat
+#         Warn about features not present in ISO C90, but present in ISO C99.
+#      -Wlong-long
+#           Do not warn about using \"long long\" when -pedantic.
+#    -Wc99-c11-compat
+#         Warn about features not present in ISO C99, but present in ISO C11.
+#    -Wcannot-profile
+#         Warn when profiling instrumentation was requested, but could not be applied to a certain function.
+#    -Wcast-user-defined
+#         Warn about a cast to reference type that does not use a related user-defined conversion function.
+#    -Wchanges-meaning
+#         Complain about a name being declared as a class member after a previous use of the same name.
+#    -Wclass-conversion
+#         Warn when a conversion function will never be called due to the type it converts to.
+#    -Wcompare-distinct-pointer-types
+#         Warn if pointers of distinct types are compared without a cast.
+#    -Wcomplain-wrong-lang
+#         Complain when a command-line option is valid, but not applicable to the current front end.
+#    -Wconversion-null
+#         Warn for converting NULL from/to a non-pointer type.
+#    -Wcoverage-invalid-line-number
+#         Warn in case a function ends earlier than it begins due to an invalid linenum macros.
+#    -Wcoverage-mismatch
+#         Warn in case profiles in -fprofile-use do not match.
+#    -Wcoverage-too-many-conditions
+#         Warn when a conditional has too many terms and condition coverage profiling gives up instrumenting the expression.
+#    -Wcoverage-too-many-paths
+#         Warn if a function exceeds the number of paths (controlled by -fpath-coverage-limit) and path coverage give up instrumenting the function. The limit is approximate and conservative and coverage might give up even if the actual number is slightly below the limit.
+#    -Wcpp
+#         Warn when a #warning directive is encountered.
+#    -Wdeclaration-after-statement
+#         Warn when a declaration is found after a statement.
+#    -Wdeclaration-missing-parameter-type
+#         Warn for missing parameter types in function declarations.
+#    -Wdefaulted-function-deleted
+#         Warn when an explicitly defaulted function is deleted.
+#    -Wdelete-incomplete
+#         Warn when deleting a pointer to incomplete type.
+#    -Wdeprecated
+#         Warn if a deprecated compiler feature, class, method, or field is used.
+#    -Wdeprecated-declarations
+#         Warn about uses of __attribute__((deprecated)) declarations.
+#    -Wdeprecated-non-prototype
+#         Warn about calls with arguments to functions declared without parameters.
+#    -Wdesignated-init
+#         Warn about positional initialization of structs requiring designated initializers.
+#    -Wdiscarded-array-qualifiers
+#         Warn if qualifiers on arrays which are pointer targets are discarded.
+#    -Wdiscarded-qualifiers
+#         Warn if type qualifiers on pointers are discarded.
+#    -Wdiv-by-zero
+#         Warn about compile-time integer division by zero.
+#    -Welaborated-enum-base
+#         Warn if an additional enum-base is used in an elaborated-type-specifier.
+#    -Wendif-labels
+#         Warn about stray tokens after #else and #endif.
+#    -Wenum-compare
+#         Warn about comparison of different enum types.
+#    -Wexceptions
+#         Warn when an exception handler is shadowed by another handler.
+#    -Wextra-semi
+#         Warn about semicolon after in-class function definition.
+#    -Wfree-labels
+#         Warn about labels on declarations and at the end of compound statements.
+#    -Wfree-nonheap-object
+#         Warn when attempting to free a non-heap object.
+#    -Wglobal-module
+#         Warn about the global module fragment not containing only preprocessing directives.
+#    -Whardened
+#         Warn when -fhardened did not enable an option from its set.
+#    -Wif-not-aligned
+#         Warn when the field in a struct is not aligned.
+#    -Wignored-attributes
+#         Warn whenever attributes are ignored.
+#    -Wimplicit-function-declaration
+#         Warn about implicit function declarations.
+#    -Wimplicit-int
+#         Warn when a declaration does not specify a type.
+#    -Winaccessible-base
+#         Warn when a base is inaccessible in derived due to ambiguity.
+#    -Wincompatible-pointer-types
+#         Warn when there is a conversion between pointers that have incompatible types.
+#    -Winherited-variadic-ctor
+#         Warn about C++11 inheriting constructors when the base has a variadic constructor.
+#    -Winit-list-lifetime
+#         Warn about uses of std::initializer_list that can result in dangling pointers.
+#    -Wint-conversion
+#         Warn about incompatible integer to pointer and pointer to integer conversions.
+#    -Wint-to-pointer-cast
+#         Warn when there is a cast to a pointer from an integer of a different size.
+#    -Winterference-size
+#         Warn about nonsensical values of --param destructive-interference-size or constructive-interference-size.
+#    -Winvalid-constexpr
+#         Warn when a function never produces a constant expression.
+#    -Winvalid-memory-model
+#         Warn when an atomic memory model parameter is known to be outside the valid range.
+#    -Winvalid-offsetof
+#         Warn about invalid uses of the \"offsetof\" macro.
+#    -Wliteral-suffix
+#         Warn when a string or character literal is followed by a ud-suffix which does not begin with an underscore.
+#    -Wlong-long
+#         Do not warn about using \"long long\" when -pedantic.
+#    -Wlto-type-mismatch
+#         During link time optimization warn about mismatched types of global declarations.
+#    -Wmain
+#         Warn about suspicious declarations of \"main\".
+#    -Wmissing-parameter-name
+#         Warn about function definitions omitting parameter names.
+#    -Wmissing-profile
+#         Warn in case profiles in -fprofile-use do not exist.
+#    -Wmissing-requires
+#         Warn about likely missing requires keyword.
+#    -Wmissing-template-keyword
+#         Warn when the template keyword is missing after a member access token in a dependent member access expression if that member is a template.
+#    -Wmusttail-local-addr
+#         Warn about passing a pointer/reference to a local or temporary variable to a musttail call argument.
+#    -Wnarrowing
+#         Warn about narrowing conversions within { } that are ill-formed in C++11.
+#    -Wnon-template-friend
+#         Warn when non-templatized friend functions are declared within a template.
+#    -WNSObject-attribute
+#         Warn if the NSObject attribute is applied to a non-typedef.
+#    -Wobjc-root-class
+#         Warn if a class interface has no superclass.  Root classes may use an attribute to suppress this warning.
+#    -Wodr
+#         Warn about some C++ One Definition Rule violations during link time optimization.
+#    -Wold-style-definition
+#         Warn if an old-style parameter definition is used.
+#    -Wopenmp
+#         Warn about suspicious OpenMP code.
+#    -Woverflow
+#         Warn about overflow in arithmetic expressions.
+#    -Woverride-init-side-effects
+#         Warn about overriding initializers with side effects.
+#    -Wpacked-bitfield-compat
+#         Warn about packed bit-fields whose offset changed in GCC 4.4.
+#    -Wpmf-conversions
+#         Warn when converting the type of pointers to member functions.
+#    -Wpointer-compare
+#         Warn when a pointer is compared with a zero character constant.
+#    -Wpointer-to-int-cast
+#         Warn when a pointer is cast to an integer of a different size.
+#    -Wpragma-once-outside-header
+#         Warn about #pragma once outside of a header.
+#    -Wpragmas
+#         Warn about misuses of pragmas.
+#    -Wprio-ctor-dtor
+#         Warn if constructor or destructors with priorities from 0 to 100 are used.
+#    -Wproperty-assign-default
+#         Warn if a property for an Objective-C object has no assign semantics specified.
+#    -Wprotocol
+#         Warn if inherited methods are unimplemented.
+#    -Wpsabi
+#         Warn about code affected by incompatible psABI changes.
+#    -Wreturn-local-addr
+#         Warn about returning a pointer/reference to a local or temporary variable.
+#    -Wreturn-mismatch
+#         Warn whenever void-returning functions return a non-void expressions, or a return expression is missing in a function not returning void.
+#    -Wreturn-type
+#         Warn whenever a function's return type defaults to \"int\" (C), or about inconsistent return types (C++).
+#    -Wscalar-storage-order
+#         Warn on suspicious constructs involving reverse scalar storage order.
+#    -Wshadow-ivar
+#         Warn if a local declaration hides an instance variable.
+#    -Wshift-count-negative
+#         Warn if shift count is negative.
+#    -Wshift-count-overflow
+#         Warn if shift count >= width of type.
+#    -Wshift-negative-value
+#         Warn if left shifting a negative value.
+#    -Wsizeof-array-argument
+#         Warn when sizeof is applied on a parameter declared as an array.
+#    -Wstringop-overread
+#         Warn about reading past the end of a source array in string manipulation functions like memchr and memcpy.
+#    -Wstringop-truncation
+#         Warn about truncation in string manipulation functions like strncat and strncpy.
+#    -Wsubobject-linkage
+#         Warn if a class type has a base or a field whose type uses the anonymous namespace or depends on a type with no linkage.
+#    -Wswitch-bool
+#         Warn about switches with boolean controlling expression.
+#    -Wswitch-outside-range
+#         Warn about switch values that are outside of the switch's type range.
+#    -Wswitch-unreachable
+#         Warn about statements between switch's controlling expression and the first case.
+#    -Wsync-nand
+#         Warn when __sync_fetch_and_nand and __sync_nand_and_fetch built-in functions are used.
+#    -Wtemplate-body
+#         Diagnose errors when parsing a template.
+#    -Wterminate
+#         Warn if a throw expression will always result in a call to terminate().
+#    -Wtsan
+#         Warn about unsupported features in ThreadSanitizer.
+#    -Wunicode
+#         Warn about invalid forms of delimited or named escape sequences.
+#    -Wunused-result
+#         Warn if a caller of a function, marked with attribute warn_unused_result, does not use its return value.
+#    -Wvarargs
+#         Warn about questionable usage of the macros used to retrieve variable arguments.
+#    -Wvexing-parse
+#         Warn about the most vexing parse syntactic ambiguity.
+#    -Wvirtual-move-assign
+#         Warn if a virtual base has a non-trivial move assignment operator.
+#    -Wvla
+#         Warn if a variable length array is used.
+#    -Wxor-used-as-pow
+#         Warn about xor operators where it appears the user meant exponentiation.
+-Wabi
+#     Warn about things that will change when compiling with an ABI-compliant compiler.
+#    -Wnoexcept-type
+#         Warn if C++17 noexcept function type will change the mangled name of a symbol.
+#    -Wpsabi
+#         Warn about code affected by incompatible psABI changes.
+-Wabi-tag
+#     Warn if a subobject has an abi_tag attribute that the complete object type does not have.
+-Wabi=
+#     Warn about things that change between the current -fabi-version and the specified version.
+-Waggregate-return
+#     Warn about returning structures, unions or arrays.
+-Waligned-new=[none|global|all]
+#     Warn even if 'new' uses a class member allocation function.
+-Wall
+#     Enable most warning messages.
+#    -Waddress
+#         Warn about suspicious uses of memory addresses.
+#    -Waligned-new=1
+#         Warn even if 'new' uses a class member allocation function.
+#    -Warray-bounds=1
+#         Warn if an array is accessed out of bounds.
+#    -Warray-compare
+#         Warn about comparisons between two operands of array type.
+#    -Warray-parameter=2
+#         Warn about mismatched declarations of array parameters and unsafe accesses to them.
+#    -Wbool-compare
+#         Warn about boolean expression compared with an integer value different from true/false.
+#    -Wbool-operation
+#         Warn about certain operations on boolean expressions.
+#    -Wc++11-compat
+#         Warn about C++ constructs whose meaning differs between ISO C++ 1998 and ISO C++ 2011.
+#      -Wnarrowing
+#           Warn about narrowing conversions within { } that are ill-formed in C++11.
+#    -Wc++14-compat
+#         Warn about C++ constructs whose meaning differs between ISO C++ 2011 and ISO C++ 2014.
+#    -Wc++17-compat
+#         Warn about C++ constructs whose meaning differs between ISO C++ 2014 and ISO C++ 2017.
+#      -Wnoexcept-type
+#           Warn if C++17 noexcept function type will change the mangled name of a symbol.
+#    -Wc++20-compat
+#         Warn about C++ constructs whose meaning differs between ISO C++ 2017 and ISO C++ 2020.
+#    -Wcatch-value=1
+#         Warn about catch handlers of non-reference type.
+#    -Wchar-subscripts
+#         Warn about subscripts whose type is \"char\".
+#    -Wclass-memaccess
+#         Warn for unsafe raw memory writes to objects of class types.
+#    -Wcomment
+#         Warn about possibly nested block comments, and C++ comments spanning more than one physical line.
+#    -Wdangling-pointer=2
+#         Warn for uses of pointers to auto variables whose lifetime has ended.
+#    -Wdelete-non-virtual-dtor
+#         Warn about deleting polymorphic objects with non-virtual destructors.
+#    -Wduplicate-decl-specifier
+#         Warn when a declaration has duplicate const, volatile, restrict or _Atomic specifier.
+#    -Wenum-compare
+#         Warn about comparison of different enum types.
+#    -Wenum-int-mismatch
+#         Warn about enum/integer type mismatches.
+#    -Wformat=1
+#         Warn about printf/scanf/strftime/strfmon format string anomalies.
+#      -Wformat-contains-nul
+#           Warn about format strings that contain NUL bytes.
+#      -Wformat-diag
+#           Warn about GCC format strings with strings unsuitable for diagnostics.
+#      -Wformat-extra-args
+#           Warn if passing too many arguments to a function for its format string.
+#      -Wformat-overflow=1
+#           Warn about function calls with format strings that write past the end of the destination region.
+#      -Wformat-truncation=1
+#           Warn about calls to snprintf and similar functions that truncate output.
+#      -Wformat-zero-length
+#           Warn about zero-length formats.
+#      -Wnonnull
+#           Warn about NULL being passed to argument slots marked as requiring non-NULL.
+#    -Wframe-address
+#         Warn when __builtin_frame_address or __builtin_return_address is used unsafely.
+#    -Wheader-guard
+#         Warn when #ifndef of a header guard is followed by #define of a different macro with the header guard macro not defined at the end of header.
+#    -Wimplicit
+#         Warn about implicit declarations.
+#      -Wimplicit-function-declaration
+#           Warn about implicit function declarations.
+#      -Wimplicit-int
+#           Warn when a declaration does not specify a type.
+#    -Winfinite-recursion
+#         Warn for infinitely recursive calls.
+#    -Winit-self
+#         Warn about variables which are initialized to themselves.
+#    -Wint-in-bool-context
+#         Warn for suspicious integer expressions in boolean context.
+#    -Wlogical-not-parentheses
+#         Warn when logical not is used on the left hand side operand of a comparison.
+#    -Wmain
+#         Warn about suspicious declarations of \"main\".
+#    -Wmaybe-uninitialized
+#         Warn about maybe uninitialized automatic variables.
+#    -Wmemset-elt-size
+#         Warn about suspicious calls to memset where the third argument contains the number of elements not multiplied by the element size.
+#    -Wmemset-transposed-args
+#         Warn about suspicious calls to memset where the third argument is constant literal zero and the second is not.
+#    -Wmisleading-indentation
+#         Warn when the indentation of the code does not reflect the block structure.
+#    -Wmismatched-dealloc
+#         Warn for deallocation calls with arguments returned from mismatched allocation functions.
+#    -Wmismatched-new-delete
+#         Warn for mismatches between calls to operator new or delete and the corresponding call to the allocation or deallocation function.
+#    -Wmissing-attributes
+#         Warn about declarations of entities that may be missing attributes that related entities have been declared with.
+#    -Wmissing-braces
+#         Warn about possibly missing braces around initializers.
+#    -Wmultistatement-macros
+#         Warn about unsafe macros expanding to multiple statements used as a body of a clause such as if, else, while, switch, or for.
+#    -Wnarrowing
+#         Warn about narrowing conversions within { } that are ill-formed in C++11.
+#    -Wnonnull
+#         Warn about NULL being passed to argument slots marked as requiring non-NULL.
+#    -Wnonnull-compare
+#         Warn if comparing pointer parameter with nonnull attribute with NULL.
+#    -Wopenmp-simd
+#         Warn if a simd directive is overridden by the vectorizer cost model.
+#    -Woverloaded-virtual=1
+#         Warn about overloaded virtual function names.
+#    -Wpacked-not-aligned
+#         Warn when fields in a struct with the packed attribute are misaligned.
+#    -Wparentheses
+#         Warn about possibly missing parentheses.
+#      -Wdangling-else
+#           Warn about dangling else.
+#    -Wpessimizing-move
+#         Warn about calling std::move on a local object in a return statement preventing copy elision.
+#    -Wpointer-sign
+#         Warn when a pointer differs in signedness in an assignment.
+#    -Wrange-loop-construct
+#         Warn when a range-based for-loop is creating unnecessary copies.
+#    -Wreorder
+#         Warn when the compiler reorders code.
+#    -Wrestrict
+#         Warn when an argument passed to a restrict-qualified parameter aliases with another argument.
+#    -Wreturn-type
+#         Warn whenever a function's return type defaults to \"int\" (C), or about inconsistent return types (C++).
+#    -Wself-move
+#         Warn when a value is moved to itself with std::move.
+#    -Wsequence-point
+#         Warn about possible violations of sequence point rules.
+#    -Wsign-compare
+#         Warn about signed-unsigned comparisons.
+#    -Wsizeof-array-div
+#         Warn about divisions of two sizeof operators when the first one is applied to an array and the divisor does not equal the size of the array element.
+#    -Wsizeof-pointer-div
+#         Warn about suspicious divisions of two sizeof expressions that don't work correctly with pointers.
+#    -Wsizeof-pointer-memaccess
+#         Warn about suspicious length parameters to certain string functions if the argument uses sizeof.
+#    -Wstrict-aliasing=3
+#         Warn about code which might break strict aliasing rules.
+#    -Wstrict-overflow=1
+#         Warn about optimizations that assume that signed overflow is undefined.
+#    -Wstringop-overflow=2
+#         Under the control of Object Size type, warn about buffer overflow in string manipulation functions like memcpy and strcpy.
+#    -Wstringop-overread
+#         Warn about reading past the end of a source array in string manipulation functions like memchr and memcpy.
+#    -Wstringop-truncation
+#         Warn about truncation in string manipulation functions like strncat and strncpy.
+#    -Wswitch
+#         Warn about enumerated switches, with no default, missing a case.
+#    -Wtautological-compare
+#         Warn if a comparison always evaluates to true or false.
+#    -Wtrigraphs
+#         Warn if trigraphs are encountered that might affect the meaning of the program.
+#    -Wuninitialized
+#         Warn about uninitialized automatic variables.
+#      -Wmaybe-uninitialized
+#           Warn about maybe uninitialized automatic variables.
+#    -Wunknown-pragmas
+#         Warn about unrecognized pragmas.
+#    -Wunused
+#         Enable all -Wunused- warnings.
+#      -Wunused-but-set-variable
+#           Warn when a variable is only set, otherwise unused.
+#      -Wunused-function
+#           Warn when a function is unused.
+#      -Wunused-label
+#           Warn when a label is unused.
+#      -Wunused-local-typedefs
+#           Warn when typedefs locally defined in a function are not used.
+#      -Wunused-value
+#           Warn when an expression value is unused.
+#      -Wunused-variable
+#           Warn when a variable is unused.
+#        -Wunused-const-variable=1
+#             Warn when a const variable is unused.
+#    -Wuse-after-free=2
+#         Warn for uses of pointers to deallocated storage.
+#    -Wvla-parameter
+#         Warn about mismatched declarations of VLA parameters.
+#    -Wvolatile-register-var
+#         Warn when a register variable is declared volatile.
+#    -Wzero-length-bounds
+#         Warn about accesses to interior zero-length array members.
+-Walloc-size-larger-than=<bytes>
+#     Warn for calls to allocation functions that attempt to allocate objects larger than the specified number of bytes.
+-Walloc-zero
+#     Warn for calls to allocation functions that specify zero bytes.
+-Walloca
+#     Warn on any use of alloca.
+-Walloca-larger-than=<number>
+#     Warn on unbounded uses of alloca, and on bounded uses of alloca whose bound can be larger than <number> bytes.
+-Wanalyzer-symbol-too-complex
+#     Warn if expressions are too complicated for the analyzer to fully track.
+-Wanalyzer-too-complex
+#     Warn if the code is too complicated for the analyzer to fully explore.
+-Warith-conversion
+#     Warn if conversion of the result of arithmetic might change the value even though converting the operands cannot.
+-Warray-bounds=<0..2>
+#     Warn if an array is accessed out of bounds.
+-Warray-parameter=<0..2>
+#     Warn about mismatched declarations of array parameters and unsafe accesses to them.
+-Wassign-intercept
+#     Warn whenever an Objective-C assignment is being intercepted by the garbage collector.
+-Wattribute-alias=<0..2>
+#     Warn about type safety and similar errors and mismatches in declarations with alias attributes.
+-Wattributes=
+#     Do not warn about specified attributes.
+-Wbad-function-cast
+#     Warn about casting functions to incompatible types.
+-Wbidi-chars=
+#     -Wbidi-chars=[none|unpaired|any|ucn] Warn about UTF-8 bidirectional control characters.
+-Wc++-compat
+#     Warn about C constructs that are not in the common subset of C and C++.
+#    -Wenum-compare
+#         Warn about comparison of different enum types.
+#    -Wenum-int-mismatch
+#         Warn about enum/integer type mismatches.
+-Wcast-align
+#     Warn about pointer casts which increase alignment.
+-Wcast-align=strict
+#     Warn about pointer casts which increase alignment.
+-Wcast-qual
+#     Warn about casts which discard qualifiers.
+-Wcatch-value=<0..3>
+#     Warn about catch handlers of non-reference type.
+-Wchkp
+#     Removed in GCC 9.  This switch has no effect.
+-Wcomma-subscript
+#     Warn about uses of a comma operator within a subscripting expression.
+-Wconditionally-supported
+#     Warn for conditionally-supported constructs.
+-Wconversion
+#     Warn for implicit type conversions that may change a value.
+#    -Wfloat-conversion
+#         Warn for implicit type conversions that cause loss of floating point precision.
+#    -Wsign-conversion
+#         Warn for implicit type conversions between signed and unsigned integers.
+-Wctad-maybe-unsupported
+#     Warn when performing class template argument deduction on a type with no deduction guides.
+-Wctor-dtor-privacy
+#     Warn when all constructors and destructors are private.
+-Wdangling-pointer=<0..2>
+#     Warn for uses of pointers to auto variables whose lifetime has ended.
+-Wdate-time
+#     Warn about __TIME__, __DATE__ and __TIMESTAMP__ usage.
+-Wdeprecated-copy-dtor
+#     Mark implicitly-declared copy operations as deprecated if the class has a user-provided copy operation or destructor.
+-Wdeprecated-enum-enum-conversion
+#     Warn about deprecated arithmetic conversions on operands of enumeration types.
+-Wdeprecated-enum-float-conversion
+#     Warn about deprecated arithmetic conversions on operands where one is of enumeration type and the other is of a floating-point type.
+-Wdeprecated-literal-operator
+#     Warn about deprecated space between \"\" and suffix in a user-defined literal operator.
+-Wdeprecated-variadic-comma-omission
+#     Warn about deprecated omission of comma before ... in varargs function declaration.
+-Wdisabled-optimization
+#     Warn when an optimization pass is disabled.
+-Wdouble-promotion
+#     Warn about implicit conversions from \"float\" to \"double\".
+-Wduplicated-branches
+#     Warn about duplicated branches in if-else statements.
+-Wduplicated-cond
+#     Warn about duplicated conditions in an if-else-if chain.
+-Weffc++
+#     Warn about violations of Effective C++ style rules.
+#    -Wdelete-non-virtual-dtor
+#         Warn about deleting polymorphic objects with non-virtual destructors.
+#    -Wnon-virtual-dtor
+#         Warn about non-virtual destructors.
+-Wextra
+#     Print extra (possibly unwanted) warnings.
+#    -Wabsolute-value
+#         Warn on suspicious calls of standard functions computing absolute values.
+#    -Walloc-size
+#         Warn when allocating insufficient storage for the target type of the assigned pointer.
+#    -Wcalloc-transposed-args
+#         Warn about suspicious calls to calloc-like functions where sizeof expression is the earlier size argument and not the latter.
+#    -Wcast-function-type
+#         Warn about casts between incompatible function types.
+#    -Wclobbered
+#         Warn about variables that might be changed by \"longjmp\" or \"vfork\".
+#    -Wdangling-reference
+#         Warn when a reference is bound to a temporary whose lifetime has ended.
+#    -Wdeprecated-copy
+#         Mark implicitly-declared copy operations as deprecated if the class has a user-provided copy operation.
+#    -Wempty-body
+#         Warn about an empty body in an if or else statement.
+#    -Wenum-conversion
+#         Warn about implicit conversion of enum types.
+#    -Wignored-qualifiers
+#         Warn whenever type qualifiers are ignored.
+#    -Wimplicit-fallthrough=3
+#         Warn when a switch case falls through.
+#    -Wmaybe-musttail-local-addr
+#         Warn about pointer/reference to a local or temporary variable possibly escaping to a musttail call.
+#    -Wmissing-field-initializers
+#         Warn about missing fields in struct initializers.
+#    -Wmissing-parameter-type
+#         Warn about function parameters declared without a type specifier in K&R-style functions.
+#    -Wold-style-declaration
+#         Warn for obsolescent usage in a declaration.
+#    -Woverride-init
+#         Warn about overriding initializers without side effects.
+#    -Wredundant-move
+#         Warn about redundant calls to std::move.
+#    -Wsign-compare
+#         Warn about signed-unsigned comparisons.
+#    -Wsized-deallocation
+#         Warn about missing sized deallocation functions.
+#    -Wstring-compare
+#         Warn about calls to strcmp and strncmp used in equality expressions that are necessarily true or false due to the length of one and size of the other argument.
+#    -Wtemplate-names-tu-local
+#         Warn about templates naming TU-local entities in a module.
+#    -Wtype-limits
+#         Warn if a comparison is always true or always false due to the limited range of the data type.
+#    -Wuninitialized
+#         Warn about uninitialized automatic variables.
+#      -Wmaybe-uninitialized
+#           Warn about maybe uninitialized automatic variables.
+#    -Wunterminated-string-initialization
+#         Warn about character arrays initialized as unterminated character sequences with a string literal.
+#    -Wunused-but-set-parameter
+#         Warn when a function parameter is only set, otherwise unused.
+#    -Wunused-parameter
+#         Warn when a function parameter is unused.
+-Wflex-array-member-not-at-end
+#     Warn when a structure containing a C99 flexible array member as the last field is not at the end of another structure.
+-Wfloat-equal
+#     Warn if testing floating point numbers for equality.
+-Wformat-overflow=<0..2>
+#     Warn about function calls with format strings that write past the end of the destination region.
+-Wformat-signedness
+#     Warn about sign differences with format functions.
+-Wformat-truncation=<0..2>
+#     Warn about calls to snprintf and similar functions that truncate output.
+-Wformat=<0..2>
+#     Warn about printf/scanf/strftime/strfmon format string anomalies.
+-Wformat=2
+#    -Wformat-nonliteral
+#         Warn about format strings that are not literals.
+#    -Wformat-security
+#         Warn about possible security problems with format functions.
+#    -Wformat-y2k
+#         Warn about strftime formats yielding 2-digit years.
+-Wframe-larger-than=<byte-size>
+#     Warn if a function's stack frame requires in excess of <byte-size>.
+-Whsa # IGNORED switch
+#     Does nothing.  Preserved for backward compatibility.
+-Wimplicit-fallthrough=<0..5>
+#     Warn when a switch case falls through.
+-Wimport # IGNORED switch
+-Winline
+#     Warn when an inlined function cannot be inlined.
+-Winvalid-imported-macros
+#     Warn about macros that have conflicting header units definitions.
+-Winvalid-pch
+#     Warn about PCH files that are found but not used.
+-Winvalid-utf8
+#     Warn about invalid UTF-8 characters.
+-Wjump-misses-init
+#     Warn when a jump misses a variable initialization.
+-Wlarger-than=<byte-size>
+#     Warn if an object's size exceeds <byte-size>.
+-Wleading-whitespace=
+#     Warn about leading whitespace style issues on lines except when in raw string literals.
+-Wlogical-op
+#     Warn when a logical operator is suspiciously always evaluating to true or false.
+-Wmismatched-tags
+#     Warn when a class is redeclared or referenced using a mismatched class-key.
+-Wmissing-declarations
+#     Warn about global functions without previous declarations.
+-Wmissing-include-dirs
+#     Warn about user-specified include directories that do not exist.
+-Wmissing-prototypes
+#     Warn about global functions without prototypes.
+-Wmissing-variable-declarations
+#     Warn about global variables without previous declarations.
+-Wmudflap
+#     This option is deprecated and has no effect.
+-Wmultichar
+#     Warn about use of multi-character character constants.
+-Wmultiple-inheritance
+#     Warn on direct multiple inheritance.
+-Wnamespaces
+#     Warn on namespace definition.
+-Wnested-externs
+#     Warn about \"extern\" declarations not at file scope.
+-Wnoexcept
+#     Warn when a noexcept expression evaluates to false even though the expression can't actually throw.
+-Wnormalized=[none|id|nfc|nfkc]
+#     Warn about non-normalized Unicode strings.
+-Wnrvo
+#     Warn if the named return value optimization is not performed although it is allowed.
+-Wnull-dereference
+#     Warn if dereferencing a NULL pointer may lead to erroneous or undefined behavior.
+-Wold-style-cast
+#     Warn if a C-style cast is used in a program.
+-Wopenacc-parallelism
+#     Warn about potentially suboptimal choices related to OpenACC parallelism.
+-Woverloaded-virtual=<0..2>
+#     Warn about overloaded virtual function names.
+-Wpacked
+#     Warn when the packed attribute has no effect on struct layout.
+-Wpadded
+#     Warn when padding is required to align structure members.
+-Wpedantic
+#     Issue warnings needed for strict compliance to the standard.
+#    -Wendif-labels
+#         Warn about stray tokens after #else and #endif.
+#    -Wexpansion-to-defined
+#         Warn if \"defined\" is used outside #if.
+#    -Wmain
+#         Warn about suspicious declarations of \"main\".
+#    -Woverlength-strings
+#         Warn if a string is longer than the maximum portable length specified by the standard.
+#    -Wpointer-arith
+#         Warn about function pointer arithmetic.
+#    -Wpointer-sign
+#         Warn when a pointer differs in signedness in an assignment.
+#    -Wvariadic-macros
+#         Warn about using variadic macros.
+-Wplacement-new=<0..2>
+#     Warn for placement new expressions with undefined behavior.
+-Wredundant-decls
+#     Warn about multiple declarations of the same object.
+-Wredundant-tags
+#     Warn when a class or enumerated type is referenced using a redundant class-key.
+-Wregister
+#     Warn about uses of register storage specifier.
+-Wselector
+#     Warn if a selector has multiple methods.
+-Wshadow
+#     Warn when one variable shadows another.  Same as -Wshadow=global.
+#    -Wshadow-ivar
+#         Warn if a local declaration hides an instance variable.
+#    -Wshadow=local
+#         Warn when one local variable shadows another local variable or parameter.
+#      -Wshadow=compatible-local
+#           Warn when one local variable shadows another local variable or parameter of compatible type.
+-Wshift-overflow=<0..2>
+#     Warn if left shift of a signed value overflows.
+-Wsign-promo
+#     Warn when overload promotes from unsigned to signed.
+-Wstack-protector
+#     Warn when not issuing stack smashing protection for some reason.
+-Wstack-usage=<byte-size>
+#     Warn if stack usage might exceed <byte-size>.
+-Wstrict-aliasing
+#     Warn about code which might break strict aliasing rules.
+-Wstrict-aliasing=<0..3>
+#     Warn about code which might break strict aliasing rules.
+-Wstrict-flex-arrays
+#     Warn about improper usages of flexible array members according to the level of -fstrict-flex-arrays.
+-Wstrict-null-sentinel
+#     Warn about uncasted NULL used as sentinel.
+-Wstrict-overflow
+#     Warn about optimizations that assume that signed overflow is undefined.
+-Wstrict-overflow=<0..5>
+#     Warn about optimizations that assume that signed overflow is undefined.
+-Wstrict-prototypes
+#     Warn about unprototyped function declarations.
+-Wstrict-selector-match
+#     Warn if type signatures of candidate methods do not match exactly.
+-Wstringop-overflow=<0..4>
+#     Under the control of Object Size type, warn about buffer overflow in string manipulation functions like memcpy and strcpy.
+-Wsuggest-attribute=cold
+#     Warn about functions which might be candidates for __attribute__((cold)).
+-Wsuggest-attribute=const
+#     Warn about functions which might be candidates for __attribute__((const)).
+-Wsuggest-attribute=format
+#     Warn about functions which might be candidates for format attributes.
+-Wsuggest-attribute=malloc
+#     Warn about functions which might be candidates for __attribute__((malloc)).
+-Wsuggest-attribute=noreturn
+#     Warn about functions which might be candidates for __attribute__((noreturn)).
+-Wsuggest-attribute=pure
+#     Warn about functions which might be candidates for __attribute__((pure)).
+-Wsuggest-attribute=returns_nonnull
+#     Warn about functions which might be candidates for __attribute__((returns_nonnull)).
+-Wsuggest-final-methods
+#     Warn about C++ virtual methods where adding final keyword would improve code quality.
+-Wsuggest-final-types
+#     Warn about C++ polymorphic types where adding final keyword would improve code quality.
+-Wsuggest-override
+#     Suggest that the override keyword be used when the declaration of a virtual function overrides another.
+-Wswitch-default
+#     Warn about enumerated switches missing a \"default:\" statement.
+-Wswitch-enum
+#     Warn about all enumerated switches missing a specific case.
+-Wsynth
+#     Deprecated.  This switch has no effect.
+-Wsystem-headers
+#     Do not suppress warnings from system headers.
+-Wtemplate-id-cdtor
+#     Warn about simple-template-id in a constructor or destructor.
+-Wtemplates
+#     Warn on primary template declaration.
+-Wtraditional
+#     Warn about features not present in traditional C.
+#    -Wvariadic-macros
+#         Warn about using variadic macros.
+-Wtraditional-conversion
+#     Warn of prototypes causing type conversions different from what would happen in the absence of prototype.
+-Wtrailing-whitespace=
+#     Warn about trailing whitespace on lines except when in raw string literals.
+-Wtrampolines
+#     Warn whenever a trampoline is generated.
+-Wtrivial-auto-var-init
+#     Warn about cases where -ftrivial-auto-var-init cannot initialize an auto variable.
+-Wundeclared-selector
+#     Warn about @selector()s without previously declared methods.
+-Wundef
+#     Warn if an undefined macro is used in an #if directive.
+-Wunreachable-code # IGNORED switch
+#     Does nothing. Preserved for backward compatibility.
+-Wunsafe-loop-optimizations # IGNORED switch
+#     Does nothing. Preserved for backward compatibility.
+-Wunsuffixed-float-constants
+#     Warn about unsuffixed float constants.
+-Wunused-const-variable=<0..2>
+#     Warn when a const variable is unused.
+-Wunused-macros
+#     Warn about macros defined in the main file that are not used.
+-Wuse-after-free
+#     Warn for uses of pointers to deallocated storage.
+-Wuse-after-free=<0..3>
+#     Warn for uses of pointers to deallocated storage.
+-Wuseless-cast
+#     Warn about useless casts.
+-Wvector-operation-performance
+#     Warn when a vector operation is compiled outside the SIMD.
+-Wvirtual-inheritance
+#     Warn on direct virtual inheritance.
+-Wvla-larger-than=<number>
+#     Warn on unbounded uses of variable-length arrays, and on bounded uses of variable-length arrays whose bound can be larger than <number> bytes.
+-Wvolatile
+#     Warn about deprecated uses of volatile qualifier.
+-Wwrite-strings
+#     In C++, nonzero means warn about deprecated conversion from string literals to 'char *'.  In C, similar warning, except that the conversion is of course not deprecated by the ISO C standard.
+-Wzero-as-null-pointer-constant
+#     Warn when a literal '0' is used as null pointer.

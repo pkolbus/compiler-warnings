@@ -1,0 +1,23 @@
++-Wanalyzer-undefined-behavior-ptrdiff # Enabled by default.
++-Wc23-c2y-compat # Enabled by default. Applies to C,ObjC
++-Wcoverage-too-many-paths # Enabled by default.
++-Wdefaulted-function-deleted # Enabled by default. Applies to C++,ObjC++
++-Wdeprecated-literal-operator # Applies to C++,ObjC++
++-Wdeprecated-non-prototype # Enabled by default. Applies to C,ObjC
++-Wdeprecated-variadic-comma-omission # Applies to C++,ObjC++
+--Wextra-semi # Applies to C++,ObjC++
++-Wextra-semi # Enabled by default. Applies to C++,ObjC++
++-Wfree-labels # Enabled by default. Applies to C,ObjC
++-Wheader-guard
++-Wleading-whitespace=
++-Wmaybe-musttail-local-addr
++-Wmissing-parameter-name # Enabled by default. Applies to C,ObjC
++-Wmusttail-local-addr # Enabled by default.
++-Wpragma-once-outside-header # Enabled by default.
++-Wtemplate-body # Enabled by default. Applies to C++,ObjC++
++-Wtemplate-names-tu-local # Applies to C++,ObjC++
++-Wtrailing-whitespace
++-Wtrailing-whitespace=
++-Wunterminated-string-initialization # Applies to C,ObjC
+--Wzero-as-null-pointer-constant # Applies to C++,ObjC++
++-Wzero-as-null-pointer-constant
