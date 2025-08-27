@@ -1,0 +1,34 @@
++-Walloc-size # Enabled by default.
++-Wattribute-preprocessor-tokens
+--Wc2y-extensions
++-Wc2y-extensions # Partially enabled by default.
++-Wdllexport-explicit-instantiation # Enabled by default.
++-Wenum-compare-typo # Enabled by default.
++-Wexperimental-lifetime-safety-cross-tu-suggestions
++-Wexperimental-lifetime-safety-intra-tu-suggestions
++-Wexperimental-lifetime-safety-permissive
++-Wexperimental-lifetime-safety-strict
++-Wexperimental-lifetime-safety-suggestions
++-Wfunction-effect-redeclarations
++-Wgcc-install-dir-libstdcxx # Enabled by default.
++-Wmatrix-conversion # Enabled by default.
++-Wmatrix-conversions # Enabled by default.
++-Wmicrosoft-empty-enum
+--Wmissing-format-attribute # IGNORED switch
++-Wmissing-format-attribute
++-Wopenacc-extension
++-Wopenacc-var-lacks-operation # Enabled by default.
++-Wopenacc-var-non-const-array # Enabled by default.
++-Woverriding-complex-range # Enabled by default.
++-Wpgo-coverage # Enabled by default.
++-Wreference-tu-local-entity-in-other-tu # Enabled by default.
++-Wshadow-header
++-Wsimdlen # Enabled by default.
++-Wtrivial-auto-var-init # Enabled by default.
++-WTU-local-entity-exposure # Enabled by default.
++-Wunsafe-buffer-usage-in-format-attr-call
++-Wunsafe-buffer-usage-in-unique-ptr-array-access
+--Wvector-conversion
+--Wvector-conversions
++-Wvector-conversion # Partially enabled by default.
++-Wvector-conversions # Partially enabled by default.
