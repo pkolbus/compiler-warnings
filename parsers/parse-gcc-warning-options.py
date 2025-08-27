@@ -26,14 +26,23 @@ from GccOptionsParser import GccOptionsParser
 class ParseState(enum.Enum):
     """Possible states for parse_warning_blocks()."""
 
-    NEWLINE = enum.auto()
-    OPTION_NAME = enum.auto()
+    NAME = enum.auto()
     OPTION_ATTRIBUTES = enum.auto()
     OPTION_HELP = enum.auto()
+    SKIP = enum.auto()
     FINALIZE = enum.auto()
 
 
-BORING_OPTIONS = {"Variable", "Enum", "EnumValue"}
+IGNORED_RECORDS = {
+    "Enum",
+    "EnumValue",
+    "HeaderInclude",
+    "Language",
+    "SourceInclude",
+    "TargetSave",
+    "TargetVariable",
+    "Variable",
+}
 
 NON_WARNING_WS = {"Werror", "Werror=", "Wfatal-errors"}
 
@@ -82,9 +91,9 @@ class OptionFile:
         self._options: list[OptionDefinition] = []
 
         # Initialize the parse state
-        self._state = ParseState.OPTION_NAME  # Expected content of line
+        self._state = ParseState.NAME  # Expected content of line
         self._help_lines: list[str] = []
-        self._option_name = ""
+        self._name = ""
         self._display_name: str | None = None
 
         self._parse_file()
@@ -100,12 +109,14 @@ class OptionFile:
             line = line.split(";", 1)[0]  # Remove trailing comment
             line = line.strip()  # Remove whitespace
 
-            if self._state == ParseState.OPTION_NAME:
-                self._parse_option_name(line)
+            if self._state == ParseState.NAME:
+                self._parse_name(line)
             elif self._state == ParseState.OPTION_ATTRIBUTES:
                 self._parse_option_attributes(line)
             elif self._state == ParseState.OPTION_HELP:
                 self._parse_option_help(line)
+            elif self._state == ParseState.SKIP:
+                self._parse_skip(line)
 
             if self._state == ParseState.FINALIZE:
                 self._finalize_option()
@@ -130,18 +141,24 @@ class OptionFile:
         else:
             self._state = ParseState.FINALIZE
 
-    def _parse_option_name(self, line: str) -> None:
+    def _parse_name(self, line: str) -> None:
         # Parse line as the option name.
-        if line:
-            self._option_name = line
+        if not line:
+            return
+
+        if line in IGNORED_RECORDS:
+            self._state = ParseState.SKIP
+        else:
+            self._name = line
             self._state = ParseState.OPTION_ATTRIBUTES
+
+    def _parse_skip(self, line: str) -> None:
+        # Parse line as a skipped record
+        if not line:
+            self._state = ParseState.NAME
 
     def _finalize_option(self) -> None:
         # Add the option from the parse state to self._options.
-        self._state = ParseState.OPTION_NAME
-        if self._option_name in BORING_OPTIONS:
-            return
-
         help_text = " ".join(self._help_lines)
         display_name: str | None = None
 
@@ -150,9 +167,11 @@ class OptionFile:
 
         self._options.append(
             OptionDefinition(
-                self._option_name, display_name, self._option_attributes, help_text
+                self._name, display_name, self._option_attributes, help_text
             )
         )
+
+        self._state = ParseState.NAME
 
 
 def get_parse_tree(string_value: str) -> antlr4.tree.Tree.ParseTree:
