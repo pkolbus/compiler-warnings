@@ -80,11 +80,9 @@
 -Wbool-conversion # Enabled by default.
 -Wbool-conversions # Enabled by default.
 -Wbool-operation
--Wbounds-attributes-cxx-experimental-ignored # Enabled by default.
 -Wbounds-attributes-extern-array-count # Enabled by default.
 -Wbounds-attributes-implicit-conversion-single-to-explicit-indexable # Enabled by default.
 -Wbounds-attributes-init-list-side-effect # Enabled by default.
--Wbounds-attributes-objc-experimental-ignored # Enabled by default.
 -Wbounds-attributes-redundant # Enabled by default.
 -Wbounds-safety-adoption-mode-ignored # Enabled by default.
 -Wbounds-safety-conversion-single-to-implicit-indexable # Enabled by default.
@@ -335,6 +333,8 @@
 -Wexcessive-regsave # Enabled by default.
 -Wexit-time-destructors
 -Wexpansion-to-defined # Partially enabled by default.
+-Wexperimental-bounds-safety-cxx-ignored # Enabled by default.
+-Wexperimental-bounds-safety-objc-ignored # Enabled by default.
 -Wexperimental-header-units # Enabled by default.
 -Wexplicit-initialize-call # Enabled by default.
 -Wexplicit-ownership-type
@@ -520,6 +520,7 @@
 -Winvalid-token-paste # Enabled by default.
 -Winvalid-unevaluated-string # Enabled by default.
 -Winvalid-utf8
+-Winvalid-version-availability # Enabled by default.
 -Wjump-seh-finally # Enabled by default.
 -Wkeyword-compat # Enabled by default.
 -Wkeyword-macro
@@ -731,6 +732,7 @@
 -Woverloaded-virtual
 -Woverride-init # Enabled by default.
 -Woverride-module # Enabled by default.
+-Woverriding-deployment-version # Enabled by default.
 -Woverriding-method-mismatch
 -Woverriding-option # Enabled by default.
 -Wpacked

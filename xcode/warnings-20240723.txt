@@ -230,11 +230,9 @@
 #     -Wundefined-bool-conversion
 -Wbool-operation
 #   -Wbitwise-instead-of-logical
--Wbounds-attributes-cxx-experimental-ignored
 -Wbounds-attributes-extern-array-count
 -Wbounds-attributes-implicit-conversion-single-to-explicit-indexable
 -Wbounds-attributes-init-list-side-effect
--Wbounds-attributes-objc-experimental-ignored
 -Wbounds-attributes-redundant
 -Wbounds-safety-adoption-mode-ignored
 -Wbounds-safety-conversion-single-to-implicit-indexable
@@ -902,6 +900,8 @@
 -Wexcessive-regsave
 -Wexit-time-destructors
 -Wexpansion-to-defined
+-Wexperimental-bounds-safety-cxx-ignored
+-Wexperimental-bounds-safety-objc-ignored
 -Wexperimental-header-units
 -Wexplicit-initialize-call
 -Wexplicit-ownership-type
@@ -1195,6 +1195,7 @@
 -Winvalid-token-paste
 -Winvalid-unevaluated-string
 -Winvalid-utf8
+-Winvalid-version-availability
 -Wjump-seh-finally
 -Wkeyword-compat
 -Wkeyword-macro
@@ -1603,6 +1604,7 @@
 -Woverride-init
 #   -Winitializer-overrides
 -Woverride-module
+-Woverriding-deployment-version
 -Woverriding-method-mismatch
 -Woverriding-option
 -Wpacked

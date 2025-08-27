@@ -1,6 +1,8 @@
 +-Warray-compare # Enabled by default.
 +-Warray-compare-cxx26 # Enabled by default.
 +-Wattribute-statement # Enabled by default.
++-Wbounds-attributes-cxx-experimental-ignored # Enabled by default.
++-Wbounds-attributes-objc-experimental-ignored # Enabled by default.
 --Wc++14-compat
 --Wc++14-compat-pedantic
 +-Wc++14-compat # Partially enabled by default.
@@ -22,6 +24,8 @@
 +-Wdeprecated-missing-comma-variadic-parameter # Enabled by default.
 --Wdeprecated-no-relaxed-template-template-args # Enabled by default.
 --Wenum-constexpr-conversion # Enabled by default.
+--Wexperimental-bounds-safety-cxx-ignored # Enabled by default.
+--Wexperimental-bounds-safety-objc-ignored # Enabled by default.
 +-Wexperimental-option # Enabled by default.
 +-Wextraneous-template-head # Enabled by default.
 --Wfixed-enum-extension
@@ -33,11 +37,13 @@
 +-Winit-priority-reserved # Enabled by default.
 +-Winvalid-gnu-asm-cast # Enabled by default.
 +-Winvalid-specialization # Enabled by default.
+--Winvalid-version-availability # Enabled by default.
 +-Wlegacy-constant-register-binding # Enabled by default.
 +-Wmath-errno-enabled-with-veclib # Enabled by default.
 +-Wmicrosoft-inline-on-non-function # Enabled by default.
 +-Wnonportable-sycl # Enabled by default.
 +-Wnontrivial-memcall # Enabled by default.
+--Woverriding-deployment-version # Enabled by default.
 --Wpre-c++26-compat
 --Wpre-c++26-compat-pedantic
 --Wpre-c++2c-compat

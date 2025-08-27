@@ -248,16 +248,12 @@
 #       -Wundefined-bool-conversion
 #             'this' pointer cannot be null in well-defined C++ code; pointer may be assumed to always convert to true
 #             reference cannot be bound to dereferenced null pointer in well-defined C++ code; pointer may be assumed to always convert to true
-#   -Wbounds-attributes-cxx-experimental-ignored
-#         -fbounds-attributes-cxx-experimental without -fbounds-attributes is ignored
 #   -Wbounds-attributes-extern-array-count
 #         array with '<__counted_by|__sized_by>' and the argument of the attribute should be defined in the same translation unit
 #   -Wbounds-attributes-implicit-conversion-single-to-explicit-indexable
 #         [assigning%select{ __indexable| __bidi_indexable|}3 type from%select{ __single|}4 type|passing%select{ __single|}4 type to parameter of%select{ __indexable| __bidi_indexable|}3 type|returning%select{ __single|}4 type from a function with%select{ __indexable| __bidi_indexable|}3 result type|converting%select{ __single|}4 type to%select{ __indexable| __bidi_indexable|}3 type|initializing%select{ __indexable| __bidi_indexable|}3 type with an expression of%select{ __single|}4 type|sending%select{ __single|}4 type to parameter of%select{ __indexable| __bidi_indexable|}3 type|casting%select{ __single|}4 type to%select{ __indexable| __bidi_indexable|}3 type] results in <an __indexable|a __bidi_indexable> pointer that will trap if a non-zero offset is dereferenced[. consider adding '__counted_by' to 'H']
 #   -Wbounds-attributes-init-list-side-effect
 #         initializer A has a side effect; this may lead to an unexpected result because the evaluation order of initialization list expressions is indeterminate
-#   -Wbounds-attributes-objc-experimental-ignored
-#         -fbounds-attributes-objc-experimental without -fbounds-attributes is ignored
 #   -Wbounds-attributes-redundant
 #         <array|pointer> annotated with <__unsafe_indexable|__bidi_indexable|__indexable|__single|__terminated_by> multiple times. Annotate only once to remove this warning
 #   -Wbounds-safety-adoption-mode-ignored
@@ -968,6 +964,10 @@
 #         <interrupt service routine|function with attribute 'no_caller_saved_registers'> should only call a function with attribute 'no_caller_saved_registers' or be compiled with '-mgeneral-regs-only'
 #   -Wexpansion-to-defined (partial)
 #         macro expansion producing 'defined' has undefined behavior
+#   -Wexperimental-bounds-safety-cxx-ignored
+#         -fexperimental-bounds-safety-cxx without -fbounds-safety is ignored
+#   -Wexperimental-bounds-safety-objc-ignored
+#         -fexperimental-bounds-safety-objc without -fbounds-safety is ignored
 #   -Wexperimental-header-units
 #         the implementation of header units is in an experimental phase
 #   -Wexplicit-initialize-call
@@ -1218,6 +1218,8 @@
 #         pasting formed 'A', an invalid preprocessing token
 #   -Winvalid-unevaluated-string
 #         encoding prefix 'A' on an unevaluated string literal has no effect[ and is incompatible with c++2c]
+#   -Winvalid-version-availability
+#         invalid B version 'A' in availability attribute
 #   -Wjump-seh-finally
 #         jump out of __finally block has undefined behavior
 #   -Wkeyword-compat
@@ -1665,6 +1667,8 @@
 #           initializer [partially ]overrides prior initialization of this subobject
 #   -Woverride-module
 #         overriding the module target triple with A
+#   -Woverriding-deployment-version
+#         overriding deployment version from 'A' to 'B'
 #   -Woverriding-option
 #         overriding 'A' option with 'B'
 #   -Wpartial-availability (partial)

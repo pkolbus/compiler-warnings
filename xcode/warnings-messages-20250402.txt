@@ -167,6 +167,7 @@
 #           A attribute only applies to <Objective-C object|pointer|pointer-to-CF-pointer|pointer/reference-to-OSObject-pointer> parameters
 #           A attribute only applies to <functions|methods|properties> that return <an Objective-C object|a pointer|a non-retainable pointer>
 #           A attribute only applies to a pointer or reference (B is invalid)
+#           A attribute only applies to a pointer, reference, class, struct, or union (B is invalid)
 #           A attribute only applies to return values that are pointers
 #           A attribute only applies to return values that are pointers or references
 #           A attribute only applies to[ constant] pointer arguments

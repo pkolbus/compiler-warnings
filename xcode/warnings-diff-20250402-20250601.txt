@@ -1,0 +1,40 @@
++-Warm-interrupt-save-fp-no-vfp-unit # Enabled by default.
+--Wbounds-attributes-cxx-experimental-ignored # Enabled by default.
+--Wbounds-attributes-objc-experimental-ignored # Enabled by default.
+--Wc++-compat
++-Wc++-compat # Partially enabled by default.
++-Wc++-hidden-decl
++-Wc++-keyword
++-Wc++-unterminated-string-initialization
++-Wcharacter-conversion # Enabled by default.
++-Wcoro-type-aware-allocation-function # Enabled by default.
++-Wdefault-const-init # Partially enabled by default.
++-Wdefault-const-init-field
++-Wdefault-const-init-field-unsafe # Enabled by default.
++-Wdefault-const-init-unsafe # Enabled by default.
++-Wdefault-const-init-var
++-Wdefault-const-init-var-unsafe # Enabled by default.
++-Wdeprecated-declarations-switch-case # Enabled by default.
++-Wexperimental-bounds-safety-cxx-ignored # Enabled by default.
++-Wexperimental-bounds-safety-objc-ignored # Enabled by default.
++-Whlsl-implicit-binding
++-Wignored-base-class-qualifiers # Partially enabled by default.
++-Wimplicit-enum-enum-cast # Enabled by default.
++-Wimplicit-int-enum-cast # Partially enabled by default.
++-Wimplicit-void-ptr-cast
++-Winvalid-version-availability # Enabled by default.
++-Wjump-misses-init
+--Wmain-return-type # Enabled by default.
++-Wmain-return-type # Partially enabled by default.
++-Wmodule-file-mapping-mismatch
++-Rmodule-map
++-Wms-bitfield-padding
++-Wnrvo
++-Woverriding-deployment-version # Enabled by default.
++-Wpreferred-type-bitfield-enum-conversion # Enabled by default.
++-Wpreferred-type-bitfield-width # IGNORED switch
+--Wtentative-definition-incomplete-type # Enabled by default.
++-Wtentative-definition-compat
++-Wtentative-definition-incomplete-type
++-Wunknown-acc-extension-clause # Enabled by default.
++-Wunterminated-string-initialization

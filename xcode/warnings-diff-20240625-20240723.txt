@@ -1,11 +1,9 @@
 --Waarch64-sme-attributes
 +-Waarch64-sme-attributes # Partially enabled by default.
 +-Warm-interrupt-vfp-clobber # Enabled by default.
-+-Wbounds-attributes-cxx-experimental-ignored # Enabled by default.
 +-Wbounds-attributes-extern-array-count # Enabled by default.
 +-Wbounds-attributes-implicit-conversion-single-to-explicit-indexable # Enabled by default.
 +-Wbounds-attributes-init-list-side-effect # Enabled by default.
-+-Wbounds-attributes-objc-experimental-ignored # Enabled by default.
 +-Wbounds-attributes-redundant # Enabled by default.
 +-Wbounds-safety-adoption-mode-ignored # Enabled by default.
 +-Wbounds-safety-conversion-single-to-implicit-indexable # Enabled by default.
@@ -28,9 +26,13 @@
 +-Wdangling-assignment # Enabled by default.
 +-Wdangling-assignment-gsl
 +-Wdeprecated-ofast # Enabled by default.
++-Wexperimental-bounds-safety-cxx-ignored # Enabled by default.
++-Wexperimental-bounds-safety-objc-ignored # Enabled by default.
 +-Wexplicit-specialization-storage-class # Enabled by default.
 +-Wfunction-effects
 --Wgeneric-type-extension
++-Winvalid-version-availability # Enabled by default.
++-Woverriding-deployment-version # Enabled by default.
 +-Wperf-constraint-implies-noexcept
 +-Wpre-c2y-compat
 +-Wpre-c2y-compat-pedantic

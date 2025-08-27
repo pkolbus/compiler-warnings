@@ -66,11 +66,9 @@
 #     -Wbool-conversion
 #       -Wpointer-bool-conversion
 #       -Wundefined-bool-conversion
-#   -Wbounds-attributes-cxx-experimental-ignored
 #   -Wbounds-attributes-extern-array-count
 #   -Wbounds-attributes-implicit-conversion-single-to-explicit-indexable
 #   -Wbounds-attributes-init-list-side-effect
-#   -Wbounds-attributes-objc-experimental-ignored
 #   -Wbounds-attributes-redundant
 #   -Wbounds-safety-adoption-mode-ignored
 #   -Wbounds-safety-conversion-single-to-implicit-indexable
@@ -313,6 +311,8 @@
 #   -Wexcess-initializers
 #   -Wexcessive-regsave
 #   -Wexpansion-to-defined (partial)
+#   -Wexperimental-bounds-safety-cxx-ignored
+#   -Wexperimental-bounds-safety-objc-ignored
 #   -Wexperimental-header-units
 #   -Wexplicit-initialize-call
 #   -Wexplicit-specialization-storage-class
@@ -413,6 +413,7 @@
 #   -Winvalid-static-assert-message
 #   -Winvalid-token-paste
 #   -Winvalid-unevaluated-string
+#   -Winvalid-version-availability
 #   -Wjump-seh-finally
 #   -Wkeyword-compat
 #   -Wknr-promoted-parameter
@@ -585,6 +586,7 @@
 #   -Woverride-init
 #     -Winitializer-overrides
 #   -Woverride-module
+#   -Woverriding-deployment-version
 #   -Woverriding-option
 #   -Wpartial-availability (partial)
 #     -Wunguarded-availability (partial)
