@@ -162,6 +162,19 @@ def shell(cmd: list[str], stdout_path: str) -> None:
         stdout_file.write(result.stdout)
 
 
+def tryfloat(number: str) -> float:
+    """
+    Return number as a float, or zero.
+
+    :param number: The number to convert.
+    :returns: The number as a float, or zero if the number cannot be converted.
+    """
+    try:
+        return float(number)
+    except ValueError:
+        return 0
+
+
 def main() -> None:
     """Entry point."""
     GIT_DIR = sys.argv[1]
@@ -178,7 +191,7 @@ def main() -> None:
     versions = [(branch.split("/")[-1][:-2], branch) for branch in branches]
 
     # Filter to 3.2 and later, and sort numerically
-    versions = [(version, ref) for version, ref in versions if float(version) >= 3.2]
+    versions = [(version, ref) for version, ref in versions if tryfloat(version) >= 3.2]
     versions = sorted(versions, key=lambda v: float(v[0]))
 
     # Add the main branch
