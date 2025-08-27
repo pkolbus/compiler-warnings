@@ -1,0 +1,63 @@
++-Warm-interrupt-save-fp-no-vfp-unit # Enabled by default.
+--Wbinding-in-condition # Enabled by default.
+--Wc++-compat
++-Wc++-compat # Partially enabled by default.
++-Wc++-hidden-decl
++-Wc++-keyword
++-Wc++-unterminated-string-initialization
++-Wc-attribute-extension # Enabled by default.
++-Wcfi-unchecked-callee # Enabled by default.
++-Wcharacter-conversion # Enabled by default.
++-Wcoro-type-aware-allocation-function # Enabled by default.
++-Wdefault-const-init # Partially enabled by default.
++-Wdefault-const-init-field
++-Wdefault-const-init-field-unsafe # Enabled by default.
++-Wdefault-const-init-unsafe # Enabled by default.
++-Wdefault-const-init-var
++-Wdefault-const-init-var-unsafe # Enabled by default.
++-Wdeprecated-declarations-switch-case # Enabled by default.
+--Wdeprecated-no-relaxed-template-template-args # Enabled by default.
++-Wdeprecated-octal-literals # Enabled by default.
++-Wexperimental-lifetime-safety
++-Wext-cxx-type-aware-allocators # Enabled by default.
++-Whlsl-implicit-binding
++-Wignored-base-class-qualifiers # Partially enabled by default.
++-Wimplicit-enum-enum-cast # Enabled by default.
++-Wimplicit-int-conversion-on-negation
++-Wimplicit-int-enum-cast # Partially enabled by default.
++-Wimplicit-void-ptr-cast
++-Winit-priority-reserved # Enabled by default.
++-Winvalid-version-availability # Enabled by default.
++-Wjump-misses-init
+--Wmain-return-type # Enabled by default.
++-Wmain-attached-to-named-module # Enabled by default.
++-Wmain-return-type # Partially enabled by default.
+--Wmicrosoft-static-assert # Enabled by default.
++-Wmodule-file-mapping-mismatch
++-Rmodule-map
++-Wms-bitfield-padding
++-Wmultilib-not-found # Enabled by default.
++-Wnrvo
++-Woctal-prefix-extension
++-Wopenacc-cache-var-inside-loop # Enabled by default.
++-Wopenacc-confusing-routine-name # Enabled by default.
++-Wopenmp-future # Enabled by default.
++-Woverriding-deployment-version # Enabled by default.
++-Wpreferred-type-bitfield-enum-conversion # Enabled by default.
++-Wpreferred-type-bitfield-width # IGNORED switch
++-Wreduced-bmi-output-overrided # Enabled by default.
++-Wshift-bool
+--Wtentative-definition-incomplete-type # Enabled by default.
++-Wtentative-definition-compat
++-Wtentative-definition-incomplete-type
++-Wthread-safety-pointer
+--Wundef
++-Wundef # Partially enabled by default.
++-Wundef-true # Enabled by default.
++-Wunderlying-atomic-qualifier-ignored # Enabled by default.
++-Wunderlying-cv-qualifier-ignored # Enabled by default.
++-Wuninitialized-const-pointer
++-Wunique-object-duplication
++-Wunknown-acc-extension-clause # Enabled by default.
++-Wunnecessary-virtual-specifier
++-Wunterminated-string-initialization
