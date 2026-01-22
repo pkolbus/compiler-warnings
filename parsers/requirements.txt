@@ -92,6 +92,7 @@ packaging==25.0
     # via
     #   black
     #   build
+    #   wheel
 pathspec==0.12.1
     # via
     #   black
@@ -132,7 +133,7 @@ tokenize-rt==6.2.0
     # via pyupgrade
 typing-extensions==4.15.0
     # via mypy
-wheel==0.45.1
+wheel==0.46.2
     # via pip-tools
 
 # The following packages are considered to be unsafe in a requirements file:
