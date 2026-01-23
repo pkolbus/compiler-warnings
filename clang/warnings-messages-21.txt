@@ -4697,6 +4697,8 @@
 #     loading modulemap 'A'
 #     loading parsed module 'A'
 #     parsing modulemap 'A'
+-Rmodule-validation
+#     validating A input files in module 'B' from 'C'
 -Wms-bitfield-padding
 #     bit-field A of type B has a different storage size than the preceding bit-field (C vs D bytes) and will not be packed under the Microsoft ABI
 -Wnarrowing

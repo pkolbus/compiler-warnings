@@ -631,6 +631,7 @@
 -Rmodule-include-translation
 -Rmodule-lock
 -Rmodule-map
+-Rmodule-validation
 -Wmodules-ambiguous-internal-linkage # Enabled by default.
 -Wmodules-import-nested-redundant # Enabled by default.
 -Wmost # Partially enabled by default.

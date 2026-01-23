@@ -35,6 +35,7 @@
 --Wmicrosoft-static-assert # Enabled by default.
 +-Wmodule-file-mapping-mismatch
 +-Rmodule-map
++-Rmodule-validation
 +-Wms-bitfield-padding
 +-Wmultilib-not-found # Enabled by default.
 +-Wnrvo

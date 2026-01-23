@@ -1379,6 +1379,7 @@
 -Rmodule-include-translation
 -Rmodule-lock
 -Rmodule-map
+-Rmodule-validation
 -Wms-bitfield-padding
 -Wnarrowing
 #   -Wc++11-narrowing
