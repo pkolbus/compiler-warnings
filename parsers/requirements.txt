@@ -12,7 +12,7 @@ attrs==25.4.0
     #   flake8-mypy
 bandit==1.9.4
     # via flake8-bandit
-black==26.1.0
+black==26.3.1
     # via -r requirements.in
 build==1.4.0
     # via pip-tools
