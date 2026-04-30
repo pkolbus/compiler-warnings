@@ -1,0 +1,37 @@
++-Wabbreviated-auto-in-template-arg # Enabled by default. Applies to C++,ObjC++
++-Wanalyzer-throw-of-unexpected-type # Enabled by default.
++-Wauto-profile
++-Wc++26-compat # Applies to C++,ObjC++
++-Wdeprecated-openmp # Enabled by default.
+--Wexceptions # Enabled by default. Applies to C++,ObjC++
++-Wexpose-global-module-tu-local # Enabled by default. Applies to C++,ObjC++
++-Wexternal-tu-local # Enabled by default. Applies to C++,ObjC++
+--Wflex-array-member-not-at-end # Applies to C,C++
++-Wflex-array-member-not-at-end
+--Wignored-attributes # Enabled by default. Applies to C,C++
+--Wignored-qualifiers # Applies to C,C++
++-Wignored-attributes # Enabled by default.
++-Wignored-qualifiers
++-Wkeyword-macro
+--Wmisleading-indentation # Applies to C,C++
++-Wmisleading-indentation
++-Wmultiple-parameter-fwd-decl-lists # Applies to C,ObjC
++-Wnon-c-typedef-for-linkage # Enabled by default. Applies to C++,ObjC++
+--Wopenacc-parallelism # Applies to C,C++
++-Wopenacc-parallelism
+--Wopenmp-simd # Applies to C,C++
++-Wopenmp-simd
+--Wplacement-new # Applies to C++
+--Wplacement-new=<0..2> # Applies to C++
++-Wplacement-new # Applies to C++,ObjC++
++-Wplacement-new=<0..2> # Applies to C++,ObjC++
++-Wsfinae-incomplete # Applies to C++,ObjC++
++-Wsfinae-incomplete=<0..2> # Applies to C++,ObjC++
+--Wstrict-flex-arrays # Applies to C,C++
++-Wstrict-flex-arrays
+--Wsync-nand # Enabled by default. Applies to C,C++
+--Wsynth # Applies to C++,ObjC++
++-Wsync-nand # Enabled by default.
++-Wsynth # IGNORED switch # Applies to C++,ObjC++
++-Wunused-but-set-parameter=<0..3>
++-Wunused-but-set-variable=<0..3>

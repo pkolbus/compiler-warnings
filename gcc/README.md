@@ -8,6 +8,11 @@ for a specific version of GCC that you have, you can run GCC with `gcc
 options lists are available below:
 
 
+* GCC 16 [all](warnings-16.txt)
+  • [top level](warnings-top-level-16.txt)
+  • [detail](warnings-detail-16.txt)
+  • [unique](warnings-unique-16.txt)
+  • [diff](warnings-diff-15-16.txt)
 * GCC 15 [all](warnings-15.txt)
   • [top level](warnings-top-level-15.txt)
   • [detail](warnings-detail-15.txt)
