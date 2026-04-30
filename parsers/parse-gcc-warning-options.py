@@ -723,7 +723,7 @@ class IntegerRangeListener(GccOptionsListener):
     def __init__(self) -> None:
         """Create an IntegerRangeListener."""
         self._atoms: list[int] = []
-        self._variable_name = None
+        self._variable_name: str | None = None
 
     def enterVariableName(self, ctx: GccOptionsParser.VariableNameContext) -> None:
         """
