@@ -1,4 +1,4 @@
-FROM ubuntu:noble
+FROM ubuntu:resolute
 LABEL maintainer="Peter Kolbus <peter.kolbus@gmail.com>"
 
 RUN apt-get update \
