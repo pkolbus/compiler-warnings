@@ -8,7 +8,6 @@ import shutil
 import subprocess  # noqa: S404
 import sys
 
-import git
 import jinja2
 
 DIR = os.path.dirname(os.path.realpath(__file__))
@@ -32,6 +31,8 @@ all warnings or all remarks respectively. Clang documentation also provides a
 {%- endif %}
 {%- endfor %}
 """
+
+git = shutil.which("git")
 
 
 def is_interesting(line: str) -> bool:
@@ -150,7 +151,7 @@ def parse_clang_info(version: str, target_dir: str, input_dir: str) -> None:
     )
 
 
-def shell(cmd: list[str], stdout_path: str) -> None:
+def shell(cmd: list[str], stdout_path: str | None = None) -> None:
     """
     Run cmd in a subprocess.
 
@@ -159,8 +160,55 @@ def shell(cmd: list[str], stdout_path: str) -> None:
     """
     result = subprocess.run(cmd, stdout=subprocess.PIPE, check=True)  # noqa: S603
 
-    with open(stdout_path, "wb") as stdout_file:
-        stdout_file.write(result.stdout)
+    if stdout_path:
+        with open(stdout_path, "wb") as stdout_file:
+            stdout_file.write(result.stdout)
+
+
+def get_branches(git_dir: str, pattern: str) -> list[str]:
+    """Return the branches in a repository matching a pattern.
+
+    :param git_dir: The git repository directory.
+    :param pattern: The branch name pattern to match (per git ls-remote).
+    :return: The list of matching ref names.
+    :raises RuntimeError: if git is not available.
+    """
+    if git is None:
+        raise RuntimeError("git not found in path")
+
+    result = subprocess.run(
+        [git, "ls-remote", "--branches", "origin", f"refs/heads/{pattern}"],
+        stdout=subprocess.PIPE,
+        encoding="locale",
+        check=True,
+        cwd=git_dir,
+    )
+
+    ref_names = [ref.split("\t", maxsplit=1)[-1] for ref in result.stdout.splitlines()]
+    branch_names = [
+        "origin/" + ref_name.split("/", maxsplit=2)[-1] for ref_name in ref_names
+    ]
+    return sorted(branch_names)
+
+
+def checkout(git_dir: str, ref: str) -> None:
+    """Check out a ref in a git repository.
+
+    :param git_dir: The git repository directory.
+    :param ref: The reference to check out.
+    :raises RuntimeError: if git is not available.
+    """
+    if git is None:
+        raise RuntimeError("git not found in path")
+
+    cmd = [git, "checkout", ref]
+    result = subprocess.run(cmd, capture_output=True, encoding="locale", cwd=git_dir)
+    if result.returncode != 0:
+        print(f"Command failed: {cmd}")
+        print(result.stdout)
+        print(f"{result.stdout=}")
+        print(f"{result.stderr=}")
+        sys.exit(1)
 
 
 def tryfloat(number: str) -> float:
@@ -178,15 +226,14 @@ def tryfloat(number: str) -> float:
 
 def main() -> None:
     """Entry point."""
-    GIT_DIR = sys.argv[1]
-    repo = git.Repo(GIT_DIR)
+    git_dir = sys.argv[1]
 
     target_dir = f"{DIR}/../clang"
     shutil.rmtree(target_dir, ignore_errors=True)
     os.mkdir(target_dir)
 
     # Parse all release branches
-    branches = [ref.name for ref in repo.refs if ref.name.startswith("origin/release/")]
+    branches = get_branches(git_dir, "release/*")
 
     # Remove everything up to the last / as well as the ".x"
     versions = [(branch.split("/")[-1][:-2], branch) for branch in branches]
@@ -200,8 +247,8 @@ def main() -> None:
 
     for version, ref in versions:
         print(f"Processing {version=}")
-        repo.git.checkout(ref)
-        parse_clang_info(version, target_dir, f"{GIT_DIR}/clang/include/clang/Basic")
+        checkout(git_dir, ref)
+        parse_clang_info(version, target_dir, f"{git_dir}/clang/include/clang/Basic")
 
     # Generate diffs
     version_numbers = [version for version, _ in versions]

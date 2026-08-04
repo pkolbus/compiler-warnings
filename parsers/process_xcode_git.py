@@ -6,8 +6,13 @@ import re
 import shutil
 import sys
 
-import git
-from process_clang_git import create_diffs, create_readme, parse_clang_info
+from process_clang_git import (
+    checkout,
+    create_diffs,
+    create_readme,
+    get_branches,
+    parse_clang_info,
+)
 
 DIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -44,19 +49,15 @@ Warnings available in each branch are as follows:
 
 def main() -> None:
     """Entry point."""
-    GIT_DIR = sys.argv[1]
-    repo = git.Repo(GIT_DIR)
+    git_dir = sys.argv[1]
 
     target_dir = f"{DIR}/../xcode"
     shutil.rmtree(target_dir, ignore_errors=True)
     os.mkdir(target_dir)
 
     # Parse all apple/stable/ and stable/ branches as well as apple/main
-    branches = sorted(
-        ref.name
-        for ref in repo.refs
-        if ref.name.startswith("origin/apple/stable/")
-        or ref.name.startswith("origin/stable/")
+    branches = get_branches(git_dir, "apple/stable/*") + get_branches(
+        git_dir, "stable/*"
     )
     versions = [(branch.split("/")[-1], branch) for branch in branches]
     versions = [
@@ -70,8 +71,8 @@ def main() -> None:
 
     for version, ref in versions:
         print(f"Processing {version=}")
-        repo.git.checkout(ref)
-        parse_clang_info(version, target_dir, f"{GIT_DIR}/clang/include/clang/Basic")
+        checkout(git_dir, ref)
+        parse_clang_info(version, target_dir, f"{git_dir}/clang/include/clang/Basic")
 
     # Generate diffs
     version_numbers = [version for version, _ in versions]

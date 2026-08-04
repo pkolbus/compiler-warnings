@@ -5,8 +5,13 @@ import os
 import shutil
 import sys
 
-import git
-from process_clang_git import create_diffs, create_readme, shell
+from process_clang_git import (
+    checkout,
+    create_diffs,
+    create_readme,
+    get_branches,
+    shell,
+)
 
 DIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -76,17 +81,14 @@ def tryfloat(number: str) -> float:
 
 def main() -> None:
     """Entry point."""
-    GIT_DIR = sys.argv[1]
-    repo = git.Repo(GIT_DIR)
+    git_dir = sys.argv[1]
 
     target_dir = f"{DIR}/../gcc"
     shutil.rmtree(target_dir, ignore_errors=True)
     os.mkdir(target_dir)
 
     # Parse all release branches
-    branches = [
-        ref.name for ref in repo.refs if ref.name.startswith("origin/releases/gcc-")
-    ]
+    branches = get_branches(git_dir, "releases/gcc-*")
 
     # Remove everything up to the last / as well as the "gcc-"
     versions = [(branch.split("/")[-1][4:], branch) for branch in branches]
@@ -99,7 +101,7 @@ def main() -> None:
     versions += [("NEXT", "origin/master")]
 
     all_inputs = [
-        f"{GIT_DIR}/gcc/{path}"
+        f"{git_dir}/gcc/{path}"
         for path in (
             "common.opt",
             "c.opt",  # gcc 4.5 and earlier
@@ -110,7 +112,7 @@ def main() -> None:
 
     for version, ref in versions:
         print(f"Processing {version=}")
-        repo.git.checkout(ref)
+        checkout(git_dir, ref)
         inputs = [path for path in all_inputs if os.path.exists(path)]
         parse_gcc_info(version, target_dir, inputs)
 

@@ -66,10 +66,6 @@ flake8-rst-docstrings==0.4.0
     # via -r requirements.in
 flake8-variables-names==0.0.6
     # via -r requirements.in
-gitdb==4.0.12
-    # via gitpython
-gitpython==3.1.57
-    # via -r requirements.in
 isort==8.0.1
     # via flake8-isort
 jinja2==3.1.6
@@ -127,8 +123,6 @@ restructuredtext-lint==2.0.2
     # via flake8-rst-docstrings
 rich==15.0.0
     # via bandit
-smmap==5.0.3
-    # via gitdb
 snowballstemmer==3.0.1
     # via pydocstyle
 stevedore==5.7.0
