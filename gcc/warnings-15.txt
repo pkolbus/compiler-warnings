@@ -592,7 +592,7 @@
 -Wunused-value
 -Wunused-variable
 #    -Wunused-const-variable=1
--Wuse-after-free
+-Wuse-after-free = -Wuse-after-free=1
 -Wuse-after-free=<0..3>
 -Wuseless-cast
 -Wvarargs

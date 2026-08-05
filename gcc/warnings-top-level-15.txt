@@ -436,7 +436,6 @@
 -Wunsuffixed-float-constants
 -Wunused-const-variable=<0..2>
 -Wunused-macros
--Wuse-after-free
 -Wuse-after-free=<0..3>
 -Wuseless-cast
 -Wvector-operation-performance

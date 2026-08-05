@@ -891,8 +891,6 @@
 #     Warn when a const variable is unused.
 -Wunused-macros
 #     Warn about macros defined in the main file that are not used.
--Wuse-after-free
-#     Warn for uses of pointers to deallocated storage.
 -Wuse-after-free=<0..3>
 #     Warn for uses of pointers to deallocated storage.
 -Wuseless-cast
