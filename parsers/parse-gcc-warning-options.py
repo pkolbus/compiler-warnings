@@ -9,8 +9,6 @@ For details of the option file format, see the gcc internals documentation at
 <https://gcc.gnu.org/onlinedocs/gccint/Option-file-format.html>
 """
 
-from __future__ import annotations
-
 import argparse
 from collections.abc import Iterable
 from dataclasses import dataclass

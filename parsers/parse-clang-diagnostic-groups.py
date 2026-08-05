@@ -7,8 +7,6 @@ Parses an extract of clang's Diagnostic.td as formatted by the command
 compiler warning options.
 """
 
-from __future__ import annotations
-
 import argparse
 from functools import total_ordering
 from itertools import chain

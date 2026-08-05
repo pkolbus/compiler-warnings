@@ -148,7 +148,7 @@ run_in_docker ninja -C parsers
 
 # Run formatting/linting
 # shellcheck disable=SC2046
-run_in_virtualenv pyupgrade --exit-zero-even-if-changed --py310-plus $(git ls-files "*.py")
+run_in_virtualenv pyupgrade --exit-zero-even-if-changed --py314-plus $(git ls-files "*.py")
 run_in_virtualenv black .
 run_in_virtualenv flake8 .
 for f in $(git ls-files "*.sh"); do
