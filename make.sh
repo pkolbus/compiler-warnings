@@ -178,7 +178,10 @@ if [ ${BUILD_CLANG} -eq 1 ]; then
         run_in_docker git -C build/clang remote set-url origin ${CLANG_REMOTE}
         run_in_docker git -C build/clang remote update -p
     else
-        run_in_docker git clone ${CLANG_REMOTE} build/clang
+        run_in_docker git clone ${CLANG_REMOTE} build/clang --no-checkout
+    fi
+    if [ ! -e build/clang/.git/info/sparse-checkout ]; then
+        run_in_docker git -C build/clang sparse-checkout set --no-cone "*.td"
     fi
 
     run_in_virtualenv python parsers/process_clang_git.py build/clang
@@ -190,7 +193,10 @@ if [ ${BUILD_GCC} -eq 1 ]; then
     if [ -e build/gcc/.git ]; then
         run_in_docker git -C build/gcc remote update -p
     else
-        run_in_docker git clone git://gcc.gnu.org/git/gcc.git build/gcc
+        run_in_docker git clone git://gcc.gnu.org/git/gcc.git build/gcc --no-checkout
+    fi
+    if [ ! -e build/gcc/.git/info/sparse-checkout ]; then
+        run_in_docker git -C build/clang sparse-checkout set --no-cone "*.opt"
     fi
     run_in_virtualenv python parsers/process_gcc_git.py build/gcc
 fi
@@ -203,7 +209,10 @@ if [ ${BUILD_XCODE} -eq 1 ]; then
         run_in_docker git -C build/xcode remote set-url origin ${CLANG_REMOTE}
         run_in_docker git -C build/xcode remote update -p
     else
-        run_in_docker git clone ${CLANG_REMOTE} build/xcode
+        run_in_docker git clone ${CLANG_REMOTE} build/xcode --no-checkout
+    fi
+    if [ ! -e build/xcode/.git/info/sparse-checkout ]; then
+        run_in_docker git -C build/clang sparse-checkout set --no-cone "*.td"
     fi
 
     run_in_virtualenv python parsers/process_xcode_git.py build/xcode
