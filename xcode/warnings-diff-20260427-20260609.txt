@@ -1,0 +1,9 @@
++-Wanalyzer-renamed-checker # Enabled by default.
++-Wattribute-alias # Enabled by default.
++-Wcoroutines-unsupported-target # Enabled by default.
++-Wlifetime-safety-cross-tu-misplaced-lifetimebound
++-Wlifetime-safety-intra-tu-misplaced-lifetimebound
++-Wlifetime-safety-lifetimebound-violation
++-Wlifetime-safety-misplaced-lifetimebound
++-Rtmo-remarks
++-Wtyped-memory-inference-failure

@@ -1,0 +1,93 @@
++-Walloc-size # Enabled by default.
++-Wamdgpu-unguarded-builtin-usage
++-Wamdgpu-wait-event-mask # Enabled by default.
++-Wattribute-preprocessor-tokens
++-Wbounds-safety-auto-bounds-attributed # Enabled by default.
++-Wbounds-safety-legacy-checks-enabled # Enabled by default.
++-Wc-attribute-extension # Enabled by default.
+--Wc2y-extensions
++-Wc2y-extensions # Partially enabled by default.
++-Wcfi-unchecked-callee # Enabled by default.
++-Rctu-remarks
++-Wdeprecated-availability-domain # Enabled by default.
++-Wdllexport-explicit-instantiation # Enabled by default.
++-Wdomain-availability-redeclaration # Enabled by default.
++-Wduplicate-header-ownership
++-Wenum-compare-typo # Enabled by default.
++-Wext-cxx-type-aware-allocators # Enabled by default.
++-Wfunction-effect-redeclarations
++-Wgcc-install-dir-libstdcxx # Enabled by default.
++-Wgroupshared-initializer # Enabled by default.
++-Whip-deprecated-builtins
++-Whlsl-explicit-binding # Enabled by default.
++-Wimplicit-int-conversion-on-negation
++-Wimplicit-overflow-behavior-conversion
++-Wimplicit-overflow-behavior-conversion-assignment
++-Wimplicit-overflow-behavior-conversion-assignment-pedantic
++-Wimplicit-overflow-behavior-conversion-function-boundary
++-Wimplicit-overflow-behavior-conversion-function-boundary-pedantic
++-Wimplicit-overflow-behavior-conversion-pedantic
++-Wincompatible-pointer-types-discards-overflow-behavior # Enabled by default.
++-Wlifetime-safety
++-Wlifetime-safety-all
++-Wlifetime-safety-cross-tu-suggestions
++-Wlifetime-safety-dangling-field
++-Wlifetime-safety-dangling-field-moved
++-Wlifetime-safety-dangling-global
++-Wlifetime-safety-dangling-global-moved
++-Wlifetime-safety-intra-tu-suggestions
++-Wlifetime-safety-invalidation
++-Wlifetime-safety-noescape
++-Wlifetime-safety-permissive
++-Wlifetime-safety-return-stack-addr
++-Wlifetime-safety-return-stack-addr-moved
++-Wlifetime-safety-strict
++-Wlifetime-safety-suggestions
++-Wlifetime-safety-use-after-free
++-Wlifetime-safety-use-after-scope
++-Wlifetime-safety-use-after-scope-moved
++-Wlifetime-safety-validations
++-Wmain-attached-to-named-module # Enabled by default.
++-Wmatrix-conversion # Enabled by default.
++-Wmatrix-conversions # Enabled by default.
++-Wmicrosoft-empty-enum
+--Wmicrosoft-static-assert # Enabled by default.
+--Wmissing-format-attribute # IGNORED switch
++-Wmissing-format-attribute
++-Wmmap-deprecated-symlink-to-modular-header
++-Wmodule-map-path-outside-directory
++-Rmodule-validation
++-Rmodules-driver
++-Wmultilib-not-found # Enabled by default.
+--Wnonportable-include-path # Enabled by default.
++-Wnonportable-include-path # Partially enabled by default.
++-Wnonportable-include-path-separator
++-Wopenacc-cache-var-inside-loop # Enabled by default.
++-Wopenacc-extension
++-Wopenacc-var-lacks-operation # Enabled by default.
++-Wopenacc-var-non-const-array # Enabled by default.
++-Wopenmp-future # Enabled by default.
++-Woverflow-behavior-attribute-ignored # Enabled by default.
++-Woverflow-behavior-conversion
++-Woverriding-complex-range # Enabled by default.
++-Wpermanently-available-domain # Enabled by default.
++-Wpgo-coverage # Enabled by default.
++-Wreference-tu-local-entity-in-other-tu # Enabled by default.
++-Wriscv-be-experimental # Enabled by default.
++-Wscalable-static-analysis-framework # Enabled by default.
++-Wshadow-header
++-Wsimdlen # Enabled by default.
++-Wspirv-validation # Enabled by default.
++-Wtrivial-auto-var-init # Enabled by default.
++-WTU-local-entity-exposure # Enabled by default.
++-Wunderlying-atomic-qualifier-ignored # Enabled by default.
++-Wunderlying-cv-qualifier-ignored # Enabled by default.
++-Wuninitialized-const-pointer
++-Wunsafe-buffer-usage-in-format-attr-call
++-Wunsafe-buffer-usage-in-static-sized-array
++-Wunsafe-buffer-usage-in-unique-ptr-array-access
++-Wunused-but-set-global
+--Wvector-conversion
+--Wvector-conversions
++-Wvector-conversion # Partially enabled by default.
++-Wvector-conversions # Partially enabled by default.
