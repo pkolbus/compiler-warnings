@@ -1,0 +1,72 @@
++-Wamdgpu-unguarded-builtin-usage
++-Wamdgpu-wait-event-mask # Enabled by default.
++-Wattribute-alias # Enabled by default.
++-Wc++2d-extensions # IGNORED switch
++-Wcoroutines-unsupported-target # Enabled by default.
++-Rctu-remarks
++-Wduplicate-header-ownership
++-Wexpansion-stmt-missing-braces
+--Wexperimental-lifetime-safety
+--Wexperimental-lifetime-safety-cross-tu-suggestions
+--Wexperimental-lifetime-safety-intra-tu-suggestions
+--Wexperimental-lifetime-safety-permissive
+--Wexperimental-lifetime-safety-strict
+--Wexperimental-lifetime-safety-suggestions
++-Wgroupshared-initializer # Enabled by default.
++-Whexagon-reserved-caller-saved # Enabled by default.
++-Whip-deprecated-builtins
++-Whlsl-explicit-binding # Enabled by default.
++-Wimplicit-overflow-behavior-conversion
++-Wimplicit-overflow-behavior-conversion-assignment
++-Wimplicit-overflow-behavior-conversion-assignment-pedantic
++-Wimplicit-overflow-behavior-conversion-function-boundary
++-Wimplicit-overflow-behavior-conversion-function-boundary-pedantic
++-Wimplicit-overflow-behavior-conversion-pedantic
++-Wincompatible-pointer-types-discards-overflow-behavior # Enabled by default.
++-Wlifetime-safety
++-Wlifetime-safety-all
++-Wlifetime-safety-annotation-placement
++-Wlifetime-safety-annotation-verification
++-Wlifetime-safety-cross-tu-constructor-suggestions
++-Wlifetime-safety-cross-tu-misplaced-lifetimebound
++-Wlifetime-safety-cross-tu-suggestions
++-Wlifetime-safety-dangling-field
++-Wlifetime-safety-dangling-field-moved
++-Wlifetime-safety-dangling-global
++-Wlifetime-safety-dangling-global-moved
++-Wlifetime-safety-inapplicable-lifetimebound
++-Wlifetime-safety-intra-tu-constructor-suggestions
++-Wlifetime-safety-intra-tu-misplaced-lifetimebound
++-Wlifetime-safety-intra-tu-suggestions
++-Wlifetime-safety-invalidation
++-Wlifetime-safety-lifetimebound-violation
++-Wlifetime-safety-misplaced-lifetimebound
++-Wlifetime-safety-noescape
++-Wlifetime-safety-permissive
++-Wlifetime-safety-return-stack-addr
++-Wlifetime-safety-return-stack-addr-moved
++-Wlifetime-safety-strict
++-Wlifetime-safety-suggestions
++-Wlifetime-safety-use-after-free
++-Wlifetime-safety-use-after-scope
++-Wlifetime-safety-use-after-scope-moved
++-Wlifetime-safety-validations
++-Wmmap-deprecated-symlink-to-modular-header
++-Wmodule-map-path-outside-directory
++-Rmodules-driver
+--Wnonportable-include-path # Enabled by default.
++-Wnonportable-include-path # Partially enabled by default.
++-Wnonportable-include-path-separator
++-Woverflow-behavior-attribute-ignored # Enabled by default.
++-Woverflow-behavior-conversion
++-Wpre-c++2d-compat # IGNORED switch
++-Wpre-c++2d-compat-pedantic # IGNORED switch
++-Wriscv-be-experimental # Enabled by default.
++-Wscalable-static-analysis-framework # Enabled by default.
+--Wspir-compat
+--Wspirv-compat
++-Wspir-compat # Partially enabled by default.
++-Wspirv-compat # Partially enabled by default.
++-Wspirv-validation # Enabled by default.
++-Wunsafe-buffer-usage-in-static-sized-array
++-Wunused-but-set-global
